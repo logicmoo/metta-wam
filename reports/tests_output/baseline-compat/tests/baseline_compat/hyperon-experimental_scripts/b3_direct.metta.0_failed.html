@@ -71,7 +71,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 22:30:04+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-testsuite/metta-testsuite/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-21 23:01:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -134,9 +134,9 @@ Script started on 2024-12-21 22:30:04+00:00 [COMMAND="timeout --preserve-status 
 
 ; #( : user #(load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta) )
 P;HTML|
-;                #(track_load_into_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
+;                #(track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
 P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
+;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
 P;HTML|
 ;                         #( = 1 "[()]" )
 P;HTML|
@@ -146,11 +146,11 @@ Script started on 2024-12-21 22:30:04+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 4 "[()]" )
 P;HTML|
-;                          #( = 5 "0.04user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27600maxresident)k" )
+;                          #( = 5 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27724maxresident)k" )
 P;HTML|
-;                           #( = 5 "0inputs+0outputs (0major+3332minor)pagefaults 0swaps" )
+;                           #( = 5 "0inputs+0outputs (0major+3328minor)pagefaults 0swaps" )
 P;HTML|
-;                        #(load_answer_file /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
+;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -182,7 +182,7 @@ Script started on 2024-12-21 22:30:04+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.001 secs. (1.30 milliseconds) 
 
 !(assertEqual (green Fritz) T)
 
@@ -216,34 +216,34 @@ Deterministic: <span class="ansi33"
 >!(assertEqual (ift (green $x) $x) Fritz)
 
 </span>;<span class="ansi38-047047047"
->    0:0   |--->(assertEqual (ift (green $x) $x) Fritz) </span>
+>    0:0   |--->(assertEqual (ift (green $10000) $10000) Fritz) </span>
 
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02</h3>
 ;<span class="ansi38-047047047"
->    0:1   |   |--->(ift (green $x) $x) </span>
+>    0:1   |   |--->(ift (green $10000) $10000) </span>
 ;<span class="ansi38-047047047"
->    1:2   |   |   |--->(green $x) </span>
+>    1:2   |   |   |--->(green $10000) </span>
 ;<span class="ansi38-047047047"
 >    3:2   |   |   |-(=(green $10000) </span>
 ;<span class="ansi38-047047047"
 >          |   |     (frog $10000)) </span>
 <span class="ansi38-119055000"
->                                                                                              ;;defs_used(([green,_58394]->[frog,_58394]))
+>                                                                                              ;;defs_used(([green,_58384]->[frog,_58384]))
 
 </span>;<span class="ansi38-047047047"
->    3:3   |   |   |   |--->(frog $x) </span>
+>    3:3   |   |   |   |--->(frog $10000) </span>
 ;<span class="ansi38-047047047"
 >    5:3   |   |   |   |-(=(frog $10000) </span>
 ;<span class="ansi38-047047047"
 >          |   |   |     (And (croaks $10000) (eat_flies $10000))) </span>
 <span class="ansi38-119055000"
->                                                                                            ;;defs_used(([frog,_69956]->['And',[croaks,_69956],[eat_flies,_69956]]))
+>                                                                                            ;;defs_used(([frog,_69906]->['And',[croaks,_69906],[eat_flies,_69906]]))
 
 </span>;<span class="ansi38-047047047"
->    5:4   |   |   |   |   |--->(And (croaks $x) (eat_flies $x)) </span>
+>    5:4   |   |   |   |   |--->(And (croaks $10000) (eat_flies $10000)) </span>
 ;<span class="ansi38-047047047"
->    6:5   |   |   |   |   |   |--->(croaks $x) </span>
+>    6:5   |   |   |   |   |   |--->(croaks $10000) </span>
 ;<span class="ansi38-047047047"
 >    8:5   |   |   |   |   |   |-(=(croaks Fritz) </span>
 ;<span class="ansi38-047047047"
@@ -286,15 +286,15 @@ Deterministic: <span class="ansi33"
 </span>;<span class="ansi38-047047047"
 >   17:1   |   |-(=(ift T $10000) </span>
 ;<span class="ansi38-047047047"
->          |     $_122890) </span>
+>          |     $10000) </span>
 <span class="ansi38-119055000"
->                                                                                                ;;defs_used(([ift,'T',_128050]->_128050))
+>                                                                                                ;;defs_used(([ift,'T',_127890]->_127890))
 
 </span>;<span class="ansi38-047047047"
 >          |     <--Fritz </span>
 ; 
 ; EVAL TEST
-; took 0.050 secs. (49.70 milliseconds) 
+; took 0.073 secs. (73.02 milliseconds) 
 
 !(assertEqual (ift (green $x) $x) Fritz)
 
@@ -318,17 +318,17 @@ Deterministic: <span class="ansi33"
 >!(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies))
 
 </span>;<span class="ansi38-047047047"
->    0:0   |--->(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies)) </span>
+>    0:0   |--->(assertEqualToResult (match &self (= ($10000 Fritz)  T) $10000) (croaks eat_flies)) </span>
 
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03</h3>
 ;<span class="ansi38-047047047"
->    0:1   |   |--->(match &self (= ($p Fritz)  T) $p) </span>
+>    0:1   |   |--->(match &self (= ($10000 Fritz)  T) $10000) </span>
 ;<span class="ansi38-047047047"
 >    1:1   |   |-<--eat_flies </span>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.11 milliseconds) 
+; took 0.010 secs. (10.16 milliseconds) 
 
 !(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies))
 
@@ -343,9 +343,9 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 721,197 inferences, 0.137 CPU in 0.139 seconds (98% CPU, 5278583 Lips)
+>% 952,256 inferences, 0.172 CPU in 0.174 seconds (99% CPU, 5546687 Lips)
 </span>P;HTML|
-;                #( = /home/runner/work/metta-testsuite/metta-testsuite/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 )
+;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 )
 <span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -392,7 +392,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-21 22:30:12+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-21 23:01:24+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
