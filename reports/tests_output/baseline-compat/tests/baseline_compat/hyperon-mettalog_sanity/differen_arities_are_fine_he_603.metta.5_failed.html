@@ -37,7 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 23:07:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 03:02:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -114,7 +114,7 @@ Script started on 2024-12-21 23:07:15+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: 3)]" )
 P;HTML|
-;                           #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27516maxresident)k" )
+;                           #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27736maxresident)k" )
 P;HTML|
 ;                           #( = 3 "0inputs+0outputs (0major+3341minor)pagefaults 0swaps" )
 P;HTML|
@@ -138,19 +138,19 @@ Script started on 2024-12-21 23:07:15+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000899 secs. (898.55 microseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( ( (λ $10000 
-            (+ 1 $10000)) 1)) 
+      ( ( (λ $_14564 
+            (+ 1 $_14564)) 1)) 
       (2)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got (((λ $10000 (+ 1 $10000)) 1))) #(expected (2))))
+>(#(Error #(got (((λ $_14564 (+ 1 $_14564)) 1))) #(expected (2))))
 </span>;;; Test 2: Binary lambda
 ;;; ----------------------
 <span class="ansi38-255165000"
@@ -168,19 +168,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000764 secs. (763.57 microseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( ( (λ $10000 $10001 
-            (+ $10000 $10001)) 1 2)) 
+      ( ( (λ $_54356 $_54362 
+            (+ $_54356 $_54362)) 1 2)) 
       (3)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))
+>(#(Error #(got (((λ $_54356 $_54362 (+ $_54356 $_54362)) 1 2))) #(expected (3))))
 </span>;;; Bug Validation: Ensure unary and binary lambda results do not duplicate
 ;;; ------------------------------------------------------------
 ;;; Expected Results:
@@ -195,19 +195,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000976 secs. (975.64 microseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( ( (λ $10000 $10001 
-            (+ $10000 $10001)) 1 2)) 
+      ( ( (λ $_87734 $_87740 
+            (+ $_87734 $_87740)) 1 2)) 
       (3)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))
+>(#(Error #(got (((λ $_87734 $_87740 (+ $_87734 $_87740)) 1 2))) #(expected (3))))
 </span>;;; Ensures no duplicates
 ;;; Test 3: Properly working overloaded functions (control group)
 ;;; -------------------------------------------------------------
@@ -226,7 +226,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000545 secs. (545.31 microseconds) 
+; took 0.000528 secs. (527.59 microseconds) 
 
 !(assertEqualToResult (foo 1) (2))
 
@@ -253,7 +253,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000488 secs. (488.02 microseconds) 
+; took 0.000533 secs. (533.18 microseconds) 
 
 !(assertEqualToResult (foo 1 2) (3))
 
@@ -276,19 +276,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000793 secs. (793.42 microseconds) 
+; took 0.001 secs. (1.09 milliseconds) 
 
 !(assertEqualToResult ((λ $x (+ 1 $x)) 1) (2))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( ( (λ $10000 
-            (+ 1 $10000)) 1)) 
+      ( ( (λ $_10738 
+            (+ 1 $_10738)) 1)) 
       (2)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got (((λ $10000 (+ 1 $10000)) 1))) #(expected (2))))
+>(#(Error #(got (((λ $_10738 (+ 1 $_10738)) 1))) #(expected (2))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
 
@@ -297,21 +297,21 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000905 secs. (904.68 microseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqualToResult ((λ $x $y (+ $x $y)) 1 2) (3))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( ( (λ $10000 $10001 
-            (+ $10000 $10001)) 1 2)) 
+      ( ( (λ $_43864 $_43870 
+            (+ $_43864 $_43870)) 1 2)) 
       (3)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))
+>(#(Error #(got (((λ $_43864 $_43870 (+ $_43864 $_43870)) 1 2))) #(expected (3))))
 </span><span class="ansi32"
->% 3,851,773 inferences, 0.494 CPU in 0.497 seconds (99% CPU, 7795827 Lips)
+>% 4,532,703 inferences, 0.887 CPU in 0.889 seconds (100% CPU, 5107714 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta 0 )
 <span class="ansi1"
@@ -348,25 +348,25 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ;          #(set_debug fail false)
 
-[(#(Error #(got (((λ $10000 (+ 1 $10000)) 1))) #(expected (2))))]
+[(#(Error #(got (((λ $_14564 (+ 1 $_14564)) 1))) #(expected (2))))]
 
-[(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))]
+[(#(Error #(got (((λ $_54356 $_54362 (+ $_54356 $_54362)) 1 2))) #(expected (3))))]
 
-[(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))]
-
-[()]
+[(#(Error #(got (((λ $_87734 $_87740 (+ $_87734 $_87740)) 1 2))) #(expected (3))))]
 
 [()]
 
-[(#(Error #(got (((λ $10000 (+ 1 $10000)) 1))) #(expected (2))))]
+[()]
 
-[(#(Error #(got (((λ $10000 $10001 (+ $10000 $10001)) 1 2))) #(expected (3))))]
+[(#(Error #(got (((λ $_10738 (+ 1 $_10738)) 1))) #(expected (2))))]
+
+[(#(Error #(got (((λ $_43864 $_43870 (+ $_43864 $_43870)) 1 2))) #(expected (3))))]
 P;HTML|
 ;         #(maybe_halt 7)
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-21 23:07:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 03:02:24+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
