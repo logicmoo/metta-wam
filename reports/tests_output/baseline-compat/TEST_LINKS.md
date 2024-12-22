@@ -3,12 +3,12 @@
 |----|-----|----|-------|--------|-----------|
 |   1|2   3|   4|   16% | tests output -compat I  hyperon-mettalog sanity synth buffer | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer |
 |   6|    0|   6|  100% | tests output -compat I  module-system | tests_output/baseline-compat/tests/baseline_compat/module-system |
-|  83|    0|  83|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
+|  76|1   0|  76|   98% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
 | 192|   23| 215|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
-| 547|10320| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
-| 828|10343|1171|   70% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-| 828|10343|1171|   70% | tests output -compat           | tests_output/baseline-compat/ |
-| 828|10343|1171|   70% | tests output -compat tests     | tests_output/baseline-compat/tests |
+| 544|10323| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 818|11346|1164|   69% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+| 818|11346|1164|   69% | tests output -compat           | tests_output/baseline-compat/ |
+| 818|11346|1164|   69% | tests output -compat tests     | tests_output/baseline-compat/tests |
 
 
 
@@ -54,7 +54,7 @@
 |       |       |          | Mod: tests output -compat I  hyperon-mettalog sanity                           |
 |       |       |          |                                                                                |
 |     0 |     3 |      0%  | [delay_reduction_additional_tests_he_659.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_additional_tests_he_659.metta.html) |
-|    14 |     0 |    100%  | [space_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta.html) |
+|    13 |     1 |     92%  | [space_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta.html) |
 |     1 |     1 |     50%  | [represent_and_parse_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/represent_and_parse_tests.metta.html) |
 |     4 |     0 |    100%  | [car_atom_bug_he_621.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/car_atom_bug_he_621.metta.html) |
 |     0 |     1 |      0%  | [dont_mess_with_colons_225.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/dont_mess_with_colons_225.metta.html) |
@@ -103,7 +103,7 @@
 |     7 |     2 |     77%  | [call_cleanup_tests_mw.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/call_cleanup_tests_mw.metta.html) |
 |    11 |     0 |    100%  | [xor_test.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/xor_test.metta.html) |
 |    -1 |    -1 |      0%  | [tuple_type_checking_he_669.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.html) |
-|    28 |     4 |     87%  | [intersection_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta.html) |
+|    26 |     6 |     81%  | [intersection_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta.html) |
 |    21 |     0 |    100%  | [type_filtering_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta.html) |
 |     3 |     3 |     50%  | [old_void_or_empty.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/old_void_or_empty.metta.html) |
 |     8 |     0 |    100%  | [space_subtraction_tests.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/space_subtraction_tests.metta.html) |
@@ -129,7 +129,7 @@
 |    -1 |    -1 |      0%  | [evaluation_caching_he_553.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.html) |
 |    10 |     0 |    100%  | [subtraction_test.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.html) |
 |       |       |          |                                                                                |
-|   546 |   325 |     62%  | Total                                                                          |
+|   543 |   328 |     62%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -163,11 +163,11 @@
 |     1 |     0 |    100%  | [let_superpose_list2.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta.html) |
 |     1 |     0 |    100%  | [letlet.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/letlet.metta.html) |
 |     8 |     0 |    100%  | [supercollapse.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/supercollapse.metta.html) |
-|     7 |     0 |    100%  | [tests0.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/tests0.metta.html) |
+|    -1 |    -1 |      0%  | [tests0.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/tests0.metta.html) |
 |     1 |     0 |    100%  | [if.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/if.metta.html) |
 |     1 |     0 |    100%  | [types.metta](https://logicmoo.org/public/metta/reports/tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests/types.metta.html) |
 |       |       |          |                                                                                |
-|    83 |     0 |    100%  | Total                                                                          |
+|    76 |     1 |     98%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -203,22 +203,22 @@
 |----|-----|----|-------|--------|-----------|
 |   1|2   3|   4|   16% | tests output -compat I  hyperon-mettalog sanity synth buffer | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer |
 |   6|    0|   6|  100% | tests output -compat I  module-system | tests_output/baseline-compat/tests/baseline_compat/module-system |
-|  83|    0|  83|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
+|  76|1   0|  76|   98% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
 | 192|   23| 215|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
-| 547|10320| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
-| 828|10343|1171|   70% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-| 828|10343|1171|   70% | tests output -compat           | tests_output/baseline-compat/ |
-| 828|10343|1171|   70% | tests output -compat tests     | tests_output/baseline-compat/tests |
+| 544|10323| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 818|11346|1164|   69% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+| 818|11346|1164|   69% | tests output -compat           | tests_output/baseline-compat/ |
+| 818|11346|1164|   69% | tests output -compat tests     | tests_output/baseline-compat/tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   6|    0|   6|  100% | tests output -compat I  module-system | tests_output/baseline-compat/tests/baseline_compat/module-system |
-|  83|    0|  83|  100% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
+|  76|1   0|  76|   98% | tests output -compat I  metta-morph tests | tests_output/baseline-compat/tests/baseline_compat/metta-morph_tests |
 |   1|2   3|   4|   16% | tests output -compat I  hyperon-mettalog sanity synth buffer | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer |
-| 547|10320| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
+| 544|10323| 867|   62% | tests output -compat I  hyperon-mettalog sanity | tests_output/baseline-compat/tests/baseline_compat/hyperon-mettalog_sanity |
 | 192|   23| 215|   89% | tests output -compat I  hyperon-experimental  | tests_output/baseline-compat/tests/baseline_compat/hyperon-experimental_scripts |
-| 828|10343|1171|   70% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
-| 828|10343|1171|   70% | tests output -compat tests     | tests_output/baseline-compat/tests |
-| 828|10343|1171|   70% | tests output -compat           | tests_output/baseline-compat/ |
+| 818|11346|1164|   69% | tests output -compat I         | tests_output/baseline-compat/tests/baseline_compat |
+| 818|11346|1164|   69% | tests output -compat tests     | tests_output/baseline-compat/tests |
+| 818|11346|1164|   69% | tests output -compat           | tests_output/baseline-compat/ |
 [?7h
