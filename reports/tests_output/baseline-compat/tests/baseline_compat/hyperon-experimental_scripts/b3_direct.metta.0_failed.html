@@ -36,7 +36,9 @@
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
+.ansi38-047047047 { color: #2F2F2F; }
 .ansi38-119055000 { color: #773700; }
+.ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
@@ -52,8 +54,6 @@
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-119055000 { color: #773700; }
-.ansi38-047047047 { color: #2F2F2F; }
-.ansi38-047047047 { color: #2F2F2F; }
 .ansi38-047047047 { color: #2F2F2F; }
 .ansi38-119055051 { color: #773733; }
 .ansi38-047047047 { color: #2F2F2F; }
@@ -71,7 +71,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 23:01:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 00:16:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -146,7 +146,7 @@ Script started on 2024-12-21 23:01:15+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 4 "[()]" )
 P;HTML|
-;                          #( = 5 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27724maxresident)k" )
+;                          #( = 5 "0.03user 0.01system 0:00.05elapsed 96%CPU (0avgtext+0avgdata 27600maxresident)k" )
 P;HTML|
 ;                           #( = 5 "0inputs+0outputs (0major+3328minor)pagefaults 0swaps" )
 P;HTML|
@@ -182,7 +182,7 @@ Script started on 2024-12-21 23:01:15+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
+; took 0.001 secs. (1.29 milliseconds) 
 
 !(assertEqual (green Fritz) T)
 
@@ -229,23 +229,27 @@ Deterministic: <span class="ansi33"
 ;<span class="ansi38-047047047"
 >          |   |     (frog $10000)) </span>
 <span class="ansi38-119055000"
->                                                                                              ;;defs_used(([green,_58384]->[frog,_58384]))
+>                                                                                              ;;defs_used(([green,_58980]->[frog,_58980]))
 
 </span>;<span class="ansi38-047047047"
->    3:3   |   |   |   |--->(frog $10000) </span>
+>          |   |     <--(frog $10000) </span>
 ;<span class="ansi38-047047047"
->    5:3   |   |   |   |-(=(frog $10000) </span>
+>    4:3   |   |   |   |--->(frog $10000) </span>
+;<span class="ansi38-047047047"
+>    6:3   |   |   |   |-(=(frog $10000) </span>
 ;<span class="ansi38-047047047"
 >          |   |   |     (And (croaks $10000) (eat_flies $10000))) </span>
 <span class="ansi38-119055000"
->                                                                                            ;;defs_used(([frog,_69906]->['And',[croaks,_69906],[eat_flies,_69906]]))
+>                                                                                            ;;defs_used(([frog,_72882]->['And',[croaks,_72882],[eat_flies,_72882]]))
 
 </span>;<span class="ansi38-047047047"
->    5:4   |   |   |   |   |--->(And (croaks $10000) (eat_flies $10000)) </span>
+>          |   |   |     <--(And (croaks $10000) (eat_flies $10000)) </span>
 ;<span class="ansi38-047047047"
->    6:5   |   |   |   |   |   |--->(croaks $10000) </span>
+>    7:4   |   |   |   |   |--->(And (croaks $10000) (eat_flies $10000)) </span>
 ;<span class="ansi38-047047047"
->    8:5   |   |   |   |   |   |-(=(croaks Fritz) </span>
+>    8:5   |   |   |   |   |   |--->(croaks $10000) </span>
+;<span class="ansi38-047047047"
+>   10:5   |   |   |   |   |   |-(=(croaks Fritz) </span>
 ;<span class="ansi38-047047047"
 >          |   |   |   |   |     T) </span>
 <span class="ansi38-119055000"
@@ -254,9 +258,9 @@ Deterministic: <span class="ansi33"
 </span>;<span class="ansi38-047047047"
 >          |   |   |   |   |     <--T </span>
 ;<span class="ansi38-047047047"
->    9:5   |   |   |   |   |   |--->(eat_flies Fritz) </span>
+>   11:5   |   |   |   |   |   |--->(eat_flies Fritz) </span>
 ;<span class="ansi38-047047047"
->   11:5   |   |   |   |   |   |-(=(eat_flies Fritz) </span>
+>   13:5   |   |   |   |   |   |-(=(eat_flies Fritz) </span>
 ;<span class="ansi38-047047047"
 >          |   |   |   |   |     T) </span>
 <span class="ansi38-119055000"
@@ -268,7 +272,7 @@ Deterministic: <span class="ansi33"
 >                                                                                          ;;['And',[croaks,'Fritz'],[eat_flies,'Fritz']]->['And','T','T']
 
 </span>;<span class="ansi38-047047047"
->   13:4   |   |   |   |   |-(=(And T T) </span>
+>   15:4   |   |   |   |   |-(=(And T T) </span>
 ;<span class="ansi38-047047047"
 >          |   |   |   |     T) </span>
 <span class="ansi38-119055000"
@@ -276,10 +280,6 @@ Deterministic: <span class="ansi33"
 
 </span>;<span class="ansi38-047047047"
 >          |   |   |   |     <--T </span>
-;<span class="ansi38-047047047"
->   14:3   |   |   |   |-<--T </span>
-;<span class="ansi38-047047047"
->   15:2   |   |   |-<--T </span>
 <span class="ansi38-119055051"
 >                                                                                                ;;[ift,[green,'Fritz'],'Fritz']->[ift,'T','Fritz']
 
@@ -288,13 +288,13 @@ Deterministic: <span class="ansi33"
 ;<span class="ansi38-047047047"
 >          |     $10000) </span>
 <span class="ansi38-119055000"
->                                                                                                ;;defs_used(([ift,'T',_127890]->_127890))
+>                                                                                                ;;defs_used(([ift,'T',_128404]->_128404))
 
 </span>;<span class="ansi38-047047047"
 >          |     <--Fritz </span>
 ; 
 ; EVAL TEST
-; took 0.073 secs. (73.02 milliseconds) 
+; took 0.085 secs. (84.90 milliseconds) 
 
 !(assertEqual (ift (green $x) $x) Fritz)
 
@@ -328,7 +328,7 @@ Deterministic: <span class="ansi33"
 >    1:1   |   |-<--eat_flies </span>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.16 milliseconds) 
+; took 0.010 secs. (10.19 milliseconds) 
 
 !(assertEqualToResult (match &self (= ($p Fritz)  T) $p) (croaks eat_flies))
 
@@ -343,7 +343,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi32"
->% 952,256 inferences, 0.172 CPU in 0.174 seconds (99% CPU, 5546687 Lips)
+>% 1,067,480 inferences, 0.185 CPU in 0.187 seconds (99% CPU, 5763441 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 )
 <span class="ansi1"
@@ -392,7 +392,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-21 23:01:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 00:16:58+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

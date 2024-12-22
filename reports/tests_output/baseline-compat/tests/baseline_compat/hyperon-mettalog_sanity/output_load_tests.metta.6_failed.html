@@ -108,7 +108,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-21 23:11:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 00:27:30+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -183,9 +183,9 @@ Script started on 2024-12-21 23:11:58+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 2 "Missed result: \"(bar 1)\")]" )
 P;HTML|
-;                          #( = 2 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27744maxresident)k" )
+;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27740maxresident)k" )
 P;HTML|
-;                           #( = 2 "0inputs+0outputs (0major+3344minor)pagefaults 0swaps" )
+;                           #( = 2 "0inputs+0outputs (0major+3346minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta)
 
@@ -206,13 +206,13 @@ Script started on 2024-12-21 23:11:58+00:00 [COMMAND="timeout --preserve-status 
 ;<h3 id="HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.01</h3>
 P;HTML|
-;                                        #( --> #(catch_warn #(apply open ((filename) write $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
+;                                       #( --> #(catch_warn #(apply open ((filename) write $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
 P;HTML|
-;                                         #(eval_call #(apply close (<stream>(0x561a1a41d1d0))) $TF)
+;                                         #(eval_call #(apply close (<stream>(0x55a1b1126cb0))) $TF)
 
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.14 milliseconds) 
+; took 0.013 secs. (12.61 milliseconds) 
 
 !(assertEqualToResult (let $s (open! (filename) write) (call-cleanup! (with-output-to! $s (foo $x)) (close! $s))) ("(bar 1)" "(bar 2)"))
 
@@ -242,7 +242,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (bar 2)
 </span><span class="ansi32"
->% 21,667 inferences, 0.009 CPU in 0.011 seconds (79% CPU, 2507844 Lips)
+>% 21,667 inferences, 0.008 CPU in 0.011 seconds (79% CPU, 2566838 Lips)
 </span>P;HTML|
 ;                                         #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.tmp 0 )
 <span class="ansi1"
@@ -256,7 +256,7 @@ Deterministic: <span class="ansi33"
 >Return to summaries</a><br/>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.40 milliseconds) 
+; took 0.011 secs. (11.13 milliseconds) 
 
 !(assertEqualToResult (let $f (filename) (load-file! &self $f)) (()))
 
@@ -276,7 +276,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000225 secs. (224.91 microseconds) 
+; took 0.000234 secs. (234.15 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) (1 2))
 
@@ -333,7 +333,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000160 secs. (159.86 microseconds) 
+; took 0.000157 secs. (157.39 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) ())
 
@@ -357,13 +357,13 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.05</h3>
 P;HTML|
-;                                        #( --> #(catch_warn #(apply open ((filename) append $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
+;                                       #( --> #(catch_warn #(apply open ((filename) append $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
 P;HTML|
-;                                         #(eval_call #(apply close (<stream>(0x561a1a55dbc0))) $TF)
+;                                         #(eval_call #(apply close (<stream>(0x55a1b12670f0))) $TF)
 
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.34 milliseconds) 
+; took 0.012 secs. (12.24 milliseconds) 
 
 !(assertEqualToResult (let $s (open! (filename) append) (call-cleanup! (with-output-to! $s (foo $x)) (close! $s))) ("(bar 3)" "(bar 4)"))
 
@@ -396,7 +396,7 @@ Deterministic: <span class="ansi33"
 > (bar 4)
 </span>; 
 ; EVAL TEST
-; took 0.010 secs. (9.67 milliseconds) 
+; took 0.009 secs. (9.15 milliseconds) 
 
 !(assertEqualToResult (let $f (filename) (load-file! &self $f)) (()))
 
@@ -416,7 +416,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000207 secs. (207.44 microseconds) 
+; took 0.000213 secs. (213.05 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) (1 2 3 4))
 
@@ -489,7 +489,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000180 secs. (180.11 microseconds) 
+; took 0.000150 secs. (150.23 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) ())
 
@@ -513,13 +513,13 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.09"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.09</h3>
 P;HTML|
-;                                        #( --> #(catch_warn #(apply open ((filename) update $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
+;                                       #( --> #(catch_warn #(apply open ((filename) update $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
 P;HTML|
-;                                         #(eval_call #(apply close (<stream>(0x561a1a41c510))) $TF)
+;                                         #(eval_call #(apply close (<stream>(0x55a1b126e3f0))) $TF)
 
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.56 milliseconds) 
+; took 0.012 secs. (12.48 milliseconds) 
 
 !(assertEqualToResult (let $s (open! (filename) update) (call-cleanup! (with-output-to! $s (foo $x)) (close! $s))) ("(bar 5)" "(bar 6)"))
 
@@ -556,7 +556,7 @@ Deterministic: <span class="ansi33"
 > (bar 6)
 </span>; 
 ; EVAL TEST
-; took 0.012 secs. (12.23 milliseconds) 
+; took 0.011 secs. (11.26 milliseconds) 
 
 !(assertEqualToResult (let $f (filename) (load-file! &self $f)) (()))
 
@@ -576,7 +576,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000262 secs. (262.41 microseconds) 
+; took 0.000231 secs. (230.75 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) (3 4 5 6))
 
@@ -649,7 +649,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000199 secs. (199.16 microseconds) 
+; took 0.000218 secs. (218.01 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) ())
 
@@ -674,13 +674,13 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.13"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.13</h3>
 P;HTML|
-;                                        #( --> #(catch_warn #(apply open ((filename) write $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
+;                                       #( --> #(catch_warn #(apply open ((filename) write $10000))) #(error #(type_error character_code filename) #(context #( : system #( / open 3 ) ) $10001)) )
 P;HTML|
-;                                         #(eval_call #(apply close (<stream>(0x561a19cd5d20))) $TF)
+;                                         #(eval_call #(apply close (<stream>(0x55a1b126d080))) $TF)
 
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.40 milliseconds) 
+; took 0.012 secs. (12.32 milliseconds) 
 
 !(assertEqualToResult (let $s (open! (filename) write) (call-cleanup! (with-output-to! $s (foo $x)) (close! $s))) ("(bar 1)" "(bar 2)"))
 
@@ -717,7 +717,7 @@ Deterministic: <span class="ansi33"
 > (bar 6)
 </span>; 
 ; EVAL TEST
-; took 0.010 secs. (10.40 milliseconds) 
+; took 0.010 secs. (10.11 milliseconds) 
 
 !(assertEqualToResult (let $f (filename) (load-file! &self $f)) (()))
 
@@ -737,7 +737,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000231 secs. (230.89 microseconds) 
+; took 0.000239 secs. (238.75 microseconds) 
 
 !(assertEqualToResult (match &self (bar $x) $x) (1 2))
 
@@ -788,7 +788,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000755 secs. (755.33 microseconds) 
+; took 0.000470 secs. (469.81 microseconds) 
 
 !(assertEqualToResult (match &gen-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -808,7 +808,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000678 secs. (677.77 microseconds) 
+; took 0.000974 secs. (973.83 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -840,14 +840,14 @@ Deterministic: <span class="ansi33"
 ;                                         #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/save-space-test.tmp.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/save-space-test.tmp)
 <span class="ansi32"
 >
-% 15,727 inferences, 0.006 CPU in 0.008 seconds (72% CPU, 2846966 Lips)
+% 15,727 inferences, 0.006 CPU in 0.008 seconds (73% CPU, 2747588 Lips)
 </span>P;HTML|
 ;                                         #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/save-space-test.tmp 0 )
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.77 milliseconds) 
+; took 0.008 secs. (8.02 milliseconds) 
 
 !(assertEqualToResult (load-file! &load-space "save-space-test.tmp") (()))
 
@@ -867,7 +867,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000180 secs. (180.05 microseconds) 
+; took 0.000189 secs. (188.63 microseconds) 
 
 !(assertEqualToResult (match &load-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -886,7 +886,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.OUTPUT-LOAD-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000663 secs. (663.29 microseconds) 
+; took 0.000926 secs. (925.86 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &load-space) (2))
 
@@ -898,7 +898,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(#(Error #(got ()) #(expected (2))))
 </span><span class="ansi32"
->% 1,209,353 inferences, 0.267 CPU in 0.280 seconds (95% CPU, 4522852 Lips)
+>% 1,220,293 inferences, 0.267 CPU in 0.279 seconds (96% CPU, 4569504 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/output_load_tests.metta 0 )
 <br/> <a href="#" onclick="window.history.back(); return false;"
@@ -1013,7 +1013,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-21 23:12:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 00:27:38+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
