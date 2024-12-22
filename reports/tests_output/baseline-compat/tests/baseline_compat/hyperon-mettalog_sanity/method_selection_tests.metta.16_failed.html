@@ -57,7 +57,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-22 03:06:18+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-22 06:22:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -158,11 +158,11 @@ Script started on 2024-12-22 03:06:18+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                               #( = 16 "Expected: []" )
 P;HTML|
-;                               #( = 16 "Got: [(Error 0 BadType), (Error Z BadType)]" )
+;                               #( = 16 "Got: [(Error Z BadType), (Error 0 BadType)]" )
 P;HTML|
-;                                #( = 17 "Excessive result: (Error 0 BadType))]" )
+;                                #( = 17 "Excessive result: (Error Z BadType))]" )
 P;HTML|
-;                                #( = 17 "0.06user 0.00system 0:00.07elapsed 100%CPU (0avgtext+0avgdata 27868maxresident)k" )
+;                                #( = 17 "0.06user 0.01system 0:00.07elapsed 100%CPU (0avgtext+0avgdata 27864maxresident)k" )
 P;HTML|
 ;                                 #( = 17 "0inputs+0outputs (0major+3361minor)pagefaults 0swaps" )
 P;HTML|
@@ -181,9 +181,9 @@ Script started on 2024-12-22 03:06:18+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: lessThan (-> Nat Nat Bool))
 </span><span class="ansi38-255165000"
-> (= (lessThan $_125006 Z)  False)
+> (= (lessThan $_125074 Z)  False)
 </span><span class="ansi38-255165000"
-> (= (lessThan Z (S $_127848))  True)
+> (= (lessThan Z (S $_127916))  True)
 </span><span class="ansi38-255165000"
 > (= (lessThan (S $x) (S $y))  
   (lessThan $x $y))
@@ -206,7 +206,7 @@ Script started on 2024-12-22 03:06:18+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000177 secs. (176.81 microseconds) 
+; took 0.000202 secs. (202.10 microseconds) 
 
 !(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
 
@@ -227,7 +227,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.93 milliseconds) 
+; took 0.003 secs. (3.10 milliseconds) 
 
 !(assertEqualToResult (lessThan Z (S Z)) (True))
 
@@ -248,7 +248,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.002 secs. (1.50 milliseconds) 
 
 !(assertEqualToResult (lessThan Z Z) (False))
 
@@ -269,7 +269,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.74 milliseconds) 
+; took 0.003 secs. (2.76 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) Z) (False))
 
@@ -290,7 +290,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.33 milliseconds) 
+; took 0.006 secs. (5.69 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S Z)) (False))
 
@@ -315,7 +315,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.84 milliseconds) 
+; took 0.010 secs. (9.62 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S (S Z))) (True))
 
@@ -341,7 +341,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.09 milliseconds) 
+; took 0.015 secs. (15.47 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) (S (S Z))) (False))
 
@@ -369,7 +369,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.80 milliseconds) 
+; took 0.010 secs. (9.75 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) (S Z)) (False))
 
@@ -395,7 +395,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.10 milliseconds) 
+; took 0.017 secs. (17.06 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S (S (S Z)))) (True))
 
@@ -422,7 +422,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000443 secs. (442.69 microseconds) 
+; took 0.000616 secs. (615.91 microseconds) 
 
 !(assertEqualToResult (lessThan 0 1) (True))
 
@@ -443,7 +443,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000455 secs. (454.90 microseconds) 
+; took 0.000530 secs. (530.39 microseconds) 
 
 !(assertEqualToResult (lessThan 0 0) (False))
 
@@ -464,7 +464,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000456 secs. (456.21 microseconds) 
+; took 0.000525 secs. (524.87 microseconds) 
 
 !(assertEqualToResult (lessThan 1 0) (False))
 
@@ -485,7 +485,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000461 secs. (461.50 microseconds) 
+; took 0.000522 secs. (521.59 microseconds) 
 
 !(assertEqualToResult (lessThan 2 2) (False))
 
@@ -506,7 +506,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000441 secs. (441.42 microseconds) 
+; took 0.000536 secs. (535.77 microseconds) 
 
 !(assertEqualToResult (lessThan 1 2) (True))
 
@@ -527,7 +527,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000439 secs. (439.11 microseconds) 
+; took 0.000517 secs. (516.52 microseconds) 
 
 !(assertEqualToResult (lessThan 3 2) (False))
 
@@ -549,7 +549,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.002 secs. (1.55 milliseconds) 
 
 !(assertEqualToResult (lessThan Z 0) ())
 
@@ -569,7 +569,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.001 secs. (1.49 milliseconds) 
 
 !(assertEqualToResult (lessThan 0 Z) ())
 
@@ -589,7 +589,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.02 milliseconds) 
+; took 0.001 secs. (1.43 milliseconds) 
 
 !(assertEqualToResult (lessThan Z 1) ())
 
@@ -609,7 +609,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.02 milliseconds) 
+; took 0.001 secs. (1.38 milliseconds) 
 
 !(assertEqualToResult (lessThan 1 Z) ())
 
@@ -629,7 +629,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.69 milliseconds) 
+; took 0.003 secs. (2.93 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) 1) ())
 
@@ -650,7 +650,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.70 milliseconds) 
+; took 0.003 secs. (2.98 milliseconds) 
 
 !(assertEqualToResult (lessThan 1 (S Z)) ())
 
@@ -671,7 +671,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.34 milliseconds) 
+; took 0.005 secs. (5.33 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) 3) ())
 
@@ -692,7 +692,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.33 milliseconds) 
+; took 0.005 secs. (5.40 milliseconds) 
 
 !(assertEqualToResult (lessThan 2 (S (S Z))) ())
 
@@ -712,7 +712,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >("============ End Tests ============")
 </span><span class="ansi32"
->% 2,105,927 inferences, 1.120 CPU in 1.123 seconds (100% CPU, 1879541 Lips)
+>% 2,241,579 inferences, 1.169 CPU in 1.172 seconds (100% CPU, 1916929 Lips)
 </span>P;HTML|
 ;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta 0 )
 <span class="ansi1"
@@ -801,7 +801,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(maybe_halt 7) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-22 03:06:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-22 06:22:16+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
