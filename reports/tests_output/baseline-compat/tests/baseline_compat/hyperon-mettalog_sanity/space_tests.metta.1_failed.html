@@ -46,7 +46,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:37:44+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-24 11:41:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -131,7 +131,7 @@ Script started on 2024-12-24 11:37:44+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 9 "[()]" )
 P;HTML|
-;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x1d74488) (2)) " )
+;                            #( = 10 "[(Error (assertEqualToResult (metta (foo 1) Number GroundingSpace-0x24e0488) (2)) " )
 P;HTML|
 ;                            #( = 10 "Expected: [2]" )
 P;HTML|
@@ -139,9 +139,9 @@ Script started on 2024-12-24 11:37:44+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 11 "Missed result: 2)]" )
 P;HTML|
-;                             #( = 11 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27744maxresident)k" )
+;                             #( = 11 "0.03user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27744maxresident)k" )
 P;HTML|
-;                              #( = 11 "0inputs+0outputs (0major+3330minor)pagefaults 0swaps" )
+;                              #( = 11 "0inputs+0outputs (0major+3331minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta)
 
@@ -154,7 +154,7 @@ Script started on 2024-12-24 11:37:44+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000175 secs. (175.14 microseconds) 
+; took 0.000178 secs. (177.52 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
@@ -176,7 +176,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (2.51 milliseconds) 
+; took 0.002 secs. (2.48 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -196,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000610 secs. (609.67 microseconds) 
+; took 0.000671 secs. (670.87 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -216,7 +216,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000165 secs. (165.27 microseconds) 
+; took 0.000172 secs. (172.38 microseconds) 
 
 !(assertEqualToResult (match &self (likes $x $y) ($x $y)) ())
 
@@ -257,7 +257,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000853 secs. (853.40 microseconds) 
+; took 0.000960 secs. (960.26 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane) (Kate Karl)))
 
@@ -279,7 +279,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.12 milliseconds) 
+; took 0.002 secs. (2.26 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
@@ -299,7 +299,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000592 secs. (591.54 microseconds) 
+; took 0.000752 secs. (751.73 microseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((Kate Karl)))
 
@@ -428,7 +428,7 @@ mc_1__foo(_x, A) :-
 </span>
 ; 
 ; EVAL TEST
-; took 0.037 secs. (36.72 milliseconds) 
+; took 0.036 secs. (36.44 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -449,7 +449,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000793 secs. (793.15 microseconds) 
+; took 0.000816 secs. (816.16 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -571,7 +571,7 @@ mc_1__foo(_x, A) :-
 </span>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.22 milliseconds) 
+; took 0.028 secs. (28.17 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
@@ -592,7 +592,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000944 secs. (944.22 microseconds) 
+; took 0.001 secs. (1.01 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -711,11 +711,11 @@ mc_1__foo(_x, A) :-
 
 </span>#(unload_all_diff #(metta_atom_asserted &new-space (= (foo $x)  
   (+ $x 1))) #( \=@= #( + #(metta_atom_asserted &new-space (= (foo $x)  
-  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_823584)  
-  (+ $_823584 1))) true ) ))
+  (+ $x 1))) true ) #( + #(metta_atom_asserted &new-space (= (foo $_823570)  
+  (+ $_823570 1))) true ) ))
 ; 
 ; EVAL TEST
-; took 0.105 secs. (104.71 milliseconds) 
+; took 0.108 secs. (107.72 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -736,7 +736,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (3))
 
@@ -802,7 +802,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:37:53+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-24 11:41:37+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

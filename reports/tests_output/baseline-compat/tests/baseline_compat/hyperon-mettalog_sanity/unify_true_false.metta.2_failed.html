@@ -74,7 +74,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:44:39+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-24 11:48:22+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -223,9 +223,9 @@ Script started on 2024-12-24 11:44:39+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                                        #( = 41 "[()]" )
 P;HTML|
-;                                        #( = 42 "0.14user 0.01system 0:00.16elapsed 99%CPU (0avgtext+0avgdata 28300maxresident)k" )
+;                                        #( = 42 "0.14user 0.01system 0:00.15elapsed 100%CPU (0avgtext+0avgdata 28524maxresident)k" )
 P;HTML|
-;                                         #( = 42 "0inputs+0outputs (0major+3422minor)pagefaults 0swaps" )
+;                                         #( = 42 "0inputs+0outputs (0major+3425minor)pagefaults 0swaps" )
 
 
 #(stream_error #( : 66 #( : 160 3007 ) ) #(syntax_error #(unexpected_char )) "Unexpected start character: ')'"))
@@ -752,7 +752,7 @@ mc_2__unif(_X, _Y, A) :-
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.68 milliseconds) 
+; took 0.002 secs. (1.79 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) ($1 $2 $_1926)) (False))
 
@@ -773,7 +773,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.49 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) 2) (True))
 
@@ -794,7 +794,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.32 milliseconds) 
+; took 0.001 secs. (1.48 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 1 1)) (True))
 
@@ -814,7 +814,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.002 secs. (1.58 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 0 2)) (True))
 
@@ -835,7 +835,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.60 milliseconds) 
+; took 0.003 secs. (2.77 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ $a $b)) (False))
 
@@ -856,7 +856,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000670 secs. (670.26 microseconds) 
+; took 0.000832 secs. (831.59 microseconds) 
 
 !(assertEqualToResult (unif $x $x) (True))
 
@@ -875,7 +875,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (15.67 milliseconds) 
+; took 0.016 secs. (15.64 milliseconds) 
 
 !(assertEqualToResult (unif $x $y) (True))
 
@@ -896,7 +896,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000767 secs. (767.17 microseconds) 
+; took 0.000862 secs. (861.95 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) $x) (True))
 
@@ -917,7 +917,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.88 milliseconds) 
+; took 0.004 secs. (3.96 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -938,7 +938,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.86 milliseconds) 
+; took 0.004 secs. (4.07 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -958,7 +958,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.76 milliseconds) 
+; took 0.002 secs. (1.88 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2) (+ 1 $two)) (False))
 
@@ -979,7 +979,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.86 milliseconds) 
+; took 0.002 secs. (1.97 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 1) ($1 $2 $_28492)) ((same 2 ($1 $2 $_28540))))
 
@@ -1001,7 +1001,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000618 secs. (617.92 microseconds) 
+; took 0.000644 secs. (643.60 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) 2) (True))
 
@@ -1021,7 +1021,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000596 secs. (596.42 microseconds) 
+; took 0.000668 secs. (668.44 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 1 1)) (True))
 
@@ -1041,7 +1041,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000598 secs. (597.82 microseconds) 
+; took 0.000666 secs. (665.67 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 0 2)) (True))
 
@@ -1061,7 +1061,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.16</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.63 milliseconds) 
+; took 0.002 secs. (1.67 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -1081,7 +1081,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.17</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (3.24 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ $a $b)) ((same 2 (+ $a $b))))
 
@@ -1103,7 +1103,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000486 secs. (485.75 microseconds) 
+; took 0.000516 secs. (515.57 microseconds) 
 
 !(assertEqualToResult (same $x $y) (True))
 
@@ -1123,7 +1123,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000364 secs. (364.44 microseconds) 
+; took 0.000468 secs. (467.89 microseconds) 
 
 !(assertEqualToResult (same $x $x) (True))
 
@@ -1143,7 +1143,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000488 secs. (488.31 microseconds) 
+; took 0.000583 secs. (582.92 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) $x) (True))
 
@@ -1163,7 +1163,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.21</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.68 milliseconds) 
+; took 0.002 secs. (1.75 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -1183,7 +1183,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.22</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.58 milliseconds) 
+; took 0.002 secs. (1.83 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -1203,7 +1203,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.23</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.29 milliseconds) 
+; took 0.002 secs. (2.43 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2) (+ 1 $two)) ((same 3 (+ 1 $two))))
 
@@ -1225,7 +1225,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.24</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (3.19 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) ($1 $2 $_1904)) (False))
 
@@ -1245,7 +1245,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.25</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.35 milliseconds) 
+; took 0.002 secs. (1.56 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) 2) (True))
 
@@ -1265,7 +1265,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.26</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.41 milliseconds) 
+; took 0.002 secs. (1.61 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 1 1)) (True))
 
@@ -1285,7 +1285,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.27</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.002 secs. (1.67 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 0 2)) (True))
 
@@ -1305,7 +1305,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.28</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.65 milliseconds) 
+; took 0.004 secs. (3.69 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -1325,7 +1325,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.29</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.99 milliseconds) 
+; took 0.005 secs. (5.00 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ $a $b)) (False))
 
@@ -1345,7 +1345,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.30</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.001 secs. (1.37 milliseconds) 
 
 !(assertEqualToResult (eq $x $y) (True))
 
@@ -1365,7 +1365,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.31</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.39 milliseconds) 
+; took 0.001 secs. (1.50 milliseconds) 
 
 !(assertEqualToResult (eq $x $x) (True))
 
@@ -1385,7 +1385,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.32</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.45 milliseconds) 
+; took 0.002 secs. (1.52 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) $x) (True))
 
@@ -1405,7 +1405,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.33</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.66 milliseconds) 
+; took 0.004 secs. (3.60 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -1425,7 +1425,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.34</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.71 milliseconds) 
+; took 0.004 secs. (3.67 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -1657,7 +1657,7 @@ D=['Atom', arg(unify, 4), 'Bool'].
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.36</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.001 secs. (1.36 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) 2) ((quote (u 2 2))))
 
@@ -1678,7 +1678,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.37</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.48 milliseconds) 
+; took 0.002 secs. (1.56 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 1 1)) ((quote (u 2 2))))
 
@@ -1698,7 +1698,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.38</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.002 secs. (1.53 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 0 2)) ((quote (u 2 2))))
 
@@ -1719,7 +1719,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.39</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.78 milliseconds) 
+; took 0.003 secs. (2.72 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ $a $b)) (False))
 
@@ -1820,7 +1820,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:44:49+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-24 11:48:32+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

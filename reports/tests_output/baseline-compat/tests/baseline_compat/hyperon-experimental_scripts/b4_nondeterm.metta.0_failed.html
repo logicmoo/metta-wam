@@ -78,7 +78,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:19:37+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-24 11:23:26+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -167,9 +167,9 @@ Script started on 2024-12-24 11:19:37+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                            #( = 11 "[()]" )
 P;HTML|
-;                            #( = 12 "0.05user 0.01system 0:00.07elapsed 98%CPU (0avgtext+0avgdata 27856maxresident)k" )
+;                            #( = 12 "0.05user 0.01system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27728maxresident)k" )
 P;HTML|
-;                             #( = 12 "0inputs+0outputs (0major+3376minor)pagefaults 0swaps" )
+;                             #( = 12 "0inputs+0outputs (0major+3370minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b4_nondeterm.metta)
 
@@ -406,7 +406,7 @@ mc_0__color(A) :-
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000529 secs. (529.41 microseconds) 
+; took 0.000379 secs. (379.39 microseconds) 
 
 !(assertEqual (match &self (= (color)  $x) $x) (superpose (red yellow green)))
 
@@ -434,7 +434,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000368 secs. (368.42 microseconds) 
+; took 0.000281 secs. (281.47 microseconds) 
 
 !(assertEqual (collapse (match &self (= (shape)  $x) $x)) ())
 
@@ -459,7 +459,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000664 secs. (664.20 microseconds) 
+; took 0.000538 secs. (537.76 microseconds) 
 
 !(assertEqual (color) (superpose (red yellow green)))
 
@@ -484,7 +484,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqual (color) (let $x (collapse (color)) (superpose $x)))
 
@@ -509,7 +509,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.19 milliseconds) 
+; took 0.002 secs. (2.02 milliseconds) 
 
 !(assertEqual (collapse (shape)) ((shape)))
 
@@ -529,7 +529,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000531 secs. (530.59 microseconds) 
+; took 0.000400 secs. (399.69 microseconds) 
 
 !(assertEqualToResult (shape) ((shape)))
 
@@ -819,7 +819,7 @@ mc_2__pair(_x, _y, A) :-
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.07</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.59 milliseconds) 
+; took 0.002 secs. (2.25 milliseconds) 
 
 !(assertEqualToResult (pair (bin) (bin)) ((A A) (A B) (B A) (B B)))
 
@@ -1283,7 +1283,7 @@ D=['Atom', arg(match, 2), val([=, [eq, _x, _y], 'T'])].
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.08</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.20 milliseconds) 
+; took 0.002 secs. (2.08 milliseconds) 
 
 !(assertEqual (find-equal (color) (foo)) red)
 
@@ -1420,7 +1420,7 @@ mc_2__rev(_x, _y, A) :-
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.44 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqualToResult (rev A (superpose (B C D))) ((B A) (C A) (D A)))
 
@@ -2909,7 +2909,7 @@ mc_1__is([air, wet], A) :-
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.10</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.39 milliseconds) 
+; took 0.006 secs. (6.23 milliseconds) 
 
 !(assertEqual (is (air dry)) (superpose ((stop ventilation) (start kettle) (start humidifier))))
 
@@ -2933,7 +2933,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B4-NONDETERM.11</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.79 milliseconds) 
+; took 0.006 secs. (6.34 milliseconds) 
 
 !(assertEqual (is (air wet)) (superpose ((stop kettle) (stop humidifier) (start ventilation))))
 
@@ -3000,7 +3000,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:19:46+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-24 11:23:35+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
