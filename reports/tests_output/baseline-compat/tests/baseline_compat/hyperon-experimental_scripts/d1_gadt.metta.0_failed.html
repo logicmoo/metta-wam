@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -53,7 +52,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-24 11:24:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-26 10:27:42+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -148,9 +147,9 @@ Script started on 2024-12-24 11:24:15+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 14 "[()]" )
 P;HTML|
-;                              #( = 15 "0.04user 0.01system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27988maxresident)k" )
+;                              #( = 15 "0.05user 0.00system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27984maxresident)k" )
 P;HTML|
-;                              #( = 15 "0inputs+0outputs (0major+3353minor)pagefaults 0swaps" )
+;                              #( = 15 "0inputs+0outputs (0major+3357minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta)
 
@@ -167,7 +166,7 @@ Script started on 2024-12-24 11:24:15+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000358 secs. (357.84 microseconds) 
+; took 0.000522 secs. (521.97 microseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -187,7 +186,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000673 secs. (673.46 microseconds) 
+; took 0.000666 secs. (666.45 microseconds) 
 
 !(assertEqual (get-type (+ 5 7)) Number)
 
@@ -208,7 +207,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000308 secs. (307.81 microseconds) 
+; took 0.000298 secs. (298.30 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -230,7 +229,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000454 secs. (454.22 microseconds) 
+; took 0.000433 secs. (433.28 microseconds) 
 
 !(assertEqualToResult (get-type (+ 5 "4")) ())
 
@@ -249,7 +248,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000282 secs. (282.47 microseconds) 
+; took 0.000342 secs. (341.61 microseconds) 
 
 !(assertEqualToResult (get-type (+ -)) ())
 
@@ -271,7 +270,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000211 secs. (211.12 microseconds) 
+; took 0.000263 secs. (263.17 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -299,7 +298,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000366 secs. (365.92 microseconds) 
+; took 0.000397 secs. (397.04 microseconds) 
 
 !(assertEqual (get-type (Left 5)) Either)
 
@@ -319,81 +318,24 @@ Deterministic: <span class="ansi33"
 ></span><span class="ansi36"
 >transpiler_clause_store(isLeft, 2, 0, ['Either'], 'Bool', [x(doeval, eager)], x(doeval, eager), [isLeft, ['Left', _x]], 'True').
 
-</span><span class="ansi36"
->transpiler_stub_created(isLeft/2).
-
-</span>; % ######### warning: creating stub for:isLeft
-<span class="ansi35"
->_x=[].
-A=[val(is_p1(true, 'True')), val([is_p1, [], 'True']), 'Bool', arg(isLeft, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  [ <span class="pl-atom"
->isLeft</span>, 
-    <span class="pl-list"
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__isLeft</span>(<span class="pl-args"
+><span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->'Left'</span>, <span class="pl-var"
->_x</span></span>]</span>], 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[['Left', _x]].
-lazyArgsList:[['Left', _x]-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->isLeft</span></span>)</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'Left'</span>, <span class="pl-var"
->_x</span></span>]</span>]], 
+>'Left'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ assign,  A   ,'True']]].&#13;&#10;
-
-</span><span class="ansi36"
->_x=[].
-A=['Bool', arg(isLeft, 0), val(is_p1(true, 'True')), val([is_p1, [], 'True'])].
-
 mc_1__isLeft(['Left', _x], A) :-
     A='True'.
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_1__isLeft(['Left', _x], A) :-
     A='True'.
@@ -402,81 +344,27 @@ mc_1__isLeft(['Left', _x], A) :-
 <span class="ansi38-255165000"
 > (= (isLeft (Right $x))  False)
 </span><span class="ansi38-255165005"
->Retracting stub: mc_1__isLeft(B,C)
-</span><span class="ansi36"
+></span><span class="ansi36"
 >transpiler_clause_store(isLeft, 2, 1, ['Either'], 'Bool', [x(doeval, eager)], x(doeval, eager), [isLeft, ['Right', _x]], 'False').
 
-</span><span class="ansi35"
->_x=[].
-A=[val(is_p1(true, 'False')), val([is_p1, [], 'False']), 'Bool', arg(isLeft, 0)].
-
-</span><span class="ansi32"
->Ast:=======
-<span class="pl-functor"
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
-  [ <span class="pl-atom"
->isLeft</span>, 
-    <span class="pl-list"
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__isLeft</span>(<span class="pl-args"
+><span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->'Right'</span>, <span class="pl-var"
->_x</span></span>]</span>], 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[['Right', _x]].
-lazyArgsList:[['Right', _x]-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->Ast:=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-var"
->A</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->isLeft</span></span>)</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'Right'</span>, <span class="pl-var"
->_x</span></span>]</span>]], 
+>'Right'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>A</span></span>)</span>, 
   [ [ assign ,   A   ,'False']]].&#13;&#10;
-
-</span><span class="ansi36"
->_x=[].
-A=['Bool', arg(isLeft, 0), val(is_p1(true, 'False')), val([is_p1, [], 'False'])].
-
 mc_1__isLeft(['Right', _x], A) :-
     A='False'.
-
-</span><span class="ansi36"
+<span class="ansi36"
 >
 mc_1__isLeft(['Right', _x], A) :-
     A='False'.
@@ -490,7 +378,7 @@ mc_1__isLeft(['Right', _x], A) :-
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000462 secs. (462.01 microseconds) 
+; took 0.000562 secs. (561.91 microseconds) 
 
 !(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -511,7 +399,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000322 secs. (322.46 microseconds) 
+; took 0.000378 secs. (378.18 microseconds) 
 
 !(assertEqualToResult (get-type (isLeft 5)) ())
 
@@ -540,7 +428,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.00 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
@@ -564,7 +452,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.76 milliseconds) 
+; took 0.002 secs. (1.72 milliseconds) 
 
 !(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
@@ -596,7 +484,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
 !(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
@@ -616,7 +504,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000822 secs. (821.72 microseconds) 
+; took 0.000668 secs. (668.38 microseconds) 
 
 !(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
@@ -639,7 +527,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.18 milliseconds) 
+; took 0.001 secs. (1.40 milliseconds) 
 
 !(assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)
 
@@ -705,7 +593,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-24 11:24:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-26 10:27:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
