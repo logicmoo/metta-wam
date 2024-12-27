@@ -16,21 +16,11 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -51,17 +41,8 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -78,7 +59,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:22:45+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:16:43+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -114,6 +95,9 @@ Script started on 2024-12-27 11:22:45+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -165,9 +149,9 @@ Script started on 2024-12-27 11:22:45+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                            #( = 8 "Missed result: Age)]" )
 P;HTML|
-;                            #( = 8 "0.05user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 28000maxresident)k" )
+;                            #( = 8 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27876maxresident)k" )
 P;HTML|
-;                            #( = 8 "0inputs+0outputs (0major+3361minor)pagefaults 0swaps" )
+;                            #( = 8 "0inputs+0outputs (0major+3358minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta)
 
@@ -189,412 +173,19 @@ Deterministic: <span class="ansi33"
     (new-space) 
     (add-atom &test-space 
       (User $name $space))))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'add-user'
-Retracting stub: 'mc_1__add-user'(B,C)
-</span><span class="ansi36"
->transpiler_clause_store('add-user', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), ['add-user', _name], [let, _space, ['new-space'], ['add-atom', '&test-space', ['User', _name, _space]]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _name-[arg('User',1),arg('add-user',1)], 
-  _space-[arg('User',2),arg(let,1)], 
-  _temp_1-[eval(['add-user',_name]),arg('add-user',0)], 
-  _temp_2-[eval(['new-space']),arg(let,2),arg('new-space',0)], 
-  _temp_3-[eval(['User',_name,_space]),arg('&test-space',1),arg('User',0),arg('add-atom',2)], 
-  _temp_4-[eval(['add-atom','&test-space',_temp_3]),arg('add-atom',0),arg(let,3)], 
-  _temp_5-[eval([let,_space,_temp_2,_temp_4]),arg(let,0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name].
-lazyArgsList:[_name-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__add-user'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-avar"
->_68496{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'new-space'</span></span>)</span></span>]</span>], 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'User'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _68496{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'add-atom'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('add-user',2,'new-space',1)
-; % ######### warning: creating stub for:'new-space'
-Asserting: transpiler_depends_on('add-user',2,'User',3)
-; % ######### warning: creating stub for:'User'
-Asserting: transpiler_depends_on('add-user',2,'add-atom',3)
-<span class="ansi38-240128128"
->A=[->, arg('add-atom', 0), arg('add-user', 0)].
-B=['hyperon::space::DynSpace', arg('add-atom', 1), val('&test-space')].
-C=['Atom', arg('add-atom', 2), arg('User', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_1__add-user'(_name, A) :-
-    'mc_0__new-space'(_space),
-    B='&test-space',
-    mc_2__User(_name, _space, C),
-    'mc_2__add-atom'(B, C, A).
-
-</span>
-Dependency Tree for '&self':'add-user'/2:
-'&self':'add-user'/2
-├── '&self':'new-space'/1
-├── '&self':'User'/3
-└── '&self':'add-atom'/3
-
-
-Functions to recompile after redefining '&self':'add-user'/2 in correct order:
-   '&self':'add-user'/2
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (write-user $name $data)  
   (let $space 
     (match &test-space 
       (User $name $s) $s) 
     (add-atom $space $data)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'write-user'
-Retracting stub: 'mc_2__write-user'(B,C,D)
-</span><span class="ansi36"
->transpiler_clause_store('write-user', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['write-user', _name, _data], [let, _space, [match, '&test-space', ['User', _name, _s], _s], ['add-atom', _space, _data]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _data-[arg('add-atom',2),arg('write-user',2)], 
-  _name-[arg('User',1),arg('write-user',1)], 
-  _s-[arg('&test-space',2),arg('User',2),arg(match,3)], 
-  _space-[arg('add-atom',1),arg(let,1)], 
-  _temp_10-[eval([let,_space,_temp_8,_temp_9]),arg(let,0)], 
-  _temp_6-[eval(['write-user',_name,_data]),arg('write-user',0)], 
-  _temp_7-[eval(['User',_name,_s]),arg('&test-space',1),arg('User',0),arg(match,2)], 
-  _temp_8-[eval([match,'&test-space',_temp_7,_s]),arg(let,2),arg(match,0)], 
-  _temp_9-[eval(['add-atom',_space,_data]),arg('add-atom',0),arg(let,3)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name, _data].
-lazyArgsList:[_name-eager, _data-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_2__write-user'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-var"
->_data</span>, <span class="pl-avar"
->_261296{cns = ...}</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'User'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_s'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _261296{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'add-atom'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_data'</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('write-user',3,'User',3)
-Asserting: transpiler_depends_on('write-user',3,match,4)
-Asserting: transpiler_depends_on('write-user',3,'add-atom',3)
-<span class="ansi38-240128128"
->A=[->, arg('add-atom', 0), arg('write-user', 0)].
-B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&test-space')].
-C=['Atom', arg(match, 2), arg('User', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_2__write-user'(_name, _data, A) :-
-    B='&test-space',
-    mc_2__User(_name, _s, C),
-    mc_3__match(B, C, is_p1(true, _s), _space),
-    'mc_2__add-atom'(_space, _data, A).
-
-</span>
-Dependency Tree for '&self':'write-user'/3:
-'&self':'write-user'/3
-├── '&self':'User'/3
-├── '&self':match/4
-└── '&self':'add-atom'/3
-
-
-Functions to recompile after redefining '&self':'write-user'/3 in correct order:
-   '&self':'write-user'/3
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (read-user $name $query $template)  
   (let $space 
     (match &test-space 
       (User $name $s) $s) 
     (match $space $query $template)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'read-user'
-Retracting stub: 'mc_3__read-user'(B,C,D,E)
-</span><span class="ansi36"
->transpiler_clause_store('read-user', 4, 0, ['Any', 'Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['read-user', _name, _query, _template], [let, _space, [match, '&test-space', ['User', _name, _s], _s], [match, _space, _query, _template]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _name-[arg('User',1),arg('read-user',1)], 
-  _query-[arg(match,2),arg('read-user',2)], 
-  _s-[arg('&test-space',2),arg('User',2),arg(match,3)], 
-  _space-[arg(let,1),arg(match,1)], 
-  _temp_11-[eval(['read-user',_name,_query,_template]),arg('read-user',0)], 
-  _temp_12-[eval(['User',_name,_s]),arg('&test-space',1),arg('User',0),arg(match,2)], 
-  _temp_13-[eval([match,'&test-space',_temp_12,_s]),arg(let,2),arg(match,0)], 
-  _temp_14-[eval([match,_space,_query,_template]),arg(let,3),arg(match,0)], 
-  _temp_15-[eval([let,_space,_temp_13,_temp_14]),arg(let,0)], 
-  _template-[arg(match,3),arg('read-user',3)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name, _query, _template].
-lazyArgsList:[_name-eager, _query-eager, _template-eager].
-eagerLazyList:[eager, eager, lazy].
-typeProps:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_3__read-user'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-var"
->_query</span>, <span class="pl-var"
->_template</span>, <span class="pl-avar"
->_41166{cns = ...}</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'User'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_s'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _41166{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_query'</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('read-user',4,'User',3)
-Asserting: transpiler_depends_on('read-user',4,match,4)
-<span class="ansi38-240128128"
->A=['%Undefined%', 'Empty', arg('read-user', 0)].
-B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&test-space')].
-C=['Atom', arg(match, 2), arg('User', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_3__read-user'(_name, _query, _template, A) :-
-    B='&test-space',
-    mc_2__User(_name, _s, C),
-    mc_3__match(B, C, is_p1(true, _s), _space),
-    mc_3__match(_space, _query, is_p1(true, _template), A).
-
-</span>
-Dependency Tree for '&self':'read-user'/4:
-'&self':'read-user'/4
-├── '&self':'User'/3
-└── '&self':match/4
-
-
-Functions to recompile after redefining '&self':'read-user'/4 in correct order:
-   '&self':'read-user'/4
-
-;;; Test 1: Add user-specific knowledge bases
+</span>;;; Test 1: Add user-specific knowledge bases
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -610,7 +201,7 @@ Functions to recompile after redefining '&self':'read-user'/4 in correct order:
 > (User Alice #(Space ()))
 </span>; 
 ; EVAL TEST
-; took 0.004 secs. (3.57 milliseconds) 
+; took 0.004 secs. (3.60 milliseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
@@ -637,7 +228,7 @@ Deterministic: <span class="ansi33"
 > (User Bob #(Space ()))
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (3.50 milliseconds) 
+; took 0.003 secs. (3.49 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
@@ -658,7 +249,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000254 secs. (254.16 microseconds) 
+; took 0.000251 secs. (250.91 microseconds) 
 
 !(assertEqualToResult (match &test-space (User $name $space) $name) (Alice Bob))
 
@@ -686,7 +277,7 @@ Deterministic: <span class="ansi33"
 > (Age 20)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (3.49 milliseconds) 
+; took 0.004 secs. (3.52 milliseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -713,7 +304,7 @@ Deterministic: <span class="ansi33"
 > (Age 22)
 </span>; 
 ; EVAL TEST
-; took 0.003 secs. (3.33 milliseconds) 
+; took 0.003 secs. (3.44 milliseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -734,7 +325,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.001 secs. (1.16 milliseconds) 
 
 !(assertEqualToResult (read-user Alice (Age $age) (Age Alice $age)) (Age Alice 20))
 
@@ -754,7 +345,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqualToResult (read-user Bob (Age $age) (Age Bob $age)) (Age Bob 22))
 
@@ -774,411 +365,19 @@ Deterministic: <span class="ansi33"
     (new-space) 
     (add-atom &test-space 
       (Partition $name $space))))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'add-partition'
-Retracting stub: 'mc_1__add-partition'(B,C)
-</span><span class="ansi36"
->transpiler_clause_store('add-partition', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), ['add-partition', _name], [let, _space, ['new-space'], ['add-atom', '&test-space', ['Partition', _name, _space]]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _name-[arg('Partition',1),arg('add-partition',1)], 
-  _space-[arg('Partition',2),arg(let,1)], 
-  _temp_16-[eval(['add-partition',_name]),arg('add-partition',0)], 
-  _temp_17-[eval(['new-space']),arg(let,2),arg('new-space',0)], 
-  _temp_18-[eval(['Partition',_name,_space]),arg('&test-space',1),arg('Partition',0),arg('add-atom',2)], 
-  _temp_19-[eval(['add-atom','&test-space',_temp_18]),arg('add-atom',0),arg(let,3)], 
-  _temp_20-[eval([let,_space,_temp_17,_temp_19]),arg(let,0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name].
-lazyArgsList:[_name-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__add-partition'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-avar"
->_449640{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'new-space'</span></span>)</span></span>]</span>], 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Partition'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _449640{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'add-atom'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('add-partition',2,'new-space',1)
-Asserting: transpiler_depends_on('add-partition',2,'Partition',3)
-; % ######### warning: creating stub for:'Partition'
-Asserting: transpiler_depends_on('add-partition',2,'add-atom',3)
-<span class="ansi38-240128128"
->A=[->, arg('add-atom', 0), arg('add-partition', 0)].
-B=['hyperon::space::DynSpace', arg('add-atom', 1), val('&test-space')].
-C=['Atom', arg('add-atom', 2), arg('Partition', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_1__add-partition'(_name, A) :-
-    'mc_0__new-space'(_space),
-    B='&test-space',
-    mc_2__Partition(_name, _space, C),
-    'mc_2__add-atom'(B, C, A).
-
-</span>
-Dependency Tree for '&self':'add-partition'/2:
-'&self':'add-partition'/2
-├── '&self':'new-space'/1
-├── '&self':'Partition'/3
-└── '&self':'add-atom'/3
-
-
-Functions to recompile after redefining '&self':'add-partition'/2 in correct order:
-   '&self':'add-partition'/2
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (write-partition $name $data)  
   (let $space 
     (match &test-space 
       (Partition $name $s) $s) 
     (add-atom $space $data)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'write-partition'
-Retracting stub: 'mc_2__write-partition'(B,C,D)
-</span><span class="ansi36"
->transpiler_clause_store('write-partition', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['write-partition', _name, _data], [let, _space, [match, '&test-space', ['Partition', _name, _s], _s], ['add-atom', _space, _data]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _data-[arg('add-atom',2),arg('write-partition',2)], 
-  _name-[arg('Partition',1),arg('write-partition',1)], 
-  _s-[arg('&test-space',2),arg('Partition',2),arg(match,3)], 
-  _space-[arg('add-atom',1),arg(let,1)], 
-  _temp_21-[eval(['write-partition',_name,_data]),arg('write-partition',0)], 
-  _temp_22-[eval(['Partition',_name,_s]),arg('&test-space',1),arg('Partition',0),arg(match,2)], 
-  _temp_23-[eval([match,'&test-space',_temp_22,_s]),arg(let,2),arg(match,0)], 
-  _temp_24-[eval(['add-atom',_space,_data]),arg('add-atom',0),arg(let,3)], 
-  _temp_25-[eval([let,_space,_temp_23,_temp_24]),arg(let,0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name, _data].
-lazyArgsList:[_name-eager, _data-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_2__write-partition'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-var"
->_data</span>, <span class="pl-avar"
->_38748{cns = ...}</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Partition'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_s'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _38748{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'add-atom'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_data'</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('write-partition',3,'Partition',3)
-Asserting: transpiler_depends_on('write-partition',3,match,4)
-Asserting: transpiler_depends_on('write-partition',3,'add-atom',3)
-<span class="ansi38-240128128"
->A=[->, arg('add-atom', 0), arg('write-partition', 0)].
-B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&test-space')].
-C=['Atom', arg(match, 2), arg('Partition', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_2__write-partition'(_name, _data, A) :-
-    B='&test-space',
-    mc_2__Partition(_name, _s, C),
-    mc_3__match(B, C, is_p1(true, _s), _space),
-    'mc_2__add-atom'(_space, _data, A).
-
-</span>
-Dependency Tree for '&self':'write-partition'/3:
-'&self':'write-partition'/3
-├── '&self':'Partition'/3
-├── '&self':match/4
-└── '&self':'add-atom'/3
-
-
-Functions to recompile after redefining '&self':'write-partition'/3 in correct order:
-   '&self':'write-partition'/3
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (read-partition $name $query $template)  
   (let $space 
     (match &test-space 
       (Partition $name $s) $s) 
     (match $space $query $template)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'read-partition'
-Retracting stub: 'mc_3__read-partition'(B,C,D,E)
-</span><span class="ansi36"
->transpiler_clause_store('read-partition', 4, 0, ['Any', 'Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['read-partition', _name, _query, _template], [let, _space, [match, '&test-space', ['Partition', _name, _s], _s], [match, _space, _query, _template]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _name-[arg('Partition',1),arg('read-partition',1)], 
-  _query-[arg(match,2),arg('read-partition',2)], 
-  _s-[arg('&test-space',2),arg('Partition',2),arg(match,3)], 
-  _space-[arg(let,1),arg(match,1)], 
-  _temp_26-[eval(['read-partition',_name,_query,_template]),arg('read-partition',0)], 
-  _temp_27-[eval(['Partition',_name,_s]),arg('&test-space',1),arg('Partition',0),arg(match,2)], 
-  _temp_28-[eval([match,'&test-space',_temp_27,_s]),arg(let,2),arg(match,0)], 
-  _temp_29-[eval([match,_space,_query,_template]),arg(let,3),arg(match,0)], 
-  _temp_30-[eval([let,_space,_temp_28,_temp_29]),arg(let,0)], 
-  _template-[arg(match,3),arg('read-partition',3)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_name, _query, _template].
-lazyArgsList:[_name-eager, _query-eager, _template-eager].
-eagerLazyList:[eager, eager, lazy].
-typeProps:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_3__read-partition'</span>(<span class="pl-args"
-><span class="pl-var"
->_name</span>, <span class="pl-var"
->_query</span>, <span class="pl-var"
->_template</span>, <span class="pl-avar"
->_41190{cns = ...}</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->B</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Partition'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_name'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_s'</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _41190{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->match</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_query'</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('read-partition',4,'Partition',3)
-Asserting: transpiler_depends_on('read-partition',4,match,4)
-<span class="ansi38-240128128"
->A=['%Undefined%', 'Empty', arg('read-partition', 0)].
-B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&test-space')].
-C=['Atom', arg(match, 2), arg('Partition', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_3__read-partition'(_name, _query, _template, A) :-
-    B='&test-space',
-    mc_2__Partition(_name, _s, C),
-    mc_3__match(B, C, is_p1(true, _s), _space),
-    mc_3__match(_space, _query, is_p1(true, _template), A).
-
-</span>
-Dependency Tree for '&self':'read-partition'/4:
-'&self':'read-partition'/4
-├── '&self':'Partition'/3
-└── '&self':match/4
-
-
-Functions to recompile after redefining '&self':'read-partition'/4 in correct order:
-   '&self':'read-partition'/4
-
-;;; Test 3: Add partitioned knowledge bases
+</span>;;; Test 3: Add partitioned knowledge bases
 <span class="ansi38-013099040"
 >!(add-partition People)
 
@@ -1204,7 +403,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000244 secs. (244.43 microseconds) 
+; took 0.000232 secs. (232.06 microseconds) 
 
 !(assertEqualToResult (match &test-space (Partition $name $space) $name) (People Games))
 
@@ -1242,7 +441,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.001 secs. (1.22 milliseconds) 
 
 !(assertEqualToResult (read-partition People (Friend $x $y) (Friend $x $y)) (Friend Bob Alice))
 
@@ -1262,7 +461,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.001 secs. (1.18 milliseconds) 
 
 !(assertEqualToResult (read-partition Games (GameRole $role) (GameRole $role)) (GameRole Predator))
 
@@ -1328,7 +527,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:22:54+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:16:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

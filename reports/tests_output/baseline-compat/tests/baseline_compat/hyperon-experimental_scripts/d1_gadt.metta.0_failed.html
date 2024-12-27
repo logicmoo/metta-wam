@@ -16,7 +16,6 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -30,13 +29,7 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -57,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:10:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:06:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -93,6 +86,9 @@ Script started on 2024-12-27 11:10:40+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -152,9 +148,9 @@ Script started on 2024-12-27 11:10:40+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 14 "[()]" )
 P;HTML|
-;                              #( = 15 "0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27976maxresident)k" )
+;                              #( = 15 "0.05user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27996maxresident)k" )
 P;HTML|
-;                              #( = 15 "0inputs+0outputs (0major+3353minor)pagefaults 0swaps" )
+;                              #( = 15 "0inputs+0outputs (0major+3355minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta)
 
@@ -171,7 +167,7 @@ Script started on 2024-12-27 11:10:40+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000376 secs. (375.72 microseconds) 
+; took 0.000372 secs. (371.68 microseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -191,7 +187,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000527 secs. (527.37 microseconds) 
+; took 0.000553 secs. (553.32 microseconds) 
 
 !(assertEqual (get-type (+ 5 7)) Number)
 
@@ -212,7 +208,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000248 secs. (247.83 microseconds) 
+; took 0.000245 secs. (245.05 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -234,7 +230,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000370 secs. (369.83 microseconds) 
+; took 0.000343 secs. (343.30 microseconds) 
 
 !(assertEqualToResult (get-type (+ 5 "4")) ())
 
@@ -253,7 +249,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000275 secs. (274.79 microseconds) 
+; took 0.000245 secs. (245.23 microseconds) 
 
 !(assertEqualToResult (get-type (+ -)) ())
 
@@ -275,7 +271,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000245 secs. (245.10 microseconds) 
+; took 0.000212 secs. (212.22 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -303,7 +299,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000391 secs. (390.59 microseconds) 
+; took 0.000342 secs. (341.65 microseconds) 
 
 !(assertEqual (get-type (Left 5)) Either)
 
@@ -319,143 +315,9 @@ Deterministic: <span class="ansi33"
 > (: isLeft (-> Either Bool))
 </span><span class="ansi38-255165000"
 > (= (isLeft (Left $x))  True)
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:isLeft
-Retracting stub: mc_1__isLeft(B,C)
-</span><span class="ansi36"
->transpiler_clause_store(isLeft, 2, 0, ['Either'], 'Bool', [x(doeval, eager)], x(doeval, eager), [isLeft, ['Left', _x]], 'True').
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_1-[eval(['Left',_x]),arg('Left',0),arg(isLeft,1)], 
-  _temp_2-[eval([isLeft,_temp_1]),arg(isLeft,0)], 
-  <span class="pl-compound pl-level-0"
-><span class="pl-var"
->_x</span><span class="pl-infix"
->-</span><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->arg</span>(<span class="pl-args"
-><span class="pl-ellipsis"
->...</span>, <span class="pl-ellipsis"
->...</span></span>)</span></span>]</span></span>].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[['Left', _x]].
-lazyArgsList:[['Left', _x]-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__isLeft</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'Left'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-avar"
->_201286{cns = ...}</span></span>)</span>, 
-  [ [ assign,_201286{cns = ...},'True']]].&#13;&#10;
-<span class="ansi38-240128128"
->A=['Bool', arg(isLeft, 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_1__isLeft(['Left', _x], A) :-
-    A='True'.
-
-</span>
-Dependency Tree for '&self':isLeft/2:
-'&self':isLeft/2
-
-
-Functions to recompile after redefining '&self':isLeft/2 in correct order:
-   '&self':isLeft/2
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (isLeft (Right $x))  False)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(isLeft, 2, 1, ['Either'], 'Bool', [x(doeval, eager)], x(doeval, eager), [isLeft, ['Right', _x]], 'False').
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_3-[eval(['Right',_x]),arg('Right',0),arg(isLeft,1)], 
-  _temp_4-[eval([isLeft,_temp_3]),arg(isLeft,0)], 
-  <span class="pl-compound pl-level-0"
-><span class="pl-var"
->_x</span><span class="pl-infix"
->-</span><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->arg</span>(<span class="pl-args"
-><span class="pl-ellipsis"
->...</span>, <span class="pl-ellipsis"
->...</span></span>)</span></span>]</span></span>].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[['Right', _x]].
-lazyArgsList:[['Right', _x]-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__isLeft</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'Right'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-avar"
->_267234{cns = ...}</span></span>)</span>, 
-  [ [ assign ,_267234{cns = ...},'False']]].&#13;&#10;
-<span class="ansi38-240128128"
->A=['Bool', arg(isLeft, 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_1__isLeft(['Right', _x], A) :-
-    A='False'.
-
-</span>
-Dependency Tree for '&self':isLeft/2:
-'&self':isLeft/2
-
-
-Functions to recompile after redefining '&self':isLeft/2 in correct order:
-   '&self':isLeft/2
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (get-type (isLeft (Right 5))) Bool)
 
 </span>
@@ -463,7 +325,7 @@ Functions to recompile after redefining '&self':isLeft/2 in correct order:
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000532 secs. (531.74 microseconds) 
+; took 0.000471 secs. (470.62 microseconds) 
 
 !(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -484,7 +346,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000418 secs. (417.76 microseconds) 
+; took 0.000319 secs. (318.88 microseconds) 
 
 !(assertEqualToResult (get-type (isLeft 5)) ())
 
@@ -513,7 +375,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000924 secs. (923.97 microseconds) 
 
 !(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
@@ -537,7 +399,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.77 milliseconds) 
+; took 0.002 secs. (1.66 milliseconds) 
 
 !(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
@@ -569,7 +431,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.43 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
@@ -589,7 +451,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000620 secs. (619.99 microseconds) 
+; took 0.000534 secs. (533.85 microseconds) 
 
 !(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
@@ -612,7 +474,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.35 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)
 
@@ -678,7 +540,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:10:49+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:06:59+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -16,13 +16,9 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -42,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:12:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/e2_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:07:45+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/e2_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -78,6 +74,9 @@ Script started on 2024-12-27 11:12:06+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -135,7 +134,7 @@ Script started on 2024-12-27 11:12:06+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 13 "[()]" )
 P;HTML|
-;                             #( = 14 "0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27856maxresident)k" )
+;                             #( = 14 "0.05user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27824maxresident)k" )
 P;HTML|
 ;                              #( = 14 "0inputs+0outputs (0major+3352minor)pagefaults 0swaps" )
 P;HTML|
@@ -159,57 +158,7 @@ Deterministic: <span class="ansi33"
 ;;; the content of the state atom
 <span class="ansi38-255165000"
 > (= (get-token)  &state-token)
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'get-token'
-Retracting stub: 'mc_0__get-token'(B)
-</span><span class="ansi36"
->transpiler_clause_store('get-token', 1, 0, [], 'AnyRet', [], x(doeval, eager), ['get-token'], '&state-token').
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_1-[eval(['get-token']),arg('get-token',0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[].
-lazyArgsList:[].
-eagerLazyList:[].
-typeProps:[].
-finalLazyArgs:[].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_0__get-token'</span>(<span class="pl-args"
-><span class="pl-avar"
->_56062{cns = ...}</span></span>)</span>, 
-  [ [     assign    ,_56062{cns = ...},'&state-token']]].&#13;&#10;
-<span class="ansi38-240128128"
->A=['Expression', 'StateMonad', val('&state-token'), arg('get-token', 0)].
-
-</span><span class="ansi38-173216230"
->
-'mc_0__get-token'(A) :-
-    A='&state-token'.
-
-</span>
-Dependency Tree for '&self':'get-token'/1:
-'&self':'get-token'/1
-
-
-Functions to recompile after redefining '&self':'get-token'/1 in correct order:
-   '&self':'get-token'/1
-
-;;; `new-state $x` creates a `(State $x)` structure,
+</span>;;; `new-state $x` creates a `(State $x)` structure,
 ;;; and `get-token` will show its content
 <span class="ansi38-013099040"
 >!(assertEqual (get-state (get-token)) (A B))
@@ -219,7 +168,7 @@ Functions to recompile after redefining '&self':'get-token'/1 in correct order:
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.000916 secs. (916.01 microseconds) 
 
 !(assertEqual (get-state (get-token)) (A B))
 
@@ -243,7 +192,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000842 secs. (842.09 microseconds) 
+; took 0.000680 secs. (679.72 microseconds) 
 
 !(assertEqual (get-token) (new-state (A B)))
 
@@ -270,7 +219,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.06 milliseconds) 
+; took 0.000908 secs. (908.45 microseconds) 
 
 !(assertEqual (get-type (new-state 2)) (StateMonad Number))
 
@@ -290,7 +239,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.001 secs. (1.28 milliseconds) 
 
 !(assertEqual (get-type (change-state! (new-state "S") "V")) (StateMonad String))
 
@@ -311,7 +260,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.06 milliseconds) 
+; took 0.000990 secs. (989.93 microseconds) 
 
 !(assertEqual (let $v (new-state 1) (get-type $v)) (StateMonad Number))
 
@@ -332,7 +281,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000991 secs. (991.13 microseconds) 
+; took 0.000876 secs. (876.10 microseconds) 
 
 !(assertEqual (get-type &state-token) (StateMonad Expression))
 
@@ -359,7 +308,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000250 secs. (250.26 microseconds) 
+; took 0.000237 secs. (237.13 microseconds) 
 
 !(assertEqual (change-state! &state-token 1) (Error 1 BadType))
 
@@ -381,7 +330,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000268 secs. (268.41 microseconds) 
+; took 0.000246 secs. (246.43 microseconds) 
 
 !(assertEqual (change-state! (new-state 1) "S") (Error "S" BadType))
 
@@ -412,7 +361,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000773 secs. (773.38 microseconds) 
+; took 0.000536 secs. (536.18 microseconds) 
 
 !(assertEqualToResult (nop (change-state! &state-token (C D))) (()))
 
@@ -433,7 +382,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.13 milliseconds) 
+; took 0.000843 secs. (843.45 microseconds) 
 
 !(assertEqual (get-state (get-token)) (C D))
 
@@ -458,7 +407,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.11</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.000804 secs. (803.60 microseconds) 
 
 !(assertEqual (let $x (new-state 1) (change-state! $x (+ (get-state $x) 1))) (new-state 2))
 
@@ -480,7 +429,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E2-STATES.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000381 secs. (381.10 microseconds) 
+; took 0.000323 secs. (322.77 microseconds) 
 
 !(assertEqual (let $tnso (new-state 1) $tnso) (new-state 1))
 
@@ -547,7 +496,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:12:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:07:53+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

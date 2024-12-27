@@ -16,26 +16,19 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:22:08+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:16:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/non_deterministic_functions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -71,6 +64,9 @@ Script started on 2024-12-27 11:22:08+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -114,7 +110,7 @@ Script started on 2024-12-27 11:22:08+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 4 "Excessive result: d)]" )
 P;HTML|
-;                          #( = 4 "0.13user 0.01system 0:00.14elapsed 99%CPU (0avgtext+0avgdata 27932maxresident)k" )
+;                          #( = 4 "0.13user 0.01system 0:00.14elapsed 99%CPU (0avgtext+0avgdata 27736maxresident)k" )
 P;HTML|
 ;                           #( = 4 "0inputs+0outputs (0major+3412minor)pagefaults 0swaps" )
 P;HTML|
@@ -139,7 +135,7 @@ Script started on 2024-12-27 11:22:08+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.01</h3>
 ; 
 ; EVAL TEST
-; took 0.049 secs. (49.03 milliseconds) 
+; took 0.049 secs. (49.40 milliseconds) 
 
 !(assertEqualToResult (subtraction (superpose (a b d)) (intersection (superpose (a b c)) (superpose (a b d)))) (d))
 
@@ -159,102 +155,7 @@ Deterministic: <span class="ansi33"
 > (= (test6 $set $subset)  
   (subtraction $subset 
     (intersection $set $subset)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:test6
-Retracting stub: mc_2__test6(B,C,D)
-</span><span class="ansi36"
->transpiler_clause_store(test6, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [test6, _set, _subset], [subtraction, _subset, [intersection, _set, _subset]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _set-[arg(intersection,1),arg(test6,1)], 
-  _subset-[arg(intersection,2),arg(subtraction,1),arg(test6,2)], 
-  _temp_1-[eval([test6,_set,_subset]),arg(test6,0)], 
-  _temp_2-[eval([intersection,_set,_subset]),arg(intersection,0),arg(subtraction,2)], 
-  _temp_3-[eval([subtraction,_subset,_temp_2]),arg(subtraction,0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_set, _subset].
-lazyArgsList:[_set-eager, _subset-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, eager), x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__test6</span>(<span class="pl-args"
-><span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>, <span class="pl-avar"
->_66844{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      _111366, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->subtraction</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->A</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->intersection</span></span>)</span>, <span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>]]], 
-          <span class="pl-var"
->A</span>]]]]].&#13;&#10;
-Asserting: transpiler_depends_on(test6,3,intersection,3)
-; % ######### warning: creating stub for:intersection
-Asserting: transpiler_depends_on(test6,3,subtraction,3)
-<span class="ansi38-240128128"
->A=['Atom', arg(subtraction, 0), arg(test6, 0)].
-B=['Atom', arg(intersection, 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-
-</span>
-Dependency Tree for '&self':test6/3:
-'&self':test6/3
-├── '&self':intersection/3
-└── '&self':subtraction/3
-
-
-Functions to recompile after redefining '&self':test6/3 in correct order:
-   '&self':test6/3
-
-;;; Test: Call the untyped function with the same inputs
+</span>;;; Test: Call the untyped function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -263,7 +164,7 @@ Functions to recompile after redefining '&self':test6/3 in correct order:
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.16 milliseconds) 
+; took 0.004 secs. (4.24 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (b d a d a b d))
 
@@ -288,97 +189,7 @@ Deterministic: <span class="ansi33"
 > (= (test6 $set $subset)  
   (subtraction $subset 
     (intersection $set $subset)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(test6, 3, 1, ['Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [test6, _set, _subset], [subtraction, _subset, [intersection, _set, _subset]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _set-[arg(intersection,1),arg(test6,1)], 
-  _subset-[arg(intersection,2),arg(subtraction,1),arg(test6,2)], 
-  _temp_4-[eval([test6,_set,_subset]),arg(test6,0)], 
-  _temp_5-[eval([intersection,_set,_subset]),arg(intersection,0),arg(subtraction,2)], 
-  _temp_6-[eval([subtraction,_subset,_temp_5]),arg(subtraction,0)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_set, _subset].
-lazyArgsList:[_set-eager, _subset-eager].
-eagerLazyList:[eager, eager].
-typeProps:[x(doeval, lazy), x(doeval, lazy)].
-finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__test6</span>(<span class="pl-args"
-><span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>, <span class="pl-avar"
->_285308{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      _316436, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->subtraction</span></span>)</span>, 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-        [ <span class="pl-atom"
->is_p1</span>, 
-          [ [ <span class="pl-atom"
->assign</span>, 
-              <span class="pl-var"
->A</span>, 
-              [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->intersection</span></span>)</span>, <span class="pl-var"
->_set</span>, <span class="pl-var"
->_subset</span>]]], 
-          <span class="pl-var"
->A</span>]]]]].&#13;&#10;
-<span class="ansi38-240128128"
->A=['Atom', arg(subtraction, 0), arg(test6, 0)].
-B=['Atom', arg(intersection, 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_2__test6(_set, _subset, A) :-
-    mc_2__subtraction(is_p1(true, _subset),
-                      is_p1(mc_2__intersection(_set,
-                                               _subset,
-                                               B),
-                            B),
-                      A).
-
-</span>
-Dependency Tree for '&self':test6/3:
-'&self':test6/3
-├── '&self':intersection/3
-└── '&self':subtraction/3
-
-
-Functions to recompile after redefining '&self':test6/3 in correct order:
-   '&self':test6/3
-
-;;; Test: Call the typed function with the same inputs
+</span>;;; Test: Call the typed function with the same inputs
 <span class="ansi38-013099040"
 >!(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -387,7 +198,7 @@ Functions to recompile after redefining '&self':test6/3 in correct order:
 >;; HYPERON-METTALOG-SANITY.NON-DETERMINISTIC-FUNCTIONS-HE-744.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.70 milliseconds) 
+; took 0.007 secs. (6.69 milliseconds) 
 
 !(assertEqualToResult (test6 (superpose (a b c)) (superpose (a b d))) (d))
 
@@ -449,7 +260,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:22:16+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:16:14+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -16,24 +16,13 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-173216230 { color: #ADD8E6; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -43,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:35:41+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:29:35+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -79,6 +68,9 @@ Script started on 2024-12-27 11:35:41+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -114,9 +106,9 @@ Script started on 2024-12-27 11:35:41+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[()]" )
 P;HTML|
-;                         #( = 3 "0.07user 0.01system 0:00.09elapsed 98%CPU (0avgtext+0avgdata 28236maxresident)k" )
+;                         #( = 3 "0.08user 0.00system 0:00.09elapsed 98%CPU (0avgtext+0avgdata 28240maxresident)k" )
 P;HTML|
-;                         #( = 3 "0inputs+0outputs (0major+3411minor)pagefaults 0swaps" )
+;                         #( = 3 "0inputs+0outputs (0major+3412minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta)
 
@@ -124,274 +116,18 @@ Script started on 2024-12-27 11:35:41+00:00 [COMMAND="timeout --preserve-status 
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (If True $then)  $then)
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'If'
-Retracting stub: mc_2__If(B,C,D)
-</span><span class="ansi36"
->transpiler_clause_store('If', 3, 0, ['Bool', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy)], x(doeval, lazy), ['If', 'True', _then], _then).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_1-[eval(['If','True',_then]),arg('If',0)], 
-  _then-[arg('If',2),arg('True',1),arg(defn,2)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:lazy.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, lazy).
-finalLazyOnlyRet:lazy.
-args_list:['True', _then].
-lazyArgsList:['True'-eager, _then-lazy].
-eagerLazyList:[lazy, lazy].
-typeProps:[x(doeval, eager), x(doeval, lazy)].
-finalLazyArgs:[x(doeval, eager), x(doeval, lazy)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__If</span>(<span class="pl-args"
-><span class="pl-atom"
->'True'</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->_then</span></span>)</span>, 
-  []].&#13;&#10;
-<span class="ansi38-173216230"
->
-mc_2__If('True', _then, _then).
-
-</span>
-Dependency Tree for '&self':'If'/3:
-'&self':'If'/3
-
-
-Functions to recompile after redefining '&self':'If'/3 in correct order:
-   '&self':'If'/3
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (If False $then)  
   (let $x 0 
     (let $x 1 $x)))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store('If', 3, 1, ['Bool', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy)], x(doeval, lazy), ['If', 'False', _then], [let, _x, 0, [let, _x, 1, _x]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_2-[eval(['If','False',_then]),arg('If',0)], 
-  _temp_3-[eval([let,_x,1,_x]),arg(let,0),arg(let,3)], 
-  _temp_4-[eval([let,_x,0,_temp_3]),arg(let,0)], 
-  _then-[arg('False',1),arg('If',2)], 
-  _x-[arg(let,1),arg(let,3)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:lazy.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, lazy).
-finalLazyOnlyRet:lazy.
-args_list:['False', _then].
-lazyArgsList:['False'-eager, _then-lazy].
-eagerLazyList:[lazy, lazy].
-typeProps:[x(doeval, eager), x(doeval, lazy)].
-finalLazyArgs:[x(doeval, eager), x(doeval, lazy)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__If</span>(<span class="pl-args"
-><span class="pl-atom"
->'False'</span>, <span class="pl-var"
->_then</span>, <span class="pl-avar"
->_227702{cns = ...}</span></span>)</span>, 
-  [ <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      _227702{cns = ...}, 
-      <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->is_p1</span>, []|<span class="pl-ellipsis"
->...</span></span>]</span>]]].&#13;&#10;
-<span class="ansi38-240128128"
->A=[val(is_p1(true, _x)), val([is_p1, [], _x]), 'Atom', arg('If', 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_2__If('False', _then, A) :-
-    _x=0,
-    _x=1,
-    A=is_p1(true, _x).
-
-</span>
-Dependency Tree for '&self':'If'/3:
-'&self':'If'/3
-
-
-Functions to recompile after redefining '&self':'If'/3 in correct order:
-   '&self':'If'/3
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (If $cond $then $else)  
   (if $cond $then $else))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'If'
-Retracting stub: mc_3__If(B,C,D,E)
-</span><span class="ansi36"
->transpiler_clause_store('If', 4, 0, ['Bool', 'Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy), x(doeval, lazy)], x(doeval, lazy), ['If', _cond, _then, _else], [if, _cond, _then, _else]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _cond-[arg('If',1),arg(if,1)], 
-  _else-[arg('If',3),arg(if,3)], 
-  _temp_5-[eval(['If',_cond,_then,_else]),arg('If',0)], 
-  _temp_6-[eval([if,_cond,_then,_else]),arg(if,0)], 
-  _then-[arg('If',2),arg(if,2)]].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:lazy.
-retProps:x(doeval, lazy).
-finalLazyRet:x(doeval, lazy).
-finalLazyOnlyRet:lazy.
-args_list:[_cond, _then, _else].
-lazyArgsList:[_cond-eager, _then-lazy, _else-lazy].
-eagerLazyList:[eager, lazy, lazy].
-typeProps:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
-finalLazyArgs:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_3__If</span>(<span class="pl-args"
-><span class="pl-var"
->_cond</span>, <span class="pl-var"
->_then</span>, <span class="pl-var"
->_else</span>, <span class="pl-avar"
->_363962{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->_cond</span>]], 
-      [ [ assign,_414006,_then ]], 
-      [ [ assign,_414006,_else ]]]]].&#13;&#10;
-<span class="ansi38-240128128"
->A=['Var', val(_then), 'Atom', arg('If', 0)].
-
-</span><span class="ansi38-173216230"
->
-mc_3__If(_cond, _then, _else, A) :-
-    (   is_True(_cond)
-    *-> A=_then
-    ;   A=_else
-    ).
-
-</span>
-Dependency Tree for '&self':'If'/4:
-'&self':'If'/4
-
-
-Functions to recompile after redefining '&self':'If'/4 in correct order:
-   '&self':'If'/4
-
-<span class="ansi38-255165000"
+</span><span class="ansi38-255165000"
 > (= (f $x)  42)
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:f
-Retracting stub: mc_1__f(B,C)
-</span><span class="ansi36"
->transpiler_clause_store(f, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [f, _x], 42).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _temp_7-[eval([f,_x]),arg(f,0)], 
-  <span class="pl-compound pl-level-0"
-><span class="pl-var"
->_x</span><span class="pl-infix"
->-</span><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->arg</span>(<span class="pl-args"
-><span class="pl-ellipsis"
->...</span>, <span class="pl-ellipsis"
->...</span></span>)</span></span>]</span></span>].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_x].
-lazyArgsList:[_x-eager].
-eagerLazyList:[lazy].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_1__f</span>(<span class="pl-args"
-><span class="pl-var"
->_x</span>, <span class="pl-int"
->42</span></span>)</span>, 
-  []].&#13;&#10;
-<span class="ansi38-173216230"
->
-mc_1__f(_x, 42).
-
-</span>
-Dependency Tree for '&self':f/2:
-'&self':f/2
-
-
-Functions to recompile after redefining '&self':f/2 in correct order:
-   '&self':f/2
-
-<span class="ansi38-255165009"
+</span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1))))))
@@ -404,7 +140,7 @@ Functions to recompile after redefining '&self':f/2 in correct order:
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.53 milliseconds) 
+; took 0.002 secs. (2.47 milliseconds) 
 
 !(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((1 1) (42 42)))
 
@@ -424,7 +160,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.41 milliseconds) 
+; took 0.002 secs. (2.32 milliseconds) 
 
 !(assertEqualToResult (let $y (superpose (3 4 5)) (If (> $y 3) (case (1 $y) (((1 3) (f 0)) ((1 4) (42 42)) ($else (1 1)))))) ((42 42) (1 1)))
 
@@ -478,7 +214,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:35:49+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:29:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

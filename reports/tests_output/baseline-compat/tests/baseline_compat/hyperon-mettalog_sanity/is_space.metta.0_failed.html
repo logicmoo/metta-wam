@@ -16,13 +16,9 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
-.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
-.ansi38-240128128 { color: #F08080; }
-.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -31,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 11:20:19+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:14:49+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -67,6 +63,9 @@ Script started on 2024-12-27 11:20:19+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -108,9 +107,9 @@ Script started on 2024-12-27 11:20:19+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: True)]" )
 P;HTML|
-;                          #( = 3 "0.04user 0.01system 0:00.06elapsed 98%CPU (0avgtext+0avgdata 27920maxresident)k" )
+;                          #( = 3 "0.04user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27864maxresident)k" )
 P;HTML|
-;                          #( = 3 "0inputs+0outputs (0major+3391minor)pagefaults 0swaps" )
+;                          #( = 3 "0inputs+0outputs (0major+3402minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta)
 
@@ -122,139 +121,7 @@ Script started on 2024-12-27 11:20:19+00:00 [COMMAND="timeout --preserve-status 
   (let* 
     ( ($type (get-type $atom)) ($space (get-type &self))) 
     (== $type $space)))
-</span><span class="ansi38-255165005"
->; % ######### warning: creating stub for:'is-space'
-Retracting stub: 'mc_1__is-space'(B,C)
-</span><span class="ansi36"
->transpiler_clause_store('is-space', 2, 0, ['Atom'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['is-space', _atom], ['let*', [[_type, ['get-type', _atom]], [_space, ['get-type', '&self']]], [==, _type, _space]]).
-
-</span>=== Assignments / Var Mappings (underscore variables) ===
-<span class="ansi35"
->=======
-<span class="pl-functor"
->[ </span>
-  _atom-[arg('get-type',1),arg('is-space',1)], 
-  <span class="pl-compound pl-level-0"
-><span class="pl-var"
->_space</span><span class="pl-infix"
->-</span><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->arg</span>(<span class="pl-args"
-><span class="pl-ellipsis"
->...</span>, <span class="pl-ellipsis"
->...</span></span>)</span></span>]</span></span>, 
-  _temp_1-[eval(['is-space',_atom]),arg('is-space',0)], 
-  _temp_2-[eval(['get-type',_atom]),arg('get-type',0)], 
-  _temp_3-[eval(['get-type','&self']),arg('get-type',0)], 
-  _temp_4-[eval([==,_type,_space]),arg(==,0),arg('let*',2)], 
-  _temp_5-[eval(['let*',[[_type,_temp_2],[_space,_temp_3]],_temp_4]),arg('let*',0)], 
-  <span class="pl-compound pl-level-0"
-><span class="pl-var"
->_type</span><span class="pl-infix"
->-</span><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->arg</span>(<span class="pl-args"
-><span class="pl-ellipsis"
->...</span>, <span class="pl-ellipsis"
->...</span></span>)</span></span>]</span></span>].&#13;&#10;
-
-</span><span class="ansi36"
->resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:eager.
-args_list:[_atom].
-lazyArgsList:[_atom-eager].
-eagerLazyList:[eager].
-typeProps:[x(doeval, lazy)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__is-space'</span>(<span class="pl-args"
-><span class="pl-var"
->_atom</span>, <span class="pl-avar"
->_142558{cns = ...}</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_type</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'get-type'</span></span>)</span>, 
-        <span class="pl-var"
->_atom</span>]], 
-    <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_space</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'get-type'</span></span>)</span>, 
-        <span class="pl-var"
->A</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      _142558{cns = ...}, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_type'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_space'</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on('is-space',2,'get-type',2)
-Asserting: transpiler_depends_on('is-space',2,==,3)
-<span class="ansi38-240128128"
->A=['Bool', arg('is-space', 0)].
-B=['Atom', arg('get-type', 1), 'hyperon::space::DynSpace', val('&self')].
-
-</span><span class="ansi38-173216230"
->
-'mc_1__is-space'(_atom, A) :-
-    'mc_1__get-type'(_atom, _type),
-    B='&self',
-    'mc_1__get-type'(B, _space),
-    'mc_2__=='(_type, _space, A).
-
-</span>
-Dependency Tree for '&self':'is-space'/2:
-'&self':'is-space'/2
-├── '&self':'get-type'/2
-└── '&self':==/3
-
-
-Functions to recompile after redefining '&self':'is-space'/2 in correct order:
-   '&self':'is-space'/2
-
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(assertEqual (is-space &self) True)
 
 </span>
@@ -262,7 +129,7 @@ Functions to recompile after redefining '&self':'is-space'/2 in correct order:
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.28 milliseconds) 
+; took 0.001 secs. (1.16 milliseconds) 
 
 !(assertEqual (is-space &self) True)
 
@@ -282,7 +149,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.11 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
 !(assertEqual (is-space &corelib) True)
 
@@ -302,7 +169,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqual (is-space 666) False)
 
@@ -357,7 +224,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 11:20:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:14:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

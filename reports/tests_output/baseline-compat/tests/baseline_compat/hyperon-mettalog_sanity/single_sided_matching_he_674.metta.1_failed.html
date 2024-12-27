@@ -17,16 +17,12 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -34,7 +30,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:20:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:19:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -70,6 +66,9 @@ Script started on 2024-12-27 10:20:24+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -105,9 +104,9 @@ Script started on 2024-12-27 10:20:24+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
 P;HTML|
-;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27880maxresident)k" )
+;                         #( = 2 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27748maxresident)k" )
 P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3360minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3356minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 
@@ -127,33 +126,6 @@ Script started on 2024-12-27 10:20:24+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (single-side-match $expr)  
   (grounded-single-side-match $expr))
-</span><span class="ansi38-255165005"
-><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'mc_1__single-side-match'</span>(<span class="pl-args"
-><span class="pl-var"
->_expr</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'grounded-single-side-match'</span></span>)</span>, 
-        <span class="pl-var"
->_expr</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(single-side-match,2,grounded-single-side-match,2)
-; % ######### warning: creating stub for:grounded-single-side-match
-'mc_1__single-side-match'(_expr, A) :-
-    'mc_1__grounded-single-side-match'(_expr, A).
-
 </span>;;; Define assertSingleSideEqualToResult for testing single-sided matching
 <span class="ansi38-255165000"
 > (: assertSingleSideEqualToResult (-> Atom Atom Atom))
@@ -165,131 +137,11 @@ Asserting: transpiler_depends_on(single-side-match,2,grounded-single-side-match,
       (== $result $expected) 
       (Success) 
       (Error (assertSingleSideEqualToResult $expr $expected $result)))))
-</span><span class="ansi38-255165005"
-><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->mc_2__assertSingleSideEqualToResult</span>(<span class="pl-args"
-><span class="pl-var"
->_expr</span>, <span class="pl-var"
->_expected</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->_result</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'single-side-match'</span></span>)</span>, 
-        <span class="pl-var"
->_expr</span>]], 
-    [ <span class="pl-atom"
->prolog_if</span>, 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->B</span>, 
-          [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->==</span></span>)</span>, <span class="pl-var"
->_result</span>, <span class="pl-var"
->_expected</span>]], 
-        [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->native</span>(<span class="pl-args"
-><span class="pl-atom"
->is_True</span></span>)</span>, 
-          <span class="pl-var"
->B</span>]], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->C</span>, 
-          <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-compound"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->'Success'</span></span>)</span></span>]</span>], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-      [ [ <span class="pl-atom"
->assign</span>, 
-          <span class="pl-var"
->D</span>, 
-          [ <span class="pl-atom"
->'Error'</span>, 
-            <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assertSingleSideEqualToResult</span>, <span class="pl-var"
->_expr</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]], 
-        <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
->...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,single-side-match,2)
-; % ######### warning: creating stub for:single-side-match
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,==,3)
-Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,Success,1)
-; % ######### warning: creating stub for:Success
-mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
-    'mc_1__single-side-match'(_expr, _result),
-    (   'mc_2__=='(_result, _expected, B),
-        is_True(B)
-    *-> mc_0__Success(C),
-        A=C
-    ;   D=['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]],
-        A=D
-    ).
-
 </span>;;; Example 1: Current Double-Sided Matching
 ;;; ----------------------------------------
 ;;; Define a reduction rule for SKI combinatory logic
 <span class="ansi38-255165000"
 > (= ((S K) K)  I)
-</span><span class="ansi38-255165005"
-><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-var"
->A</span> =  
-       
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'S'</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>, 
-      <span class="pl-atom"
->'K'</span>], 
-  [ [ assign,  A   , 'I'  ]]].&#13;&#10;
-A=[call(['S', 'K']), 'K'] :-
-    A='I'.
-
 </span>;;; Test: Matching ((S K) $x) with double-sided unification
 <span class="ansi38-013099040"
 >!(assertEqualToResult ((S K) $x) (I))
@@ -299,7 +151,7 @@ A=[call(['S', 'K']), 'K'] :-
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000904 secs. (904.11 microseconds) 
+; took 0.000832 secs. (832.46 microseconds) 
 
 !(assertEqualToResult ((S K) $x) (I))
 
@@ -333,50 +185,6 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165000"
 > (= (: (Sym (: (Sym (: $x $a)) $b)) $c)  
   (: $x $a))
-</span><span class="ansi38-255165005"
-><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-atom"
->'mc_2__:'</span>( 
-     [ <span class="pl-atom"
->'Sym'</span>, 
-       [ <span class="pl-atom"
->:</span>, 
-         [ <span class="pl-atom"
->'Sym'</span>, 
-           <span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->:</span>, <span class="pl-var"
->_x</span>|<span class="pl-ellipsis"
->...</span></span>]</span>], 
-         <span class="pl-var"
->_b</span>]], <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-atom"
->'_c'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>), 
-  [ [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->A</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->:</span></span>)</span>, <span class="pl-var"
->_x</span>, <span class="pl-var"
->_a</span>]]]].&#13;&#10;
-'mc_2__:'(['Sym', [:, ['Sym', [:, _x, _a]], _b]], _c, A) :-
-    'mc_2__:'(_x, _a, A).
-
 </span>;;; Test: Current double-sided behavior leads to infinite recursion
 <span class="ansi38-013099040"
 >!(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
@@ -386,18 +194,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.77 milliseconds) 
+; took 0.003 secs. (2.76 milliseconds) 
 
 !(assertEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (InfiniteRecursion))
 
 <span class="ansi31"
 >  #(loonit_failureR 
     #(equal_enough_for_test 
-      ( (: $_152204 $_152210)) 
+      ( (: $_59326 $_59332)) 
       (InfiniteRecursion)))
 </span>
 Deterministic: <span class="ansi33"
->(#(Error #(got ((: $_152204 $_152210))) #(expected (InfiniteRecursion))))
+>(#(Error #(got ((: $_59326 $_59332))) #(expected (InfiniteRecursion))))
 </span>;;; Explanation:
 ;;; Double-sided matching causes the pattern to reapply itself infinitely.
 ;;; Test: Single-sided matching avoids infinite recursion (using single-side-match)
@@ -405,7 +213,7 @@ Deterministic: <span class="ansi33"
 >!(assertSingleSideEqualToResult (: (Sym (: (Sym (: $x $a)) $b)) $c) (: $x $a))
 
 </span>
-Script done on 2024-12-27 10:21:04+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 23:20:05+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
