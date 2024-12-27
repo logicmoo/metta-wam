@@ -19,17 +19,26 @@
 .ansi34 { color: #0000aa; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -44,7 +53,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 10:06:59+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -121,9 +130,9 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 5 "[()]" )
 P;HTML|
-;                          #( = 6 "0.15user 0.01system 0:00.16elapsed 99%CPU (0avgtext+0avgdata 28240maxresident)k" )
+;                          #( = 6 "0.15user 0.01system 0:00.16elapsed 98%CPU (0avgtext+0avgdata 28236maxresident)k" )
 P;HTML|
-;                          #( = 6 "0inputs+0outputs (0major+3460minor)pagefaults 0swaps" )
+;                          #( = 6 "0inputs+0outputs (0major+3463minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta)
 
@@ -138,10 +147,88 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 > (= (min $a $b)  
   (if 
     (< $a $b) $a $b))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_2__min</span>(<span class="pl-args"
+><span class="pl-var"
+>_a</span>, <span class="pl-var"
+>_b</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ [ <span class="pl-atom"
+>prolog_if</span>, 
+      [ [ <span class="pl-atom"
+>assign</span>, 
+          <span class="pl-var"
+>B</span>, 
+          [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>&lt;</span></span>)</span>, <span class="pl-var"
+>_a</span>, <span class="pl-var"
+>_b</span>]], 
+        [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>native</span>(<span class="pl-args"
+><span class="pl-atom"
+>is_True</span></span>)</span>, 
+          <span class="pl-var"
+>B</span>]], 
+      [ [ assign,  A   ,  _a  ]], 
+      [ [ assign,  A   ,  _b  ]]]]].&#13;&#10;
+Asserting: transpiler_depends_on(min,3,<,3)
+mc_2__min(_a, _b, A) :-
+    (   'mc_2__<'(_a, _b, B),
+        is_True(B)
+    *-> A=_a
+    ;   A=_b
+    ).
+
 </span><span class="ansi38-255165000"
 > (= (s-tv (stv $s $c))  $s)
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'mc_1__s-tv'</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>stv</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>_s</span></span>)</span>, 
+  []].&#13;&#10;
+'mc_1__s-tv'([stv, _s, _c], _s).
+
 </span><span class="ansi38-255165000"
 > (= (c-tv (stv $s $c))  $c)
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'mc_1__c-tv'</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>stv</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>_c</span></span>)</span>, 
+  []].&#13;&#10;
+'mc_1__c-tv'([stv, _s, _c], _c).
+
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `TV` "metarule" based on `match` to run
@@ -153,6 +240,72 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 > (= (TV $x)  
   (match &self 
     (.tv $x $stv) $stv))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__TV</span>(<span class="pl-args"
+><span class="pl-var"
+>_x</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'.tv'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_x'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_stv'</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>match</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, 
+        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>is_p1</span>, []|<span class="pl-ellipsis"
+>...</span></span>]</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(TV,2,.tv,3)
+; % ######### warning: creating stub for:.tv
+Asserting: transpiler_depends_on(TV,2,match,4)
+mc_1__TV(_x, A) :-
+    B='&self',
+    'mc_2__.tv'(_x, _stv, C),
+    mc_3__match(B, C, is_p1(true, _stv), A).
+
 </span>;;; Definition of TV for a conjunction
 ;;; we could use `(.tv (And $a $b) (stv ...))` instead of this
 <span class="ansi38-255165000"
@@ -164,6 +317,181 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
     (min 
       (c-tv (TV $a)) 
       (c-tv (TV $b)))))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__TV</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'And'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>B</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+        <span class="pl-var"
+>_a</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'s-tv'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>D</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+        <span class="pl-var"
+>_b</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'s-tv'</span></span>)</span>, 
+        <span class="pl-var"
+>D</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>F</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>min</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>G</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+        <span class="pl-var"
+>_a</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>H</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'c-tv'</span></span>)</span>, 
+        <span class="pl-var"
+>G</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>I</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+        <span class="pl-var"
+>_b</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>J</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'c-tv'</span></span>)</span>, 
+        <span class="pl-var"
+>I</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>K</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>min</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>7</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>9</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>stv</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>5</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>10</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(TV,2,s-tv,2)
+; % ######### warning: creating stub for:s-tv
+Asserting: transpiler_depends_on(TV,2,min,3)
+; % ######### warning: creating stub for:min
+Asserting: transpiler_depends_on(TV,2,c-tv,2)
+; % ######### warning: creating stub for:c-tv
+Asserting: transpiler_depends_on(TV,2,stv,3)
+; % ######### warning: creating stub for:stv
+mc_1__TV(['And', _a, _b], A) :-
+    mc_1__TV(_a, B),
+    'mc_1__s-tv'(B, C),
+    mc_1__TV(_b, D),
+    'mc_1__s-tv'(D, E),
+    mc_2__min(C, E, F),
+    mc_1__TV(_a, G),
+    'mc_1__c-tv'(G, H),
+    mc_1__TV(_b, I),
+    'mc_1__c-tv'(I, J),
+    mc_2__min(H, J, K),
+    mc_2__stv(F, K, A).
+
 </span>;;; Definition of TV for $x when it's the consequent of an implication
 <span class="ansi38-255165000"
 > (= (TV $x)  
@@ -179,19 +507,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 </span>^  <span class="ansi1 ansi32"
 >Exit: </span>(171) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Call: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Unify: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
->Call: </span>(173) [system] cyclic_term(['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
+>Call: </span>(173) [system] cyclic_term(['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
->Exit: </span>(173) [system] cyclic_term(['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
+>Exit: </span>(173) [system] cyclic_term(['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
 >Call: </span>(173) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(173) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Fail: </span>(172) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(172) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -207,19 +535,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(172) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Unify: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Call: </span>(174) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(174) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Exit: </span>(174) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Exit: </span>(174) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
 >Call: </span>(174) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(174) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Fail: </span>(173) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(173) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -235,19 +563,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(173) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Unify: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Call: </span>(175) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(175) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Exit: </span>(175) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Exit: </span>(175) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
 >Call: </span>(175) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(175) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Fail: </span>(174) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(174) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -263,19 +591,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(174) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Call: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Unify: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
->Call: </span>(176) [system] cyclic_term(['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
+>Call: </span>(176) [system] cyclic_term(['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
->Exit: </span>(176) [system] cyclic_term(['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
+>Exit: </span>(176) [system] cyclic_term(['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication'|...]]]]]]]]]]]]]]]]]]]])
    <span class="ansi1 ansi32"
 >Call: </span>(176) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(176) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, ['Implication', _66908{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
+>Fail: </span>(175) [util_varnames] util_varnames:vn_auh_0('_x', ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, ['Implication', _2546{vn = ...}, [...|...]]]]]]]]]]]]]]]]]]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(175) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -291,19 +619,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(175) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Unify: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Call: </span>(177) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(177) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Exit: </span>(177) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Exit: </span>(177) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['s-tv'|...]], ['s-tv', ['TV'|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
 >Call: </span>(177) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(177) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]], ['s-tv', ['TV', _66908{vn = ...}]]])
+>Fail: </span>(176) [util_varnames] util_varnames:vn_auh_0('_s', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['s-tv', [...|...]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]], ['s-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(176) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -319,19 +647,19 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 ^  <span class="ansi1 ansi32"
 >Exit: </span>(176) [system] sig_atomic(rtrace:restart_rtrace)
 ^  <span class="ansi1 ansi32"
->Call: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi34"
->Unify: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Unify: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Call: </span>(178) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Call: </span>(178) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
->Exit: </span>(178) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Exit: </span>(178) [system] cyclic_term([*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [...|...]|...], ['c-tv'|...]], ['c-tv', ['TV'|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
    <span class="ansi1 ansi32"
 >Call: </span>(178) [system] fail
    <span class="ansi1 ansi31"
 >Fail: </span>(178) [system] fail
 ^  <span class="ansi1 ansi31"
->Fail: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]], ['c-tv', ['TV', _66908{vn = ...}]]])
+>Fail: </span>(177) [util_varnames] util_varnames:vn_auh_0('_c', [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*, [*|...], [...|...]], ['c-tv', [...|...]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]], ['c-tv', ['TV', _2546{vn = ...}]]])
 ^  <span class="ansi1 ansi32"
 >Call: </span>(177) [bugger] bugger:mquietly_if(true, rtrace:tAt_normal)
 ^  <span class="ansi1 ansi34"
@@ -344,7 +672,206 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 >Call: </span>(180) [rtrace] tAt(false, 271, 271, false)
 ^  <span class="ansi1 ansi34"
 >Unify: </span>(180) [rtrace] tAt(false, 271, 271, false)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__TV</span>(<span class="pl-args"
+><span class="pl-var"
+>_x</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Implication'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_y'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_x'</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>D</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>stv</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_s'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_c'</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'.tv'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>3</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>match</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>, 
+        [ <span class="pl-atom"
+>is_p1</span>, 
+          [ [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>F</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+                <span class="pl-var"
+>_y</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>G</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'s-tv'</span></span>)</span>, 
+                <span class="pl-var"
+>F</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>H</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_s'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>6</span></span>)</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>I</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'TV'</span></span>)</span>, 
+                <span class="pl-var"
+>_y</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>J</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'c-tv'</span></span>)</span>, 
+                <span class="pl-var"
+>I</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>K</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>*</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-atom"
+>'_c'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>9</span></span>)</span>]], 
+            [ <span class="pl-atom"
+>assign</span>, 
+              <span class="pl-var"
+>L</span>, 
+              [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>stv</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>7</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>10</span></span>)</span>]]], 
+          <span class="pl-var"
+>L</span>]]]]].&#13;&#10;
+Asserting: transpiler_depends_on(TV,2,Implication,3)
+; % ######### warning: creating stub for:Implication
+Asserting: transpiler_depends_on(TV,2,*,3)
+mc_1__TV(_x, A) :-
+    B='&self',
+    mc_2__Implication(_y, _x, C),
+    mc_2__stv(_s, _c, D),
+    'mc_2__.tv'(C, D, E),
+    mc_3__match(B,
+                E,
+                is_p1((mc_1__TV(_y, F), 'mc_1__s-tv'(F, G), 'mc_2__*'(_s, G, H), mc_1__TV(_y, I), 'mc_1__c-tv'(I, J), 'mc_2__*'(_c, J, K), mc_2__stv(H, K, L)),
+                      L),
+                A).
+
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; First example
 ;;; .tv serves as a special type of equality when
@@ -364,16 +891,238 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
   (Evaluation 
     (Predicate P) 
     (Concept A)))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_0__PA</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Predicate'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>]], 
+    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>D</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Concept'</span></span>)</span>, 
+        <span class="pl-var"
+>D</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Evaluation'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(PA,1,Predicate,2)
+; % ######### warning: creating stub for:Predicate
+Asserting: transpiler_depends_on(PA,1,Concept,2)
+; % ######### warning: creating stub for:Concept
+Asserting: transpiler_depends_on(PA,1,Evaluation,3)
+; % ######### warning: creating stub for:Evaluation
+mc_0__PA(A) :-
+    B='P',
+    mc_1__Predicate(B, C),
+    D='A',
+    mc_1__Concept(D, E),
+    mc_2__Evaluation(C, E, A).
+
 </span><span class="ansi38-255165000"
 > (= (PB)  
   (Evaluation 
     (Predicate P) 
     (Concept B)))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_0__PB</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Predicate'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>]], 
+    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>D</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Concept'</span></span>)</span>, 
+        <span class="pl-var"
+>D</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Evaluation'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(PB,1,Predicate,2)
+Asserting: transpiler_depends_on(PB,1,Concept,2)
+Asserting: transpiler_depends_on(PB,1,Evaluation,3)
+mc_0__PB(A) :-
+    B='P',
+    mc_1__Predicate(B, C),
+    D='B',
+    mc_1__Concept(D, E),
+    mc_2__Evaluation(C, E, A).
+
 </span><span class="ansi38-255165000"
 > (= (FA)  
   (Evaluation 
     (Predicate F) 
     (Concept A)))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_0__FA</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Predicate'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>]], 
+    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>D</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Concept'</span></span>)</span>, 
+        <span class="pl-var"
+>D</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'Evaluation'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(FA,1,Predicate,2)
+Asserting: transpiler_depends_on(FA,1,Concept,2)
+Asserting: transpiler_depends_on(FA,1,Evaluation,3)
+mc_0__FA(A) :-
+    B='F',
+    mc_1__Predicate(B, C),
+    D='A',
+    mc_1__Concept(D, E),
+    mc_2__Evaluation(C, E, A).
+
 </span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
@@ -383,7 +1132,7 @@ Script started on 2024-12-27 09:55:06+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.01</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (15.76 milliseconds) 
+; took 0.016 secs. (16.08 milliseconds) 
 
 !(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
 
@@ -403,7 +1152,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.02</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.61 milliseconds) 
+; took 0.009 secs. (9.01 milliseconds) 
 
 !(assertEqual (TV (FA)) (stv 0.4 0.8))
 
@@ -438,7 +1187,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.40 milliseconds) 
+; took 0.002 secs. (2.49 milliseconds) 
 
 !(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
@@ -458,7 +1207,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.04</h3>
 ; 
 ; EVAL TEST
-; took 0.024 secs. (24.22 milliseconds) 
+; took 0.025 secs. (24.90 milliseconds) 
 
 !(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
@@ -478,7 +1227,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.05</h3>
 ; 
 ; EVAL TEST
-; took 0.051 secs. (50.97 milliseconds) 
+; took 0.053 secs. (52.65 milliseconds) 
 
 !(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
@@ -535,7 +1284,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 09:55:15+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 10:07:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

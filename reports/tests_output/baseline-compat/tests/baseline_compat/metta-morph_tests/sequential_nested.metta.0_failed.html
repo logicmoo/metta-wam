@@ -19,10 +19,13 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -64,7 +67,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:43:27+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/sequential_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 10:56:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/sequential_nested.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -157,9 +160,9 @@ Script started on 2024-12-27 10:43:27+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 13 "[30]" )
 P;HTML|
-;                             #( = 14 "0.11user 0.01system 0:00.12elapsed 100%CPU (0avgtext+0avgdata 28112maxresident)k" )
+;                             #( = 14 "0.11user 0.01system 0:00.12elapsed 98%CPU (0avgtext+0avgdata 27984maxresident)k" )
 P;HTML|
-;                              #( = 14 "0inputs+0outputs (0major+3396minor)pagefaults 0swaps" )
+;                              #( = 14 "0inputs+0outputs (0major+3400minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/sequential_nested.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/sequential_nested.metta)
 
@@ -168,11 +171,52 @@ Script started on 2024-12-27 10:43:27+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (sequential $1)  
   (superpose $1))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__sequential</span>(<span class="pl-args"
+><span class="pl-var"
+>_1</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>superpose</span></span>)</span>, 
+        <span class="pl-var"
+>_1</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(sequential,2,superpose,2)
+mc_1__sequential(_1, A) :-
+    mc_1__superpose(_1, A).
+
 </span><span class="ansi38-255165000"
 > (: do (-> Expression %Undefined%))
 </span><span class="ansi38-255165000"
 > (= (do $1)  
   (case $1 ()))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_1__do</span>(<span class="pl-args"
+><span class="pl-var"
+>_1</span>, <span class="pl-var"
+>A</span></span>)</span>, 
+  [ [ assign ,   A   ,'Empty']]].&#13;&#10;
+mc_1__do(_1, A) :-
+    A='Empty'.
+
 </span><span class="ansi38-013099040"
 >!(bind! &var (new-state 1))
 
@@ -182,6 +226,149 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (increment)  
   (superpose ((do (change-state! &var (+ 1 (get-state &var)))) (get-state &var))))
+</span><span class="ansi38-255165005"
+><span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>mc_0__increment</span>(<span class="pl-args"
+><span class="pl-var"
+>A</span></span>)</span>, 
+  [ <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>B</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>C</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>D</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'get-state'</span></span>)</span>, 
+        <span class="pl-var"
+>C</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>E</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>+</span></span>)</span>, <span class="pl-int"
+>1</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>3</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>F</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'change-state!'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>1</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>4</span></span>)</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>G</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>do</span></span>)</span>, 
+        <span class="pl-var"
+>F</span>]], 
+    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>assign</span>, <span class="pl-var"
+>H</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>I</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'get-state'</span></span>)</span>, 
+        <span class="pl-var"
+>H</span>]], 
+    [ <span class="pl-atom"
+>assign</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>9</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>list</span>(<span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span></span>)</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>)</span>], 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>A</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>superpose</span></span>)</span>, 
+        <span class="pl-var"
+>J</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(increment,1,get-state,2)
+; % ######### warning: creating stub for:get-state
+Asserting: transpiler_depends_on(increment,1,+,3)
+Asserting: transpiler_depends_on(increment,1,change-state!,3)
+; % ######### warning: creating stub for:change-state!
+Asserting: transpiler_depends_on(increment,1,do,2)
+; % ######### warning: creating stub for:do
+Asserting: transpiler_depends_on(increment,1,superpose,2)
+mc_0__increment(A) :-
+    B='&var',
+    C='&var',
+    'mc_1__get-state'(C, D),
+    'mc_2__+'(1, D, E),
+    'mc_2__change-state!'(B, E, F),
+    mc_1__do(F, G),
+    H='&var',
+    'mc_1__get-state'(H, I),
+    J=[G, I],
+    mc_1__superpose(J, A).
+
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -195,7 +382,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.38 milliseconds) 
+; took 0.002 secs. (2.49 milliseconds) 
 
 !(assertEqualToResult (sequential ((increment) (increment))) (3 2))
 
@@ -220,7 +407,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.34 milliseconds) 
+; took 0.003 secs. (3.30 milliseconds) 
 
 !(assertEqualToResult (sequential ((increment) (increment) (increment))) (6 5 4))
 
@@ -245,7 +432,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.41 milliseconds) 
+; took 0.003 secs. (3.32 milliseconds) 
 
 !(assertEqualToResult (sequential ((sequential ((increment) (increment) (increment))))) (7 8 9))
 
@@ -270,7 +457,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.45 milliseconds) 
+; took 0.006 secs. (6.32 milliseconds) 
 
 !(assertEqualToResult (sequential ((sequential ((increment) (increment) (increment))) (sequential ((increment) (increment) (increment))))) (13 14 15 10 11 12))
 
@@ -295,7 +482,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.05</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.48 milliseconds) 
+; took 0.006 secs. (6.24 milliseconds) 
 
 !(assertEqualToResult (sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment))) (21 20 19 16 17 18))
 
@@ -320,7 +507,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.06</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.44 milliseconds) 
+; took 0.006 secs. (6.33 milliseconds) 
 
 !(assertEqualToResult (do (sequential ((sequential ((increment) (increment) (increment))) (increment) (increment) (increment)))) ())
 
@@ -343,7 +530,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000210 secs. (210.05 microseconds) 
+; took 0.000217 secs. (217.50 microseconds) 
 
 !(assertEqualToResult (get-state &var) (27))
 
@@ -368,7 +555,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.08</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.30 milliseconds) 
+; took 0.001 secs. (1.37 milliseconds) 
 
 !(assertEqualToResult (sequential ((increment))) (28))
 
@@ -393,7 +580,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.26 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqualToResult (increment) (29))
 
@@ -418,7 +605,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000212 secs. (211.52 microseconds) 
+; took 0.000236 secs. (235.64 microseconds) 
 
 !(assertEqualToResult (get-state &var) (29))
 
@@ -443,7 +630,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000859 secs. (858.77 microseconds) 
+; took 0.000850 secs. (849.90 microseconds) 
 
 !(assertEqualToResult (sequential ((change-state! &var (+ 1 (get-state &var))))) ((State 30)))
 
@@ -468,7 +655,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SEQUENTIAL-NESTED.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000216 secs. (216.07 microseconds) 
+; took 0.000211 secs. (210.88 microseconds) 
 
 !(assertEqualToResult (get-state &var) (30))
 
@@ -533,7 +720,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:43:36+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 10:56:15+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
