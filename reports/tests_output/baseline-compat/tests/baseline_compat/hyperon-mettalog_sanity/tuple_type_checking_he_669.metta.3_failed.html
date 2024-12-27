@@ -14,14 +14,19 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi31 { color: #aa0000; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -29,7 +34,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:26:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:31:28+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -104,9 +109,9 @@ Script started on 2024-12-27 10:26:25+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "Missed result: (Error (wrong type) BadType))]" )
 P;HTML|
-;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27624maxresident)k" )
+;                          #( = 2 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 27492maxresident)k" )
 P;HTML|
-;                          #( = 2 "0inputs+0outputs (0major+3310minor)pagefaults 0swaps" )
+;                          #( = 2 "0inputs+0outputs (0major+3308minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta)
 
@@ -119,7 +124,7 @@ Script started on 2024-12-27 10:26:25+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000794 secs. (794.10 microseconds) 
+; took 0.000806 secs. (806.05 microseconds) 
 
 !(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -141,7 +146,31 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (foo_mixed $x)  $x)
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:foo_mixed
+Retracting stub: mc_1__foo_mixed(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo_mixed, 2, 0, [['%Undefined%', 'T']], '%Undefined%', [x(doeval, eager)], x(doeval, eager), [foo_mixed, _x], _x).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([foo_mixed,_x]),arg(foo_mixed,0)], 
+  _x-[arg(defn,2),arg(foo_mixed,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -152,9 +181,19 @@ Deterministic: <span class="ansi33"
 >_x</span>, <span class="pl-var"
 >_x</span></span>)</span>, 
   []].&#13;&#10;
+<span class="ansi38-173216230"
+>
 mc_1__foo_mixed(_x, _x).
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':foo_mixed/2:
+'&self':foo_mixed/2
+
+
+Functions to recompile after redefining '&self':foo_mixed/2 in correct order:
+   '&self':foo_mixed/2
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
 </span>
@@ -162,7 +201,7 @@ mc_1__foo_mixed(_x, _x).
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000807 secs. (807.23 microseconds) 
+; took 0.000773 secs. (772.60 microseconds) 
 
 !(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
@@ -188,7 +227,36 @@ Deterministic: <span class="ansi33"
     (* 
       (fact_strict (- $n 1)) $n)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:fact_strict
+Retracting stub: mc_1__fact_strict(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(fact_strict, 2, 0, ['Integer'], 'Integer', [x(doeval, eager)], x(doeval, eager), [fact_strict, _n], [if, [==, _n, 0], 1, [*, [fact_strict, [-, _n, 1]], _n]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _n-[arg(*,2),arg(-,1),arg(==,1),arg(fact_strict,1)], 
+  _temp_2-[eval([fact_strict,_n]),arg(fact_strict,0)], 
+  _temp_3-[eval([==,_n,0]),arg(==,0),arg(if,1)], 
+  _temp_4-[eval([-,_n,1]),arg(-,0),arg(fact_strict,1)], 
+  _temp_5-[eval([fact_strict,_temp_4]),arg(*,1),arg(fact_strict,0)], 
+  _temp_6-[eval([*,_temp_5,_n]),arg(*,0),arg(if,3)], 
+  _temp_7-[eval([if,_temp_3,1,_temp_6]),arg(if,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_n].
+lazyArgsList:[_n-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -196,14 +264,14 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >mc_1__fact_strict</span>(<span class="pl-args"
 ><span class="pl-var"
->_n</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_n</span>, <span class="pl-avar"
+>_185940{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_if</span>, 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->B</span>, 
+>A</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -217,12 +285,12 @@ Deterministic: <span class="ansi33"
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->B</span>]], 
-      [ [ assign,  A   ,  1   ]], 
+>A</span>]], 
+      [ [ assign,_234816,  1   ]], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -233,35 +301,44 @@ Deterministic: <span class="ansi33"
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->D</span>, 
+>C</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >fact_strict</span></span>)</span>, 
             <span class="pl-var"
->C</span>]], 
+>B</span>]], 
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->E</span>, 
+>D</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >*</span></span>)</span>, <span class="pl-var"
->D</span>, <span class="pl-var"
+>C</span>, <span class="pl-var"
 >_n</span>]], 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_234816</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(fact_strict,2,==,3)
 Asserting: transpiler_depends_on(fact_strict,2,-,3)
 Asserting: transpiler_depends_on(fact_strict,2,*,3)
+<span class="ansi38-240128128"
+>A=['Number', arg(*, 0), val(B), val(1), 'Integer', arg(fact_strict, 0)].
+C=['Bool'].
+D=['Integer', arg(fact_strict, 1), 'Number', arg(-, 0)].
+E=['Number', arg(*, 1), 'Integer', arg(fact_strict, 0)].
+B=['Integer', arg(fact_strict, 0), 'Number', val(1), arg(*, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__fact_strict(_n, A) :-
     (   'mc_2__=='(_n, 0, B),
         is_True(B)
@@ -272,7 +349,18 @@ mc_1__fact_strict(_n, A) :-
         A=E
     ).
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':fact_strict/2:
+'&self':fact_strict/2
+├── '&self':==/3
+├── '&self':-/3
+└── '&self':*/3
+
+
+Functions to recompile after redefining '&self':fact_strict/2 in correct order:
+   '&self':fact_strict/2
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict 5) ((120)))
 
 </span>
@@ -280,7 +368,7 @@ mc_1__fact_strict(_n, A) :-
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.86 milliseconds) 
+; took 0.007 secs. (6.62 milliseconds) 
 
 !(assertEqualToResult (fact_strict 5) ((120)))
 
@@ -302,7 +390,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04</h3>
 
-Script done on 2024-12-27 10:27:05+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 11:32:08+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

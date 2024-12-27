@@ -14,16 +14,14 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi32 { color: #00aa00; }
-.ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 10:33:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:16:30+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -100,7 +98,7 @@ Script started on 2024-12-26 10:33:31+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: 3)]" )
 P;HTML|
-;                          #( = 3 "0.04user 0.00system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27740maxresident)k" )
+;                          #( = 3 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27740maxresident)k" )
 P;HTML|
 ;                          #( = 3 "0inputs+0outputs (0major+3340minor)pagefaults 0swaps" )
 P;HTML|
@@ -115,42 +113,17 @@ Script started on 2024-12-26 10:33:31+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= ((λ $x $f) $y)  
   (let $x $y $f))
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store([λ, _x, _f], 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [[λ, _x, _f], _y], [let, _x, _y, _f]).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-var"
->_f</span> =  
-       
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->λ</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>, 
-      <span class="pl-var"
->_y</span>], 
-  [ [ assign,  _x  ,  _y  ]]].&#13;&#10;
-_f=[call([λ, _x, _f]), _y] :-
-    _x=_y.
-<span class="ansi36"
->
-_f=[call([λ, _x, _f]), _y] :-
-    _x=_y.
-
-</span>
-;;; Test: Call unary lambda with one argument
+</span>P;HTML|
+; error<span class="pl-functor"
+>( </span>
+;    type_error(text,[λ,_x,_f]),
+;    context(system:atomic_list_concat/2,Context_Kw))
+P;HTML|
+; error(type_error(text,[λ,_x,_f]),context(system:atomic_list_concat/2,_2810))
+
    <span class="ansi1 ansi32"
->Call: </span>(105) [user] do_metta(file(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta'</span>), +, '&self', exec([assertEqualToResult, [[λ, _118722, [+, 1, _118722]], 1], [2]]), _45264) ? 
-Script done on 2024-12-26 10:34:11+00:00 [COMMAND_EXIT_CODE="143"]
+>Call: </span>(159) [system] atomic_list_concat([mc_, 1, '__', [λ, _x, _f]], _1732) ? 
+Script done on 2024-12-27 11:17:10+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

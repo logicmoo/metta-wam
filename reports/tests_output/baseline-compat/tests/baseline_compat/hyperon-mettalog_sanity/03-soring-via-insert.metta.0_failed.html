@@ -16,6 +16,7 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -26,8 +27,12 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -38,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:09:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:13:47+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -117,9 +122,9 @@ Script started on 2024-12-27 10:09:14+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 6 "[()]" )
 P;HTML|
-;                          #( = 7 "0.06user 0.01system 0:00.07elapsed 98%CPU (0avgtext+0avgdata 28000maxresident)k" )
+;                          #( = 7 "0.06user 0.01system 0:00.07elapsed 100%CPU (0avgtext+0avgdata 28124maxresident)k" )
 P;HTML|
-;                           #( = 7 "0inputs+0outputs (0major+3383minor)pagefaults 0swaps" )
+;                           #( = 7 "0inputs+0outputs (0major+3380minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta)
 
@@ -150,7 +155,7 @@ Script started on 2024-12-27 10:09:14+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000491 secs. (490.67 microseconds) 
+; took 0.000378 secs. (378.17 microseconds) 
 
 !(assertEqualToResult (get-type insert) ((-> $a_3516 (List $a_3516) (List $a_3516))))
 
@@ -170,7 +175,32 @@ Deterministic: <span class="ansi33"
 > (= (insert $x Nil)  
   (Cons $x Nil))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:insert
+Retracting stub: mc_2__insert(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(insert, 3, 0, ['Number', ['List', 'Number']], ['List', 'Number'], [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [insert, _x, 'Nil'], ['Cons', _x, 'Nil']).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([insert,_x,'Nil']),arg(insert,0)], 
+  _temp_2-[eval(['Cons',_x,'Nil']),arg('Cons',0)], 
+  _x-[arg('Cons',1),arg(insert,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x, 'Nil'].
+lazyArgsList:[_x-eager, 'Nil'-eager].
+eagerLazyList:[eager, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -179,19 +209,18 @@ Deterministic: <span class="ansi33"
 >mc_2__insert</span>(<span class="pl-args"
 ><span class="pl-var"
 >_x</span>, <span class="pl-atom"
->'Nil'</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>'Nil'</span>, <span class="pl-avar"
+>_64444{cns = ...}</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->B</span>|<span class="pl-ellipsis"
+>A</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _64444{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -204,14 +233,29 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(insert,3,Cons,3)
-; % ######### warning: creating stub for:Cons
+>0</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(insert,3,'Cons',3)
+; % ######### warning: creating stub for:'Cons'
+<span class="ansi38-240128128"
+>A=[B, 'List', arg('Cons', 0), C, arg(insert, 0)].
+D=[E, 'List', arg('Cons', 2), F, G, val('Nil')].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__insert(_x, 'Nil', A) :-
     B='Nil',
     mc_2__Cons(_x, B, A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':insert/3:
+'&self':insert/3
+└── '&self':'Cons'/3
+
+
+Functions to recompile after redefining '&self':insert/3 in correct order:
+   '&self':insert/3
+
+<span class="ansi38-255165000"
 > (= (insert $x (Cons $head $tail))  
   (if 
     (< $x $head) 
@@ -220,7 +264,38 @@ mc_2__insert(_x, 'Nil', A) :-
     (Cons $head 
       (insert $x $tail))))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+></span><span class="ansi36"
+>transpiler_clause_store(insert, 3, 1, ['Number', ['List', 'Number']], ['List', 'Number'], [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [insert, _x, ['Cons', _head, _tail]], [if, [<, _x, _head], ['Cons', _x, ['Cons', _head, _tail]], ['Cons', _head, [insert, _x, _tail]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _head-[arg(<,2),arg('Cons',1)], 
+  _tail-[arg('Cons',2),arg(insert,2)], 
+  _temp_10-[eval([if,_temp_5,_temp_7,_temp_9]),arg(if,0)], 
+  _temp_3-[eval(['Cons',_head,_tail]),arg('Cons',0),arg(insert,2)], 
+  _temp_4-[eval([insert,_x,_temp_3]),arg(insert,0)], 
+  _temp_5-[eval([<,_x,_head]),arg(<,0),arg(if,1)], 
+  _temp_6-[eval(['Cons',_head,_tail]),arg('Cons',0),arg('Cons',2)], 
+  _temp_7-[eval(['Cons',_x,_temp_6]),arg('Cons',0),arg(if,2)], 
+  _temp_8-[eval([insert,_x,_tail]),arg('Cons',2),arg(insert,0)], 
+  _temp_9-[eval(['Cons',_head,_temp_8]),arg('Cons',0),arg(if,3)], 
+  _x-[arg(<,1),arg('Cons',1),arg(insert,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x, ['Cons', _head, _tail]].
+lazyArgsList:[_x-eager, ['Cons', _head, _tail]-eager].
+eagerLazyList:[eager, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -233,14 +308,14 @@ mc_2__insert(_x, 'Nil', A) :-
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >'Cons'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>...</span></span>]</span>, <span class="pl-avar"
+>_48216{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_if</span>, 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->B</span>, 
+>A</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -254,11 +329,11 @@ mc_2__insert(_x, 'Nil', A) :-
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->B</span>]], 
+>A</span>]], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -269,25 +344,25 @@ mc_2__insert(_x, 'Nil', A) :-
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->D</span>, 
+>C</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'Cons'</span></span>)</span>, <span class="pl-var"
 >_x</span>, <span class="pl-var"
->C</span>]], 
+>B</span>]], 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_107702</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->E</span>, 
+>D</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -298,22 +373,32 @@ mc_2__insert(_x, 'Nil', A) :-
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->F</span>, 
+>E</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'Cons'</span></span>)</span>, <span class="pl-var"
 >_head</span>, <span class="pl-var"
->E</span>]], 
+>D</span>]], 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_107702</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(insert,3,<,3)
+<span class="ansi38-240128128"
+>A=[B, 'List', arg(insert, 0)].
+C=['Bool', arg(<, 0)].
+D=[E, 'List', arg('Cons', 2), F, arg('Cons', 0)].
+G=[H, 'List', arg(insert, 0), B, I, J, arg('Cons', 0)].
+K=[L, 'List', arg('Cons', 2), M, arg(insert, 0)].
+N=[O, 'List', arg(insert, 0), B, P, Q, arg('Cons', 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__insert(_x, ['Cons', _head, _tail], A) :-
     (   'mc_2__<'(_x, _head, B),
         is_True(B)
@@ -325,7 +410,17 @@ mc_2__insert(_x, ['Cons', _head, _tail], A) :-
         A=F
     ).
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':insert/3:
+'&self':insert/3
+├── '&self':'Cons'/3
+└── '&self':</3
+
+
+Functions to recompile after redefining '&self':insert/3 in correct order:
+   '&self':insert/3
+
+<span class="ansi38-013099040"
 >!(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 </span>
@@ -333,7 +428,7 @@ mc_2__insert(_x, ['Cons', _head, _tail], A) :-
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.15 milliseconds) 
+; took 0.003 secs. (2.98 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -355,7 +450,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000507 secs. (506.89 microseconds) 
+; took 0.000456 secs. (456.43 microseconds) 
 
 !(assertEqual (Cons 1 Nil) (Cons 1 Nil))
 
@@ -375,7 +470,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000913 secs. (913.20 microseconds) 
+; took 0.000753 secs. (753.08 microseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -395,7 +490,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.38 milliseconds) 
+; took 0.002 secs. (2.28 milliseconds) 
 
 !(assertEqual (insert 1 (insert 2 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -417,7 +512,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.24 milliseconds) 
+; took 0.007 secs. (6.92 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -479,7 +574,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:09:22+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:13:55+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

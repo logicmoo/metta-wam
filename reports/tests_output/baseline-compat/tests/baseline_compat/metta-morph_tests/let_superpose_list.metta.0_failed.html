@@ -16,9 +16,12 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -28,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/let_superpose_list.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:35:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/let_superpose_list.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -99,9 +102,9 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[()]" )
 P;HTML|
-;                         #( = 3 "0.06user 0.00system 0:00.07elapsed 100%CPU (0avgtext+0avgdata 28108maxresident)k" )
+;                         #( = 3 "0.06user 0.01system 0:00.07elapsed 98%CPU (0avgtext+0avgdata 28232maxresident)k" )
 P;HTML|
-;                         #( = 3 "0inputs+0outputs (0major+3427minor)pagefaults 0swaps" )
+;                         #( = 3 "0inputs+0outputs (0major+3423minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/let_superpose_list.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/let_superpose_list.metta)
 
@@ -111,7 +114,34 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
     ( ($y (* 2 $x)) ($z (superpose (4 5)))) 
     ($y $z)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:wuza
+Retracting stub: mc_1__wuza(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(wuza, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [wuza, _x], ['let*', [[_y, [*, 2, _x]], [_z, [superpose, [4, 5]]]], [_y, _z]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([wuza,_x]),arg(wuza,0)], 
+  _temp_2-[eval([*,2,_x]),arg(*,0)], 
+  _temp_3-[eval([superpose,[4,5]]),arg(superpose,0)], 
+  _temp_4-[eval(['let*',[[_y,_temp_2],[_z,_temp_3]],[_y,_z]]),arg('let*',0)], 
+  _x-[arg(*,2),arg(wuza,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -119,8 +149,8 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >mc_1__wuza</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_96542{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -137,7 +167,7 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
+>0</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
 ><span class="pl-list"
@@ -156,11 +186,10 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-atom"
 >superpose</span></span>)</span>, 
         <span class="pl-var"
->B</span>]], 
+>A</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _96542{cns = ...}, 
       <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
@@ -172,13 +201,29 @@ Script started on 2024-12-27 10:30:55+00:00 [COMMAND="timeout --preserve-status 
 >...</span></span>]</span></span>)</span>]]].&#13;&#10;
 Asserting: transpiler_depends_on(wuza,2,*,3)
 Asserting: transpiler_depends_on(wuza,2,superpose,2)
+<span class="ansi38-240128128"
+>A=[val([_y, _z]), list, val(list([_y, _z])), arg(wuza, 0)].
+B=['Expression', arg(superpose, 1), val([4, 5]), list, val(list([4, 5]))].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__wuza(_x, A) :-
     'mc_2__*'(2, _x, _y),
     B=[4, 5],
     mc_1__superpose(B, _z),
     A=[_y, _z].
 
-</span><span class="ansi38-255165009"
+</span>
+Dependency Tree for '&self':wuza/2:
+'&self':wuza/2
+├── '&self':*/3
+└── '&self':superpose/2
+
+
+Functions to recompile after redefining '&self':wuza/2 in correct order:
+   '&self':wuza/2
+
+<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(wuza 5)
@@ -191,7 +236,7 @@ mc_1__wuza(_x, A) :-
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-LIST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.76 milliseconds) 
+; took 0.002 secs. (1.67 milliseconds) 
 
 !(assertEqualToResult (wuza 5) ((10 4) (10 5)))
 
@@ -211,7 +256,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-LIST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.15 milliseconds) 
+; took 0.002 secs. (2.13 milliseconds) 
 
 !(assertEqual (wuza 5) (superpose ((10 4) (10 5))))
 
@@ -265,7 +310,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:31:03+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:36:06+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

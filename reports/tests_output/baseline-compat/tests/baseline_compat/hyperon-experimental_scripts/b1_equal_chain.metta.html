@@ -14,18 +14,18 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi32 { color: #00aa00; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 10:25:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:08:53+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -104,9 +104,9 @@ Script started on 2024-12-26 10:25:55+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 6 "[()]" )
 P;HTML|
-;                          #( = 7 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27608maxresident)k" )
+;                          #( = 7 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27724maxresident)k" )
 P;HTML|
-;                           #( = 7 "0inputs+0outputs (0major+3327minor)pagefaults 0swaps" )
+;                           #( = 7 "0inputs+0outputs (0major+3326minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta)
 
@@ -123,8 +123,29 @@ Script started on 2024-12-26 10:25:55+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (= (I $x)  $x)
 </span><span class="ansi38-255165005"
-></span><span class="ansi36"
+>; % ######### warning: creating stub for:'I'
+Retracting stub: mc_1__I(B,C)
+</span><span class="ansi36"
 >transpiler_clause_store('I', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), ['I', _x], _x).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval(['I',_x]),arg('I',0)], 
+  _x-[arg('I',1),arg(defn,2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
 
 </span><span class="pl-functor"
 >[ </span>
@@ -137,49 +158,31 @@ Script started on 2024-12-26 10:25:55+00:00 [COMMAND="timeout --preserve-status 
 >_x</span>, <span class="pl-var"
 >_x</span></span>)</span>, 
   []].&#13;&#10;
-mc_1__I(_x, _x).
-<span class="ansi36"
+<span class="ansi38-173216230"
 >
 mc_1__I(_x, _x).
 
 </span>
+Dependency Tree for '&self':'I'/2:
+'&self':'I'/2
+
+
+Functions to recompile after redefining '&self':'I'/2 in correct order:
+   '&self':'I'/2
+
 <span class="ansi38-255165000"
 > (= ((K $x) $y)  $x)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(['K', _x], 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [['K', _x], _y], _x).
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-var"
->_x</span> =  
-       
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'K'</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>, 
-      <span class="pl-var"
->_y</span>], 
-  []].&#13;&#10;
-_x=[call(['K', _x]), _y].
-<span class="ansi36"
->
-_x=[call(['K', _x]), _y].
-
-</span>
-;;; Note that `(K $x)` is allowed here
-<span class="ansi38-255165000"
-> (= (= (K $_130826 $_130832) $_130826)
-</span>   <span class="ansi1 ansi32"
->Call: </span>(156) [user] _134218=(_134312:-_134314) ? 
-Script done on 2024-12-26 10:26:35+00:00 [COMMAND_EXIT_CODE="143"]
+</span>P;HTML|
+; error<span class="pl-functor"
+>( </span>
+;    type_error(text,['K',_x]),
+;    context(system:atomic_list_concat/2,Context_Kw))
+P;HTML|
+; error(type_error(text,['K',_x]),context(system:atomic_list_concat/2,_2562))
+
+   <span class="ansi1 ansi32"
+>Call: </span>(159) [system] atomic_list_concat([mc_, 1, '__', ['K', _x]], _1494) ? 
+Script done on 2024-12-27 11:09:33+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

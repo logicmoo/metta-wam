@@ -13,6 +13,7 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -23,15 +24,19 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:18:08+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:23:12+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -108,9 +113,9 @@ Script started on 2024-12-27 10:18:08+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: 2)]" )
 P;HTML|
-;                          #( = 3 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27744maxresident)k" )
+;                          #( = 3 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27868maxresident)k" )
 P;HTML|
-;                          #( = 3 "0inputs+0outputs (0major+3328minor)pagefaults 0swaps" )
+;                          #( = 3 "0inputs+0outputs (0major+3327minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta)
 
@@ -130,7 +135,7 @@ Script started on 2024-12-27 10:18:08+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000159 secs. (159.08 microseconds) 
+; took 0.000174 secs. (173.74 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote A) $x) (A))
 
@@ -152,7 +157,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000499 secs. (498.53 microseconds) 
+; took 0.000490 secs. (490.38 microseconds) 
 
 !(assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2))
 
@@ -200,7 +205,70 @@ Deterministic: <span class="ansi33"
     (: $prf $ccln) 
     (: $prf $ccln)))
 </span><span class="ansi38-255165005"
+>; % ######### warning: creating stub for:bc
+Retracting stub: mc_2__bc(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(bc, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [bc, [:, _prf, _ccln], A], [match, '&kb', [:, _prf, _ccln], [:, _prf, _ccln]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>A</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_ccln</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prf</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_1-[eval([:,_prf,_ccln]),arg(:,0),arg(bc,1)], 
+  _temp_2-[eval([bc,_temp_1,A]),arg(bc,0)], 
+  _temp_3-[eval([:,_prf,_ccln]),arg('&kb',1),arg(:,0),arg(match,2)], 
+  _temp_4-[eval([:,_prf,_ccln]),arg('&kb',2),arg(:,0),arg(match,3)], 
+  _temp_5-[eval([match,'&kb',_temp_3,_temp_4]),arg(match,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[[:, _prf, _ccln], A].
+lazyArgsList:[[:, _prf, _ccln]-eager, A-eager].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -212,9 +280,9 @@ Deterministic: <span class="ansi33"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >:</span>|<span class="pl-ellipsis"
->...</span></span>]</span>, <span class="pl-anon"
->_</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>...</span></span>]</span>, <span class="pl-var"
+>A</span>, <span class="pl-avar"
+>_167038{cns = ...}</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -241,8 +309,7 @@ Deterministic: <span class="ansi33"
 >'_ccln'</span></span>)</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _167038{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -273,7 +340,15 @@ Deterministic: <span class="ansi33"
 >D</span>]]]]].&#13;&#10;
 Asserting: transpiler_depends_on(bc,3,:,3)
 Asserting: transpiler_depends_on(bc,3,match,4)
-mc_2__bc([:, _prf, _ccln], _, A) :-
+<span class="ansi38-240128128"
+>A=['%Undefined%', 'Empty', arg(bc, 0)].
+B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&kb')].
+C=['Atom', arg(match, 2), arg(:, 0)].
+D=[arg(:, 0)].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__bc([:, _prf, _ccln], A, A) :-
     B='&kb',
     'mc_2__:'(_prf, _ccln, C),
     mc_3__match(B,
@@ -281,7 +356,17 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
                 is_p1('mc_2__:'(_prf, _ccln, D), D),
                 A).
 
-</span>;;; Recursive step
+</span>
+Dependency Tree for '&self':bc/3:
+'&self':bc/3
+├── '&self'::/3
+└── '&self':match/4
+
+
+Functions to recompile after redefining '&self':bc/3 in correct order:
+   '&self':bc/3
+
+;;; Recursive step
 <span class="ansi38-255165000"
 > (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
   (let* 
@@ -290,7 +375,67 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
     (: 
       ($prfabs $prfarg) $ccln)))
 </span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store(bc, 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [bc, [:, [_prfabs, _prfarg], _ccln], ['S', _k]], ['let*', [[[:, _prfabs, [->, _prms, _ccln]], [bc, [:, _prfabs, [->, _prms, _ccln]], _k]], [[:, _prfarg, _prms], [bc, [:, _prfarg, _prms], _k]]], [:, [_prfabs, _prfarg], _ccln]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _ccln-[arg(->,2),arg(:,2)], 
+  _k-[arg('S',1),arg(bc,2)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prfabs</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prfarg</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _prms-[arg(->,1),arg(:,2)], 
+  _temp_10-[eval([:,_prfabs,_temp_9]),arg(:,0)], 
+  _temp_11-[eval([->,_prms,_ccln]),arg(->,0),arg(:,2)], 
+  _temp_12-[eval([:,_prfabs,_temp_11]),arg(:,0),arg(bc,1)], 
+  _temp_13-[eval([bc,_temp_12,_k]),arg(bc,0)], 
+  _temp_14-[eval([:,_prfarg,_prms]),arg(:,0)], 
+  _temp_15-[eval([:,_prfarg,_prms]),arg(:,0),arg(bc,1)], 
+  _temp_16-[eval([bc,_temp_15,_k]),arg(bc,0)], 
+  _temp_17-[eval([:,[_prfabs,_prfarg],_ccln]),arg(:,0),arg('let*',2)], 
+  _temp_18-[eval(['let*',[[_temp_10,_temp_13],[_temp_14,_temp_16]],_temp_17]),arg('let*',0)], 
+  _temp_6-[eval([:,[_prfabs,_prfarg],_ccln]),arg(:,0),arg(bc,1)], 
+  _temp_7-[eval(['S',_k]),arg('S',0),arg(bc,2)], 
+  _temp_8-[eval([bc,_temp_6,_temp_7]),arg(bc,0)], 
+  _temp_9-[eval([->,_prms,_ccln]),arg(->,0),arg(:,2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[[:, [_prfabs, _prfarg], _ccln], ['S', _k]].
+lazyArgsList:[[:, [_prfabs, _prfarg], _ccln]-eager, ['S', _k]-eager].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -312,12 +457,11 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 ><span class="pl-atom"
 >'S'</span>, <span class="pl-var"
 >_k</span></span>]</span>, 
-     <span class="pl-var"
->A</span>), 
+     _77910{cns = ...}), 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -328,7 +472,7 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->C</span>, 
+>B</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -341,11 +485,11 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]], 
+>0</span></span>)</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->D</span>, 
+>C</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -354,7 +498,7 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->2</span></span>)</span>, <span class="pl-compound pl-level-0"
+>1</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-atom"
@@ -373,11 +517,11 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 >_prms</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>], 
       <span class="pl-var"
->D</span>], 
+>C</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->E</span>, 
+>D</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -394,7 +538,7 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->F</span>, 
+>E</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -403,7 +547,7 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->4</span></span>)</span>, <span class="pl-compound pl-level-0"
+>3</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-atom"
@@ -418,11 +562,11 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 >_prfarg</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
       <span class="pl-var"
->F</span>], 
+>E</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->G</span>, 
+>F</span>, 
       <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
@@ -434,8 +578,7 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 >...</span></span>]</span></span>)</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _77910{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -444,11 +587,22 @@ mc_2__bc([:, _prf, _ccln], _, A) :-
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->6</span></span>)</span>, <span class="pl-compound pl-level-0"
+>5</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'_ccln'</span></span>)</span>]]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=[arg(:, 0), arg(bc, 0)].
+B=[arg(:, 2), val([->, _prms, _ccln])].
+C=[arg(bc, 1), arg(:, 0)].
+D=[arg(bc, 0)].
+E=[arg(bc, 1), arg(:, 0)].
+F=[arg(bc, 0)].
+G=[arg(:, 1), val([_prfabs, _prfarg]), list, val(list([_prfabs, _prfarg]))].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
     B=[->, _prms, _ccln],
     'mc_2__:'(_prfabs, B, C),
@@ -460,7 +614,17 @@ mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
     G=[_prfabs, _prfarg],
     'mc_2__:'(G, _ccln, A).
 
-</span>;;; Synthesize function composition (.)
+</span>
+Dependency Tree for '&self':bc/3:
+'&self':bc/3
+├── '&self'::/3
+└── '&self':match/4
+
+
+Functions to recompile after redefining '&self':bc/3 in correct order:
+   '&self':bc/3
+
+;;; Synthesize function composition (.)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
@@ -469,12 +633,12 @@ mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
 >;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.03</h3>
 ; 
 ; EVAL TEST
-; took 0.756 secs. (755.83 milliseconds) 
+; took 0.761 secs. (760.89 milliseconds) 
 
 !(assertEqualToResult (bc (: $prg (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))) (S (S (S Z)))) ((AS (AK AS)) AK))
 
 
-Script done on 2024-12-27 10:18:48+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 11:23:52+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

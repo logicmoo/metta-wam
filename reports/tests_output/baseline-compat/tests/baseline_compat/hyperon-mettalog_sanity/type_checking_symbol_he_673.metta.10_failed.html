@@ -16,15 +16,19 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -33,6 +37,7 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -51,7 +56,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:27:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:32:17+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -128,7 +133,7 @@ Script started on 2024-12-27 10:27:14+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: Error)]" )
 P;HTML|
-;                          #( = 3 "0.04user 0.00system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27628maxresident)k" )
+;                          #( = 3 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27624maxresident)k" )
 P;HTML|
 ;                          #( = 3 "0inputs+0outputs (0major+3320minor)pagefaults 0swaps" )
 P;HTML|
@@ -148,7 +153,31 @@ Script started on 2024-12-27 10:27:14+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (foo $x)  $x)
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:foo
+Retracting stub: mc_1__foo(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo, 2, 0, ['Symbol'], 'Type', [x(doeval, eager)], x(doeval, eager), [foo, _x], _x).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([foo,_x]),arg(foo,0)], 
+  _x-[arg(defn,2),arg(foo,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -159,9 +188,19 @@ Script started on 2024-12-27 10:27:14+00:00 [COMMAND="timeout --preserve-status 
 >_x</span>, <span class="pl-var"
 >_x</span></span>)</span>, 
   []].&#13;&#10;
+<span class="ansi38-173216230"
+>
 mc_1__foo(_x, _x).
 
-</span>;;; Test: Passing a valid Symbol
+</span>
+Dependency Tree for '&self':foo/2:
+'&self':foo/2
+
+
+Functions to recompile after redefining '&self':foo/2 in correct order:
+   '&self':foo/2
+
+;;; Test: Passing a valid Symbol
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo S) (S))
 
@@ -170,7 +209,7 @@ mc_1__foo(_x, _x).
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000428 secs. (427.79 microseconds) 
+; took 0.000405 secs. (404.51 microseconds) 
 
 !(assertEqualToResult (foo S) (S))
 
@@ -193,7 +232,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000856 secs. (855.54 microseconds) 
+; took 0.000931 secs. (931.03 microseconds) 
 
 !(assertEqualToResult (foo (This is an expression)) (Error (This is an expression) BadType))
 
@@ -217,7 +256,32 @@ Deterministic: <span class="ansi33"
 > (= (foo_var $x)  
   (get-type $x))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:foo_var
+Retracting stub: mc_1__foo_var(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo_var, 2, 0, ['Variable'], 'Type', [x(doeval, eager)], x(doeval, eager), [foo_var, _x], ['get-type', _x]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval([foo_var,_x]),arg(foo_var,0)], 
+  _temp_3-[eval(['get-type',_x]),arg('get-type',0)], 
+  _x-[arg(foo_var,1),arg('get-type',1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -225,12 +289,11 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >mc_1__foo_var</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_75446{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _100454, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -238,11 +301,25 @@ Deterministic: <span class="ansi33"
 >'get-type'</span></span>)</span>, 
         <span class="pl-var"
 >_x</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(foo_var,2,get-type,2)
+Asserting: transpiler_depends_on(foo_var,2,'get-type',2)
+<span class="ansi38-240128128"
+>A=['Atom', 'Type', arg('get-type', 0), arg(foo_var, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__foo_var(_x, A) :-
     'mc_1__get-type'(_x, A).
 
-</span>;;; Test: Passing a number to `foo_var`
+</span>
+Dependency Tree for '&self':foo_var/2:
+'&self':foo_var/2
+└── '&self':'get-type'/2
+
+
+Functions to recompile after redefining '&self':foo_var/2 in correct order:
+   '&self':foo_var/2
+
+;;; Test: Passing a number to `foo_var`
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
@@ -251,7 +328,7 @@ mc_1__foo_var(_x, A) :-
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000495 secs. (495.03 microseconds) 
+; took 0.000533 secs. (533.04 microseconds) 
 
 !(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
@@ -274,7 +351,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000398 secs. (398.15 microseconds) 
+; took 0.000460 secs. (459.93 microseconds) 
 
 !(assertEqualToResult (foo_var $x) (%Undefined%))
 
@@ -297,7 +374,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000526 secs. (526.40 microseconds) 
+; took 0.000550 secs. (550.46 microseconds) 
 
 !(assertEqualToResult (foo_var S) (Error S BadType))
 
@@ -320,7 +397,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000725 secs. (725.26 microseconds) 
+; took 0.000776 secs. (776.35 microseconds) 
 
 !(assertEqualToResult (foo_var (an expression)) (Error (an expression) BadType))
 
@@ -346,7 +423,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000305 secs. (305.39 microseconds) 
+; took 0.000328 secs. (328.12 microseconds) 
 
 !(assertEqualToResult (get-type (This is an expression)) (%Undefined%))
 
@@ -368,7 +445,31 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (foo_fixed $x)  $x)
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:foo_fixed
+Retracting stub: mc_1__foo_fixed(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo_fixed, 2, 0, ['Symbol'], 'Type', [x(doeval, eager)], x(doeval, eager), [foo_fixed, _x], _x).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_4-[eval([foo_fixed,_x]),arg(foo_fixed,0)], 
+  _x-[arg(defn,2),arg(foo_fixed,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -379,9 +480,19 @@ Deterministic: <span class="ansi33"
 >_x</span>, <span class="pl-var"
 >_x</span></span>)</span>, 
   []].&#13;&#10;
+<span class="ansi38-173216230"
+>
 mc_1__foo_fixed(_x, _x).
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':foo_fixed/2:
+'&self':foo_fixed/2
+
+
+Functions to recompile after redefining '&self':foo_fixed/2 in correct order:
+   '&self':foo_fixed/2
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
 </span>
@@ -389,7 +500,7 @@ mc_1__foo_fixed(_x, _x).
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000975 secs. (974.67 microseconds) 
+; took 0.000983 secs. (982.58 microseconds) 
 
 !(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
@@ -431,7 +542,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000900 secs. (899.79 microseconds) 
+; took 0.000886 secs. (885.65 microseconds) 
 
 !(assertEqualToResult (foo (%Undefined%)) ((Error (%Undefined%) BadType)))
 
@@ -455,7 +566,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000588 secs. (588.02 microseconds) 
+; took 0.000601 secs. (601.19 microseconds) 
 
 !(assertEqualToResult (foo_var $valid_variable) ((%Undefined%)))
 
@@ -478,7 +589,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000990 secs. (990.12 microseconds) 
+; took 0.000929 secs. (928.61 microseconds) 
 
 !(assertEqualToResult (foo_var (typed $x)) ((Error (typed $x) BadType)))
 
@@ -502,7 +613,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000171 secs. (170.68 microseconds) 
+; took 0.000153 secs. (153.08 microseconds) 
 
 !(assertEqualToResult (get-type $x) ((%Undefined%)))
 
@@ -568,7 +679,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:27:23+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:32:26+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

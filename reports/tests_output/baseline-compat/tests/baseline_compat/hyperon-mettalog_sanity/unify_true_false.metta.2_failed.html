@@ -16,13 +16,20 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -61,6 +68,8 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -73,7 +82,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:28:17+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:33:21+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unify_true_false.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -222,9 +231,9 @@ Script started on 2024-12-27 10:28:17+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                                        #( = 41 "[()]" )
 P;HTML|
-;                                        #( = 42 "0.14user 0.01system 0:00.16elapsed 100%CPU (0avgtext+0avgdata 28392maxresident)k" )
+;                                        #( = 42 "0.14user 0.01system 0:00.15elapsed 99%CPU (0avgtext+0avgdata 28520maxresident)k" )
 P;HTML|
-;                                         #( = 42 "0inputs+0outputs (0major+3422minor)pagefaults 0swaps" )
+;                                         #( = 42 "0inputs+0outputs (0major+3423minor)pagefaults 0swaps" )
 
 
 #(stream_error #( : 66 #( : 160 3007 ) ) #(syntax_error #(unexpected_char )) "Unexpected start character: ')'"))
@@ -237,7 +246,31 @@ Script started on 2024-12-27 10:28:17+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (= (same $X $X)  True)
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:same
+Retracting stub: mc_2__same(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(same, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [same, _X, _X], 'True').
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg(same,1),arg(same,2)], 
+  _temp_1-[eval([same,_X,_X]),arg(same,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X, _X].
+lazyArgsList:[_X-eager, _X-eager].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -246,20 +279,63 @@ Script started on 2024-12-27 10:28:17+00:00 [COMMAND="timeout --preserve-status 
 >mc_2__same</span>(<span class="pl-args"
 ><span class="pl-var"
 >_X</span>, <span class="pl-var"
->_X</span>, <span class="pl-var"
->A</span></span>)</span>, 
-  [ [ assign,  A   ,'True']]].&#13;&#10;
+>_X</span>, <span class="pl-avar"
+>_85212{cns = ...}</span></span>)</span>, 
+  [ [ assign,_85212{cns = ...},'True']]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=['Bool', arg(same, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__same(_X, _X, A) :-
     A='True'.
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':same/3:
+'&self':same/3
+
+
+Functions to recompile after redefining '&self':same/3 in correct order:
+   '&self':same/3
+
+<span class="ansi38-255165000"
 > (= (eq $X $Y)  
   (let $C 
     (same $X $Y) 
     (if 
       (== $C True) True False)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:eq
+Retracting stub: mc_2__eq(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(eq, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [eq, _X, _Y], [let, _C, [same, _X, _Y], [if, [==, _C, 'True'], 'True', 'False']]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _C-[arg(==,1),arg(let,1)], 
+  _X-[arg(eq,1),arg(same,1)], 
+  _Y-[arg(eq,2),arg(same,2)], 
+  _temp_2-[eval([eq,_X,_Y]),arg(eq,0)], 
+  _temp_3-[eval([same,_X,_Y]),arg(let,2),arg(same,0)], 
+  _temp_4-[eval([==,_C,'True']),arg(==,0),arg(if,1)], 
+  _temp_5-[eval([if,_temp_4,'True','False']),arg(if,0),arg(let,3)], 
+  _temp_6-[eval([let,_C,_temp_3,_temp_5]),arg(let,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X, _Y].
+lazyArgsList:[_X-eager, _Y-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -268,8 +344,8 @@ mc_2__same(_X, _X, A) :-
 >mc_2__eq</span>(<span class="pl-args"
 ><span class="pl-var"
 >_X</span>, <span class="pl-var"
->_Y</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_Y</span>, <span class="pl-avar"
+>_177470{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -288,12 +364,12 @@ mc_2__same(_X, _X, A) :-
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->B</span>|<span class="pl-ellipsis"
+>A</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -306,21 +382,29 @@ mc_2__same(_X, _X, A) :-
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]], 
+>0</span></span>)</span>]], 
         [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >native</span>(<span class="pl-args"
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->C</span>]], 
-      [ [ assign,  D   ,'True'],
-        [ assign,  A   ,  D   ]], 
-      [ [ assign ,   E   ,'False'],
-        [ assign ,   A   ,   E   ]]]]].&#13;&#10;
+>B</span>]], 
+      [ [ assign,  C   ,'True'],
+        [ assign,_177470{cns = ...},  C   ]], 
+      [ [ assign ,   D   ,'False'],
+        [ assign ,_177470{cns = ...},   D   ]]]]].&#13;&#10;
 Asserting: transpiler_depends_on(eq,3,same,3)
-; % ######### warning: creating stub for:same
 Asserting: transpiler_depends_on(eq,3,==,3)
+<span class="ansi38-240128128"
+>A=['Bool', val(B), arg(eq, 0)].
+C=['%Var', arg(==, 2), 'Bool'].
+D=['Bool'].
+B=[arg(eq, 0), 'Bool'].
+E=[arg(eq, 0), val(B), 'Bool'].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__eq(_X, _Y, A) :-
     mc_2__same(_X, _Y, _C),
     (   B='True',
@@ -332,11 +416,47 @@ mc_2__eq(_X, _Y, A) :-
         A=E
     ).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':eq/3:
+'&self':eq/3
+├── '&self':same/3
+└── '&self':==/3
+
+
+Functions to recompile after redefining '&self':eq/3 in correct order:
+   '&self':eq/3
+
+<span class="ansi38-255165000"
 > (= (unif $X $Y)  
   (unify $X $Y True False))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:unif
+Retracting stub: mc_2__unif(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(unif, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [unif, _X, _Y], [unify, _X, _Y, 'True', 'False']).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg(unif,1),arg(unify,1)], 
+  _Y-[arg(unif,2),arg(unify,2)], 
+  _temp_7-[eval([unif,_X,_Y]),arg(unif,0)], 
+  _temp_8-[eval([unify,_X,_Y,'True','False']),arg(unify,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X, _Y].
+lazyArgsList:[_X-eager, _Y-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -345,12 +465,11 @@ mc_2__eq(_X, _Y, A) :-
 >mc_2__unif</span>(<span class="pl-args"
 ><span class="pl-var"
 >_X</span>, <span class="pl-var"
->_Y</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_Y</span>, <span class="pl-avar"
+>_364046{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _389950, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -360,15 +479,22 @@ mc_2__eq(_X, _Y, A) :-
 >_Y</span>, 
         [ <span class="pl-atom"
 >is_p1</span>, 
-          [ [ assign,  B   ,'True']], 
+          [ [ assign,  A   ,'True']], 
           <span class="pl-var"
->B</span>], 
+>A</span>], 
         [ <span class="pl-atom"
 >is_p1</span>, 
-          [ [ assign ,   C   ,'False']], 
+          [ [ assign ,   B   ,'False']], 
           <span class="pl-var"
->C</span>]]]]].&#13;&#10;
+>B</span>]]]]].&#13;&#10;
 Asserting: transpiler_depends_on(unif,3,unify,5)
+<span class="ansi38-240128128"
+>A=['Atom', '%Undefined%', arg(unify, 0), arg(unif, 0)].
+B=['Bool'].
+C=['Bool'].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__unif(_X, _Y, A) :-
     mc_4__unify(_X,
                 _Y,
@@ -376,15 +502,24 @@ mc_2__unif(_X, _Y, A) :-
                 is_p1(C='False', C),
                 A).
 
-</span><span class="ansi38-013099040"
->!(assertEqualToResult (unif (+ 1 1) ($1 $2 $_316630)) (False))
+</span>
+Dependency Tree for '&self':unif/3:
+'&self':unif/3
+└── '&self':unify/5
+
+
+Functions to recompile after redefining '&self':unif/3 in correct order:
+   '&self':unif/3
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (unif (+ 1 1) ($1 $2 $_485424)) (False))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.01"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.85 milliseconds) 
+; took 0.002 secs. (1.91 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) ($1 $2 $_1394)) (False))
 
@@ -405,7 +540,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.41 milliseconds) 
+; took 0.001 secs. (1.48 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) 2) (True))
 
@@ -426,7 +561,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.41 milliseconds) 
+; took 0.002 secs. (1.52 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 1 1)) (True))
 
@@ -446,7 +581,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.001 secs. (1.47 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ 0 2)) (True))
 
@@ -467,7 +602,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.78 milliseconds) 
+; took 0.003 secs. (2.71 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) (+ $a $b)) (False))
 
@@ -488,7 +623,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000799 secs. (799.38 microseconds) 
+; took 0.000617 secs. (616.84 microseconds) 
 
 !(assertEqualToResult (unif $x $x) (True))
 
@@ -507,7 +642,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.06 milliseconds) 
+; took 0.015 secs. (15.32 milliseconds) 
 
 !(assertEqualToResult (unif $x $y) (True))
 
@@ -528,7 +663,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000932 secs. (932.30 microseconds) 
+; took 0.000777 secs. (776.65 microseconds) 
 
 !(assertEqualToResult (unif (+ 1 1) $x) (True))
 
@@ -549,7 +684,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.16 milliseconds) 
+; took 0.004 secs. (4.01 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -570,7 +705,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.06 milliseconds) 
+; took 0.004 secs. (3.80 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -590,7 +725,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.09 milliseconds) 
+; took 0.002 secs. (1.76 milliseconds) 
 
 !(assertEqualToResult (unif (+ 1 2) (+ 1 $two)) (False))
 
@@ -611,7 +746,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.06 milliseconds) 
+; took 0.002 secs. (1.71 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 1) ($1 $2 $_28484)) ((same 2 ($1 $2 $_28532))))
 
@@ -633,7 +768,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000601 secs. (601.38 microseconds) 
+; took 0.000593 secs. (592.67 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) 2) (True))
 
@@ -653,7 +788,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000626 secs. (626.13 microseconds) 
+; took 0.000604 secs. (603.72 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 1 1)) (True))
 
@@ -673,7 +808,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000679 secs. (678.90 microseconds) 
+; took 0.000683 secs. (683.33 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ 0 2)) (True))
 
@@ -693,7 +828,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.16</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.72 milliseconds) 
+; took 0.002 secs. (1.78 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -713,7 +848,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.17</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.20 milliseconds) 
+; took 0.003 secs. (3.17 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 1) (+ $a $b)) ((same 2 (+ $a $b))))
 
@@ -735,7 +870,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000452 secs. (451.91 microseconds) 
+; took 0.000481 secs. (481.01 microseconds) 
 
 !(assertEqualToResult (same $x $y) (True))
 
@@ -755,7 +890,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000453 secs. (452.90 microseconds) 
+; took 0.000379 secs. (379.03 microseconds) 
 
 !(assertEqualToResult (same $x $x) (True))
 
@@ -775,7 +910,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000548 secs. (547.55 microseconds) 
+; took 0.000460 secs. (460.36 microseconds) 
 
 !(assertEqualToResult (same (+ 1 1) $x) (True))
 
@@ -795,7 +930,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.21</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.65 milliseconds) 
+; took 0.002 secs. (1.64 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -815,7 +950,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.22</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -835,7 +970,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.23</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.35 milliseconds) 
+; took 0.002 secs. (2.25 milliseconds) 
 
 !(assertEqualToResult (same (+ 1 2) (+ 1 $two)) ((same 3 (+ 1 $two))))
 
@@ -857,7 +992,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.24</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.07 milliseconds) 
+; took 0.003 secs. (3.02 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) ($1 $2 $_1896)) (False))
 
@@ -877,7 +1012,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.25</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.52 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) 2) (True))
 
@@ -897,7 +1032,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.26</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.62 milliseconds) 
+; took 0.001 secs. (1.47 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 1 1)) (True))
 
@@ -917,7 +1052,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.27</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.66 milliseconds) 
+; took 0.001 secs. (1.45 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ 0 2)) (True))
 
@@ -937,7 +1072,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.28</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.63 milliseconds) 
+; took 0.004 secs. (3.53 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -957,7 +1092,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.29</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.88 milliseconds) 
+; took 0.005 secs. (4.79 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) (+ $a $b)) (False))
 
@@ -997,7 +1132,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.31</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.001 secs. (1.28 milliseconds) 
 
 !(assertEqualToResult (eq $x $x) (True))
 
@@ -1017,7 +1152,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.32</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.57 milliseconds) 
+; took 0.001 secs. (1.34 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 1) $x) (True))
 
@@ -1037,7 +1172,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.33</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.68 milliseconds) 
+; took 0.004 secs. (3.57 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 2 3)) (True))
 
@@ -1057,7 +1192,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.34</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.79 milliseconds) 
+; took 0.003 secs. (3.46 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2 3) (+ 1 $two 3)) (True))
 
@@ -1077,7 +1212,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.35</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.55 milliseconds) 
+; took 0.003 secs. (3.30 milliseconds) 
 
 !(assertEqualToResult (eq (+ 1 2) (+ 1 $two)) (False))
 
@@ -1096,7 +1231,35 @@ Deterministic: <span class="ansi33"
   (unify $X $Y 
     (quote (u $X $Y)) False))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'unify-atom'
+Retracting stub: 'mc_2__unify-atom'(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store('unify-atom', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['unify-atom', _X, _Y], [unify, _X, _Y, [quote, [u, _X, _Y]], 'False']).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg(u,1),arg(unify,1),arg('unify-atom',1)], 
+  _Y-[arg(u,2),arg(unify,2),arg('unify-atom',2)], 
+  _temp_10-[eval([u,_X,_Y]),arg(quote,1),arg(u,0)], 
+  _temp_11-[eval([quote,_temp_10]),arg(quote,0),arg(unify,3)], 
+  _temp_12-[eval([unify,_X,_Y,_temp_11,'False']),arg(unify,0)], 
+  _temp_9-[eval(['unify-atom',_X,_Y]),arg('unify-atom',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X, _Y].
+lazyArgsList:[_X-eager, _Y-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -1105,12 +1268,11 @@ Deterministic: <span class="ansi33"
 >'mc_2__unify-atom'</span>(<span class="pl-args"
 ><span class="pl-var"
 >_X</span>, <span class="pl-var"
->_Y</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_Y</span>, <span class="pl-avar"
+>_59428{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _85932, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -1123,7 +1285,7 @@ Deterministic: <span class="ansi33"
           [ [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->B</span>, 
+>A</span>, 
               [ <span class="pl-atom"
 >quote</span>, 
                 <span class="pl-list"
@@ -1134,13 +1296,20 @@ Deterministic: <span class="ansi33"
 >_X</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]], 
           <span class="pl-var"
->B</span>], 
+>A</span>], 
         [ <span class="pl-atom"
 >is_p1</span>, 
-          [ [ assign ,   C   ,'False']], 
+          [ [ assign ,   B   ,'False']], 
           <span class="pl-var"
->C</span>]]]]].&#13;&#10;
-Asserting: transpiler_depends_on(unify-atom,3,unify,5)
+>B</span>]]]]].&#13;&#10;
+Asserting: transpiler_depends_on('unify-atom',3,unify,5)
+<span class="ansi38-240128128"
+>A=['Atom', '%Undefined%', arg(unify, 0), arg('unify-atom', 0)].
+B=['Atom', val([quote, [u, _X, _Y]])].
+C=['Bool'].
+
+</span><span class="ansi38-173216230"
+>
 'mc_2__unify-atom'(_X, _Y, A) :-
     mc_4__unify(_X,
                 _Y,
@@ -1148,7 +1317,16 @@ Asserting: transpiler_depends_on(unify-atom,3,unify,5)
                 is_p1(C='False', C),
                 A).
 
-</span>;;; !(assertEqualToResult (unify-atom (+ 1 1) ($_1 $_2 $_)) (False)) ;; eager eval?
+</span>
+Dependency Tree for '&self':'unify-atom'/3:
+'&self':'unify-atom'/3
+└── '&self':unify/5
+
+
+Functions to recompile after redefining '&self':'unify-atom'/3 in correct order:
+   '&self':'unify-atom'/3
+
+;;; !(assertEqualToResult (unify-atom (+ 1 1) ($_1 $_2 $_)) (False)) ;; eager eval?
 <span class="ansi38-013099040"
 >!(assertEqualToResult (unify-atom (+ 1 1) 2) ((quote (u 2 2))))
 
@@ -1178,7 +1356,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.37</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.001 secs. (1.37 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 1 1)) ((quote (u 2 2))))
 
@@ -1198,7 +1376,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.38</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.38 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ 0 2)) ((quote (u 2 2))))
 
@@ -1219,7 +1397,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIFY-TRUE-FALSE.39</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.65 milliseconds) 
+; took 0.003 secs. (2.53 milliseconds) 
 
 !(assertEqualToResult (unify-atom (+ 1 1) (+ $a $b)) (False))
 
@@ -1320,7 +1498,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:28:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:33:31+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

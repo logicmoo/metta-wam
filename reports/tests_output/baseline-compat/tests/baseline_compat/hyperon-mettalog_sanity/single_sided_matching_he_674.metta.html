@@ -14,21 +14,25 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi32 { color: #00aa00; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
-.ansi38-255165005 { color: #FFA505; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-26 10:44:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:25:28+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -99,9 +103,9 @@ Script started on 2024-12-26 10:44:31+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" )
 P;HTML|
-;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27748maxresident)k" )
+;                         #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27876maxresident)k" )
 P;HTML|
-;                         #( = 2 "0inputs+0outputs (0major+3357minor)pagefaults 0swaps" )
+;                         #( = 2 "0inputs+0outputs (0major+3356minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta)
 
@@ -122,8 +126,30 @@ Script started on 2024-12-26 10:44:31+00:00 [COMMAND="timeout --preserve-status 
 > (= (single-side-match $expr)  
   (grounded-single-side-match $expr))
 </span><span class="ansi38-255165005"
-></span><span class="ansi36"
+>; % ######### warning: creating stub for:'single-side-match'
+Retracting stub: 'mc_1__single-side-match'(B,C)
+</span><span class="ansi36"
 >transpiler_clause_store('single-side-match', 2, 0, ['Atom'], 'Atom', [x(doeval, eager)], x(doeval, eager), ['single-side-match', _expr], ['grounded-single-side-match', _expr]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _expr-[arg('grounded-single-side-match',1),arg('single-side-match',1)], 
+  _temp_1-[eval(['single-side-match',_expr]),arg('single-side-match',0)], 
+  _temp_2-[eval(['grounded-single-side-match',_expr]),arg('grounded-single-side-match',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, lazy).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_expr].
+lazyArgsList:[_expr-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, lazy)].
+finalLazyArgs:[x(doeval, eager)].
 
 </span><span class="pl-functor"
 >[ </span>
@@ -133,12 +159,11 @@ Script started on 2024-12-26 10:44:31+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'mc_1__single-side-match'</span>(<span class="pl-args"
 ><span class="pl-var"
->_expr</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_expr</span>, <span class="pl-avar"
+>_401434{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _445412, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -147,23 +172,24 @@ Script started on 2024-12-26 10:44:31+00:00 [COMMAND="timeout --preserve-status 
         <span class="pl-var"
 >_expr</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-match',2)
-<span class="ansi36"
->transpiler_stub_created('grounded-single-side-match'/2).
+; % ######### warning: creating stub for:'grounded-single-side-match'
+<span class="ansi38-240128128"
+>A=[arg('grounded-single-side-match', 0), 'Atom', arg('single-side-match', 0)].
 
-</span>; % ######### warning: creating stub for:'grounded-single-side-match'
-<span class="ansi36"
->
-'mc_1__grounded-single-side-match'(B, C) :-
-    C=['grounded-single-side-match', B].
-
-</span>'mc_1__single-side-match'(_expr, A) :-
-    'mc_1__grounded-single-side-match'(_expr, A).
-<span class="ansi36"
+</span><span class="ansi38-173216230"
 >
 'mc_1__single-side-match'(_expr, A) :-
     'mc_1__grounded-single-side-match'(_expr, A).
 
 </span>
+Dependency Tree for '&self':'single-side-match'/2:
+'&self':'single-side-match'/2
+└── '&self':'grounded-single-side-match'/2
+
+
+Functions to recompile after redefining '&self':'single-side-match'/2 in correct order:
+   '&self':'single-side-match'/2
+
 ;;; Define assertSingleSideEqualToResult for testing single-sided matching
 <span class="ansi38-255165000"
 > (: assertSingleSideEqualToResult (-> Atom Atom Atom))
@@ -176,8 +202,38 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
       (Success) 
       (Error (assertSingleSideEqualToResult $expr $expected $result)))))
 </span><span class="ansi38-255165005"
-></span><span class="ansi36"
+>; % ######### warning: creating stub for:assertSingleSideEqualToResult
+Retracting stub: mc_2__assertSingleSideEqualToResult(B,C,D)
+</span><span class="ansi36"
 >transpiler_clause_store(assertSingleSideEqualToResult, 3, 0, ['Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [assertSingleSideEqualToResult, _expr, _expected], [let, _result, ['single-side-match', _expr], [if, [==, _result, _expected], ['Success'], ['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _expected-[arg(==,2),arg(assertSingleSideEqualToResult,2)], 
+  _expr-[arg(assertSingleSideEqualToResult,1),arg('single-side-match',1)], 
+  _result-[arg(==,1),arg(assertSingleSideEqualToResult,3),arg(let,1)], 
+  _temp_10-[eval([let,_result,_temp_4,_temp_9]),arg(let,0)], 
+  _temp_3-[eval([assertSingleSideEqualToResult,_expr,_expected]),arg(assertSingleSideEqualToResult,0)], 
+  _temp_4-[eval(['single-side-match',_expr]),arg(let,2),arg('single-side-match',0)], 
+  _temp_5-[eval([==,_result,_expected]),arg(==,0),arg(if,1)], 
+  _temp_6-[eval(['Success']),arg('Success',0),arg(if,2)], 
+  _temp_7-[eval([assertSingleSideEqualToResult,_expr,_expected,_result]),arg('Error',1),arg(assertSingleSideEqualToResult,0)], 
+  _temp_8-[eval(['Error',_temp_7]),arg('Error',0),arg(if,3)], 
+  _temp_9-[eval([if,_temp_5,_temp_6,_temp_8]),arg(if,0),arg(let,3)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, lazy).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_expr, _expected].
+lazyArgsList:[_expr-eager, _expected-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, lazy), x(doeval, lazy)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
 
 </span><span class="pl-functor"
 >[ </span>
@@ -188,8 +244,8 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
 >mc_2__assertSingleSideEqualToResult</span>(<span class="pl-args"
 ><span class="pl-var"
 >_expr</span>, <span class="pl-var"
->_expected</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_expected</span>, <span class="pl-avar"
+>_47098{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -206,7 +262,7 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->B</span>, 
+>A</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -220,11 +276,11 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->B</span>]], 
+>A</span>]], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -237,13 +293,13 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_47098{cns = ...}</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->D</span>, 
+>C</span>, 
           [ <span class="pl-atom"
 >'Error'</span>, 
             <span class="pl-list"
@@ -257,31 +313,20 @@ Asserting: transpiler_depends_on('single-side-match',2,'grounded-single-side-mat
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_47098{cns = ...}</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,'single-side-match',2)
 Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,==,3)
 Asserting: transpiler_depends_on(assertSingleSideEqualToResult,3,'Success',1)
-<span class="ansi36"
->transpiler_stub_created('Success'/1).
+; % ######### warning: creating stub for:'Success'
+<span class="ansi38-240128128"
+>A=[arg('Success', 0), val(B), 'Atom', arg(assertSingleSideEqualToResult, 0)].
+C=['Bool'].
+B=['Atom', arg(assertSingleSideEqualToResult, 0), arg('Success', 0)].
+D=['Atom', arg(assertSingleSideEqualToResult, 0), val(B), arg('Success', 0), val(['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]])].
 
-</span>; % ######### warning: creating stub for:'Success'
-<span class="ansi36"
->
-mc_0__Success(B) :-
-    B=['Success'].
-
-</span>mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
-    'mc_1__single-side-match'(_expr, _result),
-    (   'mc_2__=='(_result, _expected, B),
-        is_True(B)
-    *-> mc_0__Success(C),
-        A=C
-    ;   D=['Error', [assertSingleSideEqualToResult, _expr, _expected, _result]],
-        A=D
-    ).
-<span class="ansi36"
+</span><span class="ansi38-173216230"
 >
 mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
     'mc_1__single-side-match'(_expr, _result),
@@ -294,47 +339,30 @@ mc_2__assertSingleSideEqualToResult(_expr, _expected, A) :-
     ).
 
 </span>
+Dependency Tree for '&self':assertSingleSideEqualToResult/3:
+'&self':assertSingleSideEqualToResult/3
+├── '&self':'single-side-match'/2
+│   └── '&self':'grounded-single-side-match'/2
+├── '&self':==/3
+└── '&self':'Success'/1
+
+
+Functions to recompile after redefining '&self':assertSingleSideEqualToResult/3 in correct order:
+   '&self':assertSingleSideEqualToResult/3
+
 ;;; Example 1: Current Double-Sided Matching
 ;;; ----------------------------------------
 ;;; Define a reduction rule for SKI combinatory logic
 <span class="ansi38-255165000"
 > (= ((S K) K)  I)
-</span><span class="ansi38-255165005"
-></span><span class="ansi36"
->transpiler_clause_store(['S', 'K'], 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [['S', 'K'], 'K'], 'I').
-
-</span><span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  <span class="pl-var"
->A</span> =  
-       
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-list"
-><span class="pl-functor"
-> [ </span><span class="pl-args"
-><span class="pl-atom"
->'S'</span>|<span class="pl-ellipsis"
->...</span></span>]</span></span>)</span>, 
-      <span class="pl-atom"
->'K'</span>], 
-  [ [ assign,  A   , 'I'  ]]].&#13;&#10;
-A=[call(['S', 'K']), 'K'] :-
-    A='I'.
-<span class="ansi36"
->
-A=[call(['S', 'K']), 'K'] :-
-    A='I'.
-
-</span>
-;;; Test: Matching ((S K) $x) with double-sided unification
+</span>P;HTML|
+; error(type_error(text,['S','K']),context(system:atomic_list_concat/2,Context_Kw))
+P;HTML|
+; error(type_error(text,['S','K']),context(system:atomic_list_concat/2,_2968))
+
    <span class="ansi1 ansi32"
->Call: </span>(105) [user] do_metta(file(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta'</span>), +, '&self', exec([assertEqualToResult, [['S', 'K'], _180306], ['I']]), _1086) ? 
-Script done on 2024-12-26 10:45:11+00:00 [COMMAND_EXIT_CODE="143"]
+>Call: </span>(159) [system] atomic_list_concat([mc_, 1, '__', ['S', 'K']], _1904) ? 
+Script done on 2024-12-27 11:26:08+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

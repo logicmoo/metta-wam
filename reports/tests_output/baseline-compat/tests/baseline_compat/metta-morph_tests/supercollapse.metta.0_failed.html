@@ -16,12 +16,17 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -33,6 +38,8 @@
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165009 { color: #FFA509; }
 .ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
@@ -54,7 +61,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:56:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/supercollapse.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 12:01:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/supercollapse.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -137,9 +144,9 @@ Script started on 2024-12-27 10:56:24+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 8 "[(1 2 3 4 5 6 7 8 9)]" )
 P;HTML|
-;                           #( = 9 "0.15user 0.01system 0:00.17elapsed 98%CPU (0avgtext+0avgdata 28624maxresident)k" )
+;                           #( = 9 "0.16user 0.01system 0:00.17elapsed 99%CPU (0avgtext+0avgdata 28752maxresident)k" )
 P;HTML|
-;                            #( = 9 "0inputs+0outputs (0major+3534minor)pagefaults 0swaps" )
+;                            #( = 9 "0inputs+0outputs (0major+3539minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/supercollapse.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/supercollapse.metta)
 
@@ -149,7 +156,34 @@ Script started on 2024-12-27 10:56:24+00:00 [COMMAND="timeout --preserve-status 
 > (= (If $cond $then $else)  
   (if $cond $then $else))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'If'
+Retracting stub: mc_3__If(B,C,D,E)
+</span><span class="ansi36"
+>transpiler_clause_store('If', 4, 0, ['Bool', 'Atom', 'Atom'], 'Atom', [x(doeval, eager), x(doeval, lazy), x(doeval, lazy)], x(doeval, lazy), ['If', _cond, _then, _else], [if, _cond, _then, _else]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _cond-[arg('If',1),arg(if,1)], 
+  _else-[arg('If',3),arg(if,3)], 
+  _temp_1-[eval(['If',_cond,_then,_else]),arg('If',0)], 
+  _temp_2-[eval([if,_cond,_then,_else]),arg(if,0)], 
+  _then-[arg('If',2),arg(if,2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, lazy).
+finalLazyRet:x(doeval, lazy).
+finalLazyOnlyRet:lazy.
+args_list:[_cond, _then, _else].
+lazyArgsList:[_cond-eager, _then-lazy, _else-lazy].
+eagerLazyList:[eager, lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
+finalLazyArgs:[x(doeval, eager), x(doeval, lazy), x(doeval, lazy)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -159,8 +193,8 @@ Script started on 2024-12-27 10:56:24+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-var"
 >_cond</span>, <span class="pl-var"
 >_then</span>, <span class="pl-var"
->_else</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_else</span>, <span class="pl-avar"
+>_102896{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_if</span>, 
       [ [ <span class="pl-compound pl-level-0"
@@ -170,15 +204,28 @@ Script started on 2024-12-27 10:56:24+00:00 [COMMAND="timeout --preserve-status 
 >is_True</span></span>)</span>, 
           <span class="pl-var"
 >_cond</span>]], 
-      [ [ assign,  A   ,_then ]], 
-      [ [ assign,  A   ,_else ]]]]].&#13;&#10;
+      [ [ assign,_171902,_then ]], 
+      [ [ assign,_171902,_else ]]]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=['Var', val(_then), 'Atom', arg('If', 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_3__If(_cond, _then, _else, A) :-
     (   is_True(_cond)
     *-> A=_then
     ;   A=_else
     ).
 
-</span>;;; (: TupleConcat (-> Any Any AnyRet))
+</span>
+Dependency Tree for '&self':'If'/4:
+'&self':'If'/4
+
+
+Functions to recompile after redefining '&self':'If'/4 in correct order:
+   '&self':'If'/4
+
+;;; (: TupleConcat (-> Any Any AnyRet))
 <span class="ansi38-255165000"
 > (= (TupleConcat $Ev1 $Ev2)  
   (let 
@@ -186,7 +233,83 @@ mc_3__If(_cond, _then, _else, A) :-
     ($Ev1 $Ev2) 
     (collapse (superpose ((superpose $V1) (superpose $V2))))))
 </span><span class="ansi38-255165005"
+>; % ######### warning: creating stub for:'TupleConcat'
+Retracting stub: mc_2__TupleConcat(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store('TupleConcat', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['TupleConcat', _Ev1, _Ev2], [let, [_V1, _V2], [_Ev1, _Ev2], [collapse, [superpose, [[superpose, _V1], [superpose, _V2]]]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_Ev1</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_Ev2</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_V1</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_V2</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_3-[eval(['TupleConcat',_Ev1,_Ev2]),arg('TupleConcat',0)], 
+  _temp_4-[eval([superpose,_V1]),arg(superpose,0)], 
+  _temp_5-[eval([superpose,_V2]),arg(superpose,0)], 
+  _temp_6-[eval([superpose,[_temp_4,_temp_5]]),arg(collapse,1),arg(superpose,0)], 
+  _temp_7-[eval([collapse,_temp_6]),arg(collapse,0),arg(let,3)], 
+  _temp_8-[eval([let,[_V1,_V2],[_Ev1,_Ev2],_temp_7]),arg(let,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_Ev1, _Ev2].
+lazyArgsList:[_Ev1-eager, _Ev2-eager].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -195,12 +318,12 @@ mc_3__If(_cond, _then, _else, A) :-
 >mc_2__TupleConcat</span>(<span class="pl-args"
 ><span class="pl-var"
 >_Ev1</span>, <span class="pl-var"
->_Ev2</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_Ev2</span>, <span class="pl-avar"
+>_53788{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
@@ -219,11 +342,10 @@ mc_3__If(_cond, _then, _else, A) :-
 >_V1</span>, <span class="pl-var"
 >_V2</span></span>]</span>, 
       <span class="pl-var"
->B</span>], 
+>A</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _53788{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -234,7 +356,7 @@ mc_3__If(_cond, _then, _else, A) :-
           [ [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->C</span>, 
+>B</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -245,7 +367,7 @@ mc_3__If(_cond, _then, _else, A) :-
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->D</span>, 
+>C</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -256,7 +378,7 @@ mc_3__If(_cond, _then, _else, A) :-
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->E</span>, 
+>D</span>, 
               <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
@@ -264,23 +386,33 @@ mc_3__If(_cond, _then, _else, A) :-
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-var"
->C</span>|<span class="pl-ellipsis"
+>B</span>|<span class="pl-ellipsis"
 >...</span></span>]</span></span>)</span>], 
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->F</span>, 
+>E</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >superpose</span></span>)</span>, 
                 <span class="pl-var"
->E</span>]]], 
+>D</span>]]], 
           <span class="pl-var"
->F</span>]]]]].&#13;&#10;
-Asserting: transpiler_depends_on(TupleConcat,3,superpose,2)
-Asserting: transpiler_depends_on(TupleConcat,3,collapse,2)
+>E</span>]]]]].&#13;&#10;
+Asserting: transpiler_depends_on('TupleConcat',3,superpose,2)
+Asserting: transpiler_depends_on('TupleConcat',3,collapse,2)
+<span class="ansi38-240128128"
+>A=['Atom', arg(collapse, 0), arg('TupleConcat', 0)].
+B=[val([_Ev1, _Ev2]), list, val(list([_Ev1, _Ev2]))].
+C=['%Undefined%', arg(superpose, 0)].
+D=['%Undefined%', arg(superpose, 0)].
+E=['Expression', arg(superpose, 1), val([C, D]), val(list([C, D]))].
+F=['%Undefined%', arg(superpose, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__TupleConcat(_Ev1, _Ev2, A) :-
     B=[_Ev1, _Ev2],
     [_V1, _V2]=B,
@@ -288,7 +420,17 @@ mc_2__TupleConcat(_Ev1, _Ev2, A) :-
                          F),
                    A).
 
-</span><span class="ansi38-255165009"
+</span>
+Dependency Tree for '&self':'TupleConcat'/3:
+'&self':'TupleConcat'/3
+├── '&self':superpose/2
+└── '&self':collapse/2
+
+
+Functions to recompile after redefining '&self':'TupleConcat'/3 in correct order:
+   '&self':'TupleConcat'/3
+
+<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(TupleConcat (a b c) (e f g))
@@ -301,7 +443,7 @@ mc_2__TupleConcat(_Ev1, _Ev2, A) :-
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.02 milliseconds) 
+; took 0.003 secs. (3.23 milliseconds) 
 
 !(assertEqualToResult (TupleConcat (a b c) (e f g)) ((a b c e f g)))
 
@@ -326,7 +468,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.03 milliseconds) 
+; took 0.002 secs. (2.21 milliseconds) 
 
 !(assertEqualToResult (TupleConcat () (e f g)) ((e f g)))
 
@@ -351,7 +493,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.02 milliseconds) 
+; took 0.002 secs. (2.13 milliseconds) 
 
 !(assertEqualToResult (TupleConcat (a b c) ()) ((a b c)))
 
@@ -372,7 +514,37 @@ Deterministic: <span class="ansi33"
       (range 
         (+ $K 1) $N)) ()))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:range
+Retracting stub: mc_2__range(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store(range, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), [range, _K, _N], ['If', [<, _K, _N], ['TupleConcat', [_K], [range, [+, _K, 1], _N]], []]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _K-[arg(+,1),arg(<,1),arg(range,1)], 
+  _N-[arg(<,2),arg(range,2)], 
+  _temp_10-[eval([<,_K,_N]),arg(<,0),arg('If',1)], 
+  _temp_11-[eval([+,_K,1]),arg(+,0),arg(range,1)], 
+  _temp_12-[eval([range,_temp_11,_N]),arg('TupleConcat',2),arg(range,0)], 
+  _temp_13-[eval(['TupleConcat',[_K],_temp_12]),arg('If',2),arg('TupleConcat',0)], 
+  _temp_14-[eval(['If',_temp_10,_temp_13,[]]),arg('If',0)], 
+  _temp_9-[eval([range,_K,_N]),arg(range,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_K, _N].
+lazyArgsList:[_K-eager, _N-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -381,12 +553,12 @@ Deterministic: <span class="ansi33"
 >mc_2__range</span>(<span class="pl-args"
 ><span class="pl-var"
 >_K</span>, <span class="pl-var"
->_N</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_N</span>, <span class="pl-avar"
+>_155422{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -397,19 +569,19 @@ Deterministic: <span class="ansi33"
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->C</span>, 
+>B</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'If'</span></span>)</span>, 
         <span class="pl-var"
->B</span>, 
+>A</span>, 
         [ <span class="pl-atom"
 >is_p1</span>, 
           [ [ <span class="pl-atom"
 >assign</span>, <span class="pl-var"
->D</span>, <span class="pl-compound pl-level-0"
+>C</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
 ><span class="pl-list"
@@ -420,7 +592,7 @@ Deterministic: <span class="ansi33"
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->E</span>, 
+>D</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -434,7 +606,7 @@ Deterministic: <span class="ansi33"
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->F</span>, 
+>E</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -443,7 +615,7 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->4</span></span>)</span>, <span class="pl-compound pl-level-0"
+>3</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-atom"
@@ -451,7 +623,7 @@ Deterministic: <span class="ansi33"
             [ <span class="pl-atom"
 >assign</span>, 
               <span class="pl-var"
->G</span>, 
+>F</span>, 
               [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -460,13 +632,13 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->3</span></span>)</span>, <span class="pl-compound pl-level-0"
+>2</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->5</span></span>)</span>]]], 
+>4</span></span>)</span>]]], 
           <span class="pl-var"
->G</span>], 
+>F</span>], 
         [ <span class="pl-atom"
 >is_p1</span>, 
           <span class="pl-list"
@@ -479,7 +651,7 @@ Deterministic: <span class="ansi33"
 >assign</span>|<span class="pl-ellipsis"
 >...</span></span>]</span></span>]</span>, 
           <span class="pl-var"
->H</span>]]], 
+>G</span>]]], 
     [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >native</span>(<span class="pl-args"
@@ -488,17 +660,24 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->2</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->0</span></span>)</span>]]].&#13;&#10;
+>1</span></span>)</span>, <span class="pl-avar"
+>_155422{cns = ...}</span>]]].&#13;&#10;
 Asserting: transpiler_depends_on(range,3,<,3)
 Asserting: transpiler_depends_on(range,3,+,3)
-Asserting: transpiler_depends_on(range,3,TupleConcat,3)
-; % ######### warning: creating stub for:TupleConcat
-Asserting: transpiler_depends_on(range,3,If,4)
-; % ######### warning: creating stub for:If
+Asserting: transpiler_depends_on(range,3,'TupleConcat',3)
+Asserting: transpiler_depends_on(range,3,'If',4)
+<span class="ansi38-240128128"
+>A=[arg(range, 0)].
+B=['Bool', arg('If', 1), arg(<, 0)].
+C=[arg('TupleConcat', 1), val([_K]), list, val(list([_K]))].
+D=[arg(range, 1), 'Number', arg(+, 0)].
+E=[arg('TupleConcat', 2), arg(range, 0)].
+F=[arg('TupleConcat', 0)].
+G=[val([])].
+H=['Atom', arg('If', 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_2__range(_K, _N, A) :-
     'mc_2__<'(_K, _N, B),
     mc_3__If(B,
@@ -508,7 +687,21 @@ mc_2__range(_K, _N, A) :-
              H),
     as_p1(H, A).
 
-</span><span class="ansi38-255165009"
+</span>
+Dependency Tree for '&self':range/3:
+'&self':range/3
+├── '&self':</3
+├── '&self':+/3
+├── '&self':'TupleConcat'/3
+│   ├── '&self':superpose/2
+│   └── '&self':collapse/2
+└── '&self':'If'/4
+
+
+Functions to recompile after redefining '&self':range/3 in correct order:
+   '&self':range/3
+
+<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(TupleConcat (a b c) (range 1 1))
@@ -521,7 +714,7 @@ mc_2__range(_K, _N, A) :-
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.52 milliseconds) 
+; took 0.003 secs. (2.66 milliseconds) 
 
 !(assertEqualToResult (TupleConcat (a b c) (range 1 1)) ((a b c)))
 
@@ -548,7 +741,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000547 secs. (547.46 microseconds) 
+; took 0.000603 secs. (603.01 microseconds) 
 
 !(assertEqualToResult (range 1 1) (()))
 
@@ -573,7 +766,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.94 milliseconds) 
+; took 0.004 secs. (3.77 milliseconds) 
 
 !(assertEqualToResult (range 1 3) ((1 2)))
 
@@ -598,7 +791,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.55 milliseconds) 
+; took 0.008 secs. (7.54 milliseconds) 
 
 !(assertEqualToResult (range 2 6) ((2 3 4 5)))
 
@@ -623,7 +816,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.SUPERCOLLAPSE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (17.26 milliseconds) 
+; took 0.018 secs. (17.58 milliseconds) 
 
 !(assertEqualToResult (range 1 10) ((1 2 3 4 5 6 7 8 9)))
 
@@ -683,7 +876,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:56:33+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 12:01:33+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -16,27 +16,35 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:08:23+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/f1_moduleA.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:12:25+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/f1_moduleA.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -105,7 +113,7 @@ Script started on 2024-12-27 10:08:23+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        #( = 1 "[(Error (import! GroundingSpace-top f1_moduleC.metta) Illegal module name: f1_moduleC.metta)]" )
 P;HTML|
-;                        #( = 2 "0.03user 0.01system 0:00.04elapsed 97%CPU (0avgtext+0avgdata 27472maxresident)k" )
+;                        #( = 2 "0.04user 0.00system 0:00.04elapsed 100%CPU (0avgtext+0avgdata 27596maxresident)k" )
 P;HTML|
 ;                         #( = 2 "0inputs+0outputs (0major+3302minor)pagefaults 0swaps" )
 P;HTML|
@@ -132,7 +140,30 @@ Script started on 2024-12-27 10:08:23+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (= (__g)  100)
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'__g'
+Retracting stub: mc_0____g(B)
+</span><span class="ansi36"
+>transpiler_clause_store('__g', 1, 0, [], 'Number', [], x(doeval, eager), ['__g'], 100).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval(['__g']),arg('__g',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[].
+lazyArgsList:[].
+eagerLazyList:[].
+typeProps:[].
+finalLazyArgs:[].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -142,16 +173,52 @@ Script started on 2024-12-27 10:08:23+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-int"
 >100</span></span>)</span>, 
   []].&#13;&#10;
+<span class="ansi38-173216230"
+>
 mc_0____g(100).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':'__g'/1:
+'&self':'__g'/1
+
+
+Functions to recompile after redefining '&self':'__g'/1 in correct order:
+   '&self':'__g'/1
+
+<span class="ansi38-255165000"
 > (: g (-> Number Numer))
 </span><span class="ansi38-255165000"
 > (= (g $x)  
   (+ $x 
     (__g)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:g
+Retracting stub: mc_1__g(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(g, 2, 0, ['Number'], 'Numer', [x(doeval, eager)], x(doeval, eager), [g, _x], [+, _x, ['__g']]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval([g,_x]),arg(g,0)], 
+  _temp_3-[eval(['__g']),arg(+,2),arg('__g',0)], 
+  _temp_4-[eval([+,_x,_temp_3]),arg(+,0)], 
+  _x-[arg(+,1),arg(g,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -159,12 +226,12 @@ mc_0____g(100).
 ><span class="pl-functor"
 >mc_1__g</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_200168{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -175,8 +242,7 @@ mc_0____g(100).
 >'__g'</span></span>)</span></span>]</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _200168{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -189,15 +255,30 @@ mc_0____g(100).
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(g,2,__g,1)
-; % ######### warning: creating stub for:__g
+>0</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(g,2,'__g',1)
 Asserting: transpiler_depends_on(g,2,+,3)
+<span class="ansi38-240128128"
+>A=['Number', arg(+, 0), 'Numer', arg(g, 0)].
+B=['Number', arg(+, 2), arg('__g', 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__g(_x, A) :-
     mc_0____g(B),
     'mc_2__+'(_x, B, A).
 
 </span>
+Dependency Tree for '&self':g/2:
+'&self':g/2
+├── '&self':'__g'/1
+└── '&self':+/3
+
+
+Functions to recompile after redefining '&self':g/2 in correct order:
+   '&self':g/2
+
+
 Deterministic: <span class="ansi33"
 >()
 </span>;;; FIXME? stdlib space is not available at importing time -
@@ -212,7 +293,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000279 secs. (278.77 microseconds) 
+; took 0.000279 secs. (279.40 microseconds) 
 
 !(assertEqual (+ 1 2) 3)
 
@@ -232,7 +313,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.F1-MODULEA.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000173 secs. (173.17 microseconds) 
+; took 0.000149 secs. (148.57 microseconds) 
 
 !(assertEqual (if True "S" "F") "S")
 
@@ -251,7 +332,35 @@ Deterministic: <span class="ansi33"
     (+ $x 10) 
     (g $x)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:dup
+Retracting stub: mc_1__dup(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(dup, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [dup, _x], [if, [==, _x, 0], [+, _x, 10], [g, _x]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_5-[eval([dup,_x]),arg(dup,0)], 
+  _temp_6-[eval([==,_x,0]),arg(==,0),arg(if,1)], 
+  _temp_7-[eval([+,_x,10]),arg(+,0),arg(if,2)], 
+  _temp_8-[eval([g,_x]),arg(g,0),arg(if,3)], 
+  _temp_9-[eval([if,_temp_6,_temp_7,_temp_8]),arg(if,0)], 
+  _x-[arg(+,1),arg(==,1),arg(dup,1),arg(g,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -259,14 +368,14 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >mc_1__dup</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_349180{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_if</span>, 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->B</span>, 
+>A</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -280,11 +389,11 @@ Deterministic: <span class="ansi33"
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->B</span>]], 
+>A</span>]], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -296,13 +405,13 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_392568</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->D</span>, 
+>C</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -314,13 +423,20 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_392568</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(dup,2,==,3)
 Asserting: transpiler_depends_on(dup,2,+,3)
 Asserting: transpiler_depends_on(dup,2,g,2)
-; % ######### warning: creating stub for:g
+<span class="ansi38-240128128"
+>A=['Number', arg(+, 0), val(B), arg(dup, 0)].
+C=['Bool'].
+B=[arg(dup, 0), 'Number', arg(+, 0)].
+D=[arg(dup, 0), val(B), 'Number', arg(+, 0), 'Numer', arg(g, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__dup(_x, A) :-
     (   'mc_2__=='(_x, 0, B),
         is_True(B)
@@ -330,7 +446,20 @@ mc_1__dup(_x, A) :-
         A=D
     ).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':dup/2:
+'&self':dup/2
+├── '&self':==/3
+├── '&self':+/3
+└── '&self':g/2
+    ├── '&self':'__g'/1
+    └── (*) '&self':+/3
+
+
+Functions to recompile after redefining '&self':dup/2 in correct order:
+   '&self':dup/2
+
+<span class="ansi38-255165000"
 > (: f (-> Number Number))
 </span><span class="ansi38-255165000"
 > (= (f $x)  
@@ -339,7 +468,36 @@ mc_1__dup(_x, A) :-
     (- 0 $x) 
     (g (+ 1 $x))))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:f
+Retracting stub: mc_1__f(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(f, 2, 0, ['Number'], 'Number', [x(doeval, eager)], x(doeval, eager), [f, _x], [if, [<, _x, 0], [-, 0, _x], [g, [+, 1, _x]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_10-[eval([f,_x]),arg(f,0)], 
+  _temp_11-[eval([<,_x,0]),arg(<,0),arg(if,1)], 
+  _temp_12-[eval([-,0,_x]),arg(-,0),arg(if,2)], 
+  _temp_13-[eval([+,1,_x]),arg(+,0),arg(g,1)], 
+  _temp_14-[eval([g,_temp_13]),arg(g,0),arg(if,3)], 
+  _temp_15-[eval([if,_temp_11,_temp_12,_temp_14]),arg(if,0)], 
+  _x-[arg(+,2),arg(-,2),arg(<,1),arg(f,1)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -347,14 +505,14 @@ mc_1__dup(_x, A) :-
 ><span class="pl-functor"
 >mc_1__f</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_602642{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >prolog_if</span>, 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->B</span>, 
+>A</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -368,11 +526,11 @@ mc_1__dup(_x, A) :-
 ><span class="pl-atom"
 >is_True</span></span>)</span>, 
           <span class="pl-var"
->B</span>]], 
+>A</span>]], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->C</span>, 
+>B</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -384,13 +542,13 @@ mc_1__dup(_x, A) :-
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_651508</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>], 
       [ [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->D</span>, 
+>C</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -401,25 +559,34 @@ mc_1__dup(_x, A) :-
         [ <span class="pl-atom"
 >assign</span>, 
           <span class="pl-var"
->E</span>, 
+>D</span>, 
           [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >g</span></span>)</span>, 
             <span class="pl-var"
->D</span>]], 
+>C</span>]], 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>|<span class="pl-ellipsis"
+>assign</span>, <span class="pl-avar"
+>_651508</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(f,2,<,3)
 Asserting: transpiler_depends_on(f,2,-,3)
 Asserting: transpiler_depends_on(f,2,+,3)
 Asserting: transpiler_depends_on(f,2,g,2)
+<span class="ansi38-240128128"
+>A=['Number', arg(-, 0), val(B), arg(f, 0)].
+C=['Bool', arg(<, 0)].
+B=['Number', arg(f, 0), arg(-, 0)].
+D=['Number', arg(g, 1), arg(+, 0)].
+E=['Number', arg(f, 0), val(B), arg(-, 0), 'Numer', arg(g, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__f(_x, A) :-
     (   'mc_2__<'(_x, 0, B),
         is_True(B)
@@ -430,7 +597,21 @@ mc_1__f(_x, A) :-
         A=E
     ).
 
-</span>P;HTML|
+</span>
+Dependency Tree for '&self':f/2:
+'&self':f/2
+├── '&self':</3
+├── '&self':-/3
+├── '&self':+/3
+└── '&self':g/2
+    ├── '&self':'__g'/1
+    └── (*) '&self':+/3
+
+
+Functions to recompile after redefining '&self':f/2 in correct order:
+   '&self':f/2
+
+P;HTML|
 ;                #( = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/f1_moduleA.metta 0 )
 <span class="ansi1"
 >LoonIt Report
@@ -473,7 +654,7 @@ mc_1__f(_x, A) :-
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:08:32+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:12:33+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

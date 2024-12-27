@@ -16,16 +16,23 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -33,6 +40,8 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -43,7 +52,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:18:55+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/functional_programming_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -118,7 +127,7 @@ Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "Missed result: (False True False))]" )
 P;HTML|
-;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27736maxresident)k" )
+;                          #( = 2 "0.03user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27736maxresident)k" )
 P;HTML|
 ;                          #( = 2 "0inputs+0outputs (0major+3327minor)pagefaults 0swaps" )
 P;HTML|
@@ -137,7 +146,33 @@ Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status 
   (== 
     (% $X 2) 0))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'is-even'
+Retracting stub: 'mc_1__is-even'(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store('is-even', 2, 0, ['Number'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['is-even', _X], [==, ['%', _X, 2], 0]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg('%',1),arg('is-even',1)], 
+  _temp_1-[eval(['is-even',_X]),arg('is-even',0)], 
+  _temp_2-[eval(['%',_X,2]),arg('%',0),arg(==,1)], 
+  _temp_3-[eval([==,_temp_2,0]),arg(==,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X].
+lazyArgsList:[_X-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -145,12 +180,12 @@ Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'mc_1__is-even'</span>(<span class="pl-args"
 ><span class="pl-var"
->_X</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_X</span>, <span class="pl-avar"
+>_105378{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -160,8 +195,7 @@ Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status 
 >2</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _105378{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -170,16 +204,32 @@ Script started on 2024-12-27 10:13:50+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>, <span class="pl-int"
+>0</span></span>)</span>, <span class="pl-int"
 >0</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(is-even,2,%,3)
-; % ######### warning: creating stub for:%
-Asserting: transpiler_depends_on(is-even,2,==,3)
+Asserting: transpiler_depends_on('is-even',2,'%',3)
+; % ######### warning: creating stub for:'%'
+Asserting: transpiler_depends_on('is-even',2,==,3)
+<span class="ansi38-240128128"
+>A=['Bool', arg('is-even', 0)].
+B=['%Var', arg(==, 1), 'Number', arg('%', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_1__is-even'(_X, A) :-
     'mc_2__%'(_X, 2, B),
     'mc_2__=='(B, 0, A).
 
-</span>;;; =============================================================
+</span>
+Dependency Tree for '&self':'is-even'/2:
+'&self':'is-even'/2
+├── '&self':'%'/3
+└── '&self':==/3
+
+
+Functions to recompile after redefining '&self':'is-even'/2 in correct order:
+   '&self':'is-even'/2
+
+;;; =============================================================
 ;;; Purpose: Define predicate 'is-odd' to check if a number is odd.
 ;;; Operation: Uses modulo operator to determine if a number is divisible by 2 without remainder.
 ;;; Usage: General utility function for checking oddness of numbers.
@@ -192,7 +242,33 @@ Asserting: transpiler_depends_on(is-even,2,==,3)
   (== 
     (% $X 2) 1))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'is-odd'
+Retracting stub: 'mc_1__is-odd'(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store('is-odd', 2, 0, ['Number'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['is-odd', _X], [==, ['%', _X, 2], 1]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg('%',1),arg('is-odd',1)], 
+  _temp_4-[eval(['is-odd',_X]),arg('is-odd',0)], 
+  _temp_5-[eval(['%',_X,2]),arg('%',0),arg(==,1)], 
+  _temp_6-[eval([==,_temp_5,1]),arg(==,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X].
+lazyArgsList:[_X-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -200,12 +276,12 @@ Asserting: transpiler_depends_on(is-even,2,==,3)
 ><span class="pl-functor"
 >'mc_1__is-odd'</span>(<span class="pl-args"
 ><span class="pl-var"
->_X</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_X</span>, <span class="pl-avar"
+>_263924{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -215,8 +291,7 @@ Asserting: transpiler_depends_on(is-even,2,==,3)
 >2</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _263924{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -225,15 +300,31 @@ Asserting: transpiler_depends_on(is-even,2,==,3)
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>, <span class="pl-int"
+>0</span></span>)</span>, <span class="pl-int"
 >1</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(is-odd,2,%,3)
-Asserting: transpiler_depends_on(is-odd,2,==,3)
+Asserting: transpiler_depends_on('is-odd',2,'%',3)
+Asserting: transpiler_depends_on('is-odd',2,==,3)
+<span class="ansi38-240128128"
+>A=['Bool', arg('is-odd', 0)].
+B=['%Var', arg(==, 1), 'Number', arg('%', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_1__is-odd'(_X, A) :-
     'mc_2__%'(_X, 2, B),
     'mc_2__=='(B, 1, A).
 
-</span>;;; =============================================================
+</span>
+Dependency Tree for '&self':'is-odd'/2:
+'&self':'is-odd'/2
+├── '&self':'%'/3
+└── '&self':==/3
+
+
+Functions to recompile after redefining '&self':'is-odd'/2 in correct order:
+   '&self':'is-odd'/2
+
+;;; =============================================================
 ;;; Purpose: Define function 'plus-ternary' to add three numbers
 ;;; =============================================================
 <span class="ansi38-255165000"
@@ -243,7 +334,35 @@ Asserting: transpiler_depends_on(is-odd,2,==,3)
   (+ $N1 
     (+ $N2 $N3)))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'plus-ternary'
+Retracting stub: 'mc_3__plus-ternary'(B,C,D,E)
+</span><span class="ansi36"
+>transpiler_clause_store('plus-ternary', 4, 0, ['Number', 'Number', 'Number'], 'Number', [x(doeval, eager), x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['plus-ternary', _N1, _N2, _N3], [+, _N1, [+, _N2, _N3]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _N1-[arg(+,1),arg('plus-ternary',1)], 
+  _N2-[arg(+,1),arg('plus-ternary',2)], 
+  _N3-[arg(+,2),arg('plus-ternary',3)], 
+  _temp_7-[eval(['plus-ternary',_N1,_N2,_N3]),arg('plus-ternary',0)], 
+  _temp_8-[eval([+,_N2,_N3]),arg(+,0),arg(+,2)], 
+  _temp_9-[eval([+,_N1,_temp_8]),arg(+,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_N1, _N2, _N3].
+lazyArgsList:[_N1-eager, _N2-eager, _N3-eager].
+eagerLazyList:[eager, eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -253,12 +372,12 @@ Asserting: transpiler_depends_on(is-odd,2,==,3)
 ><span class="pl-var"
 >_N1</span>, <span class="pl-var"
 >_N2</span>, <span class="pl-var"
->_N3</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_N3</span>, <span class="pl-avar"
+>_403706{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -268,8 +387,7 @@ Asserting: transpiler_depends_on(is-odd,2,==,3)
 >_N3</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _403706{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -282,13 +400,28 @@ Asserting: transpiler_depends_on(is-odd,2,==,3)
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(plus-ternary,4,+,3)
+>0</span></span>)</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on('plus-ternary',4,+,3)
+<span class="ansi38-240128128"
+>A=['Number', arg(+, 0), arg('plus-ternary', 0)].
+B=['Number', arg(+, 2), arg(+, 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_3__plus-ternary'(_N1, _N2, _N3, A) :-
     'mc_2__+'(_N2, _N3, B),
     'mc_2__+'(_N1, B, A).
 
-</span>;;; =============================================================
+</span>
+Dependency Tree for '&self':'plus-ternary'/4:
+'&self':'plus-ternary'/4
+└── '&self':+/3
+
+
+Functions to recompile after redefining '&self':'plus-ternary'/4 in correct order:
+   '&self':'plus-ternary'/4
+
+;;; =============================================================
 ;;; maplist! tests
 ;;; =============================================================
 ;;;; test maplist! with unary function
@@ -300,7 +433,7 @@ Asserting: transpiler_depends_on(plus-ternary,4,+,3)
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.30 milliseconds) 
+; took 0.003 secs. (3.38 milliseconds) 
 
 !(assertEqualToResult (maplist! is-even (1 2 3)) ((False True False)))
 
@@ -321,7 +454,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000824 secs. (823.85 microseconds) 
+; took 0.000875 secs. (874.66 microseconds) 
 
 !(assertEqualToResult (maplist! < (1 2 3) (2 2 2)) ((True False False)))
 
@@ -342,7 +475,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.48 milliseconds) 
+; took 0.003 secs. (2.50 milliseconds) 
 
 !(assertEqualToResult (maplist! plus-ternary (1 2 3) (4 5 6) (7 8 9)) ((12 15 18)))
 
@@ -363,7 +496,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.35 milliseconds) 
+; took 0.003 secs. (3.29 milliseconds) 
 
 !(assertEqualToResult (maplist! maplist! (< >) ((1 2 3) (1 2 3)) ((2 2 2) (2 2 2))) (((True False False) (False False True))))
 
@@ -382,18 +515,41 @@ Deterministic: <span class="ansi33"
 > (= (my-list)  
   (1 2 3))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'my-list'
+Retracting stub: 'mc_0__my-list'(B)
+</span><span class="ansi36"
+>transpiler_clause_store('my-list', 1, 0, [], 'Expression', [], x(doeval, eager), ['my-list'], [1, 2, 3]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_10-[eval(['my-list']),arg('my-list',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, lazy).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[].
+lazyArgsList:[].
+eagerLazyList:[].
+typeProps:[].
+finalLazyArgs:[].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
   <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'mc_0__my-list'</span>(<span class="pl-args"
-><span class="pl-var"
->A</span></span>)</span>, 
+><span class="pl-avar"
+>_108702{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
->assign</span>, <span class="pl-var"
->A</span>, <span class="pl-compound pl-level-0"
+>assign</span>, <span class="pl-avar"
+>_129174</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
 ><span class="pl-list"
@@ -402,10 +558,23 @@ Deterministic: <span class="ansi33"
 ><span class="pl-int"
 >1</span>|<span class="pl-ellipsis"
 >...</span></span>]</span></span>)</span>]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=[val([1, 2, 3]), list, val(list([1, 2, 3])), 'Expression', arg('my-list', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_0__my-list'(A) :-
     A=[1, 2, 3].
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':'my-list'/1:
+'&self':'my-list'/1
+
+
+Functions to recompile after redefining '&self':'my-list'/1 in correct order:
+   '&self':'my-list'/1
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (maplist! get-type (my-list)) (((-> Expression))))
 
 </span>
@@ -413,7 +582,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000628 secs. (628.30 microseconds) 
+; took 0.000512 secs. (512.47 microseconds) 
 
 !(assertEqualToResult (maplist! get-type (my-list)) (((-> Expression))))
 
@@ -437,7 +606,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.73 milliseconds) 
+; took 0.008 secs. (7.80 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! is-even (1 2 3))) time_limit_exceeded time_limit_exceeded) ((False True False)))
 
@@ -458,7 +627,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.21 milliseconds) 
+; took 0.005 secs. (4.82 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! < (1 2 3) (2 2 2))) time_limit_exceeded time_limit_exceeded) ((True False False)))
 
@@ -483,7 +652,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.09 milliseconds) 
+; took 0.003 secs. (2.92 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (concurrent-maplist! concurrent-maplist! (is-even is-odd) ((1 2 3) (1 2 3)))) time_limit_exceeded time_limit_exceeded) (((False True False) (True False True))))
 
@@ -504,7 +673,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.FUNCTIONAL-PROGRAMMING-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000979 secs. (978.77 microseconds) 
+; took 0.000987 secs. (986.53 microseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (maplist! get-type (my-list))) time_limit_exceeded time_limit_exceeded) (((-> Expression))))
 
@@ -565,7 +734,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:14:00+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:19:05+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -13,6 +13,8 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -23,19 +25,27 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:27:36+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:32:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -118,9 +128,9 @@ Script started on 2024-12-27 10:27:36+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                           #( = 8 "[()]" )
 P;HTML|
-;                           #( = 9 "0.04user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27756maxresident)k" )
+;                           #( = 9 "0.05user 0.00system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27752maxresident)k" )
 P;HTML|
-;                            #( = 9 "0inputs+0outputs (0major+3369minor)pagefaults 0swaps" )
+;                            #( = 9 "0inputs+0outputs (0major+3368minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta)
 
@@ -167,7 +177,34 @@ Deterministic: <span class="ansi33"
   (match &self 
     (subsumption $x $y) $x))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'type-of'
+Retracting stub: 'mc_2__type-of'(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store('type-of', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['type-of', _x, _y], [match, '&self', [subsumption, _x, _y], _x]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval(['type-of',_x,_y]),arg('type-of',0)], 
+  _temp_2-[eval([subsumption,_x,_y]),arg(match,2),arg(subsumption,0)], 
+  _temp_3-[eval([match,'&self',_temp_2,_x]),arg(match,0)], 
+  _x-[arg(match,3),arg(subsumption,1),arg('type-of',1)], 
+  _y-[arg(subsumption,2),arg('type-of',2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x, _y].
+lazyArgsList:[_x-eager, _y-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -176,19 +213,19 @@ Deterministic: <span class="ansi33"
 >'mc_2__type-of'</span>(<span class="pl-args"
 ><span class="pl-var"
 >_x</span>, <span class="pl-var"
->_y</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_y</span>, <span class="pl-avar"
+>_114028{cns = ...}</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->B</span>|<span class="pl-ellipsis"
+>A</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->C</span>, 
+>B</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -204,8 +241,7 @@ Deterministic: <span class="ansi33"
 >'_y'</span></span>)</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _114028{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -214,30 +250,73 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
+>0</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->2</span></span>)</span>, 
+>1</span></span>)</span>, 
         <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >is_p1</span>, []|<span class="pl-ellipsis"
 >...</span></span>]</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(type-of,3,subsumption,3)
+Asserting: transpiler_depends_on('type-of',3,subsumption,3)
 ; % ######### warning: creating stub for:subsumption
-Asserting: transpiler_depends_on(type-of,3,match,4)
+Asserting: transpiler_depends_on('type-of',3,match,4)
+<span class="ansi38-240128128"
+>A=['%Undefined%', 'Empty', arg('type-of', 0)].
+B=['Atom', 'hyperon::space::DynSpace', arg(match, 1), val('&self')].
+C=['Atom', arg(match, 2), arg(subsumption, 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_2__type-of'(_x, _y, A) :-
     B='&self',
     mc_2__subsumption(_x, _y, C),
     mc_3__match(B, C, is_p1(true, _x), A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':'type-of'/3:
+'&self':'type-of'/3
+├── '&self':subsumption/3
+└── '&self':match/4
+
+
+Functions to recompile after redefining '&self':'type-of'/3 in correct order:
+   '&self':'type-of'/3
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (type-of $x $z))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'get-entity-subsumptions'
+Retracting stub: 'mc_2__get-entity-subsumptions'(B,C,D)
+</span><span class="ansi36"
+>transpiler_clause_store('get-entity-subsumptions', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['get-entity-subsumptions', _x, _z], ['type-of', _x, _z]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_4-[eval(['get-entity-subsumptions',_x,_z]),arg('get-entity-subsumptions',0)], 
+  _temp_5-[eval(['type-of',_x,_z]),arg('type-of',0)], 
+  _x-[arg('get-entity-subsumptions',1),arg('type-of',1)], 
+  _z-[arg('get-entity-subsumptions',2),arg('type-of',2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x, _z].
+lazyArgsList:[_x-eager, _z-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -246,12 +325,11 @@ Asserting: transpiler_depends_on(type-of,3,match,4)
 >'mc_2__get-entity-subsumptions'</span>(<span class="pl-args"
 ><span class="pl-var"
 >_x</span>, <span class="pl-var"
->_z</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_z</span>, <span class="pl-avar"
+>_277632{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _301822, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -259,17 +337,80 @@ Asserting: transpiler_depends_on(type-of,3,match,4)
 >'type-of'</span></span>)</span>, <span class="pl-var"
 >_x</span>, <span class="pl-var"
 >_z</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
-; % ######### warning: creating stub for:type-of
+Asserting: transpiler_depends_on('get-entity-subsumptions',3,'type-of',3)
+<span class="ansi38-240128128"
+>A=[arg('type-of', 0), arg('get-entity-subsumptions', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_2__get-entity-subsumptions'(_x, _z, A) :-
     'mc_2__type-of'(_x, _z, A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':'get-entity-subsumptions'/3:
+'&self':'get-entity-subsumptions'/3
+└── '&self':'type-of'/3
+    ├── '&self':subsumption/3
+    └── '&self':match/4
+
+
+Functions to recompile after redefining '&self':'get-entity-subsumptions'/3 in correct order:
+   '&self':'get-entity-subsumptions'/3
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (get-entity-subsumptions $x 
     (type-of $y $z)))
 </span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store('get-entity-subsumptions', 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager), x(doeval, eager)], x(doeval, eager), ['get-entity-subsumptions', _x, _z], ['get-entity-subsumptions', _x, ['type-of', _y, _z]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_6-[eval(['get-entity-subsumptions',_x,_z]),arg('get-entity-subsumptions',0)], 
+  _temp_7-[eval(['type-of',_y,_z]),arg('get-entity-subsumptions',2),arg('type-of',0)], 
+  _temp_8-[eval(['get-entity-subsumptions',_x,_temp_7]),arg('get-entity-subsumptions',0)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_x</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_y</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _z-[arg('get-entity-subsumptions',2),arg('type-of',2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x, _z].
+lazyArgsList:[_x-eager, _z-eager].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager), x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager), x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -278,12 +419,12 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
 >'mc_2__get-entity-subsumptions'</span>(<span class="pl-args"
 ><span class="pl-var"
 >_x</span>, <span class="pl-var"
->_z</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_z</span>, <span class="pl-avar"
+>_378466{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -293,8 +434,7 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
 >_z</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _378466{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -307,16 +447,70 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>]]]].&#13;&#10;
+>0</span></span>)</span>]]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=[arg('get-entity-subsumptions', 0)].
+B=[arg('get-entity-subsumptions', 2), arg('type-of', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_2__get-entity-subsumptions'(_x, _z, A) :-
     'mc_2__type-of'(_y, _z, B),
     'mc_2__get-entity-subsumptions'(_x, B, A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':'get-entity-subsumptions'/3:
+'&self':'get-entity-subsumptions'/3
+└── '&self':'type-of'/3
+    ├── '&self':subsumption/3
+    └── '&self':match/4
+
+
+Functions to recompile after redefining '&self':'get-entity-subsumptions'/3 in correct order:
+   '&self':'get-entity-subsumptions'/3
+
+<span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x)  
   (get-entity-subsumptions $a $x))
 </span><span class="ansi38-255165005"
+>; % ######### warning: creating stub for:'get-entity-subsumptions'
+Retracting stub: 'mc_1__get-entity-subsumptions'(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store('get-entity-subsumptions', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), ['get-entity-subsumptions', _x], ['get-entity-subsumptions', _a, _x]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_a</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_10-[eval(['get-entity-subsumptions',_a,_x]),arg('get-entity-subsumptions',0)], 
+  _temp_9-[eval(['get-entity-subsumptions',_x]),arg('get-entity-subsumptions',0)], 
+  _x-[arg('get-entity-subsumptions',1),arg('get-entity-subsumptions',2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_x].
+lazyArgsList:[_x-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -324,12 +518,11 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
 ><span class="pl-functor"
 >'mc_1__get-entity-subsumptions'</span>(<span class="pl-args"
 ><span class="pl-var"
->_x</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_x</span>, <span class="pl-avar"
+>_498372{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _520752, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -337,12 +530,28 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,3,type-of,3)
 >'get-entity-subsumptions'</span></span>)</span>, <span class="pl-var"
 >_a</span>, <span class="pl-var"
 >_x</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(get-entity-subsumptions,2,get-entity-subsumptions,3)
-; % ######### warning: creating stub for:get-entity-subsumptions
+Asserting: transpiler_depends_on('get-entity-subsumptions',2,'get-entity-subsumptions',3)
+<span class="ansi38-240128128"
+>A=[arg('get-entity-subsumptions', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_1__get-entity-subsumptions'(_x, A) :-
     'mc_2__get-entity-subsumptions'(_a, _x, A).
 
-</span>;;; Test: Querying subsumptions for Corgi
+</span>
+Dependency Tree for '&self':'get-entity-subsumptions'/2:
+'&self':'get-entity-subsumptions'/2
+└── '&self':'get-entity-subsumptions'/3
+    └── '&self':'type-of'/3
+        ├── '&self':subsumption/3
+        └── '&self':match/4
+
+
+Functions to recompile after redefining '&self':'get-entity-subsumptions'/2 in correct order:
+   '&self':'get-entity-subsumptions'/2
+
+;;; Test: Querying subsumptions for Corgi
 <span class="ansi38-013099040"
 >!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
 
@@ -350,7 +559,7 @@ Asserting: transpiler_depends_on(get-entity-subsumptions,2,get-entity-subsumptio
 ;<h3 id="HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01"
 >;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01</h3>
 
-Script done on 2024-12-27 10:28:16+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2024-12-27 11:33:20+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

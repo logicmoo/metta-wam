@@ -16,10 +16,13 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -28,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:19:06+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -103,7 +106,7 @@ Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                         #( = 2 "Missed result: False)]" )
 P;HTML|
-;                          #( = 2 "0.04user 0.01system 0:00.05elapsed 98%CPU (0avgtext+0avgdata 27864maxresident)k" )
+;                          #( = 2 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27992maxresident)k" )
 P;HTML|
 ;                          #( = 2 "0inputs+0outputs (0major+3354minor)pagefaults 0swaps" )
 P;HTML|
@@ -117,7 +120,33 @@ Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status 
   (== 
     (% $X 2) 0))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:'is-even'
+Retracting stub: 'mc_1__is-even'(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store('is-even', 2, 0, ['Number'], 'Bool', [x(doeval, eager)], x(doeval, eager), ['is-even', _X], [==, ['%', _X, 2], 0]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _X-[arg('%',1),arg('is-even',1)], 
+  _temp_1-[eval(['is-even',_X]),arg('is-even',0)], 
+  _temp_2-[eval(['%',_X,2]),arg('%',0),arg(==,1)], 
+  _temp_3-[eval([==,_temp_2,0]),arg(==,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[_X].
+lazyArgsList:[_X-eager].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -125,12 +154,12 @@ Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'mc_1__is-even'</span>(<span class="pl-args"
 ><span class="pl-var"
->_X</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>_X</span>, <span class="pl-avar"
+>_103712{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->B</span>, 
+>A</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -140,8 +169,7 @@ Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status 
 >2</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _103712{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -150,16 +178,32 @@ Script started on 2024-12-27 10:14:01+00:00 [COMMAND="timeout --preserve-status 
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span></span>)</span>, <span class="pl-int"
+>0</span></span>)</span>, <span class="pl-int"
 >0</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(is-even,2,%,3)
-; % ######### warning: creating stub for:%
-Asserting: transpiler_depends_on(is-even,2,==,3)
+Asserting: transpiler_depends_on('is-even',2,'%',3)
+; % ######### warning: creating stub for:'%'
+Asserting: transpiler_depends_on('is-even',2,==,3)
+<span class="ansi38-240128128"
+>A=['Bool', arg('is-even', 0)].
+B=['%Var', arg(==, 1), 'Number', arg('%', 0)].
+
+</span><span class="ansi38-173216230"
+>
 'mc_1__is-even'(_X, A) :-
     'mc_2__%'(_X, 2, B),
     'mc_2__=='(B, 0, A).
 
-</span>;;;; basic hyperpose evaluation
+</span>
+Dependency Tree for '&self':'is-even'/2:
+'&self':'is-even'/2
+├── '&self':'%'/3
+└── '&self':==/3
+
+
+Functions to recompile after redefining '&self':'is-even'/2 in correct order:
+   '&self':'is-even'/2
+
+;;;; basic hyperpose evaluation
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
@@ -168,7 +212,7 @@ Asserting: transpiler_depends_on(is-even,2,==,3)
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.39 milliseconds) 
+; took 0.003 secs. (3.26 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
@@ -188,7 +232,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.66 milliseconds) 
+; took 0.002 secs. (1.64 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
@@ -209,7 +253,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000577 secs. (576.78 microseconds) 
+; took 0.000606 secs. (606.42 microseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
@@ -264,7 +308,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:14:09+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:19:14+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

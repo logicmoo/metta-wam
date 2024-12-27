@@ -16,18 +16,29 @@
 .ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -35,7 +46,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 10:20:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 11:25:19+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -112,9 +123,9 @@ Script started on 2024-12-27 10:20:15+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                          #( = 3 "Missed result: 4)]" )
 P;HTML|
-;                          #( = 3 "0.04user 0.01system 0:00.06elapsed 96%CPU (0avgtext+0avgdata 28004maxresident)k" )
+;                          #( = 3 "0.05user 0.00system 0:00.06elapsed 96%CPU (0avgtext+0avgdata 28004maxresident)k" )
 P;HTML|
-;                          #( = 3 "0inputs+0outputs (0major+3383minor)pagefaults 0swaps" )
+;                          #( = 3 "0inputs+0outputs (0major+3382minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sequential_tests.metta)
 
@@ -129,29 +140,69 @@ Deterministic: <span class="ansi33"
 > (= (increment)  
   (sequential ((do (change-state! &var (+ 1 (get-state &var)))) (get-state &var))))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+>; % ######### warning: creating stub for:increment
+Retracting stub: mc_0__increment(B)
+</span><span class="ansi36"
+>transpiler_clause_store(increment, 1, 0, [], 'AnyRet', [], x(doeval, eager), [increment], [sequential, [[do, ['change-state!', '&var', [+, 1, ['get-state', '&var']]]], ['get-state', '&var']]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([increment]),arg(increment,0)], 
+  _temp_2-[eval(['get-state','&var']),arg(+,2),arg('get-state',0)], 
+  _temp_3-[eval([+,1,_temp_2]),arg('&var',1),arg(+,0),arg('change-state!',2)], 
+  _temp_4-[eval(['change-state!','&var',_temp_3]),arg('change-state!',0),arg(do,1)], 
+  _temp_5-[eval([do,_temp_4]),arg(do,0)], 
+  _temp_6-[eval(['get-state','&var']),arg('get-state',0)], 
+  _temp_7-[eval([sequential,[_temp_5,_temp_6]]),arg(sequential,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[].
+lazyArgsList:[].
+eagerLazyList:[].
+typeProps:[].
+finalLazyArgs:[].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
   <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >mc_0__increment</span>(<span class="pl-args"
-><span class="pl-var"
->A</span></span>)</span>, 
+><span class="pl-avar"
+>_75446{cns = ...}</span></span>)</span>, 
   [ <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->B</span>|<span class="pl-ellipsis"
+>A</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
     <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->C</span>|<span class="pl-ellipsis"
+>B</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
+    [ <span class="pl-atom"
+>assign</span>, 
+      <span class="pl-var"
+>C</span>, 
+      [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>'get-state'</span></span>)</span>, 
+        <span class="pl-var"
+>B</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -160,9 +211,12 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
->'get-state'</span></span>)</span>, 
-        <span class="pl-var"
->C</span>]], 
+>+</span></span>)</span>, <span class="pl-int"
+>1</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>2</span></span>)</span>]], 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
@@ -171,8 +225,11 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
->+</span></span>)</span>, <span class="pl-int"
->1</span>, <span class="pl-compound pl-level-0"
+>'change-state!'</span></span>)</span>, <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>'$VAR'</span>(<span class="pl-args"
+><span class="pl-int"
+>0</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
@@ -185,50 +242,33 @@ Deterministic: <span class="ansi33"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
->'change-state!'</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->1</span></span>)</span>, <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->'$VAR'</span>(<span class="pl-args"
-><span class="pl-int"
->4</span></span>)</span>]], 
-    [ <span class="pl-atom"
->assign</span>, 
-      <span class="pl-var"
->G</span>, 
-      [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
 >do</span></span>)</span>, 
         <span class="pl-var"
->F</span>]], 
+>E</span>]], 
     <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-atom"
 >assign</span>, <span class="pl-var"
->H</span>|<span class="pl-ellipsis"
+>G</span>|<span class="pl-ellipsis"
 >...</span></span>]</span>, 
     [ <span class="pl-atom"
 >assign</span>, 
       <span class="pl-var"
->I</span>, 
+>H</span>, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >'get-state'</span></span>)</span>, 
         <span class="pl-var"
->H</span>]], 
+>G</span>]], 
     [ <span class="pl-atom"
 >assign</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >'$VAR'</span>(<span class="pl-args"
 ><span class="pl-int"
->9</span></span>)</span>, <span class="pl-compound pl-level-0"
+>8</span></span>)</span>, <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >list</span>(<span class="pl-args"
 ><span class="pl-list"
@@ -242,24 +282,37 @@ Deterministic: <span class="ansi33"
 >...</span></span>]</span></span>)</span>], 
     [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _75446{cns = ...}, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >sequential</span></span>)</span>, 
         <span class="pl-var"
->J</span>]]]].&#13;&#10;
-Asserting: transpiler_depends_on(increment,1,get-state,2)
-; % ######### warning: creating stub for:get-state
+>I</span>]]]].&#13;&#10;
+Asserting: transpiler_depends_on(increment,1,'get-state',2)
+; % ######### warning: creating stub for:'get-state'
 Asserting: transpiler_depends_on(increment,1,+,3)
-Asserting: transpiler_depends_on(increment,1,change-state!,3)
-; % ######### warning: creating stub for:change-state!
+Asserting: transpiler_depends_on(increment,1,'change-state!',3)
+; % ######### warning: creating stub for:'change-state!'
 Asserting: transpiler_depends_on(increment,1,do,2)
 ; % ######### warning: creating stub for:do
 Asserting: transpiler_depends_on(increment,1,sequential,2)
 ; % ######### warning: creating stub for:sequential
+<span class="ansi38-240128128"
+>A=['%Undefined%', arg(sequential, 0), arg(increment, 0)].
+B=[C, 'StateMonad', arg('change-state!', 1), 'Number', val('&var')].
+D=[E, 'StateMonad', arg('get-state', 1), 'Number', val('&var')].
+F=['Number', arg(+, 2), '%Var', arg('get-state', 0)].
+G=['%Var', arg('change-state!', 2), 'Number', arg(+, 0)].
+H=['Expression', arg(do, 1), I, 'StateMonad', arg('change-state!', 0)].
+J=['%Undefined%', arg(do, 0)].
+K=[L, 'StateMonad', arg('get-state', 1), 'Number', val('&var')].
+M=['%Var', arg('get-state', 0)].
+N=['Expression', arg(sequential, 1), val([J, M]), val(list([J, M]))].
+
+</span><span class="ansi38-173216230"
+>
 mc_0__increment(A) :-
     B='&var',
     C='&var',
@@ -272,12 +325,61 @@ mc_0__increment(A) :-
     J=[G, I],
     mc_1__sequential(J, A).
 
-</span>;;;; sequential + do
+</span>
+Dependency Tree for '&self':increment/1:
+'&self':increment/1
+├── '&self':'get-state'/2
+├── '&self':+/3
+├── '&self':'change-state!'/3
+├── '&self':do/2
+└── '&self':sequential/2
+
+
+Functions to recompile after redefining '&self':increment/1 in correct order:
+   '&self':increment/1
+
+;;;; sequential + do
 <span class="ansi38-255165000"
 > (= (foo 1)  
   (bar $x))
 </span><span class="ansi38-255165005"
+>; % ######### warning: creating stub for:foo
+Retracting stub: mc_1__foo(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(foo, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, 1], [bar, _x]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_8-[eval([foo,1]),arg(foo,0)], 
+  _temp_9-[eval([bar,_x]),arg(bar,0)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_x</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[1].
+lazyArgsList:[1-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -285,12 +387,11 @@ mc_0__increment(A) :-
 ><span class="pl-functor"
 >mc_1__foo</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>1</span>, <span class="pl-avar"
+>_452192{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _473926, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -300,14 +401,62 @@ mc_0__increment(A) :-
 >_x</span>]]]].&#13;&#10;
 Asserting: transpiler_depends_on(foo,2,bar,2)
 ; % ######### warning: creating stub for:bar
+<span class="ansi38-240128128"
+>A=[arg(bar, 0), arg(foo, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__foo(1, A) :-
     mc_1__bar(_x, A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':foo/2:
+'&self':foo/2
+└── '&self':bar/2
+
+
+Functions to recompile after redefining '&self':foo/2 in correct order:
+   '&self':foo/2
+
+<span class="ansi38-255165000"
 > (= (foo 2)  
   (bar $x))
 </span><span class="ansi38-255165005"
+></span><span class="ansi36"
+>transpiler_clause_store(foo, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [foo, 2], [bar, _x]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_10-[eval([foo,2]),arg(foo,0)], 
+  _temp_11-[eval([bar,_x]),arg(bar,0)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_x</span><span class="pl-infix"
+>-</span><span class="pl-list"
 ><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[2].
+lazyArgsList:[2-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -315,12 +464,11 @@ mc_1__foo(1, A) :-
 ><span class="pl-functor"
 >mc_1__foo</span>(<span class="pl-args"
 ><span class="pl-int"
->2</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>2</span>, <span class="pl-avar"
+>_526554{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _548288, 
       [ <span class="pl-compound pl-level-0"
 ><span class="pl-functor"
 >call</span>(<span class="pl-args"
@@ -328,15 +476,51 @@ mc_1__foo(1, A) :-
 >bar</span></span>)</span>, 
         <span class="pl-var"
 >_x</span>]]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=[arg(bar, 0), arg(foo, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__foo(2, A) :-
     mc_1__bar(_x, A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':foo/2:
+'&self':foo/2
+└── '&self':bar/2
+
+
+Functions to recompile after redefining '&self':foo/2 in correct order:
+   '&self':foo/2
+
+<span class="ansi38-255165000"
 > (= (bar 1)  
   (increment))
 </span><span class="ansi38-255165005"
 >Retracting stub: mc_1__bar(B,C)
+</span><span class="ansi36"
+>transpiler_clause_store(bar, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [bar, 1], [increment]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
 <span class="pl-functor"
+>[ </span>
+  _temp_12-[eval([bar,1]),arg(bar,0)], 
+  _temp_13-[eval([increment]),arg(increment,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[1].
+lazyArgsList:[1-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -344,12 +528,11 @@ mc_1__foo(2, A) :-
 ><span class="pl-functor"
 >mc_1__bar</span>(<span class="pl-args"
 ><span class="pl-int"
->1</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>1</span>, <span class="pl-avar"
+>_589038{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _610502, 
       <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -359,15 +542,56 @@ mc_1__foo(2, A) :-
 ><span class="pl-atom"
 >increment</span></span>)</span></span>]</span>]]].&#13;&#10;
 Asserting: transpiler_depends_on(bar,2,increment,1)
-; % ######### warning: creating stub for:increment
+<span class="ansi38-240128128"
+>A=[arg(increment, 0), arg(bar, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__bar(1, A) :-
     mc_0__increment(A).
 
-</span><span class="ansi38-255165000"
+</span>
+Dependency Tree for '&self':bar/2:
+'&self':bar/2
+└── '&self':increment/1
+    ├── '&self':'get-state'/2
+    ├── '&self':+/3
+    ├── '&self':'change-state!'/3
+    ├── '&self':do/2
+    └── '&self':sequential/2
+
+
+Functions to recompile after redefining '&self':bar/2 in correct order:
+   '&self':bar/2
+   '&self':foo/2
+
+<span class="ansi38-255165000"
 > (= (bar 2)  
   (increment))
 </span><span class="ansi38-255165005"
-><span class="pl-functor"
+></span><span class="ansi36"
+>transpiler_clause_store(bar, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager)], x(doeval, eager), [bar, 2], [increment]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_14-[eval([bar,2]),arg(bar,0)], 
+  _temp_15-[eval([increment]),arg(increment,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:eager.
+args_list:[2].
+lazyArgsList:[2-eager].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="pl-functor"
 >[ </span>
   <span class="pl-atom"
 >=</span>, 
@@ -375,12 +599,11 @@ mc_1__bar(1, A) :-
 ><span class="pl-functor"
 >mc_1__bar</span>(<span class="pl-args"
 ><span class="pl-int"
->2</span>, <span class="pl-var"
->A</span></span>)</span>, 
+>2</span>, <span class="pl-avar"
+>_643710{cns = ...}</span></span>)</span>, 
   [ [ <span class="pl-atom"
 >assign</span>, 
-      <span class="pl-var"
->A</span>, 
+      _665174, 
       <span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
@@ -389,10 +612,30 @@ mc_1__bar(1, A) :-
 >call</span>(<span class="pl-args"
 ><span class="pl-atom"
 >increment</span></span>)</span></span>]</span>]]].&#13;&#10;
+<span class="ansi38-240128128"
+>A=[arg(increment, 0), arg(bar, 0)].
+
+</span><span class="ansi38-173216230"
+>
 mc_1__bar(2, A) :-
     mc_0__increment(A).
 
-</span><span class="ansi38-013099040"
+</span>
+Dependency Tree for '&self':bar/2:
+'&self':bar/2
+└── '&self':increment/1
+    ├── '&self':'get-state'/2
+    ├── '&self':+/3
+    ├── '&self':'change-state!'/3
+    ├── '&self':do/2
+    └── '&self':sequential/2
+
+
+Functions to recompile after redefining '&self':bar/2 in correct order:
+   '&self':bar/2
+   '&self':foo/2
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (sequential ((do (foo $x)) (get-state &var))) (4))
 
 </span>
@@ -400,7 +643,7 @@ mc_1__bar(2, A) :-
 >;; HYPERON-METTALOG-SANITY.SEQUENTIAL-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.50 milliseconds) 
+; took 0.005 secs. (5.45 milliseconds) 
 
 !(assertEqualToResult (sequential ((do (foo $x)) (get-state &var))) (4))
 
@@ -422,7 +665,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEQUENTIAL-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.91 milliseconds) 
+; took 0.011 secs. (10.59 milliseconds) 
 
 !(assertEqualToResult (sequential ((do (change-state! &var 0)) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (increment) (get-state &var))) (1 2 3 4 5 6 7 8 9 10 10))
 
@@ -477,7 +720,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 10:20:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 11:25:28+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
