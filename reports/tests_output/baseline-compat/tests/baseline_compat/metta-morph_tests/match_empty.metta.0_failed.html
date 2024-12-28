@@ -45,7 +45,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 23:30:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/match_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:34:19+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/metta-morph_tests/match_empty.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -81,6 +81,9 @@ Script started on 2024-12-27 23:30:32+00:00 [COMMAND="timeout --preserve-status 
 
 P;HTML|
 ;         #(set_debug fail false)
+
+P;HTML|
+;         #(set_debug load false)
 P;HTML|
 ;          #(set_debug transpiler false)
 P;HTML|
@@ -138,9 +141,9 @@ Script started on 2024-12-27 23:30:32+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             #( = 13 "[()]" )
 P;HTML|
-;                             #( = 14 "0.05user 0.01system 0:00.06elapsed 100%CPU (0avgtext+0avgdata 27852maxresident)k" )
+;                             #( = 14 "0.04user 0.01system 0:00.05elapsed 100%CPU (0avgtext+0avgdata 27848maxresident)k" )
 P;HTML|
-;                              #( = 14 "0inputs+0outputs (0major+3333minor)pagefaults 0swaps" )
+;                              #( = 14 "0inputs+0outputs (0major+3334minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/match_empty.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/match_empty.metta)
 
@@ -169,7 +172,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000322 secs. (322.22 microseconds) 
+; took 0.000209 secs. (209.34 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) ())
 
@@ -200,7 +203,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000336 secs. (335.61 microseconds) 
+; took 0.000235 secs. (234.70 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) (belief1))
 
@@ -225,7 +228,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000144 secs. (144.00 microseconds) 
+; took 0.000114 secs. (113.97 microseconds) 
 
 !(assertEqualToResult (case belief1 (( 42))) ())
 
@@ -248,7 +251,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000426 secs. (426.50 microseconds) 
+; took 0.000288 secs. (287.71 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) (( 42))) ())
 
@@ -266,7 +269,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000514 secs. (514.43 microseconds) 
+; took 0.000339 secs. (339.34 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) ((belief1 yes) ( 42))) (yes))
 
@@ -286,7 +289,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000439 secs. (438.74 microseconds) 
+; took 0.000280 secs. (280.39 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) (( 42))) (42))
 
@@ -306,7 +309,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000479 secs. (479.37 microseconds) 
+; took 0.000323 secs. (323.18 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) ( 42))) (42))
 
@@ -334,7 +337,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000400 secs. (400.30 microseconds) 
+; took 0.000361 secs. (360.52 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) ( 42))) (yes))
 
@@ -354,7 +357,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-EMPTY.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000385 secs. (384.53 microseconds) 
+; took 0.000313 secs. (313.39 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) (( 42))) ())
 
@@ -417,7 +420,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 23:30:40+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:34:28+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
