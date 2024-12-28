@@ -454,7 +454,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-27 23:10:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-27 23:14:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         #(set_debug transpiler false)
 
@@ -578,9 +578,9 @@ Script started on 2024-12-27 23:10:40+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                                  #( = 27 "[()]" )
 P;HTML|
-;                                   #( = 28 "0.06user 0.01system 0:00.08elapsed 98%CPU (0avgtext+0avgdata 28372maxresident)k" )
+;                                   #( = 28 "0.07user 0.01system 0:00.08elapsed 100%CPU (0avgtext+0avgdata 28244maxresident)k" )
 P;HTML|
-;                                   #( = 28 "0inputs+0outputs (0major+3489minor)pagefaults 0swaps" )
+;                                   #( = 28 "0inputs+0outputs (0major+3476minor)pagefaults 0swaps" )
 P;HTML|
 ;                        #(load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta)
 
@@ -609,7 +609,7 @@ Script started on 2024-12-27 23:10:40+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000528 secs. (527.68 microseconds) 
+; took 0.000564 secs. (563.97 microseconds) 
 
 !(assertEqual (Add S Z) S)
 
@@ -668,7 +668,7 @@ Deterministic: <span class="ansi33"
 >          |     <--S </span>
 ; 
 ; EVAL TEST
-; took 0.034 secs. (33.77 milliseconds) 
+; took 0.034 secs. (33.67 milliseconds) 
 
 !(assertEqualToResult (Add S Z) ((Error S BadType)))
 
@@ -733,7 +733,7 @@ Deterministic: <span class="ansi33"
 >   11:1   |   |-<--(S Z) </span>
 ; 
 ; EVAL TEST
-; took 0.046 secs. (46.10 milliseconds) 
+; took 0.046 secs. (46.29 milliseconds) 
 
 !(assertEqual (Add (S Z) Z) (S Z))
 
@@ -815,7 +815,7 @@ Deterministic: <span class="ansi33"
 >   17:1   |   |-<--(S Z) </span>
 ; 
 ; EVAL TEST
-; took 0.086 secs. (85.93 milliseconds) 
+; took 0.087 secs. (87.08 milliseconds) 
 
 !(assertEqual (Add Z (S Z)) (S Z))
 
@@ -859,7 +859,7 @@ Deterministic: <span class="ansi33"
 >          |     <--Something </span>
 ; 
 ; EVAL TEST
-; took 0.032 secs. (31.90 milliseconds) 
+; took 0.033 secs. (33.47 milliseconds) 
 
 !(assertEqual (Add Something Z) Something)
 
@@ -907,7 +907,7 @@ Deterministic: <span class="ansi33"
 >          |     <--(Add Z Ten) </span>
 ; 
 ; EVAL TEST
-; took 0.034 secs. (33.61 milliseconds) 
+; took 0.035 secs. (34.79 milliseconds) 
 
 !(assertEqualToResult (Add Z Ten) ((Add Z Ten)))
 
@@ -966,7 +966,7 @@ Deterministic: <span class="ansi33"
 >    6:1   |   |-<--(Cons (S Z) (Cons Z Nil)) </span>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (13.84 milliseconds) 
+; took 0.015 secs. (14.87 milliseconds) 
 
 !(assertEqualToResult (Cons (S Z) (Cons Z Nil)) ((Cons (S Z) (Cons Z Nil))))
 
@@ -1005,7 +1005,7 @@ Deterministic: <span class="ansi33"
 >    3:1   |   |-<--(Cons S (Cons Z Nil)) </span>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.70 milliseconds) 
+; took 0.009 secs. (9.02 milliseconds) 
 
 !(assertEqualToResult (Cons S (Cons Z Nil)) ((Error (Cons Z Nil) BadType)))
 
@@ -1080,7 +1080,7 @@ Deterministic: <span class="ansi33"
 >    5:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.048 secs. (47.61 milliseconds) 
+; took 0.047 secs. (47.13 milliseconds) 
 
 !(assertEqual (eq (Add Z Z) Z) T)
 
@@ -1124,7 +1124,7 @@ Deterministic: <span class="ansi33"
 >          |     <--(eq Z (S Z)) </span>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.10 milliseconds) 
+; took 0.018 secs. (18.32 milliseconds) 
 
 !(assertEqualToResult (eq Z (S Z)) ((eq Z (S Z))))
 
@@ -1162,7 +1162,7 @@ Deterministic: <span class="ansi33"
 >          |     <--(eq Z S) </span>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.24 milliseconds) 
+; took 0.012 secs. (12.27 milliseconds) 
 
 !(assertEqualToResult (eq Z S) ((Error S BadType)))
 
@@ -1226,7 +1226,7 @@ Deterministic: <span class="ansi33"
 >          |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.02 milliseconds) 
+; took 0.011 secs. (11.08 milliseconds) 
 
 !(assertEqual (of-same-type Color Shape) T)
 
@@ -1261,7 +1261,7 @@ Deterministic: <span class="ansi33"
 >          |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.93 milliseconds) 
+; took 0.011 secs. (10.99 milliseconds) 
 
 !(assertEqual (of-same-type Green Red) T)
 
@@ -1297,7 +1297,7 @@ Deterministic: <span class="ansi33"
 >          |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.99 milliseconds) 
+; took 0.011 secs. (10.94 milliseconds) 
 
 !(assertEqualToResult (of-same-type Green Color) ((Error Color BadType)))
 
@@ -1336,7 +1336,7 @@ Deterministic: <span class="ansi33"
 >          |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.97 milliseconds) 
+; took 0.011 secs. (11.09 milliseconds) 
 
 !(assertEqualToResult (of-same-type Green Circle) ((Error Circle BadType)))
 
@@ -1393,7 +1393,7 @@ Deterministic: <span class="ansi33"
 >          |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.53 milliseconds) 
+; took 0.005 secs. (4.57 milliseconds) 
 
 !(assertEqual (Green $who) T)
 
@@ -1421,7 +1421,7 @@ Deterministic: <span class="ansi33"
 >    1:1   |   |-<--Sam </span>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.47 milliseconds) 
+; took 0.007 secs. (6.72 milliseconds) 
 
 !(assertEqual (match &self (Green $who) $who) Sam)
 
@@ -1466,7 +1466,7 @@ Deterministic: <span class="ansi33"
 >          |   |     <--T </span>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.16 milliseconds) 
+; took 0.015 secs. (15.47 milliseconds) 
 
 !(assertEqual (match &self (Green $who) (Green $who)) T)
 
@@ -1532,7 +1532,7 @@ Deterministic: <span class="ansi33"
 >   12:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.075 secs. (75.16 milliseconds) 
+; took 0.076 secs. (75.81 milliseconds) 
 
 !(assertEqual (let $r (Add (S Z) Z) (match &self (= (eq $r (S Z))  $tv) $tv)) T)
 
@@ -1561,7 +1561,7 @@ Deterministic: <span class="ansi33"
 >    1:1   |   |-<--fail </span>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.87 milliseconds) 
+; took 0.013 secs. (12.97 milliseconds) 
 
 !(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $tv) $tv) ())
 
@@ -1672,7 +1672,7 @@ Deterministic: <span class="ansi33"
 >   25:1   |   |-<--Z </span>
 ; 
 ; EVAL TEST
-; took 0.121 secs. (120.83 milliseconds) 
+; took 0.122 secs. (122.38 milliseconds) 
 
 !(assertEqual (let (S (S $r)) (Add (S Z) (S Z)) $r) Z)
 
@@ -1855,7 +1855,7 @@ Deterministic: <span class="ansi33"
 >   49:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.345 secs. (345.23 milliseconds) 
+; took 0.348 secs. (348.28 milliseconds) 
 
 !(assertEqual (let* (($r1 (Add Z Z)) ($r2 (Add $r1 (S Z))) ($r3 (Add $r2 (S Z)))) (match &self (= (eq (S (S Z)) $r3)  $tv) $tv)) T)
 
@@ -1933,7 +1933,7 @@ Deterministic: <span class="ansi33"
 >    8:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.084 secs. (84.18 milliseconds) 
+; took 0.083 secs. (83.25 milliseconds) 
 
 !(assertEqual (eqa (Add Z Z) (Add Z Z)) T)
 
@@ -1989,7 +1989,7 @@ Deterministic: <span class="ansi33"
 >    5:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.046 secs. (46.16 milliseconds) 
+; took 0.047 secs. (47.30 milliseconds) 
 
 !(assertEqualToResult (eqa Z (Add Z Z)) ((eqa Z (Add Z Z))))
 
@@ -2049,7 +2049,7 @@ Deterministic: <span class="ansi33"
 >    5:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.047 secs. (47.25 milliseconds) 
+; took 0.048 secs. (47.51 milliseconds) 
 
 !(assertEqual (eq Z (Add Z Z)) T)
 
@@ -2104,7 +2104,7 @@ Deterministic: <span class="ansi33"
 >    7:1   |   |-<--T </span>
 ; 
 ; EVAL TEST
-; took 0.054 secs. (53.88 milliseconds) 
+; took 0.056 secs. (55.94 milliseconds) 
 
 !(assertEqual (let $z (Add Z Z) (eqa Z $z)) T)
 
@@ -2185,7 +2185,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >#(in #(not_compat_io #(maybe_halt 7)) #(unwind #(halt 7)))
 </span>
-Script done on 2024-12-27 23:10:51+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-27 23:14:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
