@@ -38,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-28 08:52:43+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-30 00:07:39+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=./reports/tests_output/baseline-compat/ --html --test tests/baseline_compat/hyperon-mettalog_sanity/sealed_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         {set_debug transpiler false}
 
@@ -89,7 +89,7 @@ Script started on 2024-12-28 08:52:43+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000355 secs. (354.83 microseconds) 
+; took 0.000315 secs. (314.86 microseconds) 
 
 !(assertEqualToResult (sealed ($x) (sealed ($a $b) (quote (= ($a $x $c)  
   ($b))))) ((quote (= ($a $x $c)  
@@ -113,7 +113,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000166 secs. (165.95 microseconds) 
+; took 0.000179 secs. (178.90 microseconds) 
 
 !(assertEqualToResult (sealed ($x $y) (quote (= ($y $z)))) ((quote (= ($y $z)))))
 
@@ -133,7 +133,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.02 milliseconds) 
+; took 0.002 secs. (1.76 milliseconds) 
 
 !(assertEqualToResult (let $x (input $y) (output $x)) ((output (input $y))))
 
@@ -153,7 +153,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.08 milliseconds) 
+; took 0.003 secs. (2.80 milliseconds) 
 
 !(assertEqual (let (quote ($sv $st)) (sealed ($x) (quote ($x (output $x)))) (let $sv (input $x) $st)) (output (input $x)))
 
@@ -179,7 +179,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000644 secs. (644.48 microseconds) 
+; took 0.000519 secs. (519.21 microseconds) 
 
 !(assertEqualToResult (callsealer $x $y) ((quote ((* (+ 40 $x) (/ 100 $y))))))
 
@@ -200,7 +200,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000906 secs. (905.99 microseconds) 
+; took 0.000638 secs. (638.45 microseconds) 
 
 !(assertEqualToResult (callsealer 10 25) ((quote ((* (+ 40 10) (/ 100 25))))))
 
@@ -227,7 +227,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000772 secs. (772.26 microseconds) 
+; took 0.000581 secs. (580.67 microseconds) 
 
 !(assertEqualToResult (callsealer1 5 $y) ((quote ((* (+ 40 5) (/ 100 $y))))))
 
@@ -247,7 +247,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000781 secs. (780.75 microseconds) 
+; took 0.000488 secs. (487.98 microseconds) 
 
 !(assertEqualToResult (callsealer1 $x $y) ((quote ((* (+ 40 $a) (/ 100 $y))))))
 
@@ -275,7 +275,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000713 secs. (712.94 microseconds) 
+; took 0.000518 secs. (518.50 microseconds) 
 
 !(assertEqualToResult (callsealer2 $x 4) ((quote ((* (+ 40 $a) (/ 100 4))))))
 
@@ -296,7 +296,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SEALED-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000782 secs. (781.79 microseconds) 
+; took 0.000525 secs. (524.91 microseconds) 
 
 !(assertEqualToResult (callsealer2 $x $y) ((quote ((* (+ 40 $a) (/ 100 $b))))))
 
@@ -331,7 +331,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
 </span>
-Script done on 2024-12-28 08:52:53+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-30 00:07:49+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
