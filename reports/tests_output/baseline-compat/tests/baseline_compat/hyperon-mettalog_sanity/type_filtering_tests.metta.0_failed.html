@@ -146,7 +146,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 08:05:41+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2024-12-31 15:09:47+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         {set_debug transpiler false}
 
@@ -364,7 +364,7 @@ Script started on 2024-12-31 08:05:41+00:00 [COMMAND="timeout --preserve-status 
         $passes)
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.41 milliseconds) 
+; took 0.005 secs. (5.24 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Should be Passing" (+ 1 1) (2) $passes) (()))
 
@@ -391,10 +391,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) 
        (1 5) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.73 milliseconds) 
+; took 0.033 secs. (33.15 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($X 1 String () 5)) (()))
 
@@ -424,7 +424,7 @@ Deterministic: <span class="ansi33"
         $passes)
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.93 milliseconds) 
+; took 0.005 secs. (5.10 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "passing" (+ 1 1) (2) $passes) (()))
 
@@ -450,10 +450,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-String" (Filter-String (some-value)) 
        ("a" "x: 1 y: 2") 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.65 milliseconds) 
+; took 0.034 secs. (33.67 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $passes) (()))
 
@@ -481,10 +481,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) 
        (Z (S Z) (S (S Z))) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.67 milliseconds) 
+; took 0.036 secs. (36.50 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $passes) (()))
 
@@ -511,10 +511,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) 
        (S &self) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.75 milliseconds) 
+; took 0.032 secs. (31.80 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $passes) (()))
 
@@ -541,10 +541,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) 
        (&self) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.61 milliseconds) 
+; took 0.033 secs. (32.85 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $passes) (()))
 
@@ -572,10 +572,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) 
        (1 "a" 'c' Z (S Z)) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.77 milliseconds) 
+; took 0.034 secs. (33.81 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $passes) (()))
 
@@ -602,10 +602,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) 
        (String) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.14 milliseconds) 
+; took 0.033 secs. (32.66 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $passes) (()))
 
@@ -632,10 +632,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) 
        (all the values) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.87 milliseconds) 
+; took 0.032 secs. (31.76 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $passes) (()))
 
@@ -662,10 +662,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) 
        (1 "a" Z (S Z) (S (S Z))) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.75 milliseconds) 
+; took 0.036 secs. (36.12 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $passes) (()))
 
@@ -692,10 +692,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) 
        () 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.42 milliseconds) 
+; took 0.031 secs. (30.65 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $passes) (()))
 
@@ -722,10 +722,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) 
        ((+ 2 3) (format-args "x: {} y: {}" (1 2))) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.33 milliseconds) 
+; took 0.037 secs. (36.88 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $passes) (()))
 
@@ -752,10 +752,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) 
        (1 "a" 'c' S Z (S Z)) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.74 milliseconds) 
+; took 0.034 secs. (34.12 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $passes) (()))
 
@@ -782,10 +782,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) 
        ((+ 2 3)) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.32 milliseconds) 
+; took 0.034 secs. (33.84 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $passes) (()))
 
@@ -812,10 +812,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) 
        (empty (println! "did it")) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.00 milliseconds) 
+; took 0.034 secs. (33.78 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $passes) (()))
 
@@ -845,7 +845,7 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.10 milliseconds) 
+; took 0.028 secs. (28.00 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $passes) (()))
 
@@ -875,7 +875,7 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.043 secs. (43.34 milliseconds) 
+; took 0.043 secs. (43.30 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $passes) (()))
 
@@ -902,10 +902,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) 
        ('c') 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.57 milliseconds) 
+; took 0.033 secs. (32.79 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $passes) (()))
 
@@ -932,10 +932,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) 
        (empty (println! "did it") ()) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.12 milliseconds) 
+; took 0.035 secs. (34.96 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $passes) (()))
 
@@ -962,10 +962,10 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "Filter-List" (Filter-List (some-value)) 
        ((Cons 1 (Cons 2 (Cons 3 Nil)))) 
-       (1))
+       (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.72 milliseconds) 
+; took 0.037 secs. (36.93 milliseconds) 
 
 !(assertEqualToResult (MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $passes) (()))
 
@@ -1010,7 +1010,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >{in {not_compat_io {maybe_halt 7}} {unwind {halt 7}}}
 </span>
-Script done on 2024-12-31 08:05:51+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2024-12-31 15:09:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
