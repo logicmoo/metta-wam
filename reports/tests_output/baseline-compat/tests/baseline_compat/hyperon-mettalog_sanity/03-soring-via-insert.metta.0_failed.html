@@ -36,7 +36,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:11:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:44:53+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -97,26 +103,26 @@ Script started on 2024-12-31 15:11:15+00:00 [COMMAND="timeout --preserve-status 
 >!(get-type insert)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (get-type insert) ((-> $_59612 (List $_59612) (List $_59612))))
+>!(assertEqualToResult (get-type insert) ((-> $a (List $a) (List $a))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000389 secs. (388.51 microseconds) 
+; took 0.000324 secs. (323.69 microseconds) 
 
-!(assertEqualToResult (get-type insert) ((-> $_1608 (List $_1608) (List $_1608))))
+!(assertEqualToResult (get-type insert) ((-> $a (List $a) (List $a))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test 
-      ( (-> $_7598 
-          (List $_7598) 
-          (List $_7598))) 
-      ( (-> $_1228 
-          (List $_1228) 
-          (List $_1228)))]]
+      ( (-> $a 
+          (List $a) 
+          (List $a))) 
+      ( (-> $a 
+          (List $a) 
+          (List $a)))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -139,7 +145,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.002 secs. (1.71 milliseconds) 
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -161,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000455 secs. (454.93 microseconds) 
+; took 0.000293 secs. (292.55 microseconds) 
 
 !(assertEqual (Cons 1 Nil) (Cons 1 Nil))
 
@@ -181,7 +187,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000821 secs. (820.78 microseconds) 
+; took 0.000597 secs. (596.51 microseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -201,7 +207,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.48 milliseconds) 
+; took 0.002 secs. (1.50 milliseconds) 
 
 !(assertEqual (insert 1 (insert 2 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -223,7 +229,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.91 milliseconds) 
+; took 0.004 secs. (3.84 milliseconds) 
 
 !(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
@@ -257,7 +263,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:11:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:45:01+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

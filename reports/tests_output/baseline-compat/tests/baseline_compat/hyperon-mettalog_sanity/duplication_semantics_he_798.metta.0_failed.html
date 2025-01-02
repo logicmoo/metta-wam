@@ -51,7 +51,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:14:22+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/duplication_semantics_he_798.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:47:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/duplication_semantics_he_798.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -145,7 +151,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000257 secs. (256.60 microseconds) 
+; took 0.000209 secs. (209.19 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) (red red red red red))
 
@@ -164,6 +170,8 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (is ball red)
+</span><span class="ansi36"
+>retractall(metta_atom_asserted('&top',[is,ball,red])).
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -176,7 +184,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000191 secs. (191.16 microseconds) 
+; took 0.000160 secs. (159.76 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) ())
 
@@ -214,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000208 secs. (208.06 microseconds) 
+; took 0.000184 secs. (184.35 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) (red red))
 
@@ -232,6 +240,8 @@ Deterministic: <span class="ansi33"
 
 </span><span class="ansi38-255165000"
 > (is ball red)
+</span><span class="ansi36"
+>retractall(metta_atom_asserted('&top',[is,ball,red])).
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -244,7 +254,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000174 secs. (174.04 microseconds) 
+; took 0.000163 secs. (162.82 microseconds) 
 
 !(assertEqualToResult (match &self (is ball $color) $color) ())
 
@@ -289,7 +299,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.DUPLICATION-SEMANTICS-HE-798.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000223 secs. (223.03 microseconds) 
+; took 0.000184 secs. (183.85 microseconds) 
 
 !(assertEqualToResult (match &self (observation ball $color) $color) (red red red))
 
@@ -330,7 +340,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:14:30+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:48:05+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

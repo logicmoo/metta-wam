@@ -32,7 +32,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:21:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/rust_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:56:37+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/rust_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -82,18 +88,18 @@ Script started on 2024-12-31 15:21:29+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.28 milliseconds) 
+; took 0.030 secs. (30.27 milliseconds) 
 
 !(assertEqualToResult (rust !(+ 1 2)) (3))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      (3) 
+      (<py_ValueObject>(0x7f2d091b1fd0)) 
       (3)]]
 </span>
 Deterministic: <span class="ansi33"
->([Error [got (3)] [expected (3)]])
+>([Error [got (<py_ValueObject>(0x7f2d091b1fd0))] [expected (3)]])
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (rust! (+ 1 2)) (3))
 
@@ -102,18 +108,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.75 milliseconds) 
+; took 0.004 secs. (4.23 milliseconds) 
 
 !(assertEqualToResult (rust! (+ 1 2)) (3))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      (3) 
+      (<py_ValueObject>(0x7f2d091b2c30)) 
       (3)]]
 </span>
 Deterministic: <span class="ansi33"
->([Error [got (3)] [expected (3)]])
+>([Error [got (<py_ValueObject>(0x7f2d091b2c30))] [expected (3)]])
 </span>;;;; Rust uses a separate atomspace
 ;;;; Match
 <span class="ansi38-013099040"
@@ -124,7 +130,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.003 secs. (3.01 milliseconds) 
 
 !(assertEqualToResult (rust (likes John Jane)) ())
 
@@ -142,7 +148,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.11 milliseconds) 
+; took 0.010 secs. (9.99 milliseconds) 
 
 !(assertEqualToResult (rust !(match &self (likes John $who) $who)) (Jane))
 
@@ -162,7 +168,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (11.93 milliseconds) 
+; took 0.010 secs. (9.97 milliseconds) 
 
 !(assertEqualToResult (rust! (match &self (likes John $who) $who)) (Jane))
 
@@ -182,7 +188,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000208 secs. (208.03 microseconds) 
+; took 0.000164 secs. (164.37 microseconds) 
 
 !(assertEqualToResult (match &self (likes John $who) $who) ())
 
@@ -202,7 +208,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.98 milliseconds) 
+; took 0.009 secs. (9.25 milliseconds) 
 
 !(assertEqualToResult (rust (= (foo $x)  
   (+ $x 1))) ())
@@ -221,18 +227,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.10 milliseconds) 
+; took 0.005 secs. (4.76 milliseconds) 
 
 !(assertEqualToResult (rust !(foo 1)) (2))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      (2) 
+      (<py_ValueObject>(0x7f2d090a7860)) 
       (2)]]
 </span>
 Deterministic: <span class="ansi33"
->([Error [got (2)] [expected (2)]])
+>([Error [got (<py_ValueObject>(0x7f2d090a7860))] [expected (2)]])
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (rust! (foo 1)) (2))
 
@@ -241,18 +247,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.02 milliseconds) 
+; took 0.005 secs. (4.57 milliseconds) 
 
 !(assertEqualToResult (rust! (foo 1)) (2))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test 
-      (2) 
+      (<py_ValueObject>(0x7f2d091b0350)) 
       (2)]]
 </span>
 Deterministic: <span class="ansi33"
->([Error [got (2)] [expected (2)]])
+>([Error [got (<py_ValueObject>(0x7f2d091b0350))] [expected (2)]])
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (foo 1) ((foo 1)))
 
@@ -261,7 +267,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.RUST-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000889 secs. (889.49 microseconds) 
+; took 0.000488 secs. (488.13 microseconds) 
 
 !(assertEqualToResult (foo 1) ((foo 1)))
 
@@ -282,20 +288,20 @@ Deterministic: <span class="ansi33"
 >Failures: 4
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[([Error [got (3)] [expected (3)]])]
-[([Error [got (3)] [expected (3)]])]
+[([Error [got (<py_ValueObject>(0x7f2d091b1fd0))] [expected (3)]])]
+[([Error [got (<py_ValueObject>(0x7f2d091b2c30))] [expected (3)]])]
 [()]
 [()]
 [()]
 [()]
 [()]
-[([Error [got (2)] [expected (2)]])]
-[([Error [got (2)] [expected (2)]])]
+[([Error [got (<py_ValueObject>(0x7f2d090a7860))] [expected (2)]])]
+[([Error [got (<py_ValueObject>(0x7f2d091b0350))] [expected (2)]])]
 [()]
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:21:37+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:56:45+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

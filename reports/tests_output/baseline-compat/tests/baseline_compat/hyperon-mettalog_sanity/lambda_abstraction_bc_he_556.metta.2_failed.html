@@ -32,7 +32,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:17:28+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:52:05+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -117,7 +123,7 @@ Deterministic: <span class="ansi33"
 ;;; ---------------------------------------
 ;;; Base case: Query the knowledge base for a rule or fact
 <span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $_58042)  
+> (= (bc (: $prf $ccln) $_59282)  
   (match &kb 
     (: $prf $ccln) 
     (: $prf $ccln)))
@@ -141,7 +147,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.33 milliseconds) 
+; took 0.008 secs. (7.57 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S Z))) ())
 
@@ -165,7 +171,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
 ; 
 ; EVAL TEST
-; took 0.147 secs. (146.74 milliseconds) 
+; took 0.116 secs. (116.17 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (S (S (S (S (S Z)))))) ())
 
@@ -201,7 +207,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:17:37+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:52:13+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

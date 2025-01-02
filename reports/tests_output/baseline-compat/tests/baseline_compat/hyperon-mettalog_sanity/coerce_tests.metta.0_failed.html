@@ -45,7 +45,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:12:48+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/coerce_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 09:46:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/coerce_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -95,7 +101,7 @@ Script started on 2024-12-31 15:12:48+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000183 secs. (183.17 microseconds) 
+; took 0.000176 secs. (176.38 microseconds) 
 
 !(assertEqualToResult (coerce Bool True) (True))
 
@@ -115,7 +121,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000114 secs. (113.84 microseconds) 
+; took 0.000132 secs. (132.18 microseconds) 
 
 !(assertEqualToResult (coerce Bool False) (False))
 
@@ -135,7 +141,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000117 secs. (117.28 microseconds) 
+; took 0.000132 secs. (132.50 microseconds) 
 
 !(assertEqualToResult (coerce Number 1) (1))
 
@@ -155,7 +161,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000135 secs. (134.72 microseconds) 
+; took 0.000142 secs. (141.75 microseconds) 
 
 !(assertEqualToResult (coerce Number 1.5) (1.5))
 
@@ -175,7 +181,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000139 secs. (139.34 microseconds) 
+; took 0.000138 secs. (137.96 microseconds) 
 
 !(assertEqualToResult (coerce String "string") ("string"))
 
@@ -196,7 +202,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000118 secs. (118.35 microseconds) 
+; took 0.000126 secs. (126.22 microseconds) 
 
 !(assertEqualToResult (coerce Bool 0) (False))
 
@@ -216,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000156 secs. (155.67 microseconds) 
+; took 0.000132 secs. (132.50 microseconds) 
 
 !(assertEqualToResult (coerce Bool ()) (False))
 
@@ -236,7 +242,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000122 secs. (122.10 microseconds) 
+; took 0.000123 secs. (122.81 microseconds) 
 
 !(assertEqualToResult (coerce Bool 1) (True))
 
@@ -256,7 +262,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000131 secs. (130.70 microseconds) 
+; took 0.000162 secs. (161.53 microseconds) 
 
 !(assertEqualToResult (coerce Bool "string") (True))
 
@@ -276,7 +282,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000149 secs. (149.08 microseconds) 
+; took 0.000158 secs. (157.80 microseconds) 
 
 !(assertEqualToResult (coerce Bool (1 2 3)) (True))
 
@@ -297,7 +303,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000144 secs. (144.01 microseconds) 
+; took 0.000137 secs. (136.76 microseconds) 
 
 !(assertEqualToResult (coerce Number False) (0))
 
@@ -317,7 +323,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000143 secs. (143.19 microseconds) 
+; took 0.000140 secs. (139.78 microseconds) 
 
 !(assertEqualToResult (coerce Number True) (1))
 
@@ -337,7 +343,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000162 secs. (162.18 microseconds) 
+; took 0.000159 secs. (159.22 microseconds) 
 
 !(assertEqualToResult (coerce Number "1") (1))
 
@@ -357,7 +363,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000126 secs. (126.37 microseconds) 
+; took 0.000148 secs. (147.84 microseconds) 
 
 !(assertEqualToResult (coerce Number "1.5") (1.5))
 
@@ -377,7 +383,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000131 secs. (130.93 microseconds) 
+; took 0.000118 secs. (118.10 microseconds) 
 
 !(assertEqualToResult (coerce Number "2147483647") (2147483647))
 
@@ -397,7 +403,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000124 secs. (123.59 microseconds) 
+; took 0.000137 secs. (136.80 microseconds) 
 
 !(assertEqualToResult (coerce Number "2147483648") (2147483648))
 
@@ -417,7 +423,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000131 secs. (131.16 microseconds) 
+; took 0.000107 secs. (107.27 microseconds) 
 
 !(assertEqualToResult (coerce Number "not a number string") ())
 
@@ -436,7 +442,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000593 secs. (592.52 microseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (coerce String False) ("'False'"))
 
@@ -456,7 +462,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000374 secs. (374.35 microseconds) 
+; took 0.000311 secs. (310.95 microseconds) 
 
 !(assertEqualToResult (coerce String True) ("'True'"))
 
@@ -476,7 +482,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000400 secs. (399.73 microseconds) 
+; took 0.000322 secs. (322.24 microseconds) 
 
 !(assertEqualToResult (coerce String 1) ("1"))
 
@@ -496,7 +502,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000381 secs. (380.51 microseconds) 
+; took 0.000305 secs. (305.09 microseconds) 
 
 !(assertEqualToResult (coerce String 1.5) ("1.5"))
 
@@ -516,7 +522,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000247 secs. (247.46 microseconds) 
+; took 0.000245 secs. (245.17 microseconds) 
 
 !(assertEqualToResult (coerce String ()) ("[]"))
 
@@ -536,7 +542,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.COERCE-TESTS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000330 secs. (329.97 microseconds) 
+; took 0.000298 secs. (298.20 microseconds) 
 
 !(assertEqualToResult (coerce String (1 2 3)) ("[1,2,3]"))
 
@@ -583,7 +589,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:12:56+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 09:46:33+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -45,7 +45,13 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2024-12-31 15:32:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/match_void.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-02 10:07:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/match_void.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+    ?- test_simple_guard.
+    ?- test_fallback.
+    ?- test_prioritized.
+    ?- test_nested.
+
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -111,7 +117,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000223 secs. (222.88 microseconds) 
+; took 0.000212 secs. (212.29 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) ())
 
@@ -142,7 +148,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000228 secs. (228.33 microseconds) 
+; took 0.000261 secs. (261.43 microseconds) 
 
 !(assertEqualToResult (match &belief_events $1 $1) (belief1))
 
@@ -167,7 +173,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000153 secs. (153.02 microseconds) 
+; took 0.000125 secs. (125.19 microseconds) 
 
 !(assertEqualToResult (case belief1 ((%void% 42))) ())
 
@@ -190,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000294 secs. (293.69 microseconds) 
+; took 0.000318 secs. (318.37 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) ((%void% 42))) ())
 
@@ -208,7 +214,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000343 secs. (342.80 microseconds) 
+; took 0.000397 secs. (396.75 microseconds) 
 
 !(assertEqualToResult (case (match &belief_events $1 $1) ((belief1 yes) (%void% 42))) (yes))
 
@@ -228,7 +234,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000283 secs. (283.17 microseconds) 
+; took 0.000349 secs. (348.55 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((%void% 42))) (42))
 
@@ -248,7 +254,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000328 secs. (328.19 microseconds) 
+; took 0.000353 secs. (353.13 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) (%void% 42))) (42))
 
@@ -276,7 +282,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000357 secs. (357.25 microseconds) 
+; took 0.000356 secs. (356.15 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((goal1 yes) (%void% 42))) (yes))
 
@@ -296,7 +302,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.MATCH-VOID.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000305 secs. (304.91 microseconds) 
+; took 0.000326 secs. (326.21 microseconds) 
 
 !(assertEqualToResult (case (match &goal_events $1 $1) ((%void% 42))) ())
 
@@ -331,7 +337,7 @@ Deterministic: <span class="ansi33"
 <span class="ansi31"
 >[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
 </span>
-Script done on 2024-12-31 15:33:06+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-02 10:07:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
