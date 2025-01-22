@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:55:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta] ]
+;;;; Define composition operator
+<span class="ansi38-255165000"
+> (: . (-> (-> $b $c) (-> $a $b) (-> $a $c)))
+</span>;;;; Below, the second $b is replaced by $d to disable type constraint
+;;;; on composition
+;;;; (: . (-> (-> $b $c) (-> $a $d) (-> $a $c)))
+<span class="ansi38-255165000"
+> (= ((. $g $f) $x)  
+  ($g ($f $x)))
+</span>;;;; Define well-typed.  Returns True iff its argument is well typed.
+<span class="ansi38-255165000"
+> (: well-typed (-> Atom Bool))
+</span><span class="ansi38-255165000"
+> (= (well-typed $x)  
+  (case $x 
+    ( ( (Error $v $m) False) ($260 True))))
+</span>;;;; Define functions to compose
+<span class="ansi38-255165000"
+> (: f (-> Number String))
+</span><span class="ansi38-255165000"
+> (= (f $x)  
+  (if 
+    (== $x 42) "42" "Not-42"))
+</span><span class="ansi38-255165000"
+> (: g (-> String Bool))
+</span><span class="ansi38-255165000"
+> (= (g $x)  
+  (== $x "42"))
+</span><span class="ansi38-255165000"
+> (: h (-> Bool Number))
+</span><span class="ansi38-255165000"
+> (= (h True)  0)
+</span><span class="ansi38-255165000"
+> (= (h False)  1)
+</span>;;;; ;; ;; Test composition via superpose
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(. (superpose (f g)) (superpose (f g)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (. (superpose (f g)) (superpose (f g))) ((. g f)))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.01"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.01</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.02 milliseconds) 
+
+!(assertEqualToResult (. (superpose (f g)) (superpose (f g))) ((. g f)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (. f f) 
+        (. f g) 
+        (. g f) 
+        (. g g)) 
+      ( (. g f))]]
+</span>
+equal_enough_for_test('[|]'('[|]'('.','[|]'(f,'[|]'(f,[]))),'[|]'('[|]'('.','[|]'(f,'[|]'(g,[]))),'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'('.','[|]'(g,'[|]'(g,[]))),[])))),'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),[]))[error [error [domain_error py_term [Error [got ((. f f) (. f g) (. g f) (. g g))] [expected ((. g f))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta] (assertEqualToResult (. (superpose (f g)) (superpose (f g))) ((. g f)))];;; !(collapse (. (superpose (f g)) (superpose (f g))))
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(well-typed (. (superpose (f g)) (superpose (f g))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (well-typed (. (superpose (f g)) (superpose (f g)))) (True))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.02"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.02</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (5.22 milliseconds) 
+
+!(assertEqualToResult (well-typed (. (superpose (f g)) (superpose (f g)))) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True True True True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; !(get-type (. (superpose (f g)) (superpose (f g))))
+;;;; Defining functions to compose using non-determinism
+;;;; (: ndfs (-> Atom))
+<span class="ansi38-255165000"
+> (= (fns)  f)
+</span><span class="ansi38-255165000"
+> (= (fns)  g)
+</span><span class="ansi38-255165000"
+> (= (fns)  h)
+</span>;;; !(get-type (. (fns) (fns)))
+;;;!((. (fns) (fns)) 42)
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(g "42")
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (g "42") (True))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.03"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.03</h3>
+; 
+; EVAL TEST
+; took 0.000971 secs. (971.39 microseconds) 
+
+!(assertEqualToResult (g "42") (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!((. g f) 42)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((. g f) 42) (True))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.04"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.04</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.28 milliseconds) 
+
+!(assertEqualToResult ((. g f) 42) (True))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (False) 
+      (True)]]
+</span>equal_enough_for_test('[|]'('False',[]),'[|]'('True',[]))[error [error [domain_error py_term [Error [got (False)] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta] (assertEqualToResult ((. g f) 42) (True))]<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(superpose ((. f f) (. f g) (. g f) (. g g) (. h g)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (superpose ((. f f) (. f g) (. g f) (. g g) (. h g))) ((. g f) (. h g)))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.05"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-SUPERPOSE.05</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.71 milliseconds) 
+
+!(assertEqualToResult (superpose ((. f f) (. f g) (. g f) (. g g) (. h g))) ((. g f) (. h g)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (. f f) 
+        (. f g) 
+        (. g f) 
+        (. g g) 
+        (. h g)) 
+      ( (. g f) (. h g))]]
+</span>equal_enough_for_test('[|]'('[|]'('.','[|]'(f,'[|]'(f,[]))),'[|]'('[|]'('.','[|]'(f,'[|]'(g,[]))),'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'('.','[|]'(g,'[|]'(g,[]))),'[|]'('[|]'('.','[|]'(h,'[|]'(g,[]))),[]))))),'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'('.','[|]'(h,'[|]'(g,[]))),[])))[error [error [domain_error py_term [Error [got ((. f f) (. f g) (. g f) (. g g) (. h g))] [expected ((. g f) (. h g))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta] (assertEqualToResult (superpose ((. f f) (. f g) (. g f) (. g g) (. h g))) ((. g f) (. h g)))]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 2
+</span><span class="ansi31"
+>Failures: 3
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[()]
+[()]
+[[
+
+Script done on 2025-01-22 01:55:22+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-superpose.metta" --halt=true\033[0m

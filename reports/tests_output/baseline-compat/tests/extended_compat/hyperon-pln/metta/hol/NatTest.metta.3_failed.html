@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:43:57+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Definition of Nat, plus and some proofs.                            ;;
+;;;;                                                                     ;;
+;;;; The main proof of interest is that Z is the right identity of plus. ;;
+;;;; That experiment does not prove it completely because it assumes its ;;
+;;;; inductive property.                                                 ;;
+;;;;                                                                     ;;
+;;;; For the complete proof see NatStandaloneTest.metta.                 ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Import synthesizer (Nat is already defined in it)
+<span class="ansi38-013099040"
+>!(import! &self metta:synthesis:Synthesize)
+
+</span>;; no-results ;; 
+;;;; Knowledge base
+<span class="ansi38-255165000"
+> (: kb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (kb)  
+  (superpose ((: Base_plus (=== (plus Z $y) $y)) (: IndZRID_plus (-> (ZRID_plus $x) (ZRID_plus (S $x)))) (: PropZRID_plus (=== (ZRID_plus $x) (=== (plus $x Z) $x))))))
+</span>;;;; Rule base
+<span class="ansi38-255165000"
+> (: rb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (rb)  
+  (superpose ((: EqSym (-> (=== $x $y) (=== $y $x))) (: EqStruct1 (-> (=== $x $x_39) (=== ($op $x) ($op $x_39)))) (: Repl0 (-> (=== $x $x_39) $x $x_39)) (: IndNat (-> ($p Z) (-> ($p $x) ($p (S $x))) ($p $x_39))))))
+</span>;;;; Prove that Z is left identity of plus
+;;;; TODO: re-enable when subtitution is fixed
+;;;; !(assertEqual
+<span class="ansi38-013099040"
+>!(synthesize (: $prf (=== (plus Z $y) $y)) kb rb Z)
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $prf (=== (plus Z $y) $y)) kb rb Z)
+</span>;;;; (: Base_plus (=== (plus Z $y) $y)))
+;;;; Prove that (=== (plus Z Z) Z)
+<span class="ansi38-013099040"
+>!(assertEqual (synthesize (: $prf (=== (plus Z Z) Z)) kb rb Z) (: Base_plus (=== (plus Z Z) Z)))
+
+</span>
+;<h3 id="HOL.NATTEST.01"
+>;; HOL.NATTEST.01</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.44 milliseconds) 
+
+!(assertEqual (synthesize (: $prf (=== (plus Z Z) Z)) kb rb Z) (: Base_plus (=== (plus Z Z) Z)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (synthesize 
+          (: $prf 
+            (=== 
+              (plus Z Z) Z)) kb rb Z)) 
+      ( (: Base_plus 
+          (=== 
+            (plus Z Z) Z)))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(synthesize,'[|]'('[|]'(:,'[|]'(_4042{vn = ...},'[|]'('[|]'(===,'[|]'('[|]'(plus,'[|]'('Z','[|]'('Z',[]))),'[|]'('Z',[]))),[]))),'[|]'(kb,'[|]'(rb,'[|]'('Z',[]))))),[]),'[|]'('[|]'(:,'[|]'('Base_plus','[|]'('[|]'(===,'[|]'('[|]'(plus,'[|]'('Z','[|]'('Z',[]))),'[|]'('Z',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((synthesize (: $prf (=== (plus Z Z) Z)) kb rb Z))] [expected ((: Base_plus (=== (plus Z Z) Z)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta] (assertEqual (synthesize (: $prf (=== (plus Z Z) Z)) kb rb Z) (: Base_plus (=== (plus Z Z) Z)))];;;; Prove that (=== (=== (plus Z Z) Z) (ZRID_plus Z)).
+;;;;
+;;;; The following proof tree is expected to prove that:
+;;;;
+;;;; -------------------------------------(PropZRID_plus)
+;;;; (=== (ZRID_plus Z) (=== (plus Z Z) Z))
+;;;; -------------------------------------(EqSym)
+;;;; (=== (=== (plus Z Z) Z) (ZRID_plus Z))
+;;;;
+;;;; on in MeTTa format:
+;;;;
+;;;; (EqSym PropZRID_plus)
+<span class="ansi38-013099040"
+>!(assertEqual (synthesize (: $prf (=== (=== (plus Z Z) Z) (ZRID_plus Z))) kb rb (fromNumber 2)) (: (EqSym PropZRID_plus) (=== (=== (plus Z Z) Z) (ZRID_plus Z))))
+
+</span>
+;<h3 id="HOL.NATTEST.02"
+>;; HOL.NATTEST.02</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (4.87 milliseconds) 
+
+!(assertEqual (synthesize (: $prf (=== (=== (plus Z Z) Z) (ZRID_plus Z))) kb rb (fromNumber 2)) (: (EqSym PropZRID_plus) (=== (=== (plus Z Z) Z) (ZRID_plus Z))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (synthesize 
+          (: $prf 
+            (=== 
+              (=== 
+                (plus Z Z) Z) 
+              (ZRID_plus Z))) kb rb 
+          (fromNumber 2))) 
+      ( (: 
+          (EqSym PropZRID_plus) 
+          (=== 
+            (=== 
+              (plus Z Z) Z) 
+            (ZRID_plus Z))))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(synthesize,'[|]'('[|]'(:,'[|]'(_4294{vn = ...},'[|]'('[|]'(===,'[|]'('[|]'(===,'[|]'('[|]'(plus,'[|]'('Z','[|]'('Z',[]))),'[|]'('Z',[]))),'[|]'('[|]'('ZRID_plus','[|]'('Z',[])),[]))),[]))),'[|]'(kb,'[|]'(rb,'[|]'('[|]'(fromNumber,'[|]'(2,[])),[]))))),[]),'[|]'('[|]'(:,'[|]'('[|]'('EqSym','[|]'('PropZRID_plus',[])),'[|]'('[|]'(===,'[|]'('[|]'(===,'[|]'('[|]'(plus,'[|]'('Z','[|]'('Z',[]))),'[|]'('Z',[]))),'[|]'('[|]'('ZRID_plus','[|]'('Z',[])),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((synthesize (: $prf (=== (=== (plus Z Z) Z) (ZRID_plus Z))) kb rb (fromNumber 2)))] [expected ((: (EqSym PropZRID_plus) (=== (=== (plus Z Z) Z) (ZRID_plus Z))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta] (assertEqual (synthesize (: $prf (=== (=== (plus Z Z) Z) (ZRID_plus Z))) kb rb (fromNumber 2)) (: (EqSym PropZRID_plus) (=== (=== (plus Z Z) Z) (ZRID_plus Z))))];;;; Prove that (ZRID_plus Z) holds.  Meaning that Z is the right
+;;;; identity of plus for Z.
+;;;;
+;;;; The following proof tree does that:
+;;;;
+;;;; -------------------------------------(PropZRID_plus)
+;;;; (=== (ZRID_plus Z) (=== (plus Z Z) Z))
+;;;; -------------------------------------(EqSym)  -----------------(Base_plus)
+;;;; (=== (=== (plus Z Z) Z) (ZRID_plus Z))        (=== (plus Z Z) Z)
+;;;; ---------------------------------------------------------------(Repl0)
+;;;;                        (ZRID_plus Z)
+;;;;
+;;;; or in MeTTa format:
+;;;;
+;;;; (Repl0 (EqSym PropZRID_plus) Base_plus)
+<span class="ansi38-013099040"
+>!(assertEqual (synthesize (: $prf (ZRID_plus Z)) kb rb (fromNumber 2)) (: (Repl0 (EqSym PropZRID_plus) Base_plus) (ZRID_plus Z)))
+
+</span>
+;<h3 id="HOL.NATTEST.03"
+>;; HOL.NATTEST.03</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.18 milliseconds) 
+
+!(assertEqual (synthesize (: $prf (ZRID_plus Z)) kb rb (fromNumber 2)) (: (Repl0 (EqSym PropZRID_plus) Base_plus) (ZRID_plus Z)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (synthesize 
+          (: $prf 
+            (ZRID_plus Z)) kb rb 
+          (fromNumber 2))) 
+      ( (: 
+          (Repl0 
+            (EqSym PropZRID_plus) Base_plus) 
+          (ZRID_plus Z)))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(synthesize,'[|]'('[|]'(:,'[|]'(_4024{vn = ...},'[|]'('[|]'('ZRID_plus','[|]'('Z',[])),[]))),'[|]'(kb,'[|]'(rb,'[|]'('[|]'(fromNumber,'[|]'(2,[])),[]))))),[]),'[|]'('[|]'(:,'[|]'('[|]'('Repl0','[|]'('[|]'('EqSym','[|]'('PropZRID_plus',[])),'[|]'('Base_plus',[]))),'[|]'('[|]'('ZRID_plus','[|]'('Z',[])),[]))),[]))[error [error [domain_error py_term [Error [got ((synthesize (: $prf (ZRID_plus Z)) kb rb (fromNumber 2)))] [expected ((: (Repl0 (EqSym PropZRID_plus) Base_plus) (ZRID_plus Z)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta] (assertEqual (synthesize (: $prf (ZRID_plus Z)) kb rb (fromNumber 2)) (: (Repl0 (EqSym PropZRID_plus) Base_plus) (ZRID_plus Z)))];;;; Prove that (-> (ZRID_plus $x) (ZRID_plus (S $x)))
+;;;;
+;;;; It is an axiom for now.
+;;;; TODO: re-enable when subtitution is fixed
+;;;; !(assertEqual
+<span class="ansi38-013099040"
+>!(synthesize (: $prf (-> (ZRID_plus $x) (ZRID_plus (S $x)))) kb rb Z)
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $prf (-> (ZRID_plus $x) (ZRID_plus (S $x)))) kb rb Z)
+</span>;;;; (: IndZRID_plus (-> (ZRID_plus $x) (ZRID_plus (S $x)))))
+;;;; Prove that Z is the right identity of plus
+;;;;
+;;;; -------------------------------------(PropZRID_plus)
+;;;; (=== (ZRID_plus Z) (=== (plus Z Z) Z))
+;;;; -------------------------------------(EqSym)  -----------------(Base_plus)
+;;;; (=== (=== (plus Z Z) Z) (ZRID_plus Z))        (=== (plus Z Z) Z)
+;;;; ---------------------------------------------------------------(Repl0)  -------------------------------------(IndZRID_plus)
+;;;;                        (ZRID_plus Z)                                    (-> (ZRID_plus $x) (ZRID_plus (S $x)))
+;;;;                        --------------------------------------------------------------------------------------(IndNat)
+;;;;                                                               (ZRID_plus $x)
+;;;;
+;;;; TODO: re-enable when an assertContainResults is supported
+;;;;
+;;;; !(assertEqual
+<span class="ansi38-013099040"
+>!(synthesize (: $prf (ZRID_plus $x)) kb rb (fromNumber 3))
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $prf (ZRID_plus $x)) kb rb (fromNumber 3))
+</span>;;;; (: (IndNat (Repl0 (EqSym PropZRID_plus) Base_plus) IndZRID_plus) (ZRID_plus $x)))
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 3
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[]
+[(synthesize (: $prf (=== (plus Z $y) $y)) kb rb Z)]
+[[[[(synthesize (: $prf (-> (ZRID_plus $x) (ZRID_plus (S $x)))) kb rb Z)]
+[(synthesize (: $prf (ZRID_plus $x)) kb rb (fromNumber 3))]
+
+Script done on 2025-01-22 01:44:05+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/NatTest.metta" --halt=true\033[0m

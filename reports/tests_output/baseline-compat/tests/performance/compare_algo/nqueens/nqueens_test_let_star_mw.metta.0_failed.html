@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:46:47+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/compare_algo/nqueens/nqueens_test_let_star_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/compare_algo/nqueens/nqueens_test_let_star_mw.metta] ]
+<span class="ansi38-255165000"
+> (= (select $x)  
+    
+  (car-atom $x)
+    
+  (cdr-atom $x))
+</span><span class="ansi38-255165000"
+> (= (select $x)  
+  (let* 
+    ( ($y (car-atom $x)) 
+      ($z (cdr-atom $x)) 
+      ( ($u $v) (select $z))) 
+    ($u (cons-atom $y $v))))
+</span><span class="ansi38-255165000"
+> (= (range $x $y)  
+  (if 
+    (== $x $y) 
+    ($x) 
+    (let $z 
+      (range 
+        (+ $x 1) $y) 
+      (cons-atom $x $z))))
+</span><span class="ansi38-255165000"
+> (= (nqueens $n)  
+  (let $r 
+    (range 1 $n) 
+    (nqueens_aux $r ())))
+</span><span class="ansi38-255165000"
+> (= (nqueens_aux $q $d)  
+  (let* 
+    ( ($ret (nqueens_aux_impl $q $d))) $ret))
+</span><span class="ansi38-255165000"
+> (= (nqueens_aux_impl $unplaced $safe)  
+  (if 
+    (== $unplaced ()) $safe 
+    (let 
+      ($q $r) 
+      (select $unplaced) 
+      (if 
+        (not_attack $q 1 $safe) 
+        (let $safeext 
+          (cons-atom $q $safe) 
+          (nqueens_aux_impl $r $safeext))))))
+</span><span class="ansi38-255165000"
+> (= (not_attack $q $d $s)  
+  (let* 
+    ( ($ret (not_attack_impl $q $d $s))) $ret))
+</span><span class="ansi38-255165000"
+> (= (not_attack_impl $q $d $s)  
+  (if 
+    (== $s ()) True 
+    (let* 
+      ( ($h (car-atom $s)) ($t (cdr-atom $s))) 
+      (if 
+        (or 
+          (== $q $h) 
+          (or 
+            (== $q 
+              (+ $d $h)) 
+            (== $h 
+              (+ $q $d)))) False 
+        (not_attack_impl $q 
+          (+ $d 1) $t)))))
+</span>;;;!(assertEqualToResult (nqueens_aux (6)) (4 2 5 3 1))
+;;; Test select
+<span class="ansi38-013099040"
+>!(assertEqualToResult (select (1 2 3 4)) ((1 (2 3 4)) (2 (1 3 4)) (3 (1 2 4)) (4 (1 2 3))))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.01"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.01</h3>
+; 
+; EVAL TEST
+; took 0.027 secs. (27.15 milliseconds) 
+
+!(assertEqualToResult (select (1 2 3 4)) ((1 (2 3 4)) (2 (1 3 4)) (3 (1 2 4)) (4 (1 2 3))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (1 (2 3 4)) 
+        (2 (1 3 4)) 
+        (3 (1 2 4)) 
+        (4 (1 2 3))) 
+      ( (1 (2 3 4)) 
+        (2 (1 3 4)) 
+        (3 (1 2 4)) 
+        (4 (1 2 3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(set-debug! time True)
+
+</span>
+N(1): <span class="ansi33"
+>True
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 1 1 (5 3 6)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.02"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.02</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (8.67 milliseconds) 
+
+!(assertEqualToResult (not_attack 1 1 (5 3 6)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.042 secs. (42.34 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 2 1 (5 3 6)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.03"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.03</h3>
+; 
+; EVAL TEST
+; took 0.014 secs. (13.64 milliseconds) 
+
+!(assertEqualToResult (not_attack 2 1 (5 3 6)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.048 secs. (47.75 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 1 1 (2 5 3 6)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.04"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.04</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (4.88 milliseconds) 
+
+!(assertEqualToResult (not_attack 1 1 (2 5 3 6)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.039 secs. (39.00 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 4 1 (2 5 3 6)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.05"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.05</h3>
+; 
+; EVAL TEST
+; took 0.018 secs. (17.69 milliseconds) 
+
+!(assertEqualToResult (not_attack 4 1 (2 5 3 6)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.052 secs. (51.52 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 4 1 (3 1)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.06"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.06</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (4.58 milliseconds) 
+
+!(assertEqualToResult (not_attack 4 1 (3 1)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.038 secs. (38.02 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 5 1 (3 1)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.07"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.07</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (9.40 milliseconds) 
+
+!(assertEqualToResult (not_attack 5 1 (3 1)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.043 secs. (42.98 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(set-debug! time True)
+
+</span>
+N(1): <span class="ansi33"
+>True
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (nqueens 4) ((3 1 4 2) (2 4 1 3)))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.08"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.08</h3>
+; 
+; EVAL TEST
+; took 0.320 secs. (320.14 milliseconds) 
+
+!(assertEqualToResult (nqueens 4) ((3 1 4 2) (2 4 1 3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (3 1 4 2) (2 4 1 3)) 
+      ( (3 1 4 2) (2 4 1 3))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.377 secs. (377.26 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (nqueens 6) ((5 3 1 6 4 2) (4 1 5 2 6 3) (3 6 2 5 1 4) (2 4 6 1 3 5)))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.09"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.09</h3>
+; 
+; EVAL TEST
+; took 4.96 seconds.
+
+!(assertEqualToResult (nqueens 6) ((5 3 1 6 4 2) (4 1 5 2 6 3) (3 6 2 5 1 4) (2 4 6 1 3 5)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (5 3 1 6 4 2) 
+        (4 1 5 2 6 3) 
+        (3 6 2 5 1 4) 
+        (2 4 6 1 3 5)) 
+      ( (5 3 1 6 4 2) 
+        (4 1 5 2 6 3) 
+        (3 6 2 5 1 4) 
+        (2 4 6 1 3 5))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 5.05 seconds.
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (nqueens 7) ((6 4 2 7 5 3 1) (5 2 6 3 7 4 1) (4 7 3 6 2 5 1) (3 5 7 2 4 6 1) (6 3 5 7 1 4 2) (7 5 3 1 6 4 2) (6 3 7 4 1 5 2) (6 4 7 1 3 5 2) (6 3 1 4 7 5 2) (5 1 4 7 3 6 2) (4 6 1 3 5 7 2) (4 7 5 2 6 1 3) (5 7 2 4 6 1 3) (1 6 4 2 7 5 3) (7 4 1 5 2 6 3) (5 1 6 4 2 7 3) (6 2 5 1 4 7 3) (5 7 2 6 3 1 4) (7 3 6 2 5 1 4) (6 1 3 5 7 2 4) (2 7 5 3 1 6 4) (1 5 2 6 3 7 4) (3 1 6 2 5 7 4) (2 6 3 7 4 1 5) (3 7 2 4 6 1 5) (1 4 7 3 6 2 5) (7 2 4 6 1 3 5) (3 1 6 4 2 7 5) (4 1 3 6 2 7 5) (4 2 7 5 3 1 6) (3 7 4 1 5 2 6) (2 5 7 4 1 3 6) (2 4 1 7 5 3 6) (2 5 1 4 7 3 6) (1 3 5 7 2 4 6) (2 5 3 1 7 4 6) (5 3 1 6 4 2 7) (4 1 5 2 6 3 7) (3 6 2 5 1 4 7) (2 4 6 1 3 5 7)))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-LET-STAR.10"
+>;; NQUEENS.NQUEENS-TEST-LET-STAR.10</h3>
+; 
+; EVAL TEST
+; took 21.48 seconds.
+
+!(assertEqualToResult (nqueens 7) ((6 4 2 7 5 3 1) (5 2 6 3 7 4 1) (4 7 3 6 2 5 1) (3 5 7 2 4 6 1) (6 3 5 7 1 4 2) (7 5 3 1 6 4 2) (6 3 7 4 1 5 2) (6 4 7 1 3 5 2) (6 3 1 4 7 5 2) (5 1 4 7 3 6 2) (4 6 1 3 5 7 2) (4 7 5 2 6 1 3) (5 7 2 4 6 1 3) (1 6 4 2 7 5 3) (7 4 1 5 2 6 3) (5 1 6 4 2 7 3) (6 2 5 1 4 7 3) (5 7 2 6 3 1 4) (7 3 6 2 5 1 4) (6 1 3 5 7 2 4) (2 7 5 3 1 6 4) (1 5 2 6 3 7 4) (3 1 6 2 5 7 4) (2 6 3 7 4 1 5) (3 7 2 4 6 1 5) (1 4 7 3 6 2 5) (7 2 4 6 1 3 5) (3 1 6 4 2 7 5) (4 1 3 6 2 7 5) (4 2 7 5 3 1 6) (3 7 4 1 5 2 6) (2 5 7 4 1 3 6) (2 4 1 7 5 3 6) (2 5 1 4 7 3 6) (1 3 5 7 2 4 6) (2 5 3 1 7 4 6) (5 3 1 6 4 2 7) (4 1 5 2 6 3 7) (3 6 2 5 1 4 7) (2 4 6 1 3 5 7)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (6 4 2 7 5 3 1) 
+        (5 2 6 3 7 4 1) 
+        (4 7 3 6 2 5 1) 
+        (3 5 7 2 4 6 1) 
+        (6 3 5 7 1 4 2) 
+        (7 5 3 1 6 4 2) 
+        (6 3 7 4 1 5 2) 
+        (6 4 7 1 3 5 2) 
+        (6 3 1 4 7 5 2) 
+        (5 1 4 7 3 6 2) 
+        (4 6 1 3 5 7 2) 
+        (4 7 5 2 6 1 3) 
+        (5 7 2 4 6 1 3) 
+        (1 6 4 2 7 5 3) 
+        (7 4 1 5 2 6 3) 
+        (5 1 6 4 2 7 3) 
+        (6 2 5 1 4 7 3) 
+        (5 7 2 6 3 1 4) 
+        (7 3 6 2 5 1 4) 
+        (6 1 3 5 7 2 4) 
+        (2 7 5 3 1 6 4) 
+        (1 5 2 6 3 7 4) 
+        (3 1 6 2 5 7 4) 
+        (2 6 3 7 4 1 5) 
+        (3 7 2 4 6 1 5) 
+        (1 4 7 3 6 2 5) 
+        (7 2 4 6 1 3 5) 
+        (3 1 6 4 2 7 5) 
+        (4 1 3 6 2 7 5) 
+        (4 2 7 5 3 1 6) 
+        (3 7 4 1 5 2 6) 
+        (2 5 7 4 1 3 6) 
+        (2 4 1 7 5 3 6) 
+        (2 5 1 4 7 3 6) 
+        (1 3 5 7 2 4 6) 
+        (2 5 3 1 7 4 6) 
+        (5 3 1 6 4 2 7) 
+        (4 1 5 2 6 3 7) 
+        (3 6 2 5 1 4 7) 
+        (2 4 6 1 3 5 7)) 
+      ( (6 4 2 7 5 3 1) 
+        (5 2 6 3 7 4 1) 
+        (4 7 3 6 2 5 1) 
+        (3 5 7 2 4 6 1) 
+        (6 3 5 7 1 4 2) 
+        (7 5 3 1 6 4 2) 
+        (6 3 7 4 1 5 2) 
+        (6 4 7 1 3 5 2) 
+        (6 3 1 4 7 5 2) 
+        (5 1 4 7 3 6 2) 
+        (4 6 1 3 5 7 2) 
+        (4 7 5 2 6 1 3) 
+        (5 7 2 4 6 1 3) 
+        (1 6 4 2 7 5 3) 
+        (7 4 1 5 2 6 3) 
+        (5 1 6 4 2 7 3) 
+        (6 2 5 1 4 7 3) 
+        (5 7 2 6 3 1 4) 
+        (7 3 6 2 5 1 4) 
+        (6 1 3 5 7 2 4) 
+        (2 7 5 3 1 6 4) 
+        (1 5 2 6 3 7 4) 
+        (3 1 6 2 5 7 4) 
+        (2 6 3 7 4 1 5) 
+        (3 7 2 4 6 1 5) 
+        (1 4 7 3 6 2 5) 
+        (7 2 4 6 1 3 5) 
+        (3 1 6 4 2 7 5) 
+        (4 1 3 6 2 7 5) 
+        (4 2 7 5 3 1 6) 
+        (3 7 4 1 5 2 6) 
+        (2 5 7 4 1 3 6) 
+        (2 4 1 7 5 3 6) 
+        (2 5 1 4 7 3 6) 
+        (1 3 5 7 2 4 6) 
+        (2 5 3 1 7 4 6) 
+        (5 3 1 6 4 2 7) 
+        (4 1 5 2 6 3 7) 
+        (3 6 2 5 1 4 7) 
+        (2 4 6 1 3 5 7))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 22.05 seconds.
+
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 10
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[True]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[True]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 02:47:23+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/compare_algo/nqueens/nqueens_test_let_star_mw.metta" --halt=true\033[0m

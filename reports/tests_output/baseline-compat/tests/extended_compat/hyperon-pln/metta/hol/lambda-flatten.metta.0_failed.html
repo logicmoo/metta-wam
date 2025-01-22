@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:41:47+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/lambda-flatten.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/hol/lambda-flatten.metta] ]
+;;;; λ-calculus to metta
+<span class="ansi38-255165000"
+> (= ((λ $x $f) $y)  
+  (let $x $y $f))
+</span>;;;; Z
+<span class="ansi38-255165000"
+> (= (Z)  
+  (λ $f 
+    (λ $x $x)))
+</span>;;;; S
+<span class="ansi38-255165000"
+> (= (S)  
+  (λ $n 
+    (λ $f 
+      (λ $x 
+        ($f (($n $f) $x))))))
+</span>;;;; +
+<span class="ansi38-255165000"
+> (= (plus)  
+  (λ $m 
+    (λ $n 
+      (λ $f 
+        (λ $x 
+          ( ($m $f) (($n $f) $x)))))))
+</span>;;;; Test
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Z)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Z) ((λ $f (λ $x $x))))
+
+</span>
+;<h3 id="HOL.LAMBDA-FLATTEN.01"
+>;; HOL.LAMBDA-FLATTEN.01</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.88 milliseconds) 
+
+!(assertEqualToResult (Z) ((λ $f (λ $x $x))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (λ $f 
+          (λ $x $x))) 
+      ( (λ $f 
+          (λ $x $x)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!((S) ((S) (Z)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((S) ((S) (Z))) ((λ $m (λ $a ($m ($m $a))))))
+
+</span>
+;<h3 id="HOL.LAMBDA-FLATTEN.02"
+>;; HOL.LAMBDA-FLATTEN.02</h3>
+; 
+; EVAL TEST
+; took 0.028 secs. (27.81 milliseconds) 
+
+!(assertEqualToResult ((S) ((S) (Z))) ((λ $m (λ $a ($m ($m $a))))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (λ $m 
+          (λ $a 
+            ($m ($m $a))))) 
+      ( (λ $m 
+          (λ $a 
+            ($m ($m $a)))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((plus) (Z)) (Z))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((plus) (Z)) (Z)) ((λ $f (λ $x $x))))
+
+</span>
+;<h3 id="HOL.LAMBDA-FLATTEN.03"
+>;; HOL.LAMBDA-FLATTEN.03</h3>
+; 
+; EVAL TEST
+; took 0.040 secs. (39.57 milliseconds) 
+
+!(assertEqualToResult (((plus) (Z)) (Z)) ((λ $f (λ $x $x))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (λ $f 
+          (λ $x $x))) 
+      ( (λ $f 
+          (λ $x $x)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((plus) ((S) ((S) (Z)))) ((S) (Z)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((plus) ((S) ((S) (Z)))) ((S) (Z))) ((λ $m (λ $a ($m ($m ($m $a)))))))
+
+</span>
+;<h3 id="HOL.LAMBDA-FLATTEN.04"
+>;; HOL.LAMBDA-FLATTEN.04</h3>
+; 
+; EVAL TEST
+; took 0.085 secs. (84.82 milliseconds) 
+
+!(assertEqualToResult (((plus) ((S) ((S) (Z)))) ((S) (Z))) ((λ $m (λ $a ($m ($m ($m $a)))))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (λ $m 
+          (λ $a 
+            ($m ($m ($m $a)))))) 
+      ( (λ $m 
+          (λ $a 
+            ($m ($m ($m $a))))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 4
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:41:56+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/lambda-flatten.metta" --halt=true\033[0m

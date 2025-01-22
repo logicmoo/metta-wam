@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:47:42+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionDTLTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionDTLTest.metta] ]
+;;;; ;; Type definitions checker
+;;;; !(pragma! type-check auto)
+;;;; ;; Equality type definition
+;;;; (: = (-> $t $t Type))
+;;;; Import modules
+<span class="ansi38-013099040"
+>!(import! &self metta:pln:dependent-types:DeductionDTL)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:synthesis:Synthesize)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:common:Record)
+
+</span>;; no-results ;; 
+;;;; Knowledge base
+<span class="ansi38-255165000"
+> (: Predicate Type)
+</span><span class="ansi38-255165000"
+> (: → (-> Predicate Predicate Type))
+</span><span class="ansi38-255165000"
+> (: P Predicate)
+</span><span class="ansi38-255165000"
+> (: Q Predicate)
+</span><span class="ansi38-255165000"
+> (: R Predicate)
+</span><span class="ansi38-255165000"
+> (: kb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (kb)  
+  (superpose ((: Pm (≞ P (STV 0.5 0.1))) (: Qm (≞ Q (STV 0.6 0.2))) (: Rm (≞ R (STV 0.7 0.3))) (: PQm (≞ (→ P Q) (STV 0.8 0.4))) (: QRm (≞ (→ Q R) (STV 0.9 0.5))))))
+</span>;;;; Rule base
+<span class="ansi38-255165000"
+> (: rb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (rb)  
+  (deduction-rule))
+</span>;;;; Test deduction rule
+;;;;
+;;;; Build the following inference tree
+;;;;
+;;;; ------------(Pm)  ----------(Qm)  ------------(Rm)  ------------  --(PQm)  ----------------(QRm)
+;;;; P ≞ <0.5 0.1>     Q ≞ <0.6 0.2>   R ≞ <0.7 0.1>     P → Q ≞ <0.8 0.5>      Q → R ≞ <0.9 0.5>
+;;;; -------------------------------------------------------------------------------------------(Deduction)
+;;;;                                          P → R ≞ $tv
+;;;; The following is disabled till the type checker supports running functions inside types
+;;;; ! "===== Test type checker on deduction rule ====="
+;;;; (: deduction_prf (≞ (→ P R) $tv))
+;;;; (= deduction_prf (Deduction Pm Qm Rm PQm QRm))
+;;;; !(deduction_prf)
+;;;; !(get-type deduction_prf)
+;;;; Test synthesizer
+<span class="ansi38-013099040"
+>!=====
+
+</span>
+Deterministic: <span class="ansi33"
+>=====
+</span><span class="ansi38-013099040"
+>!(assertEqual (synthesize (: $proof (≞ (→ P Q) $tv)) kb rb Z) (: PQm (≞ (→ P Q) (STV 0.8 0.4))))
+
+</span>
+;<h3 id="DEPENDENT-TYPES.DEDUCTIONDTLTEST.01"
+>;; DEPENDENT-TYPES.DEDUCTIONDTLTEST.01</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.82 milliseconds) 
+
+!(assertEqual (synthesize (: $proof (≞ (→ P Q) $tv)) kb rb Z) (: PQm (≞ (→ P Q) (STV 0.8 0.4))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (synthesize 
+          (: $proof 
+            (≞ 
+              (→ P Q) $tv)) kb rb Z)) 
+      ( (: PQm 
+          (≞ 
+            (→ P Q) 
+            (STV 0.8 0.4))))]]
+</span>equal_enough_for_test('[|]'('[|]'(synthesize,'[|]'('[|]'(:,'[|]'(_4312{vn = ...},'[|]'('[|]'(≞,'[|]'('[|]'(→,'[|]'('P','[|]'('Q',[]))),'[|]'(_4368{vn = ...},[]))),[]))),'[|]'(kb,'[|]'(rb,'[|]'('Z',[]))))),[]),'[|]'('[|]'(:,'[|]'('PQm','[|]'('[|]'(≞,'[|]'('[|]'(→,'[|]'('P','[|]'('Q',[]))),'[|]'('[|]'('STV','[|]'(0.8,'[|]'(0.4,[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((synthesize (: $proof (≞ (→ P Q) $tv)) kb rb Z))] [expected ((: PQm (≞ (→ P Q) (STV 0.8 0.4))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionDTLTest.metta] (assertEqual (synthesize (: $proof (≞ (→ P Q) $tv)) kb rb Z) (: PQm (≞ (→ P Q) (STV 0.8 0.4))))]
+<span class="ansi38-013099040"
+>!(assertEqual (synthesize (: $proof (≞ (→ Q R) $tv)) kb rb Z) (: QRm (≞ (→ Q R) (STV 0.9 0.5))))
+
+</span>
+;<h3 id="DEPENDENT-TYPES.DEDUCTIONDTLTEST.02"
+>;; DEPENDENT-TYPES.DEDUCTIONDTLTEST.02</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.38 milliseconds) 
+
+!(assertEqual (synthesize (: $proof (≞ (→ Q R) $tv)) kb rb Z) (: QRm (≞ (→ Q R) (STV 0.9 0.5))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (synthesize 
+          (: $proof 
+            (≞ 
+              (→ Q R) $tv)) kb rb Z)) 
+      ( (: QRm 
+          (≞ 
+            (→ Q R) 
+            (STV 0.9 0.5))))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(synthesize,'[|]'('[|]'(:,'[|]'(_4312{vn = ...},'[|]'('[|]'(≞,'[|]'('[|]'(→,'[|]'('Q','[|]'('R',[]))),'[|]'(_4368{vn = ...},[]))),[]))),'[|]'(kb,'[|]'(rb,'[|]'('Z',[]))))),[]),'[|]'('[|]'(:,'[|]'('QRm','[|]'('[|]'(≞,'[|]'('[|]'(→,'[|]'('Q','[|]'('R',[]))),'[|]'('[|]'('STV','[|]'(0.9,'[|]'(0.5,[]))),[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((synthesize (: $proof (≞ (→ Q R) $tv)) kb rb Z))] [expected ((: QRm (≞ (→ Q R) (STV 0.9 0.5))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionDTLTest.metta] (assertEqual (synthesize (: $proof (≞ (→ Q R) $tv)) kb rb Z) (: QRm (≞ (→ Q R) (STV 0.9 0.5))))];;;; Do not use assert because of all the incompleted reductions
+<span class="ansi38-013099040"
+>!(synthesize (: $proof (≞ (→ P R) $tv)) kb rb (S Z))
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $proof (≞ (→ P R) $tv)) kb rb (S Z))
+</span>;;; (: (Deduction Pm Qm Rm PQm QRm) (≞ (→ P R) (STV 0.8 0.1))))
+;;;; TODO: fix the following
+;;;;
+;;;; SOLUTION: do partial evaluation where each substitution is
+;;;; provable.  For instance: arguments are well typed for function
+;;;; calls, conditions are proven to be true or false for conditionals,
+;;;; etc.
+;;;;
+;;;; !(record synthesize ((: $proof (≞ (→ P R) (STV $s $c))) kb rb (S Z))) ; (: (Deduction Pm Qm Rm PQm QRm) (≞ (→ P R) (STV 0.8 0.1)))
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 2
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[]
+[]
+[]
+[=====]
+[[[(synthesize (: $proof (≞ (→ P R) $tv)) kb rb (S Z))]
+
+Script done on 2025-01-22 01:47:50+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionDTLTest.metta" --halt=true\033[0m

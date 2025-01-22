@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:41:23+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/hanoi-peg-space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/hanoi-peg-space.metta] ]
+;;; Move a disk from peg X to peg Y.
+<span class="ansi38-255165000"
+> (= (move-disk $disk $x $y)  
+  (if 
+    (and 
+      (can-remove $x $disk) 
+      (can-place $y $disk)) 
+    (seq 
+      (remove-atom &$x 
+        (position bottom $disk)) 
+      (add-atom &$y 
+        (position middle $disk))) nop))
+</span>;;; Check if a disk can be removed from a peg
+<span class="ansi38-255165000"
+> (= (can-remove $x $disk)  
+  (atom-exists $x 
+    (position bottom $disk)))
+</span>;;; Check if a disk can be placed on a peg
+<span class="ansi38-255165000"
+> (= (can-place $y $disk)  
+  (or 
+    (not (any-disk-exists $y)) 
+    (smaller-than-top $y $disk)))
+</span>;;; Check if any disk exists on a peg
+<span class="ansi38-255165000"
+> (= (any-disk-exists $y)  
+  (or 
+    (atom-exists $y 
+      (position middle red-disk)) 
+    (atom-exists $y 
+      (position middle blue-disk)) 
+    (atom-exists $y 
+      (position middle green-disk))))
+</span>;;; Check if a disk is smaller than the top disk on a peg
+;;; GPT4: Youd need to define the logic for this
+;;; USER: Will use prolog''s "standard-order"
+<span class="ansi38-255165000"
+> (= (smaller-than-top $y $disk)  
+  (and (@< $y $disk)))
+</span>;;; Towers of Hanoi test
+<span class="ansi38-255165000"
+> (= (hanoi $n $src $aux $dest)  
+  (if 
+    (eq $n 1) 
+    (move-disk red-disk $src $dest) 
+    (seq 
+      (hanoi 
+        (- $n 1) $src $dest $aux) 
+      (move-disk red-disk $src $dest) 
+      (hanoi 
+        (- $n 1) $aux $src $dest))))
+</span><span class="ansi38-255165000"
+> (= (hanoi_test)  
+  (let 
+    ( (src 
+        (position bottom red-disk) 
+        (position middle blue-disk) 
+        (position top green-disk)) 
+      (aux ()) 
+      (dest ())) 
+    (hanoi 3 src aux dest) 
+    (assertEqual dest 
+      (position bottom red-disk) 
+      (position middle blue-disk) 
+      (position top green-disk))))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(hanoi_test)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (hanoi_test) ())
+
+</span>
+;<h3 id="BASIC.HANOI-PEG-SPACE.01"
+>;; BASIC.HANOI-PEG-SPACE.01</h3>
+<span class="ansi38-255165000"
+> (position bottom red-disk)
+</span><span class="ansi33"
+>retractall(metta_atom_asserted('&$x',[position,bottom,'red-disk']))
+</span><span class="ansi38-255165000"
+> (position middle red-disk)
+</span>; 
+; EVAL TEST
+; took 0.022 secs. (22.21 milliseconds) 
+
+!(assertEqualToResult (hanoi_test) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+
+Script done on 2025-01-22 02:41:31+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/hanoi-peg-space.metta" --halt=true\033[0m

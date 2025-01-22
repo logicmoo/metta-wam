@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 11:10:10+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-22 00:54:01+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -91,41 +91,15 @@ Script started on 2025-01-02 11:10:10+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.01</h3>
-; 
-; EVAL TEST
-; took 0.001 secs. (1.23 milliseconds) 
-
-!(assertEqual (stringToChars "xyzzy") ('x' 'y' 'z' 'z' 'y'))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( ('x' 'y' 'z' 'z' 'y')) 
-      ( ('x' 'y' 'z' 'z' 'y'))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (stringToChars "xyzzy") ('x' 'y' 'z' 'z' 'y'))]
+<span class="ansi38-013099040"
 >!(assertEqual (charsToString ('x' 'y' 'z' 'z' 'y')) "xyzzy")
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.02</h3>
-; 
-; EVAL TEST
-; took 0.000662 secs. (661.69 microseconds) 
-
-!(assertEqual (charsToString ('x' 'y' 'z' 'z' 'y')) "xyzzy")
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ("xyzzy") 
-      ("xyzzy")]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (charsToString ('x' 'y' 'z' 'z' 'y')) "xyzzy")]
+<span class="ansi38-013099040"
 >!(assertEqual (stringToChars "") ())
 
 </span>
@@ -133,7 +107,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000152 secs. (151.60 microseconds) 
+; took 0.000172 secs. (171.61 microseconds) 
 
 !(assertEqual (stringToChars "") ())
 
@@ -153,7 +127,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000167 secs. (167.36 microseconds) 
+; took 0.000159 secs. (158.67 microseconds) 
 
 !(assertEqual (charsToString ()) "")
 
@@ -172,146 +146,51 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.05</h3>
-; 
-; EVAL TEST
-; took 0.000811 secs. (811.23 microseconds) 
-
-!(assertEqual (charsToString (stringToChars "xyzzy")) "xyzzy")
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ("xyzzy") 
-      ("xyzzy")]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (charsToString (stringToChars "xyzzy")) "xyzzy")]
+<span class="ansi38-013099040"
 >!(assertEqual (stringToChars (charsToString ('x' 'y' 'z' 'z' 'y'))) ('x' 'y' 'z' 'z' 'y'))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.06</h3>
-; 
-; EVAL TEST
-; took 0.002 secs. (1.70 milliseconds) 
 
-!(assertEqual (stringToChars (charsToString ('x' 'y' 'z' 'z' 'y'))) ('x' 'y' 'z' 'z' 'y'))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( ('x' 'y' 'z' 'z' 'y')) 
-      ( ('x' 'y' 'z' 'z' 'y'))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;; metta gets all these wrong
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (stringToChars (charsToString ('x' 'y' 'z' 'z' 'y'))) ('x' 'y' 'z' 'z' 'y'))];;;; metta gets all these wrong
 <span class="ansi38-013099040"
 >!(assertEqual (charsToString ('x' 'y' ' ' 'z' 'y')) "xy zy")
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.07</h3>
-; 
-; EVAL TEST
-; took 0.000695 secs. (695.36 microseconds) 
-
-!(assertEqual (charsToString ('x' 'y' ' ' 'z' 'y')) "xy zy")
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ("xy zy") 
-      ("xy zy")]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (charsToString ('x' 'y' ' ' 'z' 'y')) "xy zy")]
+<span class="ansi38-013099040"
 >!(assertEqual (stringToChars "xy zy") ('x' 'y' ' ' 'z' 'y'))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.08</h3>
-; 
-; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
-
-!(assertEqual (stringToChars "xy zy") ('x' 'y' ' ' 'z' 'y'))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( ('x' 'y' ' ' 'z' 'y')) 
-      ( ('x' 'y' ' ' 'z' 'y'))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term 'y'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (stringToChars "xy zy") ('x' 'y' ' ' 'z' 'y'))]
+<span class="ansi38-013099040"
 >!(assertEqual (charsToString (' ')) " ")
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.09"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.09</h3>
-; 
-; EVAL TEST
-; took 0.000254 secs. (254.16 microseconds) 
-
-!(assertEqual (charsToString (' ')) " ")
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      (" ") 
-      (" ")]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term ' '] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (charsToString (' ')) " ")]
+<span class="ansi38-013099040"
 >!(assertEqual (stringToChars " ") (' '))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.10"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.10</h3>
-; 
-; EVAL TEST
-; took 0.000328 secs. (328.47 microseconds) 
-
-!(assertEqual (stringToChars " ") (' '))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( (' ')) 
-      ( (' '))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+[error [error [domain_error py_term ' '] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (stringToChars " ") (' '))]
+<span class="ansi38-013099040"
 >!(assertEqual (stringToChars (superpose ("ab" "cd" "ef"))) (superpose (('a' 'b') ('c' 'd') ('e' 'f'))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.STRING-TESTS.11"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.11</h3>
-; 
-; EVAL TEST
-; took 0.003 secs. (2.83 milliseconds) 
 
-!(assertEqual (stringToChars (superpose ("ab" "cd" "ef"))) (superpose (('a' 'b') ('c' 'd') ('e' 'f'))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( ('a' 'b') 
-        ('c' 'd') 
-        ('e' 'f')) 
-      ( ('a' 'b') 
-        ('c' 'd') 
-        ('e' 'f'))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;; format-args
+[error [error [domain_error py_term 'b'] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/string-tests.metta] (assertEqual (stringToChars (superpose ("ab" "cd" "ef"))) (superpose (('a' 'b') ('c' 'd') ('e' 'f'))))];;;; format-args
 <span class="ansi38-013099040"
 >!(assertEqual (format-args "" (1 2 3)) "")
 
@@ -320,7 +199,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000231 secs. (231.23 microseconds) 
+; took 0.000206 secs. (205.66 microseconds) 
 
 !(assertEqual (format-args "" (1 2 3)) "")
 
@@ -340,7 +219,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000216 secs. (215.91 microseconds) 
+; took 0.000219 secs. (218.63 microseconds) 
 
 !(assertEqual (format-args " " (1 2 3)) " ")
 
@@ -360,7 +239,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000259 secs. (259.37 microseconds) 
+; took 0.000277 secs. (276.90 microseconds) 
 
 !(assertEqual (format-args "{}" (1 2 3)) "1")
 
@@ -380,7 +259,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000202 secs. (202.08 microseconds) 
+; took 0.000223 secs. (222.73 microseconds) 
 
 !(assertEqual (format-args "{}}" (1 2 3)) "{}")
 
@@ -400,7 +279,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000200 secs. (200.04 microseconds) 
+; took 0.000214 secs. (213.89 microseconds) 
 
 !(assertEqual (format-args "xyz zy" (1 2 3)) "xyz zy")
 
@@ -420,7 +299,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000288 secs. (287.83 microseconds) 
+; took 0.000359 secs. (359.35 microseconds) 
 
 !(assertEqual (format-args "Indexed {1} {} {0} {}" (1 2 3)) "Indexed 2 1 1 2")
 
@@ -440,7 +319,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.92 milliseconds) 
+; took 0.004 secs. (3.63 milliseconds) 
 
 !(assertEqual (format-args "Different types {} {} {} {} {} {}" (1 "2" 'c' -0.5 atom (1 2 c -0.5 atom))) "Different types 1 2 c -0.5 atom (1 2 c -0.5 atom)")
 
@@ -460,7 +339,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000229 secs. (229.04 microseconds) 
+; took 0.000214 secs. (214.35 microseconds) 
 
 !(assertEqual (format-args "Two digit index={11}" (0 1 2 3 4 5 6 7 8 9 10 "eleven")) "Two digit index=eleven")
 
@@ -481,7 +360,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000402 secs. (401.91 microseconds) 
+; took 0.000184 secs. (184.27 microseconds) 
 
 !(assertEqual (format-args "Bad args list {1} {} {0} {}" x) (Error x BadType))
 
@@ -501,7 +380,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.STRING-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000228 secs. (227.69 microseconds) 
+; took 0.000263 secs. (262.88 microseconds) 
 
 !(assertEqual (format-args "Malformed format}{{}{{{}{} {4} { } {-1} {x} {{{{{{}}}}}}{{{{{}}}}}" ("success1" "success2")) "Malformed format}{}{success1success2 {4} { } {-1} {x} {{{}}}{{{}}}")
 
@@ -517,11 +396,14 @@ Deterministic: <span class="ansi33"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 21
-</span><span class="ansi32"
->Failures: 0
+>Successes: 12
+</span><span class="ansi31"
+>Failures: 9
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
+[[[()]
+[()]
+[[[[[[[[()]
 [()]
 [()]
 [()]
@@ -531,22 +413,8 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 11:10:18+00:00 [COMMAND_EXIT_CODE="7"]
+
+Script done on 2025-01-22 00:54:10+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:25:13+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/metta-examples/stack-based/rewrites.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/metta-examples/stack-based/rewrites.metta] ]
+;;; add a constant $x to the stack
+<span class="ansi38-255165000"
+> (= ($s (put $x))  
+  ($s $x))
+</span>;;; we could use whatever as the initial stack, I picked the ungrounded E
+<span class="ansi38-255165000"
+> >
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(E (put 2))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (E (put 2)) ((E 2)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.01"
+>;; STACK-BASED.REWRITES.01</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.00 milliseconds) 
+
+!(assertEqualToResult (E (put 2)) ((E 2)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (E 2)) 
+      ( (E 2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [(E 2)]
+;;; chaining works naturally
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!((E (put 2)) (put 3))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((E (put 2)) (put 3)) (((E 2) 3)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.02"
+>;; STACK-BASED.REWRITES.02</h3>
+; 
+; EVAL TEST
+; took 0.006 secs. (6.19 milliseconds) 
+
+!(assertEqualToResult ((E (put 2)) (put 3)) (((E 2) 3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (E 2) 3)) 
+      ( ( (E 2) 3))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [((E 2) 3)]
+;;; defining some arithmetic operations
+<span class="ansi38-255165000"
+> (= ((($s $x) $y) add)  
+  ($s (+ $x $y)))
+</span><span class="ansi38-255165000"
+> (= ((($s $x) $y) mul)  
+  ($s (* $x $y)))
+</span>;;; let's make use of being able to return more than one result!
+<span class="ansi38-255165000"
+> (= ((($s $x) $y) divmod2)  
+    
+  ($s (% $x $y))
+    
+  (/ $x $y))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((E (put 2)) (put 3)) add)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((E (put 2)) (put 3)) add) ((E 5)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.03"
+>;; STACK-BASED.REWRITES.03</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (8.54 milliseconds) 
+
+!(assertEqualToResult (((E (put 2)) (put 3)) add) ((E 5)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (E 5)) 
+      ( (E 5))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> [holds (E 5)]
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((((E (put 2)) (put 3)) mul) (put 5)) divmod2)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((((E (put 2)) (put 3)) mul) (put 5)) divmod2) (((E 1) 1.2)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.04"
+>;; STACK-BASED.REWRITES.04</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (16.82 milliseconds) 
+
+!(assertEqualToResult (((((E (put 2)) (put 3)) mul) (put 5)) divmod2) (((E 1) 1.2)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (E 1) 1.2)) 
+      ( ( (E 1) 1.2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [((E 1) 1)]
+;;; defining some stack manipulation
+<span class="ansi38-255165000"
+> (= (($s $x) dup)  
+  ( ($s $x) $x))
+</span><span class="ansi38-255165000"
+> (= ((($s $x) $y) swap)  
+  ( ($s $y) $x))
+</span><span class="ansi38-255165000"
+> (= (($s $x) drop)  $s)
+</span><span class="ansi38-255165000"
+> (= (((($s $x) $y) $z) rot)  
+  ( ( ($s $y) $z) $x))
+</span><span class="ansi38-255165000"
+> (= ((($s $x) $y) over)  
+  ( ( ($s $x) $y) $x))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((((E (put 2)) dup) mul) (put 5)) swap)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((((E (put 2)) dup) mul) (put 5)) swap) (((E 5) 4)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.05"
+>;; STACK-BASED.REWRITES.05</h3>
+; 
+; EVAL TEST
+; took 0.014 secs. (13.89 milliseconds) 
+
+!(assertEqualToResult (((((E (put 2)) dup) mul) (put 5)) swap) (((E 5) 4)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (E 5) 4)) 
+      ( ( (E 5) 4))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [((E 5) 4)]
+;;; side effecting and destroying print
+<span class="ansi38-255165000"
+> (= (($s $x) say)  
+  (let $260 
+    (println! $x) $s))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!((((E (put 2)) (put 3)) add) say)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((((E (put 2)) (put 3)) add) say) (E))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.06"
+>;; STACK-BASED.REWRITES.06</h3>
+5
+; 
+; EVAL TEST
+; took 0.010 secs. (10.01 milliseconds) 
+
+!(assertEqualToResult ((((E (put 2)) (put 3)) add) say) (E))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (E) 
+      (E)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; 5
+;;; [E]
+;;; first class functions
+<span class="ansi38-255165000"
+> (= (($s (Cons $f $r)) apply)  
+  ( ( ($s $f) $r) apply))
+</span><span class="ansi38-255165000"
+> (= (($s Nil) apply)  $s)
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((E 6) (Cons dup (Cons mul Nil))) apply)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((E 6) (Cons dup (Cons mul Nil))) apply) ((E 36)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.07"
+>;; STACK-BASED.REWRITES.07</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.17 milliseconds) 
+
+!(assertEqualToResult (((E 6) (Cons dup (Cons mul Nil))) apply) ((E 36)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (E (* 6 dup))) 
+      ( (E 36))]]
+</span>
+equal_enough_for_test('[|]'('[|]'('E','[|]'('[|]'(*,'[|]'(6,'[|]'(dup,[]))),[])),[]),'[|]'('[|]'('E','[|]'(36,[])),[]))[error [error [domain_error py_term [Error [got ((E (* 6 dup)))] [expected ((E 36))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/metta-examples/stack-based/rewrites.metta] (assertEqualToResult (((E 6) (Cons dup (Cons mul Nil))) apply) ((E 36)))];;; [(E 36)]
+;;; multi valued functions work as expected
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((E (put (superpose (1 2)))) dup) add)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((E (put (superpose (1 2)))) dup) add) ((E 2) (E 4)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.08"
+>;; STACK-BASED.REWRITES.08</h3>
+; 
+; EVAL TEST
+; took 0.015 secs. (15.30 milliseconds) 
+
+!(assertEqualToResult (((E (put (superpose (1 2)))) dup) add) ((E 2) (E 4)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (E 2) (E 4)) 
+      ( (E 2) (E 4))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [(E 2), (E 4)]
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(((E (put (superpose (3 5)))) dup) (superpose (add mul)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (((E (put (superpose (3 5)))) dup) (superpose (add mul))) ((E 9) (E 6) (E 25) (E 10)))
+
+</span>
+;<h3 id="STACK-BASED.REWRITES.09"
+>;; STACK-BASED.REWRITES.09</h3>
+; 
+; EVAL TEST
+; took 0.021 secs. (20.69 milliseconds) 
+
+!(assertEqualToResult (((E (put (superpose (3 5)))) dup) (superpose (add mul))) ((E 9) (E 6) (E 25) (E 10)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (E 6) 
+        (E 9) 
+        (E 10) 
+        (E 25)) 
+      ( (E 9) 
+        (E 6) 
+        (E 25) 
+        (E 10))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; [(E 6), (E 9), (E 10), (E 25)]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 8
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[[()]
+[()]
+
+Script done on 2025-01-22 01:25:23+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/metta-examples/stack-based/rewrites.metta" --halt=true\033[0m

@@ -1,0 +1,823 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:42:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/NatParityTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/hol/NatParityTest.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Definition of a chainer, Nat, plus and some proofs about the
+;;;; existance of the parity properties of Nat such as Even and Odd.
+;;;;
+;;;; Implement a sigma type, take example from
+;;;;
+;;;; https://idris2.readthedocs.io/en/latest/tutorial/typesfuns.html#dependent-pairs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;
+;;;; Nat ;;
+;;;;;;;;;;;
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Knowledge/rule base ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; The following code is translated into axioms and rules to handled
+;;;; by the backward chainer.
+;;;;
+;;;; ;; Define Σ type (called DPair in Idris)
+;;;; (: Σ (-> (: $a Type) (-> $a Type) Type))
+;;;;
+;;;; ;; Define DPair constructor
+;;;; (: MkΣ (-> (: $p (-> $a Type)) (: $x $a) ($p $x) (Σ $a $p)))
+;;;;
+;;;; ;; Define the even property
+;;;; (: Even (-> Nat Type))
+;;;; (: MkEvenZ (Even Z))
+;;;; (: MkEvenSS (-> (Even $k) (Even (S (S $k)))))
+;;;;
+;;;; ;; Define examples of even numbers (0 and 2)
+;;;; (: (MkΣ Even Z MkEvenZ) (Σ Nat Even))
+;;;; (: (MkΣ Even (S (S Z)) (MkEvenSS MkEvenZ)) (Σ Nat Even))
+;;;; (: $prf (Σ Nat Even))
+;;;;
+;;;; ;; Define double function
+;;;; (: double (-> Nat Nat))
+;;;; (= (double Z) Z)
+;;;; (= (double (S $k)) (S (S (double $k))))
+;;;;
+;;;; ;; Σ access functions
+;;;; (: Σ.val (-> (Σ $a $p) $a))
+;;;; (= (Σ.val (MkΣ $prop $val $prf)) $val)
+;;;; (: Σ.prf (-> (Σ $a $p) $p))
+;;;; (= (Σ.prf (MkΣ $prop $val $prf)) $prf)
+;;;;
+;;;; ;; Define double function, with the guaranty that the output is even
+;;;; (: doubleΣ (-> Nat (Σ Nat Even)))
+;;;; (= (doubleΣ Z) (MkΣ Even Z MkEvenZ))
+;;;; (= (doubleΣ (S $k)) (MkΣ Even
+;;;;                          (S (S (Σ.val (doubleΣ $k))))
+;;;;                          (MkEvenSS (Σ.prf (doubleΣ $k)))))
+;;;;
+;;;; ;; For all x, (double x) is even
+;;;; ;; ∀x (Even (double x))
+;;;; (: double-even-prf (-> (: $x Nat) (Even (double $x))))
+;;;;
+;;;; ;; Independent product type (i.e. conjunction)
+;;;; (: ⊗ (-> Type Type Type))
+;;;;
+;;;; ;; Equality
+;;;; (: === (-> $a $a Type))
+;;;;
+;;;; ;; ;; NEXT
+;;;;
+;;;; ;; ;; For all x, there exists k such that k = (double x) and k is even
+;;;; ;; ;; ∀x ∃k k=(double x) ∧ (Even k)
+;;;; ;; (: double-Σ-even-prf (-> ($x : Nat)
+;;;; ;;                          (Σ Nat (λ $k (⊗ (=== $k (double $x)) (Even $k))))))
+;;;;
+;;;; ;; (: double-Σ-even-prf (-> ($x : Nat) (Σ Nat (EqualDoubleAndEven $x))))
+;;;; ;; (: EqualDoubleAndEven (-> Nat (-> Nat Type)))
+;;;; ;; (= ((EqualDoubleAndEven $x) $k) (⊗ (=== $k (double $x)) (Even $k)))
+;;;; ;; ;; Or, alternatively
+;;;; ;; ;; (= (EqualDoubleAndEven $x) (λ $k (× (=== $k (double $x)) (Even $k))))
+;;;; Define Nat
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Nat Type))
+
+</span><span class="ansi38-255165000"
+> (: Nat Type)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: Z Nat))
+
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: S (-> (: $x Nat) Nat)))
+
+</span><span class="ansi38-255165000"
+> (: S (-> (: $x Nat) Nat))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; NEXT: deal with asummptions like (: $k Nat)
+;;;; !(add-atom &kb (: $k
+;;;; Define Even
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Even (-> (: $x Nat) Type)))
+
+</span><span class="ansi38-255165000"
+> (: Even (-> (: $x Nat) Type))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: MkEvenZ (Even Z)))
+
+</span><span class="ansi38-255165000"
+> (: MkEvenZ (Even Z))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: MkEvenSS (-> (: $prf (Even $k)) (Even (S (S $k))))))
+
+</span><span class="ansi38-255165000"
+> (: MkEvenSS (-> (: $prf (Even $k)) (Even (S (S $k)))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Define Σ
+<span class="ansi38-013099040"
+>!(add-atom &kb (: MkΣ (-> (: $p (-> (: $260 $a) Type)) (-> (: $x $a) (-> (: $prf ($p $x)) (Σ $a $p))))))
+
+</span><span class="ansi38-255165000"
+> (: MkΣ (-> (: $p (-> (: $260 $a) Type)) (-> (: $x $a) (-> (: $prf ($p $x)) (Σ $a $p)))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Equality is transitive
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Trans (-> (: $prf1 (=== $x $y)) (-> (: $prf2 (=== $y $z)) (=== $x $z)))))
+
+</span><span class="ansi38-255165000"
+> (: Trans (-> (: $prf1 (=== $x $y)) (-> (: $prf2 (=== $y $z)) (=== $x $z))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Equality is symmetric
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Sym (-> (: $prf (=== $x $y)) (=== $y $x))))
+
+</span><span class="ansi38-255165000"
+> (: Sym (-> (: $prf (=== $x $y)) (=== $y $x)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Equality respects function application
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Cong (-> (: $f (-> (: $260 $a) $b)) (-> (: $x $a) (-> (: $x_39 $a) (-> (: $prf (=== $x $x_39)) (=== ($f $x) ($f $x_39))))))))
+
+</span><span class="ansi38-255165000"
+> (: Cong (-> (: $f (-> (: $260 $a) $b)) (-> (: $x $a) (-> (: $x_39 $a) (-> (: $prf (=== $x $x_39)) (=== ($f $x) ($f $x_39)))))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Rule of replacement
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Replace (-> (: $prf1 (=== $x $x_39)) (-> (: $prf2 $x) $x_39))))
+
+</span><span class="ansi38-255165000"
+> (: Replace (-> (: $prf1 (=== $x $x_39)) (-> (: $prf2 $x) $x_39)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; ;; Modus Ponens (application)
+;;;; !(add-atom &kb (: ModusPonens (-> (: $f (-> (: $x $a) $b)) ; Premise 1
+;;;;                                   (-> (: $x $a)            ; Premise 2
+;;;;                                       $b))))               ; Conclusion
+;;;; Define double
+<span class="ansi38-013099040"
+>!(add-atom &kb (: double (-> (: $k Nat) Nat)))
+
+</span><span class="ansi38-255165000"
+> (: double (-> (: $k Nat) Nat))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: double_base (=== (double Z) Z)))
+
+</span><span class="ansi38-255165000"
+> (: double_base (=== (double Z) Z))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: double_rec (-> (: $k Nat) (=== (double (S $k)) (S (S (double $k)))))))
+
+</span><span class="ansi38-255165000"
+> (: double_rec (-> (: $k Nat) (=== (double (S $k)) (S (S (double $k))))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Composition operator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: . (-> (: $g (-> (: $y $b) $c)) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c)))))
+
+</span><span class="ansi38-255165000"
+> (: . (-> (: $g (-> (: $y $b) $c)) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Flip operator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: flip (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c)))))
+
+</span><span class="ansi38-255165000"
+> (: flip (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; ;; Anything can serve as a variable.  Even a closed term, it simply
+;;;; ;; will not unify with any other closed term than itself, which makes
+;;;; ;; for a very specific, yet valid, abstraction.
+;;;; !(add-atom &kb (: $x Variable))
+;;;; ;; Lambda abstraction
+;;;; !(add-atom &kb (: λ (-> (: $x Variable)           ; Premise 1
+;;;;                         (-> (: $y $b)             ; Premise 2
+;;;;                             (-> (: $x $a) $b))))) ; Conclusion
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Backward chainer ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Similar to the backward chainer in NatDTLTest but rules are
+;;;; optionally represented as dependent products.  Meaning rule
+;;;; premises may contain type-of relationships.  That is, instead of
+;;;;
+;;;; (: RULE_CONSTRUCTOR (-> PREMISE CONCLUSION))
+;;;;
+;;;; it must be
+;;;;
+;;;; (: RULE_CONSTRUCTOR (-> (: PROOF PREMISE) CONCLUSION))
+;;;;
+;;;; Typically PROOF will be a variable, but it can also be a term
+;;;; containing variables, in which case CONCLUSION may contain that
+;;;; term, or variables of that term.
+;;;;
+;;;; Unlike for the backward chainer in NatDTLTest, the non-dependent
+;;;; format is supported as well.  EDIT: not yet!
+;;;; Base case
+<span class="ansi38-255165000"
+> (: bc (-> $a Nat $a))
+</span><span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $260)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;;; Recursive step
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> 
+            (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span>;;;;;;;;;;;;;;;;;
+;;;; Reduction ;;
+;;;;;;;;;;;;;;;;;
+;;;; Reduction rules to simplify proofs and reduce redundancy
+;;;; TODO: these rules should be proven first.  Then they could
+;;;; automatically be inserted.
+;;;; Involution of symmetry
+<span class="ansi38-255165000"
+> (= (Sym (Sym $f))  $f)
+</span>;;;; Composition to application
+<span class="ansi38-255165000"
+> (= (((. $g) $f) $x)  
+  ($g ($f $x)))
+</span>;;;; Involution of flip
+<span class="ansi38-255165000"
+> (= (flip (flip $f))  $f)
+</span>;;;;;;;;;;;;;
+;;;; Tests ;;
+;;;;;;;;;;;;;
+;;;; ;; Synthesize natural numbers
+;;;; !(bc (: $prf Nat) (fromNumber 3))
+;;;; Synthesize unary functions over natural numbers, that is
+;;;; prove (-> (: $k Nat) Nat).
+;;;; NEXT: explore lambda abstraction once the PANIC bug is fixed
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(bc (: $prf (-> (: $k Nat) Nat)) (fromNumber 3))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (fromNumber 3)) ((: ((. double) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. double) double) (-> (: $x Nat) Nat)) (: ((. double) S) (-> (: $x Nat) Nat)) (: ((. S) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. S) double) (-> (: $x Nat) Nat)) (: ((. S) S) (-> (: $x Nat) Nat)) (: double (-> (: $x Nat) Nat)) (: S (-> (: $x Nat) Nat))))
+
+</span>
+;<h3 id="HOL.NATPARITYTEST.01"
+>;; HOL.NATPARITYTEST.01</h3>
+; 
+; EVAL TEST
+; took 3.60 seconds.
+
+!(assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (fromNumber 3)) ((: ((. double) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. double) double) (-> (: $x Nat) Nat)) (: ((. double) S) (-> (: $x Nat) Nat)) (: ((. S) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. S) double) (-> (: $x Nat) Nat)) (: ((. S) S) (-> (: $x Nat) Nat)) (: double (-> (: $x Nat) Nat)) (: S (-> (: $x Nat) Nat))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (: S 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: double 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) S) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) double) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) ((. S) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) ((. S) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) ((. double) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. S) ((. double) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) S) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) double) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) ((. S) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) ((. S) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) ((. double) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( (. double) ((. double) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) S) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) double) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) ((. S) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) ((. S) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) ((. double) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) S) ((. double) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) S) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) double) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) ((. S) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) ((. S) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) ((. double) S)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip .) double) ((. double) double)) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip flip) S) (flip (. S))) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip flip) S) (flip (. double))) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip flip) double) (flip (. S))) 
+          (-> 
+            (: $k Nat) Nat)) 
+        (: 
+          ( ( (flip flip) double) (flip (. double))) 
+          (-> 
+            (: $k Nat) Nat))) 
+      ( (: 
+          ( (. double) ((. double) double)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. double) ((. double) S)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. double) ((. S) double)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. double) ((. S) S)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. double) double) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. double) S) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) ((. double) double)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) ((. double) S)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) ((. S) double)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) ((. S) S)) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) double) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: 
+          ( (. S) S) 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: double 
+          (-> 
+            (: $x Nat) Nat)) 
+        (: S 
+          (-> 
+            (: $x Nat) Nat)))]]
+</span>equal_enough_for_test('[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13776{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'(double,'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13702{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13628{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13530{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13432{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13310{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13188{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_13066{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12944{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12846{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12748{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12626{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12504{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12382{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12260{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12150{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_12040{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11906{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11772{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11638{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11504{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11394{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11284{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11150{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_11016{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'('.',[])),'[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_10882{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'(flip,[])),'[|]'('S',[])),'[|]'('[|]'(flip,'[|]'('[|]'('.','[|]'('S',[])),[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_10748{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'(flip,[])),'[|]'('S',[])),'[|]'('[|]'(flip,'[|]'('[|]'('.','[|]'(double,[])),[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_10614{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'(flip,[])),'[|]'(double,[])),'[|]'('[|]'(flip,'[|]'('[|]'('.','[|]'('S',[])),[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_10480{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('[|]'(flip,'[|]'(flip,[])),'[|]'(double,[])),'[|]'('[|]'(flip,'[|]'('[|]'('.','[|]'(double,[])),[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_10346{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[])))))))))))))))))))))))))))))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'(double,[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'(double,[])),'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('[|]'('.','[|]'('S',[])),'[|]'('S',[])),'[|]'('[|]'(->,'[|]'(
+'[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'(double,'[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),'[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_1718,'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[])))))))))))))))[error [error [domain_error py_term [Error [got ((: S (-> (: $k Nat) Nat)) (: double (-> (: $k Nat) Nat)) (: ((. S) S) (-> (: $k Nat) Nat)) (: ((. S) double) (-> (: $k Nat) Nat)) (: ((. S) ((. S) S)) (-> (: $k Nat) Nat)) (: ((. S) ((. S) double)) (-> (: $k Nat) Nat)) (: ((. S) ((. double) S)) (-> (: $k Nat) Nat)) (: ((. S) ((. double) double)) (-> (: $k Nat) Nat)) (: ((. double) S) (-> (: $k Nat) Nat)) (: ((. double) double) (-> (: $k Nat) Nat)) (: ((. double) ((. S) S)) (-> (: $k Nat) Nat)) (: ((. double) ((. S) double)) (-> (: $k Nat) Nat)) (: ((. double) ((. double) S)) (-> (: $k Nat) Nat)) (: ((. double) ((. double) double)) (-> (: $k Nat) Nat)) (: (((flip .) S) S) (-> (: $k Nat) Nat)) (: (((flip .) S) double) (-> (: $k Nat) Nat)) (: (((flip .) S) ((. S) S)) (-> (: $k Nat) Nat)) (: (((flip .) S) ((. S) double)) (-> (: $k Nat) Nat)) (: (((flip .) S) ((. double) S)) (-> (: $k Nat) Nat)) (: (((flip .) S) ((. double) double)) (-> (: $k Nat) Nat)) (: (((flip .) double) S) (-> (: $k Nat) Nat)) (: (((flip .) double) double) (-> (: $k Nat) Nat)) (: (((flip .) double) ((. S) S)) (-> (: $k Nat) Nat)) (: (((flip .) double) ((. S) double)) (-> (: $k Nat) Nat)) (: (((flip .) double) ((. double) S)) (-> (: $k Nat) Nat)) (: (((flip .) double) ((. double) double)) (-> (: $k Nat) Nat)) (: (((flip flip) S) (flip (. S))) (-> (: $k Nat) Nat)) (: (((flip flip) S) (flip (. double))) (-> (: $k Nat) Nat)) (: (((flip flip) double) (flip (. S))) (-> (: $k Nat) Nat)) (: (((flip flip) double) (flip (. double))) (-> (: $k Nat) Nat)))] [expected ((: ((. double) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. double) double) (-> (: $x Nat) Nat)) (: ((. double) S) (-> (: $x Nat) Nat)) (: ((. S) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. S) double) (-> (: $x Nat) Nat)) (: ((. S) S) (-> (: $x Nat) Nat)) (: double (-> (: $x Nat) Nat)) (: S (-> (: $x Nat) Nat)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/hol/NatParityTest.metta] (assertEqualToResult (bc (: $prf (-> (: $k Nat) Nat)) (fromNumber 3)) ((: ((. double) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. double) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. double) double) (-> (: $x Nat) Nat)) (: ((. double) S) (-> (: $x Nat) Nat)) (: ((. S) ((. double) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. double) S)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) double)) (-> (: $x Nat) Nat)) (: ((. S) ((. S) S)) (-> (: $x Nat) Nat)) (: ((. S) double) (-> (: $x Nat) Nat)) (: ((. S) S) (-> (: $x Nat) Nat)) (: double (-> (: $x Nat) Nat)) (: S (-> (: $x Nat) Nat))))];;;; ;; Prove that 0 is even
+;;;; !(bc (: $prf (Even (fromNumber 0))) (fromNumber 0))
+;;;; ;; Prove that 2 is even
+;;;; !(bc (: $prf (Even (fromNumber 2))) (fromNumber 1))
+;;;; ;; Synthesize even numbers
+;;;; !(bc (: $prf (Σ Nat Even)) (fromNumber 4))
+;;;; ;; Prove that (double Z) is even.
+;;;; ;;
+;;;; ;; A possible proof of that is represented by the following proof tree:
+;;;; ;;
+;;;; ;;                                  --(Z)       -----------------(double_base)
+;;;; ;;                                  Nat         (=== (double Z) Z)
+;;;; ;; -------------------(Even) --(Z)  --(double)  -----------------(Sym)
+;;;; ;; (-> (: $_ Nat) Type)      Nat    Nat         (=== Z (double Z))
+;;;; ;; --------------------------------------------------------------(Cong)  -------(MkEvenZ)
+;;;; ;;                (=== (Even Z) (Even (double Z)))                       (Even Z)
+;;;; ;;                --------------------------------------------------------------(Replace)
+;;;; ;;                                       (Even (double Z))
+;;;; ;;
+;;;; ;; Or in MeTTa format:
+;;;; ;;
+;;;; ;; (: ((Replace ((((Cong Even) Z) (double Z)) (Sym double_base))) MkEvenZ) (Even (double Z)))
+;;;; !(bc (: $prf (Even (double Z))) (fromNumber 6))
+;;;; ;; Prove
+;;;; ;;
+;;;; ;; (-> (: Even (-> (: $_ Nat) Type))
+;;;; ;;     (-> (: (double (S $k)) Nat)
+;;;; ;;         (-> (: (S (S (double $k))) Nat)
+;;;; ;;             (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;; ;;                 (=== (Even (double (S $k))) (Even (S (S (double $k)))))))))
+;;;; ;;
+;;;; ;; which should merely be Cong.
+;;;; !(assertEqual
+;;;;   (bc (: $prf (-> (: Even (-> (: $_ Nat) Type))
+;;;;                   (-> (: (double (S $k)) Nat)
+;;;;                       (-> (: (S (S (double $k))) Nat)
+;;;;                           (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                               (=== (Even (double (S $k))) (Even (S (S (double $k))))))))))
+;;;;       (fromNumber 0))
+;;;;   (: Cong (-> (: Even (-> (: $_ Nat) Type))
+;;;;               (-> (: (double (S $k)) Nat)
+;;;;                   (-> (: (S (S (double $k))) Nat)
+;;;;                       (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                           (=== (Even (double (S $k))) (Even (S (S (double $k)))))))))))
+;;;; ;; Prove
+;;;; ;;
+;;;; ;; (-> (: (double (S $k)) Nat)
+;;;; ;;     (-> (: (S (S (double $k))) Nat)
+;;;; ;;         (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;; ;;             (=== (Even (double (S $k))) (Even (S (S (double $k))))))))
+;;;; ;;
+;;;; ;; which should be (Cong Even).
+;;;; !(assertEqual
+;;;;   (bc (: $prf (-> (: (double (S $k)) Nat)
+;;;;                   (-> (: (S (S (double $k))) Nat)
+;;;;                       (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                           (=== (Even (double (S $k))) (Even (S (S (double $k)))))))))
+;;;;       (fromNumber 1))
+;;;;   (: (Cong Even) (-> (: (double (S $k)) Nat)
+;;;;                      (-> (: (S (S (double $k))) Nat)
+;;;;                          (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                              (=== (Even (double (S $k))) (Even (S (S (double $k))))))))))
+;;;; ;; Prove NEXT
+;;;; ;;
+;;;; ;; (-> (: $k Nat)
+;;;; ;;     (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;; ;;         (=== (Even (double (S $k))) (Even (S (S (double $k)))))))
+;;;; ;;
+;;;; ;; which could be
+;;;; ;;
+;;;; ;; (λ $k (((Cong Even) (double (S $k))) (S (S (double $k)))))
+;;;; ;;
+;;;; ;; or something not involving λ like
+;;;; ;;
+;;;; ;; (((Cong Even) (double (S $k))) (S (S (double $k)))) double_rec
+;;;; ;;
+;;;; ;; (λ $k (f (double_rec $k)))
+;;;; ;;
+;;;; ;; double_rec
+;;;; ;;
+;;;; ;; though this one is wrong, it should be corrected, maybe using flip,
+;;;; ;; composition or such.
+;;;;   !(bc (: $prf (-> (: $k Nat)
+;;;;                    (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                        (=== (Even (double (S $k))) (Even (S (S (double $k))))))))
+;;;;        (fromNumber 7))
+;;;; ;; Prove
+;;;; ;;
+;;;; ;; (-> (: $k Nat) (-> (: Even (-> (: $_ Nat) Type)) (-> (: (double (S $k)) Nat) (-> (: (S (S (double $k))) Nat) (-> (: $eq (=== (double (S $k)) (S (S (double $k))))) (=== (Even (double (S $k))) (Even (S (S (double $k))))))))))
+;;;; ;;
+;;;; ;; (λ $k Cong)
+;;;; !(bc (: $prf (-> (: $k Nat)
+;;;;                  (-> (: Even (-> (: $_ Nat) Type))
+;;;;                      (-> (: (double (S $k)) Nat)
+;;;;                          (-> (: (S (S (double $k))) Nat)
+;;;;                              (-> (: $eq (=== (double (S $k)) (S (S (double $k)))))
+;;;;                                  (=== (Even (double (S $k))) (Even (S (S (double $k)))))))))))
+;;;;      (fromNumber 5))
+;;;; ;; Prove that (-> (: $k Nat) (=== (Even (double (S $k))) (Even (S (S (double $k))))))
+;;;; ;;
+;;;; ;; A possible proof tree would be
+;;;; ;;
+;;;; ;;
+;;;; ;; 
+;;;; ;; ----------------------------------------------------------------------------------------------
+;;;; ;; (-> (: $k Nat) (=== (Even (double (S $k))) (Even (S (S (double $k))))))
+;;;; !(bc (: $prf (-> (: $k Nat) (=== (Even (double (S $k))) (Even (S (S (double $k))))))) (fromNumber 7))
+;;;; ;; Prove that (=== (Even (S (S (double $k)))) (Even (double (S $k))))
+;;;; ;;
+;;;; ;; (same as above but Sym)
+;;;; ;;
+;;;; !(bc (: $prf (=== (Even (S (S (double $k)))) (Even (double (S $k))))) (fromNumber 5))
+;;;; !(bc (: $prf (-> (: $k Nat) (=== (Even (S (S (double $k)))) (Even (double (S $k))))) (fromNumber 5)))
+;;;; Prove that if (double k) is even, then (double (S k)) is even
+;;;;
+;;;; A possible proof of that is represented by the following proof tree:
+;;;;
+;;;; NEXT: test subproofs
+;;;;
+;;;;                                                                                                                                                                                         --------------------------------------------------------(double_rec)  ---------($k)
+;;;;                                                                                                                                                                                         (-> (: $k Nat) (=== (double (S $k)) (S (S (double $k)))))             (: $k Nat)
+;;;;                                                                        -------------------(Even)  ----------------------(double (S $k))  --------------------------(S (S (double $k)))  -------------------------------------------------------------------------------(ModusPonens)
+;;;;                                                                        (-> (: $_ Nat) Type)       (: (double (S $k)) Nat)                (: (S (S (double $k))) Nat)                    (=== (double (S $k)) (S (S (double $k))))
+;;;;                                                 -----------------($e)  ---------------------------------------------------------------------------------------------------------------------------------------------------------(Cong)
+;;;;                                                 (Even (double $k))                                           (=== (Even (double (S $k))) (Even (S (S (double $k)))))
+;;;;                                                 -------------------------(MkEvenSS)                          ------------------------------------------------------(Sym)
+;;;;                                                 (Even (S (S (double $k))))                                   (=== (Even (S (S (double $k)))) (Even (double (S $k))))
+;;;;                    -----------------($e)        -------------------------------------------------------------------------------------------------------------------(Replace)
+;;;;                    (Even (double $k))           (Even (double (S $k)))
+;;;; --($k)             --------------------------------------------------(λ)
+;;;; Nat                (-> (: $e (Even (double $k))) (Even (double (S $k))
+;;;; ---------------------------------------------------------------------(λ)
+;;;;  (-> (: $k Nat) (-> (: $e (Even (double $k))) (Even (double (S $k)))
+;;;;
+;;;; Or in MeTTa format:
+;;;;
+;;;; (λ (: $k Nat) (λ (: $e (Even (double $k))) (Replace (MkEvenSS $e) (Sym (Cong Even (double (S $k)) (S (S (double $k))) (ModusPonens double_rec $k))))))
+;;;;
+;;;; NEXT: is it possible to do better by using composition?  ANSWER: probably with composing double_rec, Trans, Sym and Cong
+;;;; ;; NEXT: this fails with the following error
+;;;; ;;
+;;;; ;; thread '<unnamed>' panicked at /home/nilg/Work/TrueAGI/hyperon-experimental/lib/src/atom/matcher.rs:199:14:
+;;;; ;; Unexpected state
+;;;; ;; note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+;;;; ;; fatal runtime error: Rust panics must be rethrown
+;;;; ;; Aborted (core dumped)
+;;;; !(bc (: $prf (-> (: $k Nat) (-> (: $e (Even (double $k))) (Even (double (S $k)))))) (fromNumber 8))
+;;;; ;; ;; Prove that for all x, (double x) is even
+;;;; ;; !(bc (: $prf (-> (: $x Nat) (Even (double $x)))) (fromNumber 3))
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[
+
+Script done on 2025-01-22 01:42:36+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/NatParityTest.metta" --halt=true\033[0m

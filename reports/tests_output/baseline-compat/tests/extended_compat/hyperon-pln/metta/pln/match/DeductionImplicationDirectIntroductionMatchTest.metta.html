@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:48:49+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/pln/match/DeductionImplicationDirectIntroductionMatchTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/pln/match/DeductionImplicationDirectIntroductionMatchTest.metta] ]
+;;; DeductionMatch and ImplicationDirectionIntroductionMatch
+<span class="ansi38-013099040"
+>!(import! &self metta:pln:match:ImplicationDirectIntroductionMatch)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:pln:match:DeductionMatch)
+
+</span>;; no-results ;; 
+;;; Use IDI rule to infer P->Q based on the following,
+<span class="ansi38-255165000"
+> (≞ (P 42) (Bl True))
+</span><span class="ansi38-255165000"
+> (≞ (Q 42) (Bl False))
+</span><span class="ansi38-255165000"
+> (∉ 42 Empty)
+</span>;;; Q->R is already in the atomspace
+<span class="ansi38-255165000"
+> (≞ (→ Q R) (STV 1 0.5))
+</span>;;; Predicates
+<span class="ansi38-255165000"
+> (≞ P (STV 1 0.1))
+</span><span class="ansi38-255165000"
+> (≞ Q (STV 1 0.5))
+</span><span class="ansi38-255165000"
+> (≞ R (STV 1 0.1))
+</span>;;; Matching query to do IDI and deduction rules
+<span class="ansi38-013099040"
+>!(match &self (, (≞ $p $ptv) (≞ $q $qtv) (≞ $r $rtv) (≞ ($p $a) $patv) (≞ ($q $a) $qatv) (∉ $a $ev) (≞ (→ $q $r) $qrtv)) (deduction (≞ $p $ptv) (≞ $q $qtv) (≞ $r $rtv) (idi_induction (≞ ($p $a) $patv) (≞ ($q $a) $qatv) (idi_axiom) (∉ $a $ev)) (≞ (→ $q $r) $qrtv)))
+
+</span>
+N(1): <span class="ansi33"
+>Empty
+</span>
+N(2): <span class="ansi33"
+>Empty
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[]
+[]
+[EmptyEmpty]
+
+Script done on 2025-01-22 01:48:57+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/pln/match/DeductionImplicationDirectIntroductionMatchTest.metta" --halt=true\033[0m

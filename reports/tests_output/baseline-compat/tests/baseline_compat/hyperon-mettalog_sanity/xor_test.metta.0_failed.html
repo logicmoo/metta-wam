@@ -13,7 +13,6 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
-.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
@@ -35,7 +34,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-02 11:16:23+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/xor_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-22 00:58:00+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/xor_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -85,7 +84,7 @@ Script started on 2025-01-02 11:16:23+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000210 secs. (209.90 microseconds) 
+; took 0.000208 secs. (207.97 microseconds) 
 
 !(assertEqual (xor True False) True)
 
@@ -105,7 +104,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000163 secs. (163.22 microseconds) 
+; took 0.000179 secs. (179.24 microseconds) 
 
 !(assertEqual (xor False True) True)
 
@@ -125,7 +124,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000180 secs. (179.83 microseconds) 
+; took 0.000165 secs. (165.00 microseconds) 
 
 !(assertEqual (xor True True) False)
 
@@ -145,7 +144,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000159 secs. (158.51 microseconds) 
+; took 0.000166 secs. (165.70 microseconds) 
 
 !(assertEqual (xor False False) False)
 
@@ -166,7 +165,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000455 secs. (455.01 microseconds) 
+; took 0.000551 secs. (551.22 microseconds) 
 
 !(assertEqual (xor (> 5 3) (< 2 1)) True)
 
@@ -186,7 +185,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000994 secs. (994.37 microseconds) 
+; took 0.000956 secs. (955.82 microseconds) 
 
 !(assertEqual (xor (== 1 1) (== 2 2)) False)
 
@@ -206,7 +205,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000345 secs. (345.33 microseconds) 
+; took 0.000350 secs. (349.76 microseconds) 
 
 !(assertEqual (xor (not True) (and True False)) False)
 
@@ -222,7 +221,7 @@ Deterministic: <span class="ansi33"
 > (: mprogn (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (mprogn $code1 $code2)  
-  (let $_36104 
+  (let $260 
     (eval $code1) 
     (eval $code2)))
 </span>;;;; XOR with Side Effects to Ensure Both Expressions Are Evaluated
@@ -236,7 +235,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.53 milliseconds) 
+; took 0.001 secs. (1.38 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") True) (mprogn (println! "Second") False)) True)
 
@@ -258,7 +257,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.51 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") True) (mprogn (println! "Second") True)) False)
 
@@ -280,7 +279,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.51 milliseconds) 
+; took 0.001 secs. (1.38 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") False) (mprogn (println! "Second") True)) True)
 
@@ -302,7 +301,7 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.56 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") False) (mprogn (println! "Second") False)) False)
 
@@ -334,10 +333,8 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-<span class="ansi31"
->[in [not_compat_io [maybe_halt 7]] [unwind [halt 7]]]
-</span>
-Script done on 2025-01-02 11:16:31+00:00 [COMMAND_EXIT_CODE="7"]
+
+Script done on 2025-01-22 00:58:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

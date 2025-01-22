@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:03:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/chaining/backward_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+^@P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/more-anti-regression/chaining/backward_chain.metta] ]
+<span class="ansi38-255165000"
+> (Evaluation (philosopher Plato))
+</span><span class="ansi38-255165000"
+> (Evaluation (likes-to-wrestle Plato))
+</span><span class="ansi38-255165000"
+> (Implication (And (Evaluation (philosopher $x)) (Evaluation (likes-to-wrestle $x))) (Evaluation (human $x)))
+</span>;;; Another implication rule
+<span class="ansi38-255165000"
+> (Implication (Evaluation (human $x)) (Evaluation (mortal $x)))
+</span>;;; Deduction case when the desired evaluation is present in
+;;; the knowledge base
+<span class="ansi38-255165000"
+> (= (deduce (Evaluation ($P $x)))  
+  (match &self 
+    (Evaluation ($P $x)) 
+    ($P $x)))
+</span>;;; Deduction case when the desired evaluation is the result
+;;; of an implication, which implies a recursion
+<span class="ansi38-255165000"
+> (= (deduce (Evaluation ($P $x)))  
+  (match &self 
+    (Implication $a 
+      (Evaluation ($P $x))) 
+    ( ($P $x) proven by 
+      (deduce $a))))
+</span><span class="ansi38-255165000"
+> (= (deduce (And $a $b))  
+  (And 
+    (deduce $a) 
+    (deduce $b)))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(deduce (Evaluation (mortal $x)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (deduce (Evaluation (mortal $x))) (((mortal $x) proven by ((human $x) proven by (And (philosopher Plato) (likes-to-wrestle Plato))))))
+
+</span>
+;<h3 id="CHAINING.BACKWARD-CHAIN.01"
+>;; CHAINING.BACKWARD-CHAIN.01</h3>
+; 
+; EVAL TEST
+; took 0.028 secs. (27.52 milliseconds) 
+
+!(assertEqualToResult (deduce (Evaluation (mortal $x))) (((mortal $x) proven by ((human $x) proven by (And (philosopher Plato) (likes-to-wrestle Plato))))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( ( (mortal Plato) proven by 
+          ( (human Plato) proven by 
+            (And 
+              (philosopher Plato) 
+              (likes-to-wrestle Plato))))) 
+      ( ( (mortal $x) proven by 
+          ( (human $x) proven by 
+            (And 
+              (philosopher Plato) 
+              (likes-to-wrestle Plato)))))]]
+</span>
+equal_enough_for_test('[|]'('[|]'('[|]'(mortal,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('[|]'(human,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('And','[|]'('[|]'(philosopher,'[|]'('Plato',[])),'[|]'('[|]'('likes-to-wrestle','[|]'('Plato',[])),[]))),[])))),[])))),[]),'[|]'('[|]'('[|]'(mortal,'[|]'(_1078,[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('[|]'(human,'[|]'(_1078,[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('And','[|]'('[|]'(philosopher,'[|]'('Plato',[])),'[|]'('[|]'('likes-to-wrestle','[|]'('Plato',[])),[]))),[])))),[])))),[]))[error [error [domain_error py_term [Error [got (((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))] [expected (((mortal $x) proven by ((human $x) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/more-anti-regression/chaining/backward_chain.metta] (assertEqualToResult (deduce (Evaluation (mortal $x))) (((mortal $x) proven by ((human $x) proven by (And (philosopher Plato) (likes-to-wrestle Plato))))))];;;;direct_metta
+<span class="ansi38-255165000"
+> (= (And True True)  True)
+</span><span class="ansi38-255165000"
+> (= (frog $x)  
+  (And 
+    (croaks $x) 
+    (eat_flies $x)))
+</span><span class="ansi38-255165000"
+> (= (croaks Fritz)  False)
+</span><span class="ansi38-255165000"
+> (= (eat_flies Fritz)  True)
+</span><span class="ansi38-255165000"
+> (= (green $x)  
+  (frog $x))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(frog Fritz)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (frog Fritz) ((And False True)))
+
+</span>
+;<h3 id="CHAINING.BACKWARD-CHAIN.02"
+>;; CHAINING.BACKWARD-CHAIN.02</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.79 milliseconds) 
+
+!(assertEqualToResult (frog Fritz) ((And False True)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (And False True)) 
+      ( (And False True))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(True)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (True) ((True)))
+
+</span>
+;<h3 id="CHAINING.BACKWARD-CHAIN.03"
+>;; CHAINING.BACKWARD-CHAIN.03</h3>
+; 
+; EVAL TEST
+; took 0.000495 secs. (495.49 microseconds) 
+
+!(assertEqualToResult (True) ((True)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (True)) 
+      ( (True))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 2
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[()]
+[()]
+
+Script done on 2025-01-22 01:03:59+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/chaining/backward_chain.metta" --halt=true\033[0m

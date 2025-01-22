@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:21:36+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/metta-examples/red-black-lambda/red-black.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/metta-examples/red-black-lambda/red-black.metta] ]
+;;; WIP
+<span class="ansi38-013099040"
+>!(import! &LC lambda-theory)
+
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: Term Type))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: Ground (-> $B Term)))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: Mention (-> $V Term)))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: Abstraction (-> $V (-> Term Term))))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: Application (-> Term (-> Term Term))))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: equivalent (-> Term (-> Term Bool))))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (= ((equivalent $l) $r)  ???))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (: reduce (-> Term (Option Term))))
+</span><span class="ansi38-255165000"
+> (LambdaTheory ($B $V) (= (reduce $t)  ???))
+</span><span class="ansi38-255165000"
+> (= (LambdaTheoryF $F $B $V)  
+  (superpose ((: ($F Term) Type) (: ($F Ground) (-> $B ($F Term))) (: ($F Mention) (-> $V ($F Term))) (: ($F Abstraction) (-> $V (-> ($F Term) ($F Term)))) (: ($F Application) (-> ($F Term) (-> ($F Term) ($F Term)))))))
+</span>;;; !(LambdaTheoryF RC BTheory String)
+<span class="ansi38-013099040"
+>!(assertEqualToResult (LambdaTheoryF RC BTheory String) ((: (RC Application) (-> (RC Term) (-> (RC Term) (RC Term)))) (: (RC Abstraction) (-> String (-> (RC Term) (RC Term)))) (: (RC Mention) (-> String (RC Term))) (: (RC Ground) (-> BTheory (RC Term))) (: (RC Term) Type)))
+
+</span>
+;<h3 id="RED-BLACK-LAMBDA.LAMBDA-THEORY.01"
+>;; RED-BLACK-LAMBDA.LAMBDA-THEORY.01</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (5.45 milliseconds) 
+
+!(assertEqualToResult (LambdaTheoryF RC BTheory String) ((: (RC Application) (-> (RC Term) (-> (RC Term) (RC Term)))) (: (RC Abstraction) (-> String (-> (RC Term) (RC Term)))) (: (RC Mention) (-> String (RC Term))) (: (RC Ground) (-> BTheory (RC Term))) (: (RC Term) Type)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (RC Term) Type) 
+        (: 
+          (RC Ground) 
+          (-> BTheory 
+            (RC Term))) 
+        (: 
+          (RC Mention) 
+          (-> String 
+            (RC Term))) 
+        (: 
+          (RC Abstraction) 
+          (-> String 
+            (-> 
+              (RC Term) 
+              (RC Term)))) 
+        (: 
+          (RC Application) 
+          (-> 
+            (RC Term) 
+            (-> 
+              (RC Term) 
+              (RC Term))))) 
+      ( (: 
+          (RC Application) 
+          (-> 
+            (RC Term) 
+            (-> 
+              (RC Term) 
+              (RC Term)))) 
+        (: 
+          (RC Abstraction) 
+          (-> String 
+            (-> 
+              (RC Term) 
+              (RC Term)))) 
+        (: 
+          (RC Mention) 
+          (-> String 
+            (RC Term))) 
+        (: 
+          (RC Ground) 
+          (-> BTheory 
+            (RC Term))) 
+        (: 
+          (RC Term) Type))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>
+R(2): <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (= (RedLambda $RV $BLC)  
+  (RTheory (match &LC (LambdaTheory ($RV $BLC) $rhs) $rhs)))
+</span><span class="ansi38-255165000"
+> (= (BlackLambda $BV $RLC)  
+  (BTheory (match &LC (LambdaTheory ($BV $RLC) $rhs) $rhs)))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(RedLambda BTheory String)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (RedLambda BTheory String) ((RTheory (= (reduce $t_28547)  ???)) (RTheory (: Term Type)) (RTheory (: reduce (-> Term (Option Term)))) (RTheory (: Mention (-> String Term))) (RTheory (: equivalent (-> Term (-> Term Bool)))) (RTheory (: Application (-> Term (-> Term Term)))) (RTheory (: Ground (-> BTheory Term))) (RTheory (: Abstraction (-> String (-> Term Term)))) (RTheory (= ((equivalent $l_28558) $r_28559)  ???))))
+
+</span>
+;<h3 id="RED-BLACK-LAMBDA.RED-BLACK.02"
+>;; RED-BLACK-LAMBDA.RED-BLACK.02</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.78 milliseconds) 
+
+!(assertEqualToResult (RedLambda BTheory String) ((RTheory (= (reduce $t_28547)  ???)) (RTheory (: Term Type)) (RTheory (: reduce (-> Term (Option Term)))) (RTheory (: Mention (-> String Term))) (RTheory (: equivalent (-> Term (-> Term Bool)))) (RTheory (: Application (-> Term (-> Term Term)))) (RTheory (: Ground (-> BTheory Term))) (RTheory (: Abstraction (-> String (-> Term Term)))) (RTheory (= ((equivalent $l_28558) $r_28559)  ???))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (RTheory (: Term Type)) 
+        (RTheory (: Ground (-> BTheory Term))) 
+        (RTheory (: Mention (-> String Term))) 
+        (RTheory (: Abstraction (-> String (-> Term Term)))) 
+        (RTheory (: Application (-> Term (-> Term Term)))) 
+        (RTheory (: equivalent (-> Term (-> Term Bool)))) 
+        (RTheory (= ((equivalent $l_28558) $r_28559)  ???)) 
+        (RTheory (: reduce (-> Term (Option Term)))) 
+        (RTheory (= (reduce $t_28547)  ???))) 
+      ( (RTheory (= (reduce $t_28547)  ???)) 
+        (RTheory (: Term Type)) 
+        (RTheory (: reduce (-> Term (Option Term)))) 
+        (RTheory (: Mention (-> String Term))) 
+        (RTheory (: equivalent (-> Term (-> Term Bool)))) 
+        (RTheory (: Application (-> Term (-> Term Term)))) 
+        (RTheory (: Ground (-> BTheory Term))) 
+        (RTheory (: Abstraction (-> String (-> Term Term)))) 
+        (RTheory (= ((equivalent $l_28558) $r_28559)  ???)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (RedLambda BTheory String) ((RTheory (: equivalent (-> Term (-> Term Bool)))) (RTheory (: Abstraction (-> String (-> Term Term)))) (RTheory (= ((equivalent $l_28558) $r_28559)  ???)) (RTheory (: reduce (-> Term (Option Term)))) (RTheory (: Application (-> Term (-> Term Term)))) (RTheory (: Mention (-> String Term))) (RTheory (: Ground (-> BTheory Term))) (RTheory (= (reduce $t_28547)  ???)) (RTheory (: Term Type))))
+
+</span>
+;<h3 id="RED-BLACK-LAMBDA.RED-BLACK.03"
+>;; RED-BLACK-LAMBDA.RED-BLACK.03</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.79 milliseconds) 
+
+!(assertEqualToResult (RedLambda BTheory String) ((RTheory (: equivalent (-> Term (-> Term Bool)))) (RTheory (: Abstraction (-> String (-> Term Term)))) (RTheory (= ((equivalent $l_28558) $r_28559)  ???)) (RTheory (: reduce (-> Term (Option Term)))) (RTheory (: Application (-> Term (-> Term Term)))) (RTheory (: Mention (-> String Term))) (RTheory (: Ground (-> BTheory Term))) (RTheory (= (reduce $t_28547)  ???)) (RTheory (: Term Type))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (RTheory (: Term Type)) 
+        (RTheory (: Ground (-> BTheory Term))) 
+        (RTheory (: Mention (-> String Term))) 
+        (RTheory (: Abstraction (-> String (-> Term Term)))) 
+        (RTheory (: Application (-> Term (-> Term Term)))) 
+        (RTheory (: equivalent (-> Term (-> Term Bool)))) 
+        (RTheory (= ((equivalent $l_28558) $r_28559)  ???)) 
+        (RTheory (: reduce (-> Term (Option Term)))) 
+        (RTheory (= (reduce $t_28547)  ???))) 
+      ( (RTheory (: equivalent (-> Term (-> Term Bool)))) 
+        (RTheory (: Abstraction (-> String (-> Term Term)))) 
+        (RTheory (= ((equivalent $l_28558) $r_28559)  ???)) 
+        (RTheory (: reduce (-> Term (Option Term)))) 
+        (RTheory (: Application (-> Term (-> Term Term)))) 
+        (RTheory (: Mention (-> String Term))) 
+        (RTheory (: Ground (-> BTheory Term))) 
+        (RTheory (= (reduce $t_28547)  ???)) 
+        (RTheory (: Term Type)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (= (objectify (RTheory $x))  
+  (RC $x))
+</span><span class="ansi38-255165000"
+> (= (objectify (BTheory $x))  
+  (BC $x))
+</span><span class="ansi38-013099040"
+>!(objectify (RedLambda String BTheory))
+
+</span>
+N(1): <span class="ansi33"
+>(RC (: Term Type))
+</span>
+N(2): <span class="ansi33"
+>(RC (: Ground (-> String Term)))
+</span>
+N(3): <span class="ansi33"
+>(RC (: Mention (-> BTheory Term)))
+</span>
+N(4): <span class="ansi33"
+>(RC (: Abstraction (-> BTheory (-> Term Term))))
+</span>
+N(5): <span class="ansi33"
+>(RC (: Application (-> Term (-> Term Term))))
+</span>
+N(6): <span class="ansi33"
+>(RC (: equivalent (-> Term (-> Term Bool))))
+</span>
+N(7): <span class="ansi33"
+>(RC (= ((equivalent $l_44946) $r_44947)  ???))
+</span>
+N(8): <span class="ansi33"
+>(RC (: reduce (-> Term (Option Term))))
+</span>
+N(9): <span class="ansi33"
+>(RC (= (reduce $t_44935)  ???))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (objectify (RedLambda String BTheory)) ((RC (: equivalent (-> Term (-> Term Bool)))) (RC (: Abstraction (-> BTheory (-> Term Term)))) (RC (= ((equivalent $l_44946) $r_44947)  ???)) (RC (: reduce (-> Term (Option Term)))) (RC (: Application (-> Term (-> Term Term)))) (RC (: Mention (-> BTheory Term))) (RC (: Ground (-> String Term))) (RC (= (reduce $t_44935)  ???)) (RC (: Term Type))))
+
+</span>
+;<h3 id="RED-BLACK-LAMBDA.RED-BLACK.04"
+>;; RED-BLACK-LAMBDA.RED-BLACK.04</h3>
+; 
+; EVAL TEST
+; took 0.016 secs. (16.30 milliseconds) 
+
+!(assertEqualToResult (objectify (RedLambda String BTheory)) ((RC (: equivalent (-> Term (-> Term Bool)))) (RC (: Abstraction (-> BTheory (-> Term Term)))) (RC (= ((equivalent $l_44946) $r_44947)  ???)) (RC (: reduce (-> Term (Option Term)))) (RC (: Application (-> Term (-> Term Term)))) (RC (: Mention (-> BTheory Term))) (RC (: Ground (-> String Term))) (RC (= (reduce $t_44935)  ???)) (RC (: Term Type))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (RC (: Term Type)) 
+        (RC (: Ground (-> String Term))) 
+        (RC (: Mention (-> BTheory Term))) 
+        (RC (: Abstraction (-> BTheory (-> Term Term)))) 
+        (RC (: Application (-> Term (-> Term Term)))) 
+        (RC (: equivalent (-> Term (-> Term Bool)))) 
+        (RC (= ((equivalent $l_44946) $r_44947)  ???)) 
+        (RC (: reduce (-> Term (Option Term)))) 
+        (RC (= (reduce $t_44935)  ???))) 
+      ( (RC (: equivalent (-> Term (-> Term Bool)))) 
+        (RC (: Abstraction (-> BTheory (-> Term Term)))) 
+        (RC (= ((equivalent $l_44946) $r_44947)  ???)) 
+        (RC (: reduce (-> Term (Option Term)))) 
+        (RC (: Application (-> Term (-> Term Term)))) 
+        (RC (: Mention (-> BTheory Term))) 
+        (RC (: Ground (-> String Term))) 
+        (RC (= (reduce $t_44935)  ???)) 
+        (RC (: Term Type)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(objectify (BlackLambda String RTheory))
+
+</span>
+N(1): <span class="ansi33"
+>(BC (: Term Type))
+</span>
+N(2): <span class="ansi33"
+>(BC (: Ground (-> String Term)))
+</span>
+N(3): <span class="ansi33"
+>(BC (: Mention (-> RTheory Term)))
+</span>
+N(4): <span class="ansi33"
+>(BC (: Abstraction (-> RTheory (-> Term Term))))
+</span>
+N(5): <span class="ansi33"
+>(BC (: Application (-> Term (-> Term Term))))
+</span>
+N(6): <span class="ansi33"
+>(BC (: equivalent (-> Term (-> Term Bool))))
+</span>
+N(7): <span class="ansi33"
+>(BC (= ((equivalent $l_78359) $r_78360)  ???))
+</span>
+N(8): <span class="ansi33"
+>(BC (: reduce (-> Term (Option Term))))
+</span>
+R(9): <span class="ansi33"
+>(BC (= (reduce $t_78348)  ???))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (objectify (BlackLambda String RTheory)) ((BC (: equivalent (-> Term (-> Term Bool)))) (BC (: Abstraction (-> RTheory (-> Term Term)))) (BC (= ((equivalent $l_78359) $r_78360)  ???)) (BC (: reduce (-> Term (Option Term)))) (BC (: Application (-> Term (-> Term Term)))) (BC (: Mention (-> RTheory Term))) (BC (: Ground (-> String Term))) (BC (= (reduce $t_78348)  ???)) (BC (: Term Type))))
+
+</span>
+;<h3 id="RED-BLACK-LAMBDA.RED-BLACK.05"
+>;; RED-BLACK-LAMBDA.RED-BLACK.05</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (16.79 milliseconds) 
+
+!(assertEqualToResult (objectify (BlackLambda String RTheory)) ((BC (: equivalent (-> Term (-> Term Bool)))) (BC (: Abstraction (-> RTheory (-> Term Term)))) (BC (= ((equivalent $l_78359) $r_78360)  ???)) (BC (: reduce (-> Term (Option Term)))) (BC (: Application (-> Term (-> Term Term)))) (BC (: Mention (-> RTheory Term))) (BC (: Ground (-> String Term))) (BC (= (reduce $t_78348)  ???)) (BC (: Term Type))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (BC (: Term Type)) 
+        (BC (: Ground (-> String Term))) 
+        (BC (: Mention (-> RTheory Term))) 
+        (BC (: Abstraction (-> RTheory (-> Term Term)))) 
+        (BC (: Application (-> Term (-> Term Term)))) 
+        (BC (: equivalent (-> Term (-> Term Bool)))) 
+        (BC (= ((equivalent $l_78359) $r_78360)  ???)) 
+        (BC (: reduce (-> Term (Option Term)))) 
+        (BC (= (reduce $t_78348)  ???))) 
+      ( (BC (: equivalent (-> Term (-> Term Bool)))) 
+        (BC (: Abstraction (-> RTheory (-> Term Term)))) 
+        (BC (= ((equivalent $l_78359) $r_78360)  ???)) 
+        (BC (: reduce (-> Term (Option Term)))) 
+        (BC (: Application (-> Term (-> Term Term)))) 
+        (BC (: Mention (-> RTheory Term))) 
+        (BC (: Ground (-> String Term))) 
+        (BC (= (reduce $t_78348)  ???)) 
+        (BC (: Term Type)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; (RedBlackLambda (rc (match &self (LambdaTheory ($RV $BLC) $rhs) $rhs)))
+;;; (RedBlackLambda (: RBTerm))
+;;; RBTerm = Either[RC.Term,BC.Term]
+;;; (: RBTerm (Either (RC Term) (BC Term)))
+;;;
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 5
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[(RC (: Term Type)), (RC (: Ground (-> String Term))), (RC (: Mention (-> BTheory Term))), (RC (: Abstraction (-> BTheory (-> Term Term)))), (RC (: Application (-> Term (-> Term Term)))), (RC (: equivalent (-> Term (-> Term Bool)))), (RC (= ((equivalent $l_44946) $r_44947)  ???)), (RC (: reduce (-> Term (Option Term)))), (RC (= (reduce $t_44935)  ???))]
+[()]
+[(BC (: Term Type)), (BC (: Ground (-> String Term))), (BC (: Mention (-> RTheory Term))), (BC (: Abstraction (-> RTheory (-> Term Term)))), (BC (: Application (-> Term (-> Term Term)))), (BC (: equivalent (-> Term (-> Term Bool)))), (BC (= ((equivalent $l_78359) $r_78360)  ???)), (BC (: reduce (-> Term (Option Term)))), (BC (= (reduce $t_78348)  ???))]
+[()]
+
+Script done on 2025-01-22 01:21:47+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/metta-examples/red-black-lambda/red-black.metta" --halt=true\033[0m

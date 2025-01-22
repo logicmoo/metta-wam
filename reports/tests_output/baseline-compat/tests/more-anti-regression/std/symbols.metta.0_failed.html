@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:13:28+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/std/symbols.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/more-anti-regression/std/symbols.metta] ]
+<span class="ansi38-255165000"
+> ((leaf1 leaf2) leaf3)
+</span><span class="ansi38-255165000"
+> (((leaf0 leaf1) leaf2) leaf3)
+</span><span class="ansi38-255165000"
+> (top ((leaf1 leaf2) leaf3))
+</span><span class="ansi38-255165000"
+> (Sam is a frog)
+</span><span class="ansi38-255165000"
+> (Tom is a cat)
+</span><span class="ansi38-255165000"
+> (Sophia is a robot)
+</span><span class="ansi38-013099040"
+>!(println! (match &self ($who is a $what) ($who the $what)))
+
+</span>(Sam the frog)
+
+N(1): <span class="ansi33"
+>()
+</span>(Tom the cat)
+
+N(2): <span class="ansi33"
+>()
+</span>(Sophia the robot)
+
+R(3): <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (:= (Green Sam) True)
+</span><span class="ansi38-013099040"
+>!(println! (match &self (:= (Green $who) True) ($who is really green)))
+
+</span>(Sam is really green)
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;;variables in knowledge base entries
+<span class="ansi38-255165000"
+> (implies (Frog $x) (Green $x))
+</span><span class="ansi38-255165000"
+> (implies (Frog $x) (Eats-flies $x))
+</span><span class="ansi38-013099040"
+>!(println! (match &self (implies (Frog Sam) $what) $what))
+
+</span>(Green Sam)
+
+N(1): <span class="ansi33"
+>()
+</span>(Eats-flies Sam)
+
+R(2): <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(println! (match &self (implies ($P $x) (Green Sam)) ($x might be $P)))
+
+</span>(Sam might be Frog)
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(println! (match &self (, (implies ($P $x) (Green $x)) (implies ($P $x) (Eats-flies Sam))) ($x is definitely $P)))
+
+</span>(Sam is definitely Frog)
+
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (gene "A")
+</span><span class="ansi38-255165000"
+> (chr (gene "A") "chr16")
+</span><span class="ansi38-255165000"
+> (start (gene "A") 1000)
+</span><span class="ansi38-255165000"
+> (end (gene "A") 1200)
+</span><span class="ansi38-255165000"
+> (gene "B")
+</span><span class="ansi38-255165000"
+> (chr (gene "B") "chr2")
+</span><span class="ansi38-255165000"
+> (start (gene "B") 1000)
+</span><span class="ansi38-255165000"
+> (end (gene "B") 1200)
+</span><span class="ansi38-255165000"
+> (gene "C")
+</span><span class="ansi38-255165000"
+> (chr (gene "C") "chr16")
+</span><span class="ansi38-255165000"
+> (start (gene "C") 9000)
+</span><span class="ansi38-255165000"
+> (end (gene "C") 9400)
+</span><span class="ansi38-255165000"
+> (gene "D")
+</span><span class="ansi38-255165000"
+> (chr (gene "D") "chr16")
+</span><span class="ansi38-255165000"
+> (start (gene "D") 1600)
+</span><span class="ansi38-255165000"
+> (end (gene "D") 1900)
+</span><span class="ansi38-255165000"
+> (let* (($r1 (Add Z Z)) ($r2 (Add $r1 (S Z))) ($r3 (Add $r2 (S Z)))) (match &self (= (eq (S (S Z)) $r3)  $tv) $tv))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(match &self (, (chr $g "chr16") (start $g $start) (end $g $end)) (if (and (> $start 500) (< $end 2000)) $g ()))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (, (chr $g "chr16") (start $g $start) (end $g $end)) (if (and (> $start 500) (< $end 2000)) $g ())) ((gene "D") (gene "A") ()))
+
+</span>
+;<h3 id="STD.SYMBOLS.01"
+>;; STD.SYMBOLS.01</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.74 milliseconds) 
+
+!(assertEqualToResult (match &self (, (chr $g "chr16") (start $g $start) (end $g $end)) (if (and (> $start 500) (< $end 2000)) $g ())) ((gene "D") (gene "A") ()))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (gene "A") () 
+        (gene "D")) 
+      ( (gene "D") 
+        (gene "A") ())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[(), (), ()]
+[()]
+[(), ()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:13:36+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/std/symbols.metta" --halt=true\033[0m

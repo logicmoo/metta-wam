@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:47:51+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionImplicationDirectIntroductionDTLTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionImplicationDirectIntroductionDTLTest.metta] ]
+;;;; Test DeductionDTL and ImplicationDirectionIntroductionDTL rules
+;;;; Import the rules
+<span class="ansi38-013099040"
+>!(import! &self metta:pln:dependent-types:ImplicationDirectIntroductionDTL)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:pln:dependent-types:DeductionDTL)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:synthesis:Synthesize)
+
+</span>;; no-results ;; 
+;;;; Knowledge base
+<span class="ansi38-255165000"
+> (: kb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (kb)  
+  (superpose ((: Pm (≞ P (STV 0.2 0.3))) (: Qm (≞ Q (STV 0.3 0.2))) (: Rm (≞ R (STV 0.4 0.1))) (: P2 (⊷ P (fromNumber 2) True)) (: Q2 (⊷ Q (fromNumber 2) False)) (: P7 (⊷ P (fromNumber 7) True)) (: Q7 (⊷ Q (fromNumber 7) True)) (: QRm (≞ (→ Q R) (STV 0.9 0.7))))))
+</span>;;;; All axioms are placed in the kb as well
+<span class="ansi38-255165000"
+> (= (kb)  
+  (zero-lt-succ-axiom))
+</span>;;;; Rule base
+<span class="ansi38-255165000"
+> (: rb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (rb)  
+  (superpose ((succ-monotonicity-rule) (deduction-rule) (implication-direct-introduction-base-rule) (implication-direct-introduction-recursive-rule) (evidence-elimination-rule))))
+</span>;;;; Test a combination of deduction and implication direct introduction
+;;;;
+;;;; Build the following inference tree
+;;;;
+;;;;                                                                                      -----(ZeroLTSucc)
+;;;;                                                                                      0 ⍃ 5
+;;;;                                                 --------(P2)     --------(Q2)        -----(SuccMonotonicity)
+;;;;                                                 (P 2) = ⊤        (Q 2) = ⊥           1 ⍃ 6
+;;;;                     --------(P7)  --------(Q7)  --------------------------(IDIBase)  -----(SuccMonotonicity)
+;;;;                     (P 7) = ⊤     (Q 7) = ⊤     P → Q ≞ ((:: 2 ∅), <0 0.5>)          2 ⍃ 7
+;;;;                     ---------------------------------------------------------------------(IDIRecursive)
+;;;;                                                 P → Q ≞ (ETV (:: 7 (:: 2 ∅)) $pqtv)
+;;;;                                                             |
+;;;; ------------(Pm)  ------------(Qm)  ------------(Rm)  -------------(EvidenceElimination)  ----------------(QRm)
+;;;; P ≞ <0.2 0.3>     Q ≞ <0.3 0.2>     R ≞ <0.4 0.1>     P → Q ≞ $pqtv                       Q → R ≞ <0.9 0.7>
+;;;; ----------------------------------------------------------------------------------------------------------(Deduction)
+;;;;                                                       P → R ≞ $prtv
+<span class="ansi38-255165000"
+> (: deduction_idi_prf (≞ (→ P Q) $tv))
+</span><span class="ansi38-255165000"
+> (= deduction_idi_prf  
+  (Deduction Pm Qm Rm 
+    (IDIBase P2 Q2) QRm))
+</span><span class="ansi38-013099040"
+>!deduction_idi_prf
+
+</span>
+Deterministic: <span class="ansi33"
+>deduction_idi_prf
+</span><span class="ansi38-013099040"
+>!(get-type deduction_idi_prf)
+
+</span>
+N(1): <span class="ansi33"
+>(≞ (→ P Q) $tv)
+</span><span class="ansi38-013099040"
+>!=====
+
+</span>
+Deterministic: <span class="ansi33"
+>=====
+</span><span class="ansi38-013099040"
+>!(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 1))
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 1))
+</span>;;;; Output:
+;;;; (: (IDIBase P2 Q2) (≞ (→ P Q) (ETV (:: (S (S Z)) ∅) (STV 0 0.5))))
+;;;; (: (IDIBase P7 Q2) (≞ (→ P Q) (ETV (:: (S (S (S (S (S (S (S Z))))))) ∅) (STV 1 0.5))))
+<span class="ansi38-013099040"
+>!=====
+
+</span>
+Deterministic: <span class="ansi33"
+>=====
+</span><span class="ansi38-013099040"
+>!(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 3))
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 3))
+</span>;;;; Output:
+;;;; (: (IDIRecursive P7
+;;;;                  Q7
+;;;;                  (IDIBase P2 Q2)
+;;;;                  (SuccMonotonicity (SuccMonotonicity ZeroLTSucc)))
+;;;;    (≞ (→ P Q) (ETV (:: (S (S (S (S (S (S (S Z))))))) (:: (S (S Z)) ∅)) (STV 0 0.6666666666666666))))
+<span class="ansi38-013099040"
+>!=====
+
+</span>
+Deterministic: <span class="ansi33"
+>=====
+</span><span class="ansi38-013099040"
+>!(synthesize (: $proof (≞ (→ P R) $etv)) kb rb (fromNumber 3))
+
+</span>
+Deterministic: <span class="ansi33"
+>(synthesize (: $proof (≞ (→ P R) $etv)) kb rb (fromNumber 3))
+</span>;;;; Output:
+;;;; (: (Deduction Pm Qm Rm (EvidenceElimination (IDIBase P2 Q2)) QRm) (≞ (→ P R) (STV 0.18571428571428572 0.1)))
+;;;; (: (Deduction Pm Qm Rm (EvidenceElimination (IDIBase P7 Q7)) QRm) (≞ (→ P R) (STV 0.9 0.1)))
+;;;; Disabled because it takes to long (over an hour)
+;;;; ! "===== Prove that P→R based on two pieces of evidence and deduction ====="
+;;;; !(synthesize (: (Deduction Pm Qm Rm $PQ QRm) (≞ (→ P R) $etv)) kb rb (fromNumber 5))
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[]
+[]
+[]
+[deduction_idi_prf]
+[(≞ (→ P Q) $tv)]
+[=====]
+[(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 1))]
+[=====]
+[(synthesize (: $proof (≞ (→ P Q) $etv)) kb rb (fromNumber 3))]
+[=====]
+[(synthesize (: $proof (≞ (→ P R) $etv)) kb rb (fromNumber 3))]
+
+Script done on 2025-01-22 01:47:59+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/pln/dependent-types/DeductionImplicationDirectIntroductionDTLTest.metta" --halt=true\033[0m

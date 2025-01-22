@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:41:59+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/key-lookups-many.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/key-lookups-many.metta] ]
+;;; Initialize data space
+<span class="ansi38-013099040"
+>!(bind! &data (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define new-entry! function
+<span class="ansi38-255165000"
+> (= (new-entry! $key $value)  
+  (let $new_state 
+    (new-state $value) 
+    (add-atom &data 
+      (= (get-data $key)  $new_state))))
+</span>;;; Populate the data space with entries manually for size 10
+<span class="ansi38-013099040"
+>!(new-entry! k-0 v-0)
+
+</span>[error [error [domain_error py_term [State v-0 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-0 v-0)]
+<span class="ansi38-013099040"
+>!(new-entry! k-1 v-1)
+
+</span>[error [error [domain_error py_term [State v-1 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-1 v-1)]
+<span class="ansi38-013099040"
+>!(new-entry! k-2 v-2)
+
+</span>[error [error [domain_error py_term [State v-2 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-2 v-2)]
+<span class="ansi38-013099040"
+>!(new-entry! k-3 v-3)
+
+</span>[error [error [domain_error py_term [State v-3 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-3 v-3)]
+<span class="ansi38-013099040"
+>!(new-entry! k-4 v-4)
+
+</span>[error [error [domain_error py_term [State v-4 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-4 v-4)]
+<span class="ansi38-013099040"
+>!(new-entry! k-5 v-5)
+
+</span>[error [error [domain_error py_term [State v-5 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-5 v-5)]
+<span class="ansi38-013099040"
+>!(new-entry! "k-6" v-6)
+
+</span>[error [error [domain_error py_term [State v-6 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! "k-6" v-6)]
+<span class="ansi38-013099040"
+>!(new-entry! k-7 v-7)
+
+</span>[error [error [domain_error py_term [State v-7 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-7 v-7)]
+<span class="ansi38-013099040"
+>!(new-entry! k-8 v-8)
+
+</span>[error [error [domain_error py_term [State v-8 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-8 v-8)]
+<span class="ansi38-013099040"
+>!(new-entry! k-9 v-9)
+
+</span>[error [error [domain_error py_term [State v-9 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (new-entry! k-9 v-9)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-0) (match &data (= (get-data $k)  $v) $k)) k-0)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.01"
+>;; BASIC.KEY-LOOKUPS-MANY.01</h3>
+[error [error [domain_error py_term [State v-0 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-0) (match &data (= (get-data $k)  $v) $k)) k-0)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-1) (match &data (= (get-data $k)  $v) $k)) k-1)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.02"
+>;; BASIC.KEY-LOOKUPS-MANY.02</h3>
+[error [error [domain_error py_term [State v-1 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-1) (match &data (= (get-data $k)  $v) $k)) k-1)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-2) (match &data (= (get-data $k)  $v) $k)) k-2)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.03"
+>;; BASIC.KEY-LOOKUPS-MANY.03</h3>
+[error [error [domain_error py_term [State v-2 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-2) (match &data (= (get-data $k)  $v) $k)) k-2)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-3) (match &data (= (get-data $k)  $v) $k)) k-3)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.04"
+>;; BASIC.KEY-LOOKUPS-MANY.04</h3>
+[error [error [domain_error py_term [State v-3 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-3) (match &data (= (get-data $k)  $v) $k)) k-3)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-4) (match &data (= (get-data $k)  $v) $k)) k-4)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.05"
+>;; BASIC.KEY-LOOKUPS-MANY.05</h3>
+[error [error [domain_error py_term [State v-4 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-4) (match &data (= (get-data $k)  $v) $k)) k-4)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-5) (match &data (= (get-data $k)  $v) $k)) k-5)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.06"
+>;; BASIC.KEY-LOOKUPS-MANY.06</h3>
+[error [error [domain_error py_term [State v-5 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-5) (match &data (= (get-data $k)  $v) $k)) k-5)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-6) (match &data (= (get-data $k)  $v) $k)) "k-6")
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.07"
+>;; BASIC.KEY-LOOKUPS-MANY.07</h3>
+[error [error [domain_error py_term [State v-6 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-6) (match &data (= (get-data $k)  $v) $k)) "k-6")]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-7) (match &data (= (get-data $k)  $v) $k)) k-7)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.08"
+>;; BASIC.KEY-LOOKUPS-MANY.08</h3>
+[error [error [domain_error py_term [State v-7 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-7) (match &data (= (get-data $k)  $v) $k)) k-7)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-8) (match &data (= (get-data $k)  $v) $k)) k-8)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.09"
+>;; BASIC.KEY-LOOKUPS-MANY.09</h3>
+[error [error [domain_error py_term [State v-8 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-8) (match &data (= (get-data $k)  $v) $k)) k-8)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $v (new-state v-9) (match &data (= (get-data $k)  $v) $k)) k-9)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.10"
+>;; BASIC.KEY-LOOKUPS-MANY.10</h3>
+[error [error [domain_error py_term [State v-9 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $v (new-state v-9) (match &data (= (get-data $k)  $v) $k)) k-9)]
+<span class="ansi38-013099040"
+>!(assertEqual (let $k k-1 (match &data (= (get-data $k)  $v) (get-state $v))) v-1)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.11"
+>;; BASIC.KEY-LOOKUPS-MANY.11</h3>
+; 
+; EVAL TEST
+; took 0.000317 secs. (317.00 microseconds) 
+
+!(assertEqual (let $k k-1 (match &data (= (get-data $k)  $v) (get-state $v))) v-1)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (v-1)]]
+</span>equal_enough_for_test([],'[|]'('v-1',[]))[error [error [domain_error py_term [Error [got ()] [expected (v-1)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (let $k k-1 (match &data (= (get-data $k)  $v) (get-state $v))) v-1)]
+<span class="ansi38-013099040"
+>!(assertEqual (get-state (match &data (= (get-data k-7)  $v) $v)) v-7)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.12"
+>;; BASIC.KEY-LOOKUPS-MANY.12</h3>
+; 
+; EVAL TEST
+; took 0.000311 secs. (310.51 microseconds) 
+
+!(assertEqual (get-state (match &data (= (get-data k-7)  $v) $v)) v-7)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (v-7)]]
+</span>equal_enough_for_test([],'[|]'('v-7',[]))[error [error [domain_error py_term [Error [got ()] [expected (v-7)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (get-state (match &data (= (get-data k-7)  $v) $v)) v-7)]
+<span class="ansi38-013099040"
+>!(assertEqual (match &data (= (get-data k-7)  $v) (get-state $v)) v-7)
+
+</span>
+;<h3 id="BASIC.KEY-LOOKUPS-MANY.13"
+>;; BASIC.KEY-LOOKUPS-MANY.13</h3>
+; 
+; EVAL TEST
+; took 0.000213 secs. (212.75 microseconds) 
+
+!(assertEqual (match &data (= (get-data k-7)  $v) (get-state $v)) v-7)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (v-7)]]
+</span>equal_enough_for_test([],'[|]'('v-7',[]))[error [error [domain_error py_term [Error [got ()] [expected (v-7)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/performance/basic/key-lookups-many.metta] (assertEqual (match &data (= (get-data k-7)  $v) (get-state $v)) v-7)]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 13
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[[[[[[[[[[[[[[[[[[[[[[[
+
+Script done on 2025-01-22 02:42:08+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/key-lookups-many.metta" --halt=true\033[0m

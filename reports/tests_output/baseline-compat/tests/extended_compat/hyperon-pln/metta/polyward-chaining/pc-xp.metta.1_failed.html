@@ -1,0 +1,537 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:49:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/polyward-chaining/pc-xp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/polyward-chaining/pc-xp.metta] ]
+;;;; Standalone polyward chaining experiments.
+;;;;;;;;;;;
+;;;; Nat ;;
+;;;;;;;;;;;
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Forward Revertant ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Forward chainer that may go backward if necessary.
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!===
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult === ("=== Forward Revertant ==="))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.01"
+>;; POLYWARD-CHAINING.PC-XP.01</h3>
+; 
+; EVAL TEST
+; took 0.000028 secs. (28.15 microseconds) 
+
+!(assertEqualToResult === ("=== Forward Revertant ==="))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (===) 
+      ("=== Forward Revertant ===")]]
+</span>
+equal_enough_for_test('[|]'(===,[]),'[|]'("=== Forward Revertant ===",[]))[error [error [domain_error py_term [Error [got (===)] [expected ("=== Forward Revertant ===")]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/polyward-chaining/pc-xp.metta] (assertEqualToResult === ("=== Forward Revertant ==="))];;;; Knowledge base
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: ab (→ A B)))
+
+</span><span class="ansi38-255165000"
+> (: ab (→ A B))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: bc (→ B C)))
+
+</span><span class="ansi38-255165000"
+> (: bc (→ B C))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: a A))
+
+</span><span class="ansi38-255165000"
+> (: a A)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Rule base
+<span class="ansi38-013099040"
+>!(bind! &rb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &rb (: ModusPonens (-> (→ $p $q) $p $q)))
+
+</span><span class="ansi38-255165000"
+> (: ModusPonens (-> (→ $p $q) $p $q))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(add-atom &rb (: Deduction (-> (→ $p $q) (→ $q $r) (→ $p $r))))
+
+</span><span class="ansi38-255165000"
+> (: Deduction (-> (→ $p $q) (→ $q $r) (→ $p $r)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Backward chainer, based on the DTL version of
+;;;; `../backward-chaining/bc-xp.metta` but rules are in an atomspace
+;;;; instead of being hardwired.  To be used by the forward revertant
+;;;; chainer defined below.
+<span class="ansi38-255165000"
+> (: bc (-> Atom Nat Atom))
+</span>;;;; Base case
+<span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $depth)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;;; Recursive cases
+<span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) (S $k))  
+  (match &rb 
+    (: $ctor 
+      (-> $prms1 $prms2 $ccln)) 
+    (let* 
+      ( ( (: $prf1 $prms1) (bc (: $prf1 $prms1) $k)) 
+        ( (: $prf2 $prms2) (bc (: $prf2 $prms2) $k)) 
+        ( ($ctor $prf1 $prf2) $prf)) 
+      (: $prf $ccln))))
+</span>;;;; Test backward chainer
+<span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf A) Z) (: a A))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.02"
+>;; POLYWARD-CHAINING.PC-XP.02</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.02 milliseconds) 
+
+!(assertEqual (bc (: $prf A) Z) (: a A))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: a A)) 
+      ( (: a A))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf (→ A B)) Z) (: ab (→ A B)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.03"
+>;; POLYWARD-CHAINING.PC-XP.03</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.64 milliseconds) 
+
+!(assertEqual (bc (: $prf (→ A B)) Z) (: ab (→ A B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: ab 
+          (→ A B))) 
+      ( (: ab 
+          (→ A B)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf (→ B C)) Z) (: bc (→ B C)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.04"
+>;; POLYWARD-CHAINING.PC-XP.04</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.64 milliseconds) 
+
+!(assertEqual (bc (: $prf (→ B C)) Z) (: bc (→ B C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: bc 
+          (→ B C))) 
+      ( (: bc 
+          (→ B C)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf B) (fromNumber 1)) (: (ModusPonens ab a) B))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.05"
+>;; POLYWARD-CHAINING.PC-XP.05</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.79 milliseconds) 
+
+!(assertEqual (bc (: $prf B) (fromNumber 1)) (: (ModusPonens ab a) B))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (ModusPonens ab a) B)) 
+      ( (: 
+          (ModusPonens ab a) B))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf C) (fromNumber 2)) ((: (ModusPonens bc (ModusPonens ab a)) C) (: (ModusPonens (Deduction ab bc) a) C)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.06"
+>;; POLYWARD-CHAINING.PC-XP.06</h3>
+; 
+; EVAL TEST
+; took 0.038 secs. (37.68 milliseconds) 
+
+!(assertEqualToResult (bc (: $prf C) (fromNumber 2)) ((: (ModusPonens bc (ModusPonens ab a)) C) (: (ModusPonens (Deduction ab bc) a) C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (ModusPonens bc 
+            (ModusPonens ab a)) C) (: (ModusPonens (Deduction ab bc) a) C)) 
+      ( (: 
+          (ModusPonens bc 
+            (ModusPonens ab a)) C) (: (ModusPonens (Deduction ab bc) a) C))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf (→ A C)) (fromNumber 2)) (: (Deduction ab bc) (→ A C)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.07"
+>;; POLYWARD-CHAINING.PC-XP.07</h3>
+; 
+; EVAL TEST
+; took 0.041 secs. (41.39 milliseconds) 
+
+!(assertEqual (bc (: $prf (→ A C)) (fromNumber 2)) (: (Deduction ab bc) (→ A C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (Deduction ab bc) 
+          (→ A C))) 
+      ( (: 
+          (Deduction ab bc) 
+          (→ A C)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Forward revertant chainer, based on the DTL version of
+;;;; `../backward-chaining/bc-xp.metta` but matching premises is
+;;;; replaced by calling the backward chainer defined above.
+<span class="ansi38-255165000"
+> (: frc (-> Atom Nat Atom))
+</span>;;;; Base case
+<span class="ansi38-255165000"
+> (= (frc (: $prf $prms) $depth)  
+  (: $prf $prms))
+</span>;;;; Recursive cases
+<span class="ansi38-255165000"
+> (= (frc (: $prf1 $prms1) (S $k))  
+  (match &rb 
+    (: $ctor 
+      (-> $prms1 $prms2 $ccln)) 
+    (let 
+      (: $prf2 $prms2) 
+      (bc 
+        (: $prf2 $prms2) $k) 
+      (frc 
+        (: 
+          ($ctor $prf1 $prf2) $ccln) $k))))
+</span><span class="ansi38-255165000"
+> (= (frc (: $prf2 $prms2) (S $k))  
+  (match &rb 
+    (: $ctor 
+      (-> $prms1 $prms2 $ccln)) 
+    (let 
+      (: $prf1 $prms1) 
+      (bc 
+        (: $prf1 $prms1) $k) 
+      (frc 
+        (: 
+          ($ctor $prf1 $prf2) $ccln) $k))))
+</span>;;;; Test forward revertant chainer
+<span class="ansi38-013099040"
+>!(assertEqual (frc (: a A) Z) (: a A))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.08"
+>;; POLYWARD-CHAINING.PC-XP.08</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.58 milliseconds) 
+
+!(assertEqual (frc (: a A) Z) (: a A))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: a A)) 
+      ( (: a A))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (frc (: a A) (fromNumber 1)) ((: a A) (: (ModusPonens ab a) B)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.09"
+>;; POLYWARD-CHAINING.PC-XP.09</h3>
+; 
+; EVAL TEST
+; took 0.008 secs. (7.61 milliseconds) 
+
+!(assertEqualToResult (frc (: a A) (fromNumber 1)) ((: a A) (: (ModusPonens ab a) B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: a A) (: (ModusPonens ab a) B)) 
+      ( (: a A) (: (ModusPonens ab a) B))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Disable assertEqualToResult due to leftover
+;;;; !(assertEqualToResult
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(frc (: a A) (fromNumber 2))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (frc (: a A) (fromNumber 2)) ((: a A) (: (ModusPonens (Deduction ab bc) a) C) (: (ModusPonens ab a) B) (: (ModusPonens bc (ModusPonens ab a)) C)))
+
+</span>
+;<h3 id="POLYWARD-CHAINING.PC-XP.10"
+>;; POLYWARD-CHAINING.PC-XP.10</h3>
+; 
+; EVAL TEST
+; took 0.031 secs. (31.23 milliseconds) 
+
+!(assertEqualToResult (frc (: a A) (fromNumber 2)) ((: a A) (: (ModusPonens (Deduction ab bc) a) C) (: (ModusPonens ab a) B) (: (ModusPonens bc (ModusPonens ab a)) C)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: a A) 
+        (: 
+          (ModusPonens ab a) B) 
+        (: 
+          (ModusPonens bc 
+            (ModusPonens ab a)) C) 
+        (: 
+          (ModusPonens 
+            (Deduction ab bc) a) C)) 
+      ( (: a A) 
+        (: 
+          (ModusPonens 
+            (Deduction ab bc) a) C) 
+        (: 
+          (ModusPonens ab a) B) 
+        (: 
+          (ModusPonens bc 
+            (ModusPonens ab a)) C))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; ((: a A)
+;;;;  (: (ModusPonens ab a) B)
+;;;;  (: (ModusPonens bc (ModusPonens ab a)) C)
+;;;;  (: (ModusPonens (Deduction ab bc) a) C)))
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 9
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:49:23+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/polyward-chaining/pc-xp.metta" --halt=true\033[0m

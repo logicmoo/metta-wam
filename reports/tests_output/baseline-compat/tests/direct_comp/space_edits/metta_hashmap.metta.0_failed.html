@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:25:12+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/space_edits/metta_hashmap.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/direct_comp/space_edits/metta_hashmap.metta] ]
+
+[stream_error [ : 132 [ : 1 4675 ] ] [unexpected_end_of_file [read_until_char [was_end ']]]]
+
+<span class="ansi1 ansi31"
+>ERROR: Unknown message: stream_error(132:1:4675,unexpected_end_of_file(read_until_char(was_end('\''))))
+</span>;;;; Initialize a gensym counter with a given prefix
+<span class="ansi38-255165000"
+> (= (init-gensym $prefix)  
+  (add-atom &self 
+    (gensym-counter $prefix 0)))
+</span>;;;; Start the counter at 0
+;;;; Generate a unique name using the gensym counter
+<span class="ansi38-255165000"
+> (= (gensym $prefix)  
+  (unify &self 
+    (gensym-counter $prefix $n) 
+    (sequential 
+      (remove-atom &self 
+        (gensym-counter $prefix $n)) 
+      (let $new_n 
+        (+ $n 1) 
+        (add-atom &self 
+          (gensym-counter $prefix $new_n)) 
+        (format-args "{}{}" 
+          ($prefix $n)))) 
+    (Error $prefix "Gensym counter not initialized")))
+</span>;;;; Create a new hashmap with a unique name
+<span class="ansi38-255165000"
+> (= (make-hashmap)  
+  (let $hm 
+    (gensym "hashmap_") 
+    (add-atom &self 
+      (: $hm hashmap)) $hm))
+</span>;;;; Return the unique hashmap name
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(init-gensym "hashmap_")
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (init-gensym "hashmap_") (()))
+
+</span>
+;<h3 id="SPACE-EDITS.METTA-HASHMAP.01"
+>;; SPACE-EDITS.METTA-HASHMAP.01</h3>
+<span class="ansi38-255165000"
+> (gensym-counter "hashmap_" 0)
+</span>; 
+; EVAL TEST
+; took 0.005 secs. (5.02 milliseconds) 
+
+!(assertEqualToResult (init-gensym "hashmap_") (()))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Add or update a key-value pair in the hashmap
+<span class="ansi38-255165000"
+> (= (put-in-hashmap $hm $key $value)  
+  (if 
+    (== () 
+      (collapse (match &self (: $hm hashmap) t))) 
+    (Error $hm "Hashmap does not exist") 
+    (sequential 
+      (remove-atom &self 
+        (hashmap-entry $hm $key $260)) 
+      (add-atom &self 
+        (hashmap-entry $hm $key $value)))))
+</span>;;;; Add the new key-value pair
+;;;; Retrieve a value by key from the hashmap
+<span class="ansi38-255165000"
+> (= (get-from-hashmap $hm $key)  
+  (if 
+    (== () 
+      (collapse (match &self (: $hm hashmap) t))) 
+    (Error $hm "Hashmap does not exist") 
+    (let (unify &self (hashmap-entry $hm $key $value) $value (Error ($hm $key) "Key not found")))))
+</span>;;;; Remove a key-value pair from the hashmap
+<span class="ansi38-255165000"
+> (= (remove-from-hashmap $hm $key)  
+  (if 
+    (== () 
+      (collapse (match &self (: $hm hashmap) t))) 
+    (Error $hm "Hashmap does not exist") 
+    (remove-atom &self 
+      (hashmap-entry $hm $key $260))))
+</span>;;;; Delete an entire hashmap and all its entries
+<span class="ansi38-255165000"
+> (= (delete-hashmap $hm) (sequential (remove-atom &self (: $hm hashmap)) (remove-atom &self (superpose (collapse (match &self (hashmap-entry $hm $key $value) (hashmap-entry $hm $key $value))))) (= (list-hashmap-entries $hm)  
+  (if 
+    (== () 
+      (collapse (match &self (: $hm hashmap) t))) 
+    (Error $hm "Hashmap does not exist") 
+    (collapse (match &self (hashmap-entry $hm $key $value) (:kv $key $value))))) !(sequential (let $hm (make-hashmap) (sequential (put-in-hashmap $hm name Douglas) (put-in-hashmap $hm age 42) (get-from-hashmap $hm name) (list-hashmap-entries $hm) (remove-from-hashmap $hm name) (delete-hashmap $hm)))) (= (make-symbol $str)  
+  (parse $str)) (= (generate-string-keys $prefix $count)  
+  (sequential (map-range 0 $count (lambda $i (format-args "{}{}" ($prefix $i)))))) (= (generate-symbol-keys $prefix $count)  
+  (sequential (map-range 0 $count (lambda $i (make-symbol (format-args "{}{}" ($prefix $i))))))) (sequential (map-range 0 $count (lambda $i (gensym $prefix))))) (= (generate-compound-keys $symbol $prefix $count)  
+  (sequential (map-range 0 $count (lambda $i ($symbol (make-symbol (format-args "{}{}" ($prefix $i)))))))) (sequential (map-range 0 $count (lambda $i ($symbol (format-args "{}{}" ($prefix $i)))))))
+</span>;;;; Map Range function implementation
+<span class="ansi38-255165000"
+> (= (map-range $start $end $fn)  
+  (if 
+    (>= $start $end) () 
+    (sequential 
+      ($fn $start) 
+      (map-range 
+        (+ $start 1) $end $fn))))
+</span>;;;; Recur with incremented start
+;;;; Benchmark hashmap operations for given keys
+<span class="ansi38-255165000"
+> (= (benchmark-hashmap $hm $keys)  
+  (sequential 
+    (map-range 0 
+      (length $keys) 
+      (lambda $i 
+        (let $key 
+          (nth $i $keys) 
+          (put-in-hashmap $hm $key 
+            (format-args "value{}" 
+              ($i)))))) 
+    (map-range 0 
+      (length $keys) 
+      (lambda $i 
+        (let $key 
+          (nth $i $keys) 
+          (get-from-hashmap $hm $key)))) 
+    (map-range 0 
+      (length $keys) 
+      (lambda $i 
+        (let $key 
+          (nth $i $keys) 
+          (remove-from-hashmap $hm $key))))))
+</span>;;;; Run benchmarks for different key types
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+
+Script done on 2025-01-22 02:25:20+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/direct_comp/space_edits/metta_hashmap.metta" --halt=true\033[0m

@@ -1,0 +1,603 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:43:16+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Definition of an omnichainer, Nat, plus and some proofs.            ;;
+;;;;                                                                     ;;
+;;;; The main proof of interest is that Z is the right identity of plus. ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; The omnichainer is expected to have the following properties:
+;;;;
+;;;; - Rules are curried.
+;;;;
+;;;; - There is no distinction between axioms and rules.
+;;;;
+;;;; - Rule composition, using the traditional composition operator `.`
+;;;;   is included in the chaining process (whether it is embedded in
+;;;;   the chainer implementation or is an external rule remains to be
+;;;;   determined).
+;;;;
+;;;; Given such omnichainer, the inductive property that x + 0 = x
+;;;; implies (S x) + 0 = (S x) should then have the following proof
+;;;; abstraction:
+;;;;
+;;;; ------------------------------------(plusRec)
+;;;; (=== (plus (S $x) Z) (S (plus $x Z)))
+;;;; -------------------------------------------------------------(Trans)  -----------------------------------------------------(Cong)
+;;;; (-> (=== (S (plus $x Z)) (S $x)) (=== (plus (S $x) Z) (S $x)))        (-> (=== (plus $x Z) $x) (=== (S (plus $x Z)) (S $x)))
+;;;; ---------------------------------------------------------------------------------------------------------------------------(.)
+;;;;                                  (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x)))
+;;;;
+;;;; or in MeTTa format:
+;;;;
+;;;; ((. (Trans plusRec)) Cong)
+;;;;;;;;;;;
+;;;; Nat ;;
+;;;;;;;;;;;
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Knowledge and rule base ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Knowledge base
+;;;; Refl is disabled because not necessary in all examples so far
+;;;; ;; Equality is reflexive.  We use === instead of == to make sure it
+;;;; ;; does not get reduced by the MeTTa interpreter.
+;;;; !(add-atom &kb (: Refl (=== $x $x)))
+;;;; Equality is transitive
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z)))))
+
+</span><span class="ansi38-255165000"
+> (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Equality is symmetric
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Sym (-> (=== $x $y) (=== $y $x))))
+
+</span><span class="ansi38-255165000"
+> (: Sym (-> (=== $x $y) (=== $y $x)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Equality respects function application
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Cong (-> (=== $x $x_39) (=== ($op $x) ($op $x_39)))))
+
+</span><span class="ansi38-255165000"
+> (: Cong (-> (=== $x $x_39) (=== ($op $x) ($op $x_39))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Rule of replacement (nullary operator)
+;;;; TODO: could use Replace1 combine with identity function instead.
+<span class="ansi38-013099040"
+>!(add-atom &kb (: Replace0 (-> (=== $x $x_39) (-> $x $x_39))))
+
+</span><span class="ansi38-255165000"
+> (: Replace0 (-> (=== $x $x_39) (-> $x $x_39)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; The following replacement rules are disabled because not necessary
+;;;; in the examples so far
+;;;; ;; Rule of replacement (unary operator)
+;;;; !(add-atom &kb (: Replace1 (-> (=== $x $x')      ; Premise 1
+;;;;                                (-> ($op $x)      ; Premise 2
+;;;;                                    ($op $x'))))) ; Conclusion
+;;;; ;; Rule of replacement (binary operator)
+;;;; !(add-atom &kb (: Replace2 (-> (=== $x $x')               ; Premise 1
+;;;;                                (-> (=== $y $y')           ; Premise 2
+;;;;                                    (-> ($op $x $y)        ; Premise 3
+;;;;                                        ($op $x' $y')))))) ; Conclusion
+;;;; Structural induction on Nat
+<span class="ansi38-013099040"
+>!(add-atom &kb (: NatInd (-> ($p Z) (-> (-> ($p $x) ($p (S $x))) ($p $x_39)))))
+
+</span><span class="ansi38-255165000"
+> (: NatInd (-> ($p Z) (-> (-> ($p $x) ($p (S $x))) ($p $x_39))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Definition of plus (base case)
+<span class="ansi38-013099040"
+>!(add-atom &kb (: plusBase (=== (plus Z $y) $y)))
+
+</span><span class="ansi38-255165000"
+> (: plusBase (=== (plus Z $y) $y))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Definition of plus (recursive step)
+<span class="ansi38-013099040"
+>!(add-atom &kb (: plusRec (=== (plus (S $x) $y) (S (plus $x $y)))))
+
+</span><span class="ansi38-255165000"
+> (: plusRec (=== (plus (S $x) $y) (S (plus $x $y))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; ;; If Z is the right identity of plus for x then it is the right
+;;;; ;; identity of plus for (S x).  NEXT: prove it.
+;;;; !(add-atom &kb (: plusRightIdInd
+;;;;                   (-> (plusRightId $x)        ; Premise
+;;;;                       (plusRightId (S $x))))) ; Conclusion
+;;;; Property expressing that for any natural, Z is the right identity
+;;;; of plus.  Note that the property definition is the axiom, not the
+;;;; property itself as it is what we attempt to prove.
+<span class="ansi38-013099040"
+>!(add-atom &kb (: plusRightIdProp (=== (plusRightId $x) (=== (plus $x Z) $x))))
+
+</span><span class="ansi38-255165000"
+> (: plusRightIdProp (=== (plusRightId $x) (=== (plus $x Z) $x)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Composition operator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: . (-> (-> $b $c) (-> (-> $a $b) (-> $a $c)))))
+
+</span><span class="ansi38-255165000"
+> (: . (-> (-> $b $c) (-> (-> $a $b) (-> $a $c))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Backward DTL Curried ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Similar to the traditional backward chaining DTL but rules are
+;;;; curried.  This allows to partially apply rule which is useful for
+;;;; inferring proof abstractions.
+;;;; Base case
+<span class="ansi38-255165000"
+> (: bc (-> $a Nat $a))
+</span><span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $260)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;;; Recursive step
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> $prms $ccln)) (bc (: $prfabs (-> $prms $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span>;;;;;;;;;;;;;;;;;
+;;;; Reduction ;;
+;;;;;;;;;;;;;;;;;
+;;;; Reduction rules to simplify proofs and reduce redundancy
+;;;; TODO: these rules should be proven first.  Then they could
+;;;; automatically be inserted.
+;;;; Involution of symmetry
+<span class="ansi38-255165000"
+> (= (Sym (Sym $prf))  $prf)
+</span>;;;; Composition to application
+<span class="ansi38-255165000"
+> (= (((. $g) $f) $x)  
+  ($g ($f $x)))
+</span>;;;;;;;;;;;;;;
+;;;; Proofs ;;
+;;;;;;;;;;;;;;
+;;;; Prove that Z is left identity of plus
+<span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf (=== (plus Z $y) $y)) Z) (: plusBase (=== (plus Z $y) $y)))
+
+</span>
+;<h3 id="HOL.NATSTANDALONETEST.01"
+>;; HOL.NATSTANDALONETEST.01</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (4.15 milliseconds) 
+
+!(assertEqual (bc (: $prf (=== (plus Z $y) $y)) Z) (: plusBase (=== (plus Z $y) $y)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: plusBase 
+          (=== 
+            (plus Z $y) $y))) 
+      ( (: plusBase 
+          (=== 
+            (plus Z $y) $y)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Prove that (=== (=== (plus Z Z) Z) (ZRID_plus Z)).
+;;;;
+;;;; The following proof tree is expected to prove that:
+;;;;
+;;;; -------------------------------------(plusRightIdProp)
+;;;; (=== (plusRightId Z) (=== (plus Z Z) Z))
+;;;; -------------------------------------(Sym)
+;;;; (=== (=== (plus Z Z) Z) (plusRightId Z))
+;;;;
+;;;; on in MeTTa format:
+;;;;
+;;;; (Sym plusRightIdProp)
+<span class="ansi38-013099040"
+>!(assertEqual (bc (: $prf (=== (=== (plus Z Z) Z) (plusRightId Z))) (fromNumber 2)) (: (Sym plusRightIdProp) (=== (=== (plus Z Z) Z) (plusRightId Z))))
+
+</span>
+;<h3 id="HOL.NATSTANDALONETEST.02"
+>;; HOL.NATSTANDALONETEST.02</h3>
+; 
+; EVAL TEST
+; took 0.039 secs. (38.68 milliseconds) 
+
+!(assertEqual (bc (: $prf (=== (=== (plus Z Z) Z) (plusRightId Z))) (fromNumber 2)) (: (Sym plusRightIdProp) (=== (=== (plus Z Z) Z) (plusRightId Z))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (Sym plusRightIdProp) 
+          (=== 
+            (=== 
+              (plus Z Z) Z) 
+            (plusRightId Z)))) 
+      ( (: 
+          (Sym plusRightIdProp) 
+          (=== 
+            (=== 
+              (plus Z Z) Z) 
+            (plusRightId Z))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Prove that (plusRightId Z) holds.  Meaning that Z is the right
+;;;; identity of plus for Z.
+;;;;
+;;;; The following proof tree does that:
+;;;;
+;;;; ---------------------------------------(plusRightIdProp)
+;;;; (=== (plusRightId Z) (=== (plus Z Z) Z))
+;;;; ---------------------------------------(Sym)  -----------------(plusBase)
+;;;; (=== (=== (plus Z Z) Z) (plusRightId Z))      (=== (plus Z Z) Z)
+;;;; ---------------------------------------------------------------(Replace0)
+;;;;                        (plusRightId Z)
+;;;;
+;;;; or in MeTTa format:
+;;;;
+;;;; (Replace0 (Sym plusRightIdProp) plusBase)
+;;;;
+;;;; TODO: re-enable when assertContainResults is introduced
+<span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf (plusRightId Z)) (fromNumber 4)) ((: ((Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) (plusRightId Z)) (: ((Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) (plusRightId Z)) (: ((Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) plusBase) (plusRightId Z))))
+
+</span>
+;<h3 id="HOL.NATSTANDALONETEST.03"
+>;; HOL.NATSTANDALONETEST.03</h3>
+; 
+; EVAL TEST
+; took 1.993 secs. (1993.45 milliseconds) 
+
+!(assertEqualToResult (bc (: $prf (plusRightId Z)) (fromNumber 4)) ((: ((Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) (plusRightId Z)) (: ((Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) (plusRightId Z)) (: ((Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) plusBase) (plusRightId Z))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          ( (Replace0 (Sym plusRightIdProp)) plusBase) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) 
+          (plusRightId Z))) 
+      ( (: 
+          ( (Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) 
+          (plusRightId Z)) 
+        (: 
+          ( (Replace0 (Sym plusRightIdProp)) plusBase) 
+          (plusRightId Z)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Prove that (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x)))
+;;;;
+;;;; The proof tree should be:
+;;;;
+;;;; ------------------------------------(plusRec)
+;;;; (=== (plus (S $x) Z) (S (plus $x Z)))
+;;;; -------------------------------------------------------------(Trans)  -----------------------------------------------------(Cong)
+;;;; (-> (=== (S (plus $x Z)) (S $x)) (=== (plus (S $x) Z) (S $x)))        (-> (=== (plus $x Z) $x) (=== (S (plus $x Z)) (S $x)))
+;;;; ---------------------------------------------------------------------------------------------------------------------------(.)
+;;;;                                  (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x)))
+;;;;
+;;;; or in MeTTa format:
+;;;;
+;;;; ((. (Trans plusRec)) Cong)
+;;;;
+;;;; TODO: re-enable when assertContainResults is introduced
+;;;; !(assertEqualToResult
+<span class="ansi38-013099040"
+>!(bc (: $prf (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x)))) (fromNumber 3))
+
+</span>
+N(1): <span class="ansi33"
+>(: ((. (Trans plusRec)) Cong) (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x))))
+</span>;;;; (: ((. (Trans plusRec)) Cong) (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x))))
+;;;; Prove that (-> (plusRightId $x) (plusRightId (S $x)))
+;;;;
+;;;; The proof tree should be:
+;;;;
+;;;;                                                                                                                                       ------------------------------------(plusRec)
+;;;;                                                                                                                                       (=== (plus (S $x) Z) (S (plus $x Z)))
+;;;; ------------------------------------------(plusRightIdProp)  ------------------------------------------------------(plusRightIdProp)  -------------------------------------------------------------(Trans)  -----------------------------------------------------(Cong)
+;;;; (=== (plusRightId $x) (=== (plus $x Z) $x))                  (=== (plusRightId (S $x)) (=== (plus (S $x) Z) (S $x)))                  (-> (=== (S (plus $x Z)) (S $x)) (=== (plus (S $x) Z) (S $x)))        (-> (=== (plus $x Z) $x) (=== (S (plus $x Z)) (S $x)))
+;;;; ------------------------------------------(Sym)              ------------------------------------------------------(Sym)              ---------------------------------------------------------------------------------------------------------------------------(.)
+;;;; (=== (=== (plus $x Z) $x) (plusRightId $x))                  (=== (=== (plus (S $x) Z) (S $x)) (plusRightId (S $x)))                                                   (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x)))
+;;;; ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------(Replace2)
+;;;;                                                                                                   (-> (plusRightId $x) (plusRightId (S $x)))
+;;;;
+;;;; or in MeTTa format:
+;;;;
+;;;; (((Replace2 (Sym plusRightIdProp)) (Sym plusRightIdProp)) ((. (Trans plusRec)) Cong))
+;;;;
+;;;; There is also a proof not involving Replace2, using two instances of Replace0 instead
+;;;;
+;;;; ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))
+;;;;
+;;;; It's a bit more verbose but requires a smaller rule base which
+;;;; speeds up backward chaining, so we are aiming for that instead.
+;;;;
+;;;; TODO: re-enable when assertContainResults is introduced
+;;;; !(assertEqualToResult
+<span class="ansi38-013099040"
+>!(bc (: $prf (-> (plusRightId $x) (plusRightId (S $x)))) (fromNumber 4))
+
+</span>
+N(1): <span class="ansi33"
+>(: ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))) (-> (plusRightId $x) (plusRightId (S $x))))
+</span>;;;; (: ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))) (-> (plusRightId $x) (plusRightId (S $x))))
+;;;; Prove that Z is the right identity of plus
+;;;;
+;;;; ---------------------------------------(plusRightIdProp)
+;;;; (=== (plusRightId Z) (=== (plus Z Z) Z))
+;;;; ---------------------------------------(Sym)  -----------------(plusBase)
+;;;; (=== (=== (plus Z Z) Z) (plusRightId Z))      (=== (plus Z Z) Z)                   <PROOF IS PROVIDED ABOVE>
+;;;; ---------------------------------------------------------------(Replace0)  -----------------------------------------(Replace2)
+;;;;                        (plusRightId Z)                                     (-> (plusRightId $x) (plusRightId (S $x)))
+;;;;                        ---------------------------------------------------------------------------------------------(NatInd)
+;;;;                                                               (plusRightId $x)
+;;;;
+;;;; or in MeTTa format
+;;;;
+;;;; ((NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))))
+;;;;
+;;;; We provide the clue that structural induction is to be so that the
+;;;; backward chainer only has to find the base case and the inductive
+;;;; step, otherwise the search takes too much memory (over 64GB).
+<span class="ansi38-013099040"
+>!(assertEqual (bc (: ((NatInd $basecase) $indstep) (plusRightId $x)) (fromNumber 5)) (: ((NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) (plusRightId $x)))
+
+</span>
+;<h3 id="HOL.NATSTANDALONETEST.04"
+>;; HOL.NATSTANDALONETEST.04</h3>
+; 
+; EVAL TEST
+; took 13.93 seconds.
+
+!(assertEqual (bc (: ((NatInd $basecase) $indstep) (plusRightId $x)) (fromNumber 5)) (: ((NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) (plusRightId $x)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          ( (NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) 
+          (plusRightId $x))) 
+      ( (: 
+          ( (NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) 
+          (plusRightId $x)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; TODO: try to reproduce
+;;;;
+;;;; https://idris2.readthedocs.io/en/latest/tutorial/theorems.html#proving-theorems
+;;;;
+;;;; For that one may need to use the following rule
+;;;;
+;;;; (: $x (: $x $t))
+;;;;
+;;;; or maybe something like
+;;;;
+;;;; (: (CTor $x) (-> (: $x $t) ($p $x)))
+;;;;
+;;;; In order to emulate dependent product or such.
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 4
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[(: ((. (Trans plusRec)) Cong) (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x))))]
+[(: ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))) (-> (plusRightId $x) (plusRightId (S $x))))]
+[()]
+
+Script done on 2025-01-22 01:43:56+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta" --halt=true\033[0m

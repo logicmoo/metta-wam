@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:55:32+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test-longer.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test-longer.metta] ]
+;;;; Import modules
+<span class="ansi38-013099040"
+>!(import! &self synthesize-via-unify)
+
+</span>;;;; Import modules
+<span class="ansi38-013099040"
+>!(import! &self metta:common:Num)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:synthesis:Unify)
+
+</span>;; no-results ;; 
+;;;; Enumerate all programs up to a given depth that are consistent with
+;;;; the query, using the given axioms and rules.
+;;;;
+;;;; The arguments are:
+;;;;
+;;;; $query: an Atom under the form (: TERM TYPE).  The atom may contain
+;;;;         free variables within TERM and TYPE to form various sort of
+;;;;         queries, such as:
+;;;;         1. Backward chaining: (: $term (Inheritance $x Mammal))
+;;;;         2. Forward chaining: (: ($rule $premise AXIOM) $type)
+;;;;         3. Mixed chaining: (: ($rule $premise AXIOM) (Inheritance $x Mammal))
+;;;;         4. Type checking: (: TERM TYPE)
+;;;;         5. Type inference: (: TERM $type)
+;;;;
+;;;; $axiom: a nullary function to axiom, to non-deterministically pick
+;;;;         up an axiom.  An axiom is an Atom of the form
+;;;;         (: TERM TYPE).
+;;;;
+;;;; $rule: a nullary function to rule, to non-deterministically pick up
+;;;;        a rule.  A rule is a function mapping premises to
+;;;;        conclusion, where premises and conclusion have the form
+;;;;        (: TERM TYPE).
+;;;;
+;;;; $depth: a Nat representing the maximum depth of the generated
+;;;;         programs.
+;;;;
+;;;; up to a given depth that are consistent with the query, using the
+;;;; provided rule and axiom non-deterministic functions.  An axiom is
+;;;; an Atom of the form
+;;;;
+;;;; TODO: recurse over curried rules instead of duplicating code over
+;;;; tuples.
+<span class="ansi38-255165000"
+> (: synthesize (-> Atom (-> Atom) (-> Atom) Nat Atom))
+</span>;;;; Nullary rule (axiom)
+<span class="ansi38-255165000"
+> (= (synthesize $query $axiom $rule $depth)  
+  (unify $query 
+    ($axiom) $query))
+</span>;;;; Binary rule
+<span class="ansi38-255165000"
+> (= (synthesize $query $axiom $rule (S $k))  
+  (unify* 
+    ( ( (: $ructor 
+          (-> $premise1 $premise2 $conclusion)) ($rule)) 
+      ( (: 
+          ($ructor $proof1 $proof2) $conclusion) $query) 
+      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $axiom $rule $k)) 
+      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $axiom $rule $k))) $query))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(import! &self ../../common/Record.metta)
+
+</span>;;;; Given a function call, produce records of that function call.
+;;;; There can be multiple records with only one call due to the
+;;;; non-determinism of MeTTa.  Each record is represented by (⊷ f x y)
+;;;; which can be read as
+;;;;
+;;;; "under f, the image of x is y"
+;;;;
+;;;; It was chosen because it is described as IMAGE OF in UTF-8.  It is
+;;;; the MeTTa equivalent of ExecutionLink in Atomese.  The character ⊷
+;;;; has description: IMAGE OF, hexadecimal code: 0x22B7, unicode-math
+;;;; code: \imageof and latex code: \multimapdotbothB.
+<span class="ansi38-255165000"
+> (= (record $f ($arg))  
+  (⊷ $f $arg 
+    ($f $arg)))
+</span><span class="ansi38-255165000"
+> (= (record $f ($arg1 $arg2))  
+  (⊷ $f 
+    ($arg1 $arg2) 
+    ($f $arg1 $arg2)))
+</span><span class="ansi38-255165000"
+> (= (record $f ($arg1 $arg2 $arg3))  
+  (⊷ $f 
+    ($arg1 $arg2 $arg3) 
+    ($f $arg1 $arg2 $arg3)))
+</span><span class="ansi38-255165000"
+> (= (record $f ($arg1 $arg2 $arg3 $arg4))  
+  (⊷ $f 
+    ($arg1 $arg2 $arg3 $arg4) 
+    ($f $arg1 $arg2 $arg3 $arg4)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Knowledge base
+<span class="ansi38-255165000"
+> (: kb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (kb)  
+  (superpose ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number)) (: i (-> String Number Bool)))))
+</span>;;;; Rule base
+<span class="ansi38-255165000"
+> (: rb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (rb)  
+  (superpose ((: . (-> (-> $b $c) (-> $a $b) (-> $a $c))) (: .: (-> (-> $c $d) (-> $a $b $c) (-> $a $b $d))))))
+</span>;;; Blackbird
+;;;; Test program synthesizer
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term $type) (fromNumber 4))) ...)
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST-LONGER.01"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST-LONGER.01</h3>
+; 
+; EVAL TEST
+; took 0.007 secs. (6.72 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term $type) (fromNumber 4))) ...)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (⊷ synthesize 
+          ( (: $term $type) (fromNumber 4)) 
+          (synthesize 
+            (: $term $type) 
+            (fromNumber 4)))) ...]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Too long to list
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term (-> Number Number)) kb rb (fromNumber 6))) ...)
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST-LONGER.02"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST-LONGER.02</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test-longer.metta] (assertEqualToResult (record synthesize ((: $term (-> Number Number)) kb rb (fromNumber 6))) ...)];;; Too long to run
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[
+
+Script done on 2025-01-22 01:55:40+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test-longer.metta" --halt=true\033[0m

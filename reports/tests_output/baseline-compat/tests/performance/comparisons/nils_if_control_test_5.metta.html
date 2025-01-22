@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:55:19+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/comparisons/nils_if_control_test_5.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/comparisons/nils_if_control_test_5.metta] ]
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Knowledge/rule base ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; K combinator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: AK (-> (: $x $a) (-> (: $y $b) $a))))
+
+</span><span class="ansi38-255165000"
+> (: AK (-> (: $x $a) (-> (: $y $b) $a)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; S combinator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: AS (-> (: $g (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c)))))
+
+</span><span class="ansi38-255165000"
+> (: AS (-> (: $g (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Conclusion
+;;;; Base case
+<span class="ansi38-255165000"
+> (: bc (-> $a Nat $a))
+</span><span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $260)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;;; Recursive step
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> 
+            (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span><span class="ansi38-013099040"
+>!(number-of (limit 200 (bc (: $prf (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c)))) (fromNumber 5))))
+
+</span>
+Deterministic: <span class="ansi33"
+>200
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[200]
+
+Script done on 2025-01-22 02:55:34+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/comparisons/nils_if_control_test_5.metta" --halt=true\033[0m

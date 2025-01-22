@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:08:53+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/chaining/v2-pln-xp-sys-impl.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/more-anti-regression/chaining/v2-pln-xp-sys-impl.metta] ]
+;;;!(bind! &kb (new-space))
+;;; !(bind! &kb2 (new-space))
+;;; inow
+<span class="ansi38-255165000"
+> (= (include-now $space $file)  
+  (let* 
+    ( ($before (atom-count $space)) 
+      ($260 (load-ascii $space $file)) 
+      ($after (atom-count $space)) 
+      ($loaded (- $after $before)) 
+      ($261 (println! (loaded $file into $space adding $loaded atoms before-after $before $after)))) ()))
+</span><span class="ansi38-013099040"
+>!(import! &kb rules)
+
+</span>;;;R1: gene a transcribes transcript t and transcript t is translated to protein p => gene a codes for protein p
+<span class="ansi38-255165000"
+> (: gene-codes-protein (-> (transcribed_to $g $t) (-> (translates_to $t $p) (codes_for $g $p))))
+</span>;;;R2: gene a is closest gene to snp s, gene a is in tad with gene b => snp s is in tad with gene b
+<span class="ansi38-255165000"
+> (: snp-gene-tad (-> (in_tad_region $g1 $t) (-> (in_tad_region $g2 $t) (-> (closest_gene $s $g1) (in_tad_with $s $g2)))))
+</span>;;;R3: gene a is in tad-with snp s, gene a has eQTL association with snp s => gene a is relevant for snp s
+<span class="ansi38-255165000"
+> (: tad-eqtl (-> (in_tad_with $s $g1) (-> (eqtl $s $g1) (relevant_gene $g1 $s))))
+</span>;;;R4: gene a is coexpressed with gene b => gene b is coexpressed with gene a
+<span class="ansi38-255165000"
+> (: communicative-coexpressed (-> (coexpressed_with $g1 $g2) (coexpressed_with $g2 $g1)))
+</span>;;;R5 protein a interacts_with protein b => protein b interacts_with protein a
+<span class="ansi38-255165000"
+> (: communicative-interaction (-> (interacts_with $p1 $p2) (interacts_with $p2 $p1)))
+</span>;;;R6: gene a is relevant for snp s, gene b is co-expressed with gene a => gene b is relevant for snp s
+<span class="ansi38-255165000"
+> (: relevant-coexpression (-> (relevant_gene $g1 $s) (-> (coexpressed_with $g1 $g2) (relevant_gene $g2 $s))))
+</span>;;;R7: gene a codes for protein p1, gene b codes for protein p2, p1 interacts with p1 => gene a interacts with gene b
+;;; (: gene-gene-interaction
+;;;      (-> (codes_for $g1 $p1)
+;;;           (-> (codes_for $g2 $p2)
+;;;                (-> (interacts_with $p1 $p2)
+;;;                     (interacts_with $g1 $g2)))))
+;;;R8: gene a is relevant for snp s, gene b is interacts with gene a => gene b is relevant for snp s
+;;; (: relevant-interaction
+;;;      (-> (relevant_gene $g1 $s)
+;;;           (-> (interacts_with $g1 $g2)
+;;;                (relevant_gene $g2 $s))))
+;;;R9: protein p member of GO C, gene g codes for protein p => gene g member of GO C
+<span class="ansi38-255165000"
+> (: gene-go (-> (codes_for $g $p) (-> (go_gene_product $go $p) (member $g $go))))
+</span>;;;R10: gene g is member of GO C1, GO C1 is parent of GO C2 => gene g is member of GO C2
+;;; (: gene-go-parent
+;;;      (-> (member $g $go1)
+;;;           (-> (rel_type (ontology_relationship $go1 $go2) subclass)
+;;;                (member $g $go2))))
+;;;R11: gene a is relevant for snp s, gene a is in GO category C => GO category C is relevant for snp s
+<span class="ansi38-255165000"
+> (: relevant-go-category (-> (relevant_gene $g1 $s) (-> (member $g1 $go) (relevant_go $go $s))))
+</span>;;;R12: snp s1 is in ld_with snp s2, gene a is relevant for snp s1, gene a has eQTL association with snp s2  => gene b is relevant for snp s2
+;;; (: relevant_gene-ld-snp
+;;;      (-> (in_ld_with $s1 $s2)
+;;;           (-> (relevant_gene $g $s1)
+;;;                (-> (eqtl $s1 $g1)
+;;;                     (relevant_gene $g $s2)))))
+;;;R13: snp s1 in motif m, gene a binds to motif m, gene a regulates gene b, gene b has eQTL association with snp s1 => gene b is relevant for snp s1
+;;; (-> : relevant-motif-snp-gene
+;;;      (-> (disrupts $s $g1)
+;;;           (-> (interacts_with $g1 $g2)
+;;;                (-> (relevant $g2 $s)
+;;;                     (-> (member $g2 $go)
+;;;                          (relevant $go $s))))))
+
+Deterministic: <span class="ansi33"
+>()
+</span>;;; !(bind! &kb3 (new-space))
+<span class="ansi38-013099040"
+>!(include-now &kb sample_kb_v2.metta)
+
+</span>
+Script done on 2025-01-22 01:09:33+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/chaining/v2-pln-xp-sys-impl.metta" --halt=true\033[0m

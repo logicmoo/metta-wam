@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:43:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/pathfinding-hard-f.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/pathfinding-hard-f.metta] ]
+;;; Pathfinding using a simple graph
+;;; Graph is represented as one-way edge functions
+<span class="ansi38-013099040"
+>!(pragma! compile full)
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (: edge (-> Symbol Symbol))
+</span><span class="ansi38-255165000"
+> (= (edge a)  b)
+</span><span class="ansi38-255165005"
+>######### [edge,a] :- b
+</span><span class="ansi36"
+>transpiler_stub_created(edge/2).
+
+</span>; % ######### warning: creating stub for:edge
+Retracting stub: mc_1__edge(B,C)
+<span class="ansi36"
+>transpiler_clause_store(edge, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, a], b).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(edge, 2, [x(doeval, eager)], x(doeval, eager)).
+
+</span>recompile_from_depends edge/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([edge,a]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:x(doeval, eager).
+args_list:[a].
+lazyArgsList:[a-x(doeval, eager)].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-atom"
+>b</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>edge</span></span>)</span>, 
+      <span class="pl-atom"
+>a</span>]], 
+  []].&#13;&#10;
+
+</span><span class="ansi38-173216230"
+>
+mc_1__edge(a, b).
+
+</span>
+Dependency Tree for '&top':edge/2:
+'&top':edge/2
+
+
+Functions to recompile after redefining '&top':edge/2 in correct order:
+   '&top':edge/2
+
+<span class="ansi38-255165000"
+> (= (edge b)  c)
+</span><span class="ansi38-255165005"
+>######### [edge,b] :- c
+</span><span class="ansi36"
+>transpiler_clause_store(edge, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, b], c).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval([edge,b]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:x(doeval, eager).
+args_list:[b].
+lazyArgsList:[b-x(doeval, eager)].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-atom"
+>c</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>edge</span></span>)</span>, 
+      <span class="pl-atom"
+>b</span>]], 
+  []].&#13;&#10;
+
+</span><span class="ansi38-173216230"
+>
+mc_1__edge(b, c).
+
+</span>
+Dependency Tree for '&top':edge/2:
+'&top':edge/2
+
+
+Functions to recompile after redefining '&top':edge/2 in correct order:
+   '&top':edge/2
+
+<span class="ansi38-255165000"
+> (= (edge c)  d)
+</span><span class="ansi38-255165005"
+>######### [edge,c] :- d
+</span><span class="ansi36"
+>transpiler_clause_store(edge, 2, 2, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, c], d).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_3-[eval([edge,c]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:x(doeval, eager).
+args_list:[c].
+lazyArgsList:[c-x(doeval, eager)].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-atom"
+>d</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>edge</span></span>)</span>, 
+      <span class="pl-atom"
+>c</span>]], 
+  []].&#13;&#10;
+
+</span><span class="ansi38-173216230"
+>
+mc_1__edge(c, d).
+
+</span>
+Dependency Tree for '&top':edge/2:
+'&top':edge/2
+
+
+Functions to recompile after redefining '&top':edge/2 in correct order:
+   '&top':edge/2
+
+<span class="ansi38-255165000"
+> (= (edge e)  f)
+</span><span class="ansi38-255165005"
+>######### [edge,e] :- f
+</span><span class="ansi36"
+>transpiler_clause_store(edge, 2, 3, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, e], f).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_4-[eval([edge,e]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager).
+finalLazyRet:x(doeval, eager).
+finalLazyOnlyRet:x(doeval, eager).
+args_list:[e].
+lazyArgsList:[e-x(doeval, eager)].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager)].
+finalLazyArgs:[x(doeval, eager)].
+
+</span><span class="ansi33"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-atom"
+>=</span>, 
+  [ <span class="pl-atom"
+>assign</span>, 
+    <span class="pl-atom"
+>f</span>, 
+    [ <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>call</span>(<span class="pl-args"
+><span class="pl-atom"
+>edge</span></span>)</span>, 
+      <span class="pl-atom"
+>e</span>]], 
+  []].&#13;&#10;
+
+</span><span class="ansi38-173216230"
+>
+mc_1__edge(e, f).
+
+</span>
+Dependency Tree for '&top':edge/2:
+'&top':edge/2
+
+
+Functions to recompile after redefining '&top':edge/2 in correct order:
+   '&top':edge/2
+
+;;; Epathfinding rule
+<span class="ansi38-255165000"
+> (: path (-> Symbol Symbol))
+</span>;;; was base case, node to itself
+<span class="ansi38-255165000"
+> (= (path $x)  $x)
+</span>P;HTML|
+; error(domain_error(py_term,_x),context(janus:py_call/2,Context_Kw))
+P;HTML|
+; error(domain_error(py_term,_x),context(janus:py_call/2,_2720))
+
+^  <span class="ansi1 ansi32"
+>Call: </span>(192) [user] print_ast('yellow', [=, [assign, _992{vn = ..., cns = ...}, [call(path), _992{vn = ..., cns = ...}]], []]) ? 
+Script done on 2025-01-22 02:44:09+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/pathfinding-hard-f.metta" --halt=true\033[0m

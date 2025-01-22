@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:16:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/metta-examples/combinator-calculi/y_comb_examples.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/metta-examples/combinator-calculi/y_comb_examples.metta] ]
+<span class="ansi38-255165000"
+> (= (I $x)  $x)
+</span><span class="ansi38-255165000"
+> (= ((K $x) $y)  $x)
+</span><span class="ansi38-255165000"
+> (= (((S $x) $y) $z)  
+    
+  ($x $z)
+    
+  ($y $z))
+</span><span class="ansi38-255165000"
+> (= (((B $x) $y) $z)  
+  ($x ($y $z)))
+</span><span class="ansi38-255165000"
+> (= (((C $x) $y) $z)  
+  ( ($x $z) $y))
+</span>;;; K combinator is the same
+;;;(= ((K $x) $y) $x)
+<span class="ansi38-255165000"
+> (= ((W $x) $y)  
+  ( ($x $y) $y))
+</span><span class="ansi38-255165000"
+> (= (U $x)  
+  ( ( (S I) I) $x))
+</span><span class="ansi38-255165000"
+> (= (Y $x)  
+  ( ( (B U) ((C B) U)) $x))
+</span>;;; Doesn't work not sure why, probably typo
+;;;(= (Y $x) (((S (K ((S I) I))) ((S ((S (K S)) K)) (K ((S I) I)))) $x))
+;;; Check equivalence between SKI and BCKW systems
+<span class="ansi38-013099040"
+>!(assertEqual (((((S (K S)) K) x) y) z) (((B x) y) z))
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.01"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.01</h3>
+; 
+; EVAL TEST
+; took 0.012 secs. (11.74 milliseconds) 
+
+!(assertEqual (((((S (K S)) K) x) y) z) (((B x) y) z))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (x (y z))) 
+      ( (x (y z)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (((((S ((S (K ((S (K S)) K))) S)) (K K)) x) y) z) (((C x) y) z))
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.02"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.02</h3>
+; 
+; EVAL TEST
+; took 0.026 secs. (25.73 milliseconds) 
+
+!(assertEqual (((((S ((S (K ((S (K S)) K))) S)) (K K)) x) y) z) (((C x) y) z))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (x z) y)) 
+      ( ( (x z) y))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual ((((S S) (S K)) x) y) ((W x) y))
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.03"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.03</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (9.05 milliseconds) 
+
+!(assertEqual ((((S S) (S K)) x) y) ((W x) y))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (x y) y)) 
+      ( ( (x y) y))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Check self-application combinator
+<span class="ansi38-013099040"
+>!(assertEqual (((S I) I) a) (a a))
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.04"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.04</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.07 milliseconds) 
+
+!(assertEqual (((S I) I) a) (a a))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (a a)) 
+      ( (a a))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (U a) (a a))
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.05"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.05</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.37 milliseconds) 
+
+!(assertEqual (U a) (a a))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (a a)) 
+      ( (a a))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Non-recursive function defined using Y combinator
+;;; Atom type is required type of the first argument otherwise
+;;; implementation falls into infinite recursion
+<span class="ansi38-255165000"
+> (: 'id'' (-> Atom (-> $t $t)))
+</span><span class="ansi38-255165000"
+> (= (('id'' $f) $x)  $x)
+</span><span class="ansi38-255165000"
+> (= (id $x)  
+  ( (Y 'id'') $x))
+</span><span class="ansi38-013099040"
+>!(assertEqual (id A) A)
+
+</span>
+;<h3 id="COMBINATOR-CALCULI.Y-COMB-EXAMPLES.06"
+>;; COMBINATOR-CALCULI.Y-COMB-EXAMPLES.06</h3>
+
+Script done on 2025-01-22 01:16:51+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/metta-examples/combinator-calculi/y_comb_examples.metta" --halt=true\033[0m

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi33 { color: #aa5500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:08:19+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/important/fish_riddle_1_no_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/direct_comp/important/fish_riddle_1_no_states.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Backward chaining logic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Interface for backward chaining (quotes the arguement)
+<span class="ansi38-255165000"
+> (: backward-chain (-> Atom Atom Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (backward-chain $info $goal $kb $rb)  
+  (backward-chain-q $info 
+    (quote $goal) $kb $rb))
+</span>;;;; Handle specific cases during backward chaining
+<span class="ansi38-255165000"
+> (: backward-chain-q (-> Atom Atom Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (backward-chain-q $info (quote $goal) $kb $rb)  
+  (case 
+    (quote $goal) 
+    ( ( (quote (is $a $b)) (let $a $b (quote $goal))) 
+      ( (quote (bool $expr)) (if $expr (quote $goal) (empty))) 
+      ( (quote (eval= $a $expr)) (let $a $expr (quote $goal))) 
+      ( (quote (nonvar $var)) (if (== Variable (get-metatype $var)) (empty) (quote $goal))) 
+      ( (quote (var $var)) (if (== Variable (get-metatype $var)) (quote $goal) (empty))) 
+      ( (quote (true)) (quote $goal)) 
+      ( (quote (fail)) (empty)) 
+      ( (quote (cut $signal)) (if (equalz $info $signal) (quote $goal) (quote $goal))) 
+      ( (quote (naf $expr)) (if (has-match $kb $expr) (empty) (quote $goal))) 
+      ( (quote (qnaf $expr)) (let (Failed $1) (backward-chain $info2 $expr $kb $rb) (quote $goal))) 
+      ($2 (backward-chain-q2 $info (quote $goal) $kb $rb)))))
+</span><span class="ansi38-255165000"
+> (= (backward-chain-q2 $info (quote $goal) $kb $rb)  
+  (match $kb $goal 
+    (quote $goal)))
+</span>;;;; Recursive case for backward chaining
+<span class="ansi38-255165000"
+> (= (backward-chain-q2 $old_info (quote $goal) $kb $rb)  
+  (function (return (if (== Variable (get-metatype $old_info)) (let $r (match $rb ($goal :- $body) (match-body $info $body $kb $rb $goal)) (if (== Variable (get-metatype $info)) $r (return $r))) (empty)))))
+</span>;;;; Match predicate: checks if a goal has at least one match in a space
+;;;; This is less efficient, as it processes the entire space to find matches
+<span class="ansi38-255165000"
+> (: has-match (-> Atom Atom Bool))
+</span><span class="ansi38-255165000"
+> (= (has-match $space $g)  
+  (let $m 
+    (collapse (match $space $g True)) 
+    (if 
+      (== $m ()) False True)))
+</span>;;;; Predicate to check if a function definition exists in a given space
+<span class="ansi38-255165000"
+> (= (has-fundef $space $g)  
+  (let $m 
+    (collapse (match $space (= $g  $1) True)) 
+    (if 
+      (== $m ()) False True)))
+</span>;;;; Chain through each element in the body and return the goal
+<span class="ansi38-255165000"
+> (: match-body (-> Atom Atom Atom Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (match-body $info $body $kb $rb $goal)  
+  (if 
+    (== $body ()) 
+    (quote $goal) 
+    (let* 
+      ( ( ($cur $rest) (decons-atom $body)) 
+        ($debugging False) 
+        ($bugcheck False) 
+        (() (if $debugging (println! (quote (IN (cur= $cur) (goal= $goal)))) ())) 
+        ($12 (if $bugcheck (let* (($RetVal (backward-chain $info $cur $kb $rb)) ($m (collapse (equalz (quote $cur) $RetVal))) (() (if (== $m ()) (println! (quote (BAD!!!!!!!! (cur= $cur) (retVal= $RetVal))) ())))) ()) ())) 
+        ( (quote $cur) (backward-chain $info $cur $kb $rb)) 
+        (() (if $debugging (println! (quote (OUT (cur= $cur) (goal= $goal)))) ()))) 
+      (match-body $info $rest $kb $rb $goal))))
+</span>;;;; Predicate for general atom equality
+<span class="ansi38-255165000"
+> (: equalz (-> Atom Atom Bool))
+</span>;;; Compares two atoms
+<span class="ansi38-255165000"
+> (= (equalz $A $A)  True)
+</span>;;; Atoms are equal if they are identical
+;;;!(equalz $a (+ 1 1))
+;;;; Query execution logic
+<span class="ansi38-255165000"
+> (: query (-> Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (query $kb $goal)  
+  (let $m 
+    (collapse (backward-chain $info $goal $kb $kb)) 
+    (if 
+      (== $m ()) 
+      (Failed (quote $goal)) 
+      (Succeed $m))))
+</span>;;;; Predicate: Check if an element is a member of a list
+<span class="ansi38-255165000"
+> (member $Elem ($Cons $Elem $1))
+</span>;;; Base case: element found
+<span class="ansi38-255165000"
+> ((member $Elem ($Cons $1 $Tail)) :- ((member $Elem $Tail)))
+</span>;;; Recursive case: continue checking
+;;;; Predicate to check equality of two values
+<span class="ansi38-255165000"
+> (same $x $x)
+</span><span class="ansi38-255165000"
+> ((because $color house keeps $other the $nationality is the $type owner) :- ((same $Houses (Cons (1 $1 $2 $3 $4 $5) (Cons (2 $6 $7 $8 $9 $10) $Open))) (same $Open Nil) (member (1 norwegian $11 $12 $13 $14) $Houses) (member ($15 brit red $16 $17 $18) $Houses) (member ($19 $20 blue tea $21 $22) $Houses) (member ($23 $24 $color $25 $other $26) $Houses) (member ($27 $28 $29 tea $30 prince) $Houses) (member ($31 $nationality $32 $33 $type $34) $Houses)))
+</span>;;;;;;;;;;;;;;;;;;;;
+;;;; TEST Queries ;;
+;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(query &self (because red house keeps dogs the $norwegian is the fish owner))
+
+</span>
+Deterministic: <span class="ansi33"
+>(Succeed ((quote (because red house keeps dogs the norwegian is the fish owner))))
+</span><span class="ansi38-013099040"
+>!(query &self (because blue house keeps dogs the $brit is the fish owner))
+
+</span>
+Deterministic: <span class="ansi33"
+>(Succeed ((quote (because blue house keeps dogs the brit is the fish owner))))
+</span><span class="ansi38-013099040"
+>!(query &self (because red house keeps cats the $norwegian is the fish owner))
+
+</span>
+Deterministic: <span class="ansi33"
+>(Succeed ((quote (because red house keeps cats the norwegian is the fish owner))))
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[(Succeed ((quote (because red house keeps dogs the norwegian is the fish owner))))]
+[(Succeed ((quote (because blue house keeps dogs the brit is the fish owner))))]
+[(Succeed ((quote (because red house keeps cats the norwegian is the fish owner))))]
+
+Script done on 2025-01-22 02:08:28+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/direct_comp/important/fish_riddle_1_no_states.metta" --halt=true\033[0m

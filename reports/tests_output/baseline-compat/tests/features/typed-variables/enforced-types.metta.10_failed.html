@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:38:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/typed-variables/enforced-types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/features/typed-variables/enforced-types.metta] ]
+<span class="ansi31"
+>Warning: P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta'</span>:11:0: Illegal UTF-8 start
+</span><span class="ansi31"
+>Warning: P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta'</span>:11:0: Illegal UTF-8 start
+</span>;;; Define a function `is-even` that takes a Number and returns a Bool.
+;;; This predicate checks if the given number is even by verifying that its remainder
+;;; when divided by 2 is zero.
+<span class="ansi38-255165000"
+> (: is-even (-> Number Bool))
+</span>;;; Implementation: (is-even X) is true if (X % 2) == 0
+<span class="ansi38-255165000"
+> (= (is-even $X)  
+  (== 
+    (% $X 2) 0))
+</span>;;; Define `constrain-true`, a low-level function that constrains a given variable so that
+;;; a provided lazy boolean expression ($true) must evaluate to true for the variable�s values.
+;;; It uses `freeze` and `eval_true` to enforce this constraint, and then returns $eval,
+;;; presumably a transformed or filtered evaluation context.
+<span class="ansi38-255165000"
+> (: constrain-true (-> Variable LazyBool $t $t))
+</span><span class="ansi38-255165000"
+> (= (constrain-true $var $true $eval)  
+  (let $260 
+    (call! freeze $var 
+      [eval_true $true]) $eval))
+</span>;;; Test that applying `constrain-true` with `is-even` filters the sequence (1 2 3 4 5 6)
+;;; to only even numbers: (2 4 6).
+<span class="ansi38-013099040"
+>!(assertEqual (constrain-true $even (is-even $even) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.01"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.01</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.80 milliseconds) 
+
+!(assertEqual (constrain-true $even (is-even $even) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 2 3 4 5 6) 
+      (2 4 6)]]
+</span>
+equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'[|]'(2,'[|]'(4,'[|]'(6,[]))))[error [error [domain_error py_term [Error [got (1 2 3 4 5 6)] [expected (2 4 6)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqual (constrain-true $even (is-even $even) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))];;; Define a type refinement for EvenNumber. The notation `(: $v EvenNumber)` means
+;;; that $v should be recognized as an EvenNumber type if `is-even $v` holds.
+;;; If $v is even, it's tagged as NotReducible; otherwise, it's Empty, meaning it fails
+;;; the refinement and cannot be typed as EvenNumber.
+<span class="ansi38-255165000"
+> (= (: $v EvenNumber)  
+  (if 
+    (is-even $v) NotReducible Empty))
+</span>;;; Define `declare-type`, which enforces that a variable has a certain type by
+;;; constraining it to situations where `(get-type $var)` equals `$type`.
+;;; Under the hood, this relies on `constrain-true` to ensure the type condition holds.
+<span class="ansi38-255165000"
+> (: declare-type (-> Variable Type $t $t))
+</span><span class="ansi38-255165000"
+> (= (declare-type $var $type $eval)  
+  (constrain-true $var 
+    (== 
+      (get-type $var) $type) $eval))
+</span>;;; Test that using `declare-type` to assert EvenNumber type on a superposed set (1 2 3 4 5 6)
+;;; again filters it down to just (2 4 6).
+<span class="ansi38-013099040"
+>!(assertEqual (declare-type $even EvenNumber (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.02"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.02</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (8.96 milliseconds) 
+
+!(assertEqual (declare-type $even EvenNumber (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 2 3 4 5 6) 
+      (2 4 6)]]
+</span>
+equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'[|]'(2,'[|]'(4,'[|]'(6,[]))))[error [error [domain_error py_term [Error [got (1 2 3 4 5 6)] [expected (2 4 6)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqual (declare-type $even EvenNumber (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))];;; Test that binding $even to 2 succeeds when requiring $even to be EvenNumber.
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 2 $even)) (2))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.03"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.03</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.02 milliseconds) 
+
+!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 2 $even)) (2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (2) 
+      (2)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Test that binding $even to 1 (which is not even) fails the EvenNumber refinement,
+;;; resulting in an empty result.
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 1 $even)) ())
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.04"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.04</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.90 milliseconds) 
+
+!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 1 $even)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1) ()]]
+</span>
+equal_enough_for_test('[|]'(1,[]),[])[error [error [domain_error py_term [Error [got (1)] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqualToResult (let $261 (: $even EvenNumber) (let $even 1 $even)) ())];;; Test that trying to bind $even to unknown-symbol (with EvenNumber constraint) works
+;;; which afterward makes unknown-symbol to be considered even number
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((let $260 (: $even EvenNumber) (let $even $even unknown-symbol)) (get-type unknown-symbol)) ((unknown-symbol EvenNumber)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.05"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.05</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.02 milliseconds) 
+
+!(assertEqualToResult ((let $260 (: $even EvenNumber) (let $even $even unknown-symbol)) (get-type unknown-symbol)) ((unknown-symbol EvenNumber)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (unknown-symbol %Undefined%)) 
+      ( (unknown-symbol EvenNumber))]]
+</span>
+equal_enough_for_test('[|]'('[|]'('unknown-symbol','[|]'('%Undefined%',[])),[]),'[|]'('[|]'('unknown-symbol','[|]'('EvenNumber',[])),[]))[error [error [domain_error py_term [Error [got ((unknown-symbol %Undefined%))] [expected ((unknown-symbol EvenNumber))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqualToResult ((let $261 (: $even EvenNumber) (let $even $even unknown-symbol)) (get-type unknown-symbol)) ((unknown-symbol EvenNumber)))];;; Test that trying to bind $thing to other-symbol (with SomeType constraint) works
+;;; which afterward makes other-symbol to be considered SomeType
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((let $260 (: $thing SomeType) (let $thing $thing other-symbol)) (get-type other-symbol)) ((other-symbol SomeType)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.06"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.06</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.75 milliseconds) 
+
+!(assertEqualToResult ((let $260 (: $thing SomeType) (let $thing $thing other-symbol)) (get-type other-symbol)) ((other-symbol SomeType)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (other-symbol %Undefined%)) 
+      ( (other-symbol SomeType))]]
+</span>
+equal_enough_for_test('[|]'('[|]'('other-symbol','[|]'('%Undefined%',[])),[]),'[|]'('[|]'('other-symbol','[|]'('SomeType',[])),[]))[error [error [domain_error py_term [Error [got ((other-symbol %Undefined%))] [expected ((other-symbol SomeType))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqualToResult ((let $261 (: $thing SomeType) (let $thing $thing other-symbol)) (get-type other-symbol)) ((other-symbol SomeType)))];;; The following test attempts to bind $even to an EvenNumber and let it be 2
+<span class="ansi38-013099040"
+>!(let $260 (: $even EvenNumber) (let $even 2 $even))
+
+</span>
+Deterministic: <span class="ansi33"
+>2
+</span>;;; Here we try to bind $even to 1, which is not even, so it should fail type refinement
+<span class="ansi38-013099040"
+>!(let $260 (: $even EvenNumber) (let $even 1 $even))
+
+</span>
+Deterministic: <span class="ansi33"
+>1
+</span>;;; Try binding $even to unknown-symbol, which presumably fails
+<span class="ansi38-013099040"
+>!(let $260 (: $even EvenNumber) (let $even unknown-symbol $even))
+
+</span>
+Deterministic: <span class="ansi33"
+>unknown-symbol
+</span>;;; Test using a boolean flag (True) and asserting (get-type $even) == EvenNumber to filter 
+;;; superposed values. With True, only EvenNumbers are kept: (2 4 6).
+<span class="ansi38-013099040"
+>!(assertEqual (let True (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.07"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.07</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.09 milliseconds) 
+
+!(assertEqual (let True (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test () 
+      (2 4 6)]]
+</span>
+equal_enough_for_test([],'[|]'(2,'[|]'(4,'[|]'(6,[]))))[error [error [domain_error py_term [Error [got ()] [expected (2 4 6)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqual (let True (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))];;; Test with False, meaning (get-type $even) == EvenNumber is not satisfied,
+;;; so we should get the values that don't meet that condition: (1 3 5).
+<span class="ansi38-013099040"
+>!(assertEqual (let False (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (1 3 5)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.08"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.08</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.37 milliseconds) 
+
+!(assertEqual (let False (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (1 3 5)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 2 3 4 5 6) 
+      (1 3 5)]]
+</span>
+equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'[|]'(1,'[|]'(3,'[|]'(5,[]))))[error [error [domain_error py_term [Error [got (1 2 3 4 5 6)] [expected (1 3 5)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqual (let False (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (1 3 5)))];;; Define `even-symbol` as an EvenNumber type symbol.
+<span class="ansi38-255165000"
+> (: even-symbol EvenNumber)
+</span>;;; Test that we can bind $even to even-symbol under the EvenNumber refinement.
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even even-symbol $even)) even-symbol)
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.09"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.09</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.94 milliseconds) 
+
+!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even even-symbol $even)) even-symbol)
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (even-symbol) even-symbol]]
+</span>
+equal_enough_for_test('[|]'('even-symbol',[]),'even-symbol')[error [error [domain_error py_term [Error [got (even-symbol)] [expected even-symbol]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqualToResult (let $261 (: $even EvenNumber) (let $even even-symbol $even)) even-symbol)];;; Define `has-type-symbol` as HasType, a different type.
+<span class="ansi38-255165000"
+> (: has-type-symbol HasType)
+</span>;;; Test that trying to bind an EvenNumber variable to has-type-symbol fails,
+;;; since the types do not match.
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even has-type-symbol $even)) ())
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.10"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.10</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.96 milliseconds) 
+
+!(assertEqualToResult (let $260 (: $even EvenNumber) (let $even has-type-symbol $even)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (has-type-symbol) ()]]
+</span>
+equal_enough_for_test('[|]'('has-type-symbol',[]),[])[error [error [domain_error py_term [Error [got (has-type-symbol)] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqualToResult (let $261 (: $even EvenNumber) (let $even has-type-symbol $even)) ())];;; Asserting that applying the EvenNumber type refinement to (1 2 3 4 5 6)
+;;; filters the sequence down to (2 4 6), matching the expected behavior of `is-even`.
+<span class="ansi38-013099040"
+>!(assertEqual (let $260 (: $even EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+</span>
+;<h3 id="TYPED-VARIABLES.ENFORCED-TYPES.11"
+>;; TYPED-VARIABLES.ENFORCED-TYPES.11</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.14 milliseconds) 
+
+!(assertEqual (let $260 (: $even EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      (1 2 3 4 5 6) 
+      (2 4 6)]]
+</span>equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'[|]'(2,'[|]'(4,'[|]'(6,[]))))[error [error [domain_error py_term [Error [got (1 2 3 4 5 6)] [expected (2 4 6)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/typed-variables/enforced-types.metta] (assertEqual (let $261 (: $even EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi31"
+>Failures: 10
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[()]
+[[[[2]
+[1]
+[unknown-symbol]
+[[[[[
+
+Script done on 2025-01-22 02:38:33+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/features/typed-variables/enforced-types.metta" --halt=true\033[0m

@@ -755,10 +755,10 @@ load_metta1(Self, RelFilename):-
     % Convert the relative filename to an absolute filename.
     afn_from(RelFilename, Filename),
     % Use a local flag for garbage collection and track file loading.
-    locally(set_prolog_flag(gc, true),
+    %  locally(set_prolog_flag(gc_never, true),...)
     track_load_into_file(Filename,
         % Include the file in the current context/module.
-        include_metta(Self, RelFilename))))).
+        include_metta(Self, RelFilename)))).
 
 %!  import_metta(+Self, +Filename) is det.
 %
@@ -1864,7 +1864,8 @@ cache_file(Original, Ending, CachedFile) :-
        ' '-'~~~'
     ],
     fr_slashes(Replacements, Original, RelPath),
-    atomic_list_concat([Dir, RelPath, Ending], CachedFile).
+    atomic_list_concat([RelPath, Ending], BufferFile),
+    directory_file_path(Dir, BufferFile, CachedFile).
 
 
 /** clean_cache_files is det.

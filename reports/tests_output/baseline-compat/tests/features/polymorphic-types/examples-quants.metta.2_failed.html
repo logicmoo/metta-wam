@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:37:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/polymorphic-types/examples-quants.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/features/polymorphic-types/examples-quants.metta] ]
+<span class="ansi38-255165000"
+> (: calculate-rotation-angle (-> AngleInDegreesForRotation AngleInDegrees))
+</span><span class="ansi38-255165000"
+> (= (calculate-rotation-angle $AngleInDegreesForRotation)  
+  (if 
+    (> $AngleInDegreesForRotation 360) 
+    (- $AngleInDegreesForRotation 360) $AngleInDegreesForRotation))
+</span><span class="ansi38-255165000"
+> (: print-and-return-fruit-count (-> SomethingWithAmount CountedAmount))
+</span><span class="ansi38-255165000"
+> (= (print-and-return-fruit-count $apples) (print ("Amount of fruit =" $apples)) (as-count $apples))
+</span><span class="ansi38-255165000"
+> (: compare-apples-oranges (-> Apples Oranges String))
+</span><span class="ansi38-255165000"
+> (= (compare-apples-oranges $AppleCount $OrangeCount)  
+  (if 
+    (> $AppleCount $OrangeCount) "More Apples" 
+    (if 
+      (< $AppleCount $OrangeCount) "More Oranges" "Equal Amount")))
+</span>;;;; Declares a function 'degrees-to-radians' that converts angles from degrees to radians
+<span class="ansi38-255165000"
+> (: degrees-to-radians (-> AngleInDegrees AngleInRadians))
+</span>;;;; Defines the 'degrees-to-radians' function
+<span class="ansi38-255165000"
+> (= (degrees-to-radians $AngleInDegrees)  
+  (* $AngleInDegrees 
+    (/ pi 180)))
+</span>;;;; Declares the 'any-to-radians' function to accept an angle in degrees
+<span class="ansi38-255165000"
+> (: any-to-radians (-> AngleInDegrees AngleInRadians))
+</span>;;;; Converts angle from degrees to radians using the 'degrees-to-radians' function
+<span class="ansi38-255165000"
+> (= (any-to-radians $angle)  
+  (degrees-to-radians $angle))
+</span>;;;; Declares the 'any-to-radians' function to accept an angle in radians
+<span class="ansi38-255165000"
+> (: any-to-radians (-> AngleInRadians AngleInRadians))
+</span>;;;; Returns the angle in radians directly without conversion
+<span class="ansi38-255165000"
+> (= (any-to-radians $angle)  $angle)
+</span>;;;; Declares a type 'radian-producer' that represents a function returning AngleInRadians
+<span class="ansi38-255165000"
+> (: radian-producer (-> AngleInRadians))
+</span>;;;; Declares a type 'degree-producer' that represents a function returning AngleInDegrees
+<span class="ansi38-255165000"
+> (: degree-producer (-> AngleInDegrees))
+</span>;;;; Defines 'degree-producer-1' as a constant function returning 1 degree
+<span class="ansi38-255165000"
+> (= degree-producer-1  1.0)
+</span>;;;; Defines 'radian-producer-1' as a constant function returning 1 radian
+<span class="ansi38-255165000"
+> (= radian-producer-1  1.0)
+</span>;;;; Invokes 'any-to-radians' with 'degree-producer-1', expecting conversion to radians
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(any-to-radians (degree-producer-1))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (any-to-radians (degree-producer-1)) ((* (degree-producer-1) (/ pi 180)) (degree-producer-1)))
+
+</span>
+;<h3 id="POLYMORPHIC-TYPES.EXAMPLES-QUANTS.01"
+>;; POLYMORPHIC-TYPES.EXAMPLES-QUANTS.01</h3>
+; 
+; EVAL TEST
+; took 0.007 secs. (6.62 milliseconds) 
+
+!(assertEqualToResult (any-to-radians (degree-producer-1)) ((* (degree-producer-1) (/ pi 180)) (degree-producer-1)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (* 
+          (degree-producer-1) 0.017453292519943295) (degree-producer-1)) 
+      ( (* 
+          (degree-producer-1) 
+          (/ pi 180)) (degree-producer-1))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(*,'[|]'('[|]'('degree-producer-1',[]),'[|]'(0.017453292519943295,[]))),'[|]'('[|]'('degree-producer-1',[]),[])),'[|]'('[|]'(*,'[|]'('[|]'('degree-producer-1',[]),'[|]'('[|]'(/,'[|]'(pi,'[|]'(180,[]))),[]))),'[|]'('[|]'('degree-producer-1',[]),[])))[error [error [domain_error py_term [Error [got ((* (degree-producer-1) 0.017453292519943295) (degree-producer-1))] [expected ((* (degree-producer-1) (/ pi 180)) (degree-producer-1))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/polymorphic-types/examples-quants.metta] (assertEqualToResult (any-to-radians (degree-producer-1)) ((* (degree-producer-1) (/ pi 180)) (degree-producer-1)))];;;; Invokes 'any-to-radians' with 'radian-producer-1', expecting no conversion
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(any-to-radians (radian-producer-1))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (any-to-radians (radian-producer-1)) ((* (radian-producer-1) (/ pi 180)) (radian-producer-1)))
+
+</span>
+;<h3 id="POLYMORPHIC-TYPES.EXAMPLES-QUANTS.02"
+>;; POLYMORPHIC-TYPES.EXAMPLES-QUANTS.02</h3>
+; 
+; EVAL TEST
+; took 0.006 secs. (6.11 milliseconds) 
+
+!(assertEqualToResult (any-to-radians (radian-producer-1)) ((* (radian-producer-1) (/ pi 180)) (radian-producer-1)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (* 
+          (radian-producer-1) 0.017453292519943295) (radian-producer-1)) 
+      ( (* 
+          (radian-producer-1) 
+          (/ pi 180)) (radian-producer-1))]]
+</span>
+equal_enough_for_test('[|]'('[|]'(*,'[|]'('[|]'('radian-producer-1',[]),'[|]'(0.017453292519943295,[]))),'[|]'('[|]'('radian-producer-1',[]),[])),'[|]'('[|]'(*,'[|]'('[|]'('radian-producer-1',[]),'[|]'('[|]'(/,'[|]'(pi,'[|]'(180,[]))),[]))),'[|]'('[|]'('radian-producer-1',[]),[])))[error [error [domain_error py_term [Error [got ((* (radian-producer-1) 0.017453292519943295) (radian-producer-1))] [expected ((* (radian-producer-1) (/ pi 180)) (radian-producer-1))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/polymorphic-types/examples-quants.metta] (assertEqualToResult (any-to-radians (radian-producer-1)) ((* (radian-producer-1) (/ pi 180)) (radian-producer-1)))];;;; Asserts that the result of converting 1 degree to radians is not equal to 1 radian
+<span class="ansi38-013099040"
+>!(assertNotEqual (any-to-radians (degree-producer-1)) (any-to-radians (radian-producer-1)))
+
+</span>
+;<h3 id="POLYMORPHIC-TYPES.EXAMPLES-QUANTS.03"
+>;; POLYMORPHIC-TYPES.EXAMPLES-QUANTS.03</h3>
+; 
+; EVAL TEST
+; took 0.012 secs. (11.93 milliseconds) 
+
+!(assertNotEqual (any-to-radians (degree-producer-1)) (any-to-radians (radian-producer-1)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [ \+ 
+      [equal_enough 
+        ( (* 
+            (degree-producer-1) 0.017453292519943295) (degree-producer-1)) 
+        ( (* 
+            (radian-producer-1) 0.017453292519943295) (radian-producer-1))] ]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi31"
+>Failures: 2
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[()]
+
+Script done on 2025-01-22 02:38:07+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/features/polymorphic-types/examples-quants.metta" --halt=true\033[0m

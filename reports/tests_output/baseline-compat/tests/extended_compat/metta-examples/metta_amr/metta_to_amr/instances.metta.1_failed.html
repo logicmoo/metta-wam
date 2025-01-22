@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:19:35+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/metta-examples/metta_amr/metta_to_amr/instances.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/metta-examples/metta_amr/metta_to_amr/instances.metta] ]
+;;; I like music in general. However, I prefer electronic music.
+;;; Among electronic music, I prefer cyber metal
+;;; I don't know too much about ethnic electronic music, but I'd like to try it since it is electronic
+<span class="ansi38-255165000"
+> (likes I MUSIC-001)
+</span><span class="ansi38-255165000"
+> (context fact-001 (likes :ARG0 I))
+</span><span class="ansi38-255165000"
+> (context fact-001 (likes :ARG1 music))
+</span><span class="ansi38-255165000"
+> (context fact-001 (music :ARG1-of general))
+</span>;;; we want both likes-001 and Likes to be of the same type and appear in same positions
+<span class="ansi38-255165000"
+> (is-a likes-001 Likes)
+</span><span class="ansi38-255165000"
+> (is-a i-001 I)
+</span><span class="ansi38-255165000"
+> (is-a Music-in-general Music)
+</span><span class="ansi38-255165000"
+> (Music-in-general :ARG1-of General)
+</span>;;; :property ?
+<span class="ansi38-255165000"
+> (likes-001 :ARG0 i-001)
+</span>;;; :subj instead of :ARG0 ?
+<span class="ansi38-255165000"
+> (likes-001 :ARG1 Music-in-general)
+</span>;;; :obj ?
+;;; we can introduce more roles
+<span class="ansi38-255165000"
+> (likes-001 :degree Average)
+</span>;;; we can skip an instance here, because there is no concrete Average
+<span class="ansi38-255165000"
+> (Fact likes-001 (TV 1 1))
+</span><span class="ansi38-255165000"
+> (= (test $rel $subj)  
+  (match &self 
+    (, 
+      (is-a $r $rel) 
+      (is-a $s $subj) 
+      ($r :ARG0 $s) 
+      (Fact $r $tv)) 
+    (, 
+      (match &self 
+        ($r $role $res) 
+        ($r $role $res)) $tv)))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(test Likes I)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (test Likes I) (((likes-001 :ARG0 i-001) (TV 1 1)) ((likes-001 :ARG1 Music-in-general) (TV 1 1)) ((likes-001 :degree Average) (TV 1 1))))
+
+</span>
+;<h3 id="METTA-TO-AMR.INSTANCES.01"
+>;; METTA-TO-AMR.INSTANCES.01</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.59 milliseconds) 
+
+!(assertEqualToResult (test Likes I) (((likes-001 :ARG0 i-001) (TV 1 1)) ((likes-001 :ARG1 Music-in-general) (TV 1 1)) ((likes-001 :degree Average) (TV 1 1))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (, 
+          (likes-001 :ARG0 i-001) 
+          (TV 1 1)) 
+        (, 
+          (likes-001 :ARG1 Music-in-general) 
+          (TV 1 1)) 
+        (, 
+          (likes-001 :degree Average) 
+          (TV 1 1))) 
+      ( ( (likes-001 :ARG0 i-001) (TV 1 1)) 
+        ( (likes-001 :ARG1 Music-in-general) (TV 1 1)) 
+        ( (likes-001 :degree Average) (TV 1 1)))]]
+</span>equal_enough_for_test('[|]'('[|]'(',','[|]'('[|]'('likes-001','[|]'(':ARG0','[|]'('i-001',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[]))),'[|]'('[|]'(',','[|]'('[|]'('likes-001','[|]'(':ARG1','[|]'('Music-in-general',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[]))),'[|]'('[|]'(',','[|]'('[|]'('likes-001','[|]'(':degree','[|]'('Average',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[]))),[]))),'[|]'('[|]'('[|]'('likes-001','[|]'(':ARG0','[|]'('i-001',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[])),'[|]'('[|]'('[|]'('likes-001','[|]'(':ARG1','[|]'('Music-in-general',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[])),'[|]'('[|]'('[|]'('likes-001','[|]'(':degree','[|]'('Average',[]))),'[|]'('[|]'('TV','[|]'(1,'[|]'(1,[]))),[])),[]))))[error [error [domain_error py_term [Error [got ((, (likes-001 :ARG0 i-001) (TV 1 1)) (, (likes-001 :ARG1 Music-in-general) (TV 1 1)) (, (likes-001 :degree Average) (TV 1 1)))] [expected (((likes-001 :ARG0 i-001) (TV 1 1)) ((likes-001 :ARG1 Music-in-general) (TV 1 1)) ((likes-001 :degree Average) (TV 1 1)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/metta-examples/metta_amr/metta_to_amr/instances.metta] (assertEqualToResult (test Likes I) (((likes-001 :ARG0 i-001) (TV 1 1)) ((likes-001 :ARG1 Music-in-general) (TV 1 1)) ((likes-001 :degree Average) (TV 1 1))))]<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[
+
+Script done on 2025-01-22 01:19:43+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/metta-examples/metta_amr/metta_to_amr/instances.metta" --halt=true\033[0m

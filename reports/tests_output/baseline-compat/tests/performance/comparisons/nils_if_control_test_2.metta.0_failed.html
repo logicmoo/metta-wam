@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:53:36+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/comparisons/nils_if_control_test_2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/comparisons/nils_if_control_test_2.metta] ]
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Knowledge/rule base ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(bind! &kb (new-space))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; K combinator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: AK (-> (: $x $a) (-> (: $y $b) $a))))
+
+</span><span class="ansi38-255165000"
+> (: AK (-> (: $x $a) (-> (: $y $b) $a)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; S combinator
+<span class="ansi38-013099040"
+>!(add-atom &kb (: AS (-> (: $g (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c)))))
+
+</span><span class="ansi38-255165000"
+> (: AS (-> (: $g (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c))))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Base case
+<span class="ansi38-255165000"
+> (: bc (-> $a Nat $a))
+</span><span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $260)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span>;;;; Recursive step
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> 
+            (: $prfarg $prms) $ccln)) (bc (: $prfabs (-> (: $prfarg $prms) $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(bc (: $prf (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c)))) (fromNumber 2))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $prf (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c)))) (fromNumber 2)) ((: ((AS AK) (AK AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) (AK AS)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) (AS AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) AK) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) AS) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: (AK (AK AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) (-> (: $y $b) $a)))) (-> (: $x $a) (-> (: $x $a) (-> (: $y $b) $a))))) (: (AK (AK AS)) (-> (: $260 (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c))))) (-> (: $x $a) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c)))))) (: (AK (AS AK)) (-> (: $260 (-> (: $x $a) (-> (: $x (-> (: $x $a) $b)) $a))) (-> (: $x (-> (: $x $a) $b)) (-> (: $x $a) $a)))) (: (AK (AS AS)) (-> (: $260 (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $b))) (-> (: $x $a) $c)))) (-> (: $x (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $b))) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $c))))) (: (AK AK) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: (AK AS) (-> (: $260 (-> (: $x (-> (: $x $a) $b)) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $c)))) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x (-> (: $x $a) $b)) (-> (: $x $a) $c)))))))
+
+</span>
+;<h3 id="COMPARISONS.NILS-IF-CONTROL-TEST-2.01"
+>;; COMPARISONS.NILS-IF-CONTROL-TEST-2.01</h3>
+; 
+; EVAL TEST
+; took 0.082 secs. (81.70 milliseconds) 
+
+!(assertEqualToResult (bc (: $prf (-> (: $f (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $y $b) (-> (: $x $a) $c)))) (fromNumber 2)) ((: ((AS AK) (AK AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) (AK AS)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) (AS AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) AK) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: ((AS AK) AS) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: (AK (AK AK)) (-> (: $260 (-> (: $x $a) (-> (: $x $a) (-> (: $y $b) $a)))) (-> (: $x $a) (-> (: $x $a) (-> (: $y $b) $a))))) (: (AK (AK AS)) (-> (: $260 (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c))))) (-> (: $x $a) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $f (-> (: $x $a) $b)) (-> (: $x $a) $c)))))) (: (AK (AS AK)) (-> (: $260 (-> (: $x $a) (-> (: $x (-> (: $x $a) $b)) $a))) (-> (: $x (-> (: $x $a) $b)) (-> (: $x $a) $a)))) (: (AK (AS AS)) (-> (: $260 (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $b))) (-> (: $x $a) $c)))) (-> (: $x (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $b))) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $c))))) (: (AK AK) (-> (: $260 (-> (: $x $a) (-> (: $x $a) $a))) (-> (: $x $a) (-> (: $x $a) $a)))) (: (AK AS) (-> (: $260 (-> (: $x (-> (: $x $a) $b)) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x $a) $c)))) (-> (: $x (-> (: $x $a) (-> (: $y $b) $c))) (-> (: $x (-> (: $x $a) $b)) (-> (: $x $a) $c)))))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: 
+          (AK AK) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $b))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $b)))) 
+        (: 
+          (AK AS) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) $b)) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $x $a) 
+                      (-> 
+                        (: $y $b) $c))) 
+                  (-> 
+                    (: $x $a) $c)))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $x $a) 
+                  (-> 
+                    (: $y $b) $c))) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) $b)) 
+                (-> 
+                  (: $x $a) $c))))) 
+        (: 
+          (AK (AK AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) 
+                  (-> 
+                    (: $y $b) $b)))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $b))))) 
+        (: 
+          (AK (AK AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $y $b) 
+                  (-> 
+                    (: $f 
+                      (-> 
+                        (: $x $a) $b)) 
+                    (-> 
+                      (: $x $a) $c))))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $f 
+                    (-> 
+                      (: $x $a) $b)) 
+                  (-> 
+                    (: $x $a) $c)))))) 
+        (: 
+          (AK (AS AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $c) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $y $c) $b)) $c))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $y $c) $b)) 
+              (-> 
+                (: $y $c) $c)))) 
+        (: 
+          (AK (AS AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $y 
+                        (-> 
+                          (: $x $a) 
+                          (-> 
+                            (: $y $b) $c))) 
+                      (-> 
+                        (: $x $a) $b))) 
+                  (-> 
+                    (: $x $a) $c)))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $x $a) 
+                      (-> 
+                        (: $y $b) $c))) 
+                  (-> 
+                    (: $x $a) $b))) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $x $a) $c))))) 
+        (: 
+          ( (AS AK) AK) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) AS) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) (AK AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) (AK AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) (AS AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c))))) 
+      ( (: 
+          ( (AS AK) (AK AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) (AK AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) (AS AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) AK) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          ( (AS AK) AS) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $c))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $c)))) 
+        (: 
+          (AK (AK AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) 
+                  (-> 
+                    (: $y $b) $b)))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $b))))) 
+        (: 
+          (AK (AK AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $y $b) 
+                  (-> 
+                    (: $f 
+                      (-> 
+                        (: $x $a) $b)) 
+                    (-> 
+                      (: $x $a) $c))))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $f 
+                    (-> 
+                      (: $x $a) $b)) 
+                  (-> 
+                    (: $x $a) $c)))))) 
+        (: 
+          (AK (AS AK)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $c) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $y $c) $b)) $c))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $y $c) $b)) 
+              (-> 
+                (: $y $c) $c)))) 
+        (: 
+          (AK (AS AS)) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $y 
+                        (-> 
+                          (: $x $a) 
+                          (-> 
+                            (: $y $b) $c))) 
+                      (-> 
+                        (: $x $a) $b))) 
+                  (-> 
+                    (: $x $a) $c)))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $x $a) 
+                      (-> 
+                        (: $y $b) $c))) 
+                  (-> 
+                    (: $x $a) $b))) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) 
+                    (-> 
+                      (: $y $b) $c))) 
+                (-> 
+                  (: $x $a) $c))))) 
+        (: 
+          (AK AK) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y $b) 
+                (-> 
+                  (: $y $b) $b))) 
+            (-> 
+              (: $y $b) 
+              (-> 
+                (: $y $b) $b)))) 
+        (: 
+          (AK AS) 
+          (-> 
+            (: $f 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) $b)) 
+                (-> 
+                  (: $y 
+                    (-> 
+                      (: $x $a) 
+                      (-> 
+                        (: $y $b) $c))) 
+                  (-> 
+                    (: $x $a) $c)))) 
+            (-> 
+              (: $y 
+                (-> 
+                  (: $x $a) 
+                  (-> 
+                    (: $y $b) $c))) 
+              (-> 
+                (: $y 
+                  (-> 
+                    (: $x $a) $b)) 
+                (-> 
+                  (: $x $a) $c))))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 02:53:58+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/comparisons/nils_if_control_test_2.metta" --halt=true\033[0m

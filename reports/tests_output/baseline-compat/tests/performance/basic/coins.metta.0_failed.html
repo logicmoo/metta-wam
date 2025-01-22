@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:39:27+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/coins.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/coins.metta] ]
+<span class="ansi38-255165000"
+> (= (count-change $amount)  
+  (cc $amount 5))
+</span><span class="ansi38-255165000"
+> (= (cc $amount $kinds_of_coins)  
+  (if 
+    (== $amount 0) 1 
+    (if 
+      (or 
+        (< $amount 0) 
+        (== $kinds_of_coins 0)) 0 
+      (+ 
+        (cc $amount 
+          (- $kinds_of_coins 1)) 
+        (cc 
+          (- $amount 
+            (first-denomination $kinds_of_coins)) $kinds_of_coins)))))
+</span><span class="ansi38-255165000"
+> (= (first-denomination $kinds_of_coins)  
+  (case $kinds_of_coins 
+    ( (1 1) 
+      (2 5) 
+      (3 10) 
+      (4 25) 
+      (5 50))))
+</span><span class="ansi38-013099040"
+>!(assertEqual (count-change 11) 4)
+
+</span>
+;<h3 id="BASIC.COINS.01"
+>;; BASIC.COINS.01</h3>
+; 
+; EVAL TEST
+; took 0.123 secs. (122.93 milliseconds) 
+
+!(assertEqual (count-change 11) 4)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (4) 
+      (4)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; In the book's example 100 is used to call function count-change, but for the sake of performance I've put 20 here.
+<span class="ansi38-013099040"
+>!(assertEqual (count-change 20) 9)
+
+</span>
+;<h3 id="BASIC.COINS.02"
+>;; BASIC.COINS.02</h3>
+; 
+; EVAL TEST
+; took 0.320 secs. (319.90 milliseconds) 
+
+!(assertEqual (count-change 20) 9)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (9) 
+      (9)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (count-change 51) 50)
+
+</span>
+;<h3 id="BASIC.COINS.03"
+>;; BASIC.COINS.03</h3>
+; 
+; EVAL TEST
+; took 3.70 seconds.
+
+!(assertEqual (count-change 51) 50)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (50) 
+      (50)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (count-change 60) 77)
+
+</span>
+;<h3 id="BASIC.COINS.04"
+>;; BASIC.COINS.04</h3>
+; 
+; EVAL TEST
+; took 5.98 seconds.
+
+!(assertEqual (count-change 60) 77)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (77) 
+      (77)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 4
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 02:39:45+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/coins.metta" --halt=true\033[0m

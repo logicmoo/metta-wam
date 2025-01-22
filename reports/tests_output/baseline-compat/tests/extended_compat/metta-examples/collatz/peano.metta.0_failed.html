@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:15:20+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/metta-examples/collatz/peano.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/metta-examples/collatz/peano.metta] ]
+;;; WIP
+<span class="ansi38-255165000"
+> (= (halfr (S (S $x)) $y)  
+  (halfr $x 
+    (S $y)))
+</span><span class="ansi38-255165000"
+> (= (halfr (S Z) $y)  
+  (Odd $y))
+</span><span class="ansi38-255165000"
+> (= (halfr Z $y)  
+  (Even $y))
+</span><span class="ansi38-255165000"
+> (= (tripler (S $x))  
+  (S (S (S (tripler $x)))))
+</span><span class="ansi38-255165000"
+> (= (tripler Z)  Z)
+</span><span class="ansi38-255165000"
+> (= (PC (Even (S Z)) $d)  
+  (+ $d 1))
+</span><span class="ansi38-255165000"
+> (= (PC (Even (S (S $x))) $d)  
+  (PC 
+    (halfr 
+      (S (S $x)) Z) 
+    (+ $d 1)))
+</span><span class="ansi38-255165000"
+> (= (PC (Odd Z) $d)  $d)
+</span><span class="ansi38-255165000"
+> (= (PC (Odd (S $x)) $d)  
+  (PC 
+    (halfr 
+      (S (S (tripler (S $x)))) Z) 
+    (+ $d 2)))
+</span><span class="ansi38-255165000"
+> (= (Collatz $n)  
+  (PC 
+    (halfr $n Z) 0))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S Z)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S Z))) (1))
+
+</span>
+;<h3 id="COLLATZ.PEANO.01"
+>;; COLLATZ.PEANO.01</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (4.27 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S Z))) (1))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1) 
+      (1)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S Z))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S Z)))) (7))
+
+</span>
+;<h3 id="COLLATZ.PEANO.02"
+>;; COLLATZ.PEANO.02</h3>
+; 
+; EVAL TEST
+; took 0.051 secs. (50.70 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S Z)))) (7))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (7) 
+      (7)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S Z)))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S Z))))) (2))
+
+</span>
+;<h3 id="COLLATZ.PEANO.03"
+>;; COLLATZ.PEANO.03</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (9.50 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S Z))))) (2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (2) 
+      (2)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S Z))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S Z)))))) (5))
+
+</span>
+;<h3 id="COLLATZ.PEANO.04"
+>;; COLLATZ.PEANO.04</h3>
+; 
+; EVAL TEST
+; took 0.040 secs. (40.49 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S Z)))))) (5))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (5) 
+      (5)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S (S Z)))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S (S Z))))))) (8))
+
+</span>
+;<h3 id="COLLATZ.PEANO.05"
+>;; COLLATZ.PEANO.05</h3>
+; 
+; EVAL TEST
+; took 0.058 secs. (57.85 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S (S Z))))))) (8))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (8) 
+      (8)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S (S (S Z))))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S (S (S Z)))))))) (16))
+
+</span>
+;<h3 id="COLLATZ.PEANO.06"
+>;; COLLATZ.PEANO.06</h3>
+; 
+; EVAL TEST
+; took 0.567 secs. (566.94 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S (S (S Z)))))))) (16))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (16) 
+      (16)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S (S (S (S Z)))))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S Z))))))))) (3))
+
+</span>
+;<h3 id="COLLATZ.PEANO.07"
+>;; COLLATZ.PEANO.07</h3>
+; 
+; EVAL TEST
+; took 0.023 secs. (22.77 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S Z))))))))) (3))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (3) 
+      (3)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S (S (S (S (S Z))))))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S (S Z)))))))))) (19))
+
+</span>
+;<h3 id="COLLATZ.PEANO.08"
+>;; COLLATZ.PEANO.08</h3>
+; 
+; EVAL TEST
+; took 0.642 secs. (641.72 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S (S Z)))))))))) (19))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (19) 
+      (19)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(Collatz (S (S (S (S (S (S (S (S (S (S Z)))))))))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S (S (S Z))))))))))) (6))
+
+</span>
+;<h3 id="COLLATZ.PEANO.09"
+>;; COLLATZ.PEANO.09</h3>
+; 
+; EVAL TEST
+; took 0.059 secs. (58.77 milliseconds) 
+
+!(assertEqualToResult (Collatz (S (S (S (S (S (S (S (S (S (S Z))))))))))) (6))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (6) 
+      (6)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 9
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:15:30+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/metta-examples/collatz/peano.metta" --halt=true\033[0m

@@ -1,0 +1,380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] ]
+;;;; Import modules
+<span class="ansi38-013099040"
+>!(import! &self metta:synthesis:experiments:synthesize-via-unify)
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(import! &self metta:common:Record)
+
+</span>;; no-results ;; 
+;;;; Knowledge base
+<span class="ansi38-255165000"
+> (: kb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (kb)  
+  (superpose ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number)) (: i (-> String Number Bool)))))
+</span>;;;; Rule base
+<span class="ansi38-255165000"
+> (: rb (-> Atom))
+</span><span class="ansi38-255165000"
+> (= (rb)  
+  (superpose ((: . (-> (-> $b $c) (-> $a $b) (-> $a $c))) (: .: (-> (-> $c $d) (-> $a $b $c) (-> $a $b $d))))))
+</span>;;; Blackbird
+;;;; Test program synthesizer
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term $type) Z)) ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.01"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.01</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.90 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term $type) Z)) ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: $term $type) Z))) 
+      ( (: f 
+          (-> Number String)) 
+        (: g 
+          (-> String Bool)) 
+        (: h 
+          (-> Bool Number)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'(_4324{vn = ...},'[|]'(_4344{vn = ...},[]))),'[|]'('Z',[])),[]))),[]),'[|]'('[|]'(:,'[|]'(f,'[|]'('[|]'(->,'[|]'('Number','[|]'('String',[]))),[]))),'[|]'('[|]'(:,'[|]'(g,'[|]'('[|]'(->,'[|]'('String','[|]'('Bool',[]))),[]))),'[|]'('[|]'(:,'[|]'(h,'[|]'('[|]'(->,'[|]'('Bool','[|]'('Number',[]))),[]))),[]))))[error [error [domain_error py_term [Error [got ((record synthesize ((: $term $type) Z)))] [expected ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: $term $type) Z)) ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term (-> Number String)) Z)) ((: f (-> Number String))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.02"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.02</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.50 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term (-> Number String)) Z)) ((: f (-> Number String))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: $term 
+              (-> Number String)) Z))) 
+      ( (: f 
+          (-> Number String)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'(_4026{vn = ...},'[|]'('[|]'(->,'[|]'('Number','[|]'('String',[]))),[]))),'[|]'('Z',[])),[]))),[]),'[|]'('[|]'(:,'[|]'(f,'[|]'('[|]'(->,'[|]'('Number','[|]'('String',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: $term (-> Number String)) Z)))] [expected ((: f (-> Number String)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: $term (-> Number String)) Z)) ((: f (-> Number String))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term (-> String Number Number)) kb rb (S Z))) ((: f (-> Number String))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.03"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.03</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.11 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term (-> String Number Number)) kb rb (S Z))) ((: f (-> Number String))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: $term 
+              (-> String Number Number)) kb rb 
+            (S Z)))) 
+      ( (: f 
+          (-> Number String)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'(_4116{vn = ...},'[|]'('[|]'(->,'[|]'('String','[|]'('Number','[|]'('Number',[])))),[]))),'[|]'(kb,'[|]'(rb,'[|]'('[|]'('S','[|]'('Z',[])),[])))),[]))),[]),'[|]'('[|]'(:,'[|]'(f,'[|]'('[|]'(->,'[|]'('Number','[|]'('String',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: $term (-> String Number Number)) kb rb (S Z))))] [expected ((: f (-> Number String)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: $term (-> String Number Number)) kb rb (S Z))) ((: f (-> Number String))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.04"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.04</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.04 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: $term 
+              (-> Number Bool)) (S Z)))) 
+      ( (: 
+          (. g f) 
+          (-> Number Bool)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'(_4116{vn = ...},'[|]'('[|]'(->,'[|]'('Number','[|]'('Bool',[]))),[]))),'[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'(->,'[|]'('Number','[|]'('Bool',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: $term (-> Number Bool)) (S Z))))] [expected ((: (. g f) (-> Number Bool)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: $term (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. g f) (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.05"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.05</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.85 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. g f) (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. g f) 
+              (-> Number Bool)) (S Z)))) 
+      ( (: 
+          (. g f) 
+          (-> Number Bool)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'(->,'[|]'('Number','[|]'('Bool',[]))),[]))),'[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'(->,'[|]'('Number','[|]'('Bool',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: (. g f) (-> Number Bool)) (S Z))))] [expected ((: (. g f) (-> Number Bool)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. g f) (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. g f) $type) (S Z))) ((: (. g f) (-> Number Bool))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.06"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.06</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.54 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. g f) $type) (S Z))) ((: (. g f) (-> Number Bool))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. g f) $type) (S Z)))) 
+      ( (: 
+          (. g f) 
+          (-> Number Bool)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'(_4158{vn = ...},[]))),'[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'('[|]'(->,'[|]'('Number','[|]'('Bool',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: (. g f) $type) (S Z))))] [expected ((: (. g f) (-> Number Bool)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. g f) $type) (S Z))) ((: (. g f) (-> Number Bool))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: $term $type) (S Z))) ((: f (-> Number String)) ... (: (. f h) (-> Bool String)) ...))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.07"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.07</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.04 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: $term $type) (S Z))) ((: f (-> Number String)) ... (: (. f h) (-> Bool String)) ...))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: $term $type) (S Z)))) 
+      ( (: f 
+          (-> Number String)) ... 
+        (: 
+          (. f h) 
+          (-> Bool String)) ...)]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'(_4324{vn = ...},'[|]'(_4344{vn = ...},[]))),'[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'(f,'[|]'('[|]'(->,'[|]'('Number','[|]'('String',[]))),[]))),'[|]'(...,'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(f,'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'('Bool','[|]'('String',[]))),[]))),'[|]'(...,[])))))[error [error [domain_error py_term [Error [got ((record synthesize ((: $term $type) (S Z))))] [expected ((: f (-> Number String)) ... (: (. f h) (-> Bool String)) ...)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: $term $type) (S Z))) ((: f (-> Number String)) ... (: (. f h) (-> Bool String)) ...))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. (. g f) h) (-> $in Bool)) (fromNumber 2))) ((: (. (. g f) h) (-> Bool Bool))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.08"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.08</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.92 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. (. g f) h) (-> $in Bool)) (fromNumber 2))) ((: (. (. g f) h) (-> Bool Bool))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. 
+                (. g f) h) 
+              (-> $in Bool)) (fromNumber 2)))) 
+      ( (: 
+          (. 
+            (. g f) h) 
+          (-> Bool Bool)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'(_4342{vn = ...},'[|]'('Bool',[]))),[]))),'[|]'('[|]'(fromNumber,'[|]'(2,[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'('Bool','[|]'('Bool',[]))),[]))),[]))[error [error [domain_error py_term [Error [got ((record synthesize ((: (. (. g f) h) (-> $in Bool)) (fromNumber 2))))] [expected ((: (. (. g f) h) (-> Bool Bool)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. (. g f) h) (-> $in Bool)) (fromNumber 2))) ((: (. (. g f) h) (-> Bool Bool))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. $g h) (-> $in String)) (fromNumber 3))) ((: (. f h) (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String))))
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.09"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.09</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.09 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. $g h) (-> $in String)) (fromNumber 3))) ((: (. f h) (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. $g h) 
+              (-> $in String)) (fromNumber 3)))) 
+      ( (: 
+          (. f h) 
+          (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String)))]]
+</span>equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(_4696{vn = ...},'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'(_4734{vn = ...},'[|]'('String',[]))),[]))),'[|]'('[|]'(fromNumber,'[|]'(3,[])),[])),[]))),[]),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(f,'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'('Bool','[|]'('String',[]))),[]))),'[|]'('[|]'(:,'[|]'('[|]'('.','[|]'('[|]'('.','[|]'('[|]'('.','[|]'(f,'[|]'(h,[]))),'[|]'('[|]'('.','[|]'(g,'[|]'(f,[]))),[]))),'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'('Bool','[|]'('String',[]))),[]))),[])))[error [error [domain_error py_term [Error [got ((record synthesize ((: (. $g h) (-> $in String)) (fromNumber 3))))] [expected ((: (. f h) (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String)))]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. $g h) (-> $in String)) (fromNumber 3))) ((: (. f h) (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String))))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. $g h) (-> Number $out)) (fromNumber 3))) ())
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.10"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.10</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.15 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. $g h) (-> Number $out)) (fromNumber 3))) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. $g h) 
+              (-> Number $out)) (fromNumber 3)))) ()]]
+</span>
+equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(_4192{vn = ...},'[|]'(h,[]))),'[|]'('[|]'(->,'[|]'('Number','[|]'(_4236{vn = ...},[]))),[]))),'[|]'('[|]'(fromNumber,'[|]'(3,[])),[])),[]))),[]),[])[error [error [domain_error py_term [Error [got ((record synthesize ((: (. $g h) (-> Number $out)) (fromNumber 3))))] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. $g h) (-> Number $out)) (fromNumber 3))) ())];;; No answer
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. g $f) (-> $in String)) (fromNumber 3))) ())
+
+</span>
+;<h3 id="EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.11"
+>;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.11</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (3.14 milliseconds) 
+
+!(assertEqualToResult (record synthesize ((: (. g $f) (-> $in String)) (fromNumber 3))) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test 
+      ( (record synthesize 
+          ( (: 
+              (. g $f) 
+              (-> $in String)) (fromNumber 3)))) ()]]
+</span>
+equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[|]'('[|]'('.','[|]'(g,'[|]'(_4198{vn = ...},[]))),'[|]'('[|]'(->,'[|]'(_4230{vn = ...},'[|]'('String',[]))),[]))),'[|]'('[|]'(fromNumber,'[|]'(3,[])),[])),[]))),[]),[])[error [error [domain_error py_term [Error [got ((record synthesize ((: (. g $f) (-> $in String)) (fromNumber 3))))] [expected ()]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta] (assertEqualToResult (record synthesize ((: (. g $f) (-> $in String)) (fromNumber 3))) ())];;; No answer
+<span class="ansi38-013099040"
+>!(assertEqualToResult (record synthesize ((: (. g $f) (-> $in Bool)) (fromNumber 3))) (: (. g f) (-> Number Bool)) (: (. g (. f h)) (-> Bool Bool)) (: (. g (. f (. h g))) (-> String Bool)) (: (. g (. (. f h) g)) (-> String Bool)) (. g (. (. f h) (. g f))) (-> Number Bool))
+
+</span>
+Deterministic: <span class="ansi33"
+>(assertEqualToResult (record synthesize ((: (. g $f) (-> $in Bool)) (fromNumber 3))) (: (. g f) (-> Number Bool)) (: (. g (. f h)) (-> Bool Bool)) (: (. g (. f (. h g))) (-> String Bool)) (: (. g (. (. f h) g)) (-> String Bool)) (. g (. (. f h) (. g f))) (-> Number Bool))
+</span>;;;; !(assertEqualToResult (record synthesize ((: $term $type) (fromNumber 4)))  ... )   ; Too long to list
+;;;; !(record synthesize ((: $term (-> Number Number)) kb rb (fromNumber 6))) ; Too long to run
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 11
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[]
+[]
+[[[[[[[[[[[[(assertEqualToResult (record synthesize ((: (. g $f) (-> $in Bool)) (fromNumber 3))) (: (. g f) (-> Number Bool)) (: (. g (. f h)) (-> Bool Bool)) (: (. g (. f (. h g))) (-> String Bool)) (: (. g (. (. f h) g)) (-> String Bool)) (. g (. (. f h) (. g f))) (-> Number Bool))]
+
+Script done on 2025-01-22 01:55:51+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta" --halt=true\033[0m

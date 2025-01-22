@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:07:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/chaining/type_prop.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/more-anti-regression/chaining/type_prop.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Types as propositions can be used in MeTTa but with nuances
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Entities
+<span class="ansi38-255165000"
+> (: Entity Type)
+</span><span class="ansi38-255165000"
+> (: Socrates Entity)
+</span><span class="ansi38-255165000"
+> (: Plato Entity)
+</span>;;; Predicates (functions) from `Entity` to `Type`
+<span class="ansi38-255165000"
+> (: Human (-> Entity Type))
+</span><span class="ansi38-255165000"
+> (: Mortal (-> Entity Type))
+</span>;;;Plato is Mortal proposition
+<span class="ansi38-255165000"
+> (Mortal Plato)
+</span>;;; A function type as an implication
+;;; `HumansAreMortal` represents the implication:
+;;; "For all x, if Human(x) then Mortal(x)"
+<span class="ansi38-255165000"
+> (: HumansAreMortal (-> (Human $t) (Mortal $t)))
+</span>;;; These might be considered as assertions that Plato and
+;;; Socrates are Humans:
+<span class="ansi38-255165000"
+> (: SocratesIsHuman (Human Socrates))
+</span><span class="ansi38-255165000"
+> (: PlatoIsHuman (Human Plato))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type (HumansAreMortal SocratesIsHuman))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (HumansAreMortal SocratesIsHuman)) ((Mortal Socrates)))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.01"
+>;; CHAINING.TYPE-PROP.01</h3>
+
+<span class="ansi38-255165000"
+> (: SocratesIsMortal (Mortal Socrates))
+</span>[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/more-anti-regression/chaining/type_prop.metta] (assertEqualToResult (get-type (HumansAreMortal SocratesIsHuman)) ((Mortal Socrates)))]<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type SocratesIsMortal)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type SocratesIsMortal) ((Mortal Socrates)))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.02"
+>;; CHAINING.TYPE-PROP.02</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.95 milliseconds) 
+
+!(assertEqualToResult (get-type SocratesIsMortal) ((Mortal Socrates)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (Mortal Socrates)) 
+      ( (Mortal Socrates))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type (Human Socrates))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (Human Socrates)) (Type))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.03"
+>;; CHAINING.TYPE-PROP.03</h3>
+
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/more-anti-regression/chaining/type_prop.metta] (assertEqualToResult (get-type (Human Socrates)) (Type))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Equality can be typed. If some equality is well-typed,
+;;; it means that it can be true.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: = (-> $t $t Type))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman))) (Atom Type))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.04"
+>;; CHAINING.TYPE-PROP.04</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/more-anti-regression/chaining/type_prop.metta] (assertEqualToResult (get-type (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman))) (Atom Type))]<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(get-type (= SocratesIsMortal  
+  (HumansAreMortal PlatoIsHuman)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (= SocratesIsMortal  
+  (HumansAreMortal PlatoIsHuman))) ())
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.05"
+>;; CHAINING.TYPE-PROP.05</h3>
+[error [error [existence_error procedure [ / non_arg_violation_each 3 ]] [context [ / args_conform 4 ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/more-anti-regression/chaining/type_prop.metta] (assertEqualToResult (get-type (= SocratesIsMortal  
+
+  (HumansAreMortal PlatoIsHuman))) ())];;;empty
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Another (MeTTa) way is to have explicit reduction of types to True
+;;; (equalities over equalities), although a more practical way would
+;;; be just to use a dedicated comparison operator
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (: T Type)
+</span><span class="ansi38-255165000"
+> (= (= $x  $x)  T)
+</span><span class="ansi38-255165000"
+> (= (HumansAreMortal SocratesIsHuman)  SocratesIsMortal)
+</span>;;; !(= SocratesIsMortal (HumansAreMortal SocratesIsHuman))
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)) (T))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.06"
+>;; CHAINING.TYPE-PROP.06</h3>
+; 
+; EVAL TEST
+; took 0.000931 secs. (930.84 microseconds) 
+
+!(assertEqualToResult (= SocratesIsMortal  
+  (HumansAreMortal SocratesIsHuman)) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(= (+ 1 2)  
+  (+ 3 0))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= (+ 1 2)  
+  (+ 3 0)) (T))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.07"
+>;; CHAINING.TYPE-PROP.07</h3>
+; 
+; EVAL TEST
+; took 0.000903 secs. (903.07 microseconds) 
+
+!(assertEqualToResult (= (+ 1 2)  
+  (+ 3 0)) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; One can also define an equality for directly inhabited types
+<span class="ansi38-255165000"
+> (= (= $type  T)  
+  (match &self 
+    (: $x $type) T))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(= (Mortal Socrates)  T)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= (Mortal Socrates)  T) (T))
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.08"
+>;; CHAINING.TYPE-PROP.08</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.59 milliseconds) 
+
+!(assertEqualToResult (= (Mortal Socrates)  T) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; returns T because it is inhabited
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(= (Mortal Plato)  T)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (= (Mortal Plato)  T) ())
+
+</span>
+;<h3 id="CHAINING.TYPE-PROP.09"
+>;; CHAINING.TYPE-PROP.09</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.54 milliseconds) 
+
+!(assertEqualToResult (= (Mortal Plato)  T) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;empty, because it is not inhabited
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 5
+</span><span class="ansi31"
+>Failures: 4
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[()]
+[[[[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:07:22+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/chaining/type_prop.metta" --halt=true\033[0m

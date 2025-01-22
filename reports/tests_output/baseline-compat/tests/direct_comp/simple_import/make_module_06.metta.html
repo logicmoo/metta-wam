@@ -1,0 +1,2468 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi2 { font-weight: lighter; }
+.ansi5 { text-decoration: blink; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
+.ansi40 { background-color: #000316; }
+.ansi92 { color: #00ff00; }
+.ansi93 { color: #ffff00; }
+.ansi94 { color: #5c5cff; }
+.ansi95 { color: #ff00ff; }
+.ansi96 { color: #00ffff; }
+.ansi97 { color: #ffffff; }
+.ansi100 { background-color: #7f7f7f; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:23:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/simple_import/make_module_06.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/direct_comp/simple_import/make_module_06.metta] ]
+;;; Bind Python's core functions and modules using py-atom
+<span class="ansi38-013099040"
+>!(bind! types_module (py-atom "types.ModuleType"))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Access types.ModuleType
+<span class="ansi38-013099040"
+>!(bind! sys_modules (py-atom "sys.modules"))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Access sys.modules
+<span class="ansi38-013099040"
+>!(bind! exec_fn (py-atom "exec"))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Access Python's exec function
+;;; Step 1: Define the module name and source code
+<span class="ansi38-013099040"
+>!(bind! module_name "greeter")
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(bind! module_source "\ndef say_hello(name):\n    print(f'Hello {name}!')\n\nprint('defining it')\n")
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Step 2: Create a new module
+<span class="ansi38-013099040"
+>!(bind! &new_module (types_module module_name))
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Create a new module dynamically
+;;; Step 3: Execute the source code in the module's context
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!((exec_fn module_source (py-dot &new_module __dict__)))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ((exec_fn module_source (py-dot &new_module __dict__))) ((())))
+
+</span>
+;<h3 id="SIMPLE-IMPORT.MAKE-MODULE-06.01"
+>;; SIMPLE-IMPORT.MAKE-MODULE-06.01</h3>
+ [217] <span class="ansi34"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),_5154)|_5146],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
+ [216] <span class="ansi34"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),_5258)|_5250],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(216,clause(<clause>(0x5578d2627a90),10),_5288)|_5280],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
+ [215] <span class="ansi34"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),_5396)|_5388],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(216,clause(<clause>(0x5578d2627a90),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),call(...,8000,...,...)),frame(216,...,_5494)|_5486],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(215,clause(<clause>(0x5578d2627eb0),3),_5518)|_5510],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [214] <span class="ansi34"
+>setup_call_cleanup(system:'$notrace'(12,0),system:once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(217,clause(<clause>(0x5578d26279e0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(217,...,_5652)|_5644],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(216,clause(<clause>(0x5578d2627a90),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>)),frame(215,clause(<clause>(0x5578d2627eb0),3),once(...)),frame(214,...,_5750)|_5742],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),system:'$restore_trace'(12,0))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [212] <span class="ansi34"
+>logicmoo_startup:ds</span> at /home/runner/work/metta-wam/metta-wam/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1043
+ [211] <span class="ansi34"
+>logicmoo_startup:bt</span> at /home/runner/work/metta-wam/metta-wam/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1038
+ [210] <span class="ansi34"
+>py_error_fail(error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_5864,python_stack(<py_traceback>(0x7f307467d1c0)))))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1638
+ [209] <span class="ansi34"
+>catch(user:py_call(builtin_module:make_py_atom('&new_module'),_5910,P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>py_object</span>(<span class="pl-args"
+><span class="pl-atom"
+>true</span></span>)</span>, 
+                                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>py_string_as</span>(<span class="pl-args"
+><span class="pl-atom"
+>string</span></span>)</span>]),error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_5958,python_stack(<py_traceback>(0x7f307467d1c0)))),user:py_error_fail(error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_5990,python_stack(<py_traceback>(0x7f307467d1c0))))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [208] <span class="ansi34"
+>py_ocall(builtin_module:make_py_atom('&new_module'),_6022)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1461
+ [206] <span class="ansi34"
+>catch(user:py_obi(make_py_atom('&new_module'),_6072),_6058,user:py_error_fail(_6086))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [205] <span class="ansi34"
+>py_atom('&new_module',_6112)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1514
+ [203] <span class="ansi34"
+>py_atom(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'&amp;new_module'</span>, <span class="pl-atom"
+>'__dict__'</span></span>]</span>,_6138)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1515
+ [201] <span class="ansi34"
+>once(user:py_dot(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'&amp;new_module'</span>, <span class="pl-atom"
+>'__dict__'</span></span>]</span>,_6186))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [200] <span class="ansi34"
+>md(once,user:py_dot(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'&amp;new_module'</span>, <span class="pl-atom"
+>'__dict__'</span></span>]</span>,_6236))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+ [197] <span class="ansi34"
+>eval_31(=,_6274,496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6282)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:2347
+ [196] <span class="ansi34"
+>if_or_else(eval_30(=,_6332,496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6340),eval_31(=,_6364,496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6372))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5473
+ [194] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_20(=,_6466),496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6460)*->nb_setarg(1,retval(fail),_6492);fail,trace,call(eval_20(=,_6526),496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6520)),ignore(notrace((\+_6566\=_6568,nb_setarg(1,retval(fail),_6576))))))</span> <foreign>
+ [193] <span class="ansi34"
+>call_cleanup(user:((call(eval_20(=,_6648),496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6642)*->nb_setarg(1,retval(fail),_6674);fail,trace,call(eval_20(=,_6708),496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6702)),ignore(notrace((\+_6748\=_6750,nb_setarg(1,retval(fail),_6758))))),user:ignore((_6788==1->ignore(\+ \+ (flag(eval_num,_6814,...),(...;...)));notrace(ignore(if_t(3<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [192] <span class="ansi34"
+>trace_eval(eval_20(=,_6902),e,496,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6896)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_debug.pl:975
+ [191] <span class="ansi34"
+>eval_01(=,_6946,497,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_6954)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:250
+ [187] <span class="ansi34"
+>apply:maplist_(P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>  'py-dot'   ,'&new_module', '__dict__'  ]],[_7028|_7030],user:must_eval_args(=,_7042,497,'&top'))</span> at /usr/lib/swi-prolog/library/apply.pl:234
+ [184] <span class="ansi34"
+>eval_adjust_args2(=,_7078,_7080,_7082,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                          <span class="pl-atom"
+>exec_fn</span>, 
+                                                          <span class="pl-atom"
+>module_source</span>, 
+                                                          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],[exec_fn,module_source,_7142|_7144])</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:2386
+ [182] <span class="ansi34"
+>if_or_else((eval_all_args,eval_adjust_args2(=,_7182,_7184,_7186,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                    <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                    <span class="pl-atom"
+>module_source</span>, 
+                                                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],[exec_fn,module_source,_7246|_7248])),eval_adjust_args1(=,_7254,_7256,_7258,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>module_source</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],[exec_fn,module_source,_7318|_7320]))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5473
+ [180] <span class="ansi34"
+>eval_41(=,_7346,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                    <span class="pl-atom"
+>exec_fn</span>, 
+                                    <span class="pl-atom"
+>module_source</span>, 
+                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_7354)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:2335
+ [178] <span class="ansi34"
+>eval_31(=,_7416,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                    <span class="pl-atom"
+>exec_fn</span>, 
+                                    <span class="pl-atom"
+>module_source</span>, 
+                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_7424)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:2347
+ [177] <span class="ansi34"
+>if_or_else(eval_30(=,_7492,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                               <span class="pl-atom"
+>exec_fn</span>, 
+                                               <span class="pl-atom"
+>module_source</span>, 
+                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_7500),eval_31(=,_7542,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>module_source</span>, 
+                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_7550))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5473
+ [175] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_20(=,_7662),497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                               <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],_7656)*->nb_setarg(1,retval(fail),_7694);fail,trace,call(eval_20(=,_7728),497,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_7722)),ignore(notrace((\+_7768\=_7770,nb_setarg(1,retval(fail),_7778))))))</span> <foreign>
+ [174] <span class="ansi34"
+>call_cleanup(user:((call(eval_20(=,_7850),497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                              <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>],_7844)*->nb_setarg(1,retval(fail),_7882);fail,trace,call(eval_20(=,_7916),497,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>,_7910)),ignore(notrace((\+_7956\=_7958,nb_setarg(1,retval(fail),_7966))))),user:ignore((_7996==1->ignore(\+ \+ (flag(eval_num,_8022,...),(...;...)));notrace(ignore(if_t(2<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [173] <span class="ansi34"
+>trace_eval(eval_20(=,_8110),e,497,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  <span class="pl-atom"
+>exec_fn</span>, 
+                                                  <span class="pl-atom"
+>module_source</span>, 
+                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8104)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_debug.pl:975
+ [172] <span class="ansi34"
+>eval_01(=,_8172,498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                    <span class="pl-atom"
+>exec_fn</span>, 
+                                    <span class="pl-atom"
+>module_source</span>, 
+                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>],_8180)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:250
+ [168] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_20(=,_8292),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>   exec_fn   ,module_source,     ...     ]],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_625720</span></span>]</span>)*->nb_setarg(1,retval(fail),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_630970</span></span>]</span>);fail,trace,call(eval_20(=,_8370),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>module_source</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>...</span>]],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_658966</span></span>]</span>)),ignore(notrace((\+P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_664314</span></span>]</span>\=_8418,nb_setarg(1,retval(fail),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_669702</span></span>]</span>))))))</span> <foreign>
+ [167] <span class="ansi34"
+>call_cleanup(user:((call(eval_20(=,_8510),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>   exec_fn   ,module_source,     ...     ]],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_684130</span></span>]</span>)*->nb_setarg(1,retval(fail),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_689378</span></span>]</span>);fail,trace,call(eval_20(=,_8588),498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>module_source</span> | 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>...</span>]],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_717374</span></span>]</span>)),ignore(notrace((\+P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_722722</span></span>]</span>\=_8636,nb_setarg(1,retval(fail),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_728110</span></span>]</span>))))),user:ignore((_8686==1->ignore(\+ \+ (flag(eval_num,_8712,...),(...;...)));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [166] <span class="ansi34"
+>trace_eval(eval_20(=,_8800),e,498,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                    <span class="pl-atom"
+>module_source</span>, 
+                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-avar"
+>_754492</span></span>]</span>)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_debug.pl:975
+ [165] <span class="ansi34"
+>eval_01(=,_8874,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                    [ <span class="pl-atom"
+>exec_fn</span>, 
+                                      <span class="pl-atom"
+>module_source</span>, 
+                                      <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_8882)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:250
+ [162] <span class="ansi34"
+>catch(user:eval_args(=,_8964,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                 [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                   <span class="pl-atom"
+>module_source</span>, 
+                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_8972),metta_return(_9018),user:ignore(retract(thrown_metta_return(_9036))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [159] <span class="ansi34"
+>rtrace_on_error(eval(=,_9066,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                 [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                   <span class="pl-atom"
+>module_source</span>, 
+                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9074))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3742
+ [158] <span class="ansi34"
+>'<meta-call>'(user:(rtrace_on_error(eval(=,_9172,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                     [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]],_9180)),is_returned(_9214)))</span> <foreign>
+ [157] <span class="ansi34"
+>'$bags':findall_loop(_9238,user:(rtrace_on_error(eval(=,_9266,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                  [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]],_9274)),is_returned(_9308)),_9242,[])</span> at /usr/lib/swi-prolog/boot/bags.pl:109
+ [156] <span class="ansi34"
+>'$bags':cleanup_bag('$bags':findall_loop(_9350,user:(rtrace_on_error(eval(=,_9378,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                      [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                        <span class="pl-atom"
+>module_source</span> | 
+                                                                                                        <span class="pl-atom"
+>...</span>]],_9386)),is_returned(_9408)),_9354,[]),'$bags':'$destroy_findall_bag')</span> at /usr/lib/swi-prolog/boot/bags.pl:106
+ [151] <span class="ansi34"
+>'<meta-call>'((findall_eval(=,_9466,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                        [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                          <span class="pl-atom"
+>module_source</span>, 
+                                                          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9474),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9522))</span> <foreign>
+ [150] <span class="ansi34"
+>rtrace_on_error((findall_eval(=,_9570,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                          [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                            <span class="pl-atom"
+>module_source</span>, 
+                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9578),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9626))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3742
+ [149] <span class="ansi34"
+>ctimed_call((findall_eval(=,_9676,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                      [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                        <span class="pl-atom"
+>module_source</span>, 
+                                                        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9684),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9732),_9664)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5559
+ [147] <span class="ansi34"
+>time_eval('\n; EVAL TEST\n;',(findall_eval(=,_9782,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                       [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                         <span class="pl-atom"
+>module_source</span>, 
+                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9790),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9838))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5532
+ [146] <span class="ansi34"
+>once(user:time_eval('\n; EVAL TEST\n;',(findall_eval(=,_9898,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                 [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]],_9462),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9498)))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [145] <span class="ansi34"
+>loonit_asserts0(P;HTML|<span class="pl-functor"
+>[ </span>
+                         <span class="pl-atom"
+>assertEqualToResult</span>, 
+                         [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                             <span class="pl-atom"
+>module_source</span>, 
+                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_9628,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                           [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_9636),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9678)),equal_enough_for_test(_9694,_9696))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_testing.pl:377
+ [144] <span class="ansi34"
+>setup_call_cleanup(user:get_pass_fail(0,0,0),user:loonit_asserts0(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                           <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                           [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_9830,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>   exec_fn   ,module_source,     ...     ]],_9838),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_9868)),equal_enough_for_test(_9884,_9886)),user:(get_pass_fail(_9902,_9904,_9906),if_t(_9916==0,flag(loonit_failure,_9924,_9930+1))))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [141] <span class="ansi34"
+>call_cleanup(user:loonit_asserts(P;HTML|<span class="pl-functor"
+>[ </span>
+                                          <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                          [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                          <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_10050,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span><span class="pl-functor"
+>[ </span>   exec_fn   ,module_source,     ...     ]],_10058),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_10088)),equal_enough_for_test(_10104,_10106)),user:(as_tf(notrace(equal_enough_for_test(_10132,_10134)),_10124),!,ignore((once((_10170='True',trace_on_pass;_10182='False',trace_on_fail)),with_debug(eval_args,time_eval('Trace',(findall_eval(=,_10208,499,'&top',...,_10216),... = _10222)))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [139] <span class="ansi34"
+>loonit_assert_source_tf_empty(P;HTML|<span class="pl-functor"
+>[ </span>
+                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                       [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                                           <span class="pl-atom"
+>module_source</span>, 
+                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_10248,_10250,(findall_eval(=,_10340,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                           [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>module_source</span>, 
+                                                                                                                                                                                                                                                                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],_10348),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>=_10396),equal_enough_for_test(_10412,_10414),_10256)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:733
+ [137] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_20(=,_10490),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, 
+                                                                <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_10484)*->nb_setarg(1,retval(fail),_10534);fail,trace,call(eval_20(=,_10568),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>...</span>],_10562)),ignore(notrace((\+_10614\=_10616,nb_setarg(1,retval(fail),_10624))))))</span> <foreign>
+ [136] <span class="ansi34"
+>call_cleanup(user:((call(eval_20(=,_10696),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                               <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, 
+                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_10690)*->nb_setarg(1,retval(fail),_10740);fail,trace,call(eval_20(=,_10774),499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>...</span>],_10768)),ignore(notrace((\+_10820\=_10822,nb_setarg(1,retval(fail),_10830))))),user:ignore((_10860==1->ignore(\+ \+ (flag(eval_num,_10886,...),(...;...)));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [135] <span class="ansi34"
+>trace_eval(eval_20(=,_10974),e,499,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                   <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                   [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                       <span class="pl-atom"
+>module_source</span>, 
+                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_10968)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_debug.pl:975
+ [134] <span class="ansi34"
+>eval_01(=,_11072,500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                     <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                     [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                                         <span class="pl-atom"
+>module_source</span>, 
+                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                                     <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11080)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:250
+ [131] <span class="ansi34"
+>catch(user:eval_args(=,_11192,500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                  [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11200),metta_return(_11264),user:ignore(retract(thrown_metta_return(_11282))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [128] <span class="ansi34"
+>'<meta-call>'(((eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                           <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                           [ [    exec_fn   ,module_source,     ...     ]], 
+                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11338),deterministic(_11396)),notrace((xform_out(_11410,_11412),nb_setarg(1,res(_11424),_11420)))))</span> <foreign>
+ [127] <span class="ansi34"
+>rtrace_on_error(((eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                             [ [    exec_fn   ,module_source,     ...     ]], 
+                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11470),deterministic(_11528)),notrace((xform_out(_11542,_11544),nb_setarg(1,res(_11556),_11552)))))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3742
+ [126] <span class="ansi34"
+>ctimed_call(((eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                         <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                         [ [    exec_fn   ,module_source,     ...     ]], 
+                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11604),deterministic(_11662)),notrace((xform_out(_11676,_11678),nb_setarg(1,res(_11690),_11686)))),_11582)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5559
+ [124] <span class="ansi34"
+>forall_interactive(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),false,_11718,timed_call(((eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                  [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                      <span class="pl-atom"
+>module_source</span> | 
+                                                                                                                                                                                                                      <span class="pl-atom"
+>...</span>]], 
+                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_11754),deterministic(_11806)),notrace((xform_out(_11820,_11822),nb_setarg(1,res(_11834),_11830)))),_11732),(print_result_output(false,_11846,_11848,prev_result('Empty'),[],contrl(4,inf,each),res(_11880),_11858,[],_11862,_11864),(_11902>=inf->!;true),_11914=_11916,_11926=_11928,(_11950==true->repeat,...,...;true),((...;...)->!;true),(... -> ...;true),(... -> ...;true)))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_repl.pl:1303
+ [123] <span class="ansi34"
+>u_do_metta_exec02(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                            [ [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                <span class="pl-atom"
+>module_source</span>, 
+                                                                                                                                                                                <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                                                                                                                                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                [ <span class="pl-atom"
+>exec_fn</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                  <span class="pl-atom"
+>module_source</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>, <span class="pl-atom"
+>'&amp;new_module'</span>|<span class="pl-ellipsis"
+>...</span></span>]</span>]], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_12188),_12052,[],[],_12058,_12060)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_repl.pl:1095
+ [121] <span class="ansi34"
+>catch(user:u_do_metta_exec01(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                       [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                                                                                                                                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                             [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_12382),_12300,[],[],_12306,_12308),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [119] <span class="ansi34"
+>catch(user:u_do_metta_exec000(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                        <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                        [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                                                                                                                                                                        <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                              [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                              <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_12638),_12556,[],[],_12562,_12564),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [117] <span class="ansi34"
+>catch(user:u_do_metta_exec00(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                       <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                       [ [ <span class="pl-atom"
+>exec_fn</span>, <span class="pl-atom"
+>module_source</span>, <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'py-dot'</span>|<span class="pl-nonvar-tail"
+><span class="pl-atom"
+>...</span></span></span>]</span>]], 
+                                                                                                                                                                                       <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                             [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                             <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>],_12894),_12812,[],[],_12818,_12820),_12792,user:write_src(error(_12962,file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  [ [    exec_fn   ,module_source,     ...     ]], 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+>[]</span>]</span></span>]</span>])))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [114] <span class="ansi34"
+>catch(user:(if_t(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>)=file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),output_language(metta,write_exec(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>]))),notrace(into_metta_callable('&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],eval_H(500,'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <span class="pl-atom"
+>...</span>],_13200),_13150,[],[])),!,user:u_do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <span class="pl-atom"
+>...</span>],eval_H(500,'&top',[assertEqualToResult,...|...],_13294),_13248,[],[],_13254,_13256)),give_up(_13310),user:pp_m('red',gave_up(_13326)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [112] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [111] <span class="ansi34"
+>setup_call_cleanup(user:get_pass_fail(0,0,0),user:(color_g_mesg_ok('#ffa509',(writeln(';; In file as:  '),color_g_mesg(P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                <span class="pl-atom"
+>bold</span>, 
+                                                                                                                                <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>fg</span>(<span class="pl-args"
+><span class="pl-atom"
+>'#FFEE58'</span></span>)</span>],write_src(exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>))),write(';; To unit test case:'))),!,call(do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),'&top',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <span class="pl-atom"
+>assertEqualToResult</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>, 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>],_13496))),user:(get_pass_fail(_13552,_13554,_13556),if_t(_13566==0,flag(loonit_failure,_13574,_13580+1))))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [109] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [108] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+ [104] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [103] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+ [101] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [100] <span class="ansi34"
+>'$apply':forall('<garbage_collected>',user:(maybe_name_vars(_13758),(must_det_ll(do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>),_13786))->true;trace,pp_m(unknown_do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>exec_fn</span>|<span class="pl-ellipsis"
+>...</span></span>]</span></span>]</span>))))))</span> at /usr/lib/swi-prolog/boot/apply.pl:52
+  [97] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [96] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [93] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),user:((must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,1)),must_det_ll(load_answer_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>)),must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,0))),must_det_ll(load_metta_file_stream_fast(1055,read_file_sexpr,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,'&top',<stream>(0x5578d54eb420)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [90] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [89] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [87] <span class="ansi34"
+>setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,read,<stream>(0x5578d54eb420),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,'&top',<stream>(0x5578d54eb420))),user:close(<stream>(0x5578d54eb420)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [86] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [85] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [83] <span class="ansi34"
+>setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,read,<stream>(0x5578d54eb420),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,'&top',<stream>(0x5578d54eb420))),close(<stream>(0x5578d54eb420)))),user:working_directory(_14308,'/home/runner/work/metta-wam/metta-wam/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [80] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [79] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [77] <span class="ansi34"
+>include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_loader.pl:894
+  [76] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [75] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/direct_comp/simple_import/make_module_06.metta'</span></span>)</span>, 
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/direct_comp/simple_import/make_module_06.metta'</span></span>)</span>]),user:call(include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')),user:(nb_current('$circular_goals',_14508),select(include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'),_14520,_14522),nb_setval('$circular_goals',_14534)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [71] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [70] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [68] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>),user:must_det_ll(include_metta('&top','tests/direct_comp/simple_import/make_module_06.metta')),user:set_option_value(loading_file,[]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [66] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [65] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [63] <span class="ansi34"
+>track_load_into_file0(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/libraries/loaders/genome/flybase_loader.pl:2071
+  [62] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [61] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [59] <span class="ansi34"
+>track_load_into_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/libraries/loaders/genome/flybase_loader.pl:2050
+  [58] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [57] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [54] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [53] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/direct_comp/simple_import/make_module_06.metta'</span></span>)</span></span>]</span>),user:call(load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')),user:(nb_current('$circular_goals',_14964),select(load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'),_14976,_14978),nb_setval('$circular_goals',_14990)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [47] <span class="ansi34"
+>catch(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'),_15016,user:(always_rethrow(_15052)->throw(_15056);pp_m_m_red('red',user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')in _15068)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [44] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [43] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [41] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [40] <span class="ansi34"
+>catch(user:(must_det_ll(not_compatio((nl,write('; '),write_src(user:...),nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'))),!,must_det_ll(flush_output)),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'),(must_det_ll(not_compatio((nl,write('; '),...,nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'))),!,must_det_ll(flush_output)))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [37] <span class="ansi34"
+>cmdline_load_file('&self','tests/direct_comp/simple_import/make_module_06.metta')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3003
+  [35] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+  [33] <span class="ansi34"
+>cmdline_load_metta(execute,'&self',P;HTML|<span class="pl-functor"
+>[ </span>
+                                            <span class="pl-atom"
+>'tests/direct_comp/simple_import/make_module_06.metta'</span>, <span class="pl-atom"
+>'--halt=true'</span>, <span class="pl-atom"
+>'--stdin=tty'</span>, <span class="pl-atom"
+>'--stdout=tty'</span>, 
+                                            <span class="pl-atom"
+>'--stderr=tty'</span>])</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:2929
+  [26] <span class="ansi34"
+>do_cmdline_load_metta(execute,'&self','<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:2771
+  [23] <span class="ansi34"
+>catch(user:run_cmd_args,_15542,user:(always_rethrow(_15572)->throw(_15576);pp_m_m_red('red',run_cmd_args in _15588)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [20] <span class="ansi34"
+>if_or_else('<garbage_collected>',true)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5473
+  [18] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:226
+  [14] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:227
+  [10] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+   [9] <span class="ansi34"
+>do_loon</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5671
+   [7] <span class="ansi34"
+>catch(user:loon(main),_15760,'$toplevel':true)</span> at /usr/lib/swi-prolog/boot/init.pl:565
+   [6] <span class="ansi34"
+>catch_with_backtrace('<garbage_collected>','<garbage_collected>','<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:645
+
+Note: some frames are missing due to last-call optimization.
+Re-run your program in debug mode (:- debug.) to get more detail.
+(0)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> system:'$c_call_prolog'. </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(1)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+>[$toplevel]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> '$toplevel':'$initialise'. </span>  %  toplevel.pl:556: 
+(2)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+> system:catch('$toplevel':initialise_prolog,_S828,'$toplevel':initialise_error(_S828)). </span>  %  init.pl:564: 
+(5)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+>[$toplevel]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> '$toplevel':run_init_goal('<garbage_collected>',@(user:loon(main),'/home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl':5961)). </span>  %  toplevel.pl:741: 
+(6)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML| system:catch_with_backtrace('<garbage_collected>','<garbage_collected>','<garbage_collected>').   %  init.pl:644: 
+(7)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+> system:catch(user:loon(main),_S322,'$toplevel':true). </span>  %  init.pl:564: 
+(9)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> do_loon. </span>  %  metta_interp.pl:5670: 
+(10)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> system:ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(14)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+>[apply]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(18)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+>[apply]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(20)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML| if_or_else('<garbage_collected>',true).   %  metta_interp.pl:5473: 
+(23)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:run_cmd_args,_S294,user:(always_rethrow(_S294)->throw(_S294);pp_m_m_red(red,run_cmd_args in _S294))). </span>  %  init.pl:564: 
+(26)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+> do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2765: 
+(33)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+> cmdline_load_metta(execute,'&self',['tests/direct_comp/simple_import/make_module_06.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty']). </span>  %  metta_interp.pl:2926: 
+(35)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> system:ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(37)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML| cmdline_load_file('&self','tests/direct_comp/simple_import/make_module_06.metta').   %  metta_interp.pl:3003: 
+(40)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')),nl)),catch_red(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')),!,flush_output)))). </span>  %  init.pl:564: 
+(41)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> system:'<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(43)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(44)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(47)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta'),_S200,user:(always_rethrow(_S200)->throw(_S200);pp_m_m_red(red,user:load_metta_file('&self','tests/direct_comp/simple_import/make_module_06.metta')in _S200))). </span>  %  init.pl:564: 
+(53)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')]),user:call(load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')),user:(nb_current('$circular_goals',_S822),select(load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'),_S822,_760836),nb_setval('$circular_goals',_760836))). </span>  %  init.pl:680: 
+(54)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call('<garbage_collected>'). </span>  %  init.pl:501: 
+(57)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(58)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(59)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> track_load_into_file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(61)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(62)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(63)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> track_load_into_file0('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
+(65)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(66)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(68)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),user:include_metta('&top','tests/direct_comp/simple_import/make_module_06.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
+(70)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(71)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(75)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'),load_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')]),user:call(include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta')),user:(nb_current('$circular_goals',_S024),select(include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'),_S024,_19038),nb_setval('$circular_goals',_19038))). </span>  %  init.pl:680: 
+(76)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call('<garbage_collected>'). </span>  %  init.pl:501: 
+(77)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi33"
+></span><span class="ansi33"
+></span><span class="ansi33"
+> include_metta1('&top','tests/direct_comp/simple_import/make_module_06.metta'). </span>  %  metta_loader.pl:894: 
+(79)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(80)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(83)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import'),user:setup_call_cleanup(open('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta',read,<stream>(0x5578d54eb420),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta','&top',<stream>(0x5578d54eb420)),close(<stream>(0x5578d54eb420))),user:working_directory(_S146,'/home/runner/work/metta-wam/metta-wam/')). </span>  %  init.pl:680: 
+(85)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(86)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(87)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:open('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta',read,<stream>(0x5578d54eb420),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta','&top',<stream>(0x5578d54eb420)),user:close(<stream>(0x5578d54eb420))). </span>  %  init.pl:680: 
+(89)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(90)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(93)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),user:((set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta',1),load_answer_file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta',0)),load_metta_file_stream_fast(1055,read_file_sexpr,'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta','&top',<stream>(0x5578d54eb420))),user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta')). </span>  %  init.pl:680: 
+(96)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(97)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(100)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|[$apply]#P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> '$apply':forall('<garbage_collected>',user:(maybe_name_vars(_S922),(do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),+,'&top',exec([[exec_fn,module_source,['py-dot','&new_module','__dict__']]]),_341950)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),+,'&top',exec([[exec_fn,module_source,['py-dot','&new_module','__dict__']]])))))). </span>  %  apply.pl:51: 
+(101)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> system:'<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(103)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(104)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(108)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi96"
+></span><span class="ansi96"
+></span><span class="ansi96"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1109: 
+(109)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(111)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:get_pass_fail(0,0,0),user:(color_g_mesg_ok('#ffa509',(writeln(';; In file as:  '),color_g_mesg([bold,fg('#FFEE58')],write_src(exec([[exec_fn,module_source,['py-dot','&new_module','__dict__']]]))),write(';; To unit test case:'))),!,call(do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S810))),user:(get_pass_fail(_504860,_504862,_504864),if_t(_504864==0,flag(loonit_failure,_504882,_504882+1)))). </span>  %  init.pl:680: 
+(112)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> system:'<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(114)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:(if_t(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta')=file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),output_language(metta,write_exec([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]]))),notrace(into_metta_callable('&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S644),_S644,[],[])),!,user:u_do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S644),_S644,[],[],_S644,_565762)),give_up(_565766),user:pp_m(red,gave_up(_565766))). </span>  %  init.pl:564: 
+(117)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> system:catch(user:u_do_metta_exec00(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S358),_S358,[],[],_S358,_596366),_596338,user:write_src(error(_596338,file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]]))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(119)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:u_do_metta_exec000(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S850),_S850,[],[],_S850,_620858),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]]))). </span>  %  init.pl:564: 
+(121)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:u_do_metta_exec01(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S960),_S960,[],[],_S960,_647968),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]]))). </span>  %  init.pl:564: 
+(123)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+> u_do_metta_exec02(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S040),_S040,[],[],_S040,_675048). </span>  %  metta_repl.pl:1060: 
+(124)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> forall_interactive(file('/home/runner/work/metta-wam/metta-wam/tests/direct_comp/simple_import/make_module_06.metta'),false,_S992,timed_call(((eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_708028),deterministic(_S992)),notrace((xform_out(_708028,_708120),nb_setarg(1,res(_708132),_708120)))),_708006),(print_result_output(false,_S992,_708146,prev_result('Empty'),[],contrl(4,inf,each),res(_708132),_708006,[],_708120,_708162),(_708146>=inf->!;true),_708208=_708210,_708220=_708222,(_708162==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_708290),old_not_compatio((writeq(key=_708290),nl)),(_708290==b->once(repl),fail;_708290=='B'->once(prolog),fail;_708290==a->notrace(abort),fail;_708290==e->notrace(halt(5)),fail;_708290==m->make,fail;_708290==c->trace,_708220=true;_708290=='C'->once(cls),fail;_708290==' '->trace,_708220=true;_708290==t->nop(set_debug(eval,true)),rtrace,_708220=true;_708290=='T'->set_debug(eval,true),_708220=true;_708290== ? -> print_debug_help,fail;_708290==(;)->_708220=true;_708290==esc('[A',[27,91,65])->_708208=true,_708220=false;_708290==esc('[B',[27,91,66])->nb_setarg(3,contrl(4,inf,each),leap),_708208=false,_708220=true;_708290=='L'->nb_setarg(2,contrl(4,inf,each),_708146);_708290==l->nb_setarg(3,contrl(4,inf,each),leap),_708220=true;(_708290=='\n';_708290=='\r')->_708208=false,nb_setarg(3,contrl(4,inf,each),leap),_708220=true;_708290==g->write_src(exec([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]]));_708290=='G'->bt,_708220=false;_708290==s->_708208=true,_708220=false;true->write('Unknown Char'),fail),(nonvar(_708220);nonvar(_708208));true),((_S992==true;_708208==true)->!;true),(nonvar(_708220)->_708220==true;true),(flag(result_num,_708146,_708146),_708146>=inf->!,fail;true))). </span>  %  metta_repl.pl:1300: 
+(126)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> ctimed_call(((eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S328),deterministic(_757404)),notrace((xform_out(_S328,_757420),nb_setarg(1,res(_757432),_757420)))),_757306). </span>  %  metta_interp.pl:5557: 
+(127)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> rtrace_on_error(((eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S628),deterministic(_782704)),notrace((xform_out(_S628,_782720),nb_setarg(1,res(_782732),_782720))))). </span>  %  metta_interp.pl:3742: 
+(128)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> system:'<meta-call>'(((eval_H(500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S870),deterministic(_807946)),notrace((xform_out(_S870,_807962),nb_setarg(1,res(_807974),_807962))))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(131)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:eval_args(=,_S534,500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_843542),metta_return(_843542),user:ignore(retract(thrown_metta_return(_843542)))). </span>  %  init.pl:564: 
+(134)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> eval_01(=,_S192,500,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_868200). </span>  %  metta_eval.pl:245: 
+(135)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+> trace_eval(eval_20(=,_S374),e,499,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_892368). </span>  %  metta_debug.pl:947: 
+(136)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call_cleanup(user:((call(eval_20(=,_S692),499,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_916686)*->nb_setarg(1,retval(fail),_916686);fail,trace,call(eval_20(=,_S692),499,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_916686)),ignore(notrace((\+_916686\=_916824,nb_setarg(1,retval(fail),_916686))))),user:ignore((_916858==1->ignore(\+ \+ (flag(eval_num,_916884,_916884+1),(retval(fail)\=@=retval(fail),nonvar(_916686)->indentq(0,_916884,<--,[e,_916686]);indentq(0,_916884,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_916884,_916884+1),(retval(fail)\=@=retval(fail),nonvar(_916686)->indentq(0,_916884,<--,[e,_916686]);indentq(0,_916884,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(137)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:'<meta-call>'(user:((call(eval_20(=,_S004),499,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_949998)*->nb_setarg(1,retval(fail),_949998);fail,trace,call(eval_20(=,_S004),499,'&top',[assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_949998)),ignore(notrace((\+_949998\=_950136,nb_setarg(1,retval(fail),_949998)))))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(139)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> loonit_assert_source_tf_empty([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],_S580,_994582,(findall_eval(=,_994672,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_S580),[[[]]]=_994582),equal_enough_for_test(_S580,_994582),_994588). </span>  %  metta_eval.pl:732: 
+(141)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call_cleanup(user:loonit_asserts([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_S200,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_1020208),[[[]]]=_1020214)),equal_enough_for_test(_1020208,_1020214)),user:(as_tf(notrace(equal_enough_for_test(_1020208,_1020214)),_1020238),!,ignore((once((_1020238='True',trace_on_pass;_1020238='False',trace_on_fail)),with_debug(eval_args,time_eval('Trace',(findall_eval(=,_1020316,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_1020324),[[[]]]=_1020330))))))). </span>  %  init.pl:684: 
+(144)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:setup_call_cleanup(user:get_pass_fail(0,0,0),user:loonit_asserts0([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_S102,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_6110),[[[]]]=_6116)),equal_enough_for_test(_6110,_6116)),user:(get_pass_fail(_6138,_6140,_6142),if_t(_6142==0,flag(loonit_failure,_6160,_6160+1)))). </span>  %  init.pl:680: 
+(145)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> loonit_asserts0([assertEqualToResult,[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[[[]]]],time_eval('\n; EVAL TEST\n;',(findall_eval(=,_S790,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_32798),[[[]]]=_32804)),equal_enough_for_test(_32798,_32804)). </span>  %  metta_testing.pl:369: 
+(146)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once(user:time_eval('\n; EVAL TEST\n;',(findall_eval(=,_S232,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_58240),[[[]]]=_58288))). </span>  %  init.pl:537: 
+(147)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> time_eval('\n; EVAL TEST\n;',(findall_eval(=,_S356,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_82364),[[[]]]=_82412)). </span>  %  metta_interp.pl:5531: 
+(149)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> ctimed_call((findall_eval(=,_S538,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_106546),[[[]]]=_106594),_106526). </span>  %  metta_interp.pl:5557: 
+(150)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> rtrace_on_error((findall_eval(=,_S392,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_130400),[[[]]]=_130448)). </span>  %  metta_interp.pl:3742: 
+(151)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> system:'<meta-call>'((findall_eval(=,_S192,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_154200),[[[]]]=_154248)). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(156)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+>[$bags]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> '$bags':cleanup_bag('$bags':findall_loop(_S752,user:(rtrace_on_error(eval(=,_188780,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_S752)),is_returned(_S752)),_188756,[]),'$bags':'$destroy_findall_bag'). </span>  %  bags.pl:104: 
+(157)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+>[$bags]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> '$bags':findall_loop(_S284,user:(rtrace_on_error(eval(=,_213312,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_S284)),is_returned(_S284)),_213288,[]). </span>  %  bags.pl:108: 
+(158)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:'<meta-call>'(user:(rtrace_on_error(eval(=,_S904,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_243912)),is_returned(_243912))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(159)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> rtrace_on_error(eval(=,_S384,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_278392)). </span>  %  metta_interp.pl:3742: 
+(162)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:eval_args(=,_S702,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_301710),metta_return(_301710),user:ignore(retract(thrown_metta_return(_301710)))). </span>  %  init.pl:564: 
+(165)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> eval_01(=,_S704,499,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],_325712). </span>  %  metta_eval.pl:245: 
+(166)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+> trace_eval(eval_20(=,_S894),e,498,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[_348940]). </span>  %  metta_debug.pl:947: 
+(167)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call_cleanup(user:((call(eval_20(=,_S312),498,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[_372358])*->nb_setarg(1,retval(fail),[_372358]);fail,trace,call(eval_20(=,_S312),498,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[_372358])),ignore(notrace((\+[_372358]\=_372420,nb_setarg(1,retval(fail),[_372358]))))),user:ignore((_372454==1->ignore(\+ \+ (flag(eval_num,_372480,_372480+1),(retval(fail)\=@=retval(fail),nonvar([_372358])->indentq(1,_372480,<--,[e,[_372358]]);indentq(1,_372480,<--,[e,retval(fail)]))));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_372480,_372480+1),(retval(fail)\=@=retval(fail),nonvar([_372358])->indentq(1,_372480,<--,[e,[_372358]]);indentq(1,_372480,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(168)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:'<meta-call>'(user:((call(eval_20(=,_S302),498,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[_405348])*->nb_setarg(1,retval(fail),[_405348]);fail,trace,call(eval_20(=,_S302),498,'&top',[[exec_fn,module_source,['py-dot','&new_module','__dict__']]],[_405348])),ignore(notrace((\+[_405348]\=_405410,nb_setarg(1,retval(fail),[_405348])))))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(172)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> eval_01(=,_S228,498,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_449236). </span>  %  metta_eval.pl:245: 
+(173)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+> trace_eval(eval_20(=,_S282),e,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_472276). </span>  %  metta_debug.pl:947: 
+(174)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call_cleanup(user:((call(eval_20(=,_S476),497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_495470)*->nb_setarg(1,retval(fail),_495470);fail,trace,call(eval_20(=,_S476),497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_495470)),ignore(notrace((\+_495470\=_495572,nb_setarg(1,retval(fail),_495470))))),user:ignore((_495606==1->ignore(\+ \+ (flag(eval_num,_495632,_495632+1),(retval(fail)\=@=retval(fail),nonvar(_495470)->indentq(2,_495632,<--,[e,_495470]);indentq(2,_495632,<--,[e,retval(fail)]))));notrace(ignore(if_t(2<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_495632,_495632+1),(retval(fail)\=@=retval(fail),nonvar(_495470)->indentq(2,_495632,<--,[e,_495470]);indentq(2,_495632,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(175)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:'<meta-call>'(user:((call(eval_20(=,_S504),497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_527498)*->nb_setarg(1,retval(fail),_527498);fail,trace,call(eval_20(=,_S504),497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_527498)),ignore(notrace((\+_527498\=_527600,nb_setarg(1,retval(fail),_527498)))))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(177)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML| if_or_else(eval_30(=,_S802,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_570810),eval_31(=,_S802,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_570810)).   %  metta_interp.pl:5473: 
+(178)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> eval_31(=,_S664,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_594672). </span>  %  metta_eval.pl:2346: 
+(180)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+> eval_41(=,_S654,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],_624662). </span>  %  metta_eval.pl:2334: 
+(182)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML| if_or_else((eval_all_args,eval_adjust_args2(=,_S924,_647926,_647928,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],[exec_fn,module_source,_647988|_647990])),eval_adjust_args1(=,_S924,_647926,_647928,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],[exec_fn,module_source,_647988|_647990])).   %  metta_interp.pl:5473: 
+(184)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> eval_adjust_args2(=,_S202,_679204,_679206,497,'&top',[exec_fn,module_source,['py-dot','&new_module','__dict__']],[exec_fn,module_source,_679266|_679268]). </span>  %  metta_eval.pl:2385: 
+(187)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+>[apply]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> apply:maplist_([['py-dot','&new_module','__dict__']],[_S856|_702858],user:must_eval_args(=,_702870,497,'&top')). </span>  %  apply.pl:233: 
+(191)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> eval_01(=,_S948,497,'&top',['py-dot','&new_module','__dict__'],_725956). </span>  %  metta_eval.pl:245: 
+(192)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi32"
+></span><span class="ansi32"
+></span><span class="ansi32"
+> trace_eval(eval_20(=,_S618),e,496,'&top',['py-dot','&new_module','__dict__'],_748612). </span>  %  metta_debug.pl:947: 
+(193)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:call_cleanup(user:((call(eval_20(=,_S428),496,'&top',['py-dot','&new_module','__dict__'],_771422)*->nb_setarg(1,retval(fail),_771422);fail,trace,call(eval_20(=,_S428),496,'&top',['py-dot','&new_module','__dict__'],_771422)),ignore(notrace((\+_771422\=_771506,nb_setarg(1,retval(fail),_771422))))),user:ignore((_771540==1->ignore(\+ \+ (flag(eval_num,_771566,_771566+1),(retval(fail)\=@=retval(fail),nonvar(_771422)->indentq(3,_771566,<--,[e,_771422]);indentq(3,_771566,<--,[e,retval(fail)]))));notrace(ignore(if_t(3<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_771566,_771566+1),(retval(fail)\=@=retval(fail),nonvar(_771422)->indentq(3,_771566,<--,[e,_771422]);indentq(3,_771566,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(194)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:'<meta-call>'(user:((call(eval_20(=,_S826),496,'&top',['py-dot','&new_module','__dict__'],_802820)*->nb_setarg(1,retval(fail),_802820);fail,trace,call(eval_20(=,_S826),496,'&top',['py-dot','&new_module','__dict__'],_802820)),ignore(notrace((\+_802820\=_802904,nb_setarg(1,retval(fail),_802820)))))). </span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> no(clause). </span>
+(196)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML| if_or_else(eval_30(=,_S494,496,'&top',['py-dot','&new_module','__dict__'],_845502),eval_31(=,_S494,496,'&top',['py-dot','&new_module','__dict__'],_845502)).   %  metta_interp.pl:5473: 
+(197)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> eval_31(=,_S726,496,'&top',['py-dot','&new_module','__dict__'],_868734). </span>  %  metta_eval.pl:2346: 
+(200)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,user:py_dot(['&new_module','__dict__'],_S012)). </span>  %  metta_utils.pl:1109: 
+(201)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once(user:py_dot(['&new_module','__dict__'],_S606)). </span>  %  init.pl:537: 
+(203)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> py_atom(['&new_module','__dict__'],_S226). </span>  %  metta_python.pl:1515: 
+(205)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> py_atom('&new_module',_S908). </span>  %  metta_python.pl:1514: 
+(206)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:catch(user:py_obi(make_py_atom('&new_module'),_S086),_988072,user:py_error_fail(_988072)). </span>  %  init.pl:564: 
+(208)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> py_ocall(builtin_module:make_py_atom('&new_module'),_S848). </span>  %  metta_python.pl:1461: 
+(209)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> system:catch(user:py_call(builtin_module:make_py_atom('&new_module'),_S536,[py_object(true),py_string_as(string)]),error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_4990,python_stack(<py_traceback>(0x7f307467d1c0)))),user:py_error_fail(error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_4990,python_stack(<py_traceback>(0x7f307467d1c0)))))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(210)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> py_error_fail(error(python_error('ValueError',<py_ValueError>(0x7f307464a740)),context(_S718,python_stack(<py_traceback>(0x7f307467d1c0))))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  metta_python.pl:1638: 
+(214)$P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+> bugger:dumpST_now(2434,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
+P;HTML|
+; error<span class="pl-functor"
+>( python_error('ValueError',<py_ValueError>(0x7f307464a740)),
+;   context(Python_stack,python_stack(<py_traceback>(0x7f307467d1c0))))</span>
+
+   <span class="ansi1 ansi32"
+>Call: </span>(211) [system] fail ? 
+Script done on 2025-01-22 02:23:51+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/direct_comp/simple_import/make_module_06.metta" --halt=true\033[0m

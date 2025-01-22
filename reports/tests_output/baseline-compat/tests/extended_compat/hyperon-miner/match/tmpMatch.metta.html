@@ -1,0 +1,1214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi2 { font-weight: lighter; }
+.ansi5 { text-decoration: blink; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi34 { color: #0000aa; }
+.ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
+.ansi40 { background-color: #000316; }
+.ansi92 { color: #00ff00; }
+.ansi93 { color: #ffff00; }
+.ansi94 { color: #5c5cff; }
+.ansi95 { color: #ff00ff; }
+.ansi96 { color: #00ffff; }
+.ansi97 { color: #ffffff; }
+.ansi100 { background-color: #7f7f7f; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:34:18+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-miner/match/tmpMatch.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-miner/match/tmpMatch.metta] ]
+;;;;;;;;;;;
+;;;; Nat ;;
+;;;;;;;;;;;
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+</span>;;;; Define <=
+<span class="ansi38-255165000"
+> (: <= (-> $a $a Bool))
+</span><span class="ansi38-255165000"
+> (= (<= $x $y)  
+  (or 
+    (< $x $y) 
+    (== $x $y)))
+</span>;;;; Define cast functions between Nat and Number
+<span class="ansi38-255165000"
+> (: fromNumber (-> Number Nat))
+</span><span class="ansi38-255165000"
+> (= (fromNumber $n)  
+  (if 
+    (<= $n 0) Z 
+    (S (fromNumber (- $n 1)))))
+</span><span class="ansi38-255165000"
+> (: fromNat (-> Nat Number))
+</span><span class="ansi38-255165000"
+> (= (fromNat Z)  0)
+</span><span class="ansi38-255165000"
+> (= (fromNat (S $k))  
+  (+ 1 
+    (fromNat $k)))
+</span>;;;; Define max
+<span class="ansi38-255165000"
+> (: max (-> $a $a $a))
+</span><span class="ansi38-255165000"
+> (= (max $x $y)  
+  (if 
+    (> $x $y) $x $y))
+</span>;;;; Define min
+<span class="ansi38-255165000"
+> (: min (-> $a $a $a))
+</span><span class="ansi38-255165000"
+> (= (min $x $y)  
+  (if 
+    (< $x $y) $x $y))
+</span>;;;; Tuple count grounded python function
+<span class="ansi38-013099040"
+>!(extend-py! ../utils/helper.py)
+
+</span> [160] <span class="ansi34"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),_3602)|_3594],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
+ [159] <span class="ansi34"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),_3706)|_3698],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(159,clause(<clause>(0x5604d85e2aa0),10),_3736)|_3728],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
+ [158] <span class="ansi34"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),_3844)|_3836],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(159,clause(<clause>(0x5604d85e2aa0),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),call(...,8000,...,...)),frame(159,...,_3942)|_3934],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(158,clause(<clause>(0x5604d85e2ec0),3),_3966)|_3958],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [157] <span class="ansi34"
+>setup_call_cleanup(system:'$notrace'(12,-1),system:once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(160,clause(<clause>(0x5604d85e29f0),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(160,...,_4100)|_4092],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),frame(159,clause(<clause>(0x5604d85e2aa0),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>...</span></span>]</span>)),frame(158,clause(<clause>(0x5604d85e2ec0),3),once(...)),frame(157,...,_4198)|_4190],P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>goal_depth</span>(<span class="pl-args"
+><span class="pl-int"
+>600</span></span>)</span></span>]</span>)),system:'$restore_trace'(12,-1))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [155] <span class="ansi34"
+>logicmoo_startup:ds</span> at /home/runner/work/metta-wam/metta-wam/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1043
+ [154] <span class="ansi34"
+>logicmoo_startup:bt</span> at /home/runner/work/metta-wam/metta-wam/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1038
+ [153] <span class="ansi34"
+>py_error_fail(error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_4302))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1638
+ [152] <span class="ansi34"
+>catch(user:py_call(mettalog:load_functions(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>),_4348,P;HTML|<span class="pl-functor"
+>[ </span>
+                                                                                                                       <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>py_object</span>(<span class="pl-args"
+><span class="pl-atom"
+>true</span></span>)</span>, 
+                                                                                                                       <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>py_string_as</span>(<span class="pl-args"
+><span class="pl-atom"
+>string</span></span>)</span>]),error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_4386),user:py_error_fail(error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_4408)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [151] <span class="ansi34"
+>py_ocall(mettalog:load_functions(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>),_4440)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:1461
+ [150] <span class="ansi34"
+>py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:2663
+ [148] <span class="ansi34"
+>catch(user:(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>==mettalog->true;py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)),_4500,user:(pybug(_4550=py_catch((P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>==mettalog->true;py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)))),py_dump,trace,(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>==mettalog->true;py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [146] <span class="ansi34"
+>py_catch(((P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>==mettalog->true;py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)),nb_setval('$py_ready',true),_4686=[],true))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:196
+ [142] <span class="ansi34"
+>setup_call_cleanup(user:set_prolog_flag(argv,[]),user:py_catch((assert_new(is_pymod_in_space(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>,'&top')),(nonvar(_4776)->P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>=_4782;P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>=P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>),pybug('extend-py!'(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)),(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>==mettalog->true;py_load_modfile(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>)),nb_setval('$py_ready',true),_4852=[],true)),user:set_prolog_flag(argv,['--python=enable',--,'--timeout=40','--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat','--html','--test','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'|...]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [140] <span class="ansi34"
+>self_extend_py('&top',P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>,_4936,_4938)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:2633
+ [138] <span class="ansi34"
+>once(user:extend_py(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>,_4974))</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [137] <span class="ansi34"
+>setup_call_cleanup(system:'$notrace'(12,0),system:once(user:extend_py(P;HTML|<span class="pl-atom"
+>'../utils/helper.py'</span>,_5036)),system:'$restore_trace'(12,0))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+ [133] <span class="ansi34"
+>'<meta-call>'(user:((call(eval_20(=,_5124),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5118)*->nb_setarg(1,retval(fail),_5144);fail,trace,call(eval_20(=,_5178),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5172)),ignore(notrace((\+_5212\=_5214,nb_setarg(1,retval(fail),_5222))))))</span> <foreign>
+ [132] <span class="ansi34"
+>call_cleanup(user:((call(eval_20(=,_5294),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5288)*->nb_setarg(1,retval(fail),_5314);fail,trace,call(eval_20(=,_5348),499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5342)),ignore(notrace((\+_5382\=_5384,nb_setarg(1,retval(fail),_5392))))),user:ignore((_5422==1->ignore(\+ \+ (flag(eval_num,_5448,...),(...;...)));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+...))))))))</span> at /usr/lib/swi-prolog/boot/init.pl:685
+ [131] <span class="ansi34"
+>trace_eval(eval_20(=,_5536),e,499,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5530)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_debug.pl:975
+ [130] <span class="ansi34"
+>eval_01(=,_5574,500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5582)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:250
+ [127] <span class="ansi34"
+>catch(user:eval_args(=,_5634,500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5642),metta_return(_5658),user:ignore(retract(thrown_metta_return(_5676))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [124] <span class="ansi34"
+>'<meta-call>'(((eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5732),deterministic(_5748)),notrace((xform_out(_5762,_5764),nb_setarg(1,res(_5776),_5772)))))</span> <foreign>
+ [123] <span class="ansi34"
+>rtrace_on_error(((eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5822),deterministic(_5838)),notrace((xform_out(_5852,_5854),nb_setarg(1,res(_5866),_5862)))))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3742
+ [122] <span class="ansi34"
+>ctimed_call(((eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_5914),deterministic(_5930)),notrace((xform_out(_5944,_5946),nb_setarg(1,res(_5958),_5954)))),_5892)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5559
+ [120] <span class="ansi34"
+>forall_interactive(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),false,_5986,timed_call(((eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6022),deterministic(_6038)),notrace((xform_out(_6052,_6054),nb_setarg(1,res(_6066),_6062)))),_6000),(print_result_output(false,_6078,_6080,prev_result('Empty'),[],contrl(4,inf,each),res(_6112),_6090,[],_6094,_6096),(_6134>=inf->!;true),_6146=_6148,_6158=_6160,(_6182==true->repeat,...,...;true),((...;...)->!;true),(... -> ...;true),(... -> ...;true)))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_repl.pl:1303
+ [119] <span class="ansi34"
+>u_do_metta_exec02(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,'<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_6292)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_repl.pl:1095
+ [117] <span class="ansi34"
+>catch(user:u_do_metta_exec01(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6388),_6354,[],[],_6360,_6362),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [115] <span class="ansi34"
+>catch(user:u_do_metta_exec000(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6512),_6478,[],[],_6484,_6486),'$aborted',user:fbug(aborted(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [113] <span class="ansi34"
+>catch(user:u_do_metta_exec00(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,eval_H(500,'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6636),_6602,[],[],_6608,_6610),_6582,user:write_src(error(_6662,file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [110] <span class="ansi34"
+>catch(user:(if_t(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>)=file(_6742),output_language(metta,write_exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>))),notrace(into_metta_callable('&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6782,_6784,_6786,_6788)),!,user:u_do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6822,_6824,_6826,_6828,_6830,_6832)),give_up(_6852),user:pp_m('red',gave_up(_6868)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [108] <span class="ansi34"
+>catch(user:do_metta_exec(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),'&top',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>,_6912),give_up(_6932),user:write_src_uo(dont_give_up(_6946)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+ [104] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+ [103] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+ [101] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+ [100] <span class="ansi34"
+>'$apply':forall(user:metta_file_buffer(0,15000042,metta_directive,exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>),[],P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,range(line_char(29,0),line_char(29,32))),user:(maybe_name_vars([]),(must_det_ll(do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>),_7156))->true;trace,pp_m(unknown_do_metta(file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),+,'&top',exec(P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-atom"
+>'extend-py!'</span>, <span class="pl-atom"
+>'../utils/helper.py'</span></span>]</span>))))))</span> at /usr/lib/swi-prolog/boot/apply.pl:52
+  [97] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [96] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [93] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),user:((must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,1)),must_det_ll(load_answer_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>)),must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,0))),must_det_ll(load_metta_file_stream_fast(7770,read_file_sexpr,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,'&top',<stream>(0x5604db4a5440)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [90] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [89] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [87] <span class="ansi34"
+>setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,read,<stream>(0x5604db4a5440),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,'&top',<stream>(0x5604db4a5440))),user:close(<stream>(0x5604db4a5440)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [86] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [85] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [83] <span class="ansi34"
+>setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,read,<stream>(0x5604db4a5440),P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>encoding</span>(<span class="pl-args"
+><span class="pl-atom"
+>utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,'&top',<stream>(0x5604db4a5440))),close(<stream>(0x5604db4a5440)))),user:working_directory(_7678,'/home/runner/work/metta-wam/metta-wam/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [80] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [79] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [77] <span class="ansi34"
+>include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_loader.pl:894
+  [76] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [75] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-functor"
+>[ </span>
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>include_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span></span>)</span>, 
+                                                             <span class="pl-compound pl-level-0"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span></span>)</span>]),user:call(include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),user:(nb_current('$circular_goals',_7878),select(include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_7890,_7892),nb_setval('$circular_goals',_7904)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [71] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [70] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [68] <span class="ansi34"
+>setup_call_cleanup(user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>),user:must_det_ll(include_metta('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),user:set_option_value(loading_file,[]))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [66] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [65] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [63] <span class="ansi34"
+>track_load_into_file0(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/libraries/loaders/genome/flybase_loader.pl:2071
+  [62] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [61] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [59] <span class="ansi34"
+>track_load_into_file(P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/libraries/loaders/genome/flybase_loader.pl:2050
+  [58] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [57] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [54] <span class="ansi34"
+>call('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:502
+  [53] <span class="ansi34"
+>setup_call_cleanup(user:nb_setval('$circular_goals',P;HTML|<span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>load_metta1</span>(<span class="pl-args"
+><span class="pl-atom"
+>'&amp;top'</span>, <span class="pl-atom"
+>'tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span></span>)</span></span>]</span>),user:call(load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),user:(nb_current('$circular_goals',_8334),select(load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_8346,_8348),nb_setval('$circular_goals',_8360)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+  [47] <span class="ansi34"
+>catch(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_8386,user:(always_rethrow(_8422)->throw(_8426);pp_m_m_red('red',user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')in _8438)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [44] <span class="ansi34"
+>once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
+  [43] <span class="ansi34"
+>md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1109
+  [41] <span class="ansi34"
+>'<meta-call>'('<garbage_collected>')</span> <foreign>
+  [40] <span class="ansi34"
+>catch(user:(must_det_ll(not_compatio((nl,write('; '),write_src(user:...),nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'))),!,must_det_ll(flush_output)),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),(must_det_ll(not_compatio((nl,write('; '),...,nl))),must_det_ll(catch_red(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'))),!,must_det_ll(flush_output)))))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [37] <span class="ansi34"
+>cmdline_load_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:3003
+  [35] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+  [33] <span class="ansi34"
+>cmdline_load_metta(execute,'&self',P;HTML|<span class="pl-functor"
+>[ </span>
+                                            <span class="pl-atom"
+>'tests/extended_compat/hyperon-miner/match/tmpMatch.metta'</span>, <span class="pl-atom"
+>'--halt=true'</span>, <span class="pl-atom"
+>'--stdin=tty'</span>, <span class="pl-atom"
+>'--stdout=tty'</span>, 
+                                            <span class="pl-atom"
+>'--stderr=tty'</span>])</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:2929
+  [26] <span class="ansi34"
+>do_cmdline_load_metta(execute,'&self','<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:2771
+  [23] <span class="ansi34"
+>catch(user:run_cmd_args,_8912,user:(always_rethrow(_8942)->throw(_8946);pp_m_m_red('red',run_cmd_args in _8958)))</span> at /usr/lib/swi-prolog/boot/init.pl:565
+  [20] <span class="ansi34"
+>if_or_else('<garbage_collected>',true)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5473
+  [18] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:226
+  [14] <span class="ansi34"
+>apply:maplist_('<garbage_collected>',user:catch_red_ignore)</span> at /usr/lib/swi-prolog/library/apply.pl:227
+  [10] <span class="ansi34"
+>ignore('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:547
+   [9] <span class="ansi34"
+>do_loon</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:5671
+   [7] <span class="ansi34"
+>catch(user:loon(main),_9130,'$toplevel':true)</span> at /usr/lib/swi-prolog/boot/init.pl:565
+   [6] <span class="ansi34"
+>catch_with_backtrace('<garbage_collected>','<garbage_collected>','<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:645
+
+Note: some frames are missing due to last-call optimization.
+Re-run your program in debug mode (:- debug.) to get more detail.
+(0)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+> system:'$c_call_prolog'. </span>P;HTML| no(clause). 
+(1)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> '$toplevel':'$initialise'. </span>  %  toplevel.pl:556: 
+(2)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+> system:catch('$toplevel':initialise_prolog,_S494,'$toplevel':initialise_error(_S494)). </span>  %  init.pl:564: 
+(5)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> '$toplevel':run_init_goal('<garbage_collected>',@(user:loon(main),'/home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl':5961)). </span>  %  toplevel.pl:741: 
+(6)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+> system:catch_with_backtrace('<garbage_collected>','<garbage_collected>','<garbage_collected>'). </span>  %  init.pl:644: 
+(7)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+></span><span class="ansi2 ansi33"
+> system:catch(user:loon(main),_S682,'$toplevel':true). </span>  %  init.pl:564: 
+(9)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> do_loon. </span>  %  metta_interp.pl:5670: 
+(10)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> system:ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(14)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[apply]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(18)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[apply]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
+(20)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi37"
+></span><span class="ansi37 ansi40"
+></span><span class="ansi37 ansi40"
+> if_or_else('<garbage_collected>',true). </span>  %  metta_interp.pl:5473: 
+(23)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:run_cmd_args,_S072,user:(always_rethrow(_S072)->throw(_S072);pp_m_m_red(red,run_cmd_args in _S072))). </span>  %  init.pl:564: 
+(26)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+> do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2765: 
+(33)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> cmdline_load_metta(execute,'&self',['tests/extended_compat/hyperon-miner/match/tmpMatch.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty']). </span>  %  metta_interp.pl:2926: 
+(35)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> system:ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+(37)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> cmdline_load_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'). </span>  %  metta_interp.pl:3003: 
+(40)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),nl)),catch_red(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),nl)),catch_red(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),!,flush_output)))). </span>  %  init.pl:564: 
+(41)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| system:'<meta-call>'('<garbage_collected>'). P;HTML| no(clause). 
+(43)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(44)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(47)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_S816,user:(always_rethrow(_S816)->throw(_S816);pp_m_m_red(red,user:load_metta_file('&self','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')in _S816))). </span>  %  init.pl:564: 
+(53)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')]),user:call(load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),user:(nb_current('$circular_goals',_S018),select(load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_S018,_233032),nb_setval('$circular_goals',_233032))). </span>  %  init.pl:680: 
+(54)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> system:call('<garbage_collected>'). </span>  %  init.pl:501: 
+(57)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(58)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(59)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> track_load_into_file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(61)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(62)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(63)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi33"
+> track_load_into_file0('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
+(65)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(66)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(68)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),user:include_metta('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
+(70)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(71)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(75)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),load_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')]),user:call(include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta')),user:(nb_current('$circular_goals',_S380),select(include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),_S380,_527394),nb_setval('$circular_goals',_527394))). </span>  %  init.pl:680: 
+(76)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
+> system:call('<garbage_collected>'). </span>  %  init.pl:501: 
+(77)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> include_metta1('&top','tests/extended_compat/hyperon-miner/match/tmpMatch.metta'). </span>  %  metta_loader.pl:894: 
+(79)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(80)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(83)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match'),user:setup_call_cleanup(open('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta',read,<stream>(0x5604db4a5440),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta','&top',<stream>(0x5604db4a5440)),close(<stream>(0x5604db4a5440))),user:working_directory(_S418,'/home/runner/work/metta-wam/metta-wam/')). </span>  %  init.pl:680: 
+(85)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(86)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(87)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:open('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta',read,<stream>(0x5604db4a5440),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta','&top',<stream>(0x5604db4a5440)),user:close(<stream>(0x5604db4a5440))). </span>  %  init.pl:680: 
+(89)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(90)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(93)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),user:((set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta',1),load_answer_file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta',0)),load_metta_file_stream_fast(7770,read_file_sexpr,'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta','&top',<stream>(0x5604db4a5440))),user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta')). </span>  %  init.pl:680: 
+(96)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(97)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(100)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|[$apply]#P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> '$apply':forall(user:metta_file_buffer(0,15000042,metta_directive,exec(['extend-py!','../utils/helper.py']),[],'/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta',range(line_char(29,0),line_char(29,32))),user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),+,'&top',exec(['extend-py!','../utils/helper.py']),_S498)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),+,'&top',exec(['extend-py!','../utils/helper.py'])))))). </span>  %  apply.pl:51: 
+(101)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| system:'<meta-call>'('<garbage_collected>'). P;HTML| no(clause). 
+(103)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| md(once,'<garbage_collected>').   %  metta_utils.pl:1109: 
+(104)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> system:once('<garbage_collected>'). </span>  %  init.pl:537: 
+(108)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],_S674),give_up(_960694),user:write_src_uo(dont_give_up(_960694))). </span>  %  init.pl:564: 
+(110)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:(if_t(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta')=file(_S164),output_language(metta,write_exec(['extend-py!','../utils/helper.py']))),notrace(into_metta_callable('&top',['extend-py!','../utils/helper.py'],_984204,_984206,_984208,_984210)),!,user:u_do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],_984204,_984206,_984208,_984210,_984206,_984242)),give_up(_984246),user:pp_m(red,gave_up(_984246))). </span>  %  init.pl:564: 
+(113)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> system:catch(user:u_do_metta_exec00(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S686),_S686,[],[],_S686,_1009694),_1009666,user:write_src(error(_1009666,file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),['extend-py!','../utils/helper.py']))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(115)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:u_do_metta_exec000(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S226),_S226,[],[],_S226,_3656),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),['extend-py!','../utils/helper.py']))). </span>  %  init.pl:564: 
+(117)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:u_do_metta_exec01(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S970),_S970,[],[],_S970,_11978),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),['extend-py!','../utils/helper.py']))). </span>  %  init.pl:564: 
+(119)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+> u_do_metta_exec02(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),'&top',['extend-py!','../utils/helper.py'],'<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_S082). </span>  %  metta_repl.pl:1060: 
+(120)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> forall_interactive(file('/home/runner/work/metta-wam/metta-wam/tests/extended_compat/hyperon-miner/match/tmpMatch.metta'),false,_S880,timed_call(((eval_H(500,'&top',['extend-py!','../utils/helper.py'],_65916),deterministic(_S880)),notrace((xform_out(_65916,_65948),nb_setarg(1,res(_65960),_65948)))),_65894),(print_result_output(false,_S880,_65974,prev_result('Empty'),[],contrl(4,inf,each),res(_65960),_65894,[],_65948,_65990),(_65974>=inf->!;true),_66036=_66038,_66048=_66050,(_65990==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_66118),old_not_compatio((writeq(key=_66118),nl)),(_66118==b->once(repl),fail;_66118=='B'->once(prolog),fail;_66118==a->notrace(abort),fail;_66118==e->notrace(halt(5)),fail;_66118==m->make,fail;_66118==c->trace,_66048=true;_66118=='C'->once(cls),fail;_66118==' '->trace,_66048=true;_66118==t->nop(set_debug(eval,true)),rtrace,_66048=true;_66118=='T'->set_debug(eval,true),_66048=true;_66118== ? -> print_debug_help,fail;_66118==(;)->_66048=true;_66118==esc('[A',[27,91,65])->_66036=true,_66048=false;_66118==esc('[B',[27,91,66])->nb_setarg(3,contrl(4,inf,each),leap),_66036=false,_66048=true;_66118=='L'->nb_setarg(2,contrl(4,inf,each),_65974);_66118==l->nb_setarg(3,contrl(4,inf,each),leap),_66048=true;(_66118=='\n';_66118=='\r')->_66036=false,nb_setarg(3,contrl(4,inf,each),leap),_66048=true;_66118==g->write_src(exec(['extend-py!','../utils/helper.py']));_66118=='G'->bt,_66048=false;_66118==s->_66036=true,_66048=false;true->write('Unknown Char'),fail),(nonvar(_66048);nonvar(_66036));true),((_S880==true;_66036==true)->!;true),(nonvar(_66048)->_66048==true;true),(flag(result_num,_65974,_65974),_65974>=inf->!,fail;true))). </span>  %  metta_repl.pl:1300: 
+(122)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+> ctimed_call(((eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S060),deterministic(_113076)),notrace((xform_out(_S060,_113092),nb_setarg(1,res(_113104),_113092)))),_113038). </span>  %  metta_interp.pl:5557: 
+(123)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+> rtrace_on_error(((eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S096),deterministic(_137112)),notrace((xform_out(_S096,_137128),nb_setarg(1,res(_137140),_137128))))). </span>  %  metta_interp.pl:3742: 
+(124)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| system:'<meta-call>'(((eval_H(500,'&top',['extend-py!','../utils/helper.py'],_S078),deterministic(_161094)),notrace((xform_out(_S078,_161110),nb_setarg(1,res(_161122),_161110))))). P;HTML| no(clause). 
+(127)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:eval_args(=,_S478,500,'&top',['extend-py!','../utils/helper.py'],_195486),metta_return(_195486),user:ignore(retract(thrown_metta_return(_195486)))). </span>  %  init.pl:564: 
+(130)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+></span><span class="ansi2 ansi93"
+> eval_01(=,_S872,500,'&top',['extend-py!','../utils/helper.py'],_218880). </span>  %  metta_eval.pl:245: 
+(131)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+></span><span class="ansi1"
+> trace_eval(eval_20(=,_S744),e,499,'&top',['extend-py!','../utils/helper.py'],_241738). </span>  %  metta_debug.pl:947: 
+(132)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:call_cleanup(user:((call(eval_20(=,_S798),499,'&top',['extend-py!','../utils/helper.py'],_264792)*->nb_setarg(1,retval(fail),_264792);fail,trace,call(eval_20(=,_S798),499,'&top',['extend-py!','../utils/helper.py'],_264792)),ignore(notrace((\+_264792\=_264870,nb_setarg(1,retval(fail),_264792))))),user:ignore((_264904==1->ignore(\+ \+ (flag(eval_num,_264930,_264930+1),(retval(fail)\=@=retval(fail),nonvar(_264792)->indentq(0,_264930,<--,[e,_264792]);indentq(0,_264930,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_264930,_264930+1),(retval(fail)\=@=retval(fail),nonvar(_264792)->indentq(0,_264930,<--,[e,_264792]);indentq(0,_264930,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(133)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:'<meta-call>'(user:((call(eval_20(=,_S026),499,'&top',['extend-py!','../utils/helper.py'],_296020)*->nb_setarg(1,retval(fail),_296020);fail,trace,call(eval_20(=,_S026),499,'&top',['extend-py!','../utils/helper.py'],_296020)),ignore(notrace((\+_296020\=_296098,nb_setarg(1,retval(fail),_296020)))))). </span>P;HTML| no(clause). 
+(137)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> system:setup_call_cleanup(system:'$notrace'(12,0),system:once(user:extend_py('../utils/helper.py',_S560)),system:'$restore_trace'(12,0)). </span>  %  init.pl:680: 
+(138)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:once(user:extend_py('../utils/helper.py',_S720)). </span>  %  init.pl:537: 
+(140)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| self_extend_py('&top','../utils/helper.py',_S190,_384192).   %  metta_python.pl:2632: 
+(142)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:setup_call_cleanup(user:set_prolog_flag(argv,[]),user:py_catch((assert_new(is_pymod_in_space('../utils/helper.py','&top')),(nonvar(_S852)->'../utils/helper.py'=_S852;'../utils/helper.py'='../utils/helper.py'),pybug('extend-py!'('../utils/helper.py')),('../utils/helper.py'==mettalog->true;py_load_modfile('../utils/helper.py')),nb_setval('$py_ready',true),_406928=[],true)),user:set_prolog_flag(argv,['--python=enable',--,'--timeout=40','--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat','--html','--test','tests/extended_compat/hyperon-miner/match/tmpMatch.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty'])). </span>  %  init.pl:680: 
+(146)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML| py_catch((('../utils/helper.py'==mettalog->true;py_load_modfile('../utils/helper.py')),nb_setval('$py_ready',true),_S358=[],true)).   %  metta_python.pl:194: 
+(148)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+> system:catch(user:('../utils/helper.py'==mettalog->true;py_load_modfile('../utils/helper.py')),_S946,user:(pybug(_S946=py_catch(('../utils/helper.py'==mettalog->true;py_load_modfile('../utils/helper.py')))),py_dump,trace,('../utils/helper.py'==mettalog->true;py_load_modfile('../utils/helper.py')))). </span>  %  init.pl:564: 
+(150)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi5 ansi37"
+> < * > </span>$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi97"
+></span><span class="ansi2 ansi97 ansi40"
+></span><span class="ansi2 ansi97 ansi40"
+> py_load_modfile('../utils/helper.py'). </span>  %  metta_python.pl:2663: 
+(151)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi95"
+></span><span class="ansi95"
+></span><span class="ansi95"
+> py_ocall(mettalog:load_functions('../utils/helper.py'),_S400). </span>  %  metta_python.pl:1461: 
+(152)$P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+>[system]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> system:catch(user:py_call(mettalog:load_functions('../utils/helper.py'),_S080,[py_object(true),py_string_as(string)]),error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_533118),user:py_error_fail(error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_533118))). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  init.pl:564: 
+(153)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi31"
+></span><span class="ansi31 ansi100"
+></span><span class="ansi1 ansi31 ansi100"
+> py_error_fail(error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),_S170)). </span><span class="ansi1 ansi31 ansi100"
+></span>  %  metta_python.pl:1638: 
+(157)$P;HTML|<span class="ansi93"
+></span><span class="ansi93"
+></span><span class="ansi93"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+></span><span class="ansi2 ansi32"
+> bugger:dumpST_now(1584,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
+P;HTML|
+; error(python_error('ModuleNotFoundError',<py_ModuleNotFoundError>(0x7fab158e42c0)),Python_error)
+
+   <span class="ansi1 ansi32"
+>Call: </span>(154) [system] fail ? 
+Script done on 2025-01-22 01:34:58+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-miner/match/tmpMatch.metta" --halt=true\033[0m

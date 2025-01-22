@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:37:18+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/parallelism/builtins.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/features/parallelism/builtins.metta] ]
+
+[stream_error [ : 20 [ : 37 1016 ] ] [syntax_error [unexpected_char )] "Unexpected end character: ')'"]]
+
+<span class="ansi1 ansi31"
+>ERROR: Unknown message: stream_error(20:37:1016,syntax_error(unexpected_char(')'),"Unexpected end character: ')'"))
+</span><span class="ansi38-013099040"
+>!(pragma! eval True)
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-on-eval False)
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; =============================================================
+;;; Purpose: Test parallel execution with 'concurrent-forall!'
+;;; Operation: Launches a sleep task concurrently across 4 threads.
+;;; Expectation: Total execution time should be significantly reduced, demonstrating parallel processing.
+;;; Note: `get-time!` is the host system function `get_time(X)`
+;;;       If a function is not found that contains ! it searches the host system for the function definition.
+;;; =============================================================
+<span class="ansi38-255165000"
+> (: concurrent-forall! (-> Atom Atom $t))
+</span><span class="ansi38-255165000"
+> (: concurrent-forall! (-> Atom Atom Atom $t))
+</span><span class="ansi38-013099040"
+>!(let $start (get-time!) (sequential (concurrent-forall! (between! 1 4) (sleep! 5) (threads 4)) (< (- (get-time!) $start) 12)))
+
+</span>
+Deterministic: <span class="ansi33"
+>(sequential () True)
+</span>;;; Check if the total time taken is less than 12 seconds
+<span class="ansi38-013099040"
+>!("cpu_count=" (current-prolog-flag! cpu_count))
+
+</span>
+Deterministic: <span class="ansi33"
+>("cpu_count=" 4)
+</span>;;; =============================================================
+;;; Purpose: Define predicate 'is-even' to check if a number is even.
+;;; Operation: Uses modulo operator to determine if a number is divisible by 2 without remainder.
+;;; Usage: General utility function for checking evenness of numbers.
+;;; =============================================================
+;;; Define 'is-even' predicate
+<span class="ansi38-255165000"
+> (: is-even (-> Number Bool))
+</span><span class="ansi38-255165000"
+> (= (is-even $X)  
+  (== 
+    (% $X 2) 0))
+</span>;;; =============================================================
+;;; Purpose: Define predicate 'incr' to increment a monadic state variable.
+;;; Operation: Increases state by 1 and retrieves the updated state, ensuring sequential processing.
+;;; Usage: Ideal for managing sequential state changes in concurrent environments.
+;;; =============================================================
+;;; Define 'incr' predicate
+<span class="ansi38-255165000"
+> (: incr (-> (MonadicState Number) Number))
+</span><span class="ansi38-255165000"
+> (= (incr $var)  
+  (sequential ((do (change-state! $var (+ 1 (get-state $var)))) (get-state $var))))
+</span>;;; =============================================================
+;;; Purpose: Showcase how concurrency handles shared state references
+;;; Operation: Concurrently processes numbers, incrementing '$odds' or '$evens' state based on numbers evenness.
+;;; Expectation: Parallel processing of a range of numbers, updating shared states.
+;;; =============================================================
+<span class="ansi38-013099040"
+>!(let* (($odds (new-state 0)) ($evens (new-state 0))) (sequential (concurrent-forall! (== (between! 1 100) $X) (if (is-even $X) (incr $evens) (incr $odds))) (print! ("odds=" (get-state $odds) " evens=" (get-state $evens)))))
+
+</span>
+[error [error [domain_error py_term [State 0 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/features/parallelism/builtins.metta] (let* (($odds (new-state 0)) ($evens (new-state 0))) (sequential (concurrent-forall! (== (between! 1 100) $X) (if (is-even $X) (incr $evens) (incr $odds))) (print! ("odds=" (get-state $odds) " evens=" (get-state $evens)))))];;; =============================================================
+;;; Purpose: Illustrate handling of global bind states in a concurrent setting
+;;; Operation: Uses 'concurrent-forall!' to process numbers, updating global bind states based on numbers evenness.
+;;; Expectation: Parallel processing of a number range, efficiently updating global states.
+;;; =============================================================
+<span class="ansi38-013099040"
+>!(sequential ((bind! &odds (new-state 0)) (bind! &evens (new-state 0)) (concurrent-forall! (== (between! 1 100) $X) (if (is-even $X) (incr &evens) (incr &odds))) (print! ("odds=" (get-state &odds) " evens=" (get-state &evens)))))
+
+</span>
+[error [error [domain_error py_term [State 0 $260]] [context [ : janus [ / py_call 2 ] ] $261]] [file /home/runner/work/metta-wam/metta-wam/tests/features/parallelism/builtins.metta] (sequential ((bind! &odds (new-state 0)) (bind! &evens (new-state 0)) (concurrent-forall! (== (between! 1 100) $X) (if (is-even $X) (incr &evens) (incr &odds))) (print! ("odds=" (get-state &odds) " evens=" (get-state &evens)))))];;; =============================================================
+;;; Purpose: Define `factorial` function for arithmetic operation.
+;;; Operation: Calculates the factorial of a number using a recursive approach.
+;;; Usage: Useful in scenarios requiring factorial computations.
+;;; =============================================================
+<span class="ansi38-255165000"
+> (: factorial (-> Number Number))
+</span><span class="ansi38-255165000"
+> (= (factorial $n)  
+  (if 
+    (== $n 0) 1 
+    (* $n 
+      (factorial (- $n 1)))))
+</span>;;; =============================================================
+;;; Purpose: Demonstrate parallel processing of a list using `concurrent-maplist`.
+;;; Operation: Applies `factorial` to each number in a list concurrently.
+;;; Expectation: Efficient computation of factorial for each list element in parallel.
+;;; =============================================================
+<span class="ansi38-255165000"
+> (: concurrent-maplist! (-> Atom (List Atom) (List $t)))
+</span><span class="ansi38-255165000"
+> (: concurrent-maplist! (-> Atom (List Atom) (List Atom) (List $t)))
+</span><span class="ansi38-255165000"
+> (: concurrent-maplist! (-> Atom (List Atom) (List Atom) (List Atom) (List $t)))
+</span><span class="ansi38-013099040"
+>!(concurrent-maplist! factorial (1 2 3 4 5 6 7 8 9))
+
+</span>
+Script done on 2025-01-22 02:37:58+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/features/parallelism/builtins.metta" --halt=true\033[0m

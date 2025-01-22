@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 02:46:38+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/compare_algo/nqueens/nqueens_test_fast_both.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/compare_algo/nqueens/nqueens_test_fast_both.metta] ]
+;;; Updated car-atom-or-fail and cdr-atom-or-fail predicates
+<span class="ansi38-255165000"
+> (= (car-atom-or-fail $atom)  
+  (if 
+    (== $atom ()) 
+    (let 1 2 3) 
+    (car-atom $atom)))
+</span>;;; Test car-atom-or-fail
+<span class="ansi38-013099040"
+>!(assertEqualToResult (car-atom-or-fail (1 2 3 4)) (1))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.01"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.01</h3>
+; 
+; EVAL TEST
+; took 0.000165 secs. (164.87 microseconds) 
+
+!(assertEqualToResult (car-atom-or-fail (1 2 3 4)) (1))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1) 
+      (1)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (car-atom-or-fail (1)) (1))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.02"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.02</h3>
+; 
+; EVAL TEST
+; took 0.000125 secs. (125.15 microseconds) 
+
+!(assertEqualToResult (car-atom-or-fail (1)) (1))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1) 
+      (1)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (car-atom-or-fail ()) ())
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.03"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.03</h3>
+; 
+; EVAL TEST
+; took 0.000132 secs. (132.12 microseconds) 
+
+!(assertEqualToResult (car-atom-or-fail ()) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; mettalog does this for free with car-atom
+;;;!(assertEqualToResult (car-atom-or-fail 666) ()) ; Makes things too slow for Rust trying to match MettaLog behaviour trying to test for non Expressions
+<span class="ansi38-255165000"
+> (= (cdr-atom-or-fail $atom)  
+  (if 
+    (== $atom ()) 
+    (let 1 2 3) 
+    (cdr-atom $atom)))
+</span>;;; Test cdr-atom-or-fail
+<span class="ansi38-013099040"
+>!(assertEqualToResult (cdr-atom-or-fail (1 2 3 4)) ((2 3 4)))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.04"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.04</h3>
+; 
+; EVAL TEST
+; took 0.000408 secs. (408.29 microseconds) 
+
+!(assertEqualToResult (cdr-atom-or-fail (1 2 3 4)) ((2 3 4)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (2 3 4)) 
+      ( (2 3 4))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (cdr-atom-or-fail (1)) (()))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.05"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.05</h3>
+; 
+; EVAL TEST
+; took 0.000132 secs. (131.53 microseconds) 
+
+!(assertEqualToResult (cdr-atom-or-fail (1)) (()))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (cdr-atom-or-fail ()) ())
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.06"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.06</h3>
+; 
+; EVAL TEST
+; took 0.000117 secs. (117.31 microseconds) 
+
+!(assertEqualToResult (cdr-atom-or-fail ()) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; mettalog does this for free with cdr-atom
+;;;!(assertEqualToResult (cdr-atom-or-fail 666) ()) ; Makes things too slow for Rust trying to match MettaLog behaviour trying to test for non Expressions
+<span class="ansi38-255165000"
+> (= (select $x)  
+    
+  (car-atom-or-fail $x)
+    
+  (cdr-atom-or-fail $x))
+</span><span class="ansi38-255165000"
+> (= (select $x)  
+  (let* 
+    ( ($y (car-atom-or-fail $x)) 
+      ($z (cdr-atom-or-fail $x)) 
+      ( ($u $v) (select $z))) 
+    ($u (cons-atom $y $v))))
+</span><span class="ansi38-255165000"
+> (= (range $x $y)  
+  (if 
+    (== $x $y) 
+    ($x) 
+    (let $z 
+      (range 
+        (+ $x 1) $y) 
+      (cons-atom $x $z))))
+</span><span class="ansi38-255165000"
+> (= (nqueens $n)  
+  (let $r 
+    (range 1 $n) 
+    (nqueens_aux $r ())))
+</span><span class="ansi38-255165000"
+> (= (nqueens_aux $unplaced $safe)  
+  (if 
+    (== $unplaced ()) $safe 
+    (let 
+      ($q $r) 
+      (select $unplaced) 
+      (if 
+        (not_attack $q 1 $safe) 
+        (let $safeext 
+          (cons-atom $q $safe) 
+          (nqueens_aux $r $safeext)) 
+        (empty)))))
+</span><span class="ansi38-255165000"
+> (= (not_attack $q $d $s)  
+  (if 
+    (== $s ()) True 
+    (let* 
+      ( ($h (car-atom $s)) ($t (cdr-atom $s))) 
+      (if 
+        (or 
+          (== $q $h) 
+          (or 
+            (== $q 
+              (+ $d $h)) 
+            (== $h 
+              (+ $q $d)))) False 
+        (not_attack $q 
+          (+ $d 1) $t)))))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (select (1 2 3 4)) ((1 (2 3 4)) (2 (1 3 4)) (3 (1 2 4)) (4 (1 2 3))))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.07"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.07</h3>
+; 
+; EVAL TEST
+; took 0.027 secs. (26.50 milliseconds) 
+
+!(assertEqualToResult (select (1 2 3 4)) ((1 (2 3 4)) (2 (1 3 4)) (3 (1 2 4)) (4 (1 2 3))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (1 (2 3 4)) 
+        (2 (1 3 4)) 
+        (3 (1 2 4)) 
+        (4 (1 2 3))) 
+      ( (1 (2 3 4)) 
+        (2 (1 3 4)) 
+        (3 (1 2 4)) 
+        (4 (1 2 3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(set-debug! time True)
+
+</span>
+N(1): <span class="ansi33"
+>True
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 1 1 (5 3 6)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.08"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.08</h3>
+; 
+; EVAL TEST
+; took 0.008 secs. (8.02 milliseconds) 
+
+!(assertEqualToResult (not_attack 1 1 (5 3 6)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.042 secs. (41.57 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 2 1 (5 3 6)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.09"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.09</h3>
+; 
+; EVAL TEST
+; took 0.013 secs. (12.65 milliseconds) 
+
+!(assertEqualToResult (not_attack 2 1 (5 3 6)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.046 secs. (46.42 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 1 1 (2 5 3 6)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.10"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.10</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (4.14 milliseconds) 
+
+!(assertEqualToResult (not_attack 1 1 (2 5 3 6)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.038 secs. (37.65 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 4 1 (2 5 3 6)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.11"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.11</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (16.70 milliseconds) 
+
+!(assertEqualToResult (not_attack 4 1 (2 5 3 6)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.050 secs. (50.26 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 4 1 (3 1)) (False))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.12"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.12</h3>
+; 
+; EVAL TEST
+; took 0.004 secs. (3.97 milliseconds) 
+
+!(assertEqualToResult (not_attack 4 1 (3 1)) (False))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (False) 
+      (False)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.037 secs. (37.45 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (not_attack 5 1 (3 1)) (True))
+
+</span>
+;<h3 id="NQUEENS.NQUEENS-TEST-FAST-BOTH.13"
+>;; NQUEENS.NQUEENS-TEST-FAST-BOTH.13</h3>
+; 
+; EVAL TEST
+; took 0.009 secs. (8.61 milliseconds) 
+
+!(assertEqualToResult (not_attack 5 1 (3 1)) (True))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (True) 
+      (True)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>; Execution took 0.042 secs. (42.27 milliseconds) 
+
+<span class="ansi38-013099040"
+>!(set-debug! time True)
+
+</span>
+N(1): <span class="ansi33"
+>True
+</span>;;; mettalog  0m5.565s
+;;; mettarust 0m8.076s
+;;;!(assertEqualToResult (nqueens 4) ((3 1 4 2) (2 4 1 3)))
+;;; mettalog  0m5.953s
+;;; mettarust 0m32.852s
+;;; !(assertEqualToResult (nqueens 5) ((4 2 5 3 1) (3 5 2 4 1) (5 3 1 4 2) (4 1 3 5 2) (5 2 4 1 3) (1 4 2 5 3) (2 5 3 1 4) (1 3 5 2 4) (3 1 4 2 5) (2 4 1 3 5)))
+;;; mettalog  0m7.043s
+;;; mettarust 2m14.622s
+;;;!(assertEqualToResult (nqueens 6) ((5 3 1 6 4 2)  (4 1 5 2 6 3)  (3 6 2 5 1 4)  (2 4 6 1 3 5)))
+;;; mettalog   0m11.805s
+;;; mettarust 11m26.192s
+;;; !(assertEqualToResult (nqueens 7) ((6 4 2 7 5 3 1)  (5 2 6 3 7 4 1)  (4 7 3 6 2 5 1)  (3 5 7 2 4 6 1)  (6 3 5 7 1 4 2)  (7 5 3 1 6 4 2)  (6 3 7 4 1 5 2)  (6 4 7 1 3 5 2)  (6 3 1 4 7 5 2)  (5 1 4 7 3 6 2)  (4 6 1 3 5 7 2)  (4 7 5 2 6 1 3)  (5 7 2 4 6 1 3)  (1 6 4 2 7 5 3)  (7 4 1 5 2 6 3)  (5 1 6 4 2 7 3)  (6 2 5 1 4 7 3)  (5 7 2 6 3 1 4)  (7 3 6 2 5 1 4)  (6 1 3 5 7 2 4)  (2 7 5 3 1 6 4)  (1 5 2 6 3 7 4)  (3 1 6 2 5 7 4)  (2 6 3 7 4 1 5)  (3 7 2 4 6 1 5)  (1 4 7 3 6 2 5)  (7 2 4 6 1 3 5)  (3 1 6 4 2 7 5)  (4 1 3 6 2 7 5)  (4 2 7 5 3 1 6)  (3 7 4 1 5 2 6)  (2 5 7 4 1 3 6)  (2 4 1 7 5 3 6)  (2 5 1 4 7 3 6)  (1 3 5 7 2 4 6)  (2 5 3 1 7 4 6)  (5 3 1 6 4 2 7)  (4 1 5 2 6 3 7)  (3 6 2 5 1 4 7)  (2 4 6 1 3 5 7)))
+;;; N-Queens Performance Comparison
+;;; | N-Queens Size | MeTTaLog Time  | MeTTaRust Time     | Leaner?             | Difference (Factor)  |
+;;; |---------------|----------------|--------------------|---------------------|-----------------------|
+;;; | 4             | 0m5.565s       | 0m8.076s           | ✅ MeTTaLog         | ~1.45x slower in Rust |
+;;; | 5             | 0m5.953s       | 0m32.852s          | ✅ MeTTaLog         | ~5.52x slower in Rust |
+;;; | 6             | 0m7.043s       | 2m14.622s          | ✅ MeTTaLog         | ~19.12x slower in Rust|
+;;; | 7             | 0m11.805s      | 11m26.192s         | ✅ MeTTaLog         | ~58.33x slower in Rust|
+;;; Analysis:
+;;; 1. Leaner Runtime:
+;;;    - MeTTaLog is consistently leaner than MeTTaRust across all problem sizes.
+;;;    - The performance gap widens as the problem size increases, with Rust being up to ~58 times slower for nqueens(7).
+;;; 2. Scaling Disparity:
+;;;    - Both implementations exhibit worse performance as the problem size grows, but Rust’s implementation scales poorly, possibly due to lack of TCO or inefficiencies in recursive handling.
+;;; 3. Critical Observation:
+;;;    - For smaller inputs like nqueens(4), the difference is minor (~1.45x).
+;;;    - For larger inputs (nqueens(7)), the performance difference balloons, highlighting inefficiencies in Rust’s handling of deep recursion or search space pruning.
+;;; Conclusion:
+;;; The results strongly suggest that MeTTaLog is significantly more optimized for recursive logic-heavy tasks like nqueens, particularly for larger input sizes. 
+;;; The inefficiencies in MeTTaRust could be attributed to the lack of TCO and other runtime optimizations that are better handled in MeTTaLog.
+;;; Predicted Performance for N-Queens Problem (Sizes 8, 9, and 10)
+;;; Observed Trend:
+;;; - MeTTaLog scales linearly with problem size, adding approximately ~7 seconds per unit increase in N.
+;;; - MeTTaRust scales exponentially, roughly 3.5–5x slower with each unit increase in N.
+;;; Predicted Times:
+;;; | N-Queens Size | MeTTaLog Predicted Time | MeTTaRust Predicted Time |
+;;; |---------------|--------------------------|--------------------------|
+;;; | **8**         | ~0m18.5s                | ~38 minutes              |
+;;; | **9**         | ~0m25.5s                | ~2 hours 13 minutes      |
+;;; | **10**        | ~0m32.5s                | ~7 hours 47 minutes      |
+;;; Reasoning:
+;;; 1. MeTTaLog:
+;;;    - Growth is approximately linear.
+;;;    - Starting from nqueens(7) (11.805s), we add ~7 seconds for each increment:
+;;;      - nqueens(8): 11.805 + 7 ≈ 18.805 seconds (~0m18.5s).
+;;;      - nqueens(9): 18.805 + 7 ≈ 25.805 seconds (~0m25.5s).
+;;;      - nqueens(10): 25.805 + 7 ≈ 32.805 seconds (~0m32.5s).
+;;; 2. MeTTaRust:
+;;;    - Growth is exponential, increasing ~3.5–5x with each increment.
+;;;    - Starting from nqueens(7) (11m26.192s ≈ 686.192s):
+;;;      - nqueens(8): 686 × 3.5 ≈ 2401s (~38 minutes).
+;;;      - nqueens(9): 2401 × 3.5 ≈ 8404s (~2 hours 13 minutes).
+;;;      - nqueens(10): 8404 × 3.5 ≈ 29,414s (~7 hours 47 minutes).
+;;; Summary Prediction:
+;;; | **Implementation** | **Predicted Times**                                   |
+;;; |---------------------|------------------------------------------------------|
+;;; | **MeTTaLog**        | nqueens(8): ~0m18.5s, nqueens(9): ~0m25.5s,          |
+;;; |                     | nqueens(10): ~0m32.5s                               |
+;;; |---------------------|------------------------------------------------------|
+;;; | **MeTTaRust**       | nqueens(8): ~38 minutes, nqueens(9): ~2 hours 13 min |
+;;; |                     | nqueens(10): ~7 hours 47 minutes                    |
+;;; Conclusion:
+;;; - MeTTaLog continues to demonstrate efficient scaling due to its linear growth.
+;;; - MeTTaRust exhibits severe performance degradation with exponential growth, making it impractical for large N.
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 13
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[True]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[True]
+
+Script done on 2025-01-22 02:46:46+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/compare_algo/nqueens/nqueens_test_fast_both.metta" --halt=true\033[0m

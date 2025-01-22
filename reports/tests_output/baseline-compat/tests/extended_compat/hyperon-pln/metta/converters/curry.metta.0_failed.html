@@ -1,0 +1,1075 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:38:09+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/converters/curry.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/extended_compat/hyperon-pln/metta/converters/curry.metta] ]
+;;;; Convert rule from curried format to uncurried format and back.  See
+;;;; functions:
+;;;; - curry-arrow, to convert from uncurried to curry format,
+;;;; - uncurry-arrow, to convert from curried to uncurry format.
+;;;; Define is-expression
+<span class="ansi38-255165000"
+> (: is-expression (-> Atom Bool))
+</span><span class="ansi38-255165000"
+> (= (is-expression $term)  
+  (== 
+    (get-metatype $term) Expression))
+</span>;;;; Define cons-cons-atom, that applies const-atom twice
+<span class="ansi38-255165000"
+> (: cons-cons-atom (-> Atom Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (cons-cons-atom $head1 $head2 $tail)  
+  (let $head2_tail 
+    (cons-atom $head2 $tail) 
+    (cons-atom $head1 $head2_tail)))
+</span>;;;; Given a tuple of arguments and a binary operator, unflattened in a
+;;;; right-associative way the tuple of arguments by inserting the
+;;;; operator.  The unflattening does not propagate recursively to
+;;;; sub-expressions.
+;;;;
+;;;; For instance
+;;;;
+;;;; (right-associate-with (T1 T2 (T3 A B)) ->)
+;;;;
+;;;; outputs
+;;;;
+;;;; (-> T1 (-> T2 (T3 A B)))
+<span class="ansi38-255165000"
+> (: right-associate-with (-> Expression Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (right-associate-with $expr $op)  
+  (if 
+    (== $expr ()) () 
+    (let* 
+      ( ($head (car-atom $expr)) ($tail (cdr-atom $expr))) 
+      (if 
+        (== $tail ()) $head 
+        (let $ra_tail 
+          (right-associate-with $tail $op) 
+          (cons-cons-atom $op $head 
+            ($ra_tail)))))))
+</span>;;;; Test right-associate-with
+<span class="ansi38-013099040"
+>!(assertEqual (right-associate-with () ->) ())
+
+</span>
+;<h3 id="CONVERTERS.CURRY.01"
+>;; CONVERTERS.CURRY.01</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.66 milliseconds) 
+
+!(assertEqual (right-associate-with () ->) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-associate-with (T) ->) T)
+
+</span>
+;<h3 id="CONVERTERS.CURRY.02"
+>;; CONVERTERS.CURRY.02</h3>
+; 
+; EVAL TEST
+; took 0.003 secs. (2.78 milliseconds) 
+
+!(assertEqual (right-associate-with (T) ->) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-associate-with (T1 T2) ->) (-> T1 T2))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.03"
+>;; CONVERTERS.CURRY.03</h3>
+; 
+; EVAL TEST
+; took 0.007 secs. (6.67 milliseconds) 
+
+!(assertEqual (right-associate-with (T1 T2) ->) (-> T1 T2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2)) 
+      ( (-> T1 T2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-associate-with (T1 T2 T3) ->) (-> T1 (-> T2 T3)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.04"
+>;; CONVERTERS.CURRY.04</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (10.23 milliseconds) 
+
+!(assertEqual (right-associate-with (T1 T2 T3) ->) (-> T1 (-> T2 T3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 
+          (-> T2 T3))) 
+      ( (-> T1 
+          (-> T2 T3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-associate-with (T1 T2 (T3 A B)) ->) (-> T1 (-> T2 (T3 A B))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.05"
+>;; CONVERTERS.CURRY.05</h3>
+; 
+; EVAL TEST
+; took 0.017 secs. (17.32 milliseconds) 
+
+!(assertEqual (right-associate-with (T1 T2 (T3 A B)) ->) (-> T1 (-> T2 (T3 A B))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 
+          (-> T2 
+            (T3 A B)))) 
+      ( (-> T1 
+          (-> T2 
+            (T3 A B))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Convert rule from uncurried format to curried format.
+;;;;
+;;;; For instance
+;;;;
+;;;; (curry-arrow (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z))))
+;;;;
+;;;; outputs
+;;;;
+;;;; (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z))))
+;;;;
+;;;; Note that the currying only occurs at the most shallow arrow
+;;;; operator, nowhere else.  For instance
+;;;;
+;;;; (curry-arrow (: MP3 (-> (-> $x $y $z) $x $y $z)))
+;;;;
+;;;; outputs
+;;;;
+;;;; (: MP3 (-> (-> $x $y $z) (-> $x (-> $y $z))))
+;;;;
+;;;; not
+;;;;
+;;;; (: MP3 (-> (-> $x (-> $y $z)) (-> $x (-> $y $z))))
+;;;;
+;;;; That is because we want to change the rule format without affecting
+;;;; the rule content.
+<span class="ansi38-255165000"
+> (: curry-arrow (-> Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (curry-arrow $term)  
+  (if 
+    (is-expression $term) 
+    (if 
+      (== $term ()) () 
+      (let* 
+        ( ($head (car-atom $term)) ($tail (cdr-atom $term))) 
+        (if 
+          (== $head ->) 
+          (right-associate-with $tail $head) 
+          (let* 
+            ( ($ca_head (curry-arrow $head)) ($ca_tail (curry-arrow $tail))) 
+            (cons-atom $ca_head $ca_tail))))) $term))
+</span>;;;; Test curry-arrow
+<span class="ansi38-013099040"
+>!(assertEqual (curry-arrow T) T)
+
+</span>
+;<h3 id="CONVERTERS.CURRY.06"
+>;; CONVERTERS.CURRY.06</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.99 milliseconds) 
+
+!(assertEqual (curry-arrow T) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow ()) ())
+
+</span>
+;<h3 id="CONVERTERS.CURRY.07"
+>;; CONVERTERS.CURRY.07</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.34 milliseconds) 
+
+!(assertEqual (curry-arrow ()) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (T)) (T))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.08"
+>;; CONVERTERS.CURRY.08</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (10.12 milliseconds) 
+
+!(assertEqual (curry-arrow (T)) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (T)) 
+      ( (T))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (R A B)) (R A B))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.09"
+>;; CONVERTERS.CURRY.09</h3>
+; 
+; EVAL TEST
+; took 0.026 secs. (26.39 milliseconds) 
+
+!(assertEqual (curry-arrow (R A B)) (R A B))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (R A B)) 
+      ( (R A B))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow ((R A B))) ((R A B)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.10"
+>;; CONVERTERS.CURRY.10</h3>
+; 
+; EVAL TEST
+; took 0.045 secs. (45.08 milliseconds) 
+
+!(assertEqual (curry-arrow ((R A B))) ((R A B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (R A B))) 
+      ( ( (R A B)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (-> T1 T2)) (-> T1 T2))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.11"
+>;; CONVERTERS.CURRY.11</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.53 milliseconds) 
+
+!(assertEqual (curry-arrow (-> T1 T2)) (-> T1 T2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2)) 
+      ( (-> T1 T2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (-> T1 T2 T3)) (-> T1 (-> T2 T3)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.12"
+>;; CONVERTERS.CURRY.12</h3>
+; 
+; EVAL TEST
+; took 0.014 secs. (13.52 milliseconds) 
+
+!(assertEqual (curry-arrow (-> T1 T2 T3)) (-> T1 (-> T2 T3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 
+          (-> T2 T3))) 
+      ( (-> T1 
+          (-> T2 T3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow ((-> T1 T2 T3))) ((-> T1 (-> T2 T3))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.13"
+>;; CONVERTERS.CURRY.13</h3>
+; 
+; EVAL TEST
+; took 0.020 secs. (19.97 milliseconds) 
+
+!(assertEqual (curry-arrow ((-> T1 T2 T3))) ((-> T1 (-> T2 T3))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (-> T1 
+            (-> T2 T3)))) 
+      ( ( (-> T1 
+            (-> T2 T3))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (R (-> T1 T2 T3))) (R (-> T1 (-> T2 T3))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.14"
+>;; CONVERTERS.CURRY.14</h3>
+; 
+; EVAL TEST
+; took 0.028 secs. (27.73 milliseconds) 
+
+!(assertEqual (curry-arrow (R (-> T1 T2 T3))) (R (-> T1 (-> T2 T3))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (R (-> T1 (-> T2 T3)))) 
+      ( (R (-> T1 (-> T2 T3))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (: R (-> T1 T2 T3))) (: R (-> T1 (-> T2 T3))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.15"
+>;; CONVERTERS.CURRY.15</h3>
+; 
+; EVAL TEST
+; took 0.035 secs. (35.47 milliseconds) 
+
+!(assertEqual (curry-arrow (: R (-> T1 T2 T3))) (: R (-> T1 (-> T2 T3))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: R 
+          (-> T1 
+            (-> T2 T3)))) 
+      ( (: R 
+          (-> T1 
+            (-> T2 T3))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (: MP3 (-> (-> $x $y $z) $x $y $z))) (: MP3 (-> (-> $x $y $z) (-> $x (-> $y $z)))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.16"
+>;; CONVERTERS.CURRY.16</h3>
+; 
+; EVAL TEST
+; took 0.037 secs. (37.26 milliseconds) 
+
+!(assertEqual (curry-arrow (: MP3 (-> (-> $x $y $z) $x $y $z))) (: MP3 (-> (-> $x $y $z) (-> $x (-> $y $z)))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: MP3 
+          (-> 
+            (-> $x $y $z) 
+            (-> $x 
+              (-> $y $z))))) 
+      ( (: MP3 
+          (-> 
+            (-> $x $y $z) 
+            (-> $x 
+              (-> $y $z)))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (curry-arrow (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z)))) (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z)))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.17"
+>;; CONVERTERS.CURRY.17</h3>
+; 
+; EVAL TEST
+; took 0.055 secs. (54.83 milliseconds) 
+
+!(assertEqual (curry-arrow (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z)))) (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z)))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: Trans 
+          (-> 
+            (=== $x $y) 
+            (-> 
+              (=== $y $z) 
+              (=== $x $z))))) 
+      ( (: Trans 
+          (-> 
+            (=== $x $y) 
+            (-> 
+              (=== $y $z) 
+              (=== $x $z)))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Given a pair of arguments and a binary operator, flattened the
+;;;; right argument if it contains the binary operator.  The
+;;;; unflattening does not propagate recursively to left, only to the
+;;;; right and only to the operator right below, and so on.
+;;;;
+;;;; For instance
+;;;;
+;;;; (right-dissociate-with (-> T1 (-> T2 (T3 A B))) ->)
+;;;;
+;;;; outputs
+;;;;
+;;;; (-> T1 T2 (T3 A B))
+<span class="ansi38-255165000"
+> (: right-dissociate-with (-> Atom Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (right-dissociate-with $term $op)  
+  (if 
+    (is-expression $term) 
+    (if 
+      (== $term ()) () 
+      (case $term 
+        ( ( ($op $larg $rarg) (let $rd_rarg (right-dissociate-with $rarg $op) (if (is-expression $rd_rarg) (let* (($head (car-atom $rd_rarg)) ($tail (cdr-atom $rd_rarg))) (if (== $head $op) (cons-cons-atom $op $larg $tail) (cons-cons-atom $op $larg ($rd_rarg)))) (cons-cons-atom $op $larg ($rd_rarg))))) ($260 $term)))) $term))
+</span>;;;; Test right-associate-with
+<span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with T ->) T)
+
+</span>
+;<h3 id="CONVERTERS.CURRY.18"
+>;; CONVERTERS.CURRY.18</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.08 milliseconds) 
+
+!(assertEqual (right-dissociate-with T ->) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with () ->) ())
+
+</span>
+;<h3 id="CONVERTERS.CURRY.19"
+>;; CONVERTERS.CURRY.19</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.36 milliseconds) 
+
+!(assertEqual (right-dissociate-with () ->) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with (T) ->) (T))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.20"
+>;; CONVERTERS.CURRY.20</h3>
+; 
+; EVAL TEST
+; took 0.005 secs. (5.12 milliseconds) 
+
+!(assertEqual (right-dissociate-with (T) ->) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (T)) 
+      ( (T))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with (-> T1 T2) ->) (-> T1 T2))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.21"
+>;; CONVERTERS.CURRY.21</h3>
+; 
+; EVAL TEST
+; took 0.007 secs. (6.62 milliseconds) 
+
+!(assertEqual (right-dissociate-with (-> T1 T2) ->) (-> T1 T2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2)) 
+      ( (-> T1 T2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with (-> T1 (T2 A B)) ->) (-> T1 (T2 A B)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.22"
+>;; CONVERTERS.CURRY.22</h3>
+; 
+; EVAL TEST
+; took 0.012 secs. (11.85 milliseconds) 
+
+!(assertEqual (right-dissociate-with (-> T1 (T2 A B)) ->) (-> T1 (T2 A B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 
+          (T2 A B))) 
+      ( (-> T1 
+          (T2 A B)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with (-> T1 (-> T2 T3)) ->) (-> T1 T2 T3))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.23"
+>;; CONVERTERS.CURRY.23</h3>
+; 
+; EVAL TEST
+; took 0.012 secs. (12.15 milliseconds) 
+
+!(assertEqual (right-dissociate-with (-> T1 (-> T2 T3)) ->) (-> T1 T2 T3))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2 T3)) 
+      ( (-> T1 T2 T3))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (right-dissociate-with (-> T1 (-> T2 (T3 A B))) ->) (-> T1 T2 (T3 A B)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.24"
+>;; CONVERTERS.CURRY.24</h3>
+; 
+; EVAL TEST
+; took 0.018 secs. (18.39 milliseconds) 
+
+!(assertEqual (right-dissociate-with (-> T1 (-> T2 (T3 A B))) ->) (-> T1 T2 (T3 A B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2 
+          (T3 A B))) 
+      ( (-> T1 T2 
+          (T3 A B)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Convert rule from curried format to uncurried format.
+;;;;
+;;;; For instance
+;;;;
+;;;; (uncurry-arrow (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z)))))
+;;;;
+;;;; outputs
+;;;;
+;;;; (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z)))
+;;;;
+;;;; Note that the uncurrying only occurs on the arrow operator, nowhere
+;;;; else.
+<span class="ansi38-255165000"
+> (: uncurry-arrow (-> Atom Atom))
+</span><span class="ansi38-255165000"
+> (= (uncurry-arrow $term)  
+  (if 
+    (is-expression $term) 
+    (if 
+      (== $term ()) () 
+      (let* 
+        ( ($head (car-atom $term)) ($tail (cdr-atom $term))) 
+        (if 
+          (== $head ->) 
+          (right-dissociate-with $term $head) 
+          (let* 
+            ( ($ca_head (uncurry-arrow $head)) ($ca_tail (uncurry-arrow $tail))) 
+            (cons-atom $ca_head $ca_tail))))) $term))
+</span>;;;; Test uncurry-arrow
+<span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow T) T)
+
+</span>
+;<h3 id="CONVERTERS.CURRY.25"
+>;; CONVERTERS.CURRY.25</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.02 milliseconds) 
+
+!(assertEqual (uncurry-arrow T) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow ()) ())
+
+</span>
+;<h3 id="CONVERTERS.CURRY.26"
+>;; CONVERTERS.CURRY.26</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (2.42 milliseconds) 
+
+!(assertEqual (uncurry-arrow ()) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (()) 
+      (())]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (T)) (T))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.27"
+>;; CONVERTERS.CURRY.27</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (10.43 milliseconds) 
+
+!(assertEqual (uncurry-arrow (T)) (T))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (T)) 
+      ( (T))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (R A B)) (R A B))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.28"
+>;; CONVERTERS.CURRY.28</h3>
+; 
+; EVAL TEST
+; took 0.027 secs. (27.00 milliseconds) 
+
+!(assertEqual (uncurry-arrow (R A B)) (R A B))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (R A B)) 
+      ( (R A B))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow ((R A B))) ((R A B)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.29"
+>;; CONVERTERS.CURRY.29</h3>
+; 
+; EVAL TEST
+; took 0.046 secs. (46.36 milliseconds) 
+
+!(assertEqual (uncurry-arrow ((R A B))) ((R A B)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (R A B))) 
+      ( ( (R A B)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (-> T1 T2)) (-> T1 T2))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.30"
+>;; CONVERTERS.CURRY.30</h3>
+; 
+; EVAL TEST
+; took 0.010 secs. (9.87 milliseconds) 
+
+!(assertEqual (uncurry-arrow (-> T1 T2)) (-> T1 T2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2)) 
+      ( (-> T1 T2))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (-> T1 (-> T2 T3))) (-> T1 T2 T3))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.31"
+>;; CONVERTERS.CURRY.31</h3>
+; 
+; EVAL TEST
+; took 0.015 secs. (15.22 milliseconds) 
+
+!(assertEqual (uncurry-arrow (-> T1 (-> T2 T3))) (-> T1 T2 T3))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (-> T1 T2 T3)) 
+      ( (-> T1 T2 T3))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow ((-> T1 (-> T2 T3)))) ((-> T1 T2 T3)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.32"
+>;; CONVERTERS.CURRY.32</h3>
+; 
+; EVAL TEST
+; took 0.022 secs. (22.13 milliseconds) 
+
+!(assertEqual (uncurry-arrow ((-> T1 (-> T2 T3)))) ((-> T1 T2 T3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( ( (-> T1 T2 T3))) 
+      ( ( (-> T1 T2 T3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (R (-> T1 (-> T2 T3)))) (R (-> T1 T2 T3)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.33"
+>;; CONVERTERS.CURRY.33</h3>
+; 
+; EVAL TEST
+; took 0.030 secs. (29.62 milliseconds) 
+
+!(assertEqual (uncurry-arrow (R (-> T1 (-> T2 T3)))) (R (-> T1 T2 T3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (R (-> T1 T2 T3))) 
+      ( (R (-> T1 T2 T3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (: R (-> T1 (-> T2 T3)))) (: R (-> T1 T2 T3)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.34"
+>;; CONVERTERS.CURRY.34</h3>
+; 
+; EVAL TEST
+; took 0.038 secs. (37.62 milliseconds) 
+
+!(assertEqual (uncurry-arrow (: R (-> T1 (-> T2 T3)))) (: R (-> T1 T2 T3)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: R 
+          (-> T1 T2 T3))) 
+      ( (: R 
+          (-> T1 T2 T3)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (: MP3 (-> (-> $x $y $z) (-> $x (-> $y $z))))) (: MP3 (-> (-> $x $y $z) $x $y $z)))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.35"
+>;; CONVERTERS.CURRY.35</h3>
+; 
+; EVAL TEST
+; took 0.042 secs. (42.12 milliseconds) 
+
+!(assertEqual (uncurry-arrow (: MP3 (-> (-> $x $y $z) (-> $x (-> $y $z))))) (: MP3 (-> (-> $x $y $z) $x $y $z)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: MP3 
+          (-> 
+            (-> $x $y $z) $x $y $z))) 
+      ( (: MP3 
+          (-> 
+            (-> $x $y $z) $x $y $z)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqual (uncurry-arrow (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z))))) (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z))))
+
+</span>
+;<h3 id="CONVERTERS.CURRY.36"
+>;; CONVERTERS.CURRY.36</h3>
+; 
+; EVAL TEST
+; took 0.051 secs. (51.05 milliseconds) 
+
+!(assertEqual (uncurry-arrow (: Trans (-> (=== $x $y) (-> (=== $y $z) (=== $x $z))))) (: Trans (-> (=== $x $y) (=== $y $z) (=== $x $z))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (: Trans 
+          (-> 
+            (=== $x $y) 
+            (=== $y $z) 
+            (=== $x $z)))) 
+      ( (: Trans 
+          (-> 
+            (=== $x $y) 
+            (=== $y $z) 
+            (=== $x $z))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 36
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:38:21+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/converters/curry.metta" --halt=true\033[0m

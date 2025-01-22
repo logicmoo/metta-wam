@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-22 01:12:20+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/std/grounded_basic.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/more-anti-regression/std/grounded_basic.metta] ]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Custom functions over grounded functions behave ordinarily
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (sqr $x)  
+  (* $x $x))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (sqr 4) (16))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.01"
+>;; STD.GROUNDED-BASIC.01</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.25 milliseconds) 
+
+!(assertEqualToResult (sqr 4) (16))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (16) 
+      (16)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Evaluation of grounded operations over nondeterministic
+;;; expressions work in the same way as of custom symbols
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (+ (superpose (1 2 3)) 1) (superpose (2 3 4)))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.02"
+>;; STD.GROUNDED-BASIC.02</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.38 milliseconds) 
+
+!(assertEqual (+ (superpose (1 2 3)) 1) (superpose (2 3 4)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (2 3 4) 
+      (2 3 4)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (= (bin)  0)
+</span><span class="ansi38-255165000"
+> (= (bin)  1)
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (+ 1 (bin)) (1 2))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.03"
+>;; STD.GROUNDED-BASIC.03</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.13 milliseconds) 
+
+!(assertEqualToResult (+ 1 (bin)) (1 2))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (1 2) 
+      (1 2)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (let $x (+ 2 3) (* $x $x)) (25))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.04"
+>;; STD.GROUNDED-BASIC.04</h3>
+; 
+; EVAL TEST
+; took 0.000656 secs. (655.78 microseconds) 
+
+!(assertEqualToResult (let $x (+ 2 3) (* $x $x)) (25))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (25) 
+      (25)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Grounded symbols work with non-determinism based "reasoning"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Uses the grounded call `bin`, which returns a list of
+;;; both possible bits (0, 1), to recursively construct all possible
+;;; binary lists of length `$n`, appending bits one by one.
+<span class="ansi38-255165000"
+> (= (gen $n)  
+  (if 
+    (> $n 0) 
+    (:: 
+      (bin) 
+      (gen (- $n 1))) nil))
+</span>;;; Note: `::` is just a custom symbol, used here as a constructor,
+;;; but any other symbol can be used for this.
+;;; Calculates the sum of element-wise products between two lists
+<span class="ansi38-255165000"
+> (= (subsum nil nil)  0)
+</span><span class="ansi38-255165000"
+> (= (subsum (:: $x $xs) (:: $b $bs))  
+  (+ 
+    (* $x $b) 
+    (subsum $xs $bs)))
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(subsum (:: 3 (:: 7 (:: 5 nil))) (:: 1 (:: 2 (:: 3 nil))))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (subsum (:: 3 (:: 7 (:: 5 nil))) (:: 1 (:: 2 (:: 3 nil)))) (32))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.05"
+>;; STD.GROUNDED-BASIC.05</h3>
+; 
+; EVAL TEST
+; took 0.018 secs. (18.23 milliseconds) 
+
+!(assertEqualToResult (subsum (:: 3 (:: 7 (:: 5 nil))) (:: 1 (:: 2 (:: 3 nil)))) (32))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (32) 
+      (32)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Non-determinism "reasoning":
+;;; Among all 3-bit binary lists, return the one whose `subsum`
+;;; with (:: 3 (:: 7 (:: 5 nil))) equals 8, or `nop` if not found
+;;; (`superpose` is used to return an empty result acting as termination
+;;; of evaluation of the branch)
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(let $t (gen 3) (if (== (subsum (:: 3 (:: 7 (:: 5 nil))) $t) 5) $t (superpose ())))
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $t (gen 3) (if (== (subsum (:: 3 (:: 7 (:: 5 nil))) $t) 5) $t (superpose ()))) ((:: 0 (:: 0 (:: 1 nil)))))
+
+</span>
+;<h3 id="STD.GROUNDED-BASIC.06"
+>;; STD.GROUNDED-BASIC.06</h3>
+; 
+; EVAL TEST
+; took 0.348 secs. (347.91 milliseconds) 
+
+!(assertEqualToResult (let $t (gen 3) (if (== (subsum (:: 3 (:: 7 (:: 5 nil))) $t) 5) $t (superpose ()))) ((:: 0 (:: 0 (:: 1 nil)))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      ( (:: 0 
+          (:: 0 
+            (:: 1 nil)))) 
+      ( (:: 0 
+          (:: 0 
+            (:: 1 nil))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 6
+</span><span class="ansi32"
+>Failures: 0
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-01-22 01:12:29+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/std/grounded_basic.metta" --halt=true\033[0m
