@@ -88,7 +88,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 01:12:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/std/higher_order_funcs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 01:12:09+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/std/higher_order_funcs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -159,7 +159,7 @@ Script started on 2025-01-22 01:12:29+00:00 [COMMAND="timeout --preserve-status 
 >;; STD.HIGHER-ORDER-FUNCS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000202 secs. (201.80 microseconds) 
+; took 0.000180 secs. (180.22 microseconds) 
 
 !(assertEqualToResult (get-type (((curry +) 2) 3)) (Number))
 
@@ -215,7 +215,7 @@ equal_enough_for_test('[|]'([],[]),'[|]'('Number',[]))[error [error [domain_erro
 >;; STD.HIGHER-ORDER-FUNCS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.19 milliseconds) 
+; took 0.002 secs. (2.20 milliseconds) 
 
 !(assertEqualToResult ((lambda $x (+ $x 1)) 2) (3))
 
@@ -274,7 +274,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.36 milliseconds) 
+; took 0.004 secs. (4.32 milliseconds) 
 
 !(assertEqualToResult (fmap (curry-a + 2) (Something 5)) ((Something 7)))
 
@@ -314,7 +314,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.75 milliseconds) 
+; took 0.008 secs. (7.85 milliseconds) 
 
 !(assertEqualToResult (fmap-i (curry-a + 1) (Cons 6 (Cons 5 (Cons 4 Nil)))) ((Cons 7 (Cons 6 (Cons 5 Nil)))))
 
@@ -360,7 +360,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.52 milliseconds) 
+; took 0.005 secs. (4.68 milliseconds) 
 
 !(assertEqualToResult (foldl - 0 (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) (2))
 
@@ -386,7 +386,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.77 milliseconds) 
+; took 0.006 secs. (5.84 milliseconds) 
 
 !(assertEqualToResult (foldr - 0 (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) (-2))
 
@@ -412,7 +412,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.65 milliseconds) 
+; took 0.008 secs. (7.78 milliseconds) 
 
 !(assertEqualToResult (foldl Cons Nil (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) ((Cons 4 (Cons 3 (Cons 2 (Cons 1 Nil))))))
 
@@ -469,7 +469,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.42 milliseconds) 
+; took 0.010 secs. (9.54 milliseconds) 
 
 !(assertEqualToResult (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) ((Cons 1 (Cons 2 (Cons 3 Nil)))))
 
@@ -500,7 +500,7 @@ Deterministic: <span class="ansi33"
 >;; STD.HIGHER-ORDER-FUNCS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000410 secs. (410.46 microseconds) 
+; took 0.000324 secs. (323.84 microseconds) 
 
 !(assertEqualToResult (match &self (Older (Father $x) John) $x) (John))
 
@@ -530,7 +530,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-01-22 01:12:39+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 01:12:19+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

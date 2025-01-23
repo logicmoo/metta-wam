@@ -1,0 +1,929 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-23 02:45:46+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/fibo.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/fibo.metta] ]
+;;;!(extend-py! mettalog)
+;;; these examples actually need the compiler!
+<span class="ansi38-013099040"
+>!(pragma! compile full)
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-on-pass False)
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, 'pragma!', 3).
+
+</span>Asserting: transpiler_depends_on('',1,'pragma!',3)
+<span class="ansi36"
+>transpiler_stored_eval(['pragma!', 'trace-on-pass', 'False'], A=['pragma!', 'trace-on-pass', 'False'], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', 'trace-on-pass', 'False']).
+
+</span><span class="ansi31"
+>Warning: metta(pass): no matching debug topic (yet)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-on-fail True)
+
+</span><span class="ansi36"
+>transpiler_stored_eval(['pragma!', 'trace-on-fail', 'True'], A=['pragma!', 'trace-on-fail', 'True'], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', 'trace-on-fail', 'True']).
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-on-overflow True)
+
+</span><span class="ansi36"
+>transpiler_stored_eval(['pragma!', 'trace-on-overflow', 'True'], A=['pragma!', 'trace-on-overflow', 'True'], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', 'trace-on-overflow', 'True']).
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-on-error True)
+
+</span><span class="ansi36"
+>transpiler_stored_eval(['pragma!', 'trace-on-error', 'True'], A=['pragma!', 'trace-on-error', 'True'], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', 'trace-on-error', 'True']).
+
+</span><span class="ansi31"
+>Warning: metta(error): no matching debug topic (yet)
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(pragma! trace-length 2)
+
+</span><span class="ansi36"
+>transpiler_stored_eval(['pragma!', 'trace-length', 2], A=['pragma!', 'trace-length', 2], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', 'trace-length', 2]).
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Recursive Fibonacci
+<span class="ansi38-255165000"
+> (= (fib 0)  0)
+</span><span class="ansi38-255165005"
+>######### [fib,0] :- 0
+</span><span class="ansi36"
+>transpiler_stub_created(fib/2).
+
+</span>; % ######### warning: creating stub for:fib
+Retracting stub: mc_1__fib(B,C)
+<span class="ansi36"
+>transpiler_clause_store(fib, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fib, 0], 0).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(fib, 2, [x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval([fib,0]),arg(fib,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[0].
+lazyArgsList:[0-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__fib(0, 0).
+
+</span>
+Dependency Tree for '&top':fib/2:
+'&top':fib/2
+
+
+Functions to recompile after redefining '&top':fib/2 in correct order:
+   '&top':fib/2
+
+<span class="ansi38-255165000"
+> (= (fib 1)  1)
+</span><span class="ansi38-255165005"
+>######### [fib,1] :- 1
+</span><span class="ansi36"
+>transpiler_clause_store(fib, 2, 1, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fib, 1], 1).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval([fib,1]),arg(fib,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[1].
+lazyArgsList:[1-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__fib(1, 1).
+
+</span>
+Dependency Tree for '&top':fib/2:
+'&top':fib/2
+
+
+Functions to recompile after redefining '&top':fib/2 in correct order:
+   '&top':fib/2
+
+<span class="ansi38-255165000"
+> (= (fib $n)  
+  (+ 
+    (fib (- $n 1)) 
+    (fib (- $n 2))))
+</span><span class="ansi38-255165005"
+>######### [fib,_86794{vn = ...}] :- [+,[fib,[-,_86794{vn = ...},1]],[fib,[-,_86794{vn = ...},2]]]
+</span><span class="ansi36"
+>transpiler_clause_store(fib, 2, 2, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fib, _n], [+, [fib, [-, _n, 1]], [fib, [-, _n, 2]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _n-[arg(-,1),arg(fib,1)], 
+  _temp_3-[eval([fib,_n]),arg(fib,0)], 
+  _temp_4-[eval([-,_n,1]),arg(-,0),arg(fib,1)], 
+  _temp_5-[eval([fib,_temp_4]),arg(+,1),arg(fib,0)], 
+  _temp_6-[eval([-,_n,2]),arg(-,0),arg(fib,1)], 
+  _temp_7-[eval([fib,_temp_6]),arg(+,2),arg(fib,0)], 
+  _temp_8-[eval([+,_temp_5,_temp_7]),arg(+,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(fib, 2, +, 3).
+
+</span>Asserting: transpiler_depends_on(fib,2,+,3)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, -, 3).
+
+</span>Asserting: transpiler_depends_on(fib,2,-,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n].
+lazyArgsList:[_n-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi36"
+>transpiler_depends_on(fib, 2, fib, 2).
+
+</span>; Asserting: transpiler_depends_on(fib,2,fib,2)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, fib, 2).
+
+</span><span class="ansi38-240128128"
+>_n=[].
+A=[].
+B=[].
+C=[].
+D=[].
+E=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__fib(_n, A) :-
+    'mc_2__-'(_n, 1, B),
+    mc_1__fib(B, C),
+    'mc_2__-'(_n, 2, D),
+    mc_1__fib(D, E),
+    'mc_2__+'(C, E, A).
+
+</span>
+Dependency Tree for '&top':fib/2:
+'&top':fib/2
+├── '&top':+/3
+├── '&top':-/3
+└── (*) '&top':fib/2
+
+
+Functions to recompile after redefining '&top':fib/2 in correct order:
+   '&top':fib/2
+
+;;; Tail-Recursive Fibonacci
+<span class="ansi38-255165000"
+> (= (fib-tail $n)  
+  (fib-tail-helper $n 0 1))
+</span><span class="ansi38-255165005"
+>######### [fib-tail,_155420{vn = ...}] :- [fib-tail-helper,_155420{vn = ...},0,1]
+</span><span class="ansi36"
+>transpiler_stub_created('fib-tail'/2).
+
+</span>; % ######### warning: creating stub for:'fib-tail'
+Retracting stub: 'mc_1__fib-tail'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('fib-tail', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-tail', _n], ['fib-tail-helper', _n, 0, 1]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('fib-tail', 2, [x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib-tail/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _n-[arg('fib-tail-helper',1),arg('fib-tail',1)], 
+  _temp_10-[eval(['fib-tail-helper',_n,0,1]),arg('fib-tail-helper',0)], 
+  _temp_9-[eval(['fib-tail',_n]),arg('fib-tail',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-tail', 2, 'fib-tail-helper', 4).
+
+</span>Asserting: transpiler_depends_on('fib-tail',2,'fib-tail-helper',4)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n].
+lazyArgsList:[_n-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_n=[].
+A=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__fib-tail'(_n, A) :-
+    A=['fib-tail-helper', _n, 0, 1].
+
+</span>
+Dependency Tree for '&top':'fib-tail'/2:
+'&top':'fib-tail'/2
+└── '&top':'fib-tail-helper'/4
+
+
+Functions to recompile after redefining '&top':'fib-tail'/2 in correct order:
+   '&top':'fib-tail'/2
+
+<span class="ansi38-255165000"
+> (= (fib-tail-helper 0 $a $260)  $a)
+</span><span class="ansi38-255165005"
+>######### [fib-tail-helper,0,_202648{vn = ...},_202302] :- _202648{vn = ...}
+</span><span class="ansi36"
+>transpiler_stub_created('fib-tail-helper'/4).
+
+</span>; % ######### warning: creating stub for:'fib-tail-helper'
+Retracting stub: 'mc_3__fib-tail-helper'(B,C,D,E)
+<span class="ansi36"
+>transpiler_clause_store('fib-tail-helper', 4, 0, ['Any', 'Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-tail-helper', 0, _a, A], _a).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('fib-tail-helper', 4, [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib-tail-helper/4
+recompile_from_depends list [fib-tail/2]
+recompile_from_depends0 fib-tail/2
+Extracted clause: [fib-tail,_219696]:-[fib-tail-helper,_219696,0,1]
+X: [[fib-tail,_219696]-[fib-tail-helper,_219696,0,1]]
+######### [fib-tail,B] :- [fib-tail-helper,B,0,1]
+<span class="ansi36"
+>transpiler_stub_created('fib-tail'/2).
+
+</span>; % ######### warning: creating stub for:'fib-tail'
+Retracting stub: 'mc_1__fib-tail'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('fib-tail', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-tail', B], ['fib-tail-helper', B, 0, 1]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  B-[arg('fib-tail-helper',1),arg('fib-tail',1)], 
+  _temp_11-[eval(['fib-tail',B]),arg('fib-tail',0)], 
+  _temp_12-[eval(['fib-tail-helper',B,0,1]),arg('fib-tail-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[B].
+lazyArgsList:[B-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>B=[].
+A=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__fib-tail'(B, A) :-
+    'mc_3__fib-tail-helper'(B, 0, 1, A).
+
+</span>
+Dependency Tree for '&top':'fib-tail'/2:
+'&top':'fib-tail'/2
+└── '&top':'fib-tail-helper'/4
+
+
+Functions to recompile after redefining '&top':'fib-tail'/2 in correct order:
+   '&top':'fib-tail'/2
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _a-[arg('fib-tail-helper',2),arg(defn,2)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>A</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_13-[eval(['fib-tail-helper',0,_a,A]),arg('fib-tail-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[0, _a, A].
+lazyArgsList:[0-x(doeval, eager, []), _a-x(doeval, eager, []), A-x(doeval, eager, [])].
+eagerLazyList:[eager, lazy, lazy].
+typeProps:[x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_a=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_3__fib-tail-helper'(0, _a, A, _a).
+
+</span>
+Dependency Tree for '&top':'fib-tail-helper'/4:
+'&top':'fib-tail-helper'/4
+
+
+Functions to recompile after redefining '&top':'fib-tail-helper'/4 in correct order:
+   '&top':'fib-tail-helper'/4
+   '&top':'fib-tail'/2
+
+<span class="ansi38-255165000"
+> (= (fib-tail-helper $n $a $b)  
+  (fib-tail-helper 
+    (- $n 1) $b 
+    (+ $a $b)))
+</span><span class="ansi38-255165005"
+>######### [fib-tail-helper,_306152{vn = ...},_305834{vn = ...},_305516{vn = ...}] :- [fib-tail-helper,[-,_306152{vn = ...},1],_305516{vn = ...},[+,_305834{vn = ...},_305516{vn = ...}]]
+</span><span class="ansi36"
+>transpiler_clause_store('fib-tail-helper', 4, 1, ['Any', 'Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-tail-helper', _n, _a, _b], ['fib-tail-helper', [-, _n, 1], _b, [+, _a, _b]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _a-[arg(+,1),arg('fib-tail-helper',2)], 
+  _b-[arg(+,2),arg('fib-tail-helper',2),arg('fib-tail-helper',3)], 
+  _n-[arg(-,1),arg('fib-tail-helper',1)], 
+  _temp_14-[eval(['fib-tail-helper',_n,_a,_b]),arg('fib-tail-helper',0)], 
+  _temp_15-[eval([-,_n,1]),arg(-,0),arg('fib-tail-helper',1)], 
+  _temp_16-[eval([+,_a,_b]),arg(+,0),arg('fib-tail-helper',3)], 
+  _temp_17-[eval(['fib-tail-helper',_temp_15,_b,_temp_16]),arg('fib-tail-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-tail-helper', 4, -, 3).
+
+</span>Asserting: transpiler_depends_on('fib-tail-helper',4,-,3)
+<span class="ansi36"
+>transpiler_depends_on('fib-tail-helper', 4, +, 3).
+
+</span>Asserting: transpiler_depends_on('fib-tail-helper',4,+,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n, _a, _b].
+lazyArgsList:[_n-x(doeval, eager, []), _a-x(doeval, eager, []), _b-x(doeval, eager, [])].
+eagerLazyList:[eager, eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-tail-helper', 4, 'fib-tail-helper', 4).
+
+</span>; Asserting: transpiler_depends_on('fib-tail-helper',4,'fib-tail-helper',4)
+<span class="ansi36"
+>transpiler_depends_on('fib-tail-helper', 4, 'fib-tail-helper', 4).
+
+</span><span class="ansi38-240128128"
+>_n=[].
+_a=[].
+_b=[].
+A=[].
+B=[].
+C=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_3__fib-tail-helper'(_n, _a, _b, A) :-
+    'mc_2__-'(_n, 1, B),
+    'mc_2__+'(_a, _b, C),
+    'mc_3__fib-tail-helper'(B, _b, C, A).
+
+</span>
+Dependency Tree for '&top':'fib-tail-helper'/4:
+'&top':'fib-tail-helper'/4
+├── '&top':-/3
+├── '&top':+/3
+└── (*) '&top':'fib-tail-helper'/4
+
+
+Functions to recompile after redefining '&top':'fib-tail-helper'/4 in correct order:
+   '&top':'fib-tail-helper'/4
+   '&top':'fib-tail'/2
+
+;;; Fibonacci Using Accumulators
+<span class="ansi38-255165000"
+> (= (fib-acc $n)  
+  (fib-acc-helper $n 
+    (, 0 1)))
+</span><span class="ansi38-255165005"
+>######### [fib-acc,_62504{vn = ...}] :- [fib-acc-helper,_62504{vn = ...},[,,0,1]]
+</span><span class="ansi36"
+>transpiler_stub_created('fib-acc'/2).
+
+</span>; % ######### warning: creating stub for:'fib-acc'
+Retracting stub: 'mc_1__fib-acc'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('fib-acc', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-acc', _n], ['fib-acc-helper', _n, [',', 0, 1]]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('fib-acc', 2, [x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib-acc/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _n-[arg('fib-acc-helper',1),arg('fib-acc',1)], 
+  _temp_18-[eval(['fib-acc',_n]),arg('fib-acc',0)], 
+  _temp_19-[eval([',',0,1]),arg(',',0),arg('fib-acc-helper',2)], 
+  _temp_20-[eval(['fib-acc-helper',_n,_temp_19]),arg('fib-acc-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-acc', 2, 'fib-acc-helper', 3).
+
+</span>Asserting: transpiler_depends_on('fib-acc',2,'fib-acc-helper',3)
+<span class="ansi36"
+>transpiler_depends_on('fib-acc', 2, ',', 3).
+
+</span>Asserting: transpiler_depends_on('fib-acc',2,',',3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n].
+lazyArgsList:[_n-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_n=[].
+A=[].
+B=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__fib-acc'(_n, A) :-
+    B=[',', 0, 1],
+    A=['fib-acc-helper', _n, B].
+
+</span>
+Dependency Tree for '&top':'fib-acc'/2:
+'&top':'fib-acc'/2
+├── '&top':'fib-acc-helper'/3
+└── '&top':','/3
+
+
+Functions to recompile after redefining '&top':'fib-acc'/2 in correct order:
+   '&top':'fib-acc'/2
+
+<span class="ansi38-255165000"
+> (= (fib-acc-helper 0 (, $a $260))  $a)
+</span><span class="ansi38-255165005"
+>######### [fib-acc-helper,0,[,,_115546{vn = ...},_115200]] :- _115546{vn = ...}
+</span><span class="ansi36"
+>transpiler_stub_created('fib-acc-helper'/3).
+
+</span>; % ######### warning: creating stub for:'fib-acc-helper'
+Retracting stub: 'mc_2__fib-acc-helper'(B,C,D)
+<span class="ansi36"
+>transpiler_clause_store('fib-acc-helper', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-acc-helper', 0, [',', _a, A]], _a).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('fib-acc-helper', 3, [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib-acc-helper/3
+recompile_from_depends list [fib-acc/2]
+recompile_from_depends0 fib-acc/2
+Extracted clause: [fib-acc,_132316]:-[fib-acc-helper,_132316,[,,0,1]]
+X: [[fib-acc,_132316]-[fib-acc-helper,_132316,[,,0,1]]]
+######### [fib-acc,B] :- [fib-acc-helper,B,[,,0,1]]
+<span class="ansi36"
+>transpiler_stub_created('fib-acc'/2).
+
+</span>; % ######### warning: creating stub for:'fib-acc'
+Retracting stub: 'mc_1__fib-acc'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('fib-acc', 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-acc', B], ['fib-acc-helper', B, [',', 0, 1]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  B-[arg('fib-acc-helper',1),arg('fib-acc',1)], 
+  _temp_21-[eval(['fib-acc',B]),arg('fib-acc',0)], 
+  _temp_22-[eval([',',0,1]),arg(',',0),arg('fib-acc-helper',2)], 
+  _temp_23-[eval(['fib-acc-helper',B,_temp_22]),arg('fib-acc-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[B].
+lazyArgsList:[B-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>B=[].
+A=[].
+B=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__fib-acc'(B, A) :-
+    B=[',', 0, 1],
+    'mc_2__fib-acc-helper'(B, B, A).
+
+</span>
+Dependency Tree for '&top':'fib-acc'/2:
+'&top':'fib-acc'/2
+├── '&top':'fib-acc-helper'/3
+└── '&top':','/3
+
+
+Functions to recompile after redefining '&top':'fib-acc'/2 in correct order:
+   '&top':'fib-acc'/2
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _a-[arg(',',1),arg(defn,2)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>A</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_24-[eval([',',_a,A]),arg(',',0),arg('fib-acc-helper',2)], 
+  _temp_25-[eval(['fib-acc-helper',0,_temp_24]),arg('fib-acc-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[0, [',', _a, A]].
+lazyArgsList:[0-x(doeval, eager, []), [',', _a, A]-x(doeval, eager, [])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_a=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_2__fib-acc-helper'(0, [',', _a, A], _a).
+
+</span>
+Dependency Tree for '&top':'fib-acc-helper'/3:
+'&top':'fib-acc-helper'/3
+
+
+Functions to recompile after redefining '&top':'fib-acc-helper'/3 in correct order:
+   '&top':'fib-acc-helper'/3
+   '&top':'fib-acc'/2
+
+<span class="ansi38-255165000"
+> (= (fib-acc-helper $n (, $a $b))  
+  (fib-acc-helper 
+    (- $n 1) 
+    (, $b 
+      (+ $a $b))))
+</span><span class="ansi38-255165005"
+>######### [fib-acc-helper,_208384{vn = ...},[,,_208066{vn = ...},_207748{vn = ...}]] :- [fib-acc-helper,[-,_208384{vn = ...},1],[,,_207748{vn = ...},[+,_208066{vn = ...},_207748{vn = ...}]]]
+</span><span class="ansi36"
+>transpiler_clause_store('fib-acc-helper', 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-acc-helper', _n, [',', _a, _b]], ['fib-acc-helper', [-, _n, 1], [',', _b, [+, _a, _b]]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _a-[arg(+,1),arg(',',1)], 
+  _b-[arg(+,2),arg(',',1),arg(',',2)], 
+  _n-[arg(-,1),arg('fib-acc-helper',1)], 
+  _temp_26-[eval([',',_a,_b]),arg(',',0),arg('fib-acc-helper',2)], 
+  _temp_27-[eval(['fib-acc-helper',_n,_temp_26]),arg('fib-acc-helper',0)], 
+  _temp_28-[eval([-,_n,1]),arg(-,0),arg('fib-acc-helper',1)], 
+  _temp_29-[eval([+,_a,_b]),arg(+,0),arg(',',2)], 
+  _temp_30-[eval([',',_b,_temp_29]),arg(',',0),arg('fib-acc-helper',2)], 
+  _temp_31-[eval(['fib-acc-helper',_temp_28,_temp_30]),arg('fib-acc-helper',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-acc-helper', 3, -, 3).
+
+</span>Asserting: transpiler_depends_on('fib-acc-helper',3,-,3)
+<span class="ansi36"
+>transpiler_depends_on('fib-acc-helper', 3, ',', 3).
+
+</span>Asserting: transpiler_depends_on('fib-acc-helper',3,',',3)
+<span class="ansi36"
+>transpiler_depends_on('fib-acc-helper', 3, +, 3).
+
+</span>Asserting: transpiler_depends_on('fib-acc-helper',3,+,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n, [',', _a, _b]].
+lazyArgsList:[_n-x(doeval, eager, []), [',', _a, _b]-x(doeval, eager, [])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi36"
+>transpiler_depends_on('fib-acc-helper', 3, 'fib-acc-helper', 3).
+
+</span>; Asserting: transpiler_depends_on('fib-acc-helper',3,'fib-acc-helper',3)
+<span class="ansi36"
+>transpiler_depends_on('fib-acc-helper', 3, 'fib-acc-helper', 3).
+
+</span><span class="ansi38-240128128"
+>_n=[].
+_a=[].
+_b=[].
+A=[].
+B=[].
+C=[].
+D=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_2__fib-acc-helper'(_n, [',', _a, _b], A) :-
+    'mc_2__-'(_n, 1, B),
+    'mc_2__+'(_a, _b, C),
+    D=[',', _b, C],
+    'mc_2__fib-acc-helper'(B, D, A).
+
+</span>
+Dependency Tree for '&top':'fib-acc-helper'/3:
+'&top':'fib-acc-helper'/3
+├── '&top':-/3
+├── '&top':','/3
+├── '&top':+/3
+└── (*) '&top':'fib-acc-helper'/3
+
+
+Functions to recompile after redefining '&top':'fib-acc-helper'/3 in correct order:
+   '&top':'fib-acc-helper'/3
+   '&top':'fib-acc'/2
+
+;;;!(assertEqual (fib 0) 0)
+;;;!(assertEqual (fib-tail 0) 0)
+;;;!(assertEqual (fib-acc 0) 0)
+;;;!(assertEqual (fib 1) 1)
+;;;!(assertEqual (fib-tail 1) 1)
+;;;!(assertEqual (fib-acc 1) 1)
+;;;!(assertEqual (fib 2) 1)
+;;;!(assertEqual (fib-tail 2) 1)
+;;;!(assertEqual (fib-acc 2) 1)
+<span class="ansi38-013099040"
+>!(assertEqual (fib 3) 2)
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertEqual, 3).
+
+</span>Asserting: transpiler_depends_on('',1,assertEqual,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, fib, 2).
+
+</span>Asserting: transpiler_depends_on('',1,fib,2)
+<span class="ansi36"
+>transpiler_stored_eval([assertEqual, [fib, 3], 2], (mc_1__fib(3, A), mc_2__assertEqual(A, 2, B)), B).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__fib(3, B), mc_2__assertEqual(B, 2, A))).
+
+</span>
+;<h3 id="BASIC.FIBO.01"
+>;; BASIC.FIBO.01</h3>
+; 
+; EVAL TEST
+; took 0.000025 secs. (24.69 microseconds) 
+
+!(assertEqual (fib 3) 2)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test 
+      (2) 
+      (2)]]
+</span>
+N(1): <span class="ansi33"
+>()
+</span>
+Script done on 2025-01-23 02:46:27+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/fibo.metta" --halt=true\033[0m

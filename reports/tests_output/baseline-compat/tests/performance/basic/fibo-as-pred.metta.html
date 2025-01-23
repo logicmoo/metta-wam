@@ -12,17 +12,32 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:39:45+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/fibo-as-pred.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:45:04+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/fibo-as-pred.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -72,14 +87,283 @@ Deterministic: <span class="ansi33"
 </span>;;;!(memoize fibonacci)
 <span class="ansi38-255165000"
 > (= (equals $X $X)  True)
-</span>P;HTML|
-; error(domain_error(py_term,X),context(janus:py_call/2,Context_Kw))
-P;HTML|
-; error(domain_error(py_term,X),context(janus:py_call/2,_2670))
-
-^  <span class="ansi1 ansi32"
->Call: </span>(192) [user] print_ast('yellow', [=, [assign, 'True', [call(equals), _968{vn = ..., cns = ...}, _968{vn = ..., cns = ...}]], []]) ? 
-Script done on 2025-01-22 02:40:25+00:00 [COMMAND_EXIT_CODE="143"]
+</span><span class="ansi38-255165005"
+>######### [equals,_10644{vn = ...},_10644{vn = ...}] :- True
+</span><span class="ansi36"
+>transpiler_stub_created(equals/3).
+
+</span>; % ######### warning: creating stub for:equals
+Retracting stub: mc_2__equals(B,C,D)
+<span class="ansi36"
+>transpiler_clause_store(equals, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [equals, X, X], 'True').
+
+</span><span class="ansi36"
+>transpiler_predicate_store(equals, 3, [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends equals/3
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  X-[arg(equals,1),arg(equals,2)], 
+  _temp_1-[eval([equals,X,X]),arg(equals,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[X, X].
+lazyArgsList:[X-x(doeval, eager, []), X-x(doeval, eager, [])].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>X=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__equals(X, X, 'True').
+
+</span>
+Dependency Tree for '&top':equals/3:
+'&top':equals/3
+
+
+Functions to recompile after redefining '&top':equals/3 in correct order:
+   '&top':equals/3
+
+<span class="ansi38-255165000"
+> (= (fibonacci 0 0)  True)
+</span><span class="ansi38-255165005"
+>######### [fibonacci,0,0] :- True
+</span><span class="ansi36"
+>transpiler_stub_created(fibonacci/3).
+
+</span>; % ######### warning: creating stub for:fibonacci
+Retracting stub: mc_2__fibonacci(B,C,D)
+<span class="ansi36"
+>transpiler_clause_store(fibonacci, 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fibonacci, 0, 0], 'True').
+
+</span><span class="ansi36"
+>transpiler_predicate_store(fibonacci, 3, [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fibonacci/3
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval([fibonacci,0,0]),arg(fibonacci,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[0, 0].
+lazyArgsList:[0-x(doeval, eager, []), 0-x(doeval, eager, [])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__fibonacci(0, 0, 'True').
+
+</span>
+Dependency Tree for '&top':fibonacci/3:
+'&top':fibonacci/3
+
+
+Functions to recompile after redefining '&top':fibonacci/3 in correct order:
+   '&top':fibonacci/3
+
+<span class="ansi38-255165000"
+> (= (fibonacci 1 1)  True)
+</span><span class="ansi38-255165005"
+>######### [fibonacci,1,1] :- True
+</span><span class="ansi36"
+>transpiler_clause_store(fibonacci, 3, 1, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fibonacci, 1, 1], 'True').
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_3-[eval([fibonacci,1,1]),arg(fibonacci,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[1, 1].
+lazyArgsList:[1-x(doeval, eager, []), 1-x(doeval, eager, [])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__fibonacci(1, 1, 'True').
+
+</span>
+Dependency Tree for '&top':fibonacci/3:
+'&top':fibonacci/3
+
+
+Functions to recompile after redefining '&top':fibonacci/3 in correct order:
+   '&top':fibonacci/3
+
+<span class="ansi38-255165000"
+> (= (fibonacci $N1 $N4)  
+  (and 
+    (> $N1 1) 
+    (equals $N2 
+      (- $N1 1)) 
+    (equals $N3 
+      (- $N1 2)) 
+    (fibonacci $N2 $N5) 
+    (fibonacci $N3 $N6) 
+    (equals $N4 
+      (+ $N5 $N6)) True))
+</span><span class="ansi38-255165005"
+>######### [fibonacci,_143598{vn = ...},_143280{vn = ...}] :- [and,[>,_143598{vn = ...},1],[equals,_142962{vn = ...},[-,_143598{vn = ...},1]],[equals,_142644{vn = ...},[-,_143598{vn = ...},2]],[fibonacci,_142962{vn = ...},_142326{vn = ...}],[fibonacci,_142644{vn = ...},_142008{vn = ...}],[equals,_143280{vn = ...},[+,_142326{vn = ...},_142008{vn = ...}]],True]
+</span><span class="ansi36"
+>transpiler_clause_store(fibonacci, 3, 2, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fibonacci, N1, N4], [and, [>, N1, 1], [equals, N2, [-, N1, 1]], [equals, N3, [-, N1, 2]], [fibonacci, N2, N5], [fibonacci, N3, N6], [equals, N4, [+, N5, N6]], 'True']).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  N5-[arg(+,1),arg(fibonacci,2)], 
+  N6-[arg(+,2),arg(fibonacci,2)], 
+  N4-[arg(equals,1),arg(fibonacci,2)], 
+  N3-[arg(fibonacci,1),arg(equals,1)], 
+  N2-[arg(fibonacci,1),arg(equals,1)], 
+  N1-[arg(-,1),arg(>,1),arg(fibonacci,1)], 
+  _temp_10-[eval([fibonacci,N2,N5]),arg(and,4),arg(fibonacci,0)], 
+  _temp_11-[eval([fibonacci,N3,N6]),arg(and,5),arg(fibonacci,0)], 
+  _temp_12-[eval([+,N5,N6]),arg(+,0),arg(equals,2)], 
+  _temp_13-[eval([equals,N4,_temp_12]),arg(and,6),arg(equals,0)], 
+  _temp_14-[eval([and,_temp_5,_temp_7,_temp_9,_temp_10,_temp_11,_temp_13,'True']),arg(and,0)], 
+  _temp_4-[eval([fibonacci,N1,N4]),arg(fibonacci,0)], 
+  _temp_5-[eval([>,N1,1]),arg(>,0),arg(and,1)], 
+  _temp_6-[eval([-,N1,1]),arg(-,0),arg(equals,2)], 
+  _temp_7-[eval([equals,N2,_temp_6]),arg(and,2),arg(equals,0)], 
+  _temp_8-[eval([-,N1,2]),arg(-,0),arg(equals,2)], 
+  _temp_9-[eval([equals,N3,_temp_8]),arg(and,3),arg(equals,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, and, 8).
+
+</span>Asserting: transpiler_depends_on(fibonacci,3,and,8)
+<span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, >, 3).
+
+</span>Asserting: transpiler_depends_on(fibonacci,3,>,3)
+<span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, equals, 3).
+
+</span>Asserting: transpiler_depends_on(fibonacci,3,equals,3)
+<span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, -, 3).
+
+</span>Asserting: transpiler_depends_on(fibonacci,3,-,3)
+<span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, +, 3).
+
+</span>Asserting: transpiler_depends_on(fibonacci,3,+,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[N1, N4].
+lazyArgsList:[N1-x(doeval, eager, []), N4-x(doeval, eager, [])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, fibonacci, 3).
+
+</span>; Asserting: transpiler_depends_on(fibonacci,3,fibonacci,3)
+<span class="ansi36"
+>transpiler_depends_on(fibonacci, 3, fibonacci, 3).
+
+</span><span class="ansi38-240128128"
+>N1=[].
+N4=[].
+A=[].
+B=[].
+C=[].
+N2=[].
+D=[].
+E=[].
+N3=[].
+F=[].
+N5=[].
+G=[].
+N6=[].
+H=[].
+I=[].
+J=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__fibonacci(N1, N4, A) :-
+    'mc_2__>'(N1, 1, B),
+    'mc_2__-'(N1, 1, C),
+    mc_2__equals(N2, C, D),
+    'mc_2__-'(N1, 2, E),
+    mc_2__equals(N3, E, F),
+    mc_2__fibonacci(N2, N5, G),
+    mc_2__fibonacci(N3, N6, H),
+    'mc_2__+'(N5, N6, I),
+    mc_2__equals(N4, I, J),
+    A=[and, B, D, F, G, H, J, 'True'].
+
+</span>
+Dependency Tree for '&top':fibonacci/3:
+'&top':fibonacci/3
+├── '&top':and/8
+├── '&top':>/3
+├── '&top':equals/3
+├── '&top':-/3
+├── '&top':+/3
+└── (*) '&top':fibonacci/3
+
+
+Functions to recompile after redefining '&top':fibonacci/3 in correct order:
+   '&top':fibonacci/3
+
+<span class="ansi38-013099040"
+>!(match &self (fibonacci 10 $W) $W)
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, match, 4).
+
+</span>Asserting: transpiler_depends_on('',1,match,4)
+<span class="ansi36"
+>transpiler_depends_on('', 1, fibonacci, 3).
+
+</span>Asserting: transpiler_depends_on('',1,fibonacci,3)
+<span class="ansi36"
+>transpiler_stored_eval([match, '&self', [fibonacci, 10, W], W], (mc_2__fibonacci(10, W, A), B=ispu(W), mc_3__match('&self', A, B, C)), C).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_2__fibonacci(10, B, C), D=ispu(B), mc_3__match('&self', C, D, A))).
+
+</span>
+Script done on 2025-01-23 02:45:46+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

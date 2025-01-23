@@ -12,8 +12,6 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
@@ -33,12 +31,36 @@
 .ansi38-173216230 { color: #ADD8E6; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:43:29+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/pathfinding-hard-f.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:48:18+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/pathfinding-hard-f.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -99,10 +121,10 @@ Deterministic: <span class="ansi33"
 </span>; % ######### warning: creating stub for:edge
 Retracting stub: mc_1__edge(B,C)
 <span class="ansi36"
->transpiler_clause_store(edge, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, a], b).
+>transpiler_clause_store(edge, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [edge, a], b).
 
 </span><span class="ansi36"
->transpiler_predicate_store(edge, 2, [x(doeval, eager)], x(doeval, eager)).
+>transpiler_predicate_store(edge, 2, [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol'])).
 
 </span>recompile_from_depends edge/2
 recompile_from_depends list []
@@ -115,33 +137,14 @@ recompile_from_depends list []
 
 </span><span class="ansi36"
 >resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:x(doeval, eager).
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
 args_list:[a].
-lazyArgsList:[a-x(doeval, eager)].
+lazyArgsList:[a-x(doeval, eager, ['Symbol'])].
 eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-atom"
->b</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->edge</span></span>)</span>, 
-      <span class="pl-atom"
->a</span>]], 
-  []].&#13;&#10;
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
 
 </span><span class="ansi38-173216230"
 >
@@ -160,7 +163,7 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 </span><span class="ansi38-255165005"
 >######### [edge,b] :- c
 </span><span class="ansi36"
->transpiler_clause_store(edge, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, b], c).
+>transpiler_clause_store(edge, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [edge, b], c).
 
 </span>=== Assignments / Var Mappings (underscore variables) ===
 <span class="ansi35"
@@ -171,33 +174,14 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 
 </span><span class="ansi36"
 >resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:x(doeval, eager).
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
 args_list:[b].
-lazyArgsList:[b-x(doeval, eager)].
+lazyArgsList:[b-x(doeval, eager, ['Symbol'])].
 eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-atom"
->c</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->edge</span></span>)</span>, 
-      <span class="pl-atom"
->b</span>]], 
-  []].&#13;&#10;
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
 
 </span><span class="ansi38-173216230"
 >
@@ -216,7 +200,7 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 </span><span class="ansi38-255165005"
 >######### [edge,c] :- d
 </span><span class="ansi36"
->transpiler_clause_store(edge, 2, 2, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, c], d).
+>transpiler_clause_store(edge, 2, 2, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [edge, c], d).
 
 </span>=== Assignments / Var Mappings (underscore variables) ===
 <span class="ansi35"
@@ -227,33 +211,14 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 
 </span><span class="ansi36"
 >resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:x(doeval, eager).
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
 args_list:[c].
-lazyArgsList:[c-x(doeval, eager)].
+lazyArgsList:[c-x(doeval, eager, ['Symbol'])].
 eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-atom"
->d</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->edge</span></span>)</span>, 
-      <span class="pl-atom"
->c</span>]], 
-  []].&#13;&#10;
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
 
 </span><span class="ansi38-173216230"
 >
@@ -272,7 +237,7 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 </span><span class="ansi38-255165005"
 >######### [edge,e] :- f
 </span><span class="ansi36"
->transpiler_clause_store(edge, 2, 3, ['Symbol'], 'Symbol', [x(doeval, eager)], x(doeval, eager), [edge, e], f).
+>transpiler_clause_store(edge, 2, 3, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [edge, e], f).
 
 </span>=== Assignments / Var Mappings (underscore variables) ===
 <span class="ansi35"
@@ -283,33 +248,14 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 
 </span><span class="ansi36"
 >resultEager:eager.
-retProps:x(doeval, eager).
-finalLazyRet:x(doeval, eager).
-finalLazyOnlyRet:x(doeval, eager).
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
 args_list:[e].
-lazyArgsList:[e-x(doeval, eager)].
+lazyArgsList:[e-x(doeval, eager, ['Symbol'])].
 eagerLazyList:[eager].
-typeProps:[x(doeval, eager)].
-finalLazyArgs:[x(doeval, eager)].
-
-</span><span class="ansi33"
->=======
-<span class="pl-functor"
->[ </span>
-  <span class="pl-atom"
->=</span>, 
-  [ <span class="pl-atom"
->assign</span>, 
-    <span class="pl-atom"
->f</span>, 
-    [ <span class="pl-compound pl-level-0"
-><span class="pl-functor"
->call</span>(<span class="pl-args"
-><span class="pl-atom"
->edge</span></span>)</span>, 
-      <span class="pl-atom"
->e</span>]], 
-  []].&#13;&#10;
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
 
 </span><span class="ansi38-173216230"
 >
@@ -329,17 +275,398 @@ Functions to recompile after redefining '&top':edge/2 in correct order:
 </span>;;; was base case, node to itself
 <span class="ansi38-255165000"
 > (= (path $x)  $x)
-</span>P;HTML|
-; error(domain_error(py_term,_x),context(janus:py_call/2,Context_Kw))
-P;HTML|
-; error(domain_error(py_term,_x),context(janus:py_call/2,_2720))
-
-^  <span class="ansi1 ansi32"
->Call: </span>(192) [user] print_ast('yellow', [=, [assign, _992{vn = ..., cns = ...}, [call(path), _992{vn = ..., cns = ...}]], []]) ? 
-Script done on 2025-01-22 02:44:09+00:00 [COMMAND_EXIT_CODE="143"]
+</span><span class="ansi38-255165005"
+>######### [path,_165802{vn = ...}] :- _165802{vn = ...}
+</span><span class="ansi36"
+>transpiler_stub_created(path/2).
+
+</span>; % ######### warning: creating stub for:path
+Retracting stub: mc_1__path(B,C)
+<span class="ansi36"
+>transpiler_clause_store(path, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [path, _x], _x).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(path, 2, [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol'])).
+
+</span>recompile_from_depends path/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg(path,1),arg(defn,2)], 
+  _temp_5-[eval([path,_x]),arg(path,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__path(_x, _x).
+
+</span>
+Dependency Tree for '&top':path/2:
+'&top':path/2
+
+
+Functions to recompile after redefining '&top':path/2 in correct order:
+   '&top':path/2
+
+;;; recursive case
+<span class="ansi38-255165000"
+> (= (path $x)  
+  (edge (epath $x)))
+</span><span class="ansi38-255165005"
+>######### [path,_207048{vn = ...}] :- [edge,[epath,_207048{vn = ...}]]
+</span><span class="ansi36"
+>transpiler_clause_store(path, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [path, _x], [edge, [epath, _x]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg(epath,1),arg(path,1)], 
+  _temp_6-[eval([path,_x]),arg(path,0)], 
+  _temp_7-[eval([epath,_x]),arg(edge,1),arg(epath,0)], 
+  _temp_8-[eval([edge,_temp_7]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(path, 2, edge, 2).
+
+</span>Asserting: transpiler_depends_on(path,2,edge,2)
+<span class="ansi36"
+>transpiler_depends_on(path, 2, epath, 2).
+
+</span>Asserting: transpiler_depends_on(path,2,epath,2)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+A=[].
+B=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__path(_x, A) :-
+    B=[epath, _x],
+    mc_1__edge(B, A).
+
+</span>
+Dependency Tree for '&top':path/2:
+'&top':path/2
+├── '&top':edge/2
+└── '&top':epath/2
+
+
+Functions to recompile after redefining '&top':path/2 in correct order:
+   '&top':path/2
+
+;;; Pathfinding rule
+<span class="ansi38-255165000"
+> (: epath (-> Symbol Symbol))
+</span>;;; recursive case
+<span class="ansi38-255165000"
+> (= (epath $x)  
+  (epath (edge $x)))
+</span><span class="ansi38-255165005"
+>######### [epath,_255696{vn = ...}] :- [epath,[edge,_255696{vn = ...}]]
+</span><span class="ansi36"
+>transpiler_stub_created(epath/2).
+
+</span>; % ######### warning: creating stub for:epath
+Retracting stub: mc_1__epath(B,C)
+<span class="ansi36"
+>transpiler_clause_store(epath, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [epath, _x], [epath, [edge, _x]]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(epath, 2, [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol'])).
+
+</span>recompile_from_depends epath/2
+recompile_from_depends list [path/2]
+recompile_from_depends0 path/2
+Extracted clause: [path,_272302]:-_272302
+Extracted clause: [path,_272512]:-[edge,[epath,_272512]]
+X: [[path,_272302]-_272302,[path,_272512]-[edge,[epath,_272512]]]
+######### [path,B] :- B
+<span class="ansi36"
+>transpiler_stub_created(path/2).
+
+</span>; % ######### warning: creating stub for:path
+Retracting stub: mc_1__path(B,C)
+<span class="ansi36"
+>transpiler_clause_store(path, 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [path, B], B).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  B-[arg(path,1),arg(defn,2)], 
+  _temp_9-[eval([path,B]),arg(path,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[B].
+lazyArgsList:[B-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>B=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__path(B, B).
+
+</span>
+Dependency Tree for '&top':path/2:
+'&top':path/2
+├── '&top':edge/2
+└── '&top':epath/2
+
+
+Functions to recompile after redefining '&top':path/2 in correct order:
+   '&top':path/2
+######### [path,C] :- [edge,[epath,C]]
+<span class="ansi36"
+>transpiler_clause_store(path, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [path, C], [edge, [epath, C]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  C-[arg(epath,1),arg(path,1)], 
+  _temp_10-[eval([path,C]),arg(path,0)], 
+  _temp_11-[eval([epath,C]),arg(edge,1),arg(epath,0)], 
+  _temp_12-[eval([edge,_temp_11]),arg(edge,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[C].
+lazyArgsList:[C-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>C=[].
+A=[].
+B=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__path(C, A) :-
+    mc_1__epath(C, B),
+    mc_1__edge(B, A).
+
+</span>
+Dependency Tree for '&top':path/2:
+'&top':path/2
+├── '&top':edge/2
+└── '&top':epath/2
+
+
+Functions to recompile after redefining '&top':path/2 in correct order:
+   '&top':path/2
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg(edge,1),arg(epath,1)], 
+  _temp_13-[eval([epath,_x]),arg(epath,0)], 
+  _temp_14-[eval([edge,_x]),arg(edge,0),arg(epath,1)], 
+  _temp_15-[eval([epath,_temp_14]),arg(epath,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(epath, 2, edge, 2).
+
+</span>Asserting: transpiler_depends_on(epath,2,edge,2)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi36"
+>transpiler_depends_on(epath, 2, epath, 2).
+
+</span>; Asserting: transpiler_depends_on(epath,2,epath,2)
+<span class="ansi36"
+>transpiler_depends_on(epath, 2, epath, 2).
+
+</span><span class="ansi38-240128128"
+>_x=[].
+A=[].
+B=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__epath(_x, A) :-
+    mc_1__edge(_x, B),
+    mc_1__epath(B, A).
+
+</span>
+Dependency Tree for '&top':epath/2:
+'&top':epath/2
+├── '&top':edge/2
+└── (*) '&top':epath/2
+
+
+Functions to recompile after redefining '&top':epath/2 in correct order:
+   '&top':epath/2
+   '&top':path/2
+
+;;; was base case, node to itself
+<span class="ansi38-255165000"
+> (= (epath $x)  $x)
+</span><span class="ansi38-255165005"
+>######### [epath,_377502{vn = ...}] :- _377502{vn = ...}
+</span><span class="ansi36"
+>transpiler_clause_store(epath, 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), [epath, _x], _x).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg(epath,1),arg(defn,2)], 
+  _temp_16-[eval([epath,_x]),arg(epath,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__epath(_x, _x).
+
+</span>
+Dependency Tree for '&top':epath/2:
+'&top':epath/2
+├── '&top':edge/2
+└── (*) '&top':epath/2
+
+
+Functions to recompile after redefining '&top':epath/2 in correct order:
+   '&top':epath/2
+   '&top':path/2
+
+;;; Present
+<span class="ansi38-013099040"
+>!(assertTrue (== (edge a) b))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertTrue, 2).
+
+</span>Asserting: transpiler_depends_on('',1,assertTrue,2)
+<span class="ansi36"
+>transpiler_depends_on('', 1, ==, 3).
+
+</span>Asserting: transpiler_depends_on('',1,==,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, edge, 2).
+
+</span>Asserting: transpiler_depends_on('',1,edge,2)
+<span class="ansi36"
+>transpiler_stored_eval([assertTrue, [==, [edge, a], b]], (mc_1__edge(a, A), 'mc_2__=='(A, b, B), C=[assertTrue, B]), C).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__edge(a, B), 'mc_2__=='(B, b, C), A=[assertTrue, C])).
+
+</span>
+Deterministic: <span class="ansi33"
+>(assertTrue 1)
+</span>;;; Not present
+<span class="ansi38-013099040"
+>!(assertFalse (== (edge a) d))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertFalse, 2).
+
+</span>Asserting: transpiler_depends_on('',1,assertFalse,2)
+<span class="ansi36"
+>transpiler_stored_eval([assertFalse, [==, [edge, a], d]], (mc_1__edge(a, A), 'mc_2__=='(A, d, B), C=[assertFalse, B]), C).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__edge(a, B), 'mc_2__=='(B, d, C), A=[assertFalse, C])).
+
+</span>
+Deterministic: <span class="ansi33"
+>(assertFalse 0)
+</span>;;; Pathfinding tests
+;;;!(assertTrue (== (path e) e))
+;;;!(assertTrue (== (path a) b))
+;;;!(assertTrue (== (path a) d))
+;;; Should be only one dirrection
+;;;!(assertFalse (== (path c) a))
+;;; Not Connected
+;;;!(assertFalse (== (path a) f))
+;;; Pathfinding tests
+;;;!(assertTrue (== (epath e) e))
+;;;!(assertTrue (== (epath a) b))
+;;;!(assertTrue (== (epath a) d))
+;;; Should be only one dirrection
+;;;!(assertFalse (== (path c) a))
+;;; Not Connected
+;;;!(assertFalse (== (epath a) f))
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[(assertTrue 1)]
+[(assertFalse 0)]
+
+Script done on 2025-01-23 02:48:26+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/pathfinding-hard-f.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/pathfinding-hard-f.metta" --halt=true\033[0m

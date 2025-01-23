@@ -12,18 +12,35 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 01:04:16+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/chaining/parent_go_1_comp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 01:04:59+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/chaining/parent_go_1_comp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -77,18 +94,308 @@ Deterministic: <span class="ansi33"
 >transpiler_depends_on('', 1, 'import!', 3).
 
 </span>Asserting: transpiler_depends_on('',1,'import!',3)
-P;HTML|
-; error<span class="pl-functor"
->( </span>
-;    domain_error(py_term,list(['import!','&kb',go_rel])),
-;    context(janus:py_call/2,Context_Kw))
-
-^  <span class="ansi1 ansi32"
->Call: </span>(139) [user] get_types_of(list(['import!', '&kb', go_rel]), _2124) ? 
-Script done on 2025-01-22 01:04:56+00:00 [COMMAND_EXIT_CODE="143"]
+<span class="ansi36"
+>transpiler_stored_eval(['import!', '&kb', go_rel], A=['import!', '&kb', go_rel], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['import!', '&kb', go_rel]).
+
+</span><span class="ansi38-255165000"
+> (: go-level (-> (go_gene (ontology_term $o) (gene $g)) (member (gene $g) (ontology_term $o) Z)))
+</span><span class="ansi38-255165000"
+> (: go-level (-> (go_parent (ontology_term $o) (ontology_term $x)) (-> (member (gene $g) (ontology_term $x) $k) (member (gene $g) (ontology_term $o) (S $k)))))
+</span><span class="ansi38-255165000"
+> (: go_gene-a-g (go_gene (ontology_term a) (gene g)))
+</span><span class="ansi38-255165000"
+> (: go_gene-b-g (go_gene (ontology_term b) (gene g)))
+</span><span class="ansi38-255165000"
+> (: go_parent-c-b (go_parent (ontology_term c) (ontology_term b)))
+</span><span class="ansi38-255165000"
+> (: go_parent-d-c (go_parent (ontology_term d) (ontology_term c)))
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (: bc (-> $a Nat $a))
+</span><span class="ansi38-255165000"
+> (= (bc (: $prf $ccln) $1)  
+  (match &kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
+</span><span class="ansi38-255165005"
+>######### [bc,[:,_36812{vn = ...},_36482{vn = ...}],_36146{vn = ...}] :- [match,&kb,[:,_36812{vn = ...},_36482{vn = ...}],[:,_36812{vn = ...},_36482{vn = ...}]]
+</span><span class="ansi36"
+>transpiler_stub_created(bc/3).
+
+</span>; % ######### warning: creating stub for:bc
+Retracting stub: mc_2__bc(B,C,D)
+<span class="ansi36"
+>transpiler_clause_store(bc, 3, 0, [A, 'Nat'], A, [x(doeval, eager, []), x(doeval, eager, ['Nat'])], x(doeval, eager, []), [bc, [:, _prf, _ccln], _1], [match, '&kb', [:, _prf, _ccln], [:, _prf, _ccln]]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(bc, 3, [x(doeval, eager, []), x(doeval, eager, ['Nat'])], x(doeval, eager, [])).
+
+</span>recompile_from_depends bc/3
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prf</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_ccln</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_1</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_1-[eval([:,_prf,_ccln]),arg(:,0),arg(bc,1)], 
+  _temp_2-[eval([bc,_temp_1,_1]),arg(bc,0)], 
+  _temp_3-[eval([:,_prf,_ccln]),arg('&kb',1),arg(:,0),arg(match,2)], 
+  _temp_4-[eval([:,_prf,_ccln]),arg('&kb',2),arg(:,0),arg(match,3)], 
+  _temp_5-[eval([match,'&kb',_temp_3,_temp_4]),arg(match,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(bc, 3, match, 4).
+
+</span>Asserting: transpiler_depends_on(bc,3,match,4)
+<span class="ansi36"
+>transpiler_depends_on(bc, 3, :, 3).
+
+</span>Asserting: transpiler_depends_on(bc,3,:,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, []).
+finalLazyRet:x(doeval, eager, []).
+finalLazyOnlyRet:x(doeval, eager, []).
+args_list:[[:, _prf, _ccln], _1].
+lazyArgsList:[[:, _prf, _ccln]-x(doeval, eager, []), _1-x(doeval, eager, ['Nat'])].
+eagerLazyList:[eager, lazy].
+typeProps:[x(doeval, eager, []), x(doeval, eager, ['Nat'])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, ['Nat'])].
+
+</span><span class="ansi38-240128128"
+>_prf=[].
+_ccln=[].
+_1=[].
+A=[].
+B=[].
+C=[].
+D=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__bc([:, _prf, _ccln], _1, A) :-
+    B=[:, _prf, _ccln],
+    C=ispuU(D, D=[:, _prf, _ccln]),
+    mc_3__match('&kb', B, C, A).
+
+</span>
+Dependency Tree for '&top':bc/3:
+'&top':bc/3
+├── '&top':match/4
+└── '&top'::/3
+
+
+Functions to recompile after redefining '&top':bc/3 in correct order:
+   '&top':bc/3
+
+<span class="ansi38-255165000"
+> (= (bc (: ($prfabs $prfarg) $ccln) (S $k))  
+  (let* 
+    ( ( (: $prfabs 
+          (-> $prms $ccln)) (bc (: $prfabs (-> $prms $ccln)) $k)) ((: $prfarg $prms) (bc (: $prfarg $prms) $k))) 
+    (: 
+      ($prfabs $prfarg) $ccln)))
+</span><span class="ansi38-255165005"
+>######### [bc,[:,[_142852{vn = ...},_142504{vn = ...}],_142156{vn = ...}],[S,_141820{vn = ...}]] :- [let*,[[[:,_142852{vn = ...},[->,_141502{vn = ...},_142156{vn = ...}]],[bc,[:,_142852{vn = ...},[->,_141502{vn = ...},_142156{vn = ...}]],_141820{vn = ...}]],[[:,_142504{vn = ...},_141502{vn = ...}],[bc,[:,_142504{vn = ...},_141502{vn = ...}],_141820{vn = ...}]]],[:,[_142852{vn = ...},_142504{vn = ...}],_142156{vn = ...}]]
+</span><span class="ansi36"
+>transpiler_clause_store(bc, 3, 1, [A, 'Nat'], A, [x(doeval, eager, []), x(doeval, eager, ['Nat'])], x(doeval, eager, []), [bc, [:, [_prfabs, _prfarg], _ccln], ['S', _k]], ['let*', [[[:, _prfabs, [->, _prms, _ccln]], [bc, [:, _prfabs, [->, _prms, _ccln]], _k]], [[:, _prfarg, _prms], [bc, [:, _prfarg, _prms], _k]]], [:, [_prfabs, _prfarg], _ccln]]).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _ccln-[arg(:,2),arg(->,2)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prfarg</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _prms-[arg(:,2),arg(->,1)], 
+  _k-[arg(bc,2),arg('S',1)], 
+  <span class="pl-compound pl-level-0"
+><span class="pl-var"
+>_prfabs</span><span class="pl-infix"
+>-</span><span class="pl-list"
+><span class="pl-functor"
+> [ </span><span class="pl-args"
+><span class="pl-compound"
+><span class="pl-functor"
+>arg</span>(<span class="pl-args"
+><span class="pl-ellipsis"
+>...</span>, <span class="pl-ellipsis"
+>...</span></span>)</span></span>]</span></span>, 
+  _temp_10-[eval([:,_prfabs,_temp_9]),arg(:,0)], 
+  _temp_11-[eval([->,_prms,_ccln]),arg(->,0),arg(:,2)], 
+  _temp_12-[eval([:,_prfabs,_temp_11]),arg(:,0),arg(bc,1)], 
+  _temp_13-[eval([bc,_temp_12,_k]),arg(bc,0)], 
+  _temp_14-[eval([:,_prfarg,_prms]),arg(:,0)], 
+  _temp_15-[eval([:,_prfarg,_prms]),arg(:,0),arg(bc,1)], 
+  _temp_16-[eval([bc,_temp_15,_k]),arg(bc,0)], 
+  _temp_17-[eval([:,[_prfabs,_prfarg],_ccln]),arg(:,0),arg('let*',2)], 
+  _temp_18-[eval(['let*',[[_temp_10,_temp_13],[_temp_14,_temp_16]],_temp_17]),arg('let*',0)], 
+  _temp_6-[eval([:,[_prfabs,_prfarg],_ccln]),arg(:,0),arg(bc,1)], 
+  _temp_7-[eval(['S',_k]),arg('S',0),arg(bc,2)], 
+  _temp_8-[eval([bc,_temp_6,_temp_7]),arg(bc,0)], 
+  _temp_9-[eval([->,_prms,_ccln]),arg(->,0),arg(:,2)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(bc, 3, ->, 3).
+
+</span>Asserting: transpiler_depends_on(bc,3,->,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, []).
+finalLazyRet:x(doeval, eager, []).
+finalLazyOnlyRet:x(doeval, eager, []).
+args_list:[[:, [_prfabs, _prfarg], _ccln], ['S', _k]].
+lazyArgsList:[[:, [_prfabs, _prfarg], _ccln]-x(doeval, eager, []), ['S', _k]-x(doeval, eager, ['Nat'])].
+eagerLazyList:[eager, eager].
+typeProps:[x(doeval, eager, []), x(doeval, eager, ['Nat'])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, ['Nat'])].
+
+</span><span class="ansi36"
+>transpiler_depends_on(bc, 3, bc, 3).
+
+</span>; Asserting: transpiler_depends_on(bc,3,bc,3)
+<span class="ansi36"
+>transpiler_depends_on(bc, 3, bc, 3).
+
+</span><span class="ansi38-240128128"
+>_prfabs=[].
+_prfarg=[].
+_ccln=[].
+_k=[].
+A=[].
+B=[].
+_prms=[].
+C=[].
+D=[].
+E=[].
+F=[].
+G=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_2__bc([:, [_prfabs, _prfarg], _ccln], ['S', _k], A) :-
+    B=[->, _prms, _ccln],
+    C=[:, _prfabs, B],
+    mc_2__bc(C, _k, D),
+    [:, _prfabs, [->, _prms, _ccln]]=D,
+    E=[:, _prfarg, _prms],
+    mc_2__bc(E, _k, F),
+    [:, _prfarg, _prms]=F,
+    G=[_prfabs, _prfarg],
+    A=[:, G, _ccln].
+
+</span>
+Dependency Tree for '&top':bc/3:
+'&top':bc/3
+├── '&top':match/4
+├── '&top'::/3
+├── '&top':->/3
+└── (*) '&top':bc/3
+
+
+Functions to recompile after redefining '&top':bc/3 in correct order:
+   '&top':bc/3
+
+<span class="ansi38-013099040"
+>!(bc (: $prf (member $g $o $k)) (S (S (S Z))))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, bc, 3).
+
+</span>Asserting: transpiler_depends_on('',1,bc,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, :, 3).
+
+</span>Asserting: transpiler_depends_on('',1,:,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, member, 4).
+
+</span>Asserting: transpiler_depends_on('',1,member,4)
+<span class="ansi36"
+>transpiler_depends_on('', 1, 'S', 2).
+
+</span>Asserting: transpiler_depends_on('',1,'S',2)
+<span class="ansi36"
+>transpiler_stored_eval([bc, [:, _prf, [member, _g, _o, _k]], ['S', ['S', ['S', 'Z']]]], (A=[member, _g, _o, _k], B=[:, _prf, A], C=['S', 'Z'], D=['S', C], E=['S', D], mc_2__bc(B, E, F)), F).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=[member, _, _, _], C=[:, _, B], D=['S', 'Z'], E=['S', D], F=['S', E], mc_2__bc(C, F, A))).
+
+</span>
+N(1): <span class="ansi33"
+>(: (go-level go_gene-a-g) (member (gene g) (ontology_term a) Z))
+</span>
+N(2): <span class="ansi33"
+>(: (go-level go_gene-b-g) (member (gene g) (ontology_term b) Z))
+</span>
+N(3): <span class="ansi33"
+>(: ((go-level go_parent-c-b) (go-level go_gene-b-g)) (member (gene g) (ontology_term c) (S Z)))
+</span>
+N(4): <span class="ansi33"
+>(: ((go-level go_parent-d-c) ((go-level go_parent-c-b) (go-level go_gene-b-g))) (member (gene g) (ontology_term d) (S (S Z))))
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[(: (go-level go_gene-a-g) (member (gene g) (ontology_term a) Z)), (: (go-level go_gene-b-g) (member (gene g) (ontology_term b) Z)), (: ((go-level go_parent-c-b) (go-level go_gene-b-g)) (member (gene g) (ontology_term c) (S Z))), (: ((go-level go_parent-d-c) ((go-level go_parent-c-b) (go-level go_gene-b-g))) (member (gene g) (ontology_term d) (S (S Z))))]
+
+Script done on 2025-01-23 01:05:07+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/chaining/parent_go_1_comp.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/more-anti-regression/chaining/parent_go_1_comp.metta" --halt=true\033[0m

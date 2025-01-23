@@ -45,7 +45,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:38:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/typed-variables/enforced-types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:43:43+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/typed-variables/enforced-types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -123,7 +123,7 @@ Script started on 2025-01-22 02:38:24+00:00 [COMMAND="timeout --preserve-status 
 >;; TYPED-VARIABLES.ENFORCED-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.80 milliseconds) 
+; took 0.004 secs. (3.79 milliseconds) 
 
 !(assertEqual (constrain-true $even (is-even $even) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
 
@@ -161,7 +161,7 @@ equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'
 >;; TYPED-VARIABLES.ENFORCED-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.96 milliseconds) 
+; took 0.009 secs. (9.06 milliseconds) 
 
 !(assertEqual (declare-type $even EvenNumber (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
 
@@ -180,7 +180,7 @@ equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'
 >;; TYPED-VARIABLES.ENFORCED-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.02 milliseconds) 
+; took 0.002 secs. (1.83 milliseconds) 
 
 !(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 2 $even)) (2))
 
@@ -202,7 +202,7 @@ Deterministic: <span class="ansi33"
 >;; TYPED-VARIABLES.ENFORCED-TYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.90 milliseconds) 
+; took 0.002 secs. (1.82 milliseconds) 
 
 !(assertEqualToResult (let $260 (: $even EvenNumber) (let $even 1 $even)) ())
 
@@ -221,7 +221,7 @@ equal_enough_for_test('[|]'(1,[]),[])[error [error [domain_error py_term [Error 
 >;; TYPED-VARIABLES.ENFORCED-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.02 milliseconds) 
+; took 0.003 secs. (2.92 milliseconds) 
 
 !(assertEqualToResult ((let $260 (: $even EvenNumber) (let $even $even unknown-symbol)) (get-type unknown-symbol)) ((unknown-symbol EvenNumber)))
 
@@ -241,7 +241,7 @@ equal_enough_for_test('[|]'('[|]'('unknown-symbol','[|]'('%Undefined%',[])),[]),
 >;; TYPED-VARIABLES.ENFORCED-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.75 milliseconds) 
+; took 0.002 secs. (1.64 milliseconds) 
 
 !(assertEqualToResult ((let $260 (: $thing SomeType) (let $thing $thing other-symbol)) (get-type other-symbol)) ((other-symbol SomeType)))
 
@@ -282,7 +282,7 @@ Deterministic: <span class="ansi33"
 >;; TYPED-VARIABLES.ENFORCED-TYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.000983 secs. (982.87 microseconds) 
 
 !(assertEqual (let True (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
 
@@ -301,7 +301,7 @@ equal_enough_for_test([],'[|]'(2,'[|]'(4,'[|]'(6,[]))))[error [error [domain_err
 >;; TYPED-VARIABLES.ENFORCED-TYPES.08</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.001 secs. (1.18 milliseconds) 
 
 !(assertEqual (let False (== (get-type $even) EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (1 3 5)))
 
@@ -323,7 +323,7 @@ equal_enough_for_test('[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,'[|]'(5,'[|]'(6,[])))))),'
 >;; TYPED-VARIABLES.ENFORCED-TYPES.09</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.94 milliseconds) 
+; took 0.002 secs. (1.81 milliseconds) 
 
 !(assertEqualToResult (let $260 (: $even EvenNumber) (let $even even-symbol $even)) even-symbol)
 
@@ -345,7 +345,7 @@ equal_enough_for_test('[|]'('even-symbol',[]),'even-symbol')[error [error [domai
 >;; TYPED-VARIABLES.ENFORCED-TYPES.10</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.96 milliseconds) 
+; took 0.002 secs. (1.85 milliseconds) 
 
 !(assertEqualToResult (let $260 (: $even EvenNumber) (let $even has-type-symbol $even)) ())
 
@@ -364,7 +364,7 @@ equal_enough_for_test('[|]'('has-type-symbol',[]),[])[error [error [domain_error
 >;; TYPED-VARIABLES.ENFORCED-TYPES.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.14 milliseconds) 
+; took 0.002 secs. (2.06 milliseconds) 
 
 !(assertEqual (let $260 (: $even EvenNumber) (let $even (superpose (1 2 3 4 5 6)) $even)) (superpose (2 4 6)))
 
@@ -388,7 +388,7 @@ equal_enough_for_test('[|]'('has-type-symbol',[]),[])[error [error [domain_error
 [unknown-symbol]
 [[[[[
 
-Script done on 2025-01-22 02:38:33+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 02:43:52+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

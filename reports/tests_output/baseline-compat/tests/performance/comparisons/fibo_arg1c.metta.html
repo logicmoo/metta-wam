@@ -12,17 +12,24 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:48:04+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/comparisons/fibo_arg1c.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:51:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/comparisons/fibo_arg1c.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -79,14 +86,164 @@ Deterministic: <span class="ansi33"
       (+ 
         (fib (- $n 1)) 
         (fib (- $n 2))))))
-</span>P;HTML|
-; error(domain_error(py_term,_n),context(janus:py_call/2,Context_Kw))
-P;HTML|
-; error(domain_error(py_term,_n),context(janus:py_call/2,_3628))
-
-^  <span class="ansi1 ansi32"
->Call: </span>(192) [user] print_ast('yellow', [=, [assign, _3562{cns = ...}, [call(fib), _1136{vn = ..., cns = ...}]], [[prolog_if, [[assign, _2978, [call(==), _1136{vn = ..., cns = ...}, 0]], [native(is_True), _2978]], [[assign, _3562{cns = ...}, 0]], [[prolog_if, [[assign, _3050, [call(==), _1136{vn = ..., cns = ...}, 1]], [native(is_True), _3050]], [[assign, _3048, 1]], [[assign, _3124, [call(-), _1136{vn = ..., cns = ...}, 1]], [assign, _3122, [call(fib), _3124]], [assign, _3202, [call(-), _1136{vn = ..., cns = ...}, 2]], [assign, _3200, [call(fib), _3202]], [assign, _3120, [call(+), _3122, _3200]], [assign, _3048, _3120]]], [assign, _3562{cns = ...}, _3048]]]]]) ? 
-Script done on 2025-01-22 02:48:44+00:00 [COMMAND_EXIT_CODE="143"]
+</span><span class="ansi38-255165005"
+>######### [fib,_10680{vn = ...}] :- [if,[==,_10680{vn = ...},0],0,[if,[==,_10680{vn = ...},1],1,[+,[fib,[-,_10680{vn = ...},1]],[fib,[-,_10680{vn = ...},2]]]]]
+</span><span class="ansi36"
+>transpiler_stub_created(fib/2).
+
+</span>; % ######### warning: creating stub for:fib
+Retracting stub: mc_1__fib(B,C)
+<span class="ansi36"
+>transpiler_clause_store(fib, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fib, _n], [if, [==, _n, 0], 0, [if, [==, _n, 1], 1, [+, [fib, [-, _n, 1]], [fib, [-, _n, 2]]]]]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(fib, 2, [x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends fib/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _n-[arg(-,1),arg(==,1),arg(fib,1)], 
+  _temp_1-[eval([fib,_n]),arg(fib,0)], 
+  _temp_10-[eval([if,_temp_2,0,_temp_9]),arg(if,0)], 
+  _temp_2-[eval([==,_n,0]),arg(==,0),arg(if,1)], 
+  _temp_3-[eval([==,_n,1]),arg(==,0),arg(if,1)], 
+  _temp_4-[eval([-,_n,1]),arg(-,0),arg(fib,1)], 
+  _temp_5-[eval([fib,_temp_4]),arg(+,1),arg(fib,0)], 
+  _temp_6-[eval([-,_n,2]),arg(-,0),arg(fib,1)], 
+  _temp_7-[eval([fib,_temp_6]),arg(+,2),arg(fib,0)], 
+  _temp_8-[eval([+,_temp_5,_temp_7]),arg(+,0),arg(if,3)], 
+  _temp_9-[eval([if,_temp_3,1,_temp_8]),arg(if,0),arg(if,3)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(fib, 2, ==, 3).
+
+</span>Asserting: transpiler_depends_on(fib,2,==,3)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, +, 3).
+
+</span>Asserting: transpiler_depends_on(fib,2,+,3)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, -, 3).
+
+</span>Asserting: transpiler_depends_on(fib,2,-,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_n].
+lazyArgsList:[_n-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi36"
+>transpiler_depends_on(fib, 2, is_True, 1).
+
+</span>; Asserting: transpiler_depends_on(fib,2,is_True,1)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, is_True, 1).
+
+</span><span class="ansi36"
+>transpiler_stub_created(is_True/1).
+
+</span>; % ######### warning: creating stub for:is_True
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, fib, 2).
+
+</span>; Asserting: transpiler_depends_on(fib,2,fib,2)
+<span class="ansi36"
+>transpiler_depends_on(fib, 2, fib, 2).
+
+</span><span class="ansi38-240128128"
+>_n=[].
+A=[].
+B=[].
+C=[].
+D=[].
+E=[].
+F=[].
+G=[].
+H=[].
+I=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__fib(_n, A) :-
+    (   'mc_2__=='(_n, 0, B),
+        is_True(B)
+    *-> A=0
+    ;   (   'mc_2__=='(_n, 1, C),
+            is_True(C)
+        *-> D=1
+        ;   'mc_2__-'(_n, 1, E),
+            mc_1__fib(E, F),
+            'mc_2__-'(_n, 2, G),
+            mc_1__fib(G, H),
+            'mc_2__+'(F, H, I),
+            D=I
+        ),
+        A=D
+    ).
+
+</span>
+Dependency Tree for '&top':fib/2:
+'&top':fib/2
+├── '&top':==/3
+├── '&top':+/3
+├── '&top':-/3
+├── '&top':is_True/1
+└── (*) '&top':fib/2
+
+
+Functions to recompile after redefining '&top':fib/2 in correct order:
+   '&top':fib/2
+
+<span class="ansi38-013099040"
+>!(call-fn (argv-metta 1))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, 'call-fn', 2).
+
+</span>Asserting: transpiler_depends_on('',1,'call-fn',2)
+<span class="ansi36"
+>transpiler_depends_on('', 1, 'argv-metta', 2).
+
+</span>Asserting: transpiler_depends_on('',1,'argv-metta',2)
+<span class="ansi36"
+>transpiler_stored_eval(['call-fn', ['argv-metta', 1]], (A=['argv-metta', 1], B=['call-fn', A]), B).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['argv-metta', 1], A=['call-fn', B])).
+
+</span>
+Deterministic: <span class="ansi33"
+>(call-fn (argv-metta 1))
+</span><span class="ansi38-013099040"
+>!(println! (fib (call-fn (argv-metta 1))))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, 'println!', 2).
+
+</span>Asserting: transpiler_depends_on('',1,'println!',2)
+<span class="ansi36"
+>transpiler_depends_on('', 1, fib, 2).
+
+</span>Asserting: transpiler_depends_on('',1,fib,2)
+<span class="ansi36"
+>transpiler_stored_eval(['println!', [fib, ['call-fn', ['argv-metta', 1]]]], (A=['argv-metta', 1], B=['call-fn', A], mc_1__fib(B, C), 'mc_1__println!'(C, D)), D).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (B=['argv-metta', 1], C=['call-fn', B], mc_1__fib(C, D), 'mc_1__println!'(D, A))).
+
+</span>
+Script done on 2025-01-23 02:52:30+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

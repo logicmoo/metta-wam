@@ -94,7 +94,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 01:45:53+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/iterative-chaining/ibc-xp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 01:45:34+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/iterative-chaining/ibc-xp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -274,7 +274,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.15 milliseconds) 
+; took 0.002 secs. (2.12 milliseconds) 
 
 !(assertEqual (syn (: a A) Z) (: a A))
 
@@ -295,7 +295,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.80 milliseconds) 
+; took 0.002 secs. (1.84 milliseconds) 
 
 !(assertEqual (syn (: $prf (-> $prms (-> A B))) Z) (: ModusPonens (-> (→ A B) (-> A B))))
 
@@ -322,7 +322,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.63 milliseconds) 
+; took 0.009 secs. (8.69 milliseconds) 
 
 !(assertEqual (syn (: $prf (-> A B)) (fromNumber 1)) (: (ModusPonens ab) (-> A B)))
 
@@ -347,7 +347,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.38 milliseconds) 
+; took 0.018 secs. (18.37 milliseconds) 
 
 !(assertEqual (syn (: $prf B) (fromNumber 2)) (: ((ModusPonens ab) a) B))
 
@@ -370,7 +370,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.042 secs. (42.40 milliseconds) 
+; took 0.043 secs. (43.01 milliseconds) 
 
 !(assertEqual (syn (: $prf C) (fromNumber 3)) (: ((ModusPonens bc) ((ModusPonens ab) a)) C))
 
@@ -393,7 +393,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.06</h3>
 ; 
 ; EVAL TEST
-; took 0.198 secs. (198.08 milliseconds) 
+; took 0.199 secs. (198.91 milliseconds) 
 
 !(assertEqualToResult (syn (: $prf C) (fromNumber 4)) ((: ((((. ModusPonens) (Deduction bc)) ab) a) C) (: (((. (ModusPonens bc)) (ModusPonens ab)) a) C) (: ((ModusPonens ((Deduction bc) ab)) a) C) (: ((ModusPonens bc) ((ModusPonens ab) a)) C)))
 
@@ -430,7 +430,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.07</h3>
 ; 
 ; EVAL TEST
-; took 2.98 seconds.
+; took 2.97 seconds.
 
 !(assertEqualToResult (syn (: $prf (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (fromNumber 4)) ((: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (: ((. (. ModusPonens)) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))))
 
@@ -465,7 +465,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.08</h3>
 ; 
 ; EVAL TEST
-; took 0.886 secs. (886.25 milliseconds) 
+; took 0.886 secs. (886.38 milliseconds) 
 
 !(assertEqualToResult (syn (: $prf (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s))))) (fromNumber 4)) ((: ((((. .) .) Deduction) Deduction) (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s))))) (: ((. (. Deduction)) Deduction) (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s)))))))
 
@@ -553,7 +553,7 @@ N(1): <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000171 secs. (171.39 microseconds) 
+; took 0.000155 secs. (155.01 microseconds) 
 
 !(assertEqualToResult (get-atoms &space-test) (A))
 
@@ -584,7 +584,7 @@ N(1): <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000222 secs. (222.09 microseconds) 
+; took 0.000182 secs. (181.66 microseconds) 
 
 !(assertEqualToResult (get-atoms &space-test) (A B C))
 
@@ -634,7 +634,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.002 secs. (1.60 milliseconds) 
 
 !(assertEqual (isyn (: a A) Z Z) (: a A))
 
@@ -654,7 +654,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.12</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.07 milliseconds) 
+; took 0.003 secs. (3.03 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb) ((: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r))))))
 
@@ -719,7 +719,7 @@ Deterministic: <span class="ansi33"
 > (: ((ModusPonens ab) a) B)
 </span>; 
 ; EVAL TEST
-; took 0.053 secs. (52.86 milliseconds) 
+; took 0.053 secs. (53.12 milliseconds) 
 
 !(assertEqual (isyn (: $prf B) (fromNumber 2) (fromNumber 1)) (: ((ModusPonens ab) a) B))
 
@@ -741,7 +741,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.14</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.26 milliseconds) 
+; took 0.004 secs. (4.33 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb) ((: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r)))) (: ((ModusPonens ab) a) B)))
 
@@ -809,7 +809,7 @@ Deterministic: <span class="ansi33"
 > (: ((ModusPonens bc) ((ModusPonens ab) a)) C)
 </span>; 
 ; EVAL TEST
-; took 0.081 secs. (80.88 milliseconds) 
+; took 0.082 secs. (81.85 milliseconds) 
 
 !(assertEqual (isyn (: $prf C) (fromNumber 2) (fromNumber 1)) (: ((ModusPonens bc) ((ModusPonens ab) a)) C))
 
@@ -831,7 +831,7 @@ Deterministic: <span class="ansi33"
 >;; ITERATIVE-CHAINING.IBC-XP.16</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.69 milliseconds) 
+; took 0.007 secs. (6.80 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb) ((: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r)))) (: ((ModusPonens ab) a) B) (: ((ModusPonens bc) ((ModusPonens ab) a)) C)))
 
@@ -906,7 +906,7 @@ Deterministic: <span class="ansi33"
 > (: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))
 </span>; 
 ; EVAL TEST
-; took 3.19 seconds.
+; took 3.22 seconds.
 
 !(assertEqualToResult (isyn (: $prf (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (fromNumber 4) (fromNumber 1)) ((: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (: ((. (. ModusPonens)) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))))
 
@@ -1021,7 +1021,7 @@ N(2): <span class="ansi33"
 [()]
 [(: (((((. (. ModusPonens)) Deduction) ef) de) ((ModusPonens cd) ((ModusPonens bc) ((ModusPonens ab) a)))) F), (: (((((((. .) .) ModusPonens) Deduction) ef) de) ((ModusPonens cd) ((ModusPonens bc) ((ModusPonens ab) a)))) F)]
 
-Script done on 2025-01-22 01:46:15+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 01:45:56+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -12,18 +12,30 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:31:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/bidirectional_computation/reverse-arithmetic.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:37:00+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/bidirectional_computation/reverse-arithmetic.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -79,18 +91,158 @@ Deterministic: <span class="ansi33"
 >transpiler_depends_on('', 1, 'pragma!', 3).
 
 </span>Asserting: transpiler_depends_on('',1,'pragma!',3)
-P;HTML|
-; error<span class="pl-functor"
->( </span>
-;    domain_error(py_term,list(['pragma!',table,false])),
-;    context(janus:py_call/2,Context_Kw))
-
-^  <span class="ansi1 ansi32"
->Call: </span>(139) [user] get_types_of(list(['pragma!', table, false]), _2124) ? 
-Script done on 2025-01-22 02:31:51+00:00 [COMMAND_EXIT_CODE="143"]
+<span class="ansi36"
+>transpiler_stored_eval(['pragma!', table, false], A=['pragma!', table, false], A).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A, A=['pragma!', table, false]).
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-255165000"
+> (= (f $x)  
+  (* 2 $x))
+</span><span class="ansi38-255165005"
+>######### [f,_43880{vn = ...}] :- [*,2,_43880{vn = ...}]
+</span><span class="ansi36"
+>transpiler_stub_created(f/2).
+
+</span>; % ######### warning: creating stub for:f
+Retracting stub: mc_1__f(B,C)
+<span class="ansi36"
+>transpiler_clause_store(f, 2, 0, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [f, _x], [*, 2, _x]).
+
+</span><span class="ansi36"
+>transpiler_predicate_store(f, 2, [x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends f/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg(*,2),arg(f,1)], 
+  _temp_1-[eval([f,_x]),arg(f,0)], 
+  _temp_2-[eval([*,2,_x]),arg(*,0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>transpiler_depends_on(f, 2, *, 3).
+
+</span>Asserting: transpiler_depends_on(f,2,*,3)
+<span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, [])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+A=[].
+
+</span><span class="ansi38-173216230"
+>
+mc_1__f(_x, A) :-
+    'mc_2__*'(2, _x, A).
+
+</span>
+Dependency Tree for '&top':f/2:
+'&top':f/2
+└── '&top':*/3
+
+
+Functions to recompile after redefining '&top':f/2 in correct order:
+   '&top':f/2
+
+<span class="ansi38-013099040"
+>!(print (match &self (= (f 1)  $y) $y))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, print, 2).
+
+</span>Asserting: transpiler_depends_on('',1,print,2)
+<span class="ansi36"
+>transpiler_depends_on('', 1, match, 4).
+
+</span>Asserting: transpiler_depends_on('',1,match,4)
+<span class="ansi36"
+>transpiler_depends_on('', 1, =, 3).
+
+</span>Asserting: transpiler_depends_on('',1,=,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, f, 2).
+
+</span>Asserting: transpiler_depends_on('',1,f,2)
+<span class="ansi36"
+>transpiler_stored_eval([print, [match, '&self', [=, [f, 1], _y], _y]], (mc_1__f(1, A), B=[=, A, _y], C=ispu(_y), mc_3__match('&self', B, C, D), E=[print, D]), E).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__f(1, B), C=[=, B, D], E=ispu(D), mc_3__match('&self', C, E, F), A=[print, F])).
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(assertEqual (match &self (= (f 1)  $y) $y) (superpose (2)))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertEqual, 3).
+
+</span>Asserting: transpiler_depends_on('',1,assertEqual,3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, superpose, 2).
+
+</span>Asserting: transpiler_depends_on('',1,superpose,2)
+<span class="ansi36"
+>transpiler_stored_eval([assertEqual, [match, '&self', [=, [f, 1], _y], _y], [superpose, [2]]], (mc_1__f(1, A), B=[=, A, _y], C=ispu(_y), mc_3__match('&self', B, C, D), E=[2], F=[superpose, E], mc_2__assertEqual(D, F, G)), G).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__f(1, B), C=[=, B, D], E=ispu(D), mc_3__match('&self', C, E, F), G=[2], H=[superpose, G], mc_2__assertEqual(F, H, A))).
+
+</span>;; no-results ;; 
+;;; Expected Output: [2]
+<span class="ansi38-013099040"
+>!(print (match &self (= (f $x)  2) $x))
+
+</span><span class="ansi36"
+>transpiler_stored_eval([print, [match, '&self', [=, [f, _x], 2], _x]], (mc_1__f(_x, A), B=[=, A, 2], C=ispu(_x), mc_3__match('&self', B, C, D), E=[print, D]), E).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__f(B, C), D=[=, C, 2], E=ispu(B), mc_3__match('&self', D, E, F), A=[print, F])).
+
+</span>;; no-results ;; 
+<span class="ansi38-013099040"
+>!(assertEqual (match &self (= (f $x)  2) $x) (superpose (1)))
+
+</span><span class="ansi36"
+>transpiler_stored_eval([assertEqual, [match, '&self', [=, [f, _x], 2], _x], [superpose, [1]]], (mc_1__f(_x, A), B=[=, A, 2], C=ispu(_x), mc_3__match('&self', B, C, D), E=[1], F=[superpose, E], mc_2__assertEqual(D, F, G)), G).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    (mc_1__f(B, C), D=[=, C, 2], E=ispu(B), mc_3__match('&self', D, E, F), G=[1], H=[superpose, G], mc_2__assertEqual(F, H, A))).
+
+</span>;; no-results ;; 
+;;; Expected Output: [1]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[]
+[]
+[]
+[]
+
+Script done on 2025-01-23 02:37:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/features/bidirectional_computation/reverse-arithmetic.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/features/bidirectional_computation/reverse-arithmetic.metta" --halt=true\033[0m

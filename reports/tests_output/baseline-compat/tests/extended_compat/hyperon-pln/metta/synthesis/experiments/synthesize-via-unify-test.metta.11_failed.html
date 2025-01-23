@@ -39,7 +39,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 01:55:24+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/experiments/synthesize-via-unify-test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -111,7 +111,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.90 milliseconds) 
+; took 0.002 secs. (1.78 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: $term $type) Z)) ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number))))
 
@@ -135,7 +135,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.001 secs. (1.49 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: $term (-> Number String)) Z)) ((: f (-> Number String))))
 
@@ -156,7 +156,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.11 milliseconds) 
+; took 0.002 secs. (1.99 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: $term (-> String Number Number)) kb rb (S Z))) ((: f (-> Number String))))
 
@@ -178,7 +178,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.04 milliseconds) 
+; took 0.002 secs. (1.94 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: $term (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
 
@@ -200,7 +200,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.85 milliseconds) 
+; took 0.003 secs. (2.77 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. g f) (-> Number Bool)) (S Z))) ((: (. g f) (-> Number Bool))))
 
@@ -223,7 +223,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.54 milliseconds) 
+; took 0.003 secs. (2.61 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. g f) $type) (S Z))) ((: (. g f) (-> Number Bool))))
 
@@ -245,7 +245,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.04 milliseconds) 
+; took 0.002 secs. (2.00 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: $term $type) (S Z))) ((: f (-> Number String)) ... (: (. f h) (-> Bool String)) ...))
 
@@ -268,7 +268,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.92 milliseconds) 
+; took 0.004 secs. (3.75 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. (. g f) h) (-> $in Bool)) (fromNumber 2))) ((: (. (. g f) h) (-> Bool Bool))))
 
@@ -293,7 +293,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.09 milliseconds) 
+; took 0.003 secs. (2.99 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. $g h) (-> $in String)) (fromNumber 3))) ((: (. f h) (-> Bool String)) (: (. (. (. f h) (. g f)) h) (-> Bool String))))
 
@@ -316,7 +316,7 @@ Script started on 2025-01-22 01:55:40+00:00 [COMMAND="timeout --preserve-status 
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.15 milliseconds) 
+; took 0.003 secs. (2.98 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. $g h) (-> Number $out)) (fromNumber 3))) ())
 
@@ -337,7 +337,7 @@ equal_enough_for_test('[|]'('[|]'(record,'[|]'(synthesize,'[|]'('[|]'('[|]'(:,'[
 >;; EXPERIMENTS.SYNTHESIZE-VIA-UNIFY-TEST.11</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.14 milliseconds) 
+; took 0.003 secs. (3.07 milliseconds) 
 
 !(assertEqualToResult (record synthesize ((: (. g $f) (-> $in String)) (fromNumber 3))) ())
 
@@ -371,7 +371,7 @@ Deterministic: <span class="ansi33"
 []
 [[[[[[[[[[[[(assertEqualToResult (record synthesize ((: (. g $f) (-> $in Bool)) (fromNumber 3))) (: (. g f) (-> Number Bool)) (: (. g (. f h)) (-> Bool Bool)) (: (. g (. f (. h g))) (-> String Bool)) (: (. g (. (. f h) g)) (-> String Bool)) (. g (. (. f h) (. g f))) (-> Number Bool))]
 
-Script done on 2025-01-22 01:55:51+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 01:55:35+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

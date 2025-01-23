@@ -61,7 +61,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 01:51:02+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/program-verification/NatStandaloneTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 01:50:44+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/program-verification/NatStandaloneTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -333,7 +333,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATSTANDALONETEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.80 milliseconds) 
+; took 0.004 secs. (3.85 milliseconds) 
 
 !(assertEqual (bc (: $prf (=== (plus Z $y) $y)) Z) (: plusBase (=== (plus Z $y) $y)))
 
@@ -369,7 +369,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATSTANDALONETEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.037 secs. (36.92 milliseconds) 
+; took 0.037 secs. (36.94 milliseconds) 
 
 !(assertEqual (bc (: $prf (=== (=== (plus Z Z) Z) (plusRightId Z))) (fromNumber 2)) (: (Sym plusRightIdProp) (=== (=== (plus Z Z) Z) (plusRightId Z))))
 
@@ -416,7 +416,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATSTANDALONETEST.03</h3>
 ; 
 ; EVAL TEST
-; took 1.917 secs. (1917.36 milliseconds) 
+; took 1.899 secs. (1898.67 milliseconds) 
 
 !(assertEqualToResult (bc (: $prf (plusRightId Z)) (fromNumber 4)) ((: ((Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) (plusRightId Z)) (: ((Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) (plusRightId Z)) (: ((Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) plusBase) (plusRightId Z))))
 
@@ -539,7 +539,7 @@ N(1): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATSTANDALONETEST.04</h3>
 ; 
 ; EVAL TEST
-; took 13.46 seconds.
+; took 13.22 seconds.
 
 !(assertEqual (bc (: ((NatInd $basecase) $indstep) (plusRightId $x)) (fromNumber 5)) (: ((NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) (plusRightId $x)))
 
@@ -594,7 +594,7 @@ Deterministic: <span class="ansi33"
 [(: ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))) (-> (plusRightId $x) (plusRightId (S $x))))]
 [()]
 
-Script done on 2025-01-22 01:51:40+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 01:51:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -35,7 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:19:46+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/previous/00a_lang_compiled_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:26:05+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/previous/00a_lang_compiled_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -85,7 +85,7 @@ Script started on 2025-01-22 02:19:46+00:00 [COMMAND="timeout --preserve-status 
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.64 milliseconds) 
+; took 0.002 secs. (1.70 milliseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 2 3))))
 
@@ -105,7 +105,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.55 milliseconds) 
+; took 0.002 secs. (1.63 milliseconds) 
 
 !(assertEqual (+ 1 (superpose (1 2 3))) (+ 1 (superpose (1 (superpose (2 3))))))
 
@@ -125,7 +125,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.12 milliseconds) 
+; took 0.001 secs. (1.01 milliseconds) 
 
 !(assertEqual ((superpose (1 2 3))) ((superpose (1 (superpose ((+ 1 1) 3))))))
 
@@ -150,7 +150,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000441 secs. (440.88 microseconds) 
+; took 0.000508 secs. (508.32 microseconds) 
 
 !(assertEqual (case (+ 1 5) ((5 Error) (6 OK) (6 Error))) OK)
 
@@ -171,7 +171,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000556 secs. (555.88 microseconds) 
+; took 0.000601 secs. (601.13 microseconds) 
 
 !(assertEqual (case (+ 1 5) (($x (+ 1 $x)))) 7)
 
@@ -193,7 +193,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000258 secs. (258.08 microseconds) 
+; took 0.000287 secs. (287.27 microseconds) 
 
 !(assertEqual (case 5 ((6 OK))) (superpose ()))
 
@@ -212,7 +212,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.40 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) ((3 OK-3) (4 OK-4))) (superpose (OK-3 OK-4)))
 
@@ -233,7 +233,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.50 milliseconds) 
+; took 0.001 secs. (1.41 milliseconds) 
 
 !(assertEqual (case (+ 1 (superpose (1 2 3))) (($x (+ 1 $x)))) (superpose (3 4 5)))
 
@@ -258,7 +258,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.46 milliseconds) 
+; took 0.002 secs. (2.30 milliseconds) 
 
 !(assertEqual (match &self ($rel A $x) ($rel $x)) (superpose ((Rel-P B) (Rel-Q C))))
 
@@ -279,7 +279,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqualToResult (superpose ((Rel-P B) (Rel-Q C))) ((Rel-P B) (Rel-Q C)))
 
@@ -300,7 +300,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.87 milliseconds) 
+; took 0.003 secs. (2.90 milliseconds) 
 
 !(assertEqual (superpose ((P B) (Q C))) (case (match &self ($rel A $x) ($rel $x)) (((Rel-P $y) (P $y)) ((Rel-Q $y) (Q $y)))))
 
@@ -321,7 +321,7 @@ Deterministic: <span class="ansi33"
 >;; PREVIOUS.00A-LANG-COMPILED-CASE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000392 secs. (391.79 microseconds) 
+; took 0.000358 secs. (357.58 microseconds) 
 
 !(assertEqualToResult (case (match &self ($rel B $x) ($rel $x)) (((Rel-P $y) (P $y)) ((Rel-Q $y) (Q $y)) (%void% no-match))) (no-match))
 
@@ -355,7 +355,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-01-22 02:19:55+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 02:26:13+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

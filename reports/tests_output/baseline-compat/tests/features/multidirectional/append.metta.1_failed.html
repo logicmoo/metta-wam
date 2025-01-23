@@ -29,7 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:36:15+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/multidirectional/append.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:41:34+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/multidirectional/append.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -87,7 +87,7 @@ Script started on 2025-01-22 02:36:15+00:00 [COMMAND="timeout --preserve-status 
 >;; MULTIDIRECTIONAL.APPEND.01</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.01 milliseconds) 
+; took 0.005 secs. (4.83 milliseconds) 
 
 !(assertEqualToResult (let $260 (append (Cons 1 (Cons 2 Nil)) (Cons 3 (Cons 4 Nil)) $Out) $Out) ((Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))))
 
@@ -114,7 +114,7 @@ Deterministic: <span class="ansi33"
 >;; MULTIDIRECTIONAL.APPEND.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.14 milliseconds) 
+; took 0.004 secs. (4.01 milliseconds) 
 
 !(assertEqualToResult (let $260 (append (Cons 1 (Cons 2 Nil)) $Out (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) $Out) ((Cons 3 (Cons 4 Nil))))
 
@@ -137,7 +137,7 @@ Deterministic: <span class="ansi33"
 >;; MULTIDIRECTIONAL.APPEND.03</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.56 milliseconds) 
+; took 0.018 secs. (18.12 milliseconds) 
 
 !(assertEqualToResult (let $260 (append $What $Out (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) ($What $Out)) (((Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil)))) Nil) ((Cons 1 (Cons 2 (Cons 3 Nil))) (Cons 4 Nil)) ((Cons 1 (Cons 2 Nil)) (Cons 3 (Cons 4 Nil))) ((Cons 1 Nil) (Cons 2 (Cons 3 (Cons 4 Nil)))) (Nil (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil)))))))
 
@@ -178,7 +178,7 @@ Deterministic: <span class="ansi33"
 >;; MULTIDIRECTIONAL.APPEND.04</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.16 milliseconds) 
+; took 0.004 secs. (4.04 milliseconds) 
 
 !(assertEqualToResult (let $260 (append (Cons 1 (Cons 2 Nil)) $Out (Cons 1 (Cons 2 (Cons 3 (Cons 4 Nil))))) $Out) ((Cons 3 (Cons 4 Nil))))
 
@@ -201,7 +201,7 @@ Deterministic: <span class="ansi33"
 >;; MULTIDIRECTIONAL.APPEND.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.17 milliseconds) 
+; took 0.002 secs. (2.14 milliseconds) 
 
 !(assertEqual (let $260 (append (Cons 1 (Cons 2 Nil)) $Out (Cons 1 (Cons 2 $What))) (== $Out $What)) True)
 
@@ -226,7 +226,7 @@ equal_enough_for_test([],'[|]'('True',[]))[error [error [domain_error py_term [E
 [()]
 [
 
-Script done on 2025-01-22 02:36:24+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 02:41:43+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

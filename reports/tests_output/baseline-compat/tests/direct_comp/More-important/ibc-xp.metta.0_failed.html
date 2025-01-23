@@ -94,7 +94,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:09:59+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/More-important/ibc-xp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:16:14+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/More-important/ibc-xp.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -275,7 +275,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.24 milliseconds) 
+; took 0.002 secs. (1.93 milliseconds) 
 
 !(assertEqual (syn &kb (: a A) Z) (: a A))
 
@@ -296,7 +296,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.84 milliseconds) 
+; took 0.002 secs. (1.61 milliseconds) 
 
 !(assertEqual (syn &kb (: $prf (-> $prms (-> A B))) Z) (: ModusPonens (-> (→ A B) (-> A B))))
 
@@ -323,7 +323,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.03</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (8.74 milliseconds) 
+; took 0.008 secs. (8.28 milliseconds) 
 
 !(assertEqual (syn &kb (: $prf (-> A B)) (fromNumber 1)) (: (ModusPonens ab) (-> A B)))
 
@@ -348,7 +348,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.04</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (18.45 milliseconds) 
+; took 0.018 secs. (17.72 milliseconds) 
 
 !(assertEqual (syn &kb (: $prf B) (fromNumber 2)) (: ((ModusPonens ab) a) B))
 
@@ -371,7 +371,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.05</h3>
 ; 
 ; EVAL TEST
-; took 0.043 secs. (43.04 milliseconds) 
+; took 0.041 secs. (41.43 milliseconds) 
 
 !(assertEqual (syn &kb (: $prf C) (fromNumber 3)) (: ((ModusPonens bc) ((ModusPonens ab) a)) C))
 
@@ -394,7 +394,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.06</h3>
 ; 
 ; EVAL TEST
-; took 0.201 secs. (200.77 milliseconds) 
+; took 0.193 secs. (193.22 milliseconds) 
 
 !(assertEqualToResult (syn &kb (: $prf C) (fromNumber 4)) ((: ((((. ModusPonens) (Deduction bc)) ab) a) C) (: (((. (ModusPonens bc)) (ModusPonens ab)) a) C) (: ((ModusPonens ((Deduction bc) ab)) a) C) (: ((ModusPonens bc) ((ModusPonens ab) a)) C)))
 
@@ -431,7 +431,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.07</h3>
 ; 
 ; EVAL TEST
-; took 2.99 seconds.
+; took 2.90 seconds.
 
 !(assertEqualToResult (syn &kb (: $prf (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (fromNumber 4)) ((: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (: ((. (. ModusPonens)) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))))
 
@@ -466,7 +466,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.08</h3>
 ; 
 ; EVAL TEST
-; took 0.886 secs. (886.36 milliseconds) 
+; took 0.864 secs. (863.63 milliseconds) 
 
 !(assertEqualToResult (syn &kb (: $prf (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s))))) (fromNumber 4)) ((: ((((. .) .) Deduction) Deduction) (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s))))) (: ((. (. Deduction)) Deduction) (-> (→ $r $s) (-> (→ $q $r) (-> (→ $p $q) (→ $p $s)))))))
 
@@ -554,7 +554,7 @@ N(1): <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000200 secs. (200.36 microseconds) 
+; took 0.000159 secs. (158.93 microseconds) 
 
 !(assertEqualToResult (get-atoms &space-test) (A))
 
@@ -585,7 +585,7 @@ N(1): <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000174 secs. (174.21 microseconds) 
+; took 0.000173 secs. (172.66 microseconds) 
 
 !(assertEqualToResult (get-atoms &space-test) (A B C))
 
@@ -635,7 +635,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.72 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
 !(assertEqual (isyn &kb (: a A) Z Z) (: a A))
 
@@ -655,7 +655,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000400 secs. (399.83 microseconds) 
+; took 0.000377 secs. (376.67 microseconds) 
 
 !(assertEqualToResult (match &kb (, (: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r))))) asserted) (asserted))
 
@@ -680,7 +680,7 @@ Deterministic: <span class="ansi33"
 > (: ((ModusPonens ab) a) B)
 </span>; 
 ; EVAL TEST
-; took 0.055 secs. (54.56 milliseconds) 
+; took 0.051 secs. (51.20 milliseconds) 
 
 !(assertEqual (isyn &kb (: $prf B) (fromNumber 2) (fromNumber 1)) (: ((ModusPonens ab) a) B))
 
@@ -702,7 +702,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000414 secs. (414.30 microseconds) 
+; took 0.000437 secs. (436.97 microseconds) 
 
 !(assertEqualToResult (match &kb (, (: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r)))) (: ((ModusPonens ab) a) B)) asserted) (asserted))
 
@@ -726,7 +726,7 @@ Deterministic: <span class="ansi33"
 > (: ((ModusPonens bc) ((ModusPonens ab) a)) C)
 </span>; 
 ; EVAL TEST
-; took 0.082 secs. (82.24 milliseconds) 
+; took 0.078 secs. (77.82 milliseconds) 
 
 !(assertEqual (isyn &kb (: $prf C) (fromNumber 2) (fromNumber 1)) (: ((ModusPonens bc) ((ModusPonens ab) a)) C))
 
@@ -748,7 +748,7 @@ Deterministic: <span class="ansi33"
 >;; MORE-IMPORTANT.IBC-XP.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000424 secs. (424.31 microseconds) 
+; took 0.000463 secs. (462.68 microseconds) 
 
 !(assertEqualToResult (match &kb (, (: ab (→ A B)) (: bc (→ B C)) (: a A) (: ModusPonens (-> (→ $p $q) (-> $p $q))) (: Deduction (-> (→ $q $r) (-> (→ $p $q) (→ $p $r)))) (: . (-> (-> $q $r) (-> (-> $p $q) (-> $p $r)))) (: ((ModusPonens ab) a) B) (: ((ModusPonens bc) ((ModusPonens ab) a)) C)) asserted) (asserted))
 
@@ -775,7 +775,7 @@ Deterministic: <span class="ansi33"
 > (: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))
 </span>; 
 ; EVAL TEST
-; took 3.20 seconds.
+; took 3.11 seconds.
 
 !(assertEqualToResult (isyn &kb (: $prf (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (fromNumber 4) (fromNumber 1)) ((: ((((. .) .) ModusPonens) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r)))) (: ((. (. ModusPonens)) Deduction) (-> (→ $q $r) (-> (→ $p $q) (-> $p $r))))))
 
@@ -890,7 +890,7 @@ N(2): <span class="ansi33"
 [()]
 [(: (((((. (. ModusPonens)) Deduction) ef) de) ((ModusPonens cd) ((ModusPonens bc) ((ModusPonens ab) a)))) F), (: (((((((. .) .) ModusPonens) Deduction) ef) de) ((ModusPonens cd) ((ModusPonens bc) ((ModusPonens ab) a)))) F)]
 
-Script done on 2025-01-22 02:10:20+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 02:16:34+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-22 02:19:10+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/peasy/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-23 02:25:28+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/direct_comp/peasy/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -108,7 +108,7 @@ Script started on 2025-01-22 02:19:10+00:00 [COMMAND="timeout --preserve-status 
 Error: Invalid input.
 ; 
 ; EVAL TEST
-; took 0.000877 secs. (877.43 microseconds) 
+; took 0.001 secs. (1.00 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) inactive)
 
@@ -136,7 +136,7 @@ equal_enough_for_test([],'[|]'(inactive,[]))[error [error [domain_error py_term 
 Error: Invalid input.
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.00 milliseconds) 
+; took 0.001 secs. (1.07 milliseconds) 
 
 !(assertEqualToResult (nop (change-state! (status (Goal lunch-order)) active)) (()))
 
@@ -162,7 +162,7 @@ Deterministic: <span class="ansi33"
 Error: Invalid input.
 ; 
 ; EVAL TEST
-; took 0.000873 secs. (873.07 microseconds) 
+; took 0.001 secs. (1.00 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) active)
 
@@ -202,7 +202,7 @@ equal_enough_for_test([],'[|]'(active,[]))[error [error [domain_error py_term [E
 >;; PEASY.E3-MATCH-STATES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000354 secs. (354.03 microseconds) 
+; took 0.000395 secs. (394.77 microseconds) 
 
 !(assertEqual (match &self (= (status (Goal $goal))  &state-active) $goal) meditation)
 
@@ -222,7 +222,7 @@ equal_enough_for_test([],'[|]'(meditation,[]))[error [error [domain_error py_ter
 Error: Invalid input.
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.69 milliseconds) 
+; took 0.002 secs. (1.71 milliseconds) 
 
 !(assertEqual (if (== (get-state (status (Goal $goal))) active) $goal (superpose ())) lunch-order)
 
@@ -242,7 +242,7 @@ Error: Invalid input.
 [[[[()]
 [[[[[
 
-Script done on 2025-01-22 02:19:18+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-23 02:25:36+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
