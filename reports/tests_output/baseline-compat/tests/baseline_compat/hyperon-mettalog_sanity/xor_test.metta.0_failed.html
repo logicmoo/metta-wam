@@ -34,7 +34,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-24 00:59:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/xor_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 06:59:30+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/xor_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -84,13 +84,13 @@ Script started on 2025-01-24 00:59:11+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000211 secs. (210.68 microseconds) 
+; took 0.000299 secs. (299.34 microseconds) 
 
 !(assertEqual (xor True False) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -104,13 +104,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000170 secs. (170.43 microseconds) 
+; took 0.000224 secs. (223.77 microseconds) 
 
 !(assertEqual (xor False True) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -124,13 +124,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000158 secs. (157.79 microseconds) 
+; took 0.000205 secs. (205.08 microseconds) 
 
 !(assertEqual (xor True True) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -144,13 +144,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000151 secs. (150.51 microseconds) 
+; took 0.000219 secs. (218.81 microseconds) 
 
 !(assertEqual (xor False False) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -165,13 +165,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000595 secs. (595.46 microseconds) 
+; took 0.002 secs. (1.78 milliseconds) 
 
 !(assertEqual (xor (> 5 3) (< 2 1)) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -185,13 +185,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000963 secs. (962.52 microseconds) 
+; took 0.002 secs. (1.91 milliseconds) 
 
 !(assertEqual (xor (== 1 1) (== 2 2)) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -205,13 +205,13 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.XOR-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000397 secs. (396.72 microseconds) 
+; took 0.000453 secs. (453.50 microseconds) 
 
 !(assertEqual (xor (not True) (and True False)) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -221,7 +221,7 @@ Deterministic: <span class="ansi33"
 > (: mprogn (-> Atom Atom Atom))
 </span><span class="ansi38-255165000"
 > (= (mprogn $code1 $code2)  
-  (let $260 
+  (let $_160202 
     (eval $code1) 
     (eval $code2)))
 </span>;;;; XOR with Side Effects to Ensure Both Expressions Are Evaluated
@@ -235,13 +235,13 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.39 milliseconds) 
+; took 0.003 secs. (2.90 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") True) (mprogn (println! "Second") False)) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -257,13 +257,13 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.51 milliseconds) 
+; took 0.003 secs. (3.09 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") True) (mprogn (println! "Second") True)) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -279,13 +279,13 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.48 milliseconds) 
+; took 0.003 secs. (3.13 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") False) (mprogn (println! "Second") True)) True)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (True) 
       (True)]]
 </span>
@@ -301,13 +301,13 @@ First
 Second
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.003 secs. (3.08 milliseconds) 
 
 !(assertEqual (xor (mprogn (println! "First") False) (mprogn (println! "Second") False)) False)
 
 <span class="ansi36"
 >  [loonit_success 
-    [equal_enough_for_test 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (False) 
       (False)]]
 </span>
@@ -334,7 +334,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-01-24 00:59:20+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 06:59:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
