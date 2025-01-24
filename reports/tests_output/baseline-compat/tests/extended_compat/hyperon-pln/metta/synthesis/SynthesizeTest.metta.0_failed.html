@@ -90,7 +90,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 01:55:54+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/SynthesizeTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 01:57:49+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/synthesis/SynthesizeTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -433,7 +433,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.34 milliseconds) 
+; took 0.009 secs. (8.89 milliseconds) 
 
 !(assertEqualToResult (synthesize (: $term $type) kb rb Z) ((: f (-> Number String)) (: g (-> String Bool)) (: h (-> Bool Number)) (: i (-> String Number Bool))))
 
@@ -468,7 +468,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.89 milliseconds) 
+; took 0.006 secs. (6.46 milliseconds) 
 
 !(assertEqual (synthesize (: $term (-> Number String)) kb rb Z) (: f (-> Number String)))
 
@@ -491,7 +491,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.031 secs. (31.26 milliseconds) 
+; took 0.034 secs. (33.86 milliseconds) 
 
 !(assertEqual (synthesize (: $term (-> String Number Number)) kb rb (S Z)) (: (.: h i) (-> String Number Number)))
 
@@ -516,7 +516,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.032 secs. (31.55 milliseconds) 
+; took 0.034 secs. (33.51 milliseconds) 
 
 !(assertEqual (synthesize (: $term (-> Number Bool)) kb rb (S Z)) (: (. g f) (-> Number Bool)))
 
@@ -541,7 +541,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.033 secs. (32.60 milliseconds) 
+; took 0.035 secs. (35.22 milliseconds) 
 
 !(assertEqual (synthesize (: (. g f) (-> Number Bool)) kb rb (S Z)) (: (. g f) (-> Number Bool)))
 
@@ -566,7 +566,7 @@ Deterministic: <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.033 secs. (32.52 milliseconds) 
+; took 0.035 secs. (35.09 milliseconds) 
 
 !(assertEqual (synthesize (: (. g f) $type) kb rb (S Z)) (: (. g f) (-> Number Bool)))
 
@@ -629,7 +629,7 @@ N(8): <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.081 secs. (81.31 milliseconds) 
+; took 0.087 secs. (87.36 milliseconds) 
 
 !(assertEqual (synthesize (: (. (. g f) h) (-> $in Bool)) kb rb (fromNumber 2)) (: (. (. g f) h) (-> Bool Bool)))
 
@@ -700,7 +700,7 @@ N(5): <span class="ansi33"
 >;; SYNTHESIS.SYNTHESIZETEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.213 secs. (213.07 milliseconds) 
+; took 0.227 secs. (227.22 milliseconds) 
 
 !(assertEqualToResult (synthesize (: (. g $f) (-> $in Bool)) kb rb (fromNumber 3)) ((: (. g f) (-> Number Bool)) (: (. g (. f h)) (-> Bool Bool)) (: (. g (. f (. h g))) (-> String Bool)) (: (. g (. (. f h) g)) (-> String Bool)) (: (. g (. (. f h) (. g f))) (-> Number Bool))))
 
@@ -764,7 +764,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="SYNTHESIS.SYNTHESIZETEST.09"
 >;; SYNTHESIS.SYNTHESIZETEST.09</h3>
 
-Script done on 2025-01-23 01:56:34+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-01-24 01:58:29+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

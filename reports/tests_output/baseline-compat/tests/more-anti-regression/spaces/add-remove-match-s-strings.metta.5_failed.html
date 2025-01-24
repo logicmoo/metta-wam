@@ -72,7 +72,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 01:11:07+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/spaces/add-remove-match-s-strings.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 01:11:50+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/more-anti-regression/spaces/add-remove-match-s-strings.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -147,7 +147,7 @@ Deterministic: <span class="ansi33"
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.25 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb0) ((S "a") (S "b")))
 
@@ -205,7 +205,7 @@ Deterministic: <span class="ansi33"
 >retractall(metta_atom_asserted('&kb1',['S',"b"]))
 </span>; 
 ; EVAL TEST
-; took 0.008 secs. (7.65 milliseconds) 
+; took 0.008 secs. (7.96 milliseconds) 
 
 !(assertTrue (remove-atom &kb1 (S "b")))
 
@@ -229,7 +229,7 @@ equal_enough_for_test('[|]'([],[]),'[|]'('True',[]))[error [error [domain_error 
 >retractall(metta_atom_asserted('&kb1',['S',"bogus"]))
 </span>; 
 ; EVAL TEST
-; took 0.008 secs. (7.69 milliseconds) 
+; took 0.008 secs. (8.23 milliseconds) 
 
 !(assertFalse (remove-atom &kb1 (S "bogus")))
 
@@ -249,7 +249,7 @@ equal_enough_for_test('[|]'([],[]),'[|]'('False',[]))[error [error [domain_error
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000901 secs. (900.83 microseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb1) ((S "a") (S "c")))
 
@@ -314,7 +314,7 @@ Deterministic: <span class="ansi33"
 > (S "d")
 </span>; 
 ; EVAL TEST
-; took 0.012 secs. (12.13 milliseconds) 
+; took 0.013 secs. (13.13 milliseconds) 
 
 !(assertTrue (replace-atom &kb2 (S "b") (S "d")))
 
@@ -333,7 +333,7 @@ equal_enough_for_test('[|]'([],[]),'[|]'('True',[]))[error [error [domain_error 
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.45 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb2) ((S "a") (S "d") (S "c")))
 
@@ -392,7 +392,7 @@ Deterministic: <span class="ansi33"
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000944 secs. (943.77 microseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(assertEqualToResult (match &kb3 (E (S "A") $XX) $XX) ((S "B") (S "E")))
 
@@ -457,7 +457,7 @@ Deterministic: <span class="ansi33"
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000858 secs. (858.13 microseconds) 
+; took 0.001 secs. (1.01 milliseconds) 
 
 !(assertEqualToResult (get-atoms &kb4) ((S "x") (S "y")))
 
@@ -478,7 +478,7 @@ Deterministic: <span class="ansi33"
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000884 secs. (883.80 microseconds) 
+; took 0.000949 secs. (949.23 microseconds) 
 
 !(assertTrue (query &kb4 (S "x")))
 
@@ -497,7 +497,7 @@ Deterministic: <span class="ansi33"
 >;; SPACES.ADD-REMOVE-MATCH-S-STRINGS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000951 secs. (951.00 microseconds) 
+; took 0.000993 secs. (992.59 microseconds) 
 
 !(assertTrue (query &kb4 (S "y")))
 
@@ -543,7 +543,7 @@ Deterministic: <span class="ansi33"
 [()]
 [[
 
-Script done on 2025-01-23 01:11:15+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 01:12:00+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

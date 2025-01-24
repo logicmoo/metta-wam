@@ -28,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 02:36:51+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/bidirectional_computation/relative-arithmetic.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 02:41:56+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/features/bidirectional_computation/relative-arithmetic.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -109,7 +109,7 @@ Script started on 2025-01-23 02:36:51+00:00 [COMMAND="timeout --preserve-status 
 >;; BIDIRECTIONAL-COMPUTATION.RELATIVE-ARITHMETIC.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.15 milliseconds) 
+; took 0.001 secs. (1.17 milliseconds) 
 
 !(sequential ((do (complex-relationship $L1 $L2 $L3)) (assertEqual (< $L1 $L3) True) (assertEqual (< $L2 $L1) False)))
 
@@ -119,7 +119,7 @@ Script started on 2025-01-23 02:36:51+00:00 [COMMAND="timeout --preserve-status 
       ( (< $L1 $L3)) 
       (True)]]
 </span>
-equal_enough_for_test('[|]'('[|]'(<,'[|]'(_4758{vn = ...},'[|]'(_4778{vn = ...},[]))),[]),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< $L1 $L3))] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (assertEqual (< $L1 $L3) True) (assertEqual (< $L2 $L1) False)))];;; Setting a specific value for L2 and checking if L1 and L3 update accordingly.
+equal_enough_for_test('[|]'('[|]'(<,'[|]'(_4746{vn = ...},'[|]'(_4766{vn = ...},[]))),[]),'[|]'('True',[]))[error [error [domain_error py_term [Error [got ((< $L1 $L3))] [expected (True)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (assertEqual (< $L1 $L3) True) (assertEqual (< $L2 $L1) False)))];;; Setting a specific value for L2 and checking if L1 and L3 update accordingly.
 ;;; This tests the dynamic calculation capability of the complex-relationship
 ;;; function based on input changes.
 <span class="ansi38-013099040"
@@ -130,7 +130,7 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'(_4758{vn = ...},'[|]'(_4778{vn = ...},
 >;; BIDIRECTIONAL-COMPUTATION.RELATIVE-ARITHMETIC.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000022 secs. (21.73 microseconds) 
+; took 0.000015 secs. (15.44 microseconds) 
 
 !(sequential ((do (complex-relationship $L1 $L2 $L3)) (do (= $L2  0.3)) (assertEqual $L1 0.09) (assertEqual $L3 0.6)))
 
@@ -140,7 +140,7 @@ equal_enough_for_test('[|]'('[|]'(<,'[|]'(_4758{vn = ...},'[|]'(_4778{vn = ...},
       ($L1) 
       (0.09)]]
 </span>
-equal_enough_for_test('[|]'(_1784{vn = ...},[]),'[|]'(0.09,[]))[error [error [domain_error py_term [Error [got ($L1)] [expected (0.09)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (do (= $L2  0.3)) (assertEqual $L1 0.09) (assertEqual $L3 0.6)))];;; Using 'let' to temporarily update the value of L2 and checking the effects
+equal_enough_for_test('[|]'(_1772{vn = ...},[]),'[|]'(0.09,[]))[error [error [domain_error py_term [Error [got ($L1)] [expected (0.09)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (do (= $L2  0.3)) (assertEqual $L1 0.09) (assertEqual $L3 0.6)))];;; Using 'let' to temporarily update the value of L2 and checking the effects
 ;;; within its scope. This part tests the functions handling of temporary value
 ;;; assignments and ensures the same variables outside the 'let' scope are not affected.
 <span class="ansi38-013099040"
@@ -151,7 +151,7 @@ equal_enough_for_test('[|]'(_1784{vn = ...},[]),'[|]'(0.09,[]))[error [error [do
 >;; BIDIRECTIONAL-COMPUTATION.RELATIVE-ARITHMETIC.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (14.62 microseconds) 
+; took 0.000025 secs. (24.66 microseconds) 
 
 !(sequential ((do (complex-relationship $L1 $L2 $L3)) (let $L2 0.3 (sequential ((assertEqual $L1 0.09) (assertEqual $L3 0.6)))) (assertNotEqual $L1 0.09) (assertNotEqual $L3 0.6)))
 
@@ -161,7 +161,7 @@ equal_enough_for_test('[|]'(_1784{vn = ...},[]),'[|]'(0.09,[]))[error [error [do
       ($L1) 
       (0.09)]]
 </span>
-equal_enough_for_test('[|]'(_1916{vn = ...},[]),'[|]'(0.09,[]))[error [error [domain_error py_term [Error [got ($L1)] [expected (0.09)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (let $L2 0.3 (sequential ((assertEqual $L1 0.09) (assertEqual $L3 0.6)))) (assertNotEqual $L1 0.09) (assertNotEqual $L3 0.6)))];;; Presently all these tests are passing in MeTTaLog
+equal_enough_for_test('[|]'(_1904{vn = ...},[]),'[|]'(0.09,[]))[error [error [domain_error py_term [Error [got ($L1)] [expected (0.09)]]] [context [ : janus [ / py_call 2 ] ] $260]] [file /home/runner/work/metta-wam/metta-wam/tests/features/bidirectional_computation/relative-arithmetic.metta] (sequential ((do (complex-relationship $L1 $L2 $L3)) (let $L2 0.3 (sequential ((assertEqual $L1 0.09) (assertEqual $L3 0.6)))) (assertNotEqual $L1 0.09) (assertNotEqual $L3 0.6)))];;; Presently all these tests are passing in MeTTaLog
 <span class="ansi1"
 >LoonIt Report
 </span>------------
@@ -173,7 +173,7 @@ equal_enough_for_test('[|]'(_1916{vn = ...},[]),'[|]'(0.09,[]))[error [error [do
 >Return to summaries</a><br/>
 [[[
 
-Script done on 2025-01-23 02:36:59+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 02:42:04+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

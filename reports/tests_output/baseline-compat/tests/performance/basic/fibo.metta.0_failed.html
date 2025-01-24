@@ -72,7 +72,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 02:45:46+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/fibo.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 02:51:04+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/fibo.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -280,7 +280,7 @@ Functions to recompile after redefining '&top':fib/2 in correct order:
     (fib (- $n 1)) 
     (fib (- $n 2))))
 </span><span class="ansi38-255165005"
->######### [fib,_86794{vn = ...}] :- [+,[fib,[-,_86794{vn = ...},1]],[fib,[-,_86794{vn = ...},2]]]
+>######### [fib,_86792{vn = ...}] :- [+,[fib,[-,_86792{vn = ...},1]],[fib,[-,_86792{vn = ...},2]]]
 </span><span class="ansi36"
 >transpiler_clause_store(fib, 2, 2, ['Any'], 'AnyRet', [x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), [fib, _n], [+, [fib, [-, _n, 1]], [fib, [-, _n, 2]]]).
 
@@ -356,7 +356,7 @@ Functions to recompile after redefining '&top':fib/2 in correct order:
 > (= (fib-tail $n)  
   (fib-tail-helper $n 0 1))
 </span><span class="ansi38-255165005"
->######### [fib-tail,_155420{vn = ...}] :- [fib-tail-helper,_155420{vn = ...},0,1]
+>######### [fib-tail,_155418{vn = ...}] :- [fib-tail-helper,_155418{vn = ...},0,1]
 </span><span class="ansi36"
 >transpiler_stub_created('fib-tail'/2).
 
@@ -415,7 +415,7 @@ Functions to recompile after redefining '&top':'fib-tail'/2 in correct order:
 <span class="ansi38-255165000"
 > (= (fib-tail-helper 0 $a $260)  $a)
 </span><span class="ansi38-255165005"
->######### [fib-tail-helper,0,_202648{vn = ...},_202302] :- _202648{vn = ...}
+>######### [fib-tail-helper,0,_202646{vn = ...},_202300] :- _202646{vn = ...}
 </span><span class="ansi36"
 >transpiler_stub_created('fib-tail-helper'/4).
 
@@ -430,8 +430,8 @@ Retracting stub: 'mc_3__fib-tail-helper'(B,C,D,E)
 </span>recompile_from_depends fib-tail-helper/4
 recompile_from_depends list [fib-tail/2]
 recompile_from_depends0 fib-tail/2
-Extracted clause: [fib-tail,_219696]:-[fib-tail-helper,_219696,0,1]
-X: [[fib-tail,_219696]-[fib-tail-helper,_219696,0,1]]
+Extracted clause: [fib-tail,_219694]:-[fib-tail-helper,_219694,0,1]
+X: [[fib-tail,_219694]-[fib-tail-helper,_219694,0,1]]
 ######### [fib-tail,B] :- [fib-tail-helper,B,0,1]
 <span class="ansi36"
 >transpiler_stub_created('fib-tail'/2).
@@ -531,7 +531,7 @@ Functions to recompile after redefining '&top':'fib-tail-helper'/4 in correct or
     (- $n 1) $b 
     (+ $a $b)))
 </span><span class="ansi38-255165005"
->######### [fib-tail-helper,_306152{vn = ...},_305834{vn = ...},_305516{vn = ...}] :- [fib-tail-helper,[-,_306152{vn = ...},1],_305516{vn = ...},[+,_305834{vn = ...},_305516{vn = ...}]]
+>######### [fib-tail-helper,_306150{vn = ...},_305832{vn = ...},_305514{vn = ...}] :- [fib-tail-helper,[-,_306150{vn = ...},1],_305514{vn = ...},[+,_305832{vn = ...},_305514{vn = ...}]]
 </span><span class="ansi36"
 >transpiler_clause_store('fib-tail-helper', 4, 1, ['Any', 'Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['fib-tail-helper', _n, _a, _b], ['fib-tail-helper', [-, _n, 1], _b, [+, _a, _b]]).
 
@@ -907,7 +907,7 @@ Functions to recompile after redefining '&top':'fib-acc-helper'/3 in correct ord
 >;; BASIC.FIBO.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000025 secs. (24.69 microseconds) 
+; took 0.000028 secs. (27.68 microseconds) 
 
 !(assertEqual (fib 3) 2)
 
@@ -920,7 +920,7 @@ Functions to recompile after redefining '&top':'fib-acc-helper'/3 in correct ord
 N(1): <span class="ansi33"
 >()
 </span>
-Script done on 2025-01-23 02:46:27+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-01-24 02:51:45+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

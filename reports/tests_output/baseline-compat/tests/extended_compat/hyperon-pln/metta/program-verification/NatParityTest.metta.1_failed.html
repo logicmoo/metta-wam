@@ -111,7 +111,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 01:49:23+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/program-verification/NatParityTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 01:51:11+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/program-verification/NatParityTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -285,7 +285,7 @@ Script started on 2025-01-23 01:49:23+00:00 [COMMAND="timeout --preserve-status 
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.23 milliseconds) 
+; took 0.002 secs. (1.51 milliseconds) 
 
 !(assertEqualToResult ('match'' Nil ($x $y) ($y $x)) ())
 
@@ -304,7 +304,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.14 milliseconds) 
+; took 0.003 secs. (3.48 milliseconds) 
 
 !(assertEqual ('match'' (Cons (A B) Nil) ($x $y) ($y $x)) (B A))
 
@@ -325,7 +325,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.08 milliseconds) 
+; took 0.005 secs. (5.46 milliseconds) 
 
 !(assertEqualToResult ('match'' (Cons (A B) (Cons (C D) Nil)) ($x $y) ($y $x)) ((B A) (D C)))
 
@@ -766,7 +766,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.56 milliseconds) 
+; took 0.020 secs. (20.11 milliseconds) 
 
 !(assertEqualToResult (bc &kb Nil z (fromNumber 1) (: $prf ℕ)) ((: (𝐒 (: 𝐙 ℕ)) ℕ) (: (double (: 𝐙 ℕ)) ℕ) (: 𝐙 ℕ)))
 
@@ -795,7 +795,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.16 milliseconds) 
+; took 0.006 secs. (5.68 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 0) (: $prf (Even 𝐙))) (: MkEvenZ (Even 𝐙)))
 
@@ -818,7 +818,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (27.98 milliseconds) 
+; took 0.031 secs. (30.73 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 1) (: $prf (Even (𝐒 (: (𝐒 (: 𝐙 ℕ)) ℕ))))) (: (MkEvenSS (: MkEvenZ (Even 𝐙))) (Even (𝐒 (: (𝐒 (: 𝐙 ℕ)) ℕ)))))
 
@@ -860,7 +860,7 @@ N(2): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.019 secs. (18.84 milliseconds) 
+; took 0.021 secs. (21.15 milliseconds) 
 
 !(assertEqualToResult (bc &kb Nil z (fromNumber 1) (: $prf (-> (: $k ℕ) ℕ))) ((: (λ z 𝐙) (-> (: z ℕ) ℕ)) (: (λ z z) (-> (: z ℕ) ℕ)) (: 𝐒 (-> (: $k ℕ) ℕ)) (: double (-> (: $k ℕ) ℕ))))
 
@@ -997,7 +997,7 @@ N(21): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.56 milliseconds) 
+; took 0.004 secs. (3.99 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 0) (: $prf (-> (: $260 ℕ) Type))) (: Even (-> (: $261 ℕ) Type)))
 
@@ -1028,7 +1028,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.56 milliseconds) 
+; took 0.004 secs. (3.93 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 0) (: 𝐙 ℕ)) (: 𝐙 ℕ))
 
@@ -1057,7 +1057,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.26 milliseconds) 
+; took 0.017 secs. (16.96 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 1) (: (double (: 𝐙 ℕ)) ℕ)) (: (double (: 𝐙 ℕ)) ℕ))
 
@@ -1091,7 +1091,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.11</h3>
 ; 
 ; EVAL TEST
-; took 0.029 secs. (28.69 milliseconds) 
+; took 0.032 secs. (31.79 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 1) (: $prf (=== 𝐙 (double (: 𝐙 ℕ))))) (: (Sym (: double_base (=== (double (: 𝐙 ℕ)) 𝐙))) (=== 𝐙 (double (: 𝐙 ℕ)))))
 
@@ -1389,7 +1389,7 @@ N(2): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.12</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.04 milliseconds) 
+; took 0.004 secs. (4.34 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 0) (: $prf (-> (: Even (-> (: $260 ℕ) Type)) (-> (: (double (𝐒 $k)) ℕ) (-> (: (𝐒 (𝐒 (double $k))) ℕ) (-> (: $eq (=== (double (𝐒 $k)) (𝐒 (𝐒 (double $k))))) (=== (Even (double (𝐒 $k))) (Even (𝐒 (𝐒 (double $k))))))))))) (: Cong (-> (: Even (-> (: $261 ℕ) Type)) (-> (: (double (𝐒 $k)) ℕ) (-> (: (𝐒 (𝐒 (double $k))) ℕ) (-> (: $eq (=== (double (𝐒 $k)) (𝐒 (𝐒 (double $k))))) (=== (Even (double (𝐒 $k))) (Even (𝐒 (𝐒 (double $k)))))))))))
 
@@ -1461,7 +1461,7 @@ Deterministic: <span class="ansi33"
 >!(add-type-annotation (λ z (((Cong Even) (double (𝐒 z))) (𝐒 (𝐒 (double z))))))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >(λ z (((Cong (: Even $a)) (: (double (: (𝐒 (: z $b)) $c)) $d)) (: (𝐒 (: (𝐒 (: (double (: z $e)) $f)) $g)) $h)))
 </span>;;;; (λ z (((Cong (: Even $a)) (: (double (: (𝐒 (: z $b)) $c)) $d)) (: (𝐒 (: (𝐒 (: (double (: z $e)) $f)) $g)) $h))))
 ;;;; Infer theorem of proof
@@ -1534,7 +1534,7 @@ N(2): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.13</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (20.26 milliseconds) 
+; took 0.022 secs. (21.91 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 1) (: $prf (-> (: $k ℕ) (-> (: Even (-> (: $260 ℕ) Type)) (-> (: (double (: (𝐒 (: $k ℕ)) ℕ)) ℕ) (-> (: (𝐒 (: (𝐒 (: (double (: $k ℕ)) ℕ)) ℕ)) ℕ) (-> (: $eq (=== (double (: (𝐒 (: $k ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: $k ℕ)) ℕ)) ℕ)))) (=== (Even (double (: (𝐒 (: $k ℕ)) ℕ))) (Even (𝐒 (: (𝐒 (: (double (: $k ℕ)) ℕ)) ℕ))))))))))) (: (λ z Cong) (-> (: z ℕ) (-> (: Even (-> (: $261 ℕ) Type)) (-> (: (double (: (𝐒 (: z ℕ)) ℕ)) ℕ) (-> (: (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)) ℕ) (-> (: $eq (=== (double (: (𝐒 (: z ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))) (=== (Even (double (: (𝐒 (: z ℕ)) ℕ))) (Even (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))))))))))
 
@@ -1595,7 +1595,7 @@ Deterministic: <span class="ansi33"
 >!(add-type-annotation (λ z ((((Cong Even) (double (𝐒 z))) (𝐒 (𝐒 (double z)))) (double_rec z))))
 
 </span>
-N(1): <span class="ansi33"
+Deterministic: <span class="ansi33"
 >(λ z ((((Cong (: Even $a)) (: (double (: (𝐒 (: z $b)) $c)) $d)) (: (𝐒 (: (𝐒 (: (double (: z $e)) $f)) $g)) $h)) (: (double_rec (: z $i)) $j)))
 </span>;;;; (λ z ((((Cong (: Even $a)) (: (double (: (𝐒 (: z $b)) $c)) $d)) (: (𝐒 (: (𝐒 (: (double (: z $e)) $f)) $g)) $h)) (: (double_rec (: z $i)) $j))))
 ;;;; ;; TODO: disabled because it takes too long.
@@ -1654,7 +1654,7 @@ N(1): <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.14</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.78 milliseconds) 
+; took 0.004 secs. (4.15 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 0) (: $prf (-> (: z ℕ) (=== (double (: (𝐒 (: z ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))))) (: double_rec (-> (: z ℕ) (=== (double (: (𝐒 (: z ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ))))))
 
@@ -1691,7 +1691,7 @@ Deterministic: <span class="ansi33"
 >;; PROGRAM-VERIFICATION.NATPARITYTEST.15</h3>
 ; 
 ; EVAL TEST
-; took 0.692 secs. (692.05 milliseconds) 
+; took 0.777 secs. (777.12 milliseconds) 
 
 !(assertEqual (bc &kb Nil z (fromNumber 6) (: (λ z ((((Cong (: Even (-> (: $260 ℕ) Type))) (: (double (: (𝐒 (: z $b)) $c)) $d)) (: (𝐒 (: (𝐒 (: (double (: z $e)) $f)) $g)) $h)) (: (double_rec (: z $i)) $j))) (-> (: z ℕ) (=== (Even (double (: (𝐒 (: z ℕ)) ℕ))) (Even (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ))))))) (: (λ z ((((Cong (: Even (-> (: $261 ℕ) Type))) (: (double (: (𝐒 (: z ℕ)) ℕ)) ℕ)) (: (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)) ℕ)) (: (double_rec (: z ℕ)) (=== (double (: (𝐒 (: z ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))))) (-> (: z ℕ) (=== (Even (double (: (𝐒 (: z ℕ)) ℕ))) (Even (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))))))
 
@@ -1742,7 +1742,7 @@ N(2): <span class="ansi33"
 N(3): <span class="ansi33"
 >(: (λ z ((((Cong (: Even (-> (: $2 ℕ) Type))) (: (double (: (𝐒 (: z ℕ)) ℕ)) ℕ)) (: (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)) ℕ)) (: (double_rec (: z ℕ)) (=== (double (: (𝐒 (: z ℕ)) ℕ)) (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ)))))) (-> (: z ℕ) (=== (Even (double (: (𝐒 (: z ℕ)) ℕ))) (Even (𝐒 (: (𝐒 (: (double (: z ℕ)) ℕ)) ℕ))))))
 </span>
-Script done on 2025-01-23 01:50:03+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-01-24 01:51:51+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

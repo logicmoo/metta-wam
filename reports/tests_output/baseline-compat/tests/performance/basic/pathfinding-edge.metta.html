@@ -1,0 +1,440 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi35 { color: #E850A8; }
+.ansi36 { color: #00aaaa; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-017068017 { color: #114411; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165005 { color: #FFA505; }
+.ansi38-240128128 { color: #F08080; }
+.ansi38-173216230 { color: #ADD8E6; }
+.ansi38-255165000 { color: #FFA500; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-01-24 02:53:40+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/performance/basic/pathfinding-edge.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;         [set_debug transpiler false]
+
+P;HTML|
+;          [set_debug overtime 4.0]
+
+P;HTML|
+;          [set_debug overflow 1000]
+
+P;HTML|
+;          [set_debug eval false]
+
+P;HTML|
+;          [set_debug load silent]
+
+P;HTML|
+;          [set_debug trace-on-load false]
+
+P;HTML|
+;          [set_debug exec false]
+
+P;HTML|
+;          [set_debug error non-type]
+
+P;HTML|
+;          [set_debug fail false]
+
+P;HTML|
+;          [set_debug test true]
+
+P;HTML|
+;         [set_debug test false]
+
+P;HTML|
+;         [set_debug fail false]
+
+P;HTML|
+;         [set_debug load false]
+
+; [ : user [load_metta_file &self tests/performance/basic/pathfinding-edge.metta] ]
+;;; Metta Pathfinding Example
+;;; these examples actually need the compiler!
+<span class="ansi38-013099040"
+>!(pragma! compile full)
+
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Define the edge-f function, which represents one-way edges in the graph.
+;;; This function is crucial for specifying connections between nodes.
+<span class="ansi38-255165000"
+> (: edge-f (-> Symbol Symbol))
+</span>;;; Define the edges in the graph using the edge-f function.
+<span class="ansi38-255165000"
+> (= (edge-f a)  b)
+</span><span class="ansi38-255165005"
+>######### [edge-f,a] :- b
+</span><span class="ansi36"
+>transpiler_stub_created('edge-f'/2).
+
+</span>; % ######### warning: creating stub for:'edge-f'
+Retracting stub: 'mc_1__edge-f'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('edge-f', 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), ['edge-f', a], b).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('edge-f', 2, [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol'])).
+
+</span>recompile_from_depends edge-f/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_1-[eval(['edge-f',a]),arg('edge-f',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[a].
+lazyArgsList:[a-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__edge-f'(a, b).
+
+</span>
+Dependency Tree for '&top':'edge-f'/2:
+'&top':'edge-f'/2
+
+
+Functions to recompile after redefining '&top':'edge-f'/2 in correct order:
+   '&top':'edge-f'/2
+
+<span class="ansi38-255165000"
+> (= (edge-f b)  c)
+</span><span class="ansi38-255165005"
+>######### [edge-f,b] :- c
+</span><span class="ansi36"
+>transpiler_clause_store('edge-f', 2, 1, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), ['edge-f', b], c).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_2-[eval(['edge-f',b]),arg('edge-f',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[b].
+lazyArgsList:[b-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__edge-f'(b, c).
+
+</span>
+Dependency Tree for '&top':'edge-f'/2:
+'&top':'edge-f'/2
+
+
+Functions to recompile after redefining '&top':'edge-f'/2 in correct order:
+   '&top':'edge-f'/2
+
+<span class="ansi38-255165000"
+> (= (edge-f c)  d)
+</span><span class="ansi38-255165005"
+>######### [edge-f,c] :- d
+</span><span class="ansi36"
+>transpiler_clause_store('edge-f', 2, 2, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), ['edge-f', c], d).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_3-[eval(['edge-f',c]),arg('edge-f',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[c].
+lazyArgsList:[c-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__edge-f'(c, d).
+
+</span>
+Dependency Tree for '&top':'edge-f'/2:
+'&top':'edge-f'/2
+
+
+Functions to recompile after redefining '&top':'edge-f'/2 in correct order:
+   '&top':'edge-f'/2
+
+<span class="ansi38-255165000"
+> (= (edge-f e)  f)
+</span><span class="ansi38-255165005"
+>######### [edge-f,e] :- f
+</span><span class="ansi36"
+>transpiler_clause_store('edge-f', 2, 3, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), ['edge-f', e], f).
+
+</span>=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _temp_4-[eval(['edge-f',e]),arg('edge-f',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[e].
+lazyArgsList:[e-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[eager].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__edge-f'(e, f).
+
+</span>
+Dependency Tree for '&top':'edge-f'/2:
+'&top':'edge-f'/2
+
+
+Functions to recompile after redefining '&top':'edge-f'/2 in correct order:
+   '&top':'edge-f'/2
+
+;;; The following code is commented-out and relates to node connectivity checks.
+;;;(= (at $x) (assertTrue $x))
+;;;(= (at-a-b) (at (is-same (edge-f a) b)))
+;;;!(at-a-b)
+;;;(= (a-t-a-b) (assertTrue (is-same (edge-f a) b)))
+;;;!(a-t-a-b)
+<span class="ansi38-255165000"
+> (= (is-same $x $x)  True)
+</span><span class="ansi38-255165005"
+>######### [is-same,_162878{vn = ...},_162878{vn = ...}] :- True
+</span><span class="ansi36"
+>transpiler_stub_created('is-same'/3).
+
+</span>; % ######### warning: creating stub for:'is-same'
+Retracting stub: 'mc_2__is-same'(B,C,D)
+<span class="ansi36"
+>transpiler_clause_store('is-same', 3, 0, ['Any', 'Any'], 'AnyRet', [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet']), ['is-same', _x, _x], 'True').
+
+</span><span class="ansi36"
+>transpiler_predicate_store('is-same', 3, [x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, ['AnyRet'])).
+
+</span>recompile_from_depends is-same/3
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg('is-same',1),arg('is-same',2)], 
+  _temp_5-[eval(['is-same',_x,_x]),arg('is-same',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:eager.
+retProps:x(doeval, eager, ['AnyRet']).
+finalLazyRet:x(doeval, eager, ['AnyRet']).
+finalLazyOnlyRet:x(doeval, eager, ['AnyRet']).
+args_list:[_x, _x].
+lazyArgsList:[_x-x(doeval, eager, []), _x-x(doeval, eager, [])].
+eagerLazyList:[lazy, lazy].
+typeProps:[x(doeval, eager, []), x(doeval, eager, [])].
+finalLazyArgs:[x(doeval, eager, []), x(doeval, eager, [])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_2__is-same'(_x, _x, 'True').
+
+</span>
+Dependency Tree for '&top':'is-same'/3:
+'&top':'is-same'/3
+
+
+Functions to recompile after redefining '&top':'is-same'/3 in correct order:
+   '&top':'is-same'/3
+
+;;; Testing the presence of nodes in the graph.
+<span class="ansi38-013099040"
+>!(assertTrue (is-same (edge-f a) b))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertTrue, 2).
+
+</span>Asserting: transpiler_depends_on('',1,assertTrue,2)
+<span class="ansi36"
+>transpiler_depends_on('', 1, 'is-same', 3).
+
+</span>Asserting: transpiler_depends_on('',1,'is-same',3)
+<span class="ansi36"
+>transpiler_depends_on('', 1, 'edge-f', 2).
+
+</span>Asserting: transpiler_depends_on('',1,'edge-f',2)
+<span class="ansi36"
+>transpiler_stored_eval([assertTrue, ['is-same', ['edge-f', a], b]], ('mc_1__edge-f'(a, A), 'mc_2__is-same'(A, b, B), C=[assertTrue, B]), C).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    ('mc_1__edge-f'(a, B), 'mc_2__is-same'(B, b, C), A=[assertTrue, C])).
+
+</span>
+Deterministic: <span class="ansi33"
+>(assertTrue True)
+</span>;;; Node 'a' is connected to 'b'
+;;; Not present
+<span class="ansi38-013099040"
+>!(assertFalse (is-same (edge-f a) d))
+
+</span><span class="ansi36"
+>transpiler_depends_on('', 1, assertFalse, 2).
+
+</span>Asserting: transpiler_depends_on('',1,assertFalse,2)
+<span class="ansi36"
+>transpiler_stored_eval([assertFalse, ['is-same', ['edge-f', a], d]], ('mc_1__edge-f'(a, A), 'mc_2__is-same'(A, d, B), C=[assertFalse, B]), C).
+
+</span><span class="ansi38-017068017"
+>:- do_metta_runtime(A,
+                    ('mc_1__edge-f'(a, B), 'mc_2__is-same'(B, d, C), A=[assertFalse, C])).
+
+</span>;; no-results ;; 
+;;; Node 'a' is not connected to 'd'
+;;; Define the path-f function for pathfinding.
+;;; This function utilizes recursive calls to the edge-f function.
+<span class="ansi38-255165000"
+> (: path-f (-> Symbol Symbol))
+</span>;;; A node is always connected to itself.
+<span class="ansi38-255165000"
+> (= (path-f $x)  $x)
+</span><span class="ansi38-255165005"
+>######### [path-f,_13668{vn = ...}] :- _13668{vn = ...}
+</span><span class="ansi36"
+>transpiler_stub_created('path-f'/2).
+
+</span>; % ######### warning: creating stub for:'path-f'
+Retracting stub: 'mc_1__path-f'(B,C)
+<span class="ansi36"
+>transpiler_clause_store('path-f', 2, 0, ['Symbol'], 'Symbol', [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol']), ['path-f', _x], _x).
+
+</span><span class="ansi36"
+>transpiler_predicate_store('path-f', 2, [x(doeval, eager, ['Symbol'])], x(doeval, eager, ['Symbol'])).
+
+</span>recompile_from_depends path-f/2
+recompile_from_depends list []
+=== Assignments / Var Mappings (underscore variables) ===
+<span class="ansi35"
+>=======
+<span class="pl-functor"
+>[ </span>
+  _x-[arg('path-f',1),arg(defn,2)], 
+  _temp_6-[eval(['path-f',_x]),arg('path-f',0)]].&#13;&#10;
+
+</span><span class="ansi36"
+>resultEager:lazy.
+retProps:x(doeval, eager, ['Symbol']).
+finalLazyRet:x(doeval, eager, ['Symbol']).
+finalLazyOnlyRet:x(doeval, eager, ['Symbol']).
+args_list:[_x].
+lazyArgsList:[_x-x(doeval, eager, ['Symbol'])].
+eagerLazyList:[lazy].
+typeProps:[x(doeval, eager, ['Symbol'])].
+finalLazyArgs:[x(doeval, eager, ['Symbol'])].
+
+</span><span class="ansi38-240128128"
+>_x=[].
+
+</span><span class="ansi38-173216230"
+>
+'mc_1__path-f'(_x, _x).
+
+</span>
+Dependency Tree for '&top':'path-f'/2:
+'&top':'path-f'/2
+
+
+Functions to recompile after redefining '&top':'path-f'/2 in correct order:
+   '&top':'path-f'/2
+
+;;; The path-f function follows edges using the edge-f function.
+<span class="ansi38-255165000"
+> (= (path-f $x)  
+  (edge-f (path-f $x)))
+</span>P;HTML|
+; <span class="pl-int"
+>0</span>.
+P;HTML|
+; 0
+
+^  <span class="ansi1 ansi32"
+>Call: </span>(187) [user] f2p(['path-f', _1050{vn = ...}], [_1050{vn = ...}-x(doeval, eager, ['Symbol'])], _2090, _2092, _2094, ['edge-f', ['path-f', _1050{vn = ...}]], _2098, _2100) ? 
+Script done on 2025-01-24 02:54:20+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/performance/basic/pathfinding-edge.metta" --halt=true\033[0m

@@ -12,8 +12,6 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
 .ansi38-255165000 { color: #FFA500; }
@@ -61,7 +59,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 01:42:58+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 01:44:31+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -333,7 +331,7 @@ Deterministic: <span class="ansi33"
 >;; HOL.NATSTANDALONETEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.96 milliseconds) 
+; took 0.004 secs. (4.43 milliseconds) 
 
 !(assertEqual (bc (: $prf (=== (plus Z $y) $y)) Z) (: plusBase (=== (plus Z $y) $y)))
 
@@ -369,7 +367,7 @@ Deterministic: <span class="ansi33"
 >;; HOL.NATSTANDALONETEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.038 secs. (38.25 milliseconds) 
+; took 0.041 secs. (41.50 milliseconds) 
 
 !(assertEqual (bc (: $prf (=== (=== (plus Z Z) Z) (plusRightId Z))) (fromNumber 2)) (: (Sym plusRightIdProp) (=== (=== (plus Z Z) Z) (plusRightId Z))))
 
@@ -416,7 +414,7 @@ Deterministic: <span class="ansi33"
 >;; HOL.NATSTANDALONETEST.03</h3>
 ; 
 ; EVAL TEST
-; took 1.973 secs. (1972.68 milliseconds) 
+; took 2.15 seconds.
 
 !(assertEqualToResult (bc (: $prf (plusRightId Z)) (fromNumber 4)) ((: ((Replace0 plusBase) ((Replace0 (Sym plusBase)) ((Replace0 (Sym plusRightIdProp)) plusBase))) (plusRightId Z)) (: ((Replace0 ((Trans plusBase) (Sym plusRightIdProp))) ((Replace0 (Sym plusBase)) plusBase)) (plusRightId Z)) (: ((Replace0 ((Trans plusRightIdProp) (Sym plusRightIdProp))) ((Replace0 (Sym plusRightIdProp)) plusBase)) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) ((Trans (Sym plusBase)) ((Trans plusBase) plusBase))) (plusRightId Z)) (: ((Replace0 (Sym plusRightIdProp)) plusBase) (plusRightId Z))))
 
@@ -537,67 +535,11 @@ N(1): <span class="ansi33"
 </span>
 ;<h3 id="HOL.NATSTANDALONETEST.04"
 >;; HOL.NATSTANDALONETEST.04</h3>
-; 
-; EVAL TEST
-; took 13.61 seconds.
 
-!(assertEqual (bc (: ((NatInd $basecase) $indstep) (plusRightId $x)) (fromNumber 5)) (: ((NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) (plusRightId $x)))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test 
-      ( (: 
-          ( (NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) 
-          (plusRightId $x))) 
-      ( (: 
-          ( (NatInd ((Replace0 (Sym plusRightIdProp)) plusBase)) ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp))))) 
-          (plusRightId $x)))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;;; TODO: try to reproduce
-;;;;
-;;;; https://idris2.readthedocs.io/en/latest/tutorial/theorems.html#proving-theorems
-;;;;
-;;;; For that one may need to use the following rule
-;;;;
-;;;; (: $x (: $x $t))
-;;;;
-;;;; or maybe something like
-;;;;
-;;;; (: (CTor $x) (-> (: $x $t) ($p $x)))
-;;;;
-;;;; In order to emulate dependent product or such.
-<span class="ansi1"
->LoonIt Report
-</span>------------
-<span class="ansi32"
->Successes: 4
-</span><span class="ansi32"
->Failures: 0
-</span><br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[(: ((. (Trans plusRec)) Cong) (-> (=== (plus $x Z) $x) (=== (plus (S $x) Z) (S $x))))]
-[(: ((. (Replace0 (Sym plusRightIdProp))) ((. (Trans plusRec)) ((. Cong) (Replace0 plusRightIdProp)))) (-> (plusRightId $x) (plusRightId (S $x))))]
-[()]
-
-Script done on 2025-01-23 01:43:37+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 01:45:11+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/extended_compat/hyperon-pln/metta/hol/NatStandaloneTest.metta" --halt=true\033[0m

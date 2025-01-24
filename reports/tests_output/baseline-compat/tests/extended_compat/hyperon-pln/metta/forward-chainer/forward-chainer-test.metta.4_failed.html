@@ -110,7 +110,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-23 01:40:34+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/forward-chainer/forward-chainer-test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-01-24 01:42:03+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/extended_compat/hyperon-pln/metta/forward-chainer/forward-chainer-test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -201,7 +201,7 @@ Script started on 2025-01-23 01:40:34+00:00 [COMMAND="timeout --preserve-status 
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000020 secs. (19.67 microseconds) 
+; took 0.000021 secs. (21.36 microseconds) 
 
 !(assertEqualToResult === ("=== Entail ==="))
 
@@ -258,7 +258,7 @@ equal_enough_for_test('[|]'(===,[]),'[|]'("=== Entail ===",[]))[error [error [do
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.024 secs. (23.88 milliseconds) 
+; took 0.024 secs. (24.04 milliseconds) 
 
 !(assertEqualToResult (fc_entail (⊢ A) kb_entail rb_entail (fromNumber 2)) ((⊢ A) (⊢ C) (⊢ B)))
 
@@ -287,7 +287,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.02 milliseconds) 
+; took 0.028 secs. (28.41 milliseconds) 
 
 !(assertEqualToResult (fc_entail (⊢ (→ A B)) kb_entail rb_entail (fromNumber 2)) ((⊢ (→ A B)) (⊢ C) (⊢ B)))
 
@@ -317,7 +317,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.051 secs. (51.01 milliseconds) 
+; took 0.051 secs. (50.52 milliseconds) 
 
 !(assertEqualToResult (let (⊢ (→ $x $y)) (kb_entail) (fc_entail (⊢ (→ $x $y)) kb_entail rb_entail (fromNumber 2))) ((⊢ (→ A B)) (⊢ C) (⊢ B) (⊢ (→ B C))))
 
@@ -352,7 +352,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000016 secs. (15.93 microseconds) 
+; took 0.000024 secs. (23.62 microseconds) 
 
 !(assertEqualToResult === ("=== Bare entail ==="))
 
@@ -406,7 +406,7 @@ equal_enough_for_test('[|]'(===,[]),'[|]'("=== Bare entail ===",[]))[error [erro
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (15.17 milliseconds) 
+; took 0.015 secs. (15.14 milliseconds) 
 
 !(assertEqualToResult (fc_bare A kb_bare rb_bare (fromNumber 2)) (A C B))
 
@@ -431,7 +431,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (17.84 milliseconds) 
+; took 0.018 secs. (17.70 milliseconds) 
 
 !(assertEqualToResult (fc_bare (→ A B) kb_bare rb_bare (fromNumber 2)) ((→ A B) C B))
 
@@ -457,7 +457,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.08</h3>
 ; 
 ; EVAL TEST
-; took 0.033 secs. (32.94 milliseconds) 
+; took 0.033 secs. (32.52 milliseconds) 
 
 !(assertEqualToResult (let (→ $x $y) (kb_bare) (fc_bare (→ $x $y) kb_bare rb_bare (fromNumber 2))) ((→ A B) C B (→ B C)))
 
@@ -487,7 +487,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000028 secs. (27.76 microseconds) 
+; took 0.000023 secs. (23.08 microseconds) 
 
 !(assertEqualToResult === ("=== Equality ==="))
 
@@ -536,7 +536,7 @@ equal_enough_for_test('[|]'(===,[]),'[|]'("=== Equality ===",[]))[error [error [
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.81 milliseconds) 
+; took 0.011 secs. (10.73 milliseconds) 
 
 !(assertEqualToResult (fc_eq A kb_eq (fromNumber 2)) (A C B))
 
@@ -561,7 +561,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.11</h3>
 ; 
 ; EVAL TEST
-; took 0.014 secs. (13.51 milliseconds) 
+; took 0.014 secs. (13.53 milliseconds) 
 
 !(assertEqualToResult (fc_eq (→ A B) kb_eq (fromNumber 2)) ((→ A B) C B))
 
@@ -587,7 +587,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.12</h3>
 ; 
 ; EVAL TEST
-; took 0.027 secs. (26.52 milliseconds) 
+; took 0.026 secs. (26.16 milliseconds) 
 
 !(assertEqualToResult (let (→ $x $y) (kb_eq) (fc_eq (→ $x $y) kb_eq (fromNumber 2))) ((→ A B) C B (→ B C)))
 
@@ -620,7 +620,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000015 secs. (15.27 microseconds) 
+; took 0.000024 secs. (23.52 microseconds) 
 
 !(assertEqualToResult === ("=== DTL ==="))
 
@@ -682,7 +682,7 @@ equal_enough_for_test('[|]'(===,[]),'[|]'("=== DTL ===",[]))[error [error [domai
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.14</h3>
 ; 
 ; EVAL TEST
-; took 0.030 secs. (30.16 milliseconds) 
+; took 0.030 secs. (30.19 milliseconds) 
 
 !(assertEqualToResult (fc_dtl (: a A) kb_dtl rb_dtl (fromNumber 2)) ((: a A) (: (ModusPonens bc (ModusPonens ab a)) C) (: (ModusPonens ab a) B)))
 
@@ -717,7 +717,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.15</h3>
 ; 
 ; EVAL TEST
-; took 0.035 secs. (35.47 milliseconds) 
+; took 0.035 secs. (34.97 milliseconds) 
 
 !(assertEqualToResult (fc_dtl (: ab (→ A B)) kb_dtl rb_dtl (fromNumber 2)) ((: ab (→ A B)) (: (ModusPonens bc (ModusPonens ab a)) C) (: (ModusPonens ab a) B)))
 
@@ -755,7 +755,7 @@ Deterministic: <span class="ansi33"
 >;; FORWARD-CHAINER.FORWARD-CHAINER-TEST.16</h3>
 ; 
 ; EVAL TEST
-; took 0.061 secs. (60.62 milliseconds) 
+; took 0.060 secs. (60.14 milliseconds) 
 
 !(assertEqualToResult (let (: $prf (→ $x $y)) (kb_dtl) (fc_dtl (: $prf (→ $x $y)) kb_dtl rb_dtl (fromNumber 2))) ((: ab (→ A B)) (: (ModusPonens bc (ModusPonens ab a)) C) (: (ModusPonens ab a) B) (: bc (→ B C))))
 
@@ -805,7 +805,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-01-23 01:40:45+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-01-24 01:42:15+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
