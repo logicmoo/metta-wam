@@ -18,12 +18,8 @@
 .ansi36 { color: #00aaaa; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165009 { color: #FFA509; }
-.ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -31,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-01-24 06:37:10+00:00 [COMMAND="timeout --preserve-status --foreground --signal=SIGTERM --kill-after=5s 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/base_test_repr_parse_intersection.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-01 08:17:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/base_test_repr_parse_intersection.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -81,7 +77,7 @@ Script started on 2025-01-24 06:37:10+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.01</h3>
 ; 
 ; EVAL TEST
-; took 0.058 secs. (57.52 milliseconds) 
+; took 0.053 secs. (53.09 milliseconds) 
 
 !(assertEqualToResult (intersection (superpose (a b (+ 2 3) c)) (superpose (b c (+ 2 3) c c d))) (b 5 c))
 
@@ -102,7 +98,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.40 milliseconds) 
+; took 0.004 secs. (4.36 milliseconds) 
 
 !(assertEqual (intersection (superpose (a b (+ 2 3) c)) (superpose (b c (+ 2 3) c c d))) (superpose (b (+ 2 3) c)))
 
@@ -115,11 +111,13 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span>;;; repr
-<span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
+<span class="ansi38-013099040"
 >!(repr aswde)
-</span>;; To unit test case:
+
+</span>
+Deterministic: <span class="ansi33"
+>"aswde"
+</span>;;; this works 
 <span class="ansi38-013099040"
 >!(assertEqualToResult (repr aswde) ("aswde"))
 
@@ -128,28 +126,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000257 secs. (256.88 microseconds) 
-
-!(assertEqualToResult (repr aswde) ("aswde"))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ("aswde") 
-      ("aswde")]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; this works 
-<span class="ansi38-013099040"
->!(assertEqualToResult (repr aswde) ("aswde"))
-
-</span>
-;<h3 id="HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.04"
->;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.04</h3>
-; 
-; EVAL TEST
-; took 0.000272 secs. (271.61 microseconds) 
+; took 0.000235 secs. (235.11 microseconds) 
 
 !(assertEqualToResult (repr aswde) ("aswde"))
 
@@ -162,41 +139,22 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span>;;; parse
-<span class="ansi38-255165009"
->;; In file as:  
-</span><span class="ansi1 ansi38-255238088"
->!(parse "kjh")
-</span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (parse "kjh") (kjh))
+>!(parse "kjh")
 
-</span>
-;<h3 id="HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.05"
->;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.05</h3>
-; 
-; EVAL TEST
-; took 0.000440 secs. (440.21 microseconds) 
-
-!(assertEqualToResult (parse "kjh") (kjh))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (kjh) 
-      (kjh)]]
 </span>
 Deterministic: <span class="ansi33"
->()
+>kjh
 </span>;;; this works
 <span class="ansi38-013099040"
 >!(assertEqualToResult (parse "kjh") (kjh))
 
 </span>
-;<h3 id="HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.06"
->;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.06</h3>
+;<h3 id="HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.04"
+>;; HYPERON-METTALOG-SANITY.BASE-TEST-REPR-PARSE-INTERSECTION.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000393 secs. (393.38 microseconds) 
+; took 0.000248 secs. (248.46 microseconds) 
 
 !(assertEqualToResult (parse "kjh") (kjh))
 
@@ -212,19 +170,19 @@ Deterministic: <span class="ansi33"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 6
+>Successes: 4
 </span><span class="ansi32"
 >Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
 [()]
+["aswde"]
 [()]
-[()]
-[()]
+[kjh]
 [()]
 
-Script done on 2025-01-24 06:37:19+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-01 08:17:22+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
