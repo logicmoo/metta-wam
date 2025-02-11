@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-11 14:10:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-11 16:57:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -92,7 +92,7 @@ Script started on 2025-02-11 14:10:51+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000176 secs. (176.04 microseconds) 
+; took 0.000199 secs. (198.69 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
@@ -114,7 +114,7 @@ Deterministic: <span class="ansi33"
 > (likes John Jane)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (1.86 milliseconds) 
+; took 0.002 secs. (1.66 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -134,7 +134,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.44 milliseconds) 
+; took 0.002 secs. (2.20 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane)))
 
@@ -154,7 +154,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000470 secs. (469.57 microseconds) 
+; took 0.000273 secs. (272.75 microseconds) 
 
 !(assertEqualToResult (match &self (likes $x $y) ($x $y)) ())
 
@@ -175,7 +175,7 @@ Deterministic: <span class="ansi33"
 > (likes Kate Karl)
 </span>; 
 ; EVAL TEST
-; took 0.002 secs. (2.16 milliseconds) 
+; took 0.002 secs. (1.72 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes Kate Karl)) (()))
 
@@ -195,7 +195,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.27 milliseconds) 
+; took 0.003 secs. (2.87 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((John Jane) (Kate Karl)))
 
@@ -219,7 +219,7 @@ Deterministic: <span class="ansi33"
 >retractall(metta_atom_asserted('&new-space',[likes,'John','Jane']))
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.34 milliseconds) 
+; took 0.001 secs. (1.16 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
@@ -239,7 +239,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.81 milliseconds) 
+; took 0.002 secs. (1.55 milliseconds) 
 
 !(assertEqualToResult (match &new-space (likes $x $y) ($x $y)) ((Kate Karl)))
 
@@ -264,7 +264,7 @@ Deterministic: <span class="ansi33"
   (+ $x 1))
 </span>; 
 ; EVAL TEST
-; took 0.013 secs. (12.64 milliseconds) 
+; took 0.011 secs. (11.23 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -297,7 +297,7 @@ Deterministic: <span class="ansi33"
   (+ $x 2))
 </span>; 
 ; EVAL TEST
-; took 0.011 secs. (11.24 milliseconds) 
+; took 0.011 secs. (10.66 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $x)  
   (+ $x 2))) (()))
@@ -331,7 +331,7 @@ Deterministic: <span class="ansi33"
 >retractall(metta_atom_asserted('&new-space',[=,[foo,_x],[+,_x,1]]))
 </span>; 
 ; EVAL TEST
-; took 0.037 secs. (36.65 milliseconds) 
+; took 0.036 secs. (35.68 milliseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (= (foo $x)  
   (+ $x 1))) (()))
@@ -372,7 +372,7 @@ Deterministic: <span class="ansi33"
 [[()]
 [
 
-Script done on 2025-02-11 14:11:00+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-11 16:57:15+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
