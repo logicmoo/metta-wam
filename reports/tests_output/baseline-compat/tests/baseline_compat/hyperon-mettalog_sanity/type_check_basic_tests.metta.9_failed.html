@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-12 15:17:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-12 15:47:52+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl  /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 P;HTML|
 ;         [set_debug transpiler false]
 
@@ -103,7 +103,7 @@ Script started on 2025-02-12 15:17:13+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.002 secs. (1.70 milliseconds) 
 
 !(assertEqualToResult (get-type (foo 1)) (Number))
 
@@ -123,7 +123,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.001 secs. (1.20 milliseconds) 
 
 !(assertEqualToResult (get-type (foo "1")) ())
 
@@ -144,7 +144,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.04 milliseconds) 
+; took 0.002 secs. (2.07 milliseconds) 
 
 !(assertEqualToResult (foo "1") ((Error "1" BadType)))
 
@@ -166,7 +166,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000256 secs. (256.43 microseconds) 
+; took 0.000306 secs. (305.92 microseconds) 
 
 !(assertEqualToResult (match &self (foo "1") Fine) ())
 
@@ -186,7 +186,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.47 milliseconds) 
+; took 0.003 secs. (2.78 milliseconds) 
 
 !(assertEqualToResult (get-type (= (foo $x)  
   (+ $x 2))) (Atom))
@@ -208,7 +208,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.14 milliseconds) 
+; took 0.002 secs. (2.36 milliseconds) 
 
 !(assertEqualToResult (get-type (= (foo $x)  
   (+ $x "2"))) ())
@@ -233,7 +233,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.79 milliseconds) 
+; took 0.002 secs. (1.95 milliseconds) 
 
 !(assertEqualToResult (get-type (= (bar $x)  
   (+ $x 2))) ())
@@ -278,7 +278,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000563 secs. (563.33 microseconds) 
+; took 0.000700 secs. (700.03 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail myWall)) (Object))
 
@@ -298,7 +298,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.14 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail "notAnObject")) ())
 
@@ -319,7 +319,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000858 secs. (858.38 microseconds) 
+; took 0.000963 secs. (962.92 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (painted myPaint myWall))) (Object))
 
@@ -339,7 +339,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.00 milliseconds) 
+; took 0.003 secs. (2.99 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (painted "notPaint" myWall))) ())
 
@@ -359,7 +359,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.86 milliseconds) 
+; took 0.002 secs. (2.00 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (indirection (painted myPaint myWall)))) (Object))
 
@@ -379,7 +379,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.45 milliseconds) 
+; took 0.005 secs. (5.36 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (indirection (painted "notPaint" myWall)))) ())
 
@@ -399,7 +399,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.99 milliseconds) 
+; took 0.005 secs. (5.21 milliseconds) 
 
 !(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted myPaint myWall))))) (Object))
 
@@ -408,18 +408,18 @@ Deterministic: <span class="ansi33"
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ($m $a) 
       (Object)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_503782{peer_objects = ..., peer_interfaces = ...},'[|]'(_503674{peer_objects = ..., peer_interfaces = ...},[])),'[|]'('Object',[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_527446{peer_objects = ..., peer_interfaces = ...},'[|]'(_527338{peer_objects = ..., peer_interfaces = ...},[])),'[|]'('Object',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($m $a)) ('~nExpected: ' (Object))) { [put_attr $_516448 peer_objects ((['hammered',
+>(Error ('~nGot: ' ($m $a)) ('~nExpected: ' (Object))) { [put_attr $_540112 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'myPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_529584 peer_interfaces (Object Object)] [put_attr $_529716 peer_objects ((['hammered',
+ ['Object', 'Object']))] [put_attr $_553248 peer_interfaces (Object Object)] [put_attr $_553380 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'myPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_530364 peer_interfaces (Object Object)] } 
+ ['Object', 'Object']))] [put_attr $_554028 peer_interfaces (Object Object)] } 
 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted "notPaint" myWall))))) ())
@@ -429,7 +429,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.015 secs. (14.94 milliseconds) 
+; took 0.016 secs. (15.53 milliseconds) 
 
 !(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted "notPaint" myWall))))) ())
 
@@ -437,18 +437,18 @@ Deterministic: <span class="ansi33"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ($m $a) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_630492{peer_objects = ..., peer_interfaces = ...},'[|]'(_630376{peer_objects = ..., peer_interfaces = ...},[])),[])
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_656280{peer_objects = ..., peer_interfaces = ...},'[|]'(_656164{peer_objects = ..., peer_interfaces = ...},[])),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($m $a)) ('~nExpected: ' ())) { [put_attr $_643140 peer_objects ((['hammered',
+>(Error ('~nGot: ' ($m $a)) ('~nExpected: ' ())) { [put_attr $_668928 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'notPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_643786 peer_interfaces (Object Object)] [put_attr $_643926 peer_objects ((['hammered',
+ ['Object', 'Object']))] [put_attr $_669574 peer_interfaces (Object Object)] [put_attr $_669714 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'notPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_644566 peer_interfaces (Object Object)] } 
+ ['Object', 'Object']))] [put_attr $_670354 peer_interfaces (Object Object)] } 
 
 </span><span class="ansi1"
 >LoonIt Report
@@ -472,28 +472,28 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
 [()]
 [(Error ('~nGot: ' (Object Object)) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ($m $a)) ('~nExpected: ' (Object))) { [put_attr $_530822 peer_objects ((['hammered',
+[(Error ('~nGot: ' ($m $a)) ('~nExpected: ' (Object))) { [put_attr $_554486 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'myPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_531476 peer_interfaces (Object Object)] [put_attr $_531608 peer_objects ((['hammered',
+ ['Object', 'Object']))] [put_attr $_555140 peer_interfaces (Object Object)] [put_attr $_555272 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'myPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_532256 peer_interfaces (Object Object)] } 
+ ['Object', 'Object']))] [put_attr $_555920 peer_interfaces (Object Object)] } 
 ]
-[(Error ('~nGot: ' ($m $a)) ('~nExpected: ' ())) { [put_attr $_644334 peer_objects ((['hammered',
+[(Error ('~nGot: ' ($m $a)) ('~nExpected: ' ())) { [put_attr $_670122 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'notPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_644980 peer_interfaces (Object Object)] [put_attr $_645120 peer_objects ((['hammered',
+ ['Object', 'Object']))] [put_attr $_670768 peer_interfaces (Object Object)] [put_attr $_670908 peer_objects ((['hammered',
   'myHammer',
   'myNail',
   ['indirection', ['painted', 'notPaint', 'myWall']]],
- ['Object', 'Object']))] [put_attr $_645760 peer_interfaces (Object Object)] } 
+ ['Object', 'Object']))] [put_attr $_671548 peer_interfaces (Object Object)] } 
 ]
 
-Script done on 2025-02-12 15:17:21+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-12 15:48:01+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
