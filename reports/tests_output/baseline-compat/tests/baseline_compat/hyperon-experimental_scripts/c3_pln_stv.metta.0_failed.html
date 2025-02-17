@@ -42,9 +42,78 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-15 18:35:40+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az789-502.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-
+Script started on 2025-02-17 09:50:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1057-468.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+P;HTML|
+;      [set_debug transpiler false]
+P;HTML|
+;       [set_debug overtime 4.0]
+P;HTML|
+;       [set_debug overflow 1000]
+P;HTML|
+;       [set_debug eval false]
+P;HTML|
+;       [set_debug load silent]
+P;HTML|
+;       [set_debug trace-on-load false]
+P;HTML|
+;       [set_debug exec false]
+P;HTML|
+;       [set_debug errors non-type]
+P;HTML|
+;       [set_debug fail false]
+P;HTML|
+;       [set_debug test true]
+P;HTML|
+;      [set_debug test false]
+P;HTML|
+;      [set_debug fail false]
+P;HTML|
+;      [set_debug load false]
+P;HTML|
+%~      [run_vspace_service &top 3023]
+P;HTML|
+;         [set_debug transpiler false]
+P;HTML|
+;         [set_debug overtime 4.0]
+P;HTML|
+;         [set_debug overflow 1000]
+P;HTML|
+;         [set_debug eval false]
+P;HTML|
+;         [set_debug load silent]
+P;HTML|
+;         [set_debug trace-on-load false]
+P;HTML|
+;         [set_debug exec false]
+P;HTML|
+;         [set_debug errors non-type]
+P;HTML|
+;         [set_debug fail false]
+P;HTML|
+;         [set_debug test true]
+P;HTML|
+;         [set_debug test false]
+P;HTML|
+;         [set_debug fail false]
+
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[()]" ]
+P;HTML|
+;                        [ = 5 "[()]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta]
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; The examples in this file is inspired by OpenCog Classic examples
@@ -53,13 +122,13 @@ Script started on 2025-02-15 18:35:40+00:00 [COMMAND="timeout --preserve-status 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Some helpful definitions
 <span class="ansi38-255165000"
-> (= (min $_7568 $_7574)  
+> (= (min $_46756 $_46762)  
   (if 
-    (< $_7568 $_7574) $_7568 $_7574))
+    (< $_46756 $_46762) $_46756 $_46762))
 </span><span class="ansi38-255165000"
-> (= (s-tv (stv $_11168 $_11174))  $_11168)
+> (= (s-tv (stv $_50358 $_50364))  $_50358)
 </span><span class="ansi38-255165000"
-> (= (c-tv (stv $_14780 $_14786))  $_14786)
+> (= (c-tv (stv $_53970 $_53976))  $_53976)
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `TV` "metarule" based on `match` to run
@@ -68,32 +137,32 @@ Script started on 2025-02-15 18:35:40+00:00 [COMMAND="timeout --preserve-status 
 ;;; Some `.tv` facts will be defined below
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (= (TV $_18422)  
+> (= (TV $_57612)  
   (match &self 
-    (.tv $_18422 $_18464) $_18464))
+    (.tv $_57612 $_57654) $_57654))
 </span>;;; Definition of TV for a conjunction
 ;;; we could use `(.tv (And $a $b) (stv ...))` instead of this
 <span class="ansi38-255165000"
-> (= (TV (And $_21994 $_22000))  
+> (= (TV (And $_61184 $_61190))  
   (stv 
     (min 
-      (s-tv (TV $_21994)) 
-      (s-tv (TV $_22000))) 
+      (s-tv (TV $_2948)) 
+      (s-tv (TV $_2954))) 
     (min 
-      (c-tv (TV $_21994)) 
-      (c-tv (TV $_22000)))))
+      (c-tv (TV $_2948)) 
+      (c-tv (TV $_2954)))))
 </span>;;; Definition of TV for $x when it's the consequent of an implication
 <span class="ansi38-255165000"
-> (= (TV $_26156)  
+> (= (TV $_7648)  
   (match &self 
     (.tv 
-      (Implication $_26204 $_26156) 
-      (stv $_26228 $_26234)) 
+      (Implication $_7696 $_7648) 
+      (stv $_7720 $_7726)) 
     (stv 
-      (* $_26228 
-        (s-tv (TV $_26204))) 
-      (* $_26234 
-        (c-tv (TV $_3070))))))
+      (* $_7720 
+        (s-tv (TV $_7696))) 
+      (* $_7726 
+        (c-tv (TV $_7696))))))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; First example
@@ -133,7 +202,7 @@ Script started on 2025-02-15 18:35:40+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.01</h3>
 ; 
 ; EVAL TEST
-; took 0.044 secs. (44.40 milliseconds) 
+; took 0.040 secs. (40.32 milliseconds) 
 
 !(assertEqual (TV (And (PA) (PB))) (stv 0.3 0.8))
 
@@ -153,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.02</h3>
 ; 
 ; EVAL TEST
-; took 0.018 secs. (17.81 milliseconds) 
+; took 0.017 secs. (17.06 milliseconds) 
 
 !(assertEqual (TV (FA)) (stv 0.4 0.8))
 
@@ -171,14 +240,14 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Implication rule
 <span class="ansi38-255165000"
-> (.tv (Implication (And (croaks $_56712) (eat_flies $_56712)) (frog $_56712)) (stv 0.9 0.8))
+> (.tv (Implication (And (croaks $_32134) (eat_flies $_32134)) (frog $_32134)) (stv 0.9 0.8))
 </span>;;; Some facts
 <span class="ansi38-255165000"
 > (.tv (croaks Fritz) (stv 0.95 0.85))
 </span><span class="ansi38-255165000"
 > (.tv (eat_flies Fritz) (stv 0.87 0.95))
 </span><span class="ansi38-255165000"
-> (.tv (Implication (frog $_2850) (green $_2850)) (stv 0.9 1.0))
+> (.tv (Implication (frog $_41020) (green $_41020)) (stv 0.9 1.0))
 </span>;;; Tests
 <span class="ansi38-013099040"
 >!(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
@@ -188,7 +257,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.25 milliseconds) 
+; took 0.004 secs. (3.53 milliseconds) 
 
 !(assertEqual (TV (croaks Fritz)) (stv 0.95 0.85))
 
@@ -208,7 +277,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.04</h3>
 ; 
 ; EVAL TEST
-; took 0.038 secs. (38.28 milliseconds) 
+; took 0.039 secs. (39.26 milliseconds) 
 
 !(assertEqual (TV (frog Fritz)) (stv 0.783 0.68))
 
@@ -228,7 +297,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C3-PLN-STV.05</h3>
 ; 
 ; EVAL TEST
-; took 0.089 secs. (89.17 milliseconds) 
+; took 0.080 secs. (79.80 milliseconds) 
 
 !(assertEqual (TV (green Fritz)) (stv 0.7047 0.68))
 
@@ -240,7 +309,9 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi1"
+</span>P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c3_pln_stv.metta 0 ]
+<span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
@@ -249,13 +320,40 @@ Deterministic: <span class="ansi33"
 >Failures: 0
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
+P;HTML|
+;         [set_debug transpiler false]
+P;HTML|
+;         [set_debug overtime 4.0]
+P;HTML|
+;         [set_debug overflow 1000]
+P;HTML|
+;         [set_debug eval false]
+P;HTML|
+;         [set_debug load silent]
+P;HTML|
+;         [set_debug trace-on-load false]
+P;HTML|
+;         [set_debug exec false]
+P;HTML|
+;         [set_debug errors non-type]
+P;HTML|
+;         [set_debug fail false]
+P;HTML|
+;         [set_debug test true]
+P;HTML|
+;         [set_debug test false]
+P;HTML|
+;         [set_debug fail false]
+[()]
 [()]
 [()]
 [()]
 [()]
-[()]
+P;HTML|
+;          [maybe_halt 7]
+
 
-Script done on 2025-02-15 18:35:41+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-17 09:50:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
