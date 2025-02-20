@@ -65,7 +65,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:27:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/nalifier.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:16:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/nalifier.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/nalifier.metta] ]
 P;HTML|
@@ -84,107 +84,107 @@ Script started on 2025-02-18 13:27:22+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If True $_58952)  $_58952)
+> (= (If True $then)  $then)
 </span><span class="ansi38-255165000"
-> (= (If False $_62332)  
-  (let $_62350 0 
-    (let $_62350 1 $_62350)))
+> (= (If False $then)  
+  (let $x 0 
+    (let $x 1 $x)))
 </span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (If $_5500 $_5506 $_5512)  
-  (if $_5500 $_5506 $_5512))
+> (= (If $cond $then $else)  
+  (if $cond $then $else))
 </span><span class="ansi38-255165000"
 > (: sequential (-> Expression %Undefined%))
 </span><span class="ansi38-255165000"
-> (= (sequential $_11222)  
-  (superpose $_11222))
+> (= (sequential $1)  
+  (superpose $1))
 </span><span class="ansi38-255165000"
 > (: do (-> Expression %Undefined%))
 </span><span class="ansi38-255165000"
-> (= (do $_17030)  
-  (case $_17030 ()))
+> (= (do $1)  
+  (case $1 ()))
 </span><span class="ansi38-255165000"
-> (= (max $_20704 $_20710)  
+> (= (max $1 $2)  
   (if 
-    (> $_20704 $_20710) $_20704 $_20710))
+    (> $1 $2) $1 $2))
 </span><span class="ansi38-255165000"
-> (= (min $_24326 $_24332)  
+> (= (min $1 $2)  
   (if 
-    (< $_24326 $_24332) $_24326 $_24332))
+    (< $1 $2) $1 $2))
 </span><span class="ansi38-255165000"
-> (= (abs $_27606)  
+> (= (abs $x)  
   (If 
-    (< $_27606 0) 
-    (- 0 $_27606) $_27606))
+    (< $x 0) 
+    (- 0 $x) $x))
 </span><span class="ansi38-255165000"
-> (= (TupleConcat $_31294 $_31300)  
-  (collapse (superpose ((superpose $_31294) (superpose $_31300)))))
+> (= (TupleConcat $Ev1 $Ev2)  
+  (collapse (superpose ((superpose $Ev1) (superpose $Ev2)))))
 </span>;;;; Truth functions
 <span class="ansi38-255165000"
-> (= (Truth_c2w $_34516)  
-  (/ $_34516 
-    (- 1 $_34516)))
+> (= (Truth_c2w $c)  
+  (/ $c 
+    (- 1 $c)))
 </span><span class="ansi38-255165000"
-> (= (Truth_w2c $_37786)  
-  (/ $_37786 
-    (+ $_37786 1)))
+> (= (Truth_w2c $w)  
+  (/ $w 
+    (+ $w 1)))
 </span><span class="ansi38-255165000"
-> (= (Truth_Deduction ($_42340 $_42346) ($_42358 $_42364))  
+> (= (Truth_Deduction ($f1 $c1) ($f2 $c2))  
     
-  (* $_42340 $_42358)
+  (* $f1 $f2)
     
   (* 
-    (* $_42340 $_42358) 
-    (* $_42346 $_42364)))
+    (* $f1 $f2) 
+    (* $c1 $c2)))
 </span><span class="ansi38-255165000"
-> (= (Truth_Abduction ($_46706 $_46712) ($_46724 $_46730))  
-  ($_46724 (Truth_w2c (* (* $_46706 $_46712) $_46730))))
+> (= (Truth_Abduction ($f1 $c1) ($f2 $c2))  
+  ($f2 (Truth_w2c (* (* $f1 $c1) $c2))))
 </span><span class="ansi38-255165000"
-> (= (Truth_Induction $_50194 $_50200)  
-  (Truth_Abduction $_50200 $_50194))
+> (= (Truth_Induction $T1 $T2)  
+  (Truth_Abduction $T2 $T1))
 </span><span class="ansi38-255165000"
-> (= (Truth_Revision ($_57008 $_57014) ($_57026 $_57032))  
+> (= (Truth_Revision ($f1 $c1) ($f2 $c2))  
   (let* 
-    ( ($_57062 (Truth_c2w $_57014)) 
-      ($_57092 (Truth_c2w $_57032)) 
-      ($_57122 (+ $_57062 $_57092)) 
-      ($_57158 (/ (+ (* $_3690 $_3636) (* $_3720 $_3654)) $_3750)) 
-      ($_3876 (Truth_w2c $_3750))) 
-    ( (min 1.0 $_3786) (min 0.99 (max (max $_3876 $_3642) $_3660)))))
+    ( ($w1 (Truth_c2w $c1)) 
+      ($w2 (Truth_c2w $c2)) 
+      ($w (+ $w1 $w2)) 
+      ($f (/ (+ (* $w1 $f1) (* $w2 $f2)) $w)) 
+      ($c (Truth_w2c $w))) 
+    ( (min 1.0 $f) (min 0.99 (max (max $c $c1) $c2)))))
 </span><span class="ansi38-255165000"
-> (= (Truth_Expectation ($_7536 $_7542))  
+> (= (Truth_Expectation ($f $c))  
   (+ 
-    (* $_7542 
-      (- $_7536 0.5)) 0.5))
+    (* $c 
+      (- $f 0.5)) 0.5))
 </span>;;;;NAL-1
 ;;;;!Syllogistic rules for Inheritance:
 <span class="ansi38-255165000"
-> (= (|- ($_11528 $_11534) ($_11528 $_11552))  
-  ($_11528 (Truth_Revision $_11534 $_11552)))
+> (= (|- ($T $T1) ($T $T2))  
+  ($T (Truth_Revision $T1 $T2)))
 </span><span class="ansi38-255165000"
-> (= (|- ((= -->  $_16056) $_16062) ((= -->  $_16092) $_16098))  
+> (= (|- (($a --> $b) $T1) (($b --> $c) $T2))  
     
-  (= -->  $_16092)
+  ($a --> $c)
     
-  (Truth_Deduction $_16062 $_16098))
+  (Truth_Deduction $T1 $T2))
 </span><span class="ansi38-255165000"
-> (= (|- ((= -->  $_20474) $_20480) ((= -->  $_20510) $_20516))  
+> (= (|- (($a --> $b) $T1) (($a --> $c) $T2))  
     
-  (= -->  $_20474)
+  ($c --> $b)
     
-  (Truth_Induction $_20480 $_20516))
+  (Truth_Induction $T1 $T2))
 </span><span class="ansi38-255165000"
-> (= (|- ((= -->  $_24892) $_24898) ((= -->  $_24892) $_24934))  
+> (= (|- (($a --> $c) $T1) (($b --> $c) $T2))  
     
-  (= -->  =)
+  ($b --> $a)
     
-  (Truth_Abduction $_24898 $_24934))
+  (Truth_Abduction $T1 $T2))
 </span>;;;Whether evidence was just counted once
 <span class="ansi38-255165000"
-> (= (StampDisjoint $_29324 $_29330)  
+> (= (StampDisjoint $Ev1 $Ev2)  
   (== () 
-    (collapse (let* (($_29390 (superpose $_29324)) ($_29420 (superpose $_29330))) (case (== $_29390 $_29420) ((True overlap)))))))
+    (collapse (let* (($x (superpose $Ev1)) ($y (superpose $Ev2))) (case (== $x $y) ((True overlap)))))))
 </span>;;;actually that is quite cool and 4x faster in MeTTa than below (yet still 130 times slower than metta-morph with below)
 ;;;but it depends on more advanced pattern matching features which are not yet in metta-morph
 ;;;(= (query $Term)
@@ -193,52 +193,52 @@ Script started on 2025-02-18 13:27:22+00:00 [COMMAND="timeout --preserve-status 
 ;;;          (If (StampDisjoint $Ev1 $Ev2)
 ;;;              (($Term ($f $T1 $T2)) (TupleConcat $Ev1 $Ev2)))))
 <span class="ansi38-255165000"
-> (= (query $_35780)  
+> (= (query $Term)  
   (match &self 
     (, 
-      ( ($_35828 $_35834) $_35840) 
-      ( ($_35858 $_35864) $_35870)) 
+      ( ($A $T1) $Ev1) 
+      ( ($B $T2) $Ev2)) 
     (let 
-      ($_35894 $_35900) 
+      ($TermNew $T) 
       (|- 
-        ($_35828 $_35834) 
-        ($_35858 $_35864)) 
+        ($A $T1) 
+        ($B $T2)) 
       (If 
         (and 
-          (== $_35894 $_35780) 
-          (StampDisjoint $_35840 $_35870)) 
-        ( ($_35780 $_35900) (TupleConcat $_35840 $_35870))))))
+          (== $TermNew $Term) 
+          (StampDisjoint $Ev1 $Ev2)) 
+        ( ($Term $T) (TupleConcat $Ev1 $Ev2))))))
 </span>;;;choice between two options of different term
 <span class="ansi38-255165000"
-> (= (Choice (($_40854 $_40860) $_40866) (($_40884 $_40890) $_40896))  
+> (= (Choice (($Term1 $T1) $ev1) (($Term2 $T2) $ev2))  
   (If 
     (> 
-      (Truth_Expectation $_40860) 
-      (Truth_Expectation $_40890)) 
-    ( ($_40854 $_40860) $_40866) 
-    ( ($_40884 $_40890) $_40896)))
+      (Truth_Expectation $T1) 
+      (Truth_Expectation $T2)) 
+    ( ($Term1 $T1) $ev1) 
+    ( ($Term2 $T2) $ev2)))
 </span>;;;revise if there is no evidential overlap, else use higher-confident candidate
 <span class="ansi38-255165000"
-> (= (RevisionAndChoice (($_47598 ($_47610 $_47616)) $_47622) (($_47640 ($_47652 $_47658)) $_47664))  
-  (let $_47682 
-    (TupleConcat $_47622 $_47664) 
+> (= (RevisionAndChoice (($Term1 ($f1 $c1)) $ev1) (($Term2 ($f2 $c2)) $ev2))  
+  (let $ConclusionStamp 
+    (TupleConcat $ev1 $ev2) 
     (If 
-      (StampDisjoint $_47622 $_47664) 
-      ( ($_47640 (Truth_Revision ($_47610 $_47616) ($_47652 $_47658))) $_47682) 
+      (StampDisjoint $ev1 $ev2) 
+      ( ($Term2 (Truth_Revision ($f1 $c1) ($f2 $c2))) $ConclusionStamp) 
       (If 
-        (> $_47616 $_47658) 
-        ( ($_47598 ($_47610 $_47616)) $_47622) 
-        ( ($_47640 ($_47652 $_47658)) $_47664)))))
+        (> $c1 $c2) 
+        ( ($Term1 ($f1 $c1)) $ev1) 
+        ( ($Term2 ($f2 $c2)) $ev2)))))
 </span>;;;reduce beliefs
 <span class="ansi38-255165000"
-> (= (reduceBeliefs $_52740 $_52746 $_52752)  
+> (= (reduceBeliefs $RevChoiceOrBoth $option $options)  
   (If 
-    (== $_52752 ()) $_52746 
+    (== $options ()) $option 
     (let* 
-      ( ($_52818 (car-atom $_52752)) 
-        ($_52848 (cdr-atom $_52752)) 
-        ($_52878 (= $_52746  $_52818))) 
-      (reduceBeliefs = $_52878 $_52848))))
+      ( ($head (car-atom $options)) 
+        ($rest (cdr-atom $options)) 
+        ($revi ($RevChoiceOrBoth $option $head))) 
+      (reduceBeliefs $RevChoiceOrBoth $revi $rest))))
 </span>;;;an empty event for reduction purposes
 <span class="ansi38-255165000"
 > (= (EmptyEvent todo)  
@@ -247,17 +247,17 @@ Script started on 2025-02-18 13:27:22+00:00 [COMMAND="timeout --preserve-status 
     ())
 </span>;;;evidence query tries to maximize evidence for the passed statement term
 <span class="ansi38-255165000"
-> (= (evidenceQuery $_58786)  
+> (= (evidenceQuery $Term)  
   (reduceBeliefs RevisionAndChoice 
     (EmptyEvent todo) 
-    (collapse (query $_58786))))
+    (collapse (query $Term))))
 </span>;;;choice query picks the option of highest truth expectation among the options of different term
 <span class="ansi38-255165000"
-> (= (choiceQuery $_62582)  
-  (let $_62600 
-    (collapse (evidenceQuery (superpose $_2886))) 
+> (= (choiceQuery $Terms)  
+  (let $options 
+    (collapse (evidenceQuery (superpose $Terms))) 
     (reduceBeliefs Choice 
-      (EmptyEvent todo) $_2904)))
+      (EmptyEvent todo) $options)))
 </span><span class="ansi38-255165000"
 > (((dog --> (IntSet brown)) (1.0 0.9)) (1))
 </span><span class="ansi38-255165000"
@@ -287,7 +287,7 @@ Script started on 2025-02-18 13:27:22+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > ((((ExtSet sam) --> (IntSet quacks)) (1.0 0.9)) (14))
 </span><span class="ansi38-013099040"
->!(let ($_47424 $_47430) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $_47424)
+>!(let ($S $EV) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $S)
 
 </span>
 N(1): <span class="ansi33"
@@ -299,7 +299,7 @@ N(1): <span class="ansi33"
 >Return to summaries</a><br/>
 [(((ExtSet sam) --> duck) (1.0 0.6183206106870229))]
 
-Script done on 2025-02-18 13:27:25+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:16:19+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

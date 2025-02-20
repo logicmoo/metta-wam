@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:17:19+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/find_all_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:01:29+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/find_all_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/find_all_tests_mw.metta] ]
 P;HTML|
@@ -63,9 +63,9 @@ Script started on 2025-02-18 13:17:19+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: is-even (-> Number Bool))
 </span><span class="ansi38-255165000"
-> (= (is-even $_54512)  
+> (= (is-even $X)  
   (== 
-    (% $_54512 2) 0))
+    (% $X 2) 0))
 </span>;;;; add some "knowledge" for testing purposes
 <span class="ansi38-255165000"
 > (my-numbers 1)
@@ -81,16 +81,16 @@ Script started on 2025-02-18 13:17:19+00:00 [COMMAND="timeout --preserve-status 
 > (my-pairs 4 8)
 </span>;;;; basic findall
 <span class="ansi38-013099040"
->!(assertEqualToResult (findall! $_10868 (match &self (my-numbers $_10868) $_10868)) ((1 2 7 212)))
+>!(assertEqualToResult (findall! $X (match &self (my-numbers $X) $X)) ((1 2 7 212)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000769 secs. (769.26 microseconds) 
+; took 0.000648 secs. (648.28 microseconds) 
 
-!(assertEqualToResult (findall! $_25232 (match &self (my-numbers $_25232) $_25232)) ((1 2 7 212)))
+!(assertEqualToResult (findall! $X (match &self (my-numbers $X) $X)) ((1 2 7 212)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -102,16 +102,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; second arg of match doesn't matter, just the variable bindings
 <span class="ansi38-013099040"
->!(assertEqualToResult (findall! $_36016 (match &self (my-numbers $_36016) (this-predicate-doesnt-matter $_36016))) ((1 2 7 212)))
+>!(assertEqualToResult (findall! $X (match &self (my-numbers $X) (this-predicate-doesnt-matter $X))) ((1 2 7 212)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.13 milliseconds) 
+; took 0.003 secs. (3.37 milliseconds) 
 
-!(assertEqualToResult (findall! $_17612 (match &self (my-numbers $_17612) (this-predicate-doesnt-matter $_17612))) ((1 2 7 212)))
+!(assertEqualToResult (findall! $X (match &self (my-numbers $X) (this-predicate-doesnt-matter $X))) ((1 2 7 212)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -123,16 +123,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; results are further evaluated
 <span class="ansi38-013099040"
->!(assertEqualToResult (findall! (is-even $_28396) (match &self (my-numbers $_28396) $_28396)) ((False True False True)))
+>!(assertEqualToResult (findall! (is-even $X) (match &self (my-numbers $X) $X)) ((False True False True)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.49 milliseconds) 
+; took 0.006 secs. (6.40 milliseconds) 
 
-!(assertEqualToResult (findall! (is-even $_34362) (match &self (my-numbers $_34362) $_34362)) ((False True False True)))
+!(assertEqualToResult (findall! (is-even $X) (match &self (my-numbers $X) $X)) ((False True False True)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -144,16 +144,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; multiple bindings
 <span class="ansi38-013099040"
->!(assertEqualToResult (findall! ($_45596 $_45602) (match &self (my-pairs $_45596 $_45602) (this-predicate-doesnt-matter $_45596 $_45602))) (((2 4) (4 8))))
+>!(assertEqualToResult (findall! ($X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((2 4) (4 8))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.62 milliseconds) 
+; took 0.003 secs. (3.14 milliseconds) 
 
-!(assertEqualToResult (findall! ($_29610 $_29616) (match &self (my-pairs $_29610 $_29616) (this-predicate-doesnt-matter $_29610 $_29616))) (((2 4) (4 8))))
+!(assertEqualToResult (findall! ($X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((2 4) (4 8))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -164,16 +164,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (findall! ($_40906 $_40912) (match &self (my-pairs $_40912 $_40906) (this-predicate-doesnt-matter $_40912 $_40906))) (((4 2) (8 4))))
+>!(assertEqualToResult (findall! ($Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((4 2) (8 4))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.67 milliseconds) 
+; took 0.003 secs. (3.11 milliseconds) 
 
-!(assertEqualToResult (findall! ($_24770 $_24776) (match &self (my-pairs $_24776 $_24770) (this-predicate-doesnt-matter $_24776 $_24770))) (((4 2) (8 4))))
+!(assertEqualToResult (findall! ($Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) (((4 2) (8 4))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -185,16 +185,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; multiple bindings further evaluation
 <span class="ansi38-013099040"
->!(assertEqualToResult (findall! (/ $_36054 $_36060) (match &self (my-pairs $_36054 $_36060) (this-predicate-doesnt-matter $_36054 $_36060))) ((0.5 0.5)))
+>!(assertEqualToResult (findall! (/ $X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((0.5 0.5)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.70 milliseconds) 
+; took 0.003 secs. (3.17 milliseconds) 
 
-!(assertEqualToResult (findall! (/ $_15938 $_15944) (match &self (my-pairs $_15938 $_15944) (this-predicate-doesnt-matter $_15938 $_15944))) ((0.5 0.5)))
+!(assertEqualToResult (findall! (/ $X $Y) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((0.5 0.5)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -205,16 +205,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (findall! (/ $_26928 $_26934) (match &self (my-pairs $_26934 $_26928) (this-predicate-doesnt-matter $_26934 $_26928))) ((2 2)))
+>!(assertEqualToResult (findall! (/ $Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((2 2)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.FIND-ALL-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.56 milliseconds) 
+; took 0.003 secs. (2.99 milliseconds) 
 
-!(assertEqualToResult (findall! (/ $_6732 $_6738) (match &self (my-pairs $_6738 $_6732) (this-predicate-doesnt-matter $_6738 $_6732))) ((2 2)))
+!(assertEqualToResult (findall! (/ $Y $X) (match &self (my-pairs $X $Y) (this-predicate-doesnt-matter $X $Y))) ((2 2)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -243,7 +243,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:17:19+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:01:30+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

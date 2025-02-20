@@ -145,7 +145,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:12:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/type_filtering_tests.metta] ]
 P;HTML|
@@ -390,11 +390,11 @@ Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status 
 > (: S (-> Nat Nat))
 </span>;;;; Define List
 <span class="ansi38-255165000"
-> (: List (-> $_54766 Type))
+> (: List (-> $a Type))
 </span><span class="ansi38-255165000"
-> (: Nil (List $_58084))
+> (: Nil (List $a))
 </span><span class="ansi38-255165000"
-> (: Cons (-> $_61516 (List $_61516) (List $_61516)))
+> (: Cons (-> $a (List $a) (List $a)))
 </span>;;;; Define some-value returning various types
 <span class="ansi38-255165000"
 > (= (some-value)  1)
@@ -406,7 +406,7 @@ Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status 
 > (= (some-value)  'c')
 </span>;;; Char
 <span class="ansi38-255165000"
-> (= (some-value)  $_9952)
+> (= (some-value)  $V)
 </span>;;; Variable
 <span class="ansi38-255165000"
 > (= (some-value)  
@@ -454,30 +454,30 @@ Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status 
 ;;; (= (some-value) &self)                 ; Grounded Space
 ;;;; Filter definitions
 <span class="ansi38-255165000"
-> (: Filter-String (-> String $_42434))
+> (: Filter-String (-> String $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Number (-> Number $_45772))
+> (: Filter-Number (-> Number $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Nat (-> Nat $_49110))
+> (: Filter-Nat (-> Nat $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Symbol (-> Symbol $_52448))
+> (: Filter-Symbol (-> Symbol $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Variable (-> Variable $_55786))
+> (: Filter-Variable (-> Variable $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Grounded (-> Grounded $_59126))
+> (: Filter-Grounded (-> Grounded $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Type (-> Type $_62466))
+> (: Filter-Type (-> Type $t))
 </span><span class="ansi38-255165000"
-> (: Filter-%Undefined% (-> %Undefined% $_2816))
+> (: Filter-%Undefined% (-> %Undefined% $t))
 </span><span class="ansi38-255165000"
-> (: Filter-TVar (-> $_6226 $_6226))
+> (: Filter-TVar (-> $t $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Undeclared (-> Undeclared $_9570))
+> (: Filter-Undeclared (-> Undeclared $t))
 </span>;;; undeclared type
 <span class="ansi38-255165000"
-> (: Filter-Expression (-> Expression $_12910))
+> (: Filter-Expression (-> Expression $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Atom (-> Atom $_16250))
+> (: Filter-Atom (-> Atom $t))
 </span><span class="ansi38-255165000"
 > (: Filter-ExpressionNumber (-> Expression Number))
 </span><span class="ansi38-255165000"
@@ -487,66 +487,67 @@ Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (: Filter-AtomAtom (-> Atom Atom))
 </span><span class="ansi38-255165000"
-> (: Filter-Char (-> Char $_31470))
+> (: Filter-Char (-> Char $t))
 </span><span class="ansi38-255165000"
-> (: Filter-Empty (-> Empty $_34808))
+> (: Filter-Empty (-> Empty $t))
 </span><span class="ansi38-255165000"
-> (: Filter-List (-> (List $_38548) $_38554))
+> (: Filter-List (-> (List $a) $t))
 </span><span class="ansi38-255165000"
-> (= (Filter-String $_41792)  $_41792)
+> (= (Filter-String $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Number $_45100)  $_45100)
+> (= (Filter-Number $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Nat $_48408)  $_48408)
+> (= (Filter-Nat $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Symbol $_51716)  $_51716)
+> (= (Filter-Symbol $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Variable $_55024)  $_55024)
+> (= (Filter-Variable $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Grounded $_58334)  $_58334)
+> (= (Filter-Grounded $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Type $_61644)  $_61644)
+> (= (Filter-Type $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-%Undefined% $_2338)  $_2338)
+> (= (Filter-%Undefined% $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-TVar $_6168)  $_6168)
+> (= (Filter-TVar $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Undeclared $_9476)  $_9476)
+> (= (Filter-Undeclared $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Expression $_12786)  $_12786)
+> (= (Filter-Expression $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Atom $_16096)  $_16096)
+> (= (Filter-Atom $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-ExpressionNumber $_19404)  $_19404)
+> (= (Filter-ExpressionNumber $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-ExpressionUnit $_22716)  $_22716)
+> (= (Filter-ExpressionUnit $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-ExpressionAtom $_26026)  $_26026)
+> (= (Filter-ExpressionAtom $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-AtomAtom $_29336)  $_29336)
+> (= (Filter-AtomAtom $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Char $_32646)  $_32646)
+> (= (Filter-Char $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-Empty $_35954)  $_35954)
+> (= (Filter-Empty $a)  $a)
 </span><span class="ansi38-255165000"
-> (= (Filter-List $_39262)  $_39262)
+> (= (Filter-List $a)  $a)
 </span><span class="ansi38-255165000"
 > (: MeTTa-Test (-> String Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (MeTTa-Test $_48408 $_48414 $_48420 $_48426)  
+> (= (MeTTa-Test $Name $Form $List $passes)  
   (let 
-    (= $_48456  $_48462) 
-    (= (collapse $_48414)  
-      (quote $_48414)) 
-    (case $_48456 
-      ( ($_48420 (println! (format-args "\n     (MeTTa-Test \"{}\" {} \n        {} \n        {})" (= $_48414 $_48420 $_48426)))) ($_48618 (println! (format-args "\n     (MeTTa-Test \"{}\" {} \n       {} \n       {})" (= $_48414 $_48420 $_48456))))))))
+    ($n $res $qform) 
+    ($Name 
+      (collapse $Form) 
+      (quote $Form)) 
+    (case $res 
+      ( ($List (println! (format-args "\n     (MeTTa-Test \"{}\" {} \n        {} \n        {})" ($Name $Form $List $passes)))) ($_44652 (println! (format-args "\n     (MeTTa-Test \"{}\" {} \n       {} \n       {})" ($Name $Form $List $res))))))))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Should be Passing" (+ 1 1) (2) $_51094)
+>!(MeTTa-Test "Should be Passing" (+ 1 1) (2) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Should be Passing" (+ 1 1) (2) $_53444) (()))
+>!(assertEqualToResult (MeTTa-Test "Should be Passing" (+ 1 1) (2) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.01"
@@ -554,12 +555,12 @@ Script started on 2025-02-18 13:25:24+00:00 [COMMAND="timeout --preserve-status 
 
      (MeTTa-Test "Should be Passing" (+ 1 1) 
         (2) 
-        $_23802)
+        $passes)
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.88 milliseconds) 
+; took 0.003 secs. (2.88 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Should be Passing" (+ 1 1) (2) $_24814) (()))
+!(assertEqualToResult (MeTTa-Test "Should be Passing" (+ 1 1) (2) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -573,10 +574,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($_36814 1 String () 5))
+>!(MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($X 1 String () 5))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($_39184 1 String () 5)) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($X 1 String () 5)) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.02"
@@ -587,9 +588,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.40 milliseconds) 
+; took 0.003 secs. (2.79 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($_13082 1 String () 5)) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Number" (Filter-Number (some-value)) (1 5) ($X 1 String () 5)) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -603,10 +604,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "passing" (+ 1 1) (2) $_24964)
+>!(MeTTa-Test "passing" (+ 1 1) (2) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "passing" (+ 1 1) (2) $_27310) (()))
+>!(assertEqualToResult (MeTTa-Test "passing" (+ 1 1) (2) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.03"
@@ -614,12 +615,12 @@ Deterministic: <span class="ansi33"
 
      (MeTTa-Test "passing" (+ 1 1) 
         (2) 
-        $_58410)
+        $passes)
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.48 milliseconds) 
+; took 0.002 secs. (2.37 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "passing" (+ 1 1) (2) $_59418) (()))
+!(assertEqualToResult (MeTTa-Test "passing" (+ 1 1) (2) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -632,10 +633,10 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $_9334)
+>!(MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $_11700) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.04"
@@ -646,9 +647,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.21 milliseconds) 
+; took 0.003 secs. (2.92 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $_44114) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-String" (Filter-String (some-value)) ("a" "x: 1 y: 2") $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -663,10 +664,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $_56162)
+>!(MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $_58528) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.05"
@@ -677,9 +678,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.26 milliseconds) 
+; took 0.003 secs. (2.85 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $_30818) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Nat" (Filter-Nat (some-value)) (Z (S Z) (S (S Z))) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -693,10 +694,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $_42712)
+>!(MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $_45074) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.06"
@@ -707,9 +708,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.34 milliseconds) 
+; took 0.003 secs. (2.76 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $_21606) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Symbol" (Filter-Symbol (some-value)) (S &self) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -723,10 +724,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $_33530)
+>!(MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $_35892) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.07"
@@ -737,9 +738,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.24 milliseconds) 
+; took 0.003 secs. (2.89 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $_9930) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Variable" (Filter-Variable (some-value)) (&self) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -754,10 +755,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $_21996)
+>!(MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $_24366) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.08"
@@ -768,9 +769,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.19 milliseconds) 
+; took 0.003 secs. (2.82 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $_57604) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Grounded" (Filter-Grounded (some-value)) (1 "a" 'c' Z (S Z)) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -784,10 +785,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $_7388)
+>!(MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $_9746) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.09"
@@ -798,9 +799,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.07 milliseconds) 
+; took 0.003 secs. (2.72 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $_42028) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Type" (Filter-Type (some-value)) (String) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -814,10 +815,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $_53994)
+>!(MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $_56364) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.10"
@@ -828,9 +829,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.035 secs. (35.37 milliseconds) 
+; took 0.032 secs. (31.79 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $_20652) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-%Undefined%" (Filter-%Undefined% (some-value)) (all the values) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -844,10 +845,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $_32760)
+>!(MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $_35130) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.11"
@@ -858,9 +859,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.48 milliseconds) 
+; took 0.003 secs. (2.86 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $_11890) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-TVar" (Filter-TVar (some-value)) (1 "a" Z (S Z) (S (S Z))) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -874,10 +875,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $_23736)
+>!(MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $_26098) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.12"
@@ -888,9 +889,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.04 milliseconds) 
+; took 0.003 secs. (2.73 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $_58094) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Undeclared" (Filter-Undeclared (some-value)) () $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -904,10 +905,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $_7624)
+>!(MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $_10006) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.13"
@@ -918,9 +919,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.035 secs. (35.41 milliseconds) 
+; took 0.032 secs. (31.82 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $_40816) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Expression" (Filter-Expression (some-value)) ((+ 2 3) (format-args "x: {} y: {}" (1 2))) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -934,10 +935,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $_52832)
+>!(MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $_55198) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.14"
@@ -948,9 +949,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.035 secs. (35.16 milliseconds) 
+; took 0.032 secs. (31.71 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $_21892) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Atom" (Filter-Atom (some-value)) (1 "a" 'c' S Z (S Z)) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -964,10 +965,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $_33830)
+>!(MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $_36204) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.15"
@@ -978,9 +979,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.035 secs. (34.60 milliseconds) 
+; took 0.031 secs. (31.01 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $_60104) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-ExpressionNumber" (Filter-ExpressionNumber (some-value)) ((+ 2 3)) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -994,10 +995,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $_15322)
+>!(MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $_17700) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.16"
@@ -1008,9 +1009,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.034 secs. (34.11 milliseconds) 
+; took 0.031 secs. (30.72 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $_40916) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-ExpressionUnit" (Filter-ExpressionUnit (some-value)) (empty (println! "did it")) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1024,10 +1025,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $_52802)
+>!(MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $_55168) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.17"
@@ -1038,9 +1039,9 @@ Deterministic: <span class="ansi33"
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.034 secs. (33.89 milliseconds) 
+; took 0.030 secs. (30.43 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $_15146) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-ExpressionAtom" (Filter-ExpressionAtom (some-value)) () $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1054,23 +1055,23 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $_28022 S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $_28028)
+>!(MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $_30432 S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $_30438) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.18"
 >;; HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.18</h3>
 
      (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) 
-       (Z String "a" 1 'c' $_15816 S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) 
+       (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) 
        (1 "a" 'c' (Cons 1 (Cons 2 (Cons 3 Nil))) 5 () () "x: 1 y: 2" S Z (S Z) String (S (S Z))))
 ; 
 ; EVAL TEST
-; took 0.035 secs. (35.47 milliseconds) 
+; took 0.031 secs. (31.00 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $_16254 S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $_16260) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-AtomAtom" (Filter-AtomAtom (some-value)) (Z String "a" 1 'c' $X S (Cons 1 (Cons 2 (Cons 3 Nil))) () 5 (S Z) "x: 1 y: 2" (S (S Z)) ()) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1084,10 +1085,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $_27942)
+>!(MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $_30300) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.19"
@@ -1098,9 +1099,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.05 milliseconds) 
+; took 0.003 secs. (2.80 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $_62624) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Char" (Filter-Char (some-value)) ('c') $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1114,10 +1115,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $_15236)
+>!(MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $_17608) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.20"
@@ -1128,9 +1129,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.08 milliseconds) 
+; took 0.003 secs. (3.07 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $_50564) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-Empty" (Filter-Empty (some-value)) (empty (println! "did it") ()) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1144,10 +1145,10 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $_2506)
+>!(MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $passes)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $_5396) (()))
+>!(assertEqualToResult (MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $passes) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-FILTERING-TESTS.21"
@@ -1158,9 +1159,9 @@ Deterministic: <span class="ansi33"
        (1))
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.18 milliseconds) 
+; took 0.003 secs. (2.90 milliseconds) 
 
-!(assertEqualToResult (MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $_39340) (()))
+!(assertEqualToResult (MeTTa-Test "Filter-List" (Filter-List (some-value)) ((Cons 1 (Cons 2 (Cons 3 Nil)))) $passes) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1203,7 +1204,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:25:25+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:12:32+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

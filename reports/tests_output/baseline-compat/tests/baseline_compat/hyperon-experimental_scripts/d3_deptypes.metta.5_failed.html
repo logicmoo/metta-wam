@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:12:29+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:54:24+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta] ]
 P;HTML|
@@ -81,12 +81,12 @@ Script started on 2025-02-18 13:12:29+00:00 [COMMAND="timeout --preserve-status 
 > (: S (-> Nat Nat))
 </span>;;; `Vec` takes a `$t` type and a `Nat` length.
 <span class="ansi38-255165000"
-> (: Vec (-> $_45506 Nat Type))
+> (: Vec (-> $t Nat Type))
 </span>;;; `Cons` and `Nil` construct `Vec` values, with `Cons` incrementing the length by 1.
 <span class="ansi38-255165000"
-> (: Cons (-> $_49302 (Vec $_49302 $_49326) (Vec $_49302 (S $_49326))))
+> (: Cons (-> $t (Vec $t $x) (Vec $t (S $x))))
 </span><span class="ansi38-255165000"
-> (: Nil (Vec $_52508 Z))
+> (: Nil (Vec $t Z))
 </span>;;; We can query the derived type
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
@@ -96,26 +96,26 @@ Script started on 2025-02-18 13:12:29+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.49 milliseconds) 
+; took 0.010 secs. (10.21 milliseconds) 
 
 !(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Vec $_36460 
-          (S (S Z))) (Vec $_36478 (S (S Z)))) 
+      ( (Vec $_13856 
+          (S (S Z))) (Vec $_13874 (S (S Z)))) 
       ( (Vec Number 
           (S (S Z))))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_7452,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'('Vec','[|]'(_7404,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_3520,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'('Vec','[|]'(_3472,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Vec $_43148 (S (S Z))) (Vec $_43166 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))
+>(Error ('~nGot: ' ((Vec $_19942 (S (S Z))) (Vec $_19960 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))
 </span>;;; `drop` removes the head from a `Vec`, returning a `Vec` with length decrease by 1
 <span class="ansi38-255165000"
-> (: drop (-> (Vec $_48310 (S $_48328)) (Vec $_48310 $_48328)))
+> (: drop (-> (Vec $t (S $x)) (Vec $t $x)))
 </span><span class="ansi38-255165000"
-> (= (drop (Cons $_51902 $_51908))  $_51908)
+> (= (drop (Cons $x $xs))  $xs)
 </span>;;; Query type
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
@@ -125,19 +125,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.47 milliseconds) 
+; took 0.003 secs. (3.02 milliseconds) 
 
 !(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Vec $_28356 Z) (Vec $_28374 Z)) 
+      ( (Vec $_59312 Z) (Vec $_59330 Z)) 
       ( (Vec Number Z))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_20404,'[|]'('Z',[]))),'[|]'('[|]'('Vec','[|]'(_20380,'[|]'('Z',[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('Z',[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_52570,'[|]'('Z',[]))),'[|]'('[|]'('Vec','[|]'(_52546,'[|]'('Z',[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('Z',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Vec $_34674 Z) (Vec $_34692 Z))) ('~nExpected: ' ((Vec Number Z))))
+>(Error ('~nGot: ' ((Vec $_3486 Z) (Vec $_3504 Z))) ('~nExpected: ' ((Vec Number Z))))
 </span>;;; Check length after dropping
 <span class="ansi38-013099040"
 >!(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
@@ -147,7 +147,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.54 milliseconds) 
+; took 0.003 secs. (3.02 milliseconds) 
 
 !(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
 
@@ -168,7 +168,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000624 secs. (623.56 microseconds) 
+; took 0.000588 secs. (588.26 microseconds) 
 
 !(assertEqualToResult (get-type (drop Nil)) ())
 
@@ -188,11 +188,11 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `VecN` and `ConsN` use grounded `+` to increment the length.
 <span class="ansi38-255165000"
-> (: VecN (-> $_52126 Number Type))
+> (: VecN (-> $t Number Type))
 </span><span class="ansi38-255165000"
-> (: ConsN (-> $_55946 (VecN $_55946 $_55970) (VecN $_55946 (+ $_55970 1))))
+> (: ConsN (-> $t (VecN $t $x) (VecN $t (+ $x 1))))
 </span><span class="ansi38-255165000"
-> (: NilN (VecN $_59152 0))
+> (: NilN (VecN $t 0))
 </span>;;; When querying types, grounded ops are reduced
 <span class="ansi38-013099040"
 >!(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
@@ -202,24 +202,24 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.06 milliseconds) 
+; took 0.008 secs. (7.51 milliseconds) 
 
 !(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (VecN $_62288 2) (VecN $_62306 2)) 
+      ( (VecN $_11988 2) (VecN $_12006 2)) 
       ( (VecN String 2))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_3452,'[|]'(2,[]))),'[|]'('[|]'('VecN','[|]'(_3428,'[|]'(2,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(2,[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_5432,'[|]'(2,[]))),'[|]'('[|]'('VecN','[|]'(_5408,'[|]'(2,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(2,[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((VecN $_8540 2) (VecN $_8558 2))) ('~nExpected: ' ((VecN String 2))))
+>(Error ('~nGot: ' ((VecN $_17704 2) (VecN $_17722 2))) ('~nExpected: ' ((VecN String 2))))
 </span>;;; Similarly, `-` reduces the length in `dropN` type.
 <span class="ansi38-255165000"
-> (: dropN (-> (VecN $_13708 $_13714) (VecN $_13708 (- $_13714 1))))
+> (: dropN (-> (VecN $t $x) (VecN $t (- $x 1))))
 </span><span class="ansi38-255165000"
-> (= (dropN (ConsN $_17296 $_17302))  $_17302)
+> (= (dropN (ConsN $x $xs))  $xs)
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
 
@@ -228,19 +228,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (8.29 milliseconds) 
+; took 0.008 secs. (7.51 milliseconds) 
 
 !(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (VecN $_22212 0) (VecN $_22230 0)) 
+      ( (VecN $_19864 0) (VecN $_19882 0)) 
       ( (VecN String 0))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_14514,'[|]'(0,[]))),'[|]'('[|]'('VecN','[|]'(_14490,'[|]'(0,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(0,[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_13308,'[|]'(0,[]))),'[|]'('[|]'('VecN','[|]'(_13284,'[|]'(0,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(0,[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((VecN $_28530 0) (VecN $_28548 0))) ('~nExpected: ' ((VecN String 0))))
+>(Error ('~nGot: ' ((VecN $_25580 0) (VecN $_25598 0))) ('~nExpected: ' ((VecN String 0))))
 </span>;;; TODO: doesn't work after type checking fixes
 ;;; However, without any validation, invalid lengths like -1 can be derived.
 <span class="ansi38-255165000"
@@ -255,7 +255,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000905 secs. (905.22 microseconds) 
+; took 0.000842 secs. (842.45 microseconds) 
 
 !(assertEqualToResult (dropN NilN) ((dropN NilN)))
 
@@ -278,15 +278,15 @@ Deterministic: <span class="ansi33"
 >Failures: 5
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[(Error ('~nGot: ' ((Vec $_44142 (S (S Z))) (Vec $_44160 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))]
-[(Error ('~nGot: ' ((Vec $_35662 Z) (Vec $_35680 Z))) ('~nExpected: ' ((Vec Number Z))))]
+[(Error ('~nGot: ' ((Vec $_20868 (S (S Z))) (Vec $_20886 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))]
+[(Error ('~nGot: ' ((Vec $_5318 Z) (Vec $_5336 Z))) ('~nExpected: ' ((Vec Number Z))))]
 [()]
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((VecN $_9528 2) (VecN $_9546 2))) ('~nExpected: ' ((VecN String 2))))]
-[(Error ('~nGot: ' ((VecN $_29518 0) (VecN $_29536 0))) ('~nExpected: ' ((VecN String 0))))]
+[(Error ('~nGot: ' ((VecN $_18624 2) (VecN $_18642 2))) ('~nExpected: ' ((VecN String 2))))]
+[(Error ('~nGot: ' ((VecN $_26500 0) (VecN $_26518 0))) ('~nExpected: ' ((VecN String 0))))]
 [()]
 
-Script done on 2025-02-18 13:12:30+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:54:25+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

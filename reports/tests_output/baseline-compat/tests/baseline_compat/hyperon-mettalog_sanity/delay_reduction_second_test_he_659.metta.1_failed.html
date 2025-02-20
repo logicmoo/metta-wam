@@ -47,7 +47,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:16:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_second_test_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:00:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_second_test_he_659.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/delay_reduction_second_test_he_659.metta] ]
 P;HTML|
@@ -79,73 +79,73 @@ Script started on 2025-02-18 13:16:30+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (: Nil List)
 </span><span class="ansi38-255165000"
-> (: Cons (-> $_4984 List List))
+> (: Cons (-> $a List List))
 </span>;;;; ===== Utility Functions =====
 ;;;; Greater than zero predicate
 <span class="ansi38-255165000"
 > (: 0< (-> Number Bool))
 </span><span class="ansi38-255165000"
-> (= (0< $_11138)  
-  (< 0 $_11138))
+> (= (0< $x)  
+  (< 0 $x))
 </span>;;;; ===== Backward Chainer =====
 <span class="ansi38-255165000"
-> (: bc (-> $_14798 $_14804 Nat $_14804))
+> (: bc (-> $a $b Nat $b))
 </span>;;; Result
 ;;;; Base cases
 <span class="ansi38-255165000"
-> (= (bc $_18946 (: $_18964 $_18970) $_18976)  
-  (match $_18946 
-    (: $_18964 $_18970) 
-    (: $_18964 $_18970)))
+> (= (bc $kb (: $prf $ccln) $_15736)  
+  (match $kb 
+    (: $prf $ccln) 
+    (: $prf $ccln)))
 </span><span class="ansi38-255165000"
-> (= (bc $_22772 (: CPU $_22796 (0⍃ $_22814)) $_22820)  
+> (= (bc $kb (: CPU $check (0⍃ $x)) $_18954)  
   (if 
-    (0< $_22814) 
-    (: CPU $_22796 
-      (0⍃ $_22814)) 
+    (0< $x) 
+    (: CPU $check 
+      (0⍃ $x)) 
     (empty)))
 </span>;;;; Recursive step
 <span class="ansi38-255165000"
-> (= (bc $_27702 (: ($_27726 $_27732) $_27738) (S $_27756))  
+> (= (bc $kb (: ($prfabs $prmlst) $ccln) (S $k))  
   (let* 
-    ( ( (: $_27726 
-          (-> $_27732 $_27738)) (bc $_27702 (: $_27726 (-> $_27732 $_27738)) $_27756)) ($_27732 (handle-prmlst $_27702 $_27756 $_27732))) 
+    ( ( (: $prfabs 
+          (-> $prmlst $ccln)) (bc $kb (: $prfabs (-> $prmlst $ccln)) $k)) ($prmlst (handle-prmlst $kb $k $prmlst))) 
     (: 
-      ($_27726 $_27732) $_27738)))
+      ($prfabs $prmlst) $ccln)))
 </span>;;;; ===== Parameter List Handler =====
 <span class="ansi38-255165000"
-> (: handle-prmlst (-> $_31434 $_31440 List $_31452))
+> (: handle-prmlst (-> $a $b List $d))
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $_35002 $_35008 Nil)  Nil)
+> (= (handle-prmlst $kb $k Nil)  Nil)
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $_39662 $_39668 (Cons (: $_39698 $_39704) $_39710))  
+> (= (handle-prmlst $kb $k (Cons (: $prfarg $prms) $xs))  
   (Cons 
-    (bc $_39662 
-      (: $_39698 $_39704) $_39668) 
-    (handle-prmlst $_39662 $_39668 $_39710)))
+    (bc $kb 
+      (: $prfarg $prms) $k) 
+    (handle-prmlst $kb $k $xs)))
 </span><span class="ansi38-255165000"
-> (= (handle-prmlst $_44830 $_44836 (Cons (: CPU $_44872 $_44878) $_44884))  
-  (if $_44872 
+> (= (handle-prmlst $kb $k (Cons (: CPU $check $prms) $xs))  
+  (if $check 
     (Cons 
-      (bc $_44830 
-        (: CPU $_44956 $_44878) $_44836) 
-      (handle-prmlst $_44830 $_44836 $_44884)) 
-    (let $_44884 
-      (handle-prmlst $_44830 $_44836 $_44884) 
+      (bc $kb 
+        (: CPU $var $prms) $k) 
+      (handle-prmlst $kb $k $xs)) 
+    (let $xs 
+      (handle-prmlst $kb $k $xs) 
       (Cons 
-        (bc $_44830 
-          (: CPU $_44956 $_44878) $_44836) $_44884))))
+        (bc $kb 
+          (: CPU $var $prms) $k) $xs))))
 </span>;;;; ===== Closure Check =====
 <span class="ansi38-255165000"
 > (: is-closed (-> Atom Bool))
 </span><span class="ansi38-255165000"
-> (= (is-closed $_51906)  
+> (= (is-closed $x)  
   (case 
-    (get-metatype $_51906) 
+    (get-metatype $x) 
     ( (Symbol True) 
       (Grounded True) 
       (Variable False) 
-      (Expression (if (== $_51906 ()) True (and (let $_52038 (car-atom $_51906) (is-closed $_52038)) (let $_52092 (cdr-atom $_51906) (is-closed $_52092))))))))
+      (Expression (if (== $x ()) True (and (let $head (car-atom $x) (is-closed $head)) (let $tail (cdr-atom $x) (is-closed $tail))))))))
 </span>;;;; ===== Knowledge Base Setup =====
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
@@ -162,10 +162,10 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $_20508) (0⍃ $_20508)) (Cons (: $_20508 Prime) Nil)) (0⍃' $_20508))))
+>!(add-atom &kb (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x))))
 
 </span><span class="ansi38-255165000"
-> (: Rule (-> (Cons (: CPU (is-closed $_29784) (0⍃ $_29784)) (Cons (: $_29784 Prime) Nil)) (0⍃' $_29784)))
+> (: Rule (-> (Cons (: CPU (is-closed $x) (0⍃ $x)) (Cons (: $x Prime) Nil)) (0⍃' $x)))
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -173,19 +173,19 @@ Deterministic: <span class="ansi33"
 <span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(bc &kb (: $_40202 (0⍃' $_40220)) (S (S Z)))
+>!(bc &kb (: $prf (0⍃' $x)) (S (S Z)))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (bc &kb (: $_42798 (0⍃' $_42816)) (S (S Z))) ((: (Rule (Cons (: CPU False (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2))))
+>!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: (Rule (Cons (: CPU False (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.DELAY-REDUCTION-SECOND-TEST-HE-659.01"
 >;; HYPERON-METTALOG-SANITY.DELAY-REDUCTION-SECOND-TEST-HE-659.01</h3>
 ; 
 ; EVAL TEST
-; took 0.125 secs. (124.77 milliseconds) 
+; took 0.114 secs. (114.36 milliseconds) 
 
-!(assertEqualToResult (bc &kb (: $_127280 (0⍃' $_127298)) (S (S Z))) ((: (Rule (Cons (: CPU False (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2))))
+!(assertEqualToResult (bc &kb (: $prf (0⍃' $x)) (S (S Z))) ((: (Rule (Cons (: CPU False (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2))))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -216,7 +216,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' ((: (Rule (Cons (: CPU True (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2)))) ('~nExpected: ' ((: (Rule (Cons (: CPU False (0⍃ 2)) (Cons (: 2 Prime) Nil))) (0⍃' 2)))))]
 
-Script done on 2025-02-18 13:16:31+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:00:17+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

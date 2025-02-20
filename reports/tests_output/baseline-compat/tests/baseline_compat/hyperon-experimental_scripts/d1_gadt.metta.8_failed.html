@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:12:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:54:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] ]
 P;HTML|
@@ -101,7 +101,7 @@ Script started on 2025-02-18 13:12:27+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000700 secs. (700.48 microseconds) 
+; took 0.000723 secs. (723.45 microseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -121,7 +121,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000795 secs. (795.11 microseconds) 
+; took 0.000787 secs. (787.04 microseconds) 
 
 !(assertEqual (get-type (+ 5 7)) Number)
 
@@ -142,7 +142,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000264 secs. (264.16 microseconds) 
+; took 0.000234 secs. (233.52 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -164,7 +164,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000748 secs. (748.43 microseconds) 
+; took 0.000740 secs. (740.31 microseconds) 
 
 !(assertEqualToResult (get-type (+ 5 "4")) ())
 
@@ -184,7 +184,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000398 secs. (397.69 microseconds) 
+; took 0.000410 secs. (410.02 microseconds) 
 
 !(assertEqualToResult (get-type (+ -)) ())
 
@@ -207,7 +207,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000238 secs. (238.14 microseconds) 
+; took 0.000210 secs. (210.17 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -235,7 +235,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000455 secs. (455.47 microseconds) 
+; took 0.000397 secs. (397.44 microseconds) 
 
 !(assertEqual (get-type (Left 5)) Either)
 
@@ -250,9 +250,9 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: isLeft (-> Either Bool))
 </span><span class="ansi38-255165000"
-> (= (isLeft (Left $_7952))  True)
+> (= (isLeft (Left $x))  True)
 </span><span class="ansi38-255165000"
-> (= (isLeft (Right $_10926))  False)
+> (= (isLeft (Right $x))  False)
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -261,7 +261,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000694 secs. (693.88 microseconds) 
+; took 0.000682 secs. (681.84 microseconds) 
 
 !(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -282,7 +282,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000572 secs. (572.11 microseconds) 
+; took 0.000543 secs. (542.50 microseconds) 
 
 !(assertEqualToResult (get-type (isLeft 5)) ())
 
@@ -299,11 +299,11 @@ Deterministic: <span class="ansi33"
 ;;; Parameterized types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (: EitherP (-> $_57508 Type))
+> (: EitherP (-> $t Type))
 </span><span class="ansi38-255165000"
-> (: LeftP (-> $_60856 (EitherP $_60856)))
+> (: LeftP (-> $t (EitherP $t)))
 </span><span class="ansi38-255165000"
-> (: RightP (-> $_64196 (EitherP $_2600)))
+> (: RightP (-> $t (EitherP $t)))
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
@@ -312,23 +312,23 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.77 milliseconds) 
+; took 0.003 secs. (2.65 milliseconds) 
 
 !(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (EitherP $_34306) (EitherP $_34324)) 
+      ( (EitherP $_22368) (EitherP $_22386)) 
       ( (EitherP Number))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_26746,[])),'[|]'('[|]'('EitherP','[|]'(_26728,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_15882,[])),'[|]'('[|]'('EitherP','[|]'(_15864,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((EitherP $_40702) (EitherP $_40720))) ('~nExpected: ' ((EitherP Number))))
+>(Error ('~nGot: ' ((EitherP $_28162) (EitherP $_28180))) ('~nExpected: ' ((EitherP Number))))
 </span><span class="ansi38-255165000"
-> (: Pair (-> $_45854 $_45860 Type))
+> (: Pair (-> $a $b Type))
 </span><span class="ansi38-255165000"
-> (: pair (-> $_49564 $_49570 (Pair $_49564 $_49570)))
+> (: pair (-> $a $b (Pair $a $b)))
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
@@ -337,30 +337,30 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.20 milliseconds) 
+; took 0.004 secs. (3.76 milliseconds) 
 
 !(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Pair $_31966 $_31972) (Pair $_31990 $_31996)) 
+      ( (Pair $_10552 $_10558) (Pair $_10576 $_10582)) 
       ( (Pair 
           (EitherP Number) String))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_15134,'[|]'(_15140,[]))),'[|]'('[|]'('Pair','[|]'(_15110,'[|]'(_15116,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3430,'[|]'(_3436,[]))),'[|]'('[|]'('Pair','[|]'(_3406,'[|]'(_3412,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Pair $_38534 $_38540) (Pair $_38558 $_38564))) ('~nExpected: ' ((Pair (EitherP Number) String))))
+>(Error ('~nGot: ' ((Pair $_16518 $_16524) (Pair $_16542 $_16548))) ('~nExpected: ' ((Pair (EitherP Number) String))))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Recursively parameterized types
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (: List (-> $_43308 Type))
+> (: List (-> $a Type))
 </span><span class="ansi38-255165000"
-> (: Nil (List $_46602))
+> (: Nil (List $a))
 </span><span class="ansi38-255165000"
-> (: Cons (-> $_50010 (List $_50010) (List $_50010)))
+> (: Cons (-> $a (List $a) (List $a)))
 </span><span class="ansi38-013099040"
 >!(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
@@ -369,19 +369,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.49 milliseconds) 
+; took 0.003 secs. (2.93 milliseconds) 
 
 !(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $_25774) (List $_25792)) 
+      ( (List $_57328) (List $_57346)) 
       ( (List Number))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_18214,[])),'[|]'('[|]'('List','[|]'(_18196,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_50842,[])),'[|]'('[|]'('List','[|]'(_50824,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $_32168) (List $_32186))) ('~nExpected: ' ((List Number))))
+>(Error ('~nGot: ' ((List $_63120) (List $_3758))) ('~nExpected: ' ((List Number))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
@@ -390,43 +390,43 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.61 milliseconds) 
+; took 0.002 secs. (2.38 milliseconds) 
 
 !(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $_4112) (List $_4130)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_3324,[])),'[|]'('[|]'('List','[|]'(_3306,[])),[])),[])
+      ( (List $_32006) (List $_32024)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_29998,[])),'[|]'('[|]'('List','[|]'(_29980,[])),[])),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $_10846) (List $_10864))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((List $_37704) (List $_37722))) ('~nExpected: ' ()))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `let` can be convenient to extract information from `get-type` results
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let (List $_14682) (get-type (Cons 5 (Cons 6 Nil))) $_14682) Number)
+>!(assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.71 milliseconds) 
+; took 0.003 secs. (2.63 milliseconds) 
 
-!(assertEqual (let (List $_44798) (get-type (Cons 5 (Cons 6 Nil))) $_44798) Number)
+!(assertEqual (let (List $t) (get-type (Cons 5 (Cons 6 Nil))) $t) Number)
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($_45860 $_45866) 
+      ($t $t) 
       (Number)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_43814{vn = ...},'[|]'(_43792{vn = ...},[])),'[|]'('Number',[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_5406{vn = ...},'[|]'(_5384{vn = ...},[])),'[|]'('Number',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($_52356 $_52362)) ('~nExpected: ' (Number)))
+>(Error ('~nGot: ' ($t $t)) ('~nExpected: ' (Number)))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta 0 ]
 <span class="ansi1"
@@ -447,13 +447,13 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((EitherP $_41802) (EitherP $_41820))) ('~nExpected: ' ((EitherP Number))))]
-[(Error ('~nGot: ' ((Pair $_39640 $_39646) (Pair $_39664 $_39670))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
-[(Error ('~nGot: ' ((List $_33266) (List $_33284))) ('~nExpected: ' ((List Number))))]
-[(Error ('~nGot: ' ((List $_11942) (List $_11960))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ($_53450 $_53456)) ('~nExpected: ' (Number)))]
+[(Error ('~nGot: ' ((EitherP $_29194) (EitherP $_29212))) ('~nExpected: ' ((EitherP Number))))]
+[(Error ('~nGot: ' ((Pair $_17556 $_17562) (Pair $_17580 $_17586))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
+[(Error ('~nGot: ' ((List $_5666) (List $_5684))) ('~nExpected: ' ((List Number))))]
+[(Error ('~nGot: ' ((List $_38732) (List $_38750))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ($t $t)) ('~nExpected: ' (Number)))]
 
-Script done on 2025-02-18 13:12:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:54:15+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

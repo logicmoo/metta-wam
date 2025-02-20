@@ -40,7 +40,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:12:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:53:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 ^@
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/a1_symbols.metta] ]
 P;HTML|
@@ -83,16 +83,16 @@ Script started on 2025-02-18 13:12:14+00:00 [COMMAND="timeout --preserve-status 
 ;;; expression; it doesn't evaluate the second expression,
 ;;; which is treated as a set of expected results.
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (($_54284 leaf2) leaf3) $_54284) (leaf1 (leaf0 leaf1)))
+>!(assertEqualToResult (match &self (($x leaf2) leaf3) $x) (leaf1 (leaf0 leaf1)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.66 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
-!(assertEqualToResult (match &self (($_9498 leaf2) leaf3) $_9498) (leaf1 (leaf0 leaf1)))
+!(assertEqualToResult (match &self (($x leaf2) leaf3) $x) (leaf1 (leaf0 leaf1)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -114,16 +114,16 @@ Deterministic: <span class="ansi33"
 > (Sophia is a robot)
 </span>;;; `match` can bind more that one variable
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self ($_29964 is a $_29982) (= the  $_29982)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
+>!(assertEqualToResult (match &self ($who is a $what) ($who the $what)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.23 milliseconds) 
+; took 0.003 secs. (2.86 milliseconds) 
 
-!(assertEqualToResult (match &self ($_62880 is a $_62898) (= the  $_62898)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
+!(assertEqualToResult (match &self ($who is a $what) ($who the $what)) ((Sam the frog) (Tom the cat) (Sophia the robot)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -149,23 +149,23 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (:= (Green Tom) F)
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Green $_25794) T) ($_25794 is really green)) ((Sam is really green)))
+>!(assertEqualToResult (match &self (:= (Green $who) T) ($who is really green)) ((Sam is really green)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.03</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_7470 True ] ] [ = $_7470 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7490]] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_7426 True ] ] [ = $_7426 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7446]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_6788 True ] ] [ = $_6788 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_6808]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_6744 True ] ] [ = $_6744 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_6764]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_6784 True ] ] [ = $_6784 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_6804]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really green ] } ]] [ = $_6740 True ] ] [ = $_6740 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_6760]] ]
 
 ; 
 ; EVAL TEST
-; took 0.013 secs. (12.81 milliseconds) 
+; took 0.012 secs. (12.04 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (Green $_41068) T) ($_41068 is really green)) ((Sam is really green)))
+!(assertEqualToResult (match &self (:= (Green $who) T) ($who is really green)) ((Sam is really green)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -176,29 +176,29 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= ($_52580 $_52586) T) ($_52586 is really $_52580)) ((Sam is really Green) (Tom is really White)))
+>!(assertEqualToResult (match &self (:= ($color $who) T) ($who is really $color)) ((Sam is really Green) (Tom is really White)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.04</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_9244 True ] ] [ = $_9244 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_9264]] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_8424 True ] ] [ = $_8424 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_8444]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_7816 True ] ] [ = $_7816 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7836]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_7754 True ] ] [ = $_7754 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7774]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_7816 True ] ] [ = $_7816 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7836]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really Green ] } ]] [ = $_7754 True ] ] [ = $_7754 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7774]] ]
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7912 True ] ] [ = $_7912 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7932]] ]
+;                                         [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7850 True ] ] [ = $_7850 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7870]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7240 True ] ] [ = $_7240 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7260]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7178 True ] ] [ = $_7178 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7198]] ]
 P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7106 True ] ] [ = $_7106 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7126]] ]
+;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = really White ] } ]] [ = $_7044 True ] ] [ = $_7044 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $_7064]] ]
 
 ; 
 ; EVAL TEST
-; took 0.025 secs. (25.25 milliseconds) 
+; took 0.024 secs. (23.61 milliseconds) 
 
-!(assertEqualToResult (match &self (:= ($_41486 $_41492) T) ($_41492 is really $_41486)) ((Sam is really Green) (Tom is really White)))
+!(assertEqualToResult (match &self (:= ($color $who) T) ($who is really $color)) ((Sam is really Green) (Tom is really White)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -209,16 +209,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= ($_54174 $_54180) $_54186) ('It's' $_54186 that $_54180 is $_54174)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
+>!(assertEqualToResult (match &self (:= ($color $who) $tv) ('It's' $tv that $who is $color)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.41 milliseconds) 
+; took 0.003 secs. (2.83 milliseconds) 
 
-!(assertEqualToResult (match &self (:= ($_33584 $_33590) $_33596) ('It's' $_33596 that $_33590 is $_33584)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
+!(assertEqualToResult (match &self (:= ($color $who) $tv) ('It's' $tv that $who is $color)) (('It's' T that Sam is Green) ('It's' T that Tom is White) ('It's' F that Tom is Green)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -234,16 +234,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; This type of query works as a sort of evaluation/reduction
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Green Tom) $_45966) $_45966) (F))
+>!(assertEqualToResult (match &self (:= (Green Tom) $tv) $tv) (F))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000337 secs. (336.96 microseconds) 
+; took 0.000218 secs. (218.31 microseconds) 
 
-!(assertEqualToResult (match &self (:= (Green Tom) $_55122) $_55122) (F))
+!(assertEqualToResult (match &self (:= (Green Tom) $tv) $tv) (F))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -264,16 +264,16 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (isa blue color)
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (isa $_10946 color) $_10946) (red green blue))
+>!(assertEqualToResult (match &self (isa $color color) $color) (red green blue))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.A1-SYMBOLS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000338 secs. (337.99 microseconds) 
+; took 0.000372 secs. (371.74 microseconds) 
 
-!(assertEqualToResult (match &self (isa $_20176 color) $_20176) (red green blue))
+!(assertEqualToResult (match &self (isa $color color) $color) (red green blue))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -302,7 +302,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:12:15+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:53:23+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

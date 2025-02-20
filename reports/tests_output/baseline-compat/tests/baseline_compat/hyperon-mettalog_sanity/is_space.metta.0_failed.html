@@ -26,7 +26,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:18:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:03:08+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] ]
 P;HTML|
@@ -50,10 +50,10 @@ Script started on 2025-02-18 13:18:16+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: is-space (-> Atom Bool))
 </span><span class="ansi38-255165000"
-> (= (is-space $_58484)  
+> (= (is-space $atom)  
   (let* 
-    ( ($_58514 (get-type $_58484)) ($_58544 (get-type &self))) 
-    (== $_58514 $_58544)))
+    ( ($type (get-type $atom)) ($space (get-type &self))) 
+    (== $type $space)))
 </span><span class="ansi38-013099040"
 >!(assertEqual (is-space &self) True)
 
@@ -62,7 +62,7 @@ Script started on 2025-02-18 13:18:16+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.46 milliseconds) 
+; took 0.001 secs. (1.43 milliseconds) 
 
 !(assertEqual (is-space &self) True)
 
@@ -82,7 +82,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.17 milliseconds) 
+; took 0.001000 secs. (999.77 microseconds) 
 
 !(assertEqual (is-space &corelib) True)
 
@@ -102,7 +102,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.IS-SPACE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.47 milliseconds) 
+; took 0.001 secs. (1.28 milliseconds) 
 
 !(assertEqual (is-space 666) False)
 
@@ -129,7 +129,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:18:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:03:09+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

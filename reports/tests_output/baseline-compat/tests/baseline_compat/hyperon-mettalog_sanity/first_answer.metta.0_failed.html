@@ -51,7 +51,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:17:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/first_answer.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:01:39+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/first_answer.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/first_answer.metta] ]
 P;HTML|
@@ -109,67 +109,67 @@ Script started on 2025-02-18 13:17:22+00:00 [COMMAND="timeout --preserve-status 
 ;;;; TODO: recurse over curried rules instead of duplicating code over
 ;;;; tuples.
 <span class="ansi38-255165000"
-> (: synthesize (-> $_53482 (-> $_53500) (-> $_53518) Nat $_53482))
+> (: synthesize (-> $a (-> $kt) (-> $rt) Nat $a))
 </span>;;;; Nullary rule (axiom)
 <span class="ansi38-255165000"
-> (= (synthesize $_57852 $_57858 $_57864 $_57870)  
-  (let $_57852 
-    ($_57858) $_57852))
+> (= (synthesize $query $kb $rb $depth)  
+  (let $query 
+    ($kb) $query))
 </span>;;;; Unary rule
 <span class="ansi38-255165000"
-> (= (synthesize $_63808 $_63814 $_63820 (S $_3348))  
+> (= (synthesize $query $kb $rb (S $k))  
   (let* 
-    ( ( (: $_3390 
-          (-> $_3408 $_3414)) ($_3330)) 
+    ( ( (: $ructor 
+          (-> $premise $conclusion)) ($rb)) 
       ( (: 
-          ($_3390 $_3462) $_3414) $_3318) 
-      ( (: $_3462 $_3408) (synthesize (: $_3462 $_3408) $_3324 $_3330 $_3348))) $_3318))
+          ($ructor $proof) $conclusion) $query) 
+      ( (: $proof $premise) (synthesize (: $proof $premise) $kb $rb $k))) $query))
 </span>;;;; Binary rule
 <span class="ansi38-255165000"
-> (= (synthesize $_10624 $_10630 $_10636 (S $_10654))  
+> (= (synthesize $query $kb $rb (S $k))  
   (let* 
-    ( ( (: $_10696 
-          (-> $_10714 $_10720 $_10726)) ($_10636)) 
+    ( ( (: $ructor 
+          (-> $premise1 $premise2 $conclusion)) ($rb)) 
       ( (: 
-          (= $_10774  $_10780) $_10726) $_10624) 
-      ( (: $_10774 $_10714) (synthesize (: $_10774 $_10714) $_10630 $_10636 $_10654)) 
-      ( (: $_10780 $_10720) (synthesize (: $_10780 $_10720) $_10630 $_10636 $_10654))) $_10624))
+          ($ructor $proof1 $proof2) $conclusion) $query) 
+      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
+      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k))) $query))
 </span>;;;; Trinary rule
 <span class="ansi38-255165000"
-> (= (synthesize $_18176 $_18182 $_18188 (S $_18206))  
+> (= (synthesize $query $kb $rb (S $k))  
   (let* 
-    ( ( (: $_18248 
-          (-> $_18266 $_18272 $_18278 $_18284)) ($_18188)) 
+    ( ( (: $ructor 
+          (-> $premise1 $premise2 $premise3 $conclusion)) ($rb)) 
       ( (: 
-          ($_18248 $_18332 $_18338 $_18344) $_18284) $_18176) 
-      ( (: $_18332 $_18266) (synthesize (: $_18332 $_18266) $_18182 $_18188 $_18206)) 
-      ( (: $_18338 $_18272) (synthesize (: $_18338 $_18272) $_18182 $_18188 $_18206)) 
-      ( (: $_18344 $_18278) (synthesize (: $_18344 $_18278) $_18182 $_18188 $_18206))) $_18176))
+          ($ructor $proof1 $proof2 $proof3) $conclusion) $query) 
+      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
+      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
+      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k))) $query))
 </span>;;;; Quaternary rule
 <span class="ansi38-255165000"
-> (= (synthesize $_26584 $_26590 $_26596 (S $_26614))  
+> (= (synthesize $query $kb $rb (S $k))  
   (let* 
-    ( ( (: $_26656 
-          (-> $_26674 $_26680 $_26686 $_26692 $_26698)) ($_26596)) 
+    ( ( (: $ructor 
+          (-> $premise1 $premise2 $premise3 $premise4 $conclusion)) ($rb)) 
       ( (: 
-          ($_26656 $_26746 $_26752 $_26758 $_26764) $_26698) $_26584) 
-      ( (: $_26746 $_26674) (synthesize (: $_26746 $_26674) $_26590 $_26596 $_26614)) 
-      ( (: $_26752 $_26680) (synthesize (: $_26752 $_26680) $_26590 $_26596 $_26614)) 
-      ( (: $_26758 $_26686) (synthesize (: $_26758 $_26686) $_26590 $_26596 $_26614)) 
-      ( (: $_26764 $_26692) (synthesize (: $_26764 $_26692) $_26590 $_26596 $_26614))) $_26584))
+          ($ructor $proof1 $proof2 $proof3 $proof4) $conclusion) $query) 
+      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
+      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
+      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
+      ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k))) $query))
 </span>;;;; Quintenary rule
 <span class="ansi38-255165000"
-> (= (synthesize $_35846 $_35852 $_35858 (S $_35876))  
+> (= (synthesize $query $kb $rb (S $k))  
   (let* 
-    ( ( (: $_35918 
-          (-> $_35936 $_35942 $_35948 $_35954 $_35960 $_35966)) ($_35858)) 
+    ( ( (: $ructor 
+          (-> $premise1 $premise2 $premise3 $premise4 $premise5 $conclusion)) ($rb)) 
       ( (: 
-          ($_35918 $_36014 $_36020 $_36026 $_36032 $_36038) $_35966) $_35846) 
-      ( (: $_36014 $_35936) (synthesize (: $_36014 $_35936) $_35852 $_35858 $_35876)) 
-      ( (: $_36020 $_35942) (synthesize (: $_36020 $_35942) $_35852 $_35858 $_35876)) 
-      ( (: $_36026 $_35948) (synthesize (: $_36026 $_35948) $_35852 $_35858 $_35876)) 
-      ( (: $_36032 $_35954) (synthesize (: $_36032 $_35954) $_35852 $_35858 $_35876)) 
-      ( (: $_36038 $_35960) (synthesize (: $_36038 $_35960) $_35852 $_35858 $_35876))) $_35846))
+          ($ructor $proof1 $proof2 $proof3 $proof4 $proof5) $conclusion) $query) 
+      ( (: $proof1 $premise1) (synthesize (: $proof1 $premise1) $kb $rb $k)) 
+      ( (: $proof2 $premise2) (synthesize (: $proof2 $premise2) $kb $rb $k)) 
+      ( (: $proof3 $premise3) (synthesize (: $proof3 $premise3) $kb $rb $k)) 
+      ( (: $proof4 $premise4) (synthesize (: $proof4 $premise4) $kb $rb $k)) 
+      ( (: $proof5 $premise5) (synthesize (: $proof5 $premise5) $kb $rb $k))) $query))
 </span><span class="ansi38-255165000"
 > (: kb (-> Atom))
 </span><span class="ansi38-255165000"
@@ -194,46 +194,46 @@ Script started on 2025-02-18 13:17:22+00:00 [COMMAND="timeout --preserve-status 
 > (= (rb)  
   (: ModusPonens 
     (-> 
-      (ImplicationLink $_55192 $_55198) $_55192 $_55198)))
+      (ImplicationLink $p $q) $p $q)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: Deduction 
     (-> 
-      (ImplicationLink $_58906 $_58912) 
-      (ImplicationLink $_58912 $_58936) 
-      (ImplicationLink $_58906 $_58936))))
+      (ImplicationLink $p $q) 
+      (ImplicationLink $q $r) 
+      (ImplicationLink $p $r))))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
-      (OrLink $_62174 $_62180) 
-      (NotLink $_62174) $_2864)))
+      (OrLink $p $q) 
+      (NotLink $p) $q)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctiveSyllogism 
     (-> 
-      (OrLink $_6700 $_6706) 
-      (NotLink $_6706) $_6700)))
+      (OrLink $p $q) 
+      (NotLink $q) $p)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionIntroduction 
-    (-> $_9966 $_9972 
-      (AndLink $_9966 $_9972))))
+    (-> $p $q 
+      (AndLink $p $q))))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationLeft 
     (-> 
-      (AndLink $_13254 $_13260) $_13254)))
+      (AndLink $p $q) $p)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: ConjunctionEliminationRight 
     (-> 
-      (AndLink $_16536 $_16542) $_16542)))
+      (AndLink $p $q) $q)))
 </span><span class="ansi38-255165000"
 > (= (rb)  
   (: DisjunctionIntroduction 
-    (-> $_19818 $_19824 
-      (OrLink $_19818 $_19824))))
+    (-> $p $q 
+      (OrLink $p $q))))
 </span>;;;!(assertEqual
 ;;;  (synthesize (: $term $type) kb rb (S (S Z)))
 ;;;  ...)
@@ -241,34 +241,34 @@ Script started on 2025-02-18 13:17:22+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: first-few (-> Number Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (first-few $_27034 $_27040)  
+> (= (first-few $n $a)  
   (if 
-    (== $_27034 0) 
+    (== $n 0) 
     (let n o p) 
     (if 
-      (== $_27034 1) 
-      (car-atom $_27040) 
-      (let $_27142 
-        (cdr-atom $_27040) 
-        (superpose ((car-atom $_27040) (first-few (- $_27034 1) $_27142)))))))
+      (== $n 1) 
+      (car-atom $a) 
+      (let $t 
+        (cdr-atom $a) 
+        (superpose ((car-atom $a) (first-few (- $n 1) $t)))))))
 </span><span class="ansi38-255165000"
 > (: limit (-> Number Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (limit $_33762 $_33768)  
-  (let $_33786 
-    (collapse $_33768) 
-    (first-few $_33762 $_33786)))
+> (= (limit $n $x)  
+  (let $a 
+    (collapse $x) 
+    (first-few $n $a)))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (limit 1 (synthesize (: $_36530 $_36536) kb rb (S Z))) ((: a A)))
+>!(assertEqualToResult (limit 1 (synthesize (: $term $type) kb rb (S Z))) ((: a A)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIRST-ANSWER.01"
 >;; HYPERON-METTALOG-SANITY.FIRST-ANSWER.01</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.11 milliseconds) 
+; took 0.006 secs. (6.45 milliseconds) 
 
-!(assertEqualToResult (limit 1 (synthesize (: $_43594 $_43600) kb rb (S Z))) ((: a A)))
+!(assertEqualToResult (limit 1 (synthesize (: $term $type) kb rb (S Z))) ((: a A)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -279,16 +279,16 @@ Script started on 2025-02-18 13:17:22+00:00 [COMMAND="timeout --preserve-status 
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (limit 6 (synthesize (: $_55462 $_55468) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
+>!(assertEqualToResult (limit 6 (synthesize (: $term $type) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.FIRST-ANSWER.02"
 >;; HYPERON-METTALOG-SANITY.FIRST-ANSWER.02</h3>
 ; 
 ; EVAL TEST
-; took 0.201 secs. (200.85 milliseconds) 
+; took 0.181 secs. (180.56 milliseconds) 
 
-!(assertEqualToResult (limit 6 (synthesize (: $_17080 $_17086) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
+!(assertEqualToResult (limit 6 (synthesize (: $term $type) kb rb (S Z))) ((: a A) (: a B) (: abc (Implication (AndLink A B) C)) (: cde (Implication (OrLink C D) E)) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -338,7 +338,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:17:23+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:01:40+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

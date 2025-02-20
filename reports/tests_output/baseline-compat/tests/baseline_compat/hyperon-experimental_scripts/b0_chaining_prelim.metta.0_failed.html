@@ -32,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:12:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:53:32+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] ]
 P;HTML|
@@ -61,26 +61,25 @@ Script started on 2025-02-18 13:12:16+00:00 [COMMAND="timeout --preserve-status 
 ;;; `:=` is a custom symbol
 ;;; Combinatory logic rules
 <span class="ansi38-255165000"
-> (:= (I $_60524) $_60524)
+> (:= (I $x) $x)
 </span><span class="ansi38-255165000"
-> (:= ((K $_2406) $_2412) $_2406)
+> (:= ((K $x) $y) $x)
 </span><span class="ansi38-255165000"
-> (:= (K $_6202 $_6208) $_6202)
+> (:= (K $x $y) $x)
 </span><span class="ansi38-255165000"
-> (:= (S $_10266 $_10272 $_10278) (= $_10278  
-  ($_10272 $_10278)))
+> (:= (S $x $y $z) ($x $z ($y $z)))
 </span>;;; A single matching step
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $_12640) $_12640) ((K x (K x))))
+>!(assertEqualToResult (match &self (:= (S K K x) $r) $r) ((K x (K x))))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.44 milliseconds) 
+; took 0.002 secs. (2.14 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (S K K x) $_39012) $_39012) ((K x (K x))))
+!(assertEqualToResult (match &self (:= (S K K x) $r) $r) ((K x (K x))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -95,16 +94,16 @@ Deterministic: <span class="ansi33"
 </span>;;; A second matching step; the result of the previous
 ;;; step is manually used as input for the next query
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (K x (K x)) $_49954) $_49954) (x))
+>!(assertEqualToResult (match &self (:= (K x (K x)) $r) $r) (x))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000255 secs. (255.18 microseconds) 
+; took 0.000199 secs. (199.18 microseconds) 
 
-!(assertEqualToResult (match &self (:= (K x (K x)) $_59278) $_59278) (x))
+!(assertEqualToResult (match &self (:= (K x (K x)) $r) $r) (x))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -116,16 +115,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Combined reduction via matching in two steps
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $_8322) (match &self (:= $_8322 $_8364) $_8364)) (x))
+>!(assertEqualToResult (match &self (:= (S K K x) $r) (match &self (:= $r $r2) $r2)) (x))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000439 secs. (438.73 microseconds) 
+; took 0.000371 secs. (370.56 microseconds) 
 
-!(assertEqualToResult (match &self (:= (S K K x) $_20404) (match &self (:= $_20404 $_20446) $_20446)) (x))
+!(assertEqualToResult (match &self (:= (S K K x) $r) (match &self (:= $r $r2) $r2)) (x))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -140,21 +139,21 @@ Deterministic: <span class="ansi33"
 ;;; Another example (Peano summation)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
-> (:= (Add $_32194 Z) $_32194)
+> (:= (Add $x Z) $x)
 </span><span class="ansi38-255165000"
-> (:= (Add $_35622 (S $_35640)) (Add (S $_35622) $_35640))
+> (:= (Add $x (S $y)) (Add (S $x) $y))
 </span>;;; First step
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $_37768) $_37768) ((Add (S (S Z)) Z)))
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) $r) ((Add (S (S Z)) Z)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.82 milliseconds) 
+; took 0.003 secs. (3.05 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $_16296) $_16296) ((Add (S (S Z)) Z)))
+!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) $r) ((Add (S (S Z)) Z)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -168,16 +167,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Two steps together
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $_27940) (match &self (:= $_27940 $_27982) $_27982)) ((S (S Z))))
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) (match &self (:= $r $r2) $r2)) ((S (S Z))))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.50 milliseconds) 
+; took 0.002 secs. (2.18 milliseconds) 
 
-!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $_59086) (match &self (:= $_59086 $_59128) $_59128)) ((S (S Z))))
+!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $r) (match &self (:= $r $r2) $r2)) ((S (S Z))))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -204,7 +203,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:12:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:53:32+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

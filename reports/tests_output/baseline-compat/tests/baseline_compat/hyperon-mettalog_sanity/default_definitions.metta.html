@@ -61,7 +61,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:16:28+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 05:00:06+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] ]
 P;HTML|
@@ -170,75 +170,75 @@ Script started on 2025-02-18 13:16:28+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-255165000"
 > (: eval-maybe-empty (-> Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (eval-maybe-empty $_3126)  
-  (let $_3144 
-    (case $_3126 
-      ( ( (Error $_3192 $_3198) (eval (Error $_3192 $_3198))) 
+> (= (eval-maybe-empty $eval)  
+  (let $res 
+    (case $eval 
+      ( ( (Error $a $b) (eval (Error $a $b))) 
         (Empty (eval Empty)) 
-        ($_3252 $_3252))) $_3144))
+        ($var $var))) $res))
 </span><span class="ansi38-255165000"
 > (: match-maybe-empty (-> hyperon::space::DynSpace Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (match-maybe-empty $_10164 $_10170 $_10176)  
-  (eval-maybe-empty (match $_10164 $_10170 $_10176)))
+> (= (match-maybe-empty $space $match $template)  
+  (eval-maybe-empty (match $space $match $template)))
 </span><span class="ansi38-255165000"
 > (: string-repr (-> Atom String))
 </span><span class="ansi38-255165000"
-> (= (string-repr $_16928)  
-  (let $_16946 
-    (get-type $_16928) 
+> (= (string-repr $obj)  
+  (let $type 
+    (get-type $obj) 
     (if 
-      (== $_16946 String) 
+      (== $type String) 
       (format-args "\"{}\"" 
-        ($_16928)) 
-      (repr $_16928))))
+        ($obj)) 
+      (repr $obj))))
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $_23934 $_23940 $_23946)  
+> (= (assertPEqual $Form $List $passes)  
   (assertPEqualR 
-    (string-repr $_23934) $_23934 $_23940 $_23946))
+    (string-repr $Form) $Form $List $passes))
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $_30702 $_30708 $_30714 $_30720)  
+> (= (assertPEqual $Name $Form $Form2 $passes2)  
   (assertPEqualR 
-    (string-repr $_30702) $_30708 $_30714 $_30720))
+    (string-repr $Name) $Form $Form2 $passes2))
 </span><span class="ansi38-255165000"
 > (: assertPEqualR (-> String Atom Atom Atom Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualR $_40140 $_40146 $_40152 $_40158)  
+> (= (assertPEqualR $Name $Form $Form2 $passes2)  
   (let 
-    ($_40182 $_40188 $_40194 $_40200) 
-    ($_40140 
-      (eval-maybe-empty $_40146) 
-      (eval-maybe-empty $_40152) 
-      (collapse $_40158)) 
+    ($n $res $List $passes) 
+    ($Name 
+      (eval-maybe-empty $Form) 
+      (eval-maybe-empty $Form2) 
+      (collapse $passes2)) 
     (case 
-      (quote $_40188) 
-      ( ( (quote $_40194) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($_40140 $_40146 $_40152 $_40158)))) ($_40398 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($_40140 $_40146 $_40152 $_40188))))))))
+      (quote $res) 
+      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($_36944 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $_46862 $_46868 $_46874)  
+> (= (assertPEqualToResult $Form $List $passes)  
   (assertPEqualToResultR 
-    (string-repr $_46862) $_46862 $_46868 $_46874))
+    (string-repr $Form) $Form $List $passes))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $_53638 $_53644 $_53650 $_53656)  
+> (= (assertPEqualToResult $Name $Form $Form2 $passes2)  
   (assertPEqualToResultR 
-    (string-repr $_53638) $_53644 $_53650 $_53656))
+    (string-repr $Name) $Form $Form2 $passes2))
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResultR (-> String Atom Expression Expression Atom))
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResultR $_62234 $_62240 $_62246 $_62252)  
+> (= (assertPEqualToResultR $Name $Form $List $passes)  
   (let 
-    ($_62276 $_62282) 
-    ($_62234 (collapse $_3328)) 
+    ($n $res) 
+    ($Name (collapse $Form)) 
     (case 
-      (quote $_3370) 
-      ( ( (quote $_3334) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($_3322 $_3328 $_3334 $_3340)))) ($_3532 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($_3322 $_3328 $_3334 $_3370))))))))
+      (quote $res) 
+      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($_55908 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
 </span><span class="ansi38-255165000"
 > (: atom-atom (-> Atom Atom))
 </span><span class="ansi38-255165000"
@@ -246,9 +246,9 @@ Script started on 2025-02-18 13:16:28+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (: atom-unit (-> Atom (->)))
 </span><span class="ansi38-255165000"
-> (: var-var (-> $_15728 $_15728))
+> (: var-var (-> $var $var))
 </span><span class="ansi38-255165000"
-> (: atom-var (-> Atom $_19056))
+> (: atom-var (-> Atom $var))
 </span><span class="ansi38-255165000"
 > (= (return-empty)  Empty)
 </span><span class="ansi38-255165000"
@@ -256,91 +256,91 @@ Script started on 2025-02-18 13:16:28+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165000"
 > (: return-number (-> Number Number))
 </span><span class="ansi38-255165000"
-> (= (return-number $_31132)  $_31132)
+> (= (return-number $n)  $n)
 </span><span class="ansi38-013099040"
->!(assertPEqual (match-maybe-empty &self (no-stuff $_33822) (no-stuff $_33822)) Empty $_33852)
+>!(assertPEqual (match-maybe-empty &self (no-stuff $a) (no-stuff $a)) Empty $same)
 
 </span>;; no-results ;; 
 <span class="ansi38-013099040"
->!(assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $_38910)
+>!(assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)
 
 </span>
-	 (assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $_25954)
+	 (assertPEqual (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) (atom-atom (+ 1 1)) $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual (number-atom (+ 1 1)) (number-atom 2) $_34600)
+>!(assertPEqual (number-atom (+ 1 1)) (number-atom 2) $same)
 
 </span>
-	 (assertPEqual (number-atom (+ 1 1)) (number-atom (+ 1 1)) (number-atom 2) $_18756)
+	 (assertPEqual (number-atom (+ 1 1)) (number-atom (+ 1 1)) (number-atom 2) $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $_27456)
+>!(assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)
 
 </span>
-	 (assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $_26370)
+	 (assertPEqual (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) (atom-unit (+ 1 1)) $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) $_35070)
+>!(assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) $same)
 
 </span>
-	 (assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) (var-var (+ 1 1)) $_20906)
+	 (assertPEqual (var-var (+ 1 1)) (var-var (+ 1 1)) (var-var (+ 1 1)) $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) $_29606)
+>!(assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)
 
 </span>
-	 (assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) (atom-var (+ 1 1)) $_14980)
+	 (assertPEqual (atom-var (+ 1 1)) (atom-var (+ 1 1)) (atom-var (+ 1 1)) $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $_23578)
+>!(assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $same)
 
-</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $_2082)]
+</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqualToResult "nr1" (returns-not-reducible) (NotReducible) $same)]
 <span class="ansi38-013099040"
->!(assertPEqualToResult "nr2" (returns-not-reducible) (NotReducible) $_3884)
+>!(assertPEqualToResult "nr2" (returns-not-reducible) (NotReducible) $same)
 
-</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqualToResult "nr2" (returns-not-reducible) (NotReducible) $_2058)]
+</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqualToResult "nr2" (returns-not-reducible) (NotReducible) $same)]
 <span class="ansi38-013099040"
->!(assertPEqual "nr3" (returns-not-reducible) NotReducible $_3842)
+>!(assertPEqual "nr3" (returns-not-reducible) NotReducible $same)
 
-</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual "nr3" (returns-not-reducible) NotReducible $_2034)]
+</span>[error metta_NotReducible [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/default_definitions.metta] (assertPEqual "nr3" (returns-not-reducible) NotReducible $same)]
 <span class="ansi38-013099040"
->!(assertPEqual (return-number 2) 2 $_3800)
+>!(assertPEqual (return-number 2) 2 $same)
 
 </span>
-	 (assertPEqual (return-number 2) (return-number 2) 2 $_51560)
+	 (assertPEqual (return-number 2) (return-number 2) 2 $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqualToResult "re1" (return-empty) () $_60136)
+>!(assertPEqualToResult "re1" (return-empty) () $same)
 
 </span>
-	 (assertPEqualToResult "re1" (return-empty) () $_39688)
+	 (assertPEqualToResult "re1" (return-empty) () $same)
 
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual "re2" (return-empty) Empty $_48474)
+>!(assertPEqual "re2" (return-empty) Empty $same)
 
 </span>;; no-results ;; 
 <span class="ansi38-013099040"
->!(assertPEqual "re3" (return-empty) (eval Empty) $_26270)
+>!(assertPEqual "re3" (return-empty) (eval Empty) $same)
 
 </span>;; no-results ;; 
 <span class="ansi38-255165000"
 > (: a TypeA)
 </span><span class="ansi38-013099040"
->!(assertPEqualToResult "rn1" (return-number a) ((Error a BadType)) $_12218)
+>!(assertPEqualToResult "rn1" (return-number a) ((Error a BadType)) $same)
 
 </span>
 	 (assertPEqualToResult "rn1" (return-number a) 
@@ -350,7 +350,7 @@ N(1): <span class="ansi33"
 N(1): <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertPEqual "rn2" (return-number a) (Error a BadType) $_21446)
+>!(assertPEqual "rn2" (return-number a) (Error a BadType) $same)
 
 </span>
 	 (assertPEqual "rn2" (return-number a) 
@@ -380,7 +380,7 @@ N(1): <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:16:29+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 05:00:07+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

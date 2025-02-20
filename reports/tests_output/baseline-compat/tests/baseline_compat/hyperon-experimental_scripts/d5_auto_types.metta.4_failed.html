@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:13:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:55:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] ]
 P;HTML|
@@ -88,7 +88,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.001 secs. (1.08 milliseconds) 
 
 !(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
@@ -109,7 +109,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000465 secs. (465.45 microseconds) 
+; took 0.000410 secs. (410.37 microseconds) 
 
 !(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
@@ -132,7 +132,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (: Mortal (-> Entity Type))
 </span><span class="ansi38-255165000"
-> (: HumansAreMortal (-> (Human $_47324) (Mortal $_47324)))
+> (: HumansAreMortal (-> (Human $t) (Mortal $t)))
 </span><span class="ansi38-255165000"
 > (: SocratesIsHuman (Human Socrates))
 </span><span class="ansi38-255165000"
@@ -151,7 +151,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000530 secs. (530.28 microseconds) 
+; took 0.000627 secs. (627.48 microseconds) 
 
 !(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
@@ -171,9 +171,9 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04</h3>
 P;HTML|
-;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_29008 $_29010]]] [ = $_29014 True ] ] [ = $_29014 False ] ]] [error instantiation_error $_29028] ]
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_25212 $_25214]]] [ = $_25218 True ] ] [ = $_25218 False ] ]] [error instantiation_error $_25232] ]
 
-[error [error [existence_error procedure [ / check_bad_type 3 ]] [context [ / if_t 2 ] $_2008]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[error [error [existence_error procedure [ / check_bad_type 3 ]] [context [ / if_t 2 ] $_2180]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `collapse` evaluates its argument, so it shows a type error
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -185,7 +185,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000695 secs. (695.32 microseconds) 
+; took 0.000572 secs. (572.07 microseconds) 
 
 !(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -220,7 +220,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000238 secs. (237.96 microseconds) 
+; took 0.000214 secs. (213.66 microseconds) 
 
 !(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) ())
 
@@ -237,13 +237,13 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; let binds without type checking, but errors when used
 <span class="ansi38-013099040"
->!(let $_45926 (+ 5 "S") $_45926)
+>!(let $x (+ 5 "S") $x)
 
 </span>
 N(1): <span class="ansi33"
 >88
 </span><span class="ansi38-255165000"
-> (: f (-> $_61774 Number))
+> (: f (-> $t Number))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
@@ -251,8 +251,8 @@ N(1): <span class="ansi33"
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07</h3>
 P;HTML|
-;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_13060 $_13062]]] [ = $_13066 True ] ] [ = $_13066 False ] ]] [error instantiation_error $_13080] ]
-[error [error [existence_error procedure [ / check_bad_type 3 ]] [context [ / if_t 2 ] $_1996]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))]P;HTML|
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $_5236 $_5238]]] [ = $_5242 True ] ] [ = $_5242 False ] ]] [error instantiation_error $_5256] ]
+[error [error [existence_error procedure [ / check_bad_type 3 ]] [context [ / if_t 2 ] $_2164]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] (assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))]P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
@@ -272,7 +272,7 @@ N(1): <span class="ansi33"
 [88]
 [
 
-Script done on 2025-02-18 13:13:52+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:55:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

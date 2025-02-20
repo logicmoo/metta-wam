@@ -38,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 13:14:11+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az2032-913.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equals_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-20 04:57:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equals_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/alpha_equals_tests.metta] ]
 P;HTML|
@@ -84,81 +84,81 @@ Script started on 2025-02-18 13:14:11+00:00 [COMMAND="timeout --preserve-status 
 
 ;;;; Basic equivalency
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo $_63900) (foo $_1934))
+>!(assertAlphaEqual (foo $x) (foo $y))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.95 milliseconds) 
+; took 0.002 secs. (1.89 milliseconds) 
 
-!(assertAlphaEqual (foo $_20840) (foo $_20858))
+!(assertAlphaEqual (foo $x) (foo $y))
 
 P;HTML|
-; alpha_equ([foo,_45192],[foo,_45204])
+; alpha_equ([foo,_26650],[foo,_26662])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo $_38614)) 
-      ( (foo $_38632))]]
+      ( (foo $x)) 
+      ( (foo $y))]]
 </span>P;HTML|
-; alpha_equ([foo,_6578],[foo,_6590])
+; alpha_equ([foo,_43360],[foo,_43372])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Nested equivalency
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar $_18822)) (foo (bar $_18852)))
+>!(assertAlphaEqual (foo (bar $x)) (foo (bar $y)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.22 milliseconds) 
+; took 0.003 secs. (2.87 milliseconds) 
 
-!(assertAlphaEqual (foo (bar $_53642)) (foo (bar $_53672)))
+!(assertAlphaEqual (foo (bar $x)) (foo (bar $y)))
 
 P;HTML|
-; alpha_equ([foo,[bar,_59346]],[foo,[bar,_59370]])
+; alpha_equ([foo,[bar,_11016]],[foo,[bar,_11040]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo (bar $_41180))) 
-      ( (foo (bar $_41210)))]]
+      ( (foo (bar $x))) 
+      ( (foo (bar $y)))]]
 </span>P;HTML|
-; alpha_equ([foo,[bar,_47740]],[foo,[bar,_47764]])
+; alpha_equ([foo,[bar,_18964]],[foo,[bar,_18988]])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Multiple variables
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo $_34500 $_34506) (foo $_34524 $_34530))
+>!(assertAlphaEqual (foo $x $y) (foo $a $b))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.56 milliseconds) 
+; took 0.001 secs. (1.24 milliseconds) 
 
-!(assertAlphaEqual (foo $_53702 $_53708) (foo $_53726 $_53732))
+!(assertAlphaEqual (foo $x $y) (foo $a $b))
 
 P;HTML|
-; alpha_equ([foo,_35208,_35214],[foo,_35226,_35232])
+; alpha_equ([foo,_7346,_7352],[foo,_7364,_7370])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo $_21454 $_21460)) 
-      ( (foo $_21478 $_21484))]]
+      ( (foo $x $y)) 
+      ( (foo $a $b))]]
 </span>P;HTML|
-; alpha_equ([foo,_54148,_54154],[foo,_54166,_54172])
+; alpha_equ([foo,_45962,_45968],[foo,_45980,_45986])
 
 
 Deterministic: <span class="ansi33"
@@ -172,7 +172,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.64 milliseconds) 
+; took 0.001 secs. (1.26 milliseconds) 
 
 !(assertAlphaEqual (foo A B) (foo A B))
 
@@ -192,132 +192,132 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; Equivalent repeated variables
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo $_43106 $_43106) (foo $_43130 $_43130))
+>!(assertAlphaEqual (foo $x $x) (foo $y $y))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.001 secs. (1.21 milliseconds) 
 
-!(assertAlphaEqual (foo $_61916 $_61916) (foo $_61940 $_61940))
+!(assertAlphaEqual (foo $x $x) (foo $y $y))
 
 P;HTML|
-; alpha_equ([foo,_34880,_34880],[foo,_34898,_34898])
+; alpha_equ([foo,_14586,_14586],[foo,_14604,_14604])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo $_21150 $_21150)) 
-      ( (foo $_21174 $_21174))]]
+      ( (foo $x $x)) 
+      ( (foo $y $y))]]
 </span>P;HTML|
-; alpha_equ([foo,_53558,_53558],[foo,_53576,_53576])
+; alpha_equ([foo,_45376,_45376],[foo,_45394,_45394])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Equivalent functions with swapped but consistent variable names
 <span class="ansi38-013099040"
->!(assertNotAlphaEqual (foo $_44758 $_44758) (foo $_44782 $_44788))
+>!(assertNotAlphaEqual (foo $x $x) (foo $y $z))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.46 milliseconds) 
+; took 0.001 secs. (1.21 milliseconds) 
 
-!(assertNotAlphaEqual (foo $_63764 $_63764) (foo $_63788 $_63794))
+!(assertNotAlphaEqual (foo $x $x) (foo $y $z))
 
 P;HTML|
-; not_alpha_equ([foo,_35228,_35228],[foo,_35246,_35252])
+; not_alpha_equ([foo,_24124,_24124],[foo,_24142,_24148])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l not_alpha_equ 
-      ( (foo $_21488 $_21488)) 
-      ( (foo $_21512 $_21518))]]
+      ( (foo $x $x)) 
+      ( (foo $y $z))]]
 </span>P;HTML|
-; not_alpha_equ([foo,_54042,_54042],[foo,_54060,_54066])
+; not_alpha_equ([foo,_45694,_45694],[foo,_45712,_45718])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Equivalent nested repeated variables
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar $_44604 $_44604)) (foo (bar $_44640 $_44640)))
+>!(assertAlphaEqual (foo (bar $x $x)) (foo (bar $y $y)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.35 milliseconds) 
+; took 0.003 secs. (2.70 milliseconds) 
 
-!(assertAlphaEqual (foo (bar $_19160 $_19160)) (foo (bar $_19196 $_19196)))
+!(assertAlphaEqual (foo (bar $x $x)) (foo (bar $y $y)))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,_54102,_54102]],
+;      [bar,_36822,_36822]],
 ;    [ foo,
-;      [bar,_7204,_7204]])
+;      [bar,_20768,_20768]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo (bar $_21612 $_21612))) 
-      ( (foo (bar $_21648 $_21648)))]]
+      ( (foo (bar $x $x))) 
+      ( (foo (bar $y $y)))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,_8140,_8140]],
+;      [bar,_33594,_33594]],
 ;    [ foo,
-;      [bar,_7108,_7108]])
+;      [bar,_17540,_17540]])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Deep nesting equivalency
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar (baz $_29882))) (foo (bar (baz $_29924))))
+>!(assertAlphaEqual (foo (bar (baz $x))) (foo (bar (baz $y))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.49 milliseconds) 
+; took 0.005 secs. (4.74 milliseconds) 
 
-!(assertAlphaEqual (foo (bar (baz $_26052))) (foo (bar (baz $_26094))))
+!(assertAlphaEqual (foo (bar (baz $x))) (foo (bar (baz $y))))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
 ;      [ bar,
-;        [baz,_24696]]],
+;        [baz,_38936]]],
 ;    [ foo,
 ;      [ bar,
-;        [baz,_7424]]])
+;        [baz,_7364]]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo (bar (baz $_6570)))) 
-      ( (foo (bar (baz $_6612))))]]
+      ( (foo (bar (baz $x)))) 
+      ( (foo (bar (baz $y))))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
 ;      [ bar,
-;        [baz,_8208]]],
+;        [baz,_14864]]],
 ;    [ foo,
 ;      [ bar,
-;        [baz,_7150]]])
+;        [baz,_7222]]])
 
 
 Deterministic: <span class="ansi33"
@@ -331,7 +331,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.42 milliseconds) 
+; took 0.003 secs. (2.98 milliseconds) 
 
 !(assertAlphaEqual (foo (bar A B)) (foo (bar A B)))
 
@@ -368,7 +368,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (23.56 microseconds) 
+; took 0.000018 secs. (18.02 microseconds) 
 
 !(assertAlphaEqual () ())
 
@@ -382,189 +382,189 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; Equivalent functions with swapped but consistent variable names
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo $_49930 $_49936 $_49942) (foo $_49960 $_49966 $_49972))
+>!(assertAlphaEqual (foo $x $y $z) (foo $a $b $c))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.11"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.57 milliseconds) 
+; took 0.001 secs. (1.29 milliseconds) 
 
-!(assertAlphaEqual (foo $_9298 $_9304 $_9310) (foo $_9328 $_9334 $_9340))
+!(assertAlphaEqual (foo $x $y $z) (foo $a $b $c))
 
 P;HTML|
-; alpha_equ( [foo,_61568,_61574,_61580]<span class="pl-functor"
+; alpha_equ( [foo,_39470,_39476,_39482]<span class="pl-functor"
 >, [</span>
-;   foo, _48898,_48904,_48910])
+;   foo, _27480,_27486,_27492])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo $_13024 $_13030 $_13036)) 
-      ( (foo $_13054 $_13060 $_13066))]]
+      ( (foo $x $y $z)) 
+      ( (foo $a $b $c))]]
 </span>P;HTML|
-; alpha_equ( [foo,_9096,_9102,_9108]<span class="pl-functor"
+; alpha_equ( [foo,_41696,_41702,_41708]<span class="pl-functor"
 >, [</span>
-;   foo, _7162,_7168,_7174])
+;   foo, _29706,_29712,_29718])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Equivalent functions with swapped but consistent variable names
 <span class="ansi38-013099040"
->!(assertNotAlphaEqual (foo $_30678 $_30678 $_30690) (foo $_30708 $_30714 $_30720))
+>!(assertNotAlphaEqual (foo $x $x $z) (foo $a $b $c))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.51 milliseconds) 
+; took 0.001 secs. (1.46 milliseconds) 
 
-!(assertNotAlphaEqual (foo $_50512 $_50512 $_50524) (foo $_50542 $_50548 $_50554))
+!(assertNotAlphaEqual (foo $x $x $z) (foo $a $b $c))
 
 P;HTML|
-; not_alpha_equ( [foo,_55396,_55396,_55408]<span class="pl-functor"
+; not_alpha_equ( [foo,_61052,_61052,_61064]<span class="pl-functor"
 >, [</span>
-;   foo, _42762,_42768,_42774])
+;   foo, _49098,_49104,_49110])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l not_alpha_equ 
-      ( (foo $_6612 $_6612 $_6624)) 
-      ( (foo $_6642 $_6648 $_6654))]]
+      ( (foo $x $x $z)) 
+      ( (foo $a $b $c))]]
 </span>P;HTML|
-; not_alpha_equ( [foo,_59398,_59398,_59410]<span class="pl-functor"
+; not_alpha_equ( [foo,_60236,_60236,_60248]<span class="pl-functor"
 >, [</span>
-;   foo, _46764,_46770,_46776])
+;   foo, _48282,_48288,_48294])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Deep equivalency with variables in constants
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar A $_14468) (baz B $_14492)) (foo (bar A $_14528) (baz B $_14552)))
+>!(assertAlphaEqual (foo (bar A $x) (baz B $y)) (foo (bar A $a) (baz B $b)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.13"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.06 milliseconds) 
+; took 0.004 secs. (4.37 milliseconds) 
 
-!(assertAlphaEqual (foo (bar A $_8968) (baz B $_8992)) (foo (bar A $_9028) (baz B $_9052)))
+!(assertAlphaEqual (foo (bar A $x) (baz B $y)) (foo (bar A $a) (baz B $b)))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,'A',_33258],
-;      [baz,'B',_33282]],
+;      [bar,'A',_13402],
+;      [baz,'B',_13426]],
 ;    [ foo,
-;      [bar,'A',_10794],
-;      [baz,'B',_10818]])
+;      [bar,'A',_8212],
+;      [baz,'B',_8236]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
       ( (foo 
-          (bar A $_59310) 
-          (baz B $_59334))) 
+          (bar A $x) 
+          (baz B $y))) 
       ( (foo 
-          (bar A $_59370) 
-          (baz B $_59394)))]]
+          (bar A $a) 
+          (baz B $b)))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,'A',_20866],
-;      [baz,'B',_20890]],
+;      [bar,'A',_54350],
+;      [baz,'B',_54374]],
 ;    [ foo,
-;      [bar,'A',_8036],
-;      [baz,'B',_8060]])
+;      [bar,'A',_8006],
+;      [baz,'B',_8030]])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Multiple nested equivalent expressions
 <span class="ansi38-013099040"
->!(assertAlphaEqual ((foo $_51840) (bar $_51858)) ((foo $_51882) (bar $_51900)))
+>!(assertAlphaEqual ((foo $x) (bar $y)) ((foo $a) (bar $b)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.14"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.13 milliseconds) 
+; took 0.005 secs. (4.57 milliseconds) 
 
-!(assertAlphaEqual ((foo $_42542) (bar $_42560)) ((foo $_42584) (bar $_42602)))
+!(assertAlphaEqual ((foo $x) (bar $y)) ((foo $a) (bar $b)))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
-;    [ [ foo,_23518],
-;      [ bar,_23536]],
-;    [ [ foo,_7406],
-;      [ bar,_7424]])
+;    [ [ foo,_44200],
+;      [ bar,_44218]],
+;    [ [ foo,_26164],
+;      [ bar,_26182]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( ( (foo $_38556) (bar $_38574))) 
-      ( ( (foo $_38598) (bar $_38616)))]]
+      ( ( (foo $x) (bar $y))) 
+      ( ( (foo $a) (bar $b)))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
-;    [ [ foo,_19704],
-;      [ bar,_19722]],
-;    [ [ foo,_7258],
-;      [ bar,_7276]])
+;    [ [ foo,_36572],
+;      [ bar,_36590]],
+;    [ [ foo,_18536],
+;      [ bar,_18554]])
 
 
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Multi-level equivalency with variable shadowing
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar $_39050) (baz $_39050)) (foo (bar $_39098) (baz $_39098)))
+>!(assertAlphaEqual (foo (bar $x) (baz $x)) (foo (bar $y) (baz $y)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.15"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.05 milliseconds) 
+; took 0.005 secs. (4.54 milliseconds) 
 
-!(assertAlphaEqual (foo (bar $_29858) (baz $_29858)) (foo (bar $_29906) (baz $_29906)))
+!(assertAlphaEqual (foo (bar $x) (baz $x)) (foo (bar $y) (baz $y)))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,_29248],
-;      [baz,_29248]],
+;      [bar,_32228],
+;      [baz,_32228]],
 ;    [ foo,
-;      [bar,_9158],
-;      [baz,_9158]])
+;      [bar,_12954],
+;      [baz,_12954]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
       ( (foo 
-          (bar $_54898) 
-          (baz $_54898))) 
+          (bar $x) 
+          (baz $x))) 
       ( (foo 
-          (bar $_54946) 
-          (baz $_54946)))]]
+          (bar $y) 
+          (baz $y)))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
-;      [bar,_8546],
-;      [baz,_8546]],
+;      [bar,_53360],
+;      [baz,_53360]],
 ;    [ foo,
-;      [bar,_7502],
-;      [baz,_7502]])
+;      [bar,_7422],
+;      [baz,_7422]])
 
 
 Deterministic: <span class="ansi33"
@@ -578,7 +578,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.19 milliseconds) 
+; took 0.003 secs. (2.79 milliseconds) 
 
 !(assertAlphaEqual (foo A (bar B)) (foo A (bar B)))
 
@@ -614,41 +614,41 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; More deeply nested equivalency with repeated variables
 <span class="ansi38-013099040"
->!(assertAlphaEqual (foo (bar (baz $_12916 $_12916))) (foo (bar (baz $_12964 $_12964))))
+>!(assertAlphaEqual (foo (bar (baz $x $x))) (foo (bar (baz $y $y))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.17"
 >;; HYPERON-METTALOG-SANITY.ALPHA-EQUALS-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (5.33 milliseconds) 
+; took 0.005 secs. (4.90 milliseconds) 
 
-!(assertAlphaEqual (foo (bar (baz $_9382 $_9382))) (foo (bar (baz $_9430 $_9430))))
+!(assertAlphaEqual (foo (bar (baz $x $x))) (foo (bar (baz $y $y))))
 
 P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
 ;      [ bar,
-;        [baz,_22708,_22708]]],
+;        [baz,_8616,_8616]]],
 ;    [ foo,
 ;      [ bar,
-;        [baz,_7618,_7618]]])
+;        [baz,_7572,_7572]]])
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l alpha_equ 
-      ( (foo (bar (baz $_61742 $_61742)))) 
-      ( (foo (bar (baz $_5106 $_5106))))]]
+      ( (foo (bar (baz $x $x)))) 
+      ( (foo (bar (baz $y $y))))]]
 </span>P;HTML|
 ; alpha_equ<span class="pl-functor"
 >( </span>
 ;    [ foo,
 ;      [ bar,
-;        [baz,_20514,_20514]]],
+;        [baz,_40496,_40496]]],
 ;    [ foo,
 ;      [ bar,
-;        [baz,_7498,_7498]]])
+;        [baz,_7420,_7420]]])
 
 
 Deterministic: <span class="ansi33"
@@ -682,7 +682,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-18 13:14:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-20 04:57:06+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
