@@ -35,7 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:57:20+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 14:01:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1074-584.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta] ]
 P;HTML|
@@ -47,20 +47,25 @@ Script started on 2025-02-20 04:57:20+00:00 [COMMAND="timeout --preserve-status 
 
 <span class="ansi38-255165000"
 > (: eval-maybe-empty (-> Atom Atom))
+ 
 </span><span class="ansi38-255165000"
 > (= (eval-maybe-empty $eval)  
   (let $res 
     (case $eval 
-      ( ( (Error $a $b) (eval (Error $a $b))) 
+      ( ( (Error $9572 $9578) (eval (Error $9572 $9578))) 
         (Empty (eval Empty)) 
-        ($var $var))) $res))
+        ($9632 $9632))) $res))
+ 
 </span><span class="ansi38-255165000"
 > (: match-maybe-empty (-> hyperon::space::DynSpace Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (match-maybe-empty $space $match $template)  
-  (eval-maybe-empty (match $space $match $template)))
+> (= (match-maybe-empty $space $match $19180)  
+  (eval-maybe-empty (match $space $match $19180)))
+ 
 </span><span class="ansi38-255165000"
 > (: string-repr (-> Atom String))
+ 
 </span><span class="ansi38-255165000"
 > (= (string-repr $obj)  
   (let $type 
@@ -70,59 +75,72 @@ Script started on 2025-02-20 04:57:20+00:00 [COMMAND="timeout --preserve-status 
       (format-args "\"{}\"" 
         ($obj)) 
       (repr $obj))))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Form $List $passes)  
+> (= (assertPEqual $Form $List $37820)  
   (assertPEqualR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $Form) $Form $List $37820))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqual (-> Atom Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqual $Name $Form $Form2 $passes2)  
+> (= (assertPEqual $Name $Form $49518 $49524)  
   (assertPEqualR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $Name) $Form $49518 $49524))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualR (-> String Atom Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualR $Name $Form $Form2 $passes2)  
+> (= (assertPEqualR $Name $Form $27296 $27302)  
   (let 
-    ($n $res $List $passes) 
+    ($27326 $27332 $27338 $27344) 
     ($Name 
       (eval-maybe-empty $Form) 
-      (eval-maybe-empty $Form2) 
-      (collapse $passes2)) 
+      (eval-maybe-empty $27296) 
+      (collapse $27302)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $Form2 $passes2)))) ($_30052 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $Form2 $res))))))))
+      (quote $27332) 
+      ( ( (quote $27338) (println! (format-args "\n\t (assertPEqual {} {} {} {})" ($Name $Form $27296 $27302)))) ($27530 (println! (format-args "\n\t (assertPEqual {} {} \n\t   {} \n\t   {})" ($Name $Form $27296 $27332))))))))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Form $List $passes)  
+> (= (assertPEqualToResult $Form $List $36546)  
   (assertPEqualToResultR 
-    (string-repr $Form) $Form $List $passes))
+    (string-repr $Form) $Form $List $36546))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResult (-> Atom Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResult $Name $Form $Form2 $passes2)  
+> (= (assertPEqualToResult $Name $Form $48252 $48258)  
   (assertPEqualToResultR 
-    (string-repr $Name) $Form $Form2 $passes2))
+    (string-repr $Name) $Form $48252 $48258))
+ 
 </span><span class="ansi38-255165000"
 > (: assertPEqualToResultR (-> String Atom Expression Expression Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (assertPEqualToResultR $Name $Form $List $passes)  
+> (= (assertPEqualToResultR $Name $Form $13668 $13674)  
   (let 
-    ($n $res) 
+    ($13698 $13704) 
     ($Name (collapse $Form)) 
     (case 
-      (quote $res) 
-      ( ( (quote $List) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $List $passes)))) ($_48680 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $List $res))))))))
+      (quote $13704) 
+      ( ( (quote $13668) (println! (format-args "\n\t (assertPEqualToResult {} {} {} {})" ($Name $Form $13668 $13674)))) ($13842 (println! (format-args "\n\t (assertPEqualToResult {} {} \n\t   {} \n\t   {})" ($Name $Form $13668 $13704))))))))
+ 
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/assert-p-equals.metta 0 ]
 <br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 
-Script done on 2025-02-20 04:57:21+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 14:01:03+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

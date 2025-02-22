@@ -57,7 +57,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 05:05:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 14:07:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1074-584.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta] ]
 P;HTML|
@@ -99,37 +99,46 @@ Script started on 2025-02-20 05:05:30+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             [ = 16 "Expected: []" ]
 P;HTML|
-;                             [ = 16 "Got: [(Error 0 BadType), (Error Z BadType)]" ]
+;                             [ = 16 "Got: [(Error Z BadType), (Error 0 BadType)]" ]
 P;HTML|
-;                              [ = 17 "Excessive result: (Error 0 BadType))]" ]
+;                              [ = 17 "Excessive results: (Error Z BadType), (Error 0 BadType))]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta]
 
 ;;;; Define Nat
 <span class="ansi38-255165000"
 > (: Nat Type)
+ 
 </span><span class="ansi38-255165000"
 > (: Z Nat)
+ 
 </span><span class="ansi38-255165000"
 > (: S (-> Nat Nat))
+ 
 </span>;;;; Define a generic less than operator, lessThan, for Nat.  < cannot be used
 ;;;; because it is a built-in, its type is hardwired and cannot be
 ;;;; overloaded.
 <span class="ansi38-255165000"
 > (: lessThan (-> Nat Nat Bool))
+ 
 </span><span class="ansi38-255165000"
-> (= (lessThan $_33804 Z)  False)
+> (= (lessThan $32446 Z)  False)
+ 
 </span><span class="ansi38-255165000"
-> (= (lessThan Z (S $_36204))  True)
+> (= (lessThan Z (S $35598))  True)
+ 
 </span><span class="ansi38-255165000"
 > (= (lessThan (S $x) (S $y))  
   (lessThan $x $y))
+ 
 </span>;;;; Overload lessThan for Number.
 <span class="ansi38-255165000"
 > (: lessThan (-> Number Number Bool))
+ 
 </span><span class="ansi38-255165000"
 > (= (lessThan $x $y)  
   (< $x $y))
+ 
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -143,7 +152,7 @@ Script started on 2025-02-20 05:05:30+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000162 secs. (161.77 microseconds) 
+; took 0.000144 secs. (144.30 microseconds) 
 
 !(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
 
@@ -164,7 +173,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.38 milliseconds) 
+; took 0.007 secs. (6.78 milliseconds) 
 
 !(assertEqualToResult (lessThan Z (S Z)) (True))
 
@@ -190,7 +199,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.84 milliseconds) 
+; took 0.003 secs. (2.93 milliseconds) 
 
 !(assertEqualToResult (lessThan Z Z) (False))
 
@@ -214,7 +223,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.07 milliseconds) 
+; took 0.006 secs. (6.39 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) Z) (False))
 
@@ -240,7 +249,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.47 milliseconds) 
+; took 0.014 secs. (14.29 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S Z)) (False))
 
@@ -271,7 +280,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (22.82 milliseconds) 
+; took 0.025 secs. (24.67 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S (S Z))) (True))
 
@@ -305,7 +314,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.040 secs. (40.07 milliseconds) 
+; took 0.043 secs. (43.14 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) (S (S Z))) (False))
 
@@ -347,7 +356,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.023 secs. (22.84 milliseconds) 
+; took 0.025 secs. (24.53 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) (S Z)) (False))
 
@@ -381,7 +390,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.037 secs. (36.52 milliseconds) 
+; took 0.038 secs. (38.20 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) (S (S (S Z)))) (True))
 
@@ -416,14 +425,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.63 milliseconds) 
+; took 0.000561 secs. (561.00 microseconds) 
 
 !(assertEqualToResult (lessThan 0 1) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True True) 
+      (True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -437,14 +446,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.71 milliseconds) 
+; took 0.000568 secs. (567.72 microseconds) 
 
 !(assertEqualToResult (lessThan 0 0) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False) 
+      (False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -458,14 +467,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.000547 secs. (546.72 microseconds) 
 
 !(assertEqualToResult (lessThan 1 0) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False) 
+      (False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -479,14 +488,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.000574 secs. (574.21 microseconds) 
 
 !(assertEqualToResult (lessThan 2 2) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False) 
+      (False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -500,14 +509,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.000544 secs. (544.44 microseconds) 
 
 !(assertEqualToResult (lessThan 1 2) (True))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True True) 
+      (True) 
       (True)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -521,14 +530,14 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.95 milliseconds) 
+; took 0.000571 secs. (571.31 microseconds) 
 
 !(assertEqualToResult (lessThan 3 2) (False))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False) 
+      (False) 
       (False)]]
 </span>
 Deterministic: <span class="ansi33"
@@ -543,18 +552,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.91 milliseconds) 
+; took 0.002 secs. (1.89 milliseconds) 
 
 !(assertEqualToResult (lessThan Z 0) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (< Z 0) (< Z 0)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'(0,[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'(0,[]))),[])),[])
+      ( (< Z 0)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'(0,[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< Z 0) (< Z 0))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< Z 0))) ('~nExpected: ' ()))
 </span>;;;; Z < 0 (Nat and Number)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (lessThan 0 Z) ())
@@ -564,7 +573,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.89 milliseconds) 
+; took 0.003 secs. (2.96 milliseconds) 
 
 !(assertEqualToResult (lessThan 0 Z) ())
 
@@ -587,18 +596,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.18</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.85 milliseconds) 
+; took 0.002 secs. (1.86 milliseconds) 
 
 !(assertEqualToResult (lessThan Z 1) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (< Z 1) (< Z 1)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'(1,[]))),'[|]'('[|]'(<,'[|]'('Z','[|]'(1,[]))),[])),[])
+      ( (< Z 1)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('Z','[|]'(1,[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< Z 1) (< Z 1))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< Z 1))) ('~nExpected: ' ()))
 </span>;;;; Z < 1 (Nat and Number)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (lessThan 1 Z) ())
@@ -608,7 +617,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.88 milliseconds) 
+; took 0.003 secs. (2.93 milliseconds) 
 
 !(assertEqualToResult (lessThan 1 Z) ())
 
@@ -631,7 +640,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.20</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.06 milliseconds) 
+; took 0.004 secs. (3.80 milliseconds) 
 
 !(assertEqualToResult (lessThan (S Z) 1) ())
 
@@ -639,11 +648,11 @@ Deterministic: <span class="ansi33"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
-          (S Z) 1) (< (S Z) 1)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'(1,[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'(1,[]))),[])),[])
+          (S Z) 1)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('Z',[])),'[|]'(1,[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< (S Z) 1) (< (S Z) 1))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< (S Z) 1))) ('~nExpected: ' ()))
 </span>;;;; 1 (Nat) < 1 (Number)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (lessThan 1 (S Z)) ())
@@ -653,7 +662,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.21</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.05 milliseconds) 
+; took 0.004 secs. (3.79 milliseconds) 
 
 !(assertEqualToResult (lessThan 1 (S Z)) ())
 
@@ -661,11 +670,11 @@ Deterministic: <span class="ansi33"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 1 
-          (S Z)) (< 1 (S Z))) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'(1,'[|]'('[|]'('S','[|]'('Z',[])),[]))),'[|]'('[|]'(<,'[|]'(1,'[|]'('[|]'('S','[|]'('Z',[])),[]))),[])),[])
+          (S Z))) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'(1,'[|]'('[|]'('S','[|]'('Z',[])),[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< 1 (S Z)) (< 1 (S Z)))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< 1 (S Z)))) ('~nExpected: ' ()))
 </span>;;;; 1 (Number) < 1 (Nat)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (lessThan (S (S Z)) 3) ())
@@ -675,7 +684,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.22</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.53 milliseconds) 
+; took 0.006 secs. (6.38 milliseconds) 
 
 !(assertEqualToResult (lessThan (S (S Z)) 3) ())
 
@@ -683,11 +692,11 @@ Deterministic: <span class="ansi33"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 
-          (S (S Z)) 3) (< (S (S Z)) 3)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'(3,[]))),'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'(3,[]))),[])),[])
+          (S (S Z)) 3)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),'[|]'(3,[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< (S (S Z)) 3) (< (S (S Z)) 3))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< (S (S Z)) 3))) ('~nExpected: ' ()))
 </span>;;;; 2 (Nat) < 3 (Number)
 <span class="ansi38-013099040"
 >!(assertEqualToResult (lessThan 2 (S (S Z))) ())
@@ -697,7 +706,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.23</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.44 milliseconds) 
+; took 0.006 secs. (6.38 milliseconds) 
 
 !(assertEqualToResult (lessThan 2 (S (S Z))) ())
 
@@ -705,11 +714,11 @@ Deterministic: <span class="ansi33"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (< 2 
-          (S (S Z))) (< 2 (S (S Z)))) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'(2,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'(<,'[|]'(2,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[])),[])
+          (S (S Z)))) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(<,'[|]'(2,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((< 2 (S (S Z))) (< 2 (S (S Z))))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((< 2 (S (S Z))))) ('~nExpected: ' ()))
 </span>;;;; 2 (Number) < 2 (Nat)
 <span class="ansi38-013099040"
 >!("============ End Tests ============")
@@ -743,17 +752,17 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ((< Z 0) (< Z 0))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< Z 0))) ('~nExpected: ' ()))]
 [(Error ('~nGot: ' (False (< 0 Z) False (< 0 Z))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((< Z 1) (< Z 1))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< Z 1))) ('~nExpected: ' ()))]
 [(Error ('~nGot: ' (False (< 1 Z) False (< 1 Z))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((< (S Z) 1) (< (S Z) 1))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((< 1 (S Z)) (< 1 (S Z)))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((< (S (S Z)) 3) (< (S (S Z)) 3))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((< 2 (S (S Z))) (< 2 (S (S Z))))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< (S Z) 1))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< 1 (S Z)))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< (S (S Z)) 3))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((< 2 (S (S Z))))) ('~nExpected: ' ()))]
 [("============ End Tests ============")]
 
-Script done on 2025-02-20 05:05:31+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 14:07:51+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -47,7 +47,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:55:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 13:59:17+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1074-584.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d4_type_prop_x2.metta] ]
 P;HTML|
@@ -100,15 +100,20 @@ Script started on 2025-02-20 04:55:13+00:00 [COMMAND="timeout --preserve-status 
 ;;; Entities
 <span class="ansi38-255165000"
 > (: Entity Type)
+ 
 </span><span class="ansi38-255165000"
 > (: Socrates Entity)
+ 
 </span><span class="ansi38-255165000"
 > (: Plato Entity)
+ 
 </span>;;; Predicates (functions) from `Entity` to `Type`
 <span class="ansi38-255165000"
 > (: Human (-> Entity Type))
+ 
 </span><span class="ansi38-255165000"
 > (: Mortal (-> Entity Type))
+ 
 </span>;;; `(Mortal Plato)` is an expression of `Type` type
 ;;; It represents the proposition "Plato is mortal"
 ;;; but doesn't mean this proposition is inhabited/proven
@@ -120,7 +125,7 @@ Script started on 2025-02-20 04:55:13+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000511 secs. (511.31 microseconds) 
+; took 0.000580 secs. (579.52 microseconds) 
 
 !(assertEqual (get-type (Mortal Plato)) Type)
 
@@ -137,6 +142,7 @@ Deterministic: <span class="ansi33"
 ;;; "For all x, if Human(x) then Mortal(x)"
 <span class="ansi38-255165000"
 > (: HumansAreMortal (-> (Human $t) (Mortal $t)))
+ 
 </span>;;; NOTE: MeTTa doesn't differentiate between type constructors and
 ;;;       other symbols (including functional) of the same type.
 ;;;       Thus, ATM, we cannot prove any proposition with universal
@@ -147,8 +153,10 @@ Deterministic: <span class="ansi33"
 ;;; Socrates are Humans:
 <span class="ansi38-255165000"
 > (: SocratesIsHuman (Human Socrates))
+ 
 </span><span class="ansi38-255165000"
 > (: PlatoIsHuman (Human Plato))
+ 
 </span>;;; `(HumansAreMortal SocratesIsHuman)` might be considered
 ;;; as a proof that that `(Mortal Socrates)`.
 <span class="ansi38-013099040"
@@ -159,7 +167,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.52 milliseconds) 
+; took 0.003 secs. (2.69 milliseconds) 
 
 !(assertEqual (get-type (HumansAreMortal SocratesIsHuman)) (Mortal Socrates))
 
@@ -180,7 +188,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000583 secs. (582.71 microseconds) 
+; took 0.000708 secs. (707.89 microseconds) 
 
 !(assertEqualToResult (get-type (HumansAreMortal (Human Socrates))) ())
 
@@ -196,8 +204,10 @@ Deterministic: <span class="ansi33"
 ;;; difference for the assertion that "all humans are mortal"
 <span class="ansi38-255165000"
 > (: SocratesIsMortal (Mortal Socrates))
+ 
 </span><span class="ansi38-255165000"
 > (= (HumansAreMortal SocratesIsHuman)  SocratesIsMortal)
+ 
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Equalities themselves are typed. If some equality is well-typed,
@@ -212,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000553 secs. (553.25 microseconds) 
+; took 0.000639 secs. (639.07 microseconds) 
 
 !(assertEqual (get-type (= SocratesIsMortal  
   (HumansAreMortal SocratesIsHuman))) Atom)
@@ -237,7 +247,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000528 secs. (528.21 microseconds) 
+; took 0.000629 secs. (628.96 microseconds) 
 
 !(assertEqual (get-type (= (Mortal Socrates)  
   (Mortal Plato))) Atom)
@@ -260,7 +270,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000517 secs. (517.23 microseconds) 
+; took 0.000543 secs. (543.44 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsMortal  
   (HumansAreMortal PlatoIsHuman))) ())
@@ -282,7 +292,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000444 secs. (444.50 microseconds) 
+; took 0.000425 secs. (425.48 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman  PlatoIsHuman)) ())
 
@@ -302,7 +312,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000411 secs. (411.15 microseconds) 
+; took 0.000516 secs. (516.49 microseconds) 
 
 !(assertEqualToResult (get-type (= SocratesIsHuman  SocratesIsMortal)) ())
 
@@ -335,8 +345,10 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-255165000"
 > (: T Type)
+ 
 </span><span class="ansi38-255165000"
 > (= (= $x  $x)  T)
+ 
 </span>;;; These equalities will be true
 ;;; failing in mettalog
 <span class="ansi38-013099040"
@@ -348,7 +360,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000890 secs. (890.25 microseconds) 
+; took 0.000743 secs. (742.67 microseconds) 
 
 !(assertEqual (= SocratesIsMortal  
   (HumansAreMortal SocratesIsHuman)) T)
@@ -370,7 +382,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.47 milliseconds) 
+; took 0.002 secs. (2.34 milliseconds) 
 
 !(assertEqual (= (+ 1 1)  
   (- 3 1)) T)
@@ -388,6 +400,7 @@ Deterministic: <span class="ansi33"
 > (= (= $type  T)  
   (match &self 
     (: $x $type) T))
+ 
 </span><span class="ansi38-013099040"
 >!(assertEqual (= (Mortal Socrates)  T) T)
 
@@ -396,7 +409,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.11</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.38 milliseconds) 
+; took 0.000471 secs. (470.85 microseconds) 
 
 !(assertEqual (= (Mortal Socrates)  T) T)
 
@@ -417,7 +430,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.000404 secs. (403.58 microseconds) 
 
 !(assertEqualToResult (= (Mortal Plato)  T) ())
 
@@ -432,11 +445,12 @@ Deterministic: <span class="ansi33"
 > (= (= $type  T)  
   (match &self 
     (: $impl 
-      (-> $cause $type)) 
+      (-> $45388 $type)) 
     (if 
-      (== $cause $type) 
+      (== $45388 $type) 
       (empty) 
-      (= $cause  T))))
+      (= $45388  T))))
+ 
 </span>;;; failing in mettalog
 <span class="ansi38-013099040"
 >!(assertEqualToResult (= (Mortal Plato)  T) (T))
@@ -445,7 +459,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.13"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D4-TYPE-PROP-X2.13</h3>
 
-Script done on 2025-02-20 04:55:53+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-22 13:59:57+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

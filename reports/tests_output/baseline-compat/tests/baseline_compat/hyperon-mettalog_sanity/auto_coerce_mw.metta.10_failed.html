@@ -94,7 +94,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 04:57:25+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/auto_coerce_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 14:01:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1074-584.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/auto_coerce_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/auto_coerce_mw.metta] ]
 P;HTML|
@@ -154,7 +154,9 @@ Script started on 2025-02-20 04:57:25+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                                 [ = 24 "Got: [False]" ]
 P;HTML|
-;                                 [ = 25 "Missed result: True)]" ]
+;                                 [ = 25 "Missed results: True" ]
+P;HTML|
+;                                 [ = 25 "Excessive results: False)]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/auto_coerce_mw.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/auto_coerce_mw.metta]
 
@@ -162,55 +164,69 @@ Script started on 2025-02-20 04:57:25+00:00 [COMMAND="timeout --preserve-status 
 ;;;; Define max
 <span class="ansi38-255165000"
 > (: max (-> Number Number Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (max $x $y)  
   (if 
     (> $x $y) $x $y))
+ 
 </span>;;;; Define min
 <span class="ansi38-255165000"
 > (: min (-> Number Number Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (min $x $y)  
   (if 
     (< $x $y) $x $y))
+ 
 </span>;;;; Clamp a number to be within a certain range
 <span class="ansi38-255165000"
 > (: clamp (-> Number Number Number Number))
+ 
 </span><span class="ansi38-255165000"
-> (= (clamp $x $l $u)  
+> (= (clamp $x $l $17132)  
   (max $l 
-    (min $u $x)))
+    (min $17132 $x)))
+ 
 </span>;;;; Define abs
 <span class="ansi38-255165000"
 > (: abs (-> Number Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (abs $x)  
   (if 
     (< $x 0) 
     (* -1 $x) $x))
+ 
 </span>;;;; Define lte
 <span class="ansi38-255165000"
 > (: lte (-> Number Number Bool))
+ 
 </span><span class="ansi38-255165000"
 > (= (lte $x $y)  
   (or 
     (< $x $y) 
     (== $x $y)))
+ 
 </span>;;;; Define gte
 <span class="ansi38-255165000"
 > (: gte (-> Number Number Bool))
+ 
 </span><span class="ansi38-255165000"
 > (= (gte $x $y)  
   (or 
     (> $x $y) 
     (== $x $y)))
+ 
 </span>;;;; Define approximately equal
 <span class="ansi38-255165000"
 > (: approxEq (-> Number Number Number Bool))
+ 
 </span><span class="ansi38-255165000"
-> (= (approxEq $x $y $epsilon)  
+> (= (approxEq $x $y $50572)  
   (lte 
-    (abs (- $x $y)) $epsilon))
+    (abs (- $x $y)) $50572))
+ 
 </span>;;;; Tests for max
 <span class="ansi38-013099040"
 >!(assertEqual (max 3 5) 5)
@@ -220,7 +236,7 @@ Script started on 2025-02-20 04:57:25+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.000862 secs. (862.30 microseconds) 
 
 !(assertEqual (max 3 5) 5)
 
@@ -241,7 +257,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000973 secs. (973.26 microseconds) 
+; took 0.000665 secs. (665.39 microseconds) 
 
 !(assertEqual (max 7 2) 7)
 
@@ -262,7 +278,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000965 secs. (965.08 microseconds) 
+; took 0.000647 secs. (647.16 microseconds) 
 
 !(assertEqual (max 4 4) 4)
 
@@ -284,7 +300,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000998 secs. (998.14 microseconds) 
+; took 0.000660 secs. (660.38 microseconds) 
 
 !(assertEqual (min 3 5) 3)
 
@@ -305,7 +321,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000979 secs. (979.38 microseconds) 
+; took 0.000661 secs. (661.06 microseconds) 
 
 !(assertEqual (min 7 2) 2)
 
@@ -326,7 +342,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000980 secs. (979.96 microseconds) 
+; took 0.000689 secs. (689.12 microseconds) 
 
 !(assertEqual (min 4 4) 4)
 
@@ -348,7 +364,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.07</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.62 milliseconds) 
+; took 0.002 secs. (2.10 milliseconds) 
 
 !(assertEqual (clamp 5 0 10) 5)
 
@@ -369,7 +385,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.08</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.70 milliseconds) 
+; took 0.002 secs. (1.54 milliseconds) 
 
 !(assertEqual (clamp -1 0 10) 0)
 
@@ -390,7 +406,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.09</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.53 milliseconds) 
+; took 0.002 secs. (2.01 milliseconds) 
 
 !(assertEqual (clamp 15 0 10) 10)
 
@@ -411,7 +427,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.56 milliseconds) 
+; took 0.002 secs. (1.99 milliseconds) 
 
 !(assertEqual (clamp 0 0 10) 0)
 
@@ -432,7 +448,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.11</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.55 milliseconds) 
+; took 0.002 secs. (2.01 milliseconds) 
 
 !(assertEqual (clamp 10 0 10) 10)
 
@@ -454,7 +470,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000952 secs. (952.47 microseconds) 
+; took 0.000714 secs. (714.13 microseconds) 
 
 !(assertEqual (abs 5) 5)
 
@@ -475,7 +491,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.001 secs. (1.29 milliseconds) 
 
 !(assertEqual (abs -5) 5)
 
@@ -496,7 +512,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000930 secs. (929.84 microseconds) 
+; took 0.000700 secs. (700.19 microseconds) 
 
 !(assertEqual (abs 0) 0)
 
@@ -518,7 +534,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.15</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.001 secs. (1.20 milliseconds) 
 
 !(assertEqual (lte 3 5) True)
 
@@ -539,7 +555,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.16</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.29 milliseconds) 
 
 !(assertEqual (lte 5 5) True)
 
@@ -560,7 +576,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.17</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.32 milliseconds) 
+; took 0.001 secs. (1.19 milliseconds) 
 
 !(assertEqual (lte 7 5) False)
 
@@ -582,7 +598,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.18</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.36 milliseconds) 
+; took 0.001 secs. (1.09 milliseconds) 
 
 !(assertEqual (gte 7 5) True)
 
@@ -603,7 +619,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.19</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
 !(assertEqual (gte 5 5) True)
 
@@ -624,7 +640,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.20</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.31 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqual (gte 3 5) False)
 
@@ -646,7 +662,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.21</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.90 milliseconds) 
+; took 0.007 secs. (6.61 milliseconds) 
 
 !(assertEqual (approxEq 3.0 3.1 0.1) False)
 
@@ -667,7 +683,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.22</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.86 milliseconds) 
+; took 0.007 secs. (6.51 milliseconds) 
 
 !(assertEqual (approxEq 3.0 3.05 0.1) True)
 
@@ -688,7 +704,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.23</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.83 milliseconds) 
+; took 0.005 secs. (5.19 milliseconds) 
 
 !(assertEqual (approxEq 3.0 3.0 0.1) True)
 
@@ -709,7 +725,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.24</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.57 milliseconds) 
+; took 0.005 secs. (5.23 milliseconds) 
 
 !(assertEqual (approxEq 3.0 2.9 0.1) True)
 
@@ -731,7 +747,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.25</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.65 milliseconds) 
+; took 0.005 secs. (5.43 milliseconds) 
 
 !(assertEqual (approxEq 3.0 2.8 0.1) False)
 
@@ -753,7 +769,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.26</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.45 milliseconds) 
+; took 0.004 secs. (3.85 milliseconds) 
 
 !(assertEqual (clamp (max 3 7) 0 5) 5)
 
@@ -774,7 +790,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.27</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.47 milliseconds) 
+; took 0.005 secs. (4.87 milliseconds) 
 
 !(assertEqual (clamp (min -3 2) -5 5) -3)
 
@@ -795,7 +811,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.28</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.37 milliseconds) 
+; took 0.002 secs. (2.49 milliseconds) 
 
 !(assertEqual (abs (min -3 2)) 3)
 
@@ -816,7 +832,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.29</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.60 milliseconds) 
+; took 0.010 secs. (10.05 milliseconds) 
 
 !(assertEqual (approxEq (abs -5) 5 0) True)
 
@@ -832,26 +848,34 @@ Deterministic: <span class="ansi33"
 ;;;; Define Nat
 <span class="ansi38-255165000"
 > (: Nat Type)
+ 
 </span><span class="ansi38-255165000"
 > (: Z Nat)
+ 
 </span><span class="ansi38-255165000"
 > (: S (-> Nat Nat))
+ 
 </span>;;;; Define cast functions between Nat and Number
 <span class="ansi38-255165000"
 > (: fromNumber (-> Number Nat))
+ 
 </span><span class="ansi38-255165000"
 > (= (fromNumber $n)  
   (if 
     (<= $n 0) Z 
     (S (fromNumber (- $n 1)))))
+ 
 </span><span class="ansi38-255165000"
 > (: fromNat (-> Nat Number))
+ 
 </span><span class="ansi38-255165000"
 > (= (fromNat Z)  0)
+ 
 </span><span class="ansi38-255165000"
 > (= (fromNat (S $k))  
   (+ 1 
     (fromNat $k)))
+ 
 </span><span class="ansi38-013099040"
 >!(pragma! coerce auto)
 
@@ -867,7 +891,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.30</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (10.26 milliseconds) 
+; took 0.012 secs. (12.16 milliseconds) 
 
 !(assertEqual (max (S Z) (S (S Z))) (S (S Z)))
 
@@ -889,7 +913,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.31</h3>
 ; 
 ; EVAL TEST
-; took 0.011 secs. (10.67 milliseconds) 
+; took 0.012 secs. (12.30 milliseconds) 
 
 !(assertEqual (max (S (S Z)) Z) (S (S Z)))
 
@@ -910,7 +934,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.32</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.81 milliseconds) 
+; took 0.008 secs. (8.24 milliseconds) 
 
 !(assertEqual (max (S Z) (S Z)) (S Z))
 
@@ -932,7 +956,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.33</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.23 milliseconds) 
+; took 0.011 secs. (11.25 milliseconds) 
 
 !(assertEqual (min (S Z) (S (S Z))) (S Z))
 
@@ -953,7 +977,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.34</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.07 milliseconds) 
+; took 0.011 secs. (10.86 milliseconds) 
 
 !(assertEqual (min (S (S Z)) Z) Z)
 
@@ -975,7 +999,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.35</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (6.98 milliseconds) 
+; took 0.008 secs. (8.30 milliseconds) 
 
 !(assertEqual (min (S Z) (S Z)) (S Z))
 
@@ -997,7 +1021,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.36</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (27.86 milliseconds) 
+; took 0.034 secs. (33.80 milliseconds) 
 
 !(assertEqual (clamp (S Z) Z (S (S (S Z)))) (S Z))
 
@@ -1019,7 +1043,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.37</h3>
 ; 
 ; EVAL TEST
-; took 0.020 secs. (19.72 milliseconds) 
+; took 0.025 secs. (24.66 milliseconds) 
 
 !(assertEqual (clamp Z (S Z) (S (S Z))) (S Z))
 
@@ -1040,7 +1064,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.38</h3>
 ; 
 ; EVAL TEST
-; took 0.028 secs. (27.55 milliseconds) 
+; took 0.030 secs. (30.16 milliseconds) 
 
 !(assertEqual (clamp (S (S (S Z))) Z (S (S Z))) (S (S Z)))
 
@@ -1063,7 +1087,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.39</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.00 milliseconds) 
+; took 0.010 secs. (10.12 milliseconds) 
 
 !(assertEqual (lte (S Z) (S (S Z))) True)
 
@@ -1084,7 +1108,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.40</h3>
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.36 milliseconds) 
+; took 0.010 secs. (10.21 milliseconds) 
 
 !(assertEqual (lte (S (S Z)) (S (S Z))) True)
 
@@ -1105,7 +1129,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.41</h3>
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.47 milliseconds) 
+; took 0.008 secs. (7.84 milliseconds) 
 
 !(assertEqual (lte (S (S Z)) Z) False)
 
@@ -1128,7 +1152,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.42</h3>
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.25 milliseconds) 
+; took 0.010 secs. (10.06 milliseconds) 
 
 !(assertEqual (gte (S (S Z)) (S Z)) True)
 
@@ -1149,7 +1173,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.43</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.48 milliseconds) 
+; took 0.005 secs. (5.19 milliseconds) 
 
 !(assertEqual (gte (S Z) (S Z)) True)
 
@@ -1170,7 +1194,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.44</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.95 milliseconds) 
+; took 0.004 secs. (4.20 milliseconds) 
 
 !(assertEqual (gte Z (S Z)) False)
 
@@ -1193,7 +1217,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.45</h3>
 ; 
 ; EVAL TEST
-; took 0.039 secs. (38.97 milliseconds) 
+; took 0.082 secs. (82.29 milliseconds) 
 
 !(assertEqual (approxEq (S Z) (S Z) Z) True)
 
@@ -1214,7 +1238,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.46</h3>
 ; 
 ; EVAL TEST
-; took 0.053 secs. (52.72 milliseconds) 
+; took 0.111 secs. (111.01 milliseconds) 
 
 !(assertEqual (approxEq (S Z) (S (S Z)) Z) False)
 
@@ -1237,7 +1261,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.47</h3>
 ; 
 ; EVAL TEST
-; took 0.037 secs. (36.72 milliseconds) 
+; took 0.051 secs. (50.54 milliseconds) 
 
 !(assertEqual (clamp (max (S Z) (S (S Z))) Z (S (S (S Z)))) (S (S Z)))
 
@@ -1259,7 +1283,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.48</h3>
 ; 
 ; EVAL TEST
-; took 0.048 secs. (47.56 milliseconds) 
+; took 0.063 secs. (63.09 milliseconds) 
 
 !(assertEqual (clamp (min (S (S Z)) (S (S Z))) (S Z) (S (S (S Z)))) (S (S Z)))
 
@@ -1281,7 +1305,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.AUTO-COERCE.49</h3>
 ; 
 ; EVAL TEST
-; took 0.045 secs. (44.59 milliseconds) 
+; took 0.442 secs. (441.93 milliseconds) 
 
 !(assertEqual (approxEq (max Z (min (S (S Z)) (S Z))) (S Z) Z) True)
 
@@ -1356,7 +1380,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((S Z))) ('~nExpected: ' ((S (S Z)))))]
 [()]
 
-Script done on 2025-02-20 04:57:26+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 14:01:05+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

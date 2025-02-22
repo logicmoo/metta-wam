@@ -12,7 +12,7 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi33 { color: #aa5500; }
+.ansi1 { font-weight: bold; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -61,287 +61,337 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-20 05:16:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1372-996.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/minnars.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-22 14:15:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1074-584.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/minnars.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/minnars.metta] ]
 P;HTML|
 ;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers.to_keep /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers]
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta]
 P;HTML|
 ;                       [ = 1 "[((1.0 0.37946790052053214) (2 1 3 4))]" ]
 P;HTML|
-;                       [ = 2 "real 1000.03" ]
+;                       [ = 2 "8.17user 0.01system 0:08.19elapsed 99%CPU (0avgtext+0avgdata 49876maxresident)k" ]
 P;HTML|
-;                       [ = 2 "user 1000.03" ]
+;                       [ = 2 "0inputs+0outputs (0major+8968minor)pagefaults 0swaps" ]
 P;HTML|
-;                        [ = 2 "sys 0.00" ]
+;                        [ = 2 "" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers.to_keep /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers]
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta]
 
 <span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom))
+ 
 </span><span class="ansi38-255165000"
 > (= (If True $then)  $then)
+ 
 </span><span class="ansi38-255165000"
 > (= (If False $then)  
   (let $x 0 
     (let $x 1 $x)))
+ 
 </span><span class="ansi38-255165000"
 > (: If (-> Bool Atom Atom Atom))
+ 
 </span><span class="ansi38-255165000"
-> (= (If $cond $then $else)  
-  (if $cond $then $else))
+> (= (If $cond $then $25792)  
+  (if $cond $then $25792))
+ 
 </span><span class="ansi38-255165000"
 > (: sequential (-> Expression %Undefined%))
+ 
 </span><span class="ansi38-255165000"
 > (= (sequential $1)  
   (superpose $1))
+ 
 </span><span class="ansi38-255165000"
 > (: do (-> Expression %Undefined%))
+ 
 </span><span class="ansi38-255165000"
 > (= (do $1)  
   (case $1 ()))
+ 
 </span><span class="ansi38-255165000"
 > (= (max $1 $2)  
   (if 
     (> $1 $2) $1 $2))
+ 
 </span><span class="ansi38-255165000"
 > (= (min $1 $2)  
   (if 
     (< $1 $2) $1 $2))
+ 
 </span><span class="ansi38-255165000"
 > (= (abs $x)  
   (If 
     (< $x 0) 
     (- 0 $x) $x))
+ 
 </span><span class="ansi38-255165000"
 > (= (TupleConcat $Ev1 $Ev2)  
   (collapse (superpose ((superpose $Ev1) (superpose $Ev2)))))
+ 
 </span>;;;; Truth functions
 <span class="ansi38-255165000"
 > (= (Truth_c2w $c)  
   (/ $c 
     (- 1 $c)))
+ 
 </span><span class="ansi38-255165000"
 > (= (Truth_w2c $w)  
   (/ $w 
     (+ $w 1)))
+ 
 </span><span class="ansi38-255165000"
-> (= (Truth_Deduction ($f1 $c1) ($f2 $c2))  
+> (= (Truth_Deduction ($f1 $c1) ($17656 $17662))  
     
-  (* $f1 $f2)
+  (* $f1 $17656)
     
   (* 
-    (* $f1 $f2) 
-    (* $c1 $c2)))
+    (* $f1 $17656) 
+    (* $c1 $17662)))
+ 
 </span><span class="ansi38-255165000"
-> (= (Truth_Abduction ($f1 $c1) ($f2 $c2))  
-  ($f2 (Truth_w2c (* (* $f1 $c1) $c2))))
+> (= (Truth_Abduction ($f1 $c1) ($27890 $27896))  
+  ($27890 (Truth_w2c (* (* $f1 $c1) $27896))))
+ 
 </span><span class="ansi38-255165000"
 > (= (Truth_Induction $T1 $T2)  
   (Truth_Abduction $T2 $T1))
+ 
 </span><span class="ansi38-255165000"
-> (= (Truth_Revision ($f1 $c1) ($f2 $c2))  
+> (= (Truth_Revision ($f1 $c1) ($16862 $16868))  
   (let* 
-    ( ($w1 (Truth_c2w $c1)) 
-      ($w2 (Truth_c2w $c2)) 
-      ($w (+ $w1 $w2)) 
-      ($f (/ (+ (* $w1 $f1) (* $w2 $f2)) $w)) 
-      ($c (Truth_w2c $w))) 
-    ( (min 1.0 $f) (min 0.99 (max (max $c $c1) $c2)))))
+    ( ($16898 (Truth_c2w $c1)) 
+      ($16910 (Truth_c2w $16868)) 
+      ($16940 (+ $16898 $16910)) 
+      ($16976 (/ (+ (* $16898 $f1) (* $16910 $16862)) $16940)) 
+      ($17060 (Truth_w2c $16940))) 
+    ( (min 1.0 $16976) (min 0.99 (max (max $17060 $c1) $16868)))))
+ 
 </span>;;;; Inference rules
 ;;; NAL-1/5 (selected subset)
 <span class="ansi38-255165000"
-> (= (|- ($T $T1) ($T $T2))  
-  ($T (Truth_Revision $T1 $T2)))
+> (= (|- ($T $T1) ($T $23324))  
+  ($T (Truth_Revision $T1 $23324)))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $b) $T1) (($b --> $c) $T2))  
+> (= (|- (($a --> $b) $7102) (($b --> $7132) $7138))  
     
-  ($a --> $c)
+  ($a --> $7132)
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $7102 $7138))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $b) $T1) (($a --> $c) $T2))  
+> (= (|- (($a --> $b) $20462) (($a --> $20492) $20498))  
     
-  ($c --> $b)
+  ($20492 --> $b)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $20462 $20498))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $c) $T1) (($b --> $c) $T2))  
+> (= (|- (($a --> $c) $3988) (($4006 --> $c) $4012))  
     
-  ($b --> $a)
+  ($4006 --> $a)
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $3988 $4012))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a ==> $b) $T1) (($b ==> $c) $T2))  
+> (= (|- (($a ==> $b) $17348) (($b ==> $17378) $17384))  
     
-  ($a ==> $c)
+  ($a ==> $17378)
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $17348 $17384))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a ==> $b) $T1) (($a ==> $c) $T2))  
+> (= (|- (($a ==> $b) $30710) (($a ==> $3264) $3270))  
     
-  ($c ==> $b)
+  ($3264 ==> $b)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $3234 $3270))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($a ==> $c) $T1) (($b ==> $c) $T2))  
+> (= (|- (($a ==> $c) $17580) (($17598 ==> $c) $17604))  
     
-  ($b ==> $a)
+  ($17598 ==> $a)
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $17580 $17604))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ($A $T1) (($A ==> $B) $T2))  
-  ($B (Truth_Deduction $T1 $T2)))
+> (= (|- ($A $T1) (($A ==> $27064) $27070))  
+  ($27064 (Truth_Deduction $T1 $27070)))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ($A $T1) ((($A && $B) ==> $C) $T2))  
+> (= (|- ($A $T1) ((($A && $10880) ==> $10892) $10898))  
     
-  ($B ==> $C)
+  ($10880 ==> $10892)
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $T1 $10898))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ($B $T1) (($A ==> $B) $T2))  
-  ($A (Truth_Abduction $T1 $T2)))
+> (= (|- ($B $T1) (($20328 ==> $B) $20334))  
+  ($20328 (Truth_Abduction $T1 $20334)))
+ 
 </span>;;; NAL-4 (selected subset)
 <span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) ((($C x $B) --> $R) $T2))  
+> (= (|- ((($A x $B) --> $9152) $9158) ((($9182 x $B) --> $9152) $9200))  
     
-  ($C --> $A)
+  ($9182 --> $A)
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $9158 $9200))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) ((($A x $C) --> $R) $T2))  
+> (= (|- ((($A x $B) --> $27076) $27082) ((($A x $27118) --> $27076) $27136))  
     
-  ($C --> $B)
+  ($27118 --> $B)
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $27082 $27136))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($R --> ($C x $B)) $T2))  
+> (= (|- (($R --> ($A x $15520)) $15526) (($R --> ($15562 x $15520)) $15580))  
     
-  ($C --> $A)
+  ($15562 --> $A)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $15526 $15580))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($R --> ($A x $C)) $T2))  
+> (= (|- (($R --> ($A x $4192)) $4198) (($R --> ($A x $4246)) $4252))  
     
-  ($C --> $B)
+  ($4246 --> $4192)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $4198 $4252))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) (($C --> $A) $T2))  
+> (= (|- ((($A x $B) --> $22210) $22216) (($22234 --> $A) $22240))  
     
-  ( ($C x $B) --> $R)
+  ( ($22234 x $B) --> $22210)
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $22216 $22240))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) (($A --> $C) $T2))  
+> (= (|- ((($A x $B) --> $10378) $10384) (($A --> $10414) $10420))  
     
-  ( ($C x $B) --> $R)
+  ( ($10414 x $B) --> $10378)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $10384 $10420))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) (($C --> $B) $T2))  
+> (= (|- ((($A x $B) --> $28286) $28292) (($28310 --> $B) $28316))  
     
-  ( ($A x $C) --> $R)
+  ( ($A x $3410) --> $3386)
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $3392 $3416))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- ((($A x $B) --> $R) $T1) (($B --> $C) $T2))  
+> (= (|- ((($A x $B) --> $22408) $22414) (($B --> $22444) $22450))  
     
-  ( ($A x $C) --> $R)
+  ( ($A x $22444) --> $22408)
     
-  (Truth_Induction $T1 $T2))
+  (Truth_Induction $22414 $22450))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($A --> $C) $T2))  
+> (= (|- (($R --> ($A x $10894)) $10900) (($A --> $10930) $10936))  
     
   ($R --> 
-    ($C x $B))
+    ($10930 x $10894))
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $10900 $10936))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($C --> $A) $T2))  
+> (= (|- (($R --> ($A x $28802)) $28808) (($28826 --> $A) $28832))  
     
   ($R --> 
-    ($C x $B))
+    ($3420 x $3396))
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $3402 $3426))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($B --> $C) $T2))  
+> (= (|- (($R --> ($A x $22438)) $22444) (($22438 --> $22474) $22480))  
     
   ($R --> 
-    ($A x $C))
+    ($A x $22474))
     
-  (Truth_Deduction $T1 $T2))
+  (Truth_Deduction $22444 $22480))
+ 
 </span><span class="ansi38-255165000"
-> (= (|- (($R --> ($A x $B)) $T1) (($C --> $B) $T2))  
+> (= (|- (($R --> ($A x $10900)) $10906) (($10924 --> $10900) $10942))  
     
   ($R --> 
-    ($A x $C))
+    ($A x $10924))
     
-  (Truth_Abduction $T1 $T2))
+  (Truth_Abduction $10906 $10942))
+ 
 </span>;;;Whether evidence was just counted once
 <span class="ansi38-255165000"
 > (= (StampDisjoint $Ev1 $Ev2)  
   (== () 
-    (collapse (let* (($x (superpose $Ev1)) ($y (superpose $Ev2))) (case (== $x $y) ((True overlap)))))))
+    (collapse (let* (($22730 (superpose $Ev1)) ($22742 (superpose $Ev2))) (case (== $22730 $22742) ((True overlap)))))))
+ 
 </span>;;;; Exhaustive-until-depth deriver
 <span class="ansi38-255165000"
-> (= (Derive $beliefs $depth $maxdepth)  
+> (= (Derive $beliefs $depth $25732)  
   (If 
-    (> $depth $maxdepth) $beliefs 
-    (let $derivations 
-      (collapse (let* (((Sentence $x $Ev1) (superpose $beliefs)) ((Sentence $y $Ev2) (superpose $beliefs)) ($stamp (TupleConcat $Ev1 $Ev2))) (If (StampDisjoint $Ev1 $Ev2) (case (|- $x $y) ((($T $TV) (Sentence ($T $TV) $stamp))))))) 
+    (> $depth $25732) $beliefs 
+    (let $25792 
+      (collapse (let* (((Sentence $25846 $25852) (superpose $beliefs)) ((Sentence $25876 $25882) (superpose $beliefs)) ($4038 (TupleConcat $3996 $4026))) (If (StampDisjoint $3996 $4026) (case (|- $3990 $4020) ((($4158 $4164) (Sentence ($4158 $4164) $4038))))))) 
       (Derive 
-        (TupleConcat $beliefs $derivations) 
-        (+ $depth 1) $maxdepth))))
+        (TupleConcat $beliefs $3936) 
+        (+ $depth 1) $3876))))
+ 
 </span>;;;retrieve the best candidate
 <span class="ansi38-255165000"
-> (= (BestCandidate $EvaluateCandidateFunction $BestCandidate $tuple)  
+> (= (BestCandidate $EvaluateCandidateFunction $BestCandidate $22604)  
   (If 
-    (== $tuple ()) $BestCandidate 
+    (== $22604 ()) $BestCandidate 
     (let* 
-      ( ($head (car-atom $tuple)) ($tail (cdr-atom $tuple))) 
+      ( ($22670 (car-atom $22604)) ($22700 (cdr-atom $22604))) 
       (If 
         (> 
-          ($EvaluateCandidateFunction $head) 
+          ($EvaluateCandidateFunction $22670) 
           ($EvaluateCandidateFunction $BestCandidate)) 
-        (BestCandidate $EvaluateCandidateFunction $head $tail) 
-        (BestCandidate $EvaluateCandidateFunction $BestCandidate $tail)))))
+        (BestCandidate $EvaluateCandidateFunction $22670 $22700) 
+        (BestCandidate $EvaluateCandidateFunction $BestCandidate $22700)))))
+ 
 </span>;;;candidate evaluation based on confidence
 <span class="ansi38-255165000"
-> (= (ConfidenceRank (($f $c) $Ev))  $c)
+> (= (ConfidenceRank (($f $c) $28986))  $c)
+ 
 </span><span class="ansi38-255165000"
 > (= (ConfidenceRank ())  0)
+ 
 </span>;;;pose a question of a certain term to the system on some knowledge base
 <span class="ansi38-255165000"
-> (= (Question $kb $term $steps)  
+> (= (Question $kb $term $28488)  
   (BestCandidate ConfidenceRank () 
-    (collapse (let $x (Derive $kb 1 $steps) (case (superpose $x) (((Sentence ($T $TV) $Ev) (case (== $T $term) ((True ($TV $Ev)))))))))))
+    (collapse (let $28542 (Derive $kb 1 $28488) (case (superpose $3536) (((Sentence ($3632 $3638) $3644) (case (== $3632 $term) ((True ($3638 $3644)))))))))))
+ 
 </span><span class="ansi38-255165000"
 > (flonum-print-precision 17)
-</span><span class="ansi38-013099040"
+ 
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
 >!(Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1)) (Sentence (((cat x sky) --> like) (1.0 0.9)) (2)) (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3)) (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))) ((ExtSet garfield) --> artist) 3)
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Question ((Sentence (((ExtSet garfield) --> cat) (1.0 0.9)) (1)) (Sentence (((cat x sky) --> like) (1.0 0.9)) (2)) (Sentence ((sky --> (IntSet blue)) (1.0 0.9)) (3)) (Sentence (((((ExtSet garfield) x (IntSet blue)) --> like) ==> ((ExtSet garfield) --> artist)) (1.0 0.9)) (4))) ((ExtSet garfield) --> artist) 3) (((1.0 0.37946790052053214) (2 1 3 4))))
 
 </span>
-N(1): <span class="ansi33"
->((1.0 0.37946790052053214) (2 1 3 4))
-</span>P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/minnars.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-[((1.0 0.37946790052053214) (2 1 3 4))]
+;<h3 id="METTA-MORPH-TESTS.MINNARS.01"
+>;; METTA-MORPH-TESTS.MINNARS.01</h3>
 
-Script done on 2025-02-20 05:16:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-22 14:16:23+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/minnars.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/metta-morph_tests/minnars.metta" --halt=true\033[0m
