@@ -48,7 +48,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:58:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:17:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/type_checking_symbol_he_673.metta] ]
 P;HTML|
@@ -92,7 +92,7 @@ Script started on 2025-02-22 20:58:02+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000279 secs. (278.70 microseconds) 
+; took 0.000319 secs. (318.99 microseconds) 
 
 !(assertEqualToResult (foo S) (S))
 
@@ -114,17 +114,32 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.02"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.02</h3>
 P;HTML|
-;                                        [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6638 True ] ] [ = $6638 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6658]] ]
-P;HTML|
-;                                        [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6608 True ] ] [ = $6608 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6628]] ]
-P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6312 True ] ] [ = $6312 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6332]] ]
-P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6244 True ] ] [ = $6244 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6264]] ]
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_17604,_17610,_17616],
+;           [_17622,_17628,_17634],  _17594, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_42490,_42496,_42502],
+;           [_42508,_42514,_42520],  _42480, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_8010,_8016,_8022],
+;           [_8028,_8034,_8040],  _8000, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.016 secs. (16.01 milliseconds) 
+; took 0.596 secs. (596.17 milliseconds) 
 
 !(assertEqualToResult (foo (This is an expression)) (Error (This is an expression) BadType))
 
@@ -159,7 +174,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000411 secs. (411.42 microseconds) 
+; took 0.000660 secs. (660.31 microseconds) 
 
 !(assertEqualToResult (foo_var 100) (Error 100 BadType))
 
@@ -176,16 +191,16 @@ Deterministic: <span class="ansi33"
 ;;; The input `100` is not a Variable, so the type check should fail.
 ;;; Test: Passing a valid Variable
 <span class="ansi38-013099040"
->!(assertEqualToResult (foo_var $10186) (%Undefined%))
+>!(assertEqualToResult (foo_var $10388) (%Undefined%))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.04"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000343 secs. (342.51 microseconds) 
+; took 0.000353 secs. (352.93 microseconds) 
 
-!(assertEqualToResult (foo_var $16596) (%Undefined%))
+!(assertEqualToResult (foo_var $16822) (%Undefined%))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -206,7 +221,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000384 secs. (384.04 microseconds) 
+; took 0.000434 secs. (434.35 microseconds) 
 
 !(assertEqualToResult (foo_var S) (Error S BadType))
 
@@ -230,7 +245,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000623 secs. (623.34 microseconds) 
+; took 0.000714 secs. (714.32 microseconds) 
 
 !(assertEqualToResult (foo_var (an expression)) (Error (an expression) BadType))
 
@@ -257,7 +272,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000626 secs. (625.83 microseconds) 
+; took 0.000747 secs. (747.22 microseconds) 
 
 !(assertEqualToResult (get-type (This is an expression)) (%Undefined%))
 
@@ -288,17 +303,40 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.08"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.08</h3>
 P;HTML|
-;                                        [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6644 True ] ] [ = $6644 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6664]] ]
-P;HTML|
-;                                        [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6608 True ] ] [ = $6608 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6628]] ]
-P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6312 True ] ] [ = $6312 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6332]] ]
-P;HTML|
-;                                       [ --> [catch_warn [ ; [ *-> [call [ : clpfd {[ = an expression ] } ]] [ = $6244 True ] ] [ = $6244 False ] ]] [error [existence_error procedure [ : clpfd [ / {} 1 ] ]] [context [ : system [ / <meta-call> 1 ] ] $6264]] ]
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_22764,_22770,_22776],
+;           [_22782,_22788,_22794],  _22754, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_8020,_8026,_8032],
+;           [_8038,_8044,_8050],  _8010, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_20050,_20056,_20062],
+;           [_20068,_20074,_20080],  _20040, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'This',
+;           3,
+;           [_40756,_40762,_40768],
+;           [_40774,_40780,_40786],  _40746, Function_declaration_implTopThisC91_c124_c931, Function_declaration_implTopThisC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.016 secs. (15.85 milliseconds) 
+; took 0.794 secs. (794.50 milliseconds) 
 
 !(assertEqualToResult (foo_fixed (This is an expression)) (Error (This is an expression) BadType))
 
@@ -347,9 +385,37 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.09"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.09</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '%Undefined%',
+;           0, [],[],
+;              Function_declaration_implTopUndefined2, Function_declaration_implTopUndefined1, Function_declaration_implTopUndefined, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '%Undefined%',
+;           0, [],[],
+;              Function_declaration_implTopUndefined2, Function_declaration_implTopUndefined1, Function_declaration_implTopUndefined, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '%Undefined%',
+;           0, [],[],
+;              Function_declaration_implTopUndefined2, Function_declaration_implTopUndefined1, Function_declaration_implTopUndefined, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '%Undefined%',
+;           0, [],[],
+;              Function_declaration_implTopUndefined2, Function_declaration_implTopUndefined1, Function_declaration_implTopUndefined, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.36 milliseconds) 
+; took 0.155 secs. (154.50 milliseconds) 
 
 !(assertEqualToResult (foo (%Undefined%)) ((Error (%Undefined%) BadType)))
 
@@ -367,16 +433,16 @@ Deterministic: <span class="ansi33"
 ;;; `%Undefined%` is not a valid Symbol, so the type check fails and returns an error wrapped in a list.
 ;;; Test: Using `foo_var` with a valid variable
 <span class="ansi38-013099040"
->!(assertEqualToResult (foo_var $25410) ((%Undefined%)))
+>!(assertEqualToResult (foo_var $55586) ((%Undefined%)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.10"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000493 secs. (493.28 microseconds) 
+; took 0.000552 secs. (551.58 microseconds) 
 
-!(assertEqualToResult (foo_var $31892) ((%Undefined%)))
+!(assertEqualToResult (foo_var $62092) ((%Undefined%)))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -391,41 +457,41 @@ Deterministic: <span class="ansi33"
 ;;; `$valid_variable` is a valid Variable, but since it is unbound, its type is `%Undefined%`.
 ;;; Test: Using `foo_var` with a partially typed tuple
 <span class="ansi38-013099040"
->!(assertEqualToResult (foo_var (typed $41040)) ((Error (typed $41040) BadType)))
+>!(assertEqualToResult (foo_var (typed $10460)) ((Error (typed $10460) BadType)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.11"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000712 secs. (712.47 microseconds) 
+; took 0.000932 secs. (932.19 microseconds) 
 
-!(assertEqualToResult (foo_var (typed $50316)) ((Error (typed $50316) BadType)))
+!(assertEqualToResult (foo_var (typed $19784)) ((Error (typed $19784) BadType)))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       (AnyRet AnyRet) 
       ( (Error 
-          (typed $51300) BadType))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('AnyRet','[|]'('AnyRet',[])),'[|]'('[|]'('Error','[|]'('[|]'(typed,'[|]'(_39236{vn = ...},[])),'[|]'('BadType',[]))),[]))
+          (typed $20768) BadType))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('AnyRet','[|]'('AnyRet',[])),'[|]'('[|]'('Error','[|]'('[|]'(typed,'[|]'(_8656{vn = ...},[])),'[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $57154) BadType))))
+>(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $26622) BadType))))
 </span>;;; Explanation:
 ;;; The tuple `(typed $x)` is not a valid Variable and should return an error wrapped in a list.
 ;;; Test: Confirming type for direct input
 <span class="ansi38-013099040"
->!(assertEqualToResult (get-type $59734) ((%Undefined%)))
+>!(assertEqualToResult (get-type $29202) ((%Undefined%)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.12"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECKING-SYMBOL-HE-673.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000453 secs. (453.44 microseconds) 
+; took 0.000343 secs. (343.23 microseconds) 
 
-!(assertEqualToResult (get-type $4342) ((%Undefined%)))
+!(assertEqualToResult (get-type $35708) ((%Undefined%)))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -459,10 +525,10 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((This is an expression))) ('~nExpected: ' (Error (This is an expression) BadType)))]
 [(Error ('~nGot: ' ((%Undefined%))) ('~nExpected: ' ((Error (%Undefined%) BadType))))]
 [(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))]
-[(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $57992) BadType))))]
+[(Error ('~nGot: ' (AnyRet AnyRet)) ('~nExpected: ' ((Error (typed $27460) BadType))))]
 [(Error ('~nGot: ' (%Undefined%)) ('~nExpected: ' ((%Undefined%))))]
 
-Script done on 2025-02-22 20:58:02+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:17:59+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

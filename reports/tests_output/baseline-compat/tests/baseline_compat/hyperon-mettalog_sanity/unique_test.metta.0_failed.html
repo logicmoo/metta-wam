@@ -37,7 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:58:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:19:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] ]
 P;HTML|
@@ -88,7 +88,7 @@ Script started on 2025-02-22 20:58:46+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000534 secs. (534.47 microseconds) 
+; took 0.000512 secs. (511.84 microseconds) 
 
 !(assertEqual (unique (superpose (a b b c c c d))) (superpose (a b c d)))
 
@@ -110,7 +110,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000482 secs. (481.81 microseconds) 
+; took 0.000417 secs. (416.82 microseconds) 
 
 !(assertEqual (unique (superpose (a b c d))) (superpose (a b c d)))
 
@@ -132,7 +132,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000317 secs. (316.88 microseconds) 
+; took 0.000371 secs. (371.15 microseconds) 
 
 !(assertEqual (unique (superpose (a))) (superpose (a)))
 
@@ -154,7 +154,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000359 secs. (359.29 microseconds) 
+; took 0.000322 secs. (321.98 microseconds) 
 
 !(assertEqual (unique (superpose ())) (superpose ()))
 
@@ -174,7 +174,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000383 secs. (383.17 microseconds) 
+; took 0.000379 secs. (379.11 microseconds) 
 
 !(assertEqual (unique (superpose (a a a a))) (superpose (a)))
 
@@ -196,7 +196,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.82 milliseconds) 
+; took 0.002 secs. (1.75 milliseconds) 
 
 !(assertEqual (unique (superpose ((1 2) (1 2) (3 4)))) (superpose ((1 2) (3 4))))
 
@@ -218,7 +218,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000485 secs. (484.93 microseconds) 
+; took 0.000458 secs. (457.94 microseconds) 
 
 !(assertEqual (unique (superpose (1 "hello" 1 "world" "hello" 3.14 3.14))) (superpose (1 "hello" "world" 3.14)))
 
@@ -238,9 +238,33 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.08"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.08</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           a,
+;           3,
+;           [_22086,_22092,_22098],
+;           [_22104,_22110,_22116],  _22076, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           a,
+;           3,
+;           [_7988,_7994,_8000],
+;           [_8006,_8012,_8018],  _7978, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           a,
+;           3,
+;           [_14288,_14294,_14300],
+;           [_14306,_14312,_14318],  _14278, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.26 milliseconds) 
+; took 0.594 secs. (594.01 milliseconds) 
 
 !(assertEqual (list-to-set (a b b c c c d)) (a b c d))
 
@@ -260,9 +284,137 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.09"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.09</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_40552],
+;           [_40558],  _40542, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_19222],
+;           [_19228],  _19212, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           2,
+;           [_17902,_17908],
+;           [_17914,_17920],  _17892, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           2,
+;           [_16548,_16554],
+;           [_16560,_16566],  _16538, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_8096],
+;           [_8102],  _8086, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_35458],
+;           [_35464],  _35448, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [1,2],
+;           1,
+;           [_23886],
+;           [_23892],  _23876, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [1,2],
+;           1,
+;           [_12626],
+;           [_12632],  _12616, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_8302],
+;           [_8308],  _8292, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_44936],
+;           [_44942],  _44926, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           2,
+;           [_45776,_45782],
+;           [_45788,_45794],  _45766, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           2,
+;           [_45288,_45294],
+;           [_45300,_45306],  _45278, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_27564],
+;           [_27570],  _27554, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_8082],
+;           [_8088],  _8072, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [1,2],
+;           1,
+;           [_8046],
+;           [_8052],  _8036, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [1,2],
+;           1,
+;           [_42796],
+;           [_42802],  _42786, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.10 milliseconds) 
+; took 1.958 secs. (1957.89 milliseconds) 
 
 !(assertEqual (list-to-set ((1 2) (1 2) (3 4))) ((1 2) (3 4)))
 
@@ -277,120 +429,1480 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test unique with variables
 ;;;; This test checks that unique handles variables correctly, ensuring that each unique instance is preserved.
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ($55992 $55998 $55992 $56010))) (superpose ($55992 $55998 $56010)))
+>!(assertEqual (unique (superpose ($31224 $31230 $31224 $31242))) (superpose ($31224 $31230 $31242)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.10"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000586 secs. (586.32 microseconds) 
+; took 0.000441 secs. (441.46 microseconds) 
 
-!(assertEqual (unique (superpose ($5850 $5856 $5850 $5868))) (superpose ($5850 $5856 $5868)))
+!(assertEqual (unique (superpose ($42120 $42126 $42120 $42138))) (superpose ($42120 $42126 $42138)))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($10186 $10192 $10198) 
-      ($10204 $10210 $10216)]]
+      ($46456 $46462 $46468) 
+      ($46474 $46480 $46486)]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test unique with variables in nested lists
 ;;;; This test checks that unique correctly handles variables within nested lists, preserving each unique nested structure.
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $19206 $19212) (:: $19206 $19236) (:: $19206 $19212) (:: $19278 $19284)))) (superpose ((:: $19206 $19212) (:: $19206 $19236) (:: $19278 $19284))))
+>!(assertEqual (unique (superpose ((:: $55476 $55482) (:: $55476 $55506) (:: $55476 $55482) (:: $55548 $55554)))) (superpose ((:: $55476 $55482) (:: $55476 $55506) (:: $55548 $55554))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.11"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.11</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_40734,_40740],
+;           [_40746,_40752],  _40724, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_47326,_47332],
+;           [_10902,_10908],  _10880, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10958,_10964],
+;           [_10970,_10976],  _10948, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13070,_13076],
+;           [_13082,_13088],  _13060, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_25924,_25930],
+;           [_25936,_25942],  _25914, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_37732,_37738],
+;           [_37744,_37750],  _37722, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_47556,_47562],
+;           [_11144,_11150],  _11122, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11128,_11134],
+;           [_11140,_11146],  _11118, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13510,_13516],
+;           [_13522,_13528],  _13500, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_20564,_20570],
+;           [_20576,_20582],  _20554, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39808,_39814],
+;           [_39820,_39826],  _39798, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_46572,_46578],
+;           [_46584,_46590],  _11254, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11262,_11268],
+;           [_11274,_11280],  _11252, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13634,_13640],
+;           [_13646,_13652],  _13624, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_25564,_25570],
+;           [_25576,_25582],  _25554, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_38022,_38028],
+;           [_38034,_38040],  _38012, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11260,_11266],
+;           [_11272,_11278],  _11250, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11256,_11262],
+;           [_11268,_11274],  _11246, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_14654,_14660],
+;           [_14666,_14672],  _14644, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_21248,_21254],
+;           [_21260,_21266],  _21238, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_36502,_36508],
+;           [_36514,_36520],  _36492, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_37638,_37644],
+;           [_37650,_37656],  _37628, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_46728,_46734],
+;           [_10258,_10264],  _10236, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10242,_10248],
+;           [_10254,_10260],  _10232, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10316,_10322],
+;           [_10328,_10334],  _10306, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_14124,_14130],
+;           [_14136,_14142],  _14114, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_24592,_24598],
+;           [_24604,_24610],  _24582, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_36470,_36476],
+;           [_36482,_36488],  _36460, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41574,_41580],
+;           [_41586,_41592],  _41564, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10290,_10296],
+;           [_10302,_10308],  _10280, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10290,_10296],
+;           [_10302,_10308],  _10280, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10310,_10316],
+;           [_10322,_10328],  _10300, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_18410,_18416],
+;           [_18422,_18428],  _18400, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_22902,_22908],
+;           [_22914,_22920],  _22892, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.011 secs. (11.50 milliseconds) 
+; took 5.45 seconds.
 
-!(assertEqual (unique (superpose ((:: $48120 $48126) (:: $48120 $48150) (:: $48120 $48126) (:: $48192 $48198)))) (superpose ((:: $48120 $48126) (:: $48120 $48150) (:: $48192 $48198))))
+!(assertEqual (unique (superpose ((:: $55932 $55938) (:: $55932 $55962) (:: $55932 $55938) (:: $56004 $56010)))) (superpose ((:: $55932 $55938) (:: $55932 $55962) (:: $56004 $56010))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (:: $54562 $54568) 
-        (:: $54586 $54592) 
-        (:: $54610 $54616)) 
-      ( (:: $54634 $54640) 
-        (:: $54658 $54664) 
-        (:: $54682 $54688))]]
+      ( (:: $62374 $62380) 
+        (:: $62398 $62404) 
+        (:: $62422 $62428)) 
+      ( (:: $6238 $6244) 
+        (:: $6262 $6268) 
+        (:: $6286 $6292))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test unique with repeated variables in nested lists
 ;;;; This test ensures that unique treats identical nested lists with variables as duplicates, reducing them to a single instance.
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $2584 $2590) (:: $2584 $2590) (:: $2584 $2638) (:: $2584 $2590)))) (superpose ((:: $2584 $2590) (:: $2584 $2638))))
+>!(assertEqual (unique (superpose ((:: $17410 $17416) (:: $17410 $17416) (:: $17410 $17464) (:: $17410 $17416)))) (superpose ((:: $17410 $17416) (:: $17410 $17464))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.12"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.12</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10588,_10594],
+;           [_10600,_10606],  _10578, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13024,_13030],
+;           [_13036,_13042],  _13014, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_23418,_23424],
+;           [_23430,_23436],  _23408, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_29126,_29132],
+;           [_29138,_29144],  _29116, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_38384,_38390],
+;           [_38396,_38402],  _38374, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41496,_41502],
+;           [_41508,_41514],  _41486, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10752,_10758],
+;           [_10764,_10770],  _10742, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10766,_10772],
+;           [_10778,_10784],  _10756, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_18516,_18522],
+;           [_18528,_18534],  _18506, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_25536,_25542],
+;           [_25548,_25554],  _25526, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_38938,_38944],
+;           [_38950,_38956],  _38928, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41616,_41622],
+;           [_41628,_41634],  _41606, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10754,_10760],
+;           [_10766,_10772],  _10744, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10768,_10774],
+;           [_10780,_10786],  _10758, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_19794,_19800],
+;           [_19806,_19812],  _19784, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_25630,_25636],
+;           [_25642,_25648],  _25620, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39026,_39032],
+;           [_39038,_39044],  _39016, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41838,_41844],
+;           [_41850,_41856],  _41828, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10492,_10498],
+;           [_10504,_10510],  _10482, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10488,_10494],
+;           [_10500,_10506],  _10478, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_15830,_15836],
+;           [_15842,_15848],  _15820, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_20344,_20350],
+;           [_20356,_20362],  _20334, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_35558,_35564],
+;           [_35570,_35576],  _35548, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_37066,_37072],
+;           [_37078,_37084],  _37056, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41972,_41978],
+;           [_41984,_41990],  _41962, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_47086,_47092],
+;           [_9866,_9872],  _9844, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_9510,_9516],
+;           [_9522,_9528],  _9500, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_9526,_9532],
+;           [_9538,_9544],  _9516, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.009 secs. (9.19 milliseconds) 
+; took 4.62 seconds.
 
-!(assertEqual (unique (superpose ((:: $16670 $16676) (:: $16670 $16676) (:: $16670 $16724) (:: $16670 $16676)))) (superpose ((:: $16670 $16676) (:: $16670 $16724))))
+!(assertEqual (unique (superpose ((:: $39646 $39652) (:: $39646 $39652) (:: $39646 $39700) (:: $39646 $39652)))) (superpose ((:: $39646 $39652) (:: $39646 $39700))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (:: $21888 $21894) (:: $21912 $21918)) 
-      ( (:: $21936 $21942) (:: $21960 $21966))]]
+      ( (:: $44864 $44870) (:: $44888 $44894)) 
+      ( (:: $44912 $44918) (:: $44936 $44942))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test unique with mixed types and variables in nested lists
 ;;;; This test checks that unique handles a mix of nested structures with variables, symbols, and other data types correctly.
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: 1 $30868) (:: $30868 "hello") (:: 1 $30868) (:: $30928 $30934) (:: $30868 "hello")))) (superpose ((:: 1 $30868) (:: $30868 "hello") (:: $30928 $30934))))
+>!(assertEqual (unique (superpose ((:: 1 $53844) (:: $53844 "hello") (:: 1 $53844) (:: $53904 $53910) (:: $53844 "hello")))) (superpose ((:: 1 $53844) (:: $53844 "hello") (:: $53904 $53910))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.13"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.13</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39520,_39526],
+;           [_39532,_39538],  _39510, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_43000,_43006],
+;           [_43012,_43018],  _42990, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10950,_10956],
+;           [_10962,_10968],  _10940, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10964,_10970],
+;           [_10976,_10982],  _10954, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_20510,_20516],
+;           [_20522,_20528],  _20500, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_27592,_27598],
+;           [_27604,_27610],  _27582, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39604,_39610],
+;           [_39616,_39622],  _39594, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_43138,_43144],
+;           [_43150,_43156],  _43128, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11066,_11072],
+;           [_11078,_11084],  _11056, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11080,_11086],
+;           [_11092,_11098],  _11070, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_21592,_21598],
+;           [_21604,_21610],  _21582, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_28674,_28680],
+;           [_28686,_28692],  _28664, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39700,_39706],
+;           [_39712,_39718],  _39690, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_43870,_43876],
+;           [_43882,_43888],  _43860, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11162,_11168],
+;           [_11174,_11180],  _11152, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11180,_11186],
+;           [_11192,_11198],  _11170, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_21848,_21854],
+;           [_21860,_21866],  _21838, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_28688,_28694],
+;           [_28700,_28706],  _28678, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_39730,_39736],
+;           [_39742,_39748],  _39720, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_44098,_44104],
+;           [_44110,_44116],  _44088, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11298,_11304],
+;           [_11310,_11316],  _11288, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12044,_12050],
+;           [_12056,_12062],  _12034, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_24220,_24226],
+;           [_24232,_24238],  _24210, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_31326,_31332],
+;           [_31338,_31344],  _31316, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_38732,_38738],
+;           [_38744,_38750],  _38722, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41556,_41562],
+;           [_41568,_41574],  _41546, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10168,_10174],
+;           [_10180,_10186],  _10158, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10182,_10188],
+;           [_10194,_10200],  _10172, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_16218,_16224],
+;           [_16230,_16236],  _16208, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_21572,_21578],
+;           [_21584,_21590],  _21562, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_38090,_38096],
+;           [_38102,_38108],  _38080, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_40096,_40102],
+;           [_40108,_40114],  _40086, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10196,_10202],
+;           [_10208,_10214],  _10186, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10192,_10198],
+;           [_10204,_10210],  _10182, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10234,_10240],
+;           [_10246,_10252],  _10224, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_14040,_14046],
+;           [_14052,_14058],  _14030, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_23694,_23700],
+;           [_23706,_23712],  _23684, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_27634,_27640],
+;           [_27646,_27652],  _27624, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.33 milliseconds) 
+; took 6.14 seconds.
 
-!(assertEqual (unique (superpose ((:: 1 $6872) (:: $6872 "hello") (:: 1 $6872) (:: $6932 $6938) (:: $6872 "hello")))) (superpose ((:: 1 $6872) (:: $6872 "hello") (:: $6932 $6938))))
+!(assertEqual (unique (superpose ((:: 1 $60498) (:: $60498 "hello") (:: 1 $60498) (:: $60558 $60564) (:: $60498 "hello")))) (superpose ((:: 1 $5590) (:: $5590 "hello") (:: $5650 $5656))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (:: 1 $12508) 
-        (:: $12526 "hello") 
-        (:: $12544 $12550)) 
-      ( (:: 1 $12574) 
-        (:: $12592 "hello") 
-        (:: $12610 $12616))]]
+      ( (:: 1 $12206) 
+        (:: $12224 "hello") 
+        (:: $12242 $12248)) 
+      ( (:: 1 $12272) 
+        (:: $12290 "hello") 
+        (:: $12308 $12314))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
 </span>;;;; Test unique with complex nested structures including variables
 ;;;; This test verifies that unique handles more complex nested structures containing variables, preserving each unique structure.
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $21696 (:: a b)) (:: $21696 (:: a b)) (:: (:: 1 $21696) (:: 2 $21774)) (:: (:: 1 $21696) (:: 2 $21774))))) (superpose ((:: $21696 (:: a b)) (:: (:: 1 $21696) (:: 2 $21774)))))
+>!(assertEqual (unique (superpose ((:: $21394 (:: a b)) (:: $21394 (:: a b)) (:: (:: 1 $21394) (:: 2 $21472)) (:: (:: 1 $21394) (:: 2 $21472))))) (superpose ((:: $21394 (:: a b)) (:: (:: 1 $21394) (:: 2 $21472)))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.14"
 >;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.14</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_18256,_18262],
+;           [_18268,_18274],  _18246, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_27832,_27838],
+;           [_27844,_27850],  _27822, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_40814,_40820],
+;           [_40826,_40832],  _40804, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12008,_12014],
+;           [_12020,_12026],  _11998, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_17028,_17034],
+;           [_17040,_17046],  _17018, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_26848,_26854],
+;           [_26860,_26866],  _26838, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_40952,_40958],
+;           [_40964,_40970],  _40942, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12060,_12066],
+;           [_12072,_12078],  _12050, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_18710,_18716],
+;           [_18722,_18728],  _18700, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_28908,_28914],
+;           [_28920,_28926],  _28898, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41226,_41232],
+;           [_41238,_41244],  _41216, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12202,_12208],
+;           [_12214,_12220],  _12192, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_19676,_19682],
+;           [_19688,_19694],  _19666, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_29204,_29210],
+;           [_29216,_29222],  _29194, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41220,_41226],
+;           [_41232,_41238],  _41210, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12196,_12202],
+;           [_12208,_12214],  _12186, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_18446,_18452],
+;           [_18458,_18464],  _18436, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_28250,_28256],
+;           [_28262,_28268],  _28240, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_41222,_41228],
+;           [_41234,_41240],  _41212, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12198,_12204],
+;           [_12210,_12216],  _12188, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_20284,_20290],
+;           [_20296,_20302],  _20274, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_30828,_30834],
+;           [_30840,_30846],  _30818, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_42362,_42368],
+;           [_42374,_42380],  _42352, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12724,_12730],
+;           [_12736,_12742],  _12714, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13034,_13040],
+;           [_13046,_13052],  _13024, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_22738,_22744],
+;           [_22750,_22756],  _22728, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_42686,_42692],
+;           [_42698,_42704],  _42676, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_106696,_106702],
+;           [_106708,_106714],  _106686, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_109552,_109558],
+;           [_109564,_109570],  _109542, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_107784,_107790],
+;           [_107796,_107802],  _107774, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_108390,_108396],
+;           [_108402,_108408],  _108380, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_106214,_106220],
+;           [_106226,_106232],  _106204, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13058,_13064],
+;           [_13070,_13076],  _13048, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12988,_12994],
+;           [_13000,_13006],  _12978, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13024,_13030],
+;           [_13036,_13042],  _13014, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13006,_13012],
+;           [_13018,_13024],  _12996, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12504,_12510],
+;           [_12516,_12522],  _12494, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12486,_12492],
+;           [_12498,_12504],  _12476, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13044,_13050],
+;           [_13056,_13062],  _13034, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12980,_12986],
+;           [_12992,_12998],  _12970, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_13034,_13040],
+;           [_13046,_13052],  _13024, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12998,_13004],
+;           [_13010,_13016],  _12988, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12496,_12502],
+;           [_12508,_12514],  _12486, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12478,_12484],
+;           [_12490,_12496],  _12468, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12676,_12682],
+;           [_12688,_12694],  _12666, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12614,_12620],
+;           [_12626,_12632],  _12604, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12652,_12658],
+;           [_12664,_12670],  _12642, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12632,_12638],
+;           [_12644,_12650],  _12622, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12130,_12136],
+;           [_12142,_12148],  _12120, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_12094,_12100],
+;           [_12106,_12112],  _12084, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_15360,_15366],
+;           [_15372,_15378],  _15350, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11464,_11470],
+;           [_11476,_11482],  _11454, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10978,_10984],
+;           [_10990,_10996],  _10968, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_10956,_10962],
+;           [_10968,_10974],  _10946, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11534,_11540],
+;           [_11546,_11552],  _11524, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11496,_11502],
+;           [_11508,_11514],  _11486, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11012,_11018],
+;           [_11024,_11030],  _11002, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11008,_11014],
+;           [_11020,_11026],  _10998, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11638,_11644],
+;           [_11650,_11656],  _11628, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11616,_11622],
+;           [_11628,_11634],  _11606, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11652,_11658],
+;           [_11664,_11670],  _11642, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11634,_11640],
+;           [_11646,_11652],  _11624, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11132,_11138],
+;           [_11144,_11150],  _11122, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11114,_11120],
+;           [_11126,_11132],  _11104, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11322,_11328],
+;           [_11334,_11340],  _11312, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11264,_11270],
+;           [_11276,_11282],  _11254, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11300,_11306],
+;           [_11312,_11318],  _11290, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_11282,_11288],
+;           [_11294,_11300],  _11272, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_113102,_113108],
+;           [_10792,_10798],  _10770, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           ::,
+;           2,
+;           [_108736,_108742],
+;           [_108748,_108754],  _108726, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.028 secs. (28.28 milliseconds) 
+; took 12.61 seconds.
 
-!(assertEqual (unique (superpose ((:: $53556 (:: a b)) (:: $53556 (:: a b)) (:: (:: 1 $53556) (:: 2 $53634)) (:: (:: 1 $53556) (:: 2 $53634))))) (superpose ((:: $53556 (:: a b)) (:: (:: 1 $53556) (:: 2 $53634)))))
+!(assertEqual (unique (superpose ((:: $28568 (:: a b)) (:: $28568 (:: a b)) (:: (:: 1 $28568) (:: 2 $28646)) (:: (:: 1 $28568) (:: 2 $28646))))) (superpose ((:: $28568 (:: a b)) (:: (:: 1 $28568) (:: 2 $28646)))))
 
 <span class="ansi36"
 >  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (:: $59048 
-          (:: a b)) (:: (:: 1 $59084) (:: 2 $59108))) 
-      ( (:: $59126 
-          (:: a b)) (:: (:: 1 $59162) (:: 2 $59186)))]]
+      ( (:: $34060 
+          (:: a b)) (:: (:: 1 $34096) (:: 2 $34120))) 
+      ( (:: $34138 
+          (:: a b)) (:: (:: 1 $34174) (:: 2 $34198)))]]
 </span>
 Deterministic: <span class="ansi33"
 >()
@@ -420,7 +1932,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-22 20:58:47+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:19:54+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

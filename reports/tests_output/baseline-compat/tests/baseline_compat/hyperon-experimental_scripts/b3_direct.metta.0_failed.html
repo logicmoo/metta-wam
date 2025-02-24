@@ -31,7 +31,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:42:35+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:48:48+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] ]
 P;HTML|
@@ -84,7 +84,7 @@ Script started on 2025-02-22 20:42:35+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.003 secs. (3.33 milliseconds) 
 
 !(assertEqual (green Fritz) T)
 
@@ -107,23 +107,31 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(set-debug! e)
 
-</span>
+</span>P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'set-debug!',
+;           1,
+;           [_44758],
+;           [_44764],  _44748, Function_declaration_implTopSet_debugC91_c124_c931, Function_declaration_implTopSet_debugC91_c124_c93, Impl)</span>)
+
+
 Deterministic: <span class="ansi33"
 >(set-debug! e)
 </span>;;;!(rtrace! (ift (green $x) $x))
 ;;;!(break!)
 ;;; !(rtrace! (, (green $x) (println! $x)))
 <span class="ansi38-013099040"
->!(assertEqual (ift (green $33092) $33092) Fritz)
+>!(assertEqual (ift (green $24306) $24306) Fritz)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.34 milliseconds) 
+; took 0.003 secs. (2.91 milliseconds) 
 
-!(assertEqual (ift (green $42850) $42850) Fritz)
+!(assertEqual (ift (green $39904) $39904) Fritz)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -140,16 +148,16 @@ Deterministic: <span class="ansi33"
 ;;; with it may work differently from that over purely symbolic expressions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (= ($52716 Fritz)  T) $52716) (croaks eat_flies))
+>!(assertEqualToResult (match &self (= ($49770 Fritz)  T) $49770) (croaks eat_flies))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000295 secs. (294.94 microseconds) 
+; took 0.000286 secs. (285.66 microseconds) 
 
-!(assertEqualToResult (match &self (= ($61034 Fritz)  T) $61034) (croaks eat_flies))
+!(assertEqualToResult (match &self (= ($58112 Fritz)  T) $58112) (croaks eat_flies))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -175,7 +183,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-22 20:42:35+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:48:49+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

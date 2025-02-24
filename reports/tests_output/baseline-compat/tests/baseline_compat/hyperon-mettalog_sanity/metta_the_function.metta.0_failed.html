@@ -28,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:52:04+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:07:56+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] ]
 P;HTML|
@@ -69,16 +69,40 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' returns (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $14624 $14630) ($14624 $14630)) Atom &new-space) ((John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $14680 $14686) ($14680 $14686)) Atom &new-space) ((John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.01"
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.01</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_44492],
+;           [_44498],  _44482, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_38742],
+;           [_38748],  _38732, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_21990],
+;           [_21996],  _21980, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.18 milliseconds) 
+; took 0.347 secs. (346.60 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $35248 $35254) ($35248 $35254)) Atom &new-space) ((John Jane)))
+!(assertEqualToResult (metta (match &self (likes $54148 $54154) ($54148 $54154)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -90,8 +114,8 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a definition of foo to &new-space
 <span class="ansi38-013099040"
->!(add-atom &new-space (= (foo $44614)  
-  (+ $44614 1)))
+>!(add-atom &new-space (= (foo $63514)  
+  (+ $1854 1)))
 
 </span><span class="ansi38-255165000"
 > (= (foo $x)  
@@ -109,7 +133,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.METTA-THE-FUNCTION.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000913 secs. (913.08 microseconds) 
+; took 0.001 secs. (1.42 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -138,7 +162,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-22 20:52:05+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:07:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

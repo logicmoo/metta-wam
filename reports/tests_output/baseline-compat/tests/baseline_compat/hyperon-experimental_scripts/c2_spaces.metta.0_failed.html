@@ -58,7 +58,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:42:39+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:49:48+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] ]
 P;HTML|
@@ -143,16 +143,24 @@ Deterministic: <span class="ansi33"
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; We can `match` over `&self` or another space
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (, ($21226 is $21238) ($21238 is-a Color) ($21226 is-a Planet)) (Color of Planet $21226 is $21238)) ((Color of Planet Mars is Red)))
+>!(assertEqualToResult (match &kb (, ($21280 is $21292) ($21292 is-a Color) ($21280 is-a Planet)) (Color of Planet $21280 is $21292)) ((Color of Planet Mars is Red)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.01</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Color',
+;           5,
+;           [ _43142, _22522,_22528,_22534,_22540],
+;           [ _50632, _22552,_22558,_22564,_22570],  _22506, Function_declaration_implTopColorC91_c124_c931, Function_declaration_implTopColorC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.83 milliseconds) 
+; took 0.310 secs. (309.84 milliseconds) 
 
-!(assertEqualToResult (match &kb (, ($37430 is $37442) ($37442 is-a Color) ($37430 is-a Planet)) (Color of Planet $37430 is $37442)) ((Color of Planet Mars is Red)))
+!(assertEqualToResult (match &kb (, ($9780 is $9792) ($9792 is-a Color) ($9780 is-a Planet)) (Color of Planet $9780 is $9792)) ((Color of Planet Mars is Red)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -164,16 +172,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; The knowledge in `&kb` is not in `&self`
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self ($47070 is-a Color) $47070) ())
+>!(assertEqualToResult (match &self ($19420 is-a Color) $19420) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000184 secs. (183.71 microseconds) 
+; took 0.000209 secs. (209.40 microseconds) 
 
-!(assertEqualToResult (match &self ($53698 is-a Color) $53698) ())
+!(assertEqualToResult (match &self ($26072 is-a Color) $26072) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -186,16 +194,16 @@ Deterministic: <span class="ansi33"
 ;;; Checking that grounded symbols from different spaces are compatible
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (match &kb (, (Venus orbit $63812 au) (Mars orbit $1954 au)) (- $1954 $1930)) 0.8)
+>!(assertEqual (match &kb (, (Venus orbit $36186 au) (Mars orbit $36210 au)) (- $36210 $36186)) 0.8)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000724 secs. (724.17 microseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
-!(assertEqual (match &kb (, (Venus orbit $14694 au) (Mars orbit $14718 au)) (- $14718 $14694)) 0.8)
+!(assertEqual (match &kb (, (Venus orbit $48038 au) (Mars orbit $48062 au)) (- $48062 $48038)) 0.8)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -216,16 +224,16 @@ Deterministic: <span class="ansi33"
 > (Chair is High)
  
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &kb ($30170 is-a Color) (match &self ($30200 is $30170) $30200)) (Ball))
+>!(assertEqualToResult (match &kb ($63514 is-a Color) (match &self ($63544 is $1996) $2026)) (Ball))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000842 secs. (841.86 microseconds) 
+; took 0.000896 secs. (896.42 microseconds) 
 
-!(assertEqualToResult (match &kb ($41756 is-a Color) (match &self ($41786 is $41756) $41786)) (Ball))
+!(assertEqualToResult (match &kb ($14472 is-a Color) (match &self ($14502 is $14472) $14502)) (Ball))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -294,16 +302,32 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (, ($15964 is $15976) ($15976 is-a Color) ($15964 is-a Planet)) (Color of Planet $15964 is $15976)) ((Color of Planet Mars is Red)))
+>!(assertEqualToResult (match &self (, ($15990 is $16002) ($16002 is-a Color) ($15990 is-a Planet)) (Color of Planet $15990 is $16002)) ((Color of Planet Mars is Red)))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.05</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Color',
+;           5,
+;           [ _36536, _15882,_15888,_15894,_15900],
+;           [ _44026, _15912,_15918,_15924,_15930],  _15866, Function_declaration_implTopColorC91_c124_c931, Function_declaration_implTopColorC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Color',
+;           5,
+;           [ _12236, _10008,_10014,_10020,_10026],
+;           [ _19726, _10038,_10044,_10050,_10056],  _9992, Function_declaration_implTopColorC91_c124_c931, Function_declaration_implTopColorC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.59 milliseconds) 
+; took 0.616 secs. (616.11 milliseconds) 
 
-!(assertEqualToResult (match &self (, ($32760 is $32772) ($32772 is-a Color) ($32760 is-a Planet)) (Color of Planet $32760 is $32772)) ((Color of Planet Mars is Red)))
+!(assertEqualToResult (match &self (, ($38424 is $38436) ($38436 is-a Color) ($38424 is-a Planet)) (Color of Planet $38424 is $38436)) ((Color of Planet Mars is Red)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -332,7 +356,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-22 20:42:40+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:49:50+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

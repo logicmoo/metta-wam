@@ -28,7 +28,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:55:00+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:11:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] ]
 P;HTML|
@@ -88,9 +88,9 @@ Script started on 2025-02-22 20:55:00+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000343 secs. (342.51 microseconds) 
+; took 0.000310 secs. (309.61 microseconds) 
 
-!(assertEqualToResult ((S K) $14664) (I))
+!(assertEqualToResult ((S K) $14688) (I))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -107,9 +107,65 @@ Deterministic: <span class="ansi33"
 ;;; --------------------------------------------------
 ;;; Test: Matching ((S K) $x) with single-sided unification (using single-side-match)
 <span class="ansi38-013099040"
->!(assertSingleSideEqualToResult ((S K) $24368) ((S K) $24368))
+>!(assertSingleSideEqualToResult ((S K) $24392) ((S K) $24392))
 
-</span>
+</span>P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_7920],
+;           [_7926],  _7910, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_11702],
+;           [_11708],  _11692, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_14106],
+;           [_14112],  _14096, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_26426],
+;           [_26432],  _26416, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_30096],
+;           [_30102],  _30086, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_38656],
+;           [_38662],  _38646, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'grounded-single-side-match',
+;           1,
+;           [_39596],
+;           [_39602],  _39586, Function_declaration_implTopGrounded_single_side_matchC91_c124_c931, Function_declaration_implTopGrounded_single_side_matchC91_c124_c93, Impl)</span>)
+
+
 N(1): <span class="ansi33"
 >(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))
 </span>;;; Explanation:
@@ -119,18 +175,18 @@ N(1): <span class="ansi33"
 ;;; ----------------------------------------
 ;;; Define a reduction rule for a symmetry operator
 <span class="ansi38-255165000"
-> (= (: (Sym (: (Sym (: $x $a)) $23318)) $23324)  
+> (= (: (Sym (: (Sym (: $x $a)) $26786)) $26792)  
   (: $x $a))
  
 </span>;;; Test: Current double-sided behavior leads to infinite recursion
 <span class="ansi38-013099040"
->!(assertEqualToResult (: (Sym (: (Sym (: $26272 $26278)) $26284)) $26290) (InfiniteRecursion))
+>!(assertEqualToResult (: (Sym (: (Sym (: $29740 $29746)) $29752)) $29758) (InfiniteRecursion))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02"
 >;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
 
-Script done on 2025-02-22 20:55:40+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-24 15:11:42+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

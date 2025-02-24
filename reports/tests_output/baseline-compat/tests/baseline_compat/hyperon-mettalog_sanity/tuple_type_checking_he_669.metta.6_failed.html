@@ -29,7 +29,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:57:20+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:17:15+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] ]
 P;HTML|
@@ -62,9 +62,33 @@ Script started on 2025-02-22 20:57:20+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           wrong,
+;           1,
+;           [_25308],
+;           [_25314],  _25298, Function_declaration_implTopWrongC91_c124_c931, Function_declaration_implTopWrongC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           wrong,
+;           1,
+;           [_17318],
+;           [_17324],  _17308, Function_declaration_implTopWrongC91_c124_c931, Function_declaration_implTopWrongC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           wrong,
+;           1,
+;           [_7716],
+;           [_7722],  _7706, Function_declaration_implTopWrongC91_c124_c931, Function_declaration_implTopWrongC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.61 milliseconds) 
+; took 0.347 secs. (346.80 milliseconds) 
 
 !(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
@@ -94,9 +118,41 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           partially_defined,
+;           1,
+;           [_25762],
+;           [_25768],  _25752, Function_declaration_implTopPartially_definedC91_c124_c931, Function_declaration_implTopPartially_definedC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           partially_defined,
+;           1,
+;           [_18846],
+;           [_18852],  _18836, Function_declaration_implTopPartially_definedC91_c124_c931, Function_declaration_implTopPartially_definedC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           partially_defined,
+;           1,
+;           [_15622],
+;           [_15628],  _15612, Function_declaration_implTopPartially_definedC91_c124_c931, Function_declaration_implTopPartially_definedC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           partially_defined,
+;           1,
+;           [_8384],
+;           [_8390],  _8374, Function_declaration_implTopPartially_definedC91_c124_c931, Function_declaration_implTopPartially_definedC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.40 milliseconds) 
+; took 0.460 secs. (459.64 milliseconds) 
 
 !(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
@@ -132,7 +188,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
 ; 
 ; EVAL TEST
-; took 0.064 secs. (63.63 milliseconds) 
+; took 0.124 secs. (123.85 milliseconds) 
 
 !(assertEqualToResult (fact_strict 5) ((120)))
 
@@ -154,8 +210,760 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04"
 >;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04</h3>
-
-Script done on 2025-02-22 20:58:00+00:00 [COMMAND_EXIT_CODE="143"]
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_33262,_33268],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_58124,_58130],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_37662,_37668],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_12684,_12690],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_59570,_59576],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_34218,_34224],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_71762,_71768],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_33792,_33798],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_124150,_124156],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_87564,_87570],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_89630,_89636],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_50916,_50922],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_90122,_90128],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_53100,_53106],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_90612,_90618],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_54074,_54080],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_29012,_29018],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_108204,_108210],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_91648,_91654],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_56342,_56348],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_32338,_32344],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_111530,_111536],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_92684,_92690],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_58152,_58158],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_34546,_34552],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_113738,_113744],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_93720,_93726],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_59552,_59558],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_37292,_37298],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_116484,_116490],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_94756,_94762],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_62164,_62170],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_41474,_41480],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_120666,_120672],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_95792,_95798],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_64448,_64454],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_44320,_44326],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_123512,_123518],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_98784,_98790],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_68332,_68338],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_49648,_49654],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_22572,_22578],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_121598,_121604],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_96344,_96350],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_98410,_98416],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_69910,_69916],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_52312,_52318],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_25974,_25980],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_123180,_123186],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_97926,_97932],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_99992,_99998],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_72088,_72094],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_56728,_56734],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_32046,_32052],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_124762,_124768],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_99508,_99514],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_101574,_101580],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_75266,_75272],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_61154,_61160],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_36590,_36596],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_126284,_126290],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_101090,_101096],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_103156,_103162],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_79274,_79280],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_66702,_66708],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_43824,_43830],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_134182,_134188],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_213386,_213392],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_104738,_104744],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_183942,_183948],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_105228,_105234],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_184432,_184438],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_105718,_105724],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_184922,_184928],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_106208,_106214],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_185412,_185418],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_106698,_106704],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_185902,_185908],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_107188,_107194],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_186392,_186398],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_107678,_107684],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_186882,_186888],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_108168,_108174],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_187372,_187378],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_108658,_108664],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_187862,_187868],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_109148,_109154],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_188352,_188358],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_109638,_109644],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_188842,_188848],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_110128,_110134],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_189332,_189338],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_110618,_110624],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_189822,_189828],Pr),
+;             -1,
+;             [ 622002393-pr(['Number','Number'],'Number'),
+;               622002393-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+Script done on 2025-02-24 15:17:55+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

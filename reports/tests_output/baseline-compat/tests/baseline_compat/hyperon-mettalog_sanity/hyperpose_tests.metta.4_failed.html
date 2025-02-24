@@ -27,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:49:12+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:03:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta] ]
 P;HTML|
@@ -64,27 +64,59 @@ Script started on 2025-02-22 20:49:12+00:00 [COMMAND="timeout --preserve-status 
 ;<h3 id="HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.01</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 1 2) 0 ]] [ = $17758 True ] ] [ = $17758 False ] ]] [error [type_error () (% 1 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
-P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $8756 True ] ] [ = $8756 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
-P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 3 2) 0 ]] [ = $8710 True ] ] [ = $8710 False ] ]] [error [type_error () (% 3 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_21994],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_29964,_29970],
+;           [_29976,_29982],  _29954, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_42724,_42730],
+;           [_42736,_42742],  _42714, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_111564,_111570],
+;           [_111576,_111582],  _11878, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_111848,_111854],
+;           [_111860,_111866],  _11876, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.14 milliseconds) 
+; took 0.886 secs. (886.20 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
-<span class="ansi31"
->  [loonit_failureR 
+<span class="ansi36"
+>  [loonit_success 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False False) 
+      (False True False) 
       (False True False)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False','[|]'('False','[|]'('False',[]))),'[|]'('False','[|]'('True','[|]'('False',[]))))
-
+</span>
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (False False False)) ('~nExpected: ' (False True False)))
+>()
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
@@ -92,23 +124,68 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.02</h3>
 P;HTML|
-;                                         [ --> [catch_warn [ ; [ *-> [call [ =:= (% 2 2) 0 ]] [ = $10888 True ] ] [ = $10888 False ] ]] [error [type_error () (% 2 2)] [context [ : system [ / =:= 2 ] ] '"x" must hold one character']] ]
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_117888],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_62350],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_50922,_50928],
+;           [_50934,_50940],  _50912, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_49634,_49640],
+;           [_49646,_49652],  _49624, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_51636,_51642],
+;           [_51648,_51654],  _51626, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'False',
+;           2,
+;           [_50808,_50814],
+;           [_50820,_50826],  _50798, Function_declaration_implTopFalseC91_c124_c931, Function_declaration_implTopFalseC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.62 milliseconds) 
+; took 1.012 secs. (1012.43 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False False 3 4) 
+      (False True 3) 
       (False True 3 4)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False','[|]'('False','[|]'(3,'[|]'(4,[])))),'[|]'('False','[|]'('True','[|]'(3,'[|]'(4,[])))))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False','[|]'('True','[|]'(3,[]))),'[|]'('False','[|]'('True','[|]'(3,'[|]'(4,[])))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (False False 3 4)) ('~nExpected: ' (False True 3 4)))
+>(Error ('~nGot: ' (False True 3)) ('~nExpected: ' (False True 3 4)))
 </span>;;;; test recursive hyperpose
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
@@ -116,20 +193,85 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.HYPERPOSE-TESTS.03</h3>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48238],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_114550],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_69890],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_18808],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_94464],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_43148],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_12052],
+;           [_12058],  _12042, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           1,
+;           1,
+;           [_99618],
+;           [_99624],  _99608, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.92 milliseconds) 
+; took 0.973 secs. (972.66 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
-<span class="ansi36"
->  [loonit_success 
+<span class="ansi31"
+>  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (1 2 3 4) 
+      (1 3) 
       (1 2 3 4)]]
-</span>
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(1,'[|]'(3,[])),'[|]'(1,'[|]'(2,'[|]'(3,'[|]'(4,[])))))
+
 Deterministic: <span class="ansi33"
->()
+>(Error ('~nGot: ' (1 3)) ('~nExpected: ' (1 2 3 4)))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta 0 ]
 <span class="ansi1"
@@ -141,11 +283,11 @@ Deterministic: <span class="ansi33"
 >Failures: 2
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[(Error ('~nGot: ' (False False False)) ('~nExpected: ' (False True False)))]
-[(Error ('~nGot: ' (False False 3 4)) ('~nExpected: ' (False True 3 4)))]
 [()]
+[(Error ('~nGot: ' (False True 3)) ('~nExpected: ' (False True 3 4)))]
+[(Error ('~nGot: ' (1 3)) ('~nExpected: ' (1 2 3 4)))]
 
-Script done on 2025-02-22 20:49:12+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:03:20+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

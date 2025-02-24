@@ -1,0 +1,1461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-24 15:07:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta]
+P;HTML|
+;                       [ = 1 "[(\"============ Test lessThan ============\")]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[()]" ]
+P;HTML|
+;                        [ = 5 "[()]" ]
+P;HTML|
+;                         [ = 6 "[()]" ]
+P;HTML|
+;                         [ = 7 "[()]" ]
+P;HTML|
+;                         [ = 8 "[()]" ]
+P;HTML|
+;                          [ = 9 "[()]" ]
+P;HTML|
+;                          [ = 10 "[()]" ]
+P;HTML|
+;                           [ = 11 "[()]" ]
+P;HTML|
+;                           [ = 12 "[()]" ]
+P;HTML|
+;                           [ = 13 "[()]" ]
+P;HTML|
+;                            [ = 14 "[()]" ]
+P;HTML|
+;                            [ = 15 "[()]" ]
+P;HTML|
+;                             [ = 16 "[(Error (assertEqualToResult (lessThan Z 0) ()) " ]
+P;HTML|
+;                             [ = 16 "Expected: []" ]
+P;HTML|
+;                             [ = 16 "Got: [(Error Z BadType), (Error 0 BadType)]" ]
+P;HTML|
+;                              [ = 17 "Excessive results: (Error Z BadType), (Error 0 BadType))]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta]
+
+;;;; Define Nat
+<span class="ansi38-255165000"
+> (: Nat Type)
+ 
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+ 
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+ 
+</span>;;;; Define a generic less than operator, lessThan, for Nat.  < cannot be used
+;;;; because it is a built-in, its type is hardwired and cannot be
+;;;; overloaded.
+<span class="ansi38-255165000"
+> (: lessThan (-> Nat Nat Bool))
+ 
+</span><span class="ansi38-255165000"
+> (= (lessThan $32446 Z)  False)
+ 
+</span><span class="ansi38-255165000"
+> (= (lessThan Z (S $35598))  True)
+ 
+</span><span class="ansi38-255165000"
+> (= (lessThan (S $x) (S $y))  
+  (lessThan $x $y))
+ 
+</span>;;;; Overload lessThan for Number.
+<span class="ansi38-255165000"
+> (: lessThan (-> Number Number Bool))
+ 
+</span><span class="ansi38-255165000"
+> (= (lessThan $x $y)  
+  (< $x $y))
+ 
+</span><span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!("============ Test lessThan ============")
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.01"
+>;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.01</h3>
+; 
+; EVAL TEST
+; took 0.000132 secs. (131.88 microseconds) 
+
+!(assertEqualToResult ("============ Test lessThan ============") (("============ Test lessThan ============")))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( ("============ Test lessThan ============")) 
+      ( ("============ Test lessThan ============"))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;; Tests for Nat
+<span class="ansi38-013099040"
+>!(assertEqualToResult (lessThan Z (S Z)) (True))
+
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.02"
+>;; HYPERON-METTALOG-SANITY.METHOD-SELECTION-TESTS.02</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_32290],
+;           [_32296],  _32280, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_19608],
+;           [_19614],  _19598, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8792],
+;           [_8798],  _8782, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_57786,_57792],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_26826,_26832],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_44794],
+;           [_44800],  _44784, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_31728],
+;           [_31734],  _31718, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20550],
+;           [_20556],  _20540, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_9754],
+;           [_9760],  _9744, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_61916,_61922],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_28616,_28622],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_47284],
+;           [_10362],  _10346, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_34394],
+;           [_34400],  _34384, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_22582],
+;           [_22588],  _22572, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_10390],
+;           [_10396],  _10380, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11736,_11742],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_45690,_45696],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_11206],
+;           [_11212],  _11196, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_10902],
+;           [_10908],  _10892, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_10918],
+;           [_10924],  _10908, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_37226],
+;           [_37232],  _37216, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_36800,_36806],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_61774,_61780],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_23522],
+;           [_23528],  _23512, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_12850],
+;           [_12856],  _12840, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_11470],
+;           [_11476],  _11460, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_11446],
+;           [_11452],  _11436, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_56092,_56098],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_32612,_32618],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_11982],
+;           [_11988],  _11972, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_96940],
+;           [_96946],  _96930, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_77354],
+;           [_77360],  _77344, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_54928],
+;           [_54934],  _54918, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_87946,_87952],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48280,_48286],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_12528],
+;           [_12534],  _12518, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_101962],
+;           [_101968],  _101952, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_83342],
+;           [_83348],  _83332, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_61114],
+;           [_61120],  _61104, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_88508,_88514],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48842,_48848],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_13074],
+;           [_13080],  _13064, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_102602],
+;           [_102608],  _102592, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_83888],
+;           [_83894],  _83878, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_62036],
+;           [_62042],  _62026, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_89054,_89060],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_50392,_50398],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_13620],
+;           [_13626],  _13610, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_103912],
+;           [_103918],  _103902, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_87362],
+;           [_87368],  _87352, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_66030],
+;           [_66036],  _66020, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_89600,_89606],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_50906,_50912],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_14166],
+;           [_14172],  _14156, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_105190],
+;           [_105196],  _105180, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_88806],
+;           [_88812],  _88796, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_68322],
+;           [_68328],  _68312, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_90146,_90152],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_53144,_53150],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_14730],
+;           [_14736],  _14720, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_107608],
+;           [_107614],  _107598, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_94722],
+;           [_94728],  _94712, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_78284],
+;           [_78290],  _78274, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_90692,_90698],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_54174,_54180],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15276],
+;           [_15282],  _15266, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_109484],
+;           [_109490],  _109474, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_97076],
+;           [_97082],  _97066, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_78830],
+;           [_78836],  _78820, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_91238,_91244],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_54980,_54986],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15824],
+;           [_15830],  _15814, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_110460],
+;           [_110466],  _110450, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_98840],
+;           [_98846],  _98830, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_79376],
+;           [_79382],  _79366, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_91784,_91790],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_56498,_56504],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_16370],
+;           [_16376],  _16360, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_111672],
+;           [_111678],  _16338, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_100906],
+;           [_100912],  _100896, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_79970],
+;           [_79976],  _79960, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_92330,_92336],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_57530,_57536],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_17170],
+;           [_17176],  _17160, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_113274],
+;           [_16900],  _16884, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_102490],
+;           [_102496],  _102480, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_81312],
+;           [_81318],  _81302, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_92876,_92882],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_58720,_58726],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20084],
+;           [_20090],  _20074, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_17440],
+;           [_17446],  _17430, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_106788],
+;           [_106794],  _106778, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_91534],
+;           [_91540],  _91524, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_93422,_93428],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_59204,_59210],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20630],
+;           [_20636],  _20620, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_17986],
+;           [_17992],  _17976, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_107352],
+;           [_107358],  _107342, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_92080],
+;           [_92086],  _92070, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_93968,_93974],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_60186,_60192],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_22432],
+;           [_22438],  _22422, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_18532],
+;           [_18538],  _18522, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_109440],
+;           [_109446],  _109430, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_94444],
+;           [_94450],  _94434, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_94514,_94520],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_61942,_61948],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_23954],
+;           [_23960],  _23944, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_19078],
+;           [_19084],  _19068, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_111800],
+;           [_111806],  _19086, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_97742],
+;           [_97748],  _97732, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_95060,_95066],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_62748,_62754],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_25482],
+;           [_25488],  _25472, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_19624],
+;           [_19630],  _19614, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_19642],
+;           [_19648],  _19632, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_100128],
+;           [_100134],  _100118, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_95606,_95612],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_64282,_64288],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_27564],
+;           [_27570],  _27554, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20170],
+;           [_20176],  _20160, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20188],
+;           [_20194],  _20178, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_103624],
+;           [_103630],  _103614, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_101748,_101754],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_70108,_70114],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_34098],
+;           [_34104],  _34088, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_21016],
+;           [_21022],  _21006, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_20734],
+;           [_20740],  _20724, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_110264],
+;           [_110270],  _110254, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_112162,_112168],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_81336,_81342],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_44902],
+;           [_44908],  _44892, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_32560],
+;           [_32566],  _32550, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_25820],
+;           [_25826],  _25810, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_21278],
+;           [_21284],  _21268, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_125020,_125026],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_95692,_95698],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_59764],
+;           [_59770],  _59754, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_46696],
+;           [_46702],  _46686, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_40476],
+;           [_40482],  _40466, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_28702],
+;           [_28708],  _28692, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_32116,_32122],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_111650,_111656],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_76852],
+;           [_76858],  _76842, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_64690],
+;           [_64696],  _64680, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_58654],
+;           [_58660],  _58644, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_46008],
+;           [_46014],  _45998, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48510,_48516],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_127774,_127780],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_89344],
+;           [_89350],  _89334, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_77644],
+;           [_77650],  _77634, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_71512],
+;           [_71518],  _71502, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_59824],
+;           [_59830],  _59814, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_62610,_62616],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_35194,_35200],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_108742],
+;           [_108748],  _108732, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_99032],
+;           [_99038],  _99022, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_89176],
+;           [_89182],  _89166, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_77868],
+;           [_77874],  _77858, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_99396,_99402],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_70918,_70924],Pr),
+;             -1,
+;             [ 634002433-pr(['Number','Number'],'Bool'),
+;               634002433-pr(['Number','Number'],'Bool')]))
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_38192],
+;           [_38198],  _38182, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_28516],
+;           [_28522],  _28506, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+Script done on 2025-02-24 15:07:56+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/method_selection_tests.metta" --halt=true\033[0m

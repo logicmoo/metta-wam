@@ -59,7 +59,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:52:10+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:08:04+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] ]
 P;HTML|
@@ -141,7 +141,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.10 milliseconds) 
+; took 0.000963 secs. (962.79 microseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
@@ -169,7 +169,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.13 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
@@ -183,16 +183,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify user knowledge bases exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (User $18130 $18136) $18130) (Alice Bob))
+>!(assertEqualToResult (match &test-space (User $18194 $18200) $18194) (Alice Bob))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000242 secs. (242.49 microseconds) 
+; took 0.000250 secs. (250.16 microseconds) 
 
-!(assertEqualToResult (match &test-space (User $26672 $26678) $26672) (Alice Bob))
+!(assertEqualToResult (match &test-space (User $26760 $26766) $26760) (Alice Bob))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -219,7 +219,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.000965 secs. (965.40 microseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -247,7 +247,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.01 milliseconds) 
+; took 0.000985 secs. (984.72 microseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -261,16 +261,40 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data written to Alice's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Alice (Age $22622) (Age Alice $22622)) (Age Alice 20))
+>!(assertEqualToResult (read-user Alice (Age $22714) (Age Alice $22714)) (Age Alice 20))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_11666,_11672],
+;           [_11678,_11684],  _11656, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_19046,_19052],
+;           [_19058,_19064],  _19036, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_21780,_21786],
+;           [_21792,_21798],  _21770, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.28 milliseconds) 
+; took 0.469 secs. (468.70 milliseconds) 
 
-!(assertEqualToResult (read-user Alice (Age $43450) (Age Alice $43450)) (Age Alice 20))
+!(assertEqualToResult (read-user Alice (Age $54014) (Age Alice $54014)) (Age Alice 20))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -283,16 +307,48 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Age Alice 20))) ('~nExpected: ' (Age Alice 20)))
 </span>;;; Test: Verify data written to Bob's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Bob (Age $52922) (Age Bob $52922)) (Age Bob 22))
+>!(assertEqualToResult (read-user Bob (Age $63486) (Age Bob $63486)) (Age Bob 22))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_46946,_46952],
+;           [_8984,_8990],  _8962, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_8970,_8976],
+;           [_8982,_8988],  _8960, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_8248,_8254],
+;           [_8260,_8266],  _8238, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_8250,_8256],
+;           [_8262,_8268],  _8240, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.16 milliseconds) 
+; took 0.627 secs. (627.24 milliseconds) 
 
-!(assertEqualToResult (read-user Bob (Age $13496) (Age Bob $13496)) (Age Bob 22))
+!(assertEqualToResult (read-user Bob (Age $39068) (Age Bob $39068)) (Age Bob 22))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -315,17 +371,17 @@ Deterministic: <span class="ansi33"
  
 </span><span class="ansi38-255165000"
 > (= (write-partition $name $data)  
-  (let $36914 
+  (let $62486 
     (match &test-space 
-      (Partition $name $36956) $36956) 
-    (add-atom $36914 $data)))
+      (Partition $name $62528) $62528) 
+    (add-atom $3030 $data)))
  
 </span><span class="ansi38-255165000"
-> (= (read-partition $name $query $50332)  
-  (let $50350 
+> (= (read-partition $name $query $17322)  
+  (let $17340 
     (match &test-space 
-      (Partition $name $50392) $50392) 
-    (match $50350 $query $50332)))
+      (Partition $name $17382) $17382) 
+    (match $17340 $query $17322)))
  
 </span>;;; Test 3: Add partitioned knowledge bases
 <span class="ansi38-013099040"
@@ -348,16 +404,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify partitions exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (Partition $23834 $23840) $23834) (People Games))
+>!(assertEqualToResult (match &test-space (Partition $54140 $54146) $54140) (People Games))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000202 secs. (202.47 microseconds) 
+; took 0.000235 secs. (234.96 microseconds) 
 
-!(assertEqualToResult (match &test-space (Partition $32380 $32386) $32380) (People Games))
+!(assertEqualToResult (match &test-space (Partition $62710 $62716) $62710) (People Games))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -388,16 +444,48 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data in People partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition People (Friend $16908 $16914) (Friend $16908 $16914)) (Friend Bob Alice))
+>!(assertEqualToResult (read-partition People (Friend $49842 $49848) (Friend $49842 $49848)) (Friend Bob Alice))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Friend',
+;           2,
+;           [_38780,_38786],
+;           [_38792,_38798],  _38770, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Friend',
+;           2,
+;           [_41448,_41454],
+;           [_41460,_41466],  _41438, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Friend',
+;           2,
+;           [_8272,_8278],
+;           [_8284,_8290],  _8262, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Friend',
+;           2,
+;           [_8270,_8276],
+;           [_8282,_8288],  _8260, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.11 milliseconds) 
+; took 0.622 secs. (622.06 milliseconds) 
 
-!(assertEqualToResult (read-partition People (Friend $38232 $38238) (Friend $38232 $38238)) (Friend Bob Alice))
+!(assertEqualToResult (read-partition People (Friend $35568 $35574) (Friend $35568 $35574)) (Friend Bob Alice))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -410,16 +498,48 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))
 </span>;;; Test: Verify data in Games partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition Games (GameRole $47572) (GameRole $47572)) (GameRole Predator))
+>!(assertEqualToResult (read-partition Games (GameRole $44908) (GameRole $44908)) (GameRole Predator))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'GameRole',
+;           1,
+;           [_21728],
+;           [_21734],  _21718, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'GameRole',
+;           1,
+;           [_11058],
+;           [_11064],  _11048, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'GameRole',
+;           1,
+;           [_8076],
+;           [_8082],  _8066, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'GameRole',
+;           1,
+;           [_8054],
+;           [_8060],  _8044, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.12 milliseconds) 
+; took 0.454 secs. (453.79 milliseconds) 
 
-!(assertEqualToResult (read-partition Games (GameRole $6226) (GameRole $6226)) (GameRole Predator))
+!(assertEqualToResult (read-partition Games (GameRole $25542) (GameRole $25542)) (GameRole Predator))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -457,7 +577,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))]
 [(Error ('~nGot: ' ((GameRole Predator))) ('~nExpected: ' (GameRole Predator)))]
 
-Script done on 2025-02-22 20:52:11+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:08:06+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

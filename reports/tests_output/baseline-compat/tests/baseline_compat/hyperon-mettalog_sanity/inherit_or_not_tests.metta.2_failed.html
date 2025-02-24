@@ -41,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:49:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:04:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta] ]
 P;HTML|
@@ -86,9 +86,9 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000309 secs. (308.56 microseconds) 
+; took 0.000307 secs. (306.76 microseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $14806 $14812) ($14806 $14812)) Atom &new-space) ())
+!(assertEqualToResult (metta (match &self (likes $14830 $14836) ($14830 $14836)) Atom &new-space) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -103,9 +103,17 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           foo,
+;           1,
+;           [_8044],
+;           [_8050],  _8034, Function_declaration_implNew_spaceFooC91_c124_c931, Function_declaration_implNew_spaceFooC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.70 milliseconds) 
+; took 0.121 secs. (120.87 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) ((foo 1)))
 
@@ -130,16 +138,48 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' now returns (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $62332 $62338) ($62332 $62338)) Atom &new-space) ((John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $51858 $51864) ($51858 $51864)) Atom &new-space) ((John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_23126],
+;           [_23132],  _23116, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_13558],
+;           [_13564],  _13548, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_8336],
+;           [_8342],  _8326, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_46922],
+;           [_8316],  _8300, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.91 milliseconds) 
+; took 0.453 secs. (453.18 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $20124 $20130) ($20124 $20130)) Atom &new-space) ((John Jane)))
+!(assertEqualToResult (metta (match &self (likes $23884 $23890) ($23884 $23890)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -151,8 +191,8 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a new definition of foo to &new-space
 <span class="ansi38-013099040"
->!(add-atom &new-space (= (foo $29418)  
-  (+ $29418 1)))
+>!(add-atom &new-space (= (foo $33178)  
+  (+ $33178 1)))
 
 </span><span class="ansi38-255165000"
 > (= (foo $x)  
@@ -170,7 +210,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000759 secs. (759.16 microseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -194,16 +234,80 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' returns both (John Jess) and (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $14646 $14652) ($14646 $14652)) Atom &new-space) ((John Jess) (John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $18952 $18958) ($18952 $18958)) Atom &new-space) ((John Jess) (John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_9546],
+;           [_9552],  _9536, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_42548],
+;           [_42554],  _42538, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_37628],
+;           [_37634],  _37618, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_24226],
+;           [_24232],  _24216, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_24288],
+;           [_24294],  _24278, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_16320],
+;           [_16326],  _16310, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_8546],
+;           [_8552],  _8536, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_8522],
+;           [_8528],  _8512, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.05 milliseconds) 
+; took 0.921 secs. (921.33 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $46110 $46116) ($46110 $46116)) Atom &new-space) ((John Jess) (John Jane)))
+!(assertEqualToResult (metta (match &self (likes $26228 $26234) ($26228 $26234)) Atom &new-space) ((John Jess) (John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -222,7 +326,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.04 milliseconds) 
+; took 0.004 secs. (4.20 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -253,7 +357,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000750 secs. (749.78 microseconds) 
+; took 0.000959 secs. (959.16 microseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -267,16 +371,48 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' now returns only (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $54876 $54882) ($54876 $54882)) Atom &new-space) ((John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $33092 $33098) ($33092 $33098)) Atom &new-space) ((John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_8986],
+;           [_8992],  _8976, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&new-space',
+;           'John',
+;           1,
+;           [_8962],
+;           [_8968],  _8952, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_47750],
+;           [_8440],  _8424, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_33042],
+;           [_33048],  _33032, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.00 milliseconds) 
+; took 0.460 secs. (460.47 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $15060 $15066) ($15060 $15066)) Atom &new-space) ((John Jane)))
+!(assertEqualToResult (metta (match &self (likes $4130 $4136) ($4130 $4136)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -311,7 +447,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-22 20:49:58+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:04:39+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

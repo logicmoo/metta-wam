@@ -50,7 +50,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:42:42+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:50:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] ]
 P;HTML|
@@ -101,7 +101,7 @@ Script started on 2025-02-22 20:42:42+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000850 secs. (849.69 microseconds) 
+; took 0.004 secs. (4.40 milliseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -121,7 +121,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000899 secs. (899.11 microseconds) 
+; took 0.004 secs. (3.64 milliseconds) 
 
 !(assertEqual (get-type (+ 5 7)) Number)
 
@@ -142,7 +142,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000336 secs. (336.35 microseconds) 
+; took 0.000277 secs. (277.06 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -164,7 +164,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000854 secs. (854.17 microseconds) 
+; took 0.000442 secs. (442.04 microseconds) 
 
 !(assertEqualToResult (get-type (+ 5 "4")) ())
 
@@ -184,7 +184,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000488 secs. (487.57 microseconds) 
+; took 0.000349 secs. (349.45 microseconds) 
 
 !(assertEqualToResult (get-type (+ -)) ())
 
@@ -208,7 +208,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000302 secs. (302.43 microseconds) 
+; took 0.000239 secs. (238.98 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -238,7 +238,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000514 secs. (513.55 microseconds) 
+; took 0.000357 secs. (357.42 microseconds) 
 
 !(assertEqual (get-type (Left 5)) Either)
 
@@ -267,7 +267,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000789 secs. (789.35 microseconds) 
+; took 0.000483 secs. (482.90 microseconds) 
 
 !(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -288,7 +288,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000650 secs. (649.95 microseconds) 
+; took 0.000371 secs. (371.20 microseconds) 
 
 !(assertEqualToResult (get-type (isLeft 5)) ())
 
@@ -319,21 +319,61 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_28328],
+;           [_28334],  _28318, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_20028],
+;           [_20034],  _20018, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_8100],
+;           [_8106],  _8090, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_7616],
+;           [_7622],  _7606, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_41510],
+;           [_41516],  _41500, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.80 milliseconds) 
+; took 0.553 secs. (552.69 milliseconds) 
 
 !(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (EitherP $24682) (EitherP $24700)) 
+      ( (EitherP $17536) (EitherP $17554)) 
       ( (EitherP Number))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_19100,[])),'[|]'('[|]'('EitherP','[|]'(_19082,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_3280,[])),'[|]'('[|]'('EitherP','[|]'(_3262,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((EitherP $30606) (EitherP $30624))) ('~nExpected: ' ((EitherP Number))))
+>(Error ('~nGot: ' ((EitherP $23460) (EitherP $23478))) ('~nExpected: ' ((EitherP Number))))
 </span><span class="ansi38-255165000"
 > (: Pair (-> $a $b Type))
  
@@ -346,22 +386,86 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_23118,_23124],
+;           [_23130,_23136],  _23108, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_26904,_26910],
+;           [_26916,_26922],  _26894, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_36082,_36088],
+;           [_36094,_36100],  _36072, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_37324,_37330],
+;           [_37336,_37342],  _37314, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_31348],
+;           [_31354],  _31338, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_20348],
+;           [_20354],  _20338, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_26190,_26196],
+;           [_26202,_26208],  _26180, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_35376,_35382],
+;           [_35388,_35394],  _35366, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.09 milliseconds) 
+; took 1.163 secs. (1163.44 milliseconds) 
 
 !(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Pair $13562 $13568) (Pair $13586 $13592)) 
+      ( (Pair $8422 $8428) (Pair $8446 $8452)) 
       ( (Pair 
           (EitherP Number) String))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3438,'[|]'(_3444,[]))),'[|]'('[|]'('Pair','[|]'(_3414,'[|]'(_3420,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3478,'[|]'(_3484,[]))),'[|]'('[|]'('Pair','[|]'(_3454,'[|]'(_3460,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Pair $19656 $19662) (Pair $19680 $19686))) ('~nExpected: ' ((Pair (EitherP Number) String))))
+>(Error ('~nGot: ' ((Pair $14516 $14522) (Pair $14540 $14546))) ('~nExpected: ' ((Pair (EitherP Number) String))))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Recursively parameterized types
@@ -381,66 +485,178 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_8232],
+;           [_8238],  _8222, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_38484],
+;           [_38490],  _38474, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_30132],
+;           [_30138],  _30122, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_17858],
+;           [_17864],  _17848, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_7762],
+;           [_7768],  _7752, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_46988],
+;           [_7742],  _7726, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.28 milliseconds) 
+; took 0.663 secs. (663.05 milliseconds) 
 
 !(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $60324) (List $60342)) 
+      ( (List $23104) (List $23122)) 
       ( (List Number))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_54742,[])),'[|]'('[|]'('List','[|]'(_54724,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_3406,[])),'[|]'('[|]'('List','[|]'(_3388,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $4136) (List $4154))) ('~nExpected: ' ((List Number))))
+>(Error ('~nGot: ' ((List $29026) (List $29044))) ('~nExpected: ' ((List Number))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_8166],
+;           [_8172],  _8156, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_43198],
+;           [_43204],  _43188, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_37406],
+;           [_37412],  _37396, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_20340],
+;           [_20346],  _20330, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.61 milliseconds) 
+; took 0.448 secs. (447.93 milliseconds) 
 
 !(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $30508) (List $30526)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_28592,[])),'[|]'('[|]'('List','[|]'(_28574,[])),[])),[])
+      ( (List $53196) (List $53214)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_51280,[])),'[|]'('[|]'('List','[|]'(_51262,[])),[])),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $36334) (List $36352))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((List $59022) (List $59040))) ('~nExpected: ' ()))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `let` can be convenient to extract information from `get-type` results
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let (List $39792) (get-type (Cons 5 (Cons 6 Nil))) $39792) Number)
+>!(assertEqual (let (List $62480) (get-type (Cons 5 (Cons 6 Nil))) $62480) Number)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_27418],
+;           [_27424],  _27408, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_17948],
+;           [_17954],  _17938, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_13030],
+;           [_13036],  _13020, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_9128],
+;           [_9134],  _9118, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.80 milliseconds) 
+; took 0.461 secs. (461.48 milliseconds) 
 
-!(assertEqual (let (List $3900) (get-type (Cons 5 (Cons 6 Nil))) $3900) Number)
+!(assertEqual (let (List $32554) (get-type (Cons 5 (Cons 6 Nil))) $32554) Number)
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($5644 $5650) 
+      ($33562 $33568) 
       (Number)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_3694{vn = ...},'[|]'(_3674{vn = ...},[])),'[|]'('Number',[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_31514{vn = ...},'[|]'(_31492{vn = ...},[])),'[|]'('Number',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($11668 $11674)) ('~nExpected: ' (Number)))
+>(Error ('~nGot: ' ($39586 $39592)) ('~nExpected: ' (Number)))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta 0 ]
 <span class="ansi1"
@@ -461,13 +677,13 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((EitherP $31638) (EitherP $31656))) ('~nExpected: ' ((EitherP Number))))]
-[(Error ('~nGot: ' ((Pair $20694 $20700) (Pair $20718 $20724))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
-[(Error ('~nGot: ' ((List $5278) (List $5296))) ('~nExpected: ' ((List Number))))]
-[(Error ('~nGot: ' ((List $37360) (List $37378))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ($12692 $12698)) ('~nExpected: ' (Number)))]
+[(Error ('~nGot: ' ((EitherP $24492) (EitherP $24510))) ('~nExpected: ' ((EitherP Number))))]
+[(Error ('~nGot: ' ((Pair $15554 $15560) (Pair $15578 $15584))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
+[(Error ('~nGot: ' ((List $30056) (List $30074))) ('~nExpected: ' ((List Number))))]
+[(Error ('~nGot: ' ((List $60048) (List $60066))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ($40610 $40616)) ('~nExpected: ' (Number)))]
 
-Script done on 2025-02-22 20:42:43+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:50:34+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
