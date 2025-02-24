@@ -17,7 +17,6 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -42,7 +41,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:08:11+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 20:39:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1341-146.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta] ]
 P;HTML|
@@ -52,13 +51,13 @@ Script started on 2025-02-24 15:08:11+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                       [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[(Error (assertEqualToResult (metta (match ModuleSpace(GroundingSpace-top) (likes $x $y) ($x $y)) Atom GroundingSpace-0x5579638100e8) ()) " ]
+;                       [ = 2 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x563bf1f40fd8) ()) " ]
 P;HTML|
 ;                       [ = 2 "Expected: []" ]
 P;HTML|
 ;                        [ = 2 "Got: [(John Jess)]" ]
 P;HTML|
-;                        [ = 3 "Excessive results: (John Jess))]" ]
+;                        [ = 3 "Excessive result: (John Jess))]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/inherit_or_not_tests.metta]
 
@@ -87,7 +86,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000328 secs. (327.58 microseconds) 
+; took 0.000347 secs. (346.61 microseconds) 
 
 !(assertEqualToResult (metta (match &self (likes $14830 $14836) ($14830 $14836)) Atom &new-space) ())
 
@@ -104,28 +103,17 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.02</h3>
-<span class="ansi37"
->predicate_behavior(_33028,foo,1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (foo 1) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store foo 2 $34294 $34296]]
-<span class="ansi37"
->transpiler_clause_store(foo,2,_35230,_35232,_35234,_35236,_35238,_35240,_35242)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__foo 2 ]]
-<span class="ansi37"
->function_declaration_scores('&self',foo,1,[_36264],['Any'],'AnyRet',[+,_36264,2],_returnVal,3+8)</span>
-(ist &self (= (foo $37390)  
-  (+ $37390 2)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           foo,
 ;           1,
-;           [_8048],
-;           [_8054],  _8038, Function_declaration_implNew_spaceFooC91_c124_c931, Function_declaration_implNew_spaceFooC91_c124_c93, Impl)</span>)
+;           [_8044],
+;           [_8050],  _8034, Function_declaration_implNew_spaceFooC91_c124_c931, Function_declaration_implNew_spaceFooC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.126 secs. (125.91 milliseconds) 
+; took 0.120 secs. (119.50 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) ((foo 1)))
 
@@ -150,166 +138,48 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' now returns (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $56732 $56738) ($56732 $56738)) Atom &new-space) ((John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $51858 $51864) ($51858 $51864)) Atom &new-space) ((John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.03</h3>
-<span class="ansi37"
->predicate_behavior(_8372,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $9452 $9454]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_10388,_10390,_10392,_10394,_10396,_10398,_10400)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_19782],
-;           [_19788],  _19772, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8896],
-;           [_8902],  _8886, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_27928,'John',1,_27934,_27936,_27938,_27940,_returnVal,_27944)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_36676],
-;           [_36682],  _36666, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_14198],
-;           [_14204],  _14188, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_23992,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_33088,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_60122,'John',1,_60128,_60130,_60132,_60134,_60136,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_60268],_60272]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_23798],
-;           [_23804],  _23788, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+;           [_23126],
+;           [_23132],  _23116, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_14856],
-;           [_14862],  _14846, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_51018,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $52098 $52100]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_53034,_53036,_53038,_53040,_53042,_53044,_53046)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8396],
-;           [_8402],  _8386, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_40392],
-;           [_40398],  _40382, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_9384,'John',1,_9390,_9392,_9394,_9396,_returnVal,_9400)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_18252],
-;           [_18258],  _18242, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8342],
-;           [_8348],  _8332, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_8322,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_16858,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_43892,'John',1,_43898,_43900,_43902,_43904,_43906,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_44038],_44042]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'John',
-;           1,
-;           [_8318],
-;           [_8324],  _8308, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_13558],
+;           [_13564],  _13548, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_43350],
-;           [_43356],  _43340, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_8336],
+;           [_8342],  _8326, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_46922],
+;           [_8316],  _8300, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.531 secs. (1531.32 milliseconds) 
+; took 0.452 secs. (452.40 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $19952 $19958) ($19952 $19958)) Atom &new-space) ((John Jane)))
+!(assertEqualToResult (metta (match &self (likes $23884 $23890) ($23884 $23890)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -321,8 +191,8 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Add a new definition of foo to &new-space
 <span class="ansi38-013099040"
->!(add-atom &new-space (= (foo $29246)  
-  (+ $29246 1)))
+>!(add-atom &new-space (= (foo $33178)  
+  (+ $33178 1)))
 
 </span><span class="ansi38-255165000"
 > (= (foo $x)  
@@ -340,7 +210,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.17 milliseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -364,70 +234,11 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' returns both (John Jess) and (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $14686 $14692) ($14686 $14692)) Atom &new-space) ((John Jess) (John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $18952 $18958) ($18952 $18958)) Atom &new-space) ((John Jess) (John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.05</h3>
-<span class="ansi37"
->predicate_behavior(_26698,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $27778 $27780]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_28714,_28716,_28718,_28720,_28722,_28724,_28726)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_38226],
-;           [_38232],  _38216, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_16790],
-;           [_16796],  _16780, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_44714,'John',1,_44720,_44722,_44724,_44726,_returnVal,_44730)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_9576],
-;           [_9582],  _9566, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_36254],
-;           [_36260],  _36244, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_45104,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_9490,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_31464,'John',1,_31470,_31472,_31474,_31476,_31478,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_31610],_31614]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
@@ -441,150 +252,32 @@ Deterministic: <span class="ansi33"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_44302],
-;           [_44308],  _44292, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_26562,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $27642 $27644]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_28578,_28580,_28582,_28584,_28586,_28588,_28590)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_38222],
-;           [_38228],  _38212, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_16814],
-;           [_16820],  _16804, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_44738,'John',1,_44744,_44746,_44748,_44750,_returnVal,_44754)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_9600],
-;           [_9606],  _9590, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_36278],
-;           [_36284],  _36268, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_45154,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_9514,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_31488,'John',1,_31494,_31496,_31498,_31500,_31502,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_31634],_31638]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'John',
-;           1,
-;           [_45858],
-;           [_45864],  _9558, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_42548],
+;           [_42554],  _42538, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_34196],
-;           [_34202],  _34186, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_37628],
+;           [_37634],  _37618, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->predicate_behavior(_8542,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jess) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $9622 $9624]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_10558,_10560,_10562,_10564,_10566,_10568,_10570)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( John,
+>( '&top',
 ;           'John',
 ;           1,
-;           [_20008],
-;           [_20014],  _19998, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_24226],
+;           [_24232],  _24216, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_9122],
-;           [_9128],  _9112, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_28290,'John',1,_28296,_28298,_28300,_28302,_returnVal,_28306)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_37386],
-;           [_37392],  _37376, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_14678],
-;           [_14684],  _14668, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_25160,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_34370,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_61404,'John',1,_61410,_61412,_61414,_61416,_61418,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_61550],_61554]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_24252],
-;           [_24258],  _24242, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+;           [_24288],
+;           [_24294],  _24278, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -594,65 +287,6 @@ Deterministic: <span class="ansi33"
 ;           [_16320],
 ;           [_16326],  _16310, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->predicate_behavior(_52440,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jess) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $53520 $53522]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_54456,_54458,_54460,_54462,_54464,_54466,_54468)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8606],
-;           [_8612],  _8596, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_42700],
-;           [_42706],  _42690, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_14554,'John',1,_14560,_14562,_14564,_14566,_returnVal,_14570)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_23410],
-;           [_23416],  _23400, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8550],
-;           [_8556],  _8540, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_14362,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_23284,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_50318,'John',1,_50324,_50326,_50328,_50330,_50332,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_50464],_50468]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
@@ -666,14 +300,14 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_8520],
-;           [_8526],  _8510, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_8522],
+;           [_8528],  _8512, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 3.12 seconds.
+; took 0.923 secs. (922.52 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $25274 $25280) ($25274 $25280)) Atom &new-space) ((John Jess) (John Jane)))
+!(assertEqualToResult (metta (match &self (likes $26228 $26234) ($26228 $26234)) Atom &new-space) ((John Jess) (John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -690,24 +324,9 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.06</h3>
-<span class="ansi37"
->predicate_behavior(_44366,foo,1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (foo 1) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store foo 2 $45632 $45634]]
-<span class="ansi37"
->transpiler_clause_store(foo,2,_46568,_46570,_46572,_46574,_46576,_46578,_46580)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__foo 2 ]]
-<span class="ansi37"
->function_declaration_scores('&self',foo,1,[_48068],['Any'],'AnyRet',[+,_48068,2],_returnVal,3+8)</span>
-<span class="ansi37"
->function_declaration_scores('&new-space',foo,1,[_48238],['Any'],'AnyRet',[+,_48238,1],_returnVal,3+8)</span>
-(ist &self (= (foo $49598)  
-  (+ $49598 2)))
-(ist &new-space (= (foo $49626)  
-  (+ $49626 1)))
 ; 
 ; EVAL TEST
-; took 0.013 secs. (13.44 milliseconds) 
+; took 0.004 secs. (4.22 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -738,7 +357,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000930 secs. (930.07 microseconds) 
+; took 0.001 secs. (1.02 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -752,166 +371,48 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test that matching 'likes' now returns only (John Jane)
 <span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $38730 $38736) ($38730 $38736)) Atom &new-space) ((John Jane)))
+>!(assertEqualToResult (metta (match &self (likes $33078 $33084) ($33078 $33084)) Atom &new-space) ((John Jane)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.INHERIT-OR-NOT-TESTS.08</h3>
-<span class="ansi37"
->predicate_behavior(_50802,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $51882 $51884]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_52818,_52820,_52822,_52824,_52826,_52828,_52830)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_9042],
-;           [_9048],  _9032, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_42496],
-;           [_42502],  _42486, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_14992,'John',1,_14998,_15000,_15002,_15004,_returnVal,_15008)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_24150],
-;           [_24156],  _24140, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_9006],
-;           [_9012],  _8996, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_16502,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_25546,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_52580,'John',1,_52586,_52588,_52590,_52592,_52594,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_52726],_52730]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_16294],
-;           [_16300],  _16284, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
+;           [_8986],
+;           [_8992],  _8976, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&new-space',
 ;           'John',
 ;           1,
-;           [_8982],
-;           [_8988],  _8972, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_43668,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (John Jane) &new-space) ==> (-> Any AnyRet))
-[unknown [transpiler_predicate_store John 2 $44748 $44750]]
-<span class="ansi37"
->transpiler_clause_store('John',2,_45684,_45686,_45688,_45690,_45692,_45694,_45696)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_1__John 2 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_8496],
-;           [_8502],  _8486, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_34400],
-;           [_34406],  _34390, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_62324,'John',1,_62330,_62332,_62334,_62336,_returnVal,_62340)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_13346],
-;           [_13352],  _13336, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John',
-;           1,
-;           [_48528],
-;           [_48534],  _8450, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_8438,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( John,
-;           'John', 1,_14714,Function_declaration_impl4,
-;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_41748,'John',1,_41754,_41756,_41758,_41760,_41762,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['John'|_41894],_41898]=missing('[|]'/2)</span>
-(ist &self (likes John Jess))
-(ist &new-space (likes John Jane))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'John',
-;           1,
-;           [_8436],
-;           [_8442],  _8426, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_8962],
+;           [_8968],  _8952, Function_declaration_implNew_spaceJohnC91_c124_c931, Function_declaration_implNew_spaceJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_40928],
-;           [_40934],  _40918, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_47750],
+;           [_8440],  _8424, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_33042],
+;           [_33048],  _33032, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.555 secs. (1555.13 milliseconds) 
+; took 0.461 secs. (460.66 milliseconds) 
 
-!(assertEqualToResult (metta (match &self (likes $17134 $17140) ($17134 $17140)) Atom &new-space) ((John Jane)))
+!(assertEqualToResult (metta (match &self (likes $4130 $4136) ($4130 $4136)) Atom &new-space) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -946,7 +447,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-24 15:08:18+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 20:39:15+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

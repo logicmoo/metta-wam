@@ -14,9 +14,9 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -36,7 +36,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:54:34+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 20:28:25+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1341-146.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta] ]
 P;HTML|
@@ -89,7 +89,7 @@ Script started on 2025-02-24 14:54:34+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.94 milliseconds) 
+; took 0.002 secs. (1.89 milliseconds) 
 
 !(assertEqualToResult (get-type insert) ((-> [ % _a_3516 ] (List [ % _a_3516 ]) (List [ % _a_3516 ]))))
 
@@ -126,246 +126,110 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.02</h3>
-<span class="ansi37"
->predicate_behavior(_51554,'Cons',2,[[->,_51576,['List',_51576],['List',_51576]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $53288 (List $53288) (List $53288)))
-[unknown [transpiler_predicate_store Cons 3 $53378 $53380]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_54314,_54316,_54318,_54320,_54322,_54324,_54326)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_30908,_30914],
-;           [_30920,_30926],  _30898, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_59224,'Cons',2,_59230,_59232,_59234,_59236,_returnVal,_59240)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_32752,_32758],
-;           [_32764,_32770],  _32742, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_32750,_32756],
-;           [_32762,_32768],  _32740, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_41958,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_49286,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_21696,'Cons',2,_21702,_21704,_21706,_21708,_21710,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_21842],_21846]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $22656 (List $22656) (List $22656))))
-(ist &self (= (insert $22896 (Cons $22914 $22920))  
-  (if 
-    (< $22896 $22914) 
-    (Cons $22896 
-      (Cons $22914 $22920)) 
-    (Cons $22914 
-      (insert $22896 $22920)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_8744,_8750],
-;           [_8756,_8762],  _8734, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_24782,_24788],
+;           [_24794,_24800],  _24772, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_8760,_8766],
-;           [_8772,_8778],  _8750, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_40042,'Cons',2,[[->,_40064,['List',_40064],['List',_40064]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $41776 (List $41776) (List $41776)))
-[unknown [transpiler_predicate_store Cons 3 $41866 $41868]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_42802,_42804,_42806,_42808,_42810,_42812,_42814)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14938,_14944],
-;           [_14950,_14956],  _14928, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14452,_14458],
-;           [_14464,_14470],  _14442, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_42802,'Cons',2,_42808,_42810,_42812,_42814,_returnVal,_42818)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14906,_14912],
-;           [_14918,_14924],  _14896, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14420,_14426],
-;           [_14432,_14438],  _14410, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_25154,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_35002,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_62308,'Cons',2,_62314,_62316,_62318,_62320,_62322,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_62454],_62458]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $63268 (List $63268) (List $6066))))
-(ist &self (= (insert $6984 (Cons $7002 $7008))  
-  (if 
-    (< $6984 $7002) 
-    (Cons $6984 
-      (Cons $7002 $7008)) 
-    (Cons $7002 
-      (insert $6984 $7008)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_39038,_39044],
-;           [_39050,_39056],  _39028, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_38018,_38024],
+;           [_38030,_38036],  _38008, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_41042,_41048],
-;           [_41054,_41060],  _41032, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_40982,_40988],
+;           [_40994,_41000],  _40972, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->predicate_behavior(_21820,insert,2,[[->,_21842,['List',_21842],['List',_21842]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (insert 2 (Cons 1 Nil)) &top) ==> (-> $25634 (List $25634) (List $25634)))
-[unknown [transpiler_predicate_store insert 3 $25724 $25726]]
-<span class="ansi37"
->transpiler_clause_store(insert,3,_26660,_26662,_26664,_26666,_26668,_26670,_26672)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__insert 3 ]]
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_29516,'Nil'],[_29522,['List',_29522]],['List',_29522],['Cons',_29516,'Nil'],_returnVal,22+14)</span>
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_29928,['Cons',_29946,_29952]],[_29958,['List',_29958]],['List',_29958],[if,[<,_29928,_29946],['Cons',_29928,['Cons',_29946,_29952]],['Cons',_29946,[insert,_29928,_29952]]],_returnVal,22+30)</span>
-(ist &self (: insert (-> $30870 (List $30870) (List $30870))))
-(ist &self (= (insert $30868 Nil)  
-  (Cons $30868 Nil)))
-(ist &self (= (insert $31138 (Cons $31156 $31162))  
-  (if 
-    (< $31138 $31156) 
-    (Cons $31138 
-      (Cons $31156 $31162)) 
-    (Cons $31156 
-      (insert $31138 $31162)))))
-<span class="ansi37"
->predicate_behavior(_41864,'Cons',2,[[->,_41886,['List',_41886],['List',_41886]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $43598 (List $43598) (List $43598)))
-[unknown [transpiler_predicate_store Cons 3 $43688 $43690]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_44624,_44626,_44628,_44630,_44632,_44634,_44636)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
-;           [_18276,_18282],
-;           [_18288,_18294],  _18266, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_10118,_10124],
+;           [_10130,_10136],  _10108, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
-;           [_19548,_19554],
-;           [_19560,_19566],  _19538, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_14574,_14580],
+;           [_14586,_14592],  _14564, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->function_declaration_scores(_47898,'Cons',2,_47904,_47906,_47908,_47910,_returnVal,_47914)=missing(function_declaration_scores/9)</span>
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
-;           [_21356,_21362],
-;           [_21368,_21374],  _21346, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_25308,_25314],
+;           [_25320,_25326],  _25298, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
-;           [_22564,_22570],
-;           [_22576,_22582],  _22554, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_37848,_37854],
+;           [_37860,_37866],  _37838, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_34288,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+>( '&top',
+;           'Cons',
+;           2,
+;           [_46392,_46398],
+;           [_46404,_46410],  _9536, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_43496,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9544,_9550],
+;           [_9556,_9562],  _9534, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->function_declaration_impl(_17836,'Cons',2,_17842,_17844,_17846,_17848,_17850,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_17982],_17986]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $18796 (List $18796) (List $18796))))
-(ist &self (= (insert $19036 (Cons $19054 $19060))  
-  (if 
-    (< $19036 $19054) 
-    (Cons $19036 
-      (Cons $19054 $19060)) 
-    (Cons $19054 
-      (insert $19036 $19060)))))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_13454,_13460],
+;           [_13466,_13472],  _13444, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_20704,_20710],
+;           [_20716,_20722],  _20694, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_29616,_29622],
+;           [_29628,_29634],  _29606, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38774,_38780],
+;           [_38786,_38792],  _38764, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
@@ -382,657 +246,57 @@ Deterministic: <span class="ansi33"
 ;           [_10116,_10122],
 ;           [_10128,_10134],  _10106, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->predicate_behavior(_41544,'Cons',2,[[->,_41566,['List',_41566],['List',_41566]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $43278 (List $43278) (List $43278)))
-[unknown [transpiler_predicate_store Cons 3 $43368 $43370]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_44304,_44306,_44308,_44310,_44312,_44314,_44316)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_18266,_18272],
-;           [_18278,_18284],  _18256, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_19538,_19544],
-;           [_19550,_19556],  _19528, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_47888,'Cons',2,_47894,_47896,_47898,_47900,_returnVal,_47904)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_21334,_21340],
-;           [_21346,_21352],  _21324, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_22554,_22560],
-;           [_22566,_22572],  _22544, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_34278,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_43486,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_17826,'Cons',2,_17832,_17834,_17836,_17838,_17840,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_17972],_17976]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $18786 (List $18786) (List $18786))))
-(ist &self (= (insert $19026 (Cons $19044 $19050))  
-  (if 
-    (< $19026 $19044) 
-    (Cons $19026 
-      (Cons $19044 $19050)) 
-    (Cons $19044 
-      (insert $19026 $19050)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10090,_10096],
-;           [_10102,_10108],  _10080, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_15920,_15926],
+;           [_15932,_15938],  _15910, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10106,_10112],
-;           [_10118,_10124],  _10096, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_41758,'Cons',2,[[->,_41780,['List',_41780],['List',_41780]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $45572 (List $45572) (List $45572)))
-[unknown [transpiler_predicate_store Cons 3 $45662 $45664]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_46598,_46600,_46602,_46604,_46606,_46608,_46610)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_18996,_19002],
-;           [_19008,_19014],  _18986, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_18994,_19000],
-;           [_19006,_19012],  _18984, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_47344,'Cons',2,_47350,_47352,_47354,_47356,_returnVal,_47360)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_19266,_19272],
-;           [_19278,_19284],  _19256, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_19264,_19270],
-;           [_19276,_19282],  _19254, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_30596,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_40682,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_10356,'Cons',2,_10362,_10364,_10366,_10368,_10370,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_10502],_10506]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $11316 (List $11316) (List $11316))))
-(ist &self (= (insert $11556 (Cons $11574 $11580))  
-  (if 
-    (< $11556 $11574) 
-    (Cons $11556 
-      (Cons $11574 $11580)) 
-    (Cons $11574 
-      (insert $11556 $11580)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_43520,_43526],
-;           [_43532,_43538],  _43510, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_22682,_22688],
+;           [_22694,_22700],  _22672, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_9544,_9550],
-;           [_9556,_9562],  _9534, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_35038,'Cons',2,[[->,_35060,['List',_35060],['List',_35060]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $36772 (List $36772) (List $36772)))
-[unknown [transpiler_predicate_store Cons 3 $36862 $36864]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_37798,_37800,_37802,_37804,_37806,_37808,_37810)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_11798,_11804],
-;           [_11810,_11816],  _11788, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_12702,_12708],
-;           [_12714,_12720],  _12692, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_41052,'Cons',2,_41058,_41060,_41062,_41064,_returnVal,_41068)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14610,_14616],
-;           [_14622,_14628],  _14600, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_15888,_15894],
-;           [_15900,_15906],  _15878, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_28104,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_38974,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_8124,'Cons',2,_8130,_8132,_8134,_8136,_8138,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_8270],_8274]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $9084 (List $9084) (List $9084))))
-(ist &self (= (insert $9324 (Cons $9342 $9348))  
-  (if 
-    (< $9324 $9342) 
-    (Cons $9324 
-      (Cons $9342 $9348)) 
-    (Cons $9342 
-      (insert $9324 $9348)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_41976,_41982],
-;           [_41988,_41994],  _41966, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_35870,_35876],
+;           [_35882,_35888],  _35860, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10104,_10110],
-;           [_10116,_10122],  _10094, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_31310,'Cons',2,[[->,_31332,['List',_31332],['List',_31332]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $35124 (List $35124) (List $35124)))
-[unknown [transpiler_predicate_store Cons 3 $35214 $35216]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_36150,_36152,_36154,_36156,_36158,_36160,_36162)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9674,_9680],
-;           [_9686,_9692],  _9664, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9672,_9678],
-;           [_9684,_9690],  _9662, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_36552,'Cons',2,_36558,_36560,_36562,_36564,_returnVal,_36568)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9642,_9648],
-;           [_9654,_9660],  _9632, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9640,_9646],
-;           [_9652,_9658],  _9630, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_20110,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_30168,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_57474,'Cons',2,_57480,_57482,_57484,_57486,_57488,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_57620],_57624]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $58434 (List $58434) (List $58434))))
-(ist &self (= (insert $58674 (Cons $58692 $58698))  
-  (if 
-    (< $58674 $58692) 
-    (Cons $58674 
-      (Cons $58692 $58698)) 
-    (Cons $58692 
-      (insert $58674 $58698)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_38776,_38782],
-;           [_38788,_38794],  _38766, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_37210,_37216],
+;           [_37222,_37228],  _37200, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_41668,_41674],
-;           [_41680,_41686],  _41658, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_29190,'Cons',2,[[->,_29212,['List',_29212],['List',_29212]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $30924 (List $30924) (List $30924)))
-[unknown [transpiler_predicate_store Cons 3 $31014 $31016]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_31950,_31952,_31954,_31956,_31958,_31960,_31962)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10176,_10182],
-;           [_10188,_10194],  _10166, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10176,_10182],
-;           [_10188,_10194],  _10166, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_36674,'Cons',2,_36680,_36682,_36684,_36686,_returnVal,_36690)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10152,_10158],
-;           [_10164,_10170],  _10142, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10150,_10156],
-;           [_10162,_10168],  _10140, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_22518,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_33300,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_60606,'Cons',2,_60612,_60614,_60616,_60618,_60620,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_60752],_60756]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $61566 (List $61566) (List $61566))))
-(ist &self (= (insert $61806 (Cons $61824 $61830))  
-  (if 
-    (< $61806 $61824) 
-    (Cons $61806 
-      (Cons $7056 $7062)) 
-    (Cons $7056 
-      (insert $7038 $7062)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_40998,_41004],
-;           [_41010,_41016],  _40988, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_41074,_41080],
+;           [_41086,_41092],  _41064, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10098,_10104],
-;           [_10110,_10116],  _10088, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_29426,'Cons',2,[[->,_29448,['List',_29448],['List',_29448]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $33240 (List $33240) (List $33240)))
-[unknown [transpiler_predicate_store Cons 3 $33330 $33332]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_34266,_34268,_34270,_34272,_34274,_34276,_34278)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9662,_9668],
-;           [_9674,_9680],  _9652, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9660,_9666],
-;           [_9672,_9678],  _9650, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_34950,'Cons',2,_34956,_34958,_34960,_34962,_returnVal,_34966)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9630,_9636],
-;           [_9642,_9648],  _9620, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9628,_9634],
-;           [_9640,_9646],  _9618, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_19040,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_28980,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_56286,'Cons',2,_56292,_56294,_56296,_56298,_56300,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_56432],_56436]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $57246 (List $57246) (List $57246))))
-(ist &self (= (insert $57486 (Cons $57504 $57510))  
-  (if 
-    (< $57486 $57504) 
-    (Cons $57486 
-      (Cons $57504 $57510)) 
-    (Cons $57504 
-      (insert $57486 $57510)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_38770,_38776],
-;           [_38782,_38788],  _38760, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_41662,_41668],
-;           [_41674,_41680],  _41652, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_31046,'Cons',2,[[->,_31068,['List',_31068],['List',_31068]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $32780 (List $32780) (List $32780)))
-[unknown [transpiler_predicate_store Cons 3 $32870 $32872]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_33806,_33808,_33810,_33812,_33814,_33816,_33818)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8566,_8572],
-;           [_8578,_8584],  _8556, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8544,_8550],
-;           [_8556,_8562],  _8534, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_31824,'Cons',2,_31830,_31832,_31834,_31836,_returnVal,_31840)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8514,_8520],
-;           [_8526,_8532],  _8504, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8512,_8518],
-;           [_8524,_8530],  _8502, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_14706,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_23202,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_50508,'Cons',2,_50514,_50516,_50518,_50520,_50522,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_50654],_50658]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $51468 (List $51468) (List $51468))))
-(ist &self (= (insert $51708 (Cons $51726 $51732))  
-  (if 
-    (< $51708 $51726) 
-    (Cons $51708 
-      (Cons $51726 $51732)) 
-    (Cons $51726 
-      (insert $51708 $51732)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_26862,_26868],
-;           [_26874,_26880],  _26852, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_36246,_36252],
-;           [_36258,_36264],  _36236, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_10316,'Cons',2,[[->,_10338,['List',_10338],['List',_10338]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $14130 (List $14130) (List $14130)))
-[unknown [transpiler_predicate_store Cons 3 $14220 $14222]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_15156,_15158,_15160,_15162,_15164,_15166,_15168)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_41330,_41336],
-;           [_41342,_41348],  _41320, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36236,_36242],
-;           [_36248,_36254],  _36226, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64586,'Cons',2,_64592,_64594,_64596,_64598,_returnVal,_64602)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31070,_31076],
-;           [_31082,_31088],  _31060, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31272,_31278],
-;           [_31284,_31290],  _31262, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_40700,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_47554,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_19286,'Cons',2,_19292,_19294,_19296,_19298,_19300,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_19432],_19436]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $20246 (List $20246) (List $20246))))
-(ist &self (= (insert $20486 (Cons $20504 $20510))  
-  (if 
-    (< $20486 $20504) 
-    (Cons $20486 
-      (Cons $20504 $20510)) 
-    (Cons $20504 
-      (insert $20486 $20510)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_7974,_7980],
-;           [_7986,_7992],  _7964, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_7972,_7978],
-;           [_7984,_7990],  _7962, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_45446,_45452],
+;           [_45458,_45464],  _7946, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 12.19 seconds.
+; took 3.52 seconds.
 
 !(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -1052,171 +316,41 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.03</h3>
-<span class="ansi37"
->predicate_behavior(_53492,'Cons',2,[[->,_53514,['List',_53514],['List',_53514]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $55226 (List $55226) (List $55226)))
-[unknown [transpiler_predicate_store Cons 3 $55316 $55318]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_56252,_56254,_56256,_56258,_56260,_56262,_56264)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31226,_31232],
-;           [_31238,_31244],  _31216, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31224,_31230],
-;           [_31236,_31242],  _31214, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_59574,'Cons',2,_59580,_59582,_59584,_59586,_returnVal,_59590)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31194,_31200],
-;           [_31206,_31212],  _31184, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31192,_31198],
-;           [_31204,_31210],  _31182, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_40472,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_47388,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_19164,'Cons',2,_19170,_19172,_19174,_19176,_19178,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_19310],_19314]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $20124 (List $20124) (List $20124))))
-(ist &self (= (insert $20364 (Cons $20382 $20388))  
-  (if 
-    (< $20364 $20382) 
-    (Cons $20364 
-      (Cons $20382 $20388)) 
-    (Cons $20382 
-      (insert $20364 $20388)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_7830,_7836],
-;           [_7842,_7848],  _7820, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_15946,_15952],
+;           [_15958,_15964],  _15936, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_7828,_7834],
-;           [_7840,_7846],  _7818, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_34226,'Cons',2,[[->,_34248,['List',_34248],['List',_34248]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $35960 (List $35960) (List $35960)))
-[unknown [transpiler_predicate_store Cons 3 $36050 $36052]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_36986,_36988,_36990,_36992,_36994,_36996,_36998)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_7806,_7812],
-;           [_7818,_7824],  _7796, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_7780,_7786],
-;           [_7792,_7798],  _7770, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_31060,'Cons',2,_31066,_31068,_31070,_31072,_returnVal,_31076)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_7748,_7754],
-;           [_7760,_7766],  _7738, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_7746,_7752],
-;           [_7758,_7764],  _7736, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_12834,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_21452,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_48758,'Cons',2,_48764,_48766,_48768,_48770,_48772,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_48904],_48908]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $49718 (List $49718) (List $49718))))
-(ist &self (= (insert $49958 (Cons $49976 $49982))  
-  (if 
-    (< $49958 $49976) 
-    (Cons $49958 
-      (Cons $49976 $49982)) 
-    (Cons $49976 
-      (insert $49958 $49982)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_23346,_23352],
-;           [_23358,_23364],  _23336, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_18694,_18700],
+;           [_18706,_18712],  _18684, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_25974,_25980],
-;           [_25986,_25992],  _25964, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_25976,_25982],
+;           [_25988,_25994],  _25966, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_34902,_34908],
+;           [_34914,_34920],  _34892, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 2.03 seconds.
+; took 0.610 secs. (610.50 milliseconds) 
 
 !(assertEqual (Cons 1 Nil) (Cons 1 Nil))
 
@@ -1234,71 +368,6 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.04</h3>
-<span class="ansi37"
->predicate_behavior(_15398,'Cons',2,[[->,_15420,['List',_15420],['List',_15420]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $17132 (List $17132) (List $17132)))
-[unknown [transpiler_predicate_store Cons 3 $17222 $17224]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_18158,_18160,_18162,_18164,_18166,_18168,_18170)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_44062,_44068],
-;           [_44074,_44080],  _44052, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_41684,_41690],
-;           [_41696,_41702],  _41674, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_12452,'Cons',2,_12458,_12460,_12462,_12464,_returnVal,_12468)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_38324,_38330],
-;           [_38336,_38342],  _38314, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31876,_31882],
-;           [_31888,_31894],  _31866, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_41374,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_47976,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_19352,'Cons',2,_19358,_19360,_19362,_19364,_19366,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_19498],_19502]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $20312 (List $20312) (List $20312))))
-(ist &self (= (insert $20552 (Cons $20570 $20576))  
-  (if 
-    (< $20552 $20570) 
-    (Cons $20552 
-      (Cons $20570 $20576)) 
-    (Cons $20570 
-      (insert $20552 $20576)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
@@ -1315,171 +384,41 @@ Deterministic: <span class="ansi33"
 ;           [_7866,_7872],
 ;           [_7878,_7884],  _7856, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->predicate_behavior(_33326,'Cons',2,[[->,_33348,['List',_33348],['List',_33348]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $35060 (List $35060) (List $35060)))
-[unknown [transpiler_predicate_store Cons 3 $35150 $35152]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_36086,_36088,_36090,_36092,_36094,_36096,_36098)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8328,_8334],
-;           [_8340,_8346],  _8318, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8322,_8328],
-;           [_8334,_8340],  _8312, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_33370,'Cons',2,_33376,_33378,_33380,_33382,_returnVal,_33386)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8272,_8278],
-;           [_8284,_8290],  _8262, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
 ;           [_8270,_8276],
-;           [_8282,_8288],  _8260, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_14020,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_22942,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_50248,'Cons',2,_50254,_50256,_50258,_50260,_50262,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_50394],_50398]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $51208 (List $51208) (List $51208))))
-(ist &self (= (insert $51448 (Cons $51466 $51472))  
-  (if 
-    (< $51448 $51466) 
-    (Cons $51448 
-      (Cons $51466 $51472)) 
-    (Cons $51466 
-      (insert $51448 $51472)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_26500,_26506],
-;           [_26512,_26518],  _26490, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_8282,_8288],  _8260, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_35684,_35690],
-;           [_35696,_35702],  _35674, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_12652,'Cons',2,[[->,_12674,['List',_12674],['List',_12674]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $14386 (List $14386) (List $14386)))
-[unknown [transpiler_predicate_store Cons 3 $14476 $14478]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_15412,_15414,_15416,_15418,_15420,_15422,_15424)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_41556,_41562],
-;           [_41568,_41574],  _41546, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_37052,_37058],
-;           [_37064,_37070],  _37042, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_65402,'Cons',2,_65408,_65410,_65412,_65414,_returnVal,_65418)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_30820,_30826],
-;           [_30832,_30838],  _30810, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_30536,_30542],
-;           [_30548,_30554],  _30526, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_39692,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_44878,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_16060,'Cons',2,_16066,_16068,_16070,_16072,_16074,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_16206],_16210]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $17020 (List $17020) (List $17020))))
-(ist &self (= (insert $17260 (Cons $17278 $17284))  
-  (if 
-    (< $17260 $17278) 
-    (Cons $17260 
-      (Cons $17278 $17284)) 
-    (Cons $17278 
-      (insert $17260 $17284)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_7722,_7728],
-;           [_7734,_7740],  _7712, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_12076,_12082],
+;           [_12088,_12094],  _12066, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_7720,_7726],
-;           [_7732,_7738],  _7710, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_19704,_19710],
+;           [_19716,_19722],  _19694, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_22938,_22944],
+;           [_22950,_22956],  _22928, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 3.06 seconds.
+; took 0.919 secs. (918.69 milliseconds) 
 
 !(assertEqual (insert 1 Nil) (Cons 1 Nil))
 
@@ -1497,678 +436,137 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.05</h3>
-<span class="ansi37"
->predicate_behavior(_50006,'Cons',2,[[->,_50028,['List',_50028],['List',_50028]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $51740 (List $51740) (List $51740)))
-[unknown [transpiler_predicate_store Cons 3 $51830 $51832]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_52766,_52768,_52770,_52772,_52774,_52776,_52778)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_23468,_23474],
-;           [_23480,_23486],  _23458, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_21718,_21724],
-;           [_21730,_21736],  _21708, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_50068,'Cons',2,_50074,_50076,_50078,_50080,_returnVal,_50084)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_21210,_21216],
-;           [_21222,_21228],  _21200, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_19310,_19316],
-;           [_19322,_19328],  _19300, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_29794,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_39204,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_6762,'Cons',2,_6768,_6770,_6772,_6774,_6776,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_6908],_6912]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $7722 (List $7722) (List $7722))))
-(ist &self (= (insert $7962 (Cons $7980 $7986))  
-  (if 
-    (< $7962 $7980) 
-    (Cons $7962 
-      (Cons $7980 $7986)) 
-    (Cons $7980 
-      (insert $7962 $7986)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_39648,_39654],
-;           [_39660,_39666],  _39638, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_43876,_43882],
+;           [_43888,_43894],  _43866, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_43872,_43878],
-;           [_43884,_43890],  _43862, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_24066,'Cons',2,[[->,_24088,['List',_24088],['List',_24088]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $25800 (List $25800) (List $25800)))
-[unknown [transpiler_predicate_store Cons 3 $25890 $25892]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_26826,_26828,_26830,_26832,_26834,_26836,_26838)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9180,_9186],
-;           [_9192,_9198],  _9170, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9178,_9184],
-;           [_9190,_9196],  _9168, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_27442,'Cons',2,_27448,_27450,_27452,_27454,_returnVal,_27458)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9148,_9154],
-;           [_9160,_9166],  _9138, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9146,_9152],
-;           [_9158,_9164],  _9136, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_11936,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_22002,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_49308,'Cons',2,_49314,_49316,_49318,_49320,_49322,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_49454],_49458]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $50268 (List $50268) (List $50268))))
-(ist &self (= (insert $50508 (Cons $50526 $50532))  
-  (if 
-    (< $50508 $50526) 
-    (Cons $50508 
-      (Cons $50526 $50532)) 
-    (Cons $50526 
-      (insert $50508 $50532)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_26638,_26644],
-;           [_26650,_26656],  _26628, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_8736,_8742],
+;           [_8748,_8754],  _8726, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_38016,_38022],
-;           [_38028,_38034],  _38006, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_14992,insert,2,[[->,_15014,['List',_15014],['List',_15014]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (insert 1 (Cons 2 Nil)) &top) ==> (-> $18806 (List $18806) (List $18806)))
-[unknown [transpiler_predicate_store insert 3 $18896 $18898]]
-<span class="ansi37"
->transpiler_clause_store(insert,3,_19832,_19834,_19836,_19838,_19840,_19842,_19844)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__insert 3 ]]
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_22688,'Nil'],[_22694,['List',_22694]],['List',_22694],['Cons',_22688,'Nil'],_returnVal,22+14)</span>
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_23100,['Cons',_23118,_23124]],[_23130,['List',_23130]],['List',_23130],[if,[<,_23100,_23118],['Cons',_23100,['Cons',_23118,_23124]],['Cons',_23118,[insert,_23100,_23124]]],_returnVal,22+30)</span>
-(ist &self (: insert (-> $24042 (List $24042) (List $24042))))
-(ist &self (= (insert $24040 Nil)  
-  (Cons $24040 Nil)))
-(ist &self (= (insert $24310 (Cons $24328 $24334))  
-  (if 
-    (< $24310 $24328) 
-    (Cons $24310 
-      (Cons $24328 $24334)) 
-    (Cons $24328 
-      (insert $24310 $24334)))))
-<span class="ansi37"
->predicate_behavior(_34844,'Cons',2,[[->,_34866,['List',_34866],['List',_34866]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $36578 (List $36578) (List $36578)))
-[unknown [transpiler_predicate_store Cons 3 $36668 $36670]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_37604,_37606,_37608,_37610,_37612,_37614,_37616)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10464,_10470],
-;           [_10476,_10482],  _10454, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_12236,_12242],
-;           [_12248,_12254],  _12226, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_40586,'Cons',2,_40592,_40594,_40596,_40598,_returnVal,_40602)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14212,_14218],
-;           [_14224,_14230],  _14202, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_15844,_15850],
-;           [_15856,_15862],  _15834, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_28060,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_38930,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_8080,'Cons',2,_8086,_8088,_8090,_8092,_8094,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_8226],_8230]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $9040 (List $9040) (List $9040))))
-(ist &self (= (insert $9280 (Cons $9298 $9304))  
-  (if 
-    (< $9280 $9298) 
-    (Cons $9280 
-      (Cons $9298 $9304)) 
-    (Cons $9298 
-      (insert $9280 $9304)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_41932,_41938],
-;           [_41944,_41950],  _41922, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_9134,_9140],
+;           [_9146,_9152],  _9124, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10060,_10066],
-;           [_10072,_10078],  _10050, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_31266,'Cons',2,[[->,_31288,['List',_31288],['List',_31288]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $35080 (List $35080) (List $35080)))
-[unknown [transpiler_predicate_store Cons 3 $35170 $35172]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_36106,_36108,_36110,_36112,_36114,_36116,_36118)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9630,_9636],
-;           [_9642,_9648],  _9620, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9628,_9634],
-;           [_9640,_9646],  _9618, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_36508,'Cons',2,_36514,_36516,_36518,_36520,_returnVal,_36524)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9598,_9604],
-;           [_9610,_9616],  _9588, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9596,_9602],
-;           [_9608,_9614],  _9586, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_20024,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_29918,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_57224,'Cons',2,_57230,_57232,_57234,_57236,_57238,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_57370],_57374]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $58184 (List $58184) (List $58184))))
-(ist &self (= (insert $58424 (Cons $58442 $58448))  
-  (if 
-    (< $58424 $58442) 
-    (Cons $58424 
-      (Cons $58442 $58448)) 
-    (Cons $58442 
-      (insert $58424 $58448)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_38732,_38738],
-;           [_38744,_38750],  _38722, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_11490,_11496],
+;           [_11502,_11508],  _11480, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_41576,_41582],
-;           [_41588,_41594],  _41566, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_27354,'Cons',2,[[->,_27376,['List',_27376],['List',_27376]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $29088 (List $29088) (List $29088)))
-[unknown [transpiler_predicate_store Cons 3 $29178 $29180]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_30114,_30116,_30118,_30120,_30122,_30124,_30126)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10158,_10164],
-;           [_10170,_10176],  _10148, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10174,_10180],
-;           [_10186,_10192],  _10164, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_35282,'Cons',2,_35288,_35290,_35292,_35294,_returnVal,_35298)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10148,_10154],
-;           [_10160,_10166],  _10138, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_10150,_10156],
-;           [_10162,_10168],  _10140, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_21826,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_32338,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_59644,'Cons',2,_59650,_59652,_59654,_59656,_59658,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_59790],_59794]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $60604 (List $60604) (List $60604))))
-(ist &self (= (insert $60844 (Cons $60862 $60868))  
-  (if 
-    (< $60844 $60862) 
-    (Cons $60844 
-      (Cons $60862 $60868)) 
-    (Cons $60862 
-      (insert $7038 $7062)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_40998,_41004],
-;           [_41010,_41016],  _40988, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_31092,_31098],
+;           [_31104,_31110],  _31082, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_10098,_10104],
-;           [_10110,_10116],  _10088, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_29426,'Cons',2,[[->,_29448,['List',_29448],['List',_29448]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $33240 (List $33240) (List $33240)))
-[unknown [transpiler_predicate_store Cons 3 $33330 $33332]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_34266,_34268,_34270,_34272,_34274,_34276,_34278)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9662,_9668],
-;           [_9674,_9680],  _9652, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9660,_9666],
-;           [_9672,_9678],  _9650, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_34950,'Cons',2,_34956,_34958,_34960,_34962,_returnVal,_34966)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9630,_9636],
-;           [_9642,_9648],  _9620, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_9628,_9634],
-;           [_9640,_9646],  _9618, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_19040,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_28980,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_56286,'Cons',2,_56292,_56294,_56296,_56298,_56300,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_56432],_56436]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $57246 (List $57246) (List $57246))))
-(ist &self (= (insert $57486 (Cons $57504 $57510))  
-  (if 
-    (< $57486 $57504) 
-    (Cons $57486 
-      (Cons $57504 $57510)) 
-    (Cons $57504 
-      (insert $57486 $57510)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_38770,_38776],
-;           [_38782,_38788],  _38760, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_39596,_39602],
+;           [_39608,_39614],  _39586, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_41662,_41668],
-;           [_41674,_41680],  _41652, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_31046,'Cons',2,[[->,_31068,['List',_31068],['List',_31068]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $32780 (List $32780) (List $32780)))
-[unknown [transpiler_predicate_store Cons 3 $32870 $32872]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_33806,_33808,_33810,_33812,_33814,_33816,_33818)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8566,_8572],
-;           [_8578,_8584],  _8556, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8544,_8550],
-;           [_8556,_8562],  _8534, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_31824,'Cons',2,_31830,_31832,_31834,_31836,_returnVal,_31840)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8514,_8520],
-;           [_8526,_8532],  _8504, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_8512,_8518],
-;           [_8524,_8530],  _8502, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_14706,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_23202,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_50508,'Cons',2,_50514,_50516,_50518,_50520,_50522,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_50654],_50658]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $51468 (List $51468) (List $51468))))
-(ist &self (= (insert $51708 (Cons $51726 $51732))  
-  (if 
-    (< $51708 $51726) 
-    (Cons $51708 
-      (Cons $51726 $51732)) 
-    (Cons $51726 
-      (insert $51708 $51732)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_26862,_26868],
-;           [_26874,_26880],  _26852, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_9540,_9546],
+;           [_9552,_9558],  _9530, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_36246,_36252],
-;           [_36258,_36264],  _36236, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_10316,'Cons',2,[[->,_10338,['List',_10338],['List',_10338]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $14130 (List $14130) (List $14130)))
-[unknown [transpiler_predicate_store Cons 3 $14220 $14222]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_15156,_15158,_15160,_15162,_15164,_15166,_15168)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_41330,_41336],
-;           [_41342,_41348],  _41320, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36236,_36242],
-;           [_36248,_36254],  _36226, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64586,'Cons',2,_64592,_64594,_64596,_64598,_returnVal,_64602)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31070,_31076],
-;           [_31082,_31088],  _31060, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_31272,_31278],
-;           [_31284,_31290],  _31262, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_40700,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_47554,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_19286,'Cons',2,_19292,_19294,_19296,_19298,_19300,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_19432],_19436]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $20246 (List $20246) (List $20246))))
-(ist &self (= (insert $20486 (Cons $20504 $20510))  
-  (if 
-    (< $20486 $20504) 
-    (Cons $20486 
-      (Cons $20504 $20510)) 
-    (Cons $20504 
-      (insert $20486 $20510)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_7974,_7980],
-;           [_7986,_7992],  _7964, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_9538,_9544],
+;           [_9550,_9556],  _9528, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_7972,_7978],
-;           [_7984,_7990],  _7962, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_17856,_17862],
+;           [_17868,_17874],  _17846, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_25310,_25316],
+;           [_25322,_25328],  _25300, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38764,_38770],
+;           [_38776,_38782],  _38754, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_41656,_41662],
+;           [_41668,_41674],  _41646, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_8500,_8506],
+;           [_8512,_8518],  _8490, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_8822,_8828],
+;           [_8834,_8840],  _8812, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_15440,_15446],
+;           [_15452,_15458],  _15430, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_18734,_18740],
+;           [_18746,_18752],  _18724, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 8.88 seconds.
+; took 2.65 seconds.
 
 !(assertEqual (insert 1 (insert 2 Nil)) (Cons 1 (Cons 2 Nil)))
 
@@ -2188,888 +586,462 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06"
 >;; HYPERON-METTALOG-SANITY.03-SORING-VIA-INSERT.06</h3>
-<span class="ansi37"
->predicate_behavior(_61550,'Cons',2,[[->,_61572,['List',_61572],['List',_61572]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $63284 (List $6094) (List $6094)))
-[unknown [transpiler_predicate_store Cons 3 $6844 $6846]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_7780,_7782,_7784,_7786,_7788,_7790,_7792)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35664,_35670],
-;           [_35676,_35682],  _35654, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_33642,_33648],
-;           [_33654,_33660],  _33632, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_61992,'Cons',2,_61998,_62000,_62002,_62004,_returnVal,_62008)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_33818,_33824],
-;           [_33830,_33836],  _33808, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_33816,_33822],
-;           [_33828,_33834],  _33806, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_43148,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_9408,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_27398,'Cons',2,_27404,_27406,_27408,_27410,_27412,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_27544],_27548]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $28358 (List $28358) (List $28358))))
-(ist &self (= (insert $28598 (Cons $28616 $28622))  
-  (if 
-    (< $28598 $28616) 
-    (Cons $28598 
-      (Cons $28616 $28622)) 
-    (Cons $28616 
-      (insert $28598 $28622)))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_9546,_9552],
-;           [_9558,_9564],  _9536, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_9492,_9498],
+;           [_9504,_9510],  _9482, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_12874,_12880],
-;           [_12886,_12892],  _12864, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_47458,'Cons',2,[[->,_47480,['List',_47480],['List',_47480]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 Nil) &top) ==> (-> $49192 (List $49192) (List $49192)))
-[unknown [transpiler_predicate_store Cons 3 $49282 $49284]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_50218,_50220,_50222,_50224,_50226,_50228,_50230)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_23952,_23958],
-;           [_23964,_23970],  _23942, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_24436,_24442],
-;           [_24448,_24454],  _24426, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_52786,'Cons',2,_52792,_52794,_52796,_52798,_returnVal,_52802)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_25578,_25584],
-;           [_25590,_25596],  _25568, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_25972,_25978],
-;           [_25984,_25990],  _25962, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_37668,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_45624,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_19382,'Cons',2,_19388,_19390,_19392,_19394,_19396,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_19528],_19532]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $20342 (List $20342) (List $20342))))
-(ist &self (= (insert $20582 (Cons $20600 $20606))  
-  (if 
-    (< $20582 $20600) 
-    (Cons $20582 
-      (Cons $20600 $20606)) 
-    (Cons $20600 
-      (insert $20582 $20606)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_9906,_9912],
-;           [_9918,_9924],  _9896, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_9490,_9496],
+;           [_9502,_9508],  _9480, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_9922,_9928],
-;           [_9934,_9940],  _9912, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_41716,insert,2,[[->,_41738,['List',_41738],['List',_41738]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (insert 2 (Cons 1 Nil)) &top) ==> (-> $45530 (List $45530) (List $45530)))
-[unknown [transpiler_predicate_store insert 3 $45620 $45622]]
-<span class="ansi37"
->transpiler_clause_store(insert,3,_46556,_46558,_46560,_46562,_46564,_46566,_46568)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__insert 3 ]]
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_49412,'Nil'],[_49418,['List',_49418]],['List',_49418],['Cons',_49412,'Nil'],_returnVal,22+14)</span>
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_49824,['Cons',_49842,_49848]],[_49854,['List',_49854]],['List',_49854],[if,[<,_49824,_49842],['Cons',_49824,['Cons',_49842,_49848]],['Cons',_49842,[insert,_49824,_49848]]],_returnVal,22+30)</span>
-(ist &self (: insert (-> $50766 (List $50766) (List $50766))))
-(ist &self (= (insert $50764 Nil)  
-  (Cons $50764 Nil)))
-(ist &self (= (insert $51034 (Cons $51052 $51058))  
-  (if 
-    (< $51034 $51052) 
-    (Cons $51034 
-      (Cons $51052 $51058)) 
-    (Cons $51052 
-      (insert $51034 $51058)))))
-<span class="ansi37"
->predicate_behavior(_61904,'Cons',2,[[->,_61926,['List',_61926],['List',_61926]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $63638 (List $6908) (List $6908)))
-[unknown [transpiler_predicate_store Cons 3 $7658 $7660]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_8594,_8596,_8598,_8600,_8602,_8604,_8606)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_37844,_37850],
-;           [_37856,_37862],  _37834, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36380,_36386],
-;           [_36392,_36398],  _36370, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64730,'Cons',2,_64736,_64738,_64740,_64742,_returnVal,_64746)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35820,_35826],
-;           [_35832,_35838],  _35810, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35334,_35340],
-;           [_35346,_35352],  _35324, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_45676,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_10184,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_32398,'Cons',2,_32404,_32406,_32408,_32410,_32412,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32544],_32548]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $33358 (List $33358) (List $33358))))
-(ist &self (= (insert $33598 (Cons $33616 $33622))  
-  (if 
-    (< $33598 $33616) 
-    (Cons $33598 
-      (Cons $33616 $33622)) 
-    (Cons $33616 
-      (insert $33598 $33622)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_12444,_12450],
-;           [_12456,_12462],  _12434, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_11986,_11992],
+;           [_11998,_12004],  _11976, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_20926,_20932],
-;           [_20938,_20944],  _20916, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_55654,'Cons',2,[[->,_55676,['List',_55676],['List',_55676]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $57388 (List $57388) (List $57388)))
-[unknown [transpiler_predicate_store Cons 3 $57478 $57480]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_58414,_58416,_58418,_58420,_58422,_58424,_58426)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36110,_36116],
-;           [_36122,_36128],  _36100, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35904,_35910],
-;           [_35916,_35922],  _35894, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64254,'Cons',2,_64260,_64262,_64264,_64266,_returnVal,_64270)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35810,_35816],
-;           [_35822,_35828],  _35800, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35324,_35330],
-;           [_35336,_35342],  _35314, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_45666,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_10174,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_32388,'Cons',2,_32394,_32396,_32398,_32400,_32402,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32534],_32538]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $33348 (List $33348) (List $33348))))
-(ist &self (= (insert $33588 (Cons $33606 $33612))  
-  (if 
-    (< $33588 $33606) 
-    (Cons $33588 
-      (Cons $33606 $33612)) 
-    (Cons $33606 
-      (insert $33588 $33612)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_12434,_12440],
-;           [_12446,_12452],  _12424, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_19048,_19054],
+;           [_19060,_19066],  _19038, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_20916,_20922],
-;           [_20928,_20934],  _20906, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_55868,'Cons',2,[[->,_55890,['List',_55890],['List',_55890]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $59682 (List $59682) (List $59682)))
-[unknown [transpiler_predicate_store Cons 3 $59772 $59774]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_60708,_60710,_60712,_60714,_60716,_60718,_60720)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34416,_34422],
-;           [_34428,_34434],  _34406, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34414,_34420],
-;           [_34426,_34432],  _34404, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_62764,'Cons',2,_62770,_62772,_62774,_62776,_returnVal,_62780)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34384,_34390],
-;           [_34396,_34402],  _34374, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34382,_34388],
-;           [_34394,_34400],  _34372, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_44116,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_9654,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_31868,'Cons',2,_31874,_31876,_31878,_31880,_31882,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32014],_32018]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $32828 (List $32828) (List $32828))))
-(ist &self (= (insert $33068 (Cons $33086 $33092))  
-  (if 
-    (< $33068 $33086) 
-    (Cons $33068 
-      (Cons $33086 $33092)) 
-    (Cons $33086 
-      (insert $33068 $33092)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_10116,_10122],
-;           [_10128,_10134],  _10106, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_39750,_39756],
+;           [_39762,_39768],  _39740, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_17246,_17252],
-;           [_17258,_17264],  _17236, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_55580,'Cons',2,[[->,_55602,['List',_55602],['List',_55602]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $57314 (List $57314) (List $57314)))
-[unknown [transpiler_predicate_store Cons 3 $57404 $57406]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_58340,_58342,_58344,_58346,_58348,_58350,_58352)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36126,_36132],
-;           [_36138,_36144],  _36116, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35920,_35926],
-;           [_35932,_35938],  _35910, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64270,'Cons',2,_64276,_64278,_64280,_64282,_returnVal,_64286)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35826,_35832],
-;           [_35838,_35844],  _35816, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35340,_35346],
-;           [_35352,_35358],  _35330, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_45682,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_10190,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_32404,'Cons',2,_32410,_32412,_32414,_32416,_32418,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32550],_32554]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $33364 (List $33364) (List $33364))))
-(ist &self (= (insert $33604 (Cons $33622 $33628))  
-  (if 
-    (< $33604 $33622) 
-    (Cons $33604 
-      (Cons $33622 $33628)) 
-    (Cons $33622 
-      (insert $33604 $33628)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_12450,_12456],
-;           [_12462,_12468],  _12440, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_47138,_47144],
+;           [_10302,_10308],  _10280, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_20932,_20938],
-;           [_20944,_20950],  _20922, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_54976,'Cons',2,[[->,_54998,['List',_54998],['List',_54998]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $58790 (List $58790) (List $58790)))
-[unknown [transpiler_predicate_store Cons 3 $58880 $58882]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_59816,_59818,_59820,_59822,_59824,_59826,_59828)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34458,_34464],
-;           [_34470,_34476],  _34448, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34458,_34464],
-;           [_34470,_34476],  _34448, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_62808,'Cons',2,_62814,_62816,_62818,_62820,_returnVal,_62824)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34428,_34434],
-;           [_34440,_34446],  _34418, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34426,_34432],
-;           [_34438,_34444],  _34416, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_44346,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_9698,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_31912,'Cons',2,_31918,_31920,_31922,_31924,_31926,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32058],_32062]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $32872 (List $32872) (List $32872))))
-(ist &self (= (insert $33112 (Cons $33130 $33136))  
-  (if 
-    (< $33112 $33130) 
-    (Cons $33112 
-      (Cons $33130 $33136)) 
-    (Cons $33130 
-      (insert $33112 $33136)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_10160,_10166],
-;           [_10172,_10178],  _10150, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_10282,_10288],
+;           [_10294,_10300],  _10272, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_17290,_17296],
-;           [_17302,_17308],  _17280, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_59264,'Cons',2,[[->,_59286,['List',_59286],['List',_59286]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 2 Nil) &top) ==> (-> $60998 (List $60998) (List $60998)))
-[unknown [transpiler_predicate_store Cons 3 $61088 $61090]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_62024,_62026,_62028,_62030,_62032,_62034,_62036)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_36122,_36128],
-;           [_36134,_36140],  _36112, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35914,_35920],
-;           [_35926,_35932],  _35904, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_64264,'Cons',2,_64270,_64272,_64274,_64276,_returnVal,_64280)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35820,_35826],
-;           [_35832,_35838],  _35810, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_35334,_35340],
-;           [_35346,_35352],  _35324, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_45676,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_10184,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_32398,'Cons',2,_32404,_32406,_32408,_32410,_32412,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32544],_32548]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $33358 (List $33358) (List $33358))))
-(ist &self (= (insert $33598 (Cons $33616 $33622))  
-  (if 
-    (< $33598 $33616) 
-    (Cons $33598 
-      (Cons $33616 $33622)) 
-    (Cons $33616 
-      (insert $33598 $33622)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_12444,_12450],
-;           [_12456,_12462],  _12434, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_12818,_12824],
+;           [_12830,_12836],  _12808, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_20926,_20932],
-;           [_20938,_20944],  _20916, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_54970,'Cons',2,[[->,_54992,['List',_54992],['List',_54992]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 1 (Cons 2 Nil)) &top) ==> (-> $58784 (List $58784) (List $58784)))
-[unknown [transpiler_predicate_store Cons 3 $58874 $58876]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_59810,_59812,_59814,_59816,_59818,_59820,_59822)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34452,_34458],
-;           [_34464,_34470],  _34442, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34452,_34458],
-;           [_34464,_34470],  _34442, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_62802,'Cons',2,_62808,_62810,_62812,_62814,_returnVal,_62818)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34422,_34428],
-;           [_34434,_34440],  _34412, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_34420,_34426],
-;           [_34432,_34438],  _34410, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_44340,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_9692,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_31906,'Cons',2,_31912,_31914,_31916,_31918,_31920,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_32052],_32056]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $32866 (List $32866) (List $32866))))
-(ist &self (= (insert $33106 (Cons $33124 $33130))  
-  (if 
-    (< $33106 $33124) 
-    (Cons $33106 
-      (Cons $33124 $33130)) 
-    (Cons $33124 
-      (insert $33106 $33130)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_10154,_10160],
-;           [_10166,_10172],  _10144, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_22952,_22958],
+;           [_22964,_22970],  _22942, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_17284,_17290],
-;           [_17296,_17302],  _17274, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_56972,insert,2,[[->,_56994,['List',_56994],['List',_56994]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (insert 3 (Cons 1 (Cons 2 Nil))) &top) ==> (-> $4790 (List $4790) (List $4790)))
-[unknown [transpiler_predicate_store insert 3 $5564 $5566]]
-<span class="ansi37"
->transpiler_clause_store(insert,3,_6500,_6502,_6504,_6506,_6508,_6510,_6512)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__insert 3 ]]
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_9356,'Nil'],[_9362,['List',_9362]],['List',_9362],['Cons',_9356,'Nil'],_returnVal,22+14)</span>
-<span class="ansi37"
->function_declaration_scores('&self',insert,2,[_9768,['Cons',_9786,_9792]],[_9798,['List',_9798]],['List',_9798],[if,[<,_9768,_9786],['Cons',_9768,['Cons',_9786,_9792]],['Cons',_9786,[insert,_9768,_9792]]],_returnVal,22+30)</span>
-(ist &self (: insert (-> $10710 (List $10710) (List $10710))))
-(ist &self (= (insert $10708 Nil)  
-  (Cons $10708 Nil)))
-(ist &self (= (insert $10978 (Cons $10996 $11002))  
-  (if 
-    (< $10978 $10996) 
-    (Cons $10978 
-      (Cons $10996 $11002)) 
-    (Cons $10996 
-      (insert $10978 $11002)))))
-<span class="ansi37"
->predicate_behavior(_29510,'Cons',2,[[->,_29532,['List',_29532],['List',_29532]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 3 Nil) &top) ==> (-> $31244 (List $31244) (List $31244)))
-[unknown [transpiler_predicate_store Cons 3 $31334 $31336]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_32270,_32272,_32274,_32276,_32278,_32280,_32282)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_11080,_11086],
-;           [_11092,_11098],  _11070, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_11086,_11092],
-;           [_11098,_11104],  _11076, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->function_declaration_scores(_39268,'Cons',2,_39274,_39276,_39278,_39280,_returnVal,_39284)=missing(function_declaration_scores/9)</span>
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_14866,_14872],
-;           [_14878,_14884],  _14856, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_18502,_18508],
-;           [_18514,_18520],  _18492, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_31004,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons', 2,_42588,Function_declaration_impl5,
-;              Function_declaration_impl4, Function_declaration_impl, ReturnVal, _returnVal)</span>)
-
-<span class="ansi37"
->function_declaration_impl(_16570,'Cons',2,_16576,_16578,_16580,_16582,_16584,_returnVal)=missing(function_declaration_impl/9)</span>
-<span class="ansi37"
->[=,['Cons'|_16716],_16720]=missing('[|]'/2)</span>
-(ist &self (: Cons (-> $17530 (List $17530) (List $17530))))
-(ist &self (= (insert $17770 (Cons $17788 $17794))  
-  (if 
-    (< $17770 $17788) 
-    (Cons $17770 
-      (Cons $17788 $17794)) 
-    (Cons $17788 
-      (insert $17770 $17794)))))
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_11004,_11010],
-;           [_11016,_11022],  _10994, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_29382,_29388],
+;           [_29394,_29400],  _29372, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_11020,_11026],
-;           [_11032,_11038],  _11010, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-<span class="ansi37"
->predicate_behavior(_43114,'Cons',2,[[->,_43136,['List',_43136],['List',_43136]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
-((get-ftype (Cons 3 Nil) &top) ==> (-> $44848 (List $44848) (List $44848)))
-[unknown [transpiler_predicate_store Cons 3 $44938 $44940]]
-<span class="ansi37"
->transpiler_clause_store('Cons',3,_45874,_45876,_45878,_45880,_45882,_45884,_45886)=missing(transpiler_clause_store/9)</span>
-[unknown [ / mc_2__Cons 3 ]]
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
-;           'Cons',
-;           2,
-;           [_21370,_21376],
-;           [_21382,_21388],  _21360, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_39810,_39816],
+;           [_39822,_39828],  _39800, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( Cons,
+>( '&top',
 ;           'Cons',
 ;           2,
-;           [_24554,_24560],
-;           [_24566,_24572],  _24544, Function_declaration_implC91_c124_c933, Function_declaration_implC91_c124_c93, Impl)</span>)
+;           [_46966,_46972],
+;           [_10132,_10138],  _10110, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
-<span class="ansi37"
->function_declaration_scores(_52904,'Cons',2,_52910,_52912,_52914,_52916,_returnVal,_52920)=missing(function_declaration_scores/9)</span>
 P;HTML|
-Script done on 2025-02-24 14:55:14+00:00 [COMMAND_EXIT_CODE="143"]
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9766,_9772],
+;           [_9778,_9784],  _9756, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10106,_10112],
+;           [_10118,_10124],  _10096, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_28720,_28726],
+;           [_28732,_28738],  _28710, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_39746,_39752],
+;           [_39758,_39764],  _39736, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9776,_9782],
+;           [_9788,_9794],  _9766, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9774,_9780],
+;           [_9786,_9792],  _9764, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_40964,_40970],
+;           [_40976,_40982],  _40954, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10966,_10972],
+;           [_10978,_10984],  _10956, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10980,_10986],
+;           [_10992,_10998],  _10970, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_19424,_19430],
+;           [_19436,_19442],  _19414, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_31180,_31186],
+;           [_31192,_31198],  _31170, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_39912,_39918],
+;           [_39924,_39930],  _39902, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10976,_10982],
+;           [_10988,_10994],  _10966, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10996,_11002],
+;           [_11008,_11014],  _10986, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_21060,_21066],
+;           [_21072,_21078],  _21050, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_28978,_28984],
+;           [_28990,_28996],  _28968, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_42284,_42290],
+;           [_42296,_42302],  _42274, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10416,_10422],
+;           [_10428,_10434],  _10406, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9964,_9970],
+;           [_9976,_9982],  _9954, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_15700,_15706],
+;           [_15712,_15718],  _15690, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_27884,_27890],
+;           [_27896,_27902],  _27874, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38260,_38266],
+;           [_38272,_38278],  _38250, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10492,_10498],
+;           [_10504,_10510],  _10482, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_10512,_10518],
+;           [_10524,_10530],  _10502, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_19484,_19490],
+;           [_19496,_19502],  _19474, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_26046,_26052],
+;           [_26058,_26064],  _26036, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38324,_38330],
+;           [_38336,_38342],  _38314, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_41286,_41292],
+;           [_41298,_41304],  _41276, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_13958,_13964],
+;           [_13970,_13976],  _13948, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_21274,_21280],
+;           [_21286,_21292],  _21264, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_30648,_30654],
+;           [_30660,_30666],  _30638, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38796,_38802],
+;           [_38808,_38814],  _38786, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_46502,_46508],
+;           [_46514,_46520],  _9050, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_9058,_9064],
+;           [_9070,_9076],  _9048, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_24472,_24478],
+;           [_24484,_24490],  _24462, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_36434,_36440],
+;           [_36446,_36452],  _36424, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_40602,_40608],
+;           [_40614,_40620],  _40592, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_45874,_45880],
+;           [_45886,_45892],  _8728, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_8190,_8196],
+;           [_8202,_8208],  _8180, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_8206,_8212],
+;           [_8218,_8224],  _8196, Function_declaration_implTopConsC91_c124_c932, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 9.48 seconds.
+
+!(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Cons 1 
+          (Cons 2 
+            (Cons 3 Nil)))) 
+      ( (Cons 1 
+          (Cons 2 
+            (Cons 3 Nil))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 5
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[(Error ('~nGot: ' ((-> $23808 (List $23808) (List $23808)))) ('~nExpected: ' ((-> [ % _a_3516 ] (List [ % _a_3516 ]) (List [ % _a_3516 ])))))]
+[()]
+[()]
+[()]
+[()]
+[()]
+
+Script done on 2025-02-24 20:28:42+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/03-soring-via-insert.metta" --halt=true\033[0m

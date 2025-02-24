@@ -60,7 +60,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:04:40+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 20:39:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1341-146.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta] ]
 P;HTML|
@@ -100,17 +100,13 @@ Script started on 2025-02-24 15:04:40+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                             [ = 16 "[()]" ]
 P;HTML|
-;                             [ = 17 "[()]" ]
+;                             [ = 17 "[(Error (assertEqual (intersection (superpose (1 2 3 foo bar)) (superpose (3 foo baz))) (superpose (3 foo))) " ]
 P;HTML|
-;                             [ = 18 "[()]" ]
+;                             [ = 17 "Expected: [3, foo]" ]
 P;HTML|
-;                              [ = 19 "[(Error (assertEqual (intersection (superpose ($x b c)) (superpose (b $y c))) (superpose (b c))) " ]
+;                              [ = 17 "Got: [foo]" ]
 P;HTML|
-;                              [ = 19 "Expected: [b, c]" ]
-P;HTML|
-;                               [ = 19 "Got: [c]" ]
-P;HTML|
-;                               [ = 20 "Missed results: b)]" ]
+;                              [ = 18 "Missed result: 3)]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/intersection_tests.metta]
 
@@ -124,7 +120,7 @@ Script started on 2025-02-24 15:04:40+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.60 milliseconds) 
+; took 0.002 secs. (1.59 milliseconds) 
 
 !(assertEqual (intersection (superpose (a b c d)) (superpose (c d e f))) (superpose (c d)))
 
@@ -147,7 +143,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000991 secs. (991.16 microseconds) 
+; took 0.000938 secs. (938.17 microseconds) 
 
 !(assertEqual (intersection (superpose (a b c d)) (superpose (b c))) (superpose (b c)))
 
@@ -169,7 +165,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.33 milliseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
 !(assertEqual (intersection (intersection (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose ()))
 
@@ -192,8 +188,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           foo,
 ;           1,
-;           [_11676],
-;           [_11682],  _11666, Function_declaration_implTopFooC91_c124_c931, Function_declaration_implTopFooC91_c124_c93, Impl)</span>)
+;           [_11700],
+;           [_11706],  _11690, Function_declaration_implTopFooC91_c124_c931, Function_declaration_implTopFooC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -392,7 +388,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.16 seconds.
+; took 2.14 seconds.
 
 !(assertEqual (intersection (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((bar baz) qux)))
 
@@ -414,7 +410,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.001 secs. (1.06 milliseconds) 
 
 !(assertEqual (intersection (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (2 foo)))
 
@@ -447,7 +443,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.25 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqual (intersection (superpose (a b b c d)) (superpose (b c))) (superpose (b c)))
 
@@ -469,7 +465,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.26 milliseconds) 
+; took 0.001 secs. (1.35 milliseconds) 
 
 !(assertEqual (unique (intersection (superpose (a b b c)) (superpose (b c c d)))) (superpose (b c)))
 
@@ -491,7 +487,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000731 secs. (731.05 microseconds) 
+; took 0.000739 secs. (739.42 microseconds) 
 
 !(assertEqual (intersection (superpose (a b c)) (superpose ())) (superpose ()))
 
@@ -511,7 +507,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000877 secs. (877.46 microseconds) 
+; took 0.000845 secs. (844.86 microseconds) 
 
 !(assertEqual (intersection (superpose (a b c)) (superpose (x y z))) (superpose ()))
 
@@ -531,7 +527,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.02 milliseconds) 
+; took 0.001 secs. (1.03 milliseconds) 
 
 !(assertEqual (intersection (superpose (a b c d)) (superpose (b c x y))) (superpose (b c)))
 
@@ -553,7 +549,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.09 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqual (intersection (superpose (a b c d)) (superpose (a b c d))) (superpose (a b c d)))
 
@@ -787,7 +783,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.76 seconds.
+; took 2.74 seconds.
 
 !(assertEqual (intersection (superpose (a b c (a b c))) (superpose (a b c (a b c)))) (superpose (a b c (a b c))))
 
@@ -811,7 +807,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.08 milliseconds) 
+; took 0.000997 secs. (996.99 microseconds) 
 
 !(assertEqual (intersection (superpose (a b c d)) (superpose (c))) (superpose (c)))
 
@@ -1034,7 +1030,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.788 secs. (1788.10 milliseconds) 
+; took 1.775 secs. (1774.95 milliseconds) 
 
 !(assertEqual (intersection (superpose (a (b c) d)) (superpose ((b c) e f))) (superpose ((b c))))
 
@@ -1059,24 +1055,24 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           a,
 ;           1,
-;           [_46910],
-;           [_8726],  _8710, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+;           [_46796],
+;           [_46802],  _8710, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           a,
 ;           1,
-;           [_31276],
-;           [_31282],  _31266, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+;           [_30940],
+;           [_30946],  _30930, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           a,
 ;           1,
-;           [_15856],
-;           [_15862],  _15846, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
+;           [_15590],
+;           [_15596],  _15580, Function_declaration_implTopAC91_c124_c931, Function_declaration_implTopAC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1120,7 +1116,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.947 secs. (947.41 milliseconds) 
+; took 0.940 secs. (939.77 milliseconds) 
 
 !(assertEqual (intersection (superpose ((a b) (c d))) (superpose ())) (superpose ()))
 
@@ -1140,7 +1136,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.17</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.24 milliseconds) 
+; took 0.001 secs. (1.14 milliseconds) 
 
 !(assertEqual (intersection (superpose (1 2 3 foo bar)) (superpose (3 foo baz))) (superpose (3 foo)))
 
@@ -1155,7 +1151,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with variables and nested structures
 ;;;; This checks how variables interact with nested lists during intersection.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ((foo $61642) (bar $61660))) (superpose ((bar $2060) (foo qux)))) (superpose ((bar $2060))))
+>!(assertEqual (intersection (superpose ((foo $61442) (bar $61460))) (superpose ((bar $2060) (foo qux)))) (superpose ((bar $2060))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.18"
@@ -1428,7 +1424,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.61 seconds.
+; took 2.60 seconds.
 
 !(assertEqual (intersection (superpose ((foo $25588) (bar $25606))) (superpose ((bar $25606) (foo qux)))) (superpose ((bar $25606))))
 
@@ -1443,16 +1439,16 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with variables and lists
 ;;;; This ensures variables within lists are correctly intersected.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($36712 b c)) (superpose (b $36742 c))) (superpose (b c)))
+>!(assertEqual (intersection (superpose ($36632 b c)) (superpose (b $36662 c))) (superpose (b c)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.19"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000959 secs. (958.86 microseconds) 
+; took 0.000924 secs. (924.20 microseconds) 
 
-!(assertEqual (intersection (superpose ($47490 b c)) (superpose (b $47520 c))) (superpose (b c)))
+!(assertEqual (intersection (superpose ($47370 b c)) (superpose (b $47400 c))) (superpose (b c)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1465,7 +1461,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with variables and complex structures
 ;;;; This checks that complex structures with variables are correctly intersected.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose (($58298 b) (c d))) (superpose ((a $58334) (c d)))) (superpose ((c d))))
+>!(assertEqual (intersection (superpose (($58098 b) (c d))) (superpose ((a $58134) (c d)))) (superpose ((c d))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.20"
@@ -1552,8 +1548,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           c,
 ;           1,
-;           [_31228],
-;           [_31234],  _31218, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_31058],
+;           [_31064],  _31048, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1706,7 +1702,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.12 seconds.
+; took 2.11 seconds.
 
 !(assertEqual (intersection (superpose (($47430 b) (c d))) (superpose ((a $47466) (c d)))) (superpose ((c d))))
 
@@ -1721,7 +1717,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with expressions that evaluate to a value
 ;;;; This ensures that expressions like (+ 1 2) that unify with 3 are handled correctly.
 <span class="ansi38-013099040"
->!(assertEqualToResult (pred-intersection unified (superpose (($58574 (+ 1 2)) (3 4))) (superpose ((3 $58610) (4 (+ 1 2))))) ((3 3) (3 4) (4 3)))
+>!(assertEqualToResult (pred-intersection unified (superpose (($58494 (+ 1 2)) (3 4))) (superpose ((3 $58530) (4 (+ 1 2))))) ((3 3) (3 4) (4 3)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.21"
@@ -1760,7 +1756,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.807 secs. (807.19 milliseconds) 
+; took 0.806 secs. (806.00 milliseconds) 
 
 !(assertEqualToResult (pred-intersection unified (superpose (($11156 (+ 1 2)) (3 4))) (superpose ((3 $11192) (4 (+ 1 2))))) ((3 3) (3 4) (4 3)))
 
@@ -1776,11 +1772,11 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('pred-intersection','[|]'(unified,'[|]'('[|]'(_9730{vn = ...},'[|]'(3,[])),'[|]'('[|]'(3,'[|]'(_9768{vn = ...},[])),[])))),[]),'[|]'('[|]'(3,'[|]'(3,[])),'[|]'('[|]'(3,'[|]'(4,[])),'[|]'('[|]'(4,'[|]'(3,[])),[]))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((pred-intersection unified ($18740 3) (3 $18758)))) ('~nExpected: ' ((3 3) (3 4) (4 3))))
+>(Error ('~nGot: ' ((pred-intersection unified ($18692 3) (3 $18710)))) ('~nExpected: ' ((3 3) (3 4) (4 3))))
 </span>;;;; Test intersection with nested structures and expressions
 ;;;; This checks that variables and expressions are correctly intersected within nested structures.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ((foo (+ 1 2)) (bar $21898))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3))))
+>!(assertEqual (intersection (superpose ((foo (+ 1 2)) (bar $21818))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.22"
@@ -2069,7 +2065,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.87 seconds.
+; took 2.84 seconds.
 
 !(assertEqual (intersection (superpose ((foo (+ 1 2)) (bar $4420))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3))))
 
@@ -2084,7 +2080,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with nested structures and expressions
 ;;;; This checks that variables and expressions are correctly intersected within nested structures.
 <span class="ansi38-013099040"
->!(assertNotEqual (pred-intersection unified (superpose ((foo (+ 1 2)) (bar $15996))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3) (bar $15996))))
+>!(assertNotEqual (pred-intersection unified (superpose ((foo (+ 1 2)) (bar $15916))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3) (bar $15916))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.23"
@@ -2299,7 +2295,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 3.50 seconds.
+; took 3.47 seconds.
 
 !(assertNotEqual (pred-intersection unified (superpose ((foo (+ 1 2)) (bar $50506))) (superpose ((foo 3) (bar baz)))) (superpose ((foo 3) (bar $50506))))
 
@@ -2317,7 +2313,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with variables and evaluated expressions
 ;;;; This ensures that variables and evaluated expressions are correctly intersected.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose (($59180 b) (+ 2 2))) (superpose ((a $59216) 4))) (superpose (4)))
+>!(assertEqual (intersection (superpose (($59100 b) (+ 2 2))) (superpose ((a $59136) 4))) (superpose (4)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.24"
@@ -2390,9 +2386,9 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.428 secs. (427.95 milliseconds) 
+; took 0.418 secs. (418.29 milliseconds) 
 
-!(assertEqual (intersection (superpose (($15318 b) (+ 2 2))) (superpose ((a $15354) 4))) (superpose (4)))
+!(assertEqual (intersection (superpose (($15052 b) (+ 2 2))) (superpose ((a $15088) 4))) (superpose (4)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -2406,7 +2402,7 @@ Deterministic: <span class="ansi33"
 ;;;; This test ensures that the intersection function correctly handles cases where a variable
 ;;;; might unify with a structure containing that same variable, which should not be allowed.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($25292 (f $25292))) (superpose ((f (f $25292))))) (superpose ()))
+>!(assertEqual (intersection (superpose ($24946 (f $24946))) (superpose ((f (f $24946))))) (superpose ()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.25"
@@ -2493,7 +2489,7 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           f,
 ;           1,
-;           [_9400],
+;           [_47302],
 ;           [_9406],  _9390, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
@@ -2501,8 +2497,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           f,
 ;           1,
-;           [_33040],
-;           [_33046],  _33030, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_32980],
+;           [_32986],  _32970, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -2599,7 +2595,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.497 secs. (1497.31 milliseconds) 
+; took 1.471 secs. (1471.24 milliseconds) 
 
 !(assertEqual (intersection (superpose ($34952 (f $34952))) (superpose ((f (f $34952))))) (superpose ()))
 
@@ -2612,7 +2608,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with self-referential structures
 ;;;; This test ensures that self-referential structures correctly intersect when they should.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($45722 (f $45740))) (superpose ($45764 (f $45782)))) (superpose ((f $45740))))
+>!(assertEqual (intersection (superpose ($45642 (f $45660))) (superpose ($45684 (f $45702)))) (superpose ((f $45660))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.26"
@@ -2749,7 +2745,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.372 secs. (1372.24 milliseconds) 
+; took 1.341 secs. (1341.11 milliseconds) 
 
 !(assertEqual (intersection (superpose ($5546 (f $5564))) (superpose ($5588 (f $5606)))) (superpose ((f $5564))))
 
@@ -2760,11 +2756,11 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(f,'[|]'(_4404{vn = ...},[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' ((f $12304))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' ((f $12256))))
 </span>;;;; Test intersection with self-referential structures
 ;;;; This test ensures that self-referential structures correctly intersect when they should.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ((f $16478) $16484)) (superpose ((f $16520) $16526))) (superpose ((f $16478))))
+>!(assertEqual (intersection (superpose ((f $16398) $16404)) (superpose ((f $16440) $16446))) (superpose ((f $16398))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.27"
@@ -2774,8 +2770,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           f,
 ;           1,
-;           [_39206],
-;           [_39212],  _39196, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_39118],
+;           [_39124],  _39108, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -2901,7 +2897,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.353 secs. (1353.27 milliseconds) 
+; took 1.341 secs. (1340.68 milliseconds) 
 
 !(assertEqual (intersection (superpose ((f $34624) $34630)) (superpose ((f $34666) $34672))) (superpose ((f $34624))))
 
@@ -2912,10 +2908,10 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(f,'[|]'(_33252{vn = ...},[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' ((f $41240))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' ((f $41192))))
 </span>;;;; once alpha equivalence is established then the ideities take hold
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ((f $44784) $44784)) (superpose ((f $44826) $44826))) (superpose ((f $44784) $44784)))
+>!(assertEqual (intersection (superpose ((f $44704) $44704)) (superpose ((f $44746) $44746))) (superpose ((f $44704) $44704)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.28"
@@ -3052,7 +3048,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.357 secs. (1356.92 milliseconds) 
+; took 1.342 secs. (1342.45 milliseconds) 
 
 !(assertEqual (intersection (superpose ((f $5306) $5306)) (superpose ((f $5348) $5348))) (superpose ((f $5306) $5306)))
 
@@ -3063,10 +3059,10 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('[|]'(f,'[|]'(_4310{vn = ...},[])),'[|]'(_4278{vn = ...},[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' ((f $12458) $12464)))
+>(Error ('~nGot: ' ()) ('~nExpected: ' ((f $12410) $12416)))
 </span>;;;; Reversed: alpha equivalence is established too late?
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($15886 (f $15886))) (superpose ($15928 (f $15928)))) (superpose ($15886 (f $15886))))
+>!(assertEqual (intersection (superpose ($15806 (f $15806))) (superpose ($15848 (f $15848)))) (superpose ($15806 (f $15806))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.29"
@@ -3109,16 +3105,16 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           f,
 ;           1,
-;           [_38954],
-;           [_38960],  _38944, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_39004],
+;           [_39010],  _38994, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           f,
 ;           1,
-;           [_22188],
-;           [_22194],  _22178, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_22248],
+;           [_22254],  _22238, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -3203,7 +3199,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.343 secs. (1343.04 milliseconds) 
+; took 1.336 secs. (1335.90 milliseconds) 
 
 !(assertEqual (intersection (superpose ($32548 (f $32548))) (superpose ($32590 (f $32590)))) (superpose ($32548 (f $32548))))
 
@@ -3214,11 +3210,11 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'(_31374{vn = ...},'[|]'('[|]'(f,'[|]'(_31352{vn = ...},[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' ($39598 (f $39616))))
+>(Error ('~nGot: ' ()) ('~nExpected: ' ($39550 (f $39568))))
 </span>;;;; Test intersection with potential variable misidentification
 ;;;; This test ensures that variables are correctly identified and don't lead to erroneous unifications.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($43020 (f $43038))) (superpose ($43038 (f $43038)))) (superpose ((f $43038))))
+>!(assertEqual (intersection (superpose ($42940 (f $42958))) (superpose ($42958 (f $42958)))) (superpose ((f $42958))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.30"
@@ -3371,7 +3367,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.586 secs. (1585.89 milliseconds) 
+; took 1.552 secs. (1551.97 milliseconds) 
 
 !(assertEqual (intersection (superpose ($32560 (f $32578))) (superpose ($32578 (f $32578)))) (superpose ((f $32578))))
 
@@ -3386,7 +3382,7 @@ Deterministic: <span class="ansi33"
 </span>;;;; Test intersection with potential variable misidentification
 ;;;; This test ensures that variables are correctly identified and don't lead to erroneous unifications.
 <span class="ansi38-013099040"
->!(assertEqual (intersection (superpose ($43790 (f $43808))) (superpose ((f $43808) $43790))) (superpose ($43790 (f $43808))))
+>!(assertEqual (intersection (superpose ($43710 (f $43728))) (superpose ((f $43728) $43710))) (superpose ($43710 (f $43728))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.31"
@@ -3539,7 +3535,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.573 secs. (1572.66 milliseconds) 
+; took 1.563 secs. (1562.68 milliseconds) 
 
 !(assertEqual (intersection (superpose ($32780 (f $32798))) (superpose ((f $32798) $32780))) (superpose ($32780 (f $32798))))
 
@@ -3551,7 +3547,7 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(f,'[|]'(_4284{vn = ...},[])),[]),'[|]'(_31606{vn = ...},'[|]'('[|]'(f,'[|]'(_31584{vn = ...},[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((f $40158))) ('~nExpected: ' ($40182 (f $40200))))
+>(Error ('~nGot: ' ((f $40110))) ('~nExpected: ' ($40134 (f $40152))))
 </span>;;;
 ;;; (= (intersection $x $y) (superpose (intersect-elements (collapse $x) (collapse $y))))
 ;;; A Test to show we can define a function to be used like how normal people are imagining
@@ -3567,7 +3563,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INTERSECTION-TESTS.32</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.58 milliseconds) 
+; took 0.002 secs. (1.52 milliseconds) 
 
 !(assertEqual (intersect-elements (1 2 3 foo bar) (2 foo)) (2 foo))
 
@@ -3595,8 +3591,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           f1,
 ;           2,
-;           [_7928,_7934],
-;           [_7940,_7946],  _7918, Function_declaration_implTopF1C91_c124_c931, Function_declaration_implTopF1C91_c124_c93, Impl)</span>)
+;           [_7908,_7914],
+;           [_7920,_7926],  _7898, Function_declaration_implTopF1C91_c124_c931, Function_declaration_implTopF1C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -3611,8 +3607,8 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           'make-space',
 ;           1,
-;           [_41800],
-;           [_41806],  _41790, Function_declaration_implTopMake_spaceC91_c124_c931, Function_declaration_implTopMake_spaceC91_c124_c93, Impl)</span>)
+;           [_39968],
+;           [_39974],  _39958, Function_declaration_implTopMake_spaceC91_c124_c931, Function_declaration_implTopMake_spaceC91_c124_c93, Impl)</span>)
 
 
 Deterministic: <span class="ansi33"
@@ -3648,21 +3644,21 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ((pred-intersection unified ($19856 3) (3 $19874)))) ('~nExpected: ' ((3 3) (3 4) (4 3))))]
+[(Error ('~nGot: ' ((pred-intersection unified ($19776 3) (3 $19794)))) ('~nExpected: ' ((3 3) (3 4) (4 3))))]
 [()]
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $13406))))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $42342))))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $13562) $13568)))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' ($40702 (f $40720))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $13326))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $42262))))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' ((f $13482) $13488)))]
+[(Error ('~nGot: ' ()) ('~nExpected: ' ($40622 (f $40640))))]
 [()]
-[(Error ('~nGot: ' ((f $41264))) ('~nExpected: ' ($41288 (f $41306))))]
+[(Error ('~nGot: ' ((f $41184))) ('~nExpected: ' ($41208 (f $41226))))]
 [()]
 [()]
 
-Script done on 2025-02-24 15:05:11+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 20:39:47+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
