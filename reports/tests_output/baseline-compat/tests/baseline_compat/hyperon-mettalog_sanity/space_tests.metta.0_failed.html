@@ -16,6 +16,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
@@ -41,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:14:24+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:18:37+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/space_tests.metta] ]
 P;HTML|
@@ -88,7 +89,7 @@ Script started on 2025-02-24 15:14:24+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000285 secs. (285.47 microseconds) 
+; took 0.000292 secs. (292.25 microseconds) 
 
 !(assertEqualToResult (bind! &new-space (new-space)) (()))
 
@@ -111,7 +112,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.16 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes John Jane)) (()))
 
@@ -129,19 +130,77 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.03</h3>
+<span class="ansi37"
+>predicate_behavior(_30602,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (John Jane) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store John 2 $31682 $31684]]
+<span class="ansi37"
+>transpiler_clause_store('John',2,_32618,_32620,_32622,_32624,_32626,_32628,_32630)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__John 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_40370],
+;           [_40376],  _40360, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_9294,'John',1,_9300,_9302,_9304,_9306,_returnVal,_9310)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_18178],
+;           [_18184],  _18168, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_8268],
+;           [_8274],  _8258, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John', 1,_8248,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John', 1,_16500,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43534,'John',1,_43540,_43542,_43544,_43546,_43548,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['John'|_43680],_43684]=missing('[|]'/2)</span>
+(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_43318],
-;           [_43324],  _43308, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_8244],
+;           [_8250],  _8234, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'John',
+;           1,
+;           [_43276],
+;           [_43282],  _43266, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.115 secs. (114.55 milliseconds) 
+; took 0.644 secs. (644.05 milliseconds) 
 
-!(assertEqualToResult (match &new-space (likes $19844 $19850) ($19844 $19850)) ((John Jane)))
+!(assertEqualToResult (match &new-space (likes $19842 $19848) ($19842 $19848)) ((John Jane)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -152,16 +211,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &self (likes $29984 $29990) ($29984 $29990)) ())
+>!(assertEqualToResult (match &self (likes $29982 $29988) ($29982 $29988)) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000220 secs. (219.67 microseconds) 
+; took 0.000204 secs. (204.40 microseconds) 
 
-!(assertEqualToResult (match &self (likes $36982 $36988) ($36982 $36988)) ())
+!(assertEqualToResult (match &self (likes $36980 $36986) ($36980 $36986)) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -181,7 +240,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000766 secs. (766.05 microseconds) 
+; took 0.000770 secs. (770.40 microseconds) 
 
 !(assertEqualToResult (add-atom &new-space (likes Kate Karl)) (()))
 
@@ -199,22 +258,138 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.06</h3>
+<span class="ansi37"
+>predicate_behavior(_13556,'John',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (John Jane) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store John 2 $14636 $14638]]
+<span class="ansi37"
+>transpiler_clause_store('John',2,_15572,_15574,_15576,_15578,_15580,_15582,_15584)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__John 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_24692],
+;           [_24698],  _24682, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_8864],
+;           [_8870],  _8854, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_33486,'John',1,_33492,_33494,_33496,_33498,_returnVal,_33502)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_42294],
+;           [_42300],  _42284, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John',
+;           1,
+;           [_22952],
+;           [_22958],  _22942, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John', 1,_33040,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( John,
+;           'John', 1,_41802,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_10334,'John',1,_10340,_10342,_10344,_10346,_10348,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['John'|_10480],_10484]=missing('[|]'/2)</span>
+(ist &new-space (likes John Jane))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_26822],
-;           [_26828],  _26812, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_24848],
+;           [_24854],  _24838, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'John',
 ;           1,
-;           [_12684],
-;           [_12690],  _12674, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
+;           [_11428],
+;           [_11434],  _11418, Function_declaration_implTopJohnC91_c124_c931, Function_declaration_implTopJohnC91_c124_c93, Impl)</span>)
 
+<span class="ansi37"
+>predicate_behavior(_46052,'Kate',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Kate Karl) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store Kate 2 $47132 $47134]]
+<span class="ansi37"
+>transpiler_clause_store('Kate',2,_48068,_48070,_48072,_48074,_48076,_48078,_48080)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__Kate 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_8388],
+;           [_8394],  _8378, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_38998],
+;           [_39004],  _38988, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_6630,'Kate',1,_6636,_6638,_6640,_6642,_returnVal,_6646)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_15244],
+;           [_15250],  _15234, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_8352],
+;           [_8358],  _8342, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate', 1,_8330,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate', 1,_14808,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_41842,'Kate',1,_41848,_41850,_41852,_41854,_41856,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Kate'|_41988],_41992]=missing('[|]'/2)</span>
+(ist &new-space (likes Kate Karl))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
@@ -228,14 +403,14 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           'Kate',
 ;           1,
-;           [_44602],
-;           [_44608],  _44592, Function_declaration_implTopKateC91_c124_c931, Function_declaration_implTopKateC91_c124_c93, Impl)</span>)
+;           [_40820],
+;           [_40826],  _40810, Function_declaration_implTopKateC91_c124_c931, Function_declaration_implTopKateC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.446 secs. (446.00 milliseconds) 
+; took 1.516 secs. (1516.08 milliseconds) 
 
-!(assertEqualToResult (match &new-space (likes $21516 $21522) ($21516 $21522)) ((John Jane) (Kate Karl)))
+!(assertEqualToResult (match &new-space (likes $16706 $16712) ($16706 $16712)) ((John Jane) (Kate Karl)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -256,7 +431,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000630 secs. (629.97 microseconds) 
+; took 0.000658 secs. (657.99 microseconds) 
 
 !(assertEqualToResult (remove-atom &new-space (likes John Jane)) (()))
 
@@ -269,18 +444,76 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (match &new-space (likes $52150 $52156) ($52150 $52156)) ((Kate Karl)))
+>!(assertEqualToResult (match &new-space (likes $47340 $47346) ($47340 $47346)) ((Kate Karl)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.08</h3>
+<span class="ansi37"
+>predicate_behavior(_58390,'Kate',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Kate Karl) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store Kate 2 $59470 $59472]]
+<span class="ansi37"
+>transpiler_clause_store('Kate',2,_60406,_60408,_60410,_60412,_60414,_60416,_60418)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__Kate 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_13184],
+;           [_13190],  _13174, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_48368],
+;           [_48374],  _8290, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_20754,'Kate',1,_20760,_20762,_20764,_20766,_returnVal,_20770)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_29308],
+;           [_29314],  _29298, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate',
+;           1,
+;           [_12166],
+;           [_12172],  _12156, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate', 1,_21880,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kate,
+;           'Kate', 1,_30544,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_57578,'Kate',1,_57584,_57586,_57588,_57590,_57592,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Kate'|_57724],_57728]=missing('[|]'/2)</span>
+(ist &new-space (likes Kate Karl))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Kate',
 ;           1,
-;           [_17854],
-;           [_17860],  _17844, Function_declaration_implTopKateC91_c124_c931, Function_declaration_implTopKateC91_c124_c93, Impl)</span>)
+;           [_17794],
+;           [_17800],  _17784, Function_declaration_implTopKateC91_c124_c931, Function_declaration_implTopKateC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -292,9 +525,9 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.223 secs. (223.22 milliseconds) 
+; took 0.762 secs. (762.46 milliseconds) 
 
-!(assertEqualToResult (match &new-space (likes $35286 $35292) ($35286 $35292)) ((Kate Karl)))
+!(assertEqualToResult (match &new-space (likes $35262 $35268) ($35262 $35268)) ((Kate Karl)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -306,8 +539,8 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; evaluate in new space with metta function
 <span class="ansi38-013099040"
->!(assertEqualToResult (add-atom &new-space (= (foo $45162)  
-  (+ $45162 1))) (()))
+>!(assertEqualToResult (add-atom &new-space (= (foo $45138)  
+  (+ $45138 1))) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.09"
@@ -318,10 +551,10 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.40 milliseconds) 
+; took 0.001 secs. (1.43 milliseconds) 
 
-!(assertEqualToResult (add-atom &new-space (= (foo $56614)  
-  (+ $56614 1))) (()))
+!(assertEqualToResult (add-atom &new-space (= (foo $56590)  
+  (+ $56590 1))) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -339,7 +572,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.28 milliseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2))
 
@@ -365,7 +598,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.21 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
 !(assertEqualToResult (add-atom &new-space (= (foo $34148)  
   (+ $34148 2))) (()))
@@ -384,9 +617,24 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.12</h3>
+<span class="ansi37"
+>predicate_behavior(_53084,foo,1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (foo 1) &new-space) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store foo 2 $54350 $54352]]
+<span class="ansi37"
+>transpiler_clause_store(foo,2,_55286,_55288,_55290,_55292,_55294,_55296,_55298)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__foo 2 ]]
+<span class="ansi37"
+>function_declaration_scores('&new-space',foo,1,[_56742],['Any'],'AnyRet',[+,_56742,1],_returnVal,3+8)</span>
+<span class="ansi37"
+>function_declaration_scores('&new-space',foo,1,[_56912],['Any'],'AnyRet',[+,_56912,2],_returnVal,3+8)</span>
+(ist &new-space (= (foo $58268)  
+  (+ $58268 1)))
+(ist &new-space (= (foo $58296)  
+  (+ $58296 2)))
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.11 milliseconds) 
+; took 0.015 secs. (14.71 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (2 3))
 
@@ -399,8 +647,8 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (remove-atom &new-space (= (foo $7062)  
-  (+ $7062 1))) (()))
+>!(assertEqualToResult (remove-atom &new-space (= (foo $15998)  
+  (+ $15998 1))) (()))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SPACE-TESTS.13"
@@ -411,10 +659,10 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000743 secs. (743.21 microseconds) 
+; took 0.000808 secs. (807.59 microseconds) 
 
-!(assertEqualToResult (remove-atom &new-space (= (foo $18528)  
-  (+ $18528 1))) (()))
+!(assertEqualToResult (remove-atom &new-space (= (foo $27466)  
+  (+ $27466 1))) (()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -432,7 +680,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SPACE-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000975 secs. (975.50 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (metta (foo 1) Number &new-space) (3))
 
@@ -470,7 +718,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-24 15:14:25+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:18:40+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

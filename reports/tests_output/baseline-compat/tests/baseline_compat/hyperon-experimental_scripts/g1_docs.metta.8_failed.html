@@ -1,0 +1,3317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi31 { color: #aa0000; }
+.ansi33 { color: #aa5500; }
+.ansi37 { color: #F5F1DE; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-24 14:52:54+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[(Error (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))) " ]
+P;HTML|
+;                        [ = 4 "Expected: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
+P;HTML|
+;                         [ = 4 "Got: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
+P;HTML|
+;                         [ = 5 "Missed results: (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))" ]
+P;HTML|
+;                         [ = 5 "Excessive results: (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\")))]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+
+;;; This script demonstrates how one can document MeTTa code and get
+;;; help using the documenatation.
+;;; Let's document a function which has two arguments and returns value.
+;;; One can use `@doc` expression to do it. First argument of the expression is an
+;;; atom being documented. Other arguments describe the atom, describe function
+;;; parameters and return value.
+<span class="ansi38-255165000"
+> (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
+ 
+</span>;;; Function type is required to document the function
+<span class="ansi38-255165000"
+> (: Arg1Type Type)
+ 
+</span><span class="ansi38-255165000"
+> (: Arg2Type Type)
+ 
+</span><span class="ansi38-255165000"
+> (: ReturnType Type)
+ 
+</span><span class="ansi38-255165000"
+> (: some-func (-> Arg1Type Arg2Type ReturnType))
+ 
+</span>;;; `get-doc` function returns a `@doc-formal` expression which contains the full
+;;; documentation of the atom including user defined description and types.
+<span class="ansi38-013099040"
+>!(assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.01</h3>
+<span class="ansi37"
+>predicate_behavior(_16180,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc some-func) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $17596 $17598]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_18532,_18534,_18536,_18538,_18540,_18542,_18544)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_32052],
+;           [_32058],  _32042, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59974,'metta-get-doc',1,_59980,_59982,_59984,_59986,_returnVal,_59990)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_19644],
+;           [_19650],  _19634, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_9270],
+;           [_9276],  _9260, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_21280,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_35082,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_62140,'metta-get-doc',1,_62146,_62148,_62150,_62152,_62154,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_62286],_62290]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_62766,[_62778,_62784|_62786]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_26852],
+;           [_26858],  _26842, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_25720],
+;           [_25726],  _25710, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_59302,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc some-func) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $60718 $60720]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_61654,_61656,_61658,_61660,_61662,_61664,_61666)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_19284],
+;           [_19290],  _19274, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8892],
+;           [_8898],  _8882, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_31804,'metta-get-doc',1,_31810,_31812,_31814,_31816,_returnVal,_31820)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_44770],
+;           [_44776],  _44760, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_30866],
+;           [_30872],  _30856, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_44918,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_8836,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_32594,'metta-get-doc',1,_32600,_32602,_32604,_32606,_32608,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_32740],_32744]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_33220,[_33232,_33238|_33240]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_8834],
+;           [_8840],  _8824, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_47270],
+;           [_8836],  _8820, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_53446,'@item',1,[[->,'Atom','DocItem'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@item some-func) &top) ==> (-> Atom DocItem))
+[unknown [transpiler_predicate_store @item 2 $54852 $54854]]
+<span class="ansi37"
+>transpiler_clause_store('@item',2,_55788,_55790,_55792,_55794,_55796,_55798,_55800)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@item 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_10362],
+;           [_10368],  _10352, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_47372],
+;           [_47378],  _47362, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_21258,'@item',1,_21264,_21266,_21268,_21270,_returnVal,_21274)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_31396],
+;           [_31402],  _31386, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_16970],
+;           [_16976],  _16960, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_28422,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_39032,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_8082,'@item',1,_8088,_8090,_8092,_8094,_8096,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@item'|_8228],_8232]=missing('[|]'/2)</span>
+(ist &corelib (iz @item MeTTa))
+(ist &corelib (@doc @item (@desc "Used for documentation purposes. Converts atom/function's name to DocItem") (@params ((@param "Atom/Function name to be documented"))) (@return "(@item Atom) entity")))
+(ist &corelib (: @item (-> Atom DocItem)))
+(ist &corelib (iz @item DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_24668],
+;           [_24674],  _24658, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_13896],
+;           [_13902],  _13886, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_47284,'@kind',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@kind function) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store @kind 2 $48688 $48690]]
+<span class="ansi37"
+>transpiler_clause_store('@kind',2,_49624,_49626,_49628,_49630,_49632,_49634,_49636)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@kind 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_10080],
+;           [_10086],  _10070, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_42144],
+;           [_42150],  _42134, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_14592,'@kind',1,_14598,_14600,_14602,_14604,_returnVal,_14608)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_24904],
+;           [_24910],  _24894, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_10062],
+;           [_10068],  _10052, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_19800,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_30180,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_57216,'@kind',1,_57222,_57224,_57226,_57228,_57230,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@kind'|_57362],_57366]=missing('[|]'/2)</span>
+(ist &corelib (iz (@kind function) MeTTa))
+(ist &corelib (@doc (@kind function) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind function) in this case")))
+(ist &corelib (: (@kind function) DocKindFunction))
+(ist &corelib (iz (@kind function) DataFunctor))
+(ist &corelib (iz (@kind atom) MeTTa))
+(ist &corelib (@doc (@kind atom) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind atom) in this case")))
+(ist &corelib (: (@kind atom) DocKindAtom))
+(ist &corelib (iz (@kind atom) DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_21640],
+;           [_21646],  _21630, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_10038],
+;           [_10044],  _10028, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_45420,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type (-> Arg1Type Arg2Type ReturnType)) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $49414 $49416]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_50350,_50352,_50354,_50356,_50358,_50360,_50362)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_10164],
+;           [_10170],  _10154, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_44310],
+;           [_44316],  _44300, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_18282,'@type',1,_18288,_18290,_18292,_18294,_returnVal,_18298)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_29050],
+;           [_29056],  _29040, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_15904],
+;           [_15910],  _15894, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_27624,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_38008,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_65044,'@type',1,_65050,_65052,_65054,_65056,_65058,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_65190],_65194]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_23654],
+;           [_23660],  _23644, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_12726],
+;           [_12732],  _12716, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_47438,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "Test function") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $48694 $48696]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_49630,_49632,_49634,_49636,_49638,_49640,_49642)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_10158],
+;           [_10164],  _10148, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_44304],
+;           [_44310],  _44294, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_18214,'@desc',1,_18220,_18222,_18224,_18226,_returnVal,_18230)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_28764],
+;           [_28770],  _28754, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_15898],
+;           [_15904],  _15888, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_27618,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_38002,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_65038,'@desc',1,_65044,_65046,_65048,_65050,_65052,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_65184],_65188]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $11104 $11110)  
+  (function (chain (decons-atom $11110) $11158 (chain (eval (switch-internal $11104 $11158)) $11212 (chain (eval (if-equal $11212 NotReducible Empty $11212)) $11278 (return $11278)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $11104 (($11356 $11362) $11368))  
+  (function (if-unify $11104 $11356 (return $11362) (chain (eval (switch $11104 $11368)) $11476 (return $11476)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_25808],
+;           [_25814],  _25798, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_14618],
+;           [_14624],  _14608, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_61662,'@params',1,[[->,'Expression','DocParameters'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) &top) ==> (-> Expression DocParameters))
+[unknown [transpiler_predicate_store @params 2 $16684 $16686]]
+<span class="ansi37"
+>transpiler_clause_store('@params',2,_17620,_17622,_17624,_17626,_17628,_17630,_17632)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@params 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_29486],
+;           [_29492],  _29476, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_17010],
+;           [_17016],  _17000, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_44944,'@params',1,_44950,_44952,_44954,_44956,_returnVal,_44960)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_10260],
+;           [_10266],  _10250, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_39666],
+;           [_39672],  _39656, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params', 1,_10216,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params', 1,_10234,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_36426,'@params',1,_36432,_36434,_36436,_36438,_36440,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@params'|_36572],_36576]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $40434 $40440)  
+  (function (chain (decons-atom $40440) $40488 (chain (eval (switch-internal $40434 $40488)) $40542 (chain (eval (if-equal $40542 NotReducible Empty $40542)) $40608 (return $40608)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $40434 (($40686 $40692) $40698))  
+  (function (if-unify $40434 $40686 (return $40692) (chain (eval (switch $40434 $40698)) $40806 (return $40806)))))) Comment))
+(ist &corelib (iz @params MeTTa))
+(ist &corelib (@doc @params (@desc "Used for function documentation purposes. Contains several @param entities with description of each @param") (@params ((@param "Several (@param ...) entities"))) (@return "DocParameters containing description of all parameters of function in form of (@params ((@param ...) (@param ...) ...))")))
+(ist &corelib (: @params (-> Expression DocParameters)))
+(ist &corelib (iz @params DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@params',
+;           1,
+;           [_10236],
+;           [_10242],  _10226, Function_declaration_implTopParamsC91_c124_c931, Function_declaration_implTopParamsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@params',
+;           1,
+;           [_47092],
+;           [_10236],  _10220, Function_declaration_implTopParamsC91_c124_c931, Function_declaration_implTopParamsC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_44232,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type ReturnType) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $45684 $45686]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_46620,_46622,_46624,_46626,_46628,_46630,_46632)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_10826],
+;           [_10832],  _10816, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_43862],
+;           [_43868],  _43852, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_18608,'@type',1,_18614,_18616,_18618,_18620,_returnVal,_18624)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_29730],
+;           [_29736],  _29720, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_17510],
+;           [_17516],  _17500, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_29714,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_40888,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_11628,'@type',1,_11634,_11636,_11638,_11640,_11642,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_11774],_11778]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_28776],
+;           [_28782],  _28766, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_22668],
+;           [_22674],  _22658, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_57236,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "Return value") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $58492 $58494]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_59428,_59430,_59432,_59434,_59436,_59438,_59440)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_18728],
+;           [_18734],  _18718, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_10834],
+;           [_10840],  _10824, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_33730,'@desc',1,_33736,_33738,_33740,_33742,_returnVal,_33746)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_44622],
+;           [_44628],  _44612, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_31192],
+;           [_31198],  _31182, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_43242,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_10760,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_28900,'@desc',1,_28906,_28908,_28910,_28912,_28914,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_29046],_29050]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $32850 $32856)  
+  (function (chain (decons-atom $32856) $32904 (chain (eval (switch-internal $32850 $32904)) $32958 (chain (eval (if-equal $32958 NotReducible Empty $32958)) $33024 (return $33024)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $32850 (($33102 $33108) $33114))  
+  (function (if-unify $32850 $33102 (return $33108) (chain (eval (switch $32850 $33114)) $33222 (return $33222)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_10774],
+;           [_10780],  _10764, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_39224],
+;           [_39230],  _39214, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_16292,'@return',2,[[->,'DocType','DocDescription','DocReturn'],[->,'String','DocReturnInformal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@return (@type ReturnType) (@desc "Return value")) &top) ==> (-> DocType DocDescription DocReturn))
+[unknown [transpiler_predicate_store @return 3 $20774 $20776]]
+<span class="ansi37"
+>transpiler_clause_store('@return',3,_21710,_21712,_21714,_21716,_21718,_21720,_21722)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__@return 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_10424,_10430],
+;           [_10436,_10442],  _10414, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_10420,_10426],
+;           [_10432,_10438],  _10410, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_29314,'@return',2,_29320,_29322,_29324,_29326,_returnVal,_29330)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_10390,_10396],
+;           [_10402,_10408],  _10380, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_10406,_10412],
+;           [_10418,_10424],  _10396, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return', 2,_21466,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return', 2,_33144,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_60186,'@return',2,_60192,_60194,_60196,_60198,_60200,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@return'|_60332],_60336]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $7752 $7758)  
+  (function (chain (decons-atom $7758) $7806 (chain (eval (switch-internal $7752 $7806)) $7860 (chain (eval (if-equal $7860 NotReducible Empty $7860)) $7926 (return $7926)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $7752 (($8004 $8010) $8016))  
+  (function (if-unify $7752 $8004 (return $8010) (chain (eval (switch $7752 $8016)) $8124 (return $8124)))))) Comment))
+(ist &corelib (iz @return MeTTa))
+(ist &corelib (@doc @return (@desc "Used for documentation purposes. Description of function return value starts with @return as a part of @doc") (@params ((@param "String containing return value description"))) (@return "Return value description")))
+(ist &corelib (: @return (-> String DocReturnInformal)))
+(ist &corelib (: @return (-> DocType DocDescription DocReturn)))
+(ist &corelib (iz @return DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@return',
+;           2,
+;           [_42936,_42942],
+;           [_42948,_42954],  _42926, Function_declaration_implTopReturnC91_c124_c931, Function_declaration_implTopReturnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@return',
+;           2,
+;           [_10362,_10368],
+;           [_10374,_10380],  _10352, Function_declaration_implTopReturnC91_c124_c931, Function_declaration_implTopReturnC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_37320,'@doc-formal',6,[[->,'DocItem','DocKindAtom','DocType','DocDescription','DocFormal'],[->,'DocItem','DocKindFunction','DocType','DocDescription','DocParameters','DocReturn','DocFormal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))) &top) ==> (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal))
+[unknown [transpiler_predicate_store @doc-formal 7 $25138 $25140]]
+<span class="ansi37"
+>transpiler_clause_store('@doc-formal',7,_26074,_26076,_26078,_26080,_26082,_26084,_26086)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_6__@doc-formal 7 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _57958, _39106,_39112,_39118,_39124,_39130],
+;           [ _11992, _10306,_10312,_10318,_10324,_10330],  _10254, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _59152, _40300,_40306,_40312,_40318,_40324],
+;           [ _13116, _10304,_10310,_10316,_10322,_10328],  _10252, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_28492,'@doc-formal',6,_28498,_28500,_28502,_28504,_returnVal,_28508)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _61370, _42518,_42524,_42530,_42536,_42542],
+;           [ _15126, _10274,_10280,_10286,_10292,_10298],  _10222, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _61848, _42996,_43002,_43008,_43014,_43020],
+;           [ _15876, _10272,_10278,_10284,_10290,_10296],  _10220, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 6,_18044,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 6,_31016,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_58070,'@doc-formal',6,_58076,_58078,_58080,_58082,_58084,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@doc-formal'|_58216],_58220]=missing('[|]'/2)</span>
+(ist &corelib (iz @doc-formal MeTTa))
+(ist &corelib (@doc @doc-formal (@desc "Used for documentation purposes. get-doc returns documentation starting with @doc-formal symbol. @doc-formal contains 6 or 4 parameters depending on the entity being described (functions being described using 6 parameters, atoms - 4 parameters)") (@params ((@param "Function/Atom name for which documentation is to be displayed. Format (@item name)") (@param "Contains (@kind function) or (@kind atom) depends on entity which documentation is displayed") (@param "Contains type notation of function/atom") (@param "Function/atom description") (@param "(Functions only). Description of function parameters") (@param "(Functions only). Description of function's return value"))) (@return "Expression containing full documentation on function")))
+(ist &corelib (: @doc-formal (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal)))
+(ist &corelib (: @doc-formal (-> DocItem DocKindAtom DocType DocDescription DocFormal)))
+(ist &corelib (iz @doc-formal DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           6,
+;           [ _49348, _28524,_28530,_28536,_28542,_28548],
+;           [ _56922, _28560,_28566,_28572,_28578,_28584],  _28508, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           6,
+;           [ _57818, _36994,_37000,_37006,_37012,_37018],
+;           [ _11864, _10252,_10258,_10264,_10270,_10276],  _10200, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 11.38 seconds.
+
+!(assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (metta-get-doc some-func)) 
+      ( (@doc-formal 
+          (@item some-func) 
+          (@kind function) 
+          (@type (-> Arg1Type Arg2Type ReturnType)) 
+          (@desc "Test function") 
+          (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) 
+          (@return 
+            (@type ReturnType) 
+            (@desc "Return value"))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('metta-get-doc','[|]'('some-func',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('some-func',[])),'[|]'('[|]'('@kind','[|]'(function,[])),'[|]'('[|]'('@type','[|]'('[|]'(->,'[|]'('Arg1Type','[|]'('Arg2Type','[|]'('ReturnType',[])))),[])),'[|]'('[|]'('@desc','[|]'("Test function",[])),'[|]'('[|]'('@params','[|]'('[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('Arg1Type',[])),'[|]'('[|]'('@desc','[|]'("First argument",[])),[]))),'[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('Arg2Type',[])),'[|]'('[|]'('@desc','[|]'("Second argument",[])),[]))),[])),[])),'[|]'('[|]'('@return','[|]'('[|]'('@type','[|]'('ReturnType',[])),'[|]'('[|]'('@desc','[|]'("Return value",[])),[]))),[]))))))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((metta-get-doc some-func))) ('~nExpected: ' ((@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))))
+</span>;;; Same approach can be used to document single atom of any @kind.
+<span class="ansi38-255165000"
+> (@doc SomeSymbol (@desc "Test symbol atom having specific type"))
+ 
+</span><span class="ansi38-255165000"
+> (: SomeSymbol SomeType)
+ 
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.02</h3>
+<span class="ansi37"
+>predicate_behavior(_31680,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc SomeSymbol) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $33048 $33050]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_33984,_33986,_33988,_33990,_33992,_33994,_33996)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_46638],
+;           [_46644],  _46628, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_31096],
+;           [_31102],  _31086, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59052,'metta-get-doc',1,_59058,_59060,_59062,_59064,_returnVal,_59068)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_17382],
+;           [_17388],  _17372, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8308],
+;           [_8314],  _8298, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_17514,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_30172,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_57230,'metta-get-doc',1,_57236,_57238,_57240,_57242,_57244,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_57376],_57380]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_57856,[_57868,_57874|_57876]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_24992],
+;           [_24998],  _24982, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_17316],
+;           [_17322],  _17306, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_50898,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc SomeSymbol) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $52266 $52268]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_53202,_53204,_53206,_53208,_53210,_53212,_53214)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_7972],
+;           [_7978],  _7962, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_46234],
+;           [_46240],  _46224, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_18856,'metta-get-doc',1,_18862,_18864,_18866,_18868,_returnVal,_18872)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_30758],
+;           [_30764],  _30748, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_16758],
+;           [_16764],  _16748, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_30072,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_42614,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_12024,'metta-get-doc',1,_12030,_12032,_12034,_12036,_12038,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_12170],_12174]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_12650,[_12662,_12668|_12670]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_32456],
+;           [_32462],  _32446, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_24382],
+;           [_24388],  _24372, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_64056,'@item',1,[[->,'Atom','DocItem'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@item SomeSymbol) &top) ==> (-> Atom DocItem))
+[unknown [transpiler_predicate_store @item 2 $5686 $5688]]
+<span class="ansi37"
+>transpiler_clause_store('@item',2,_6622,_6624,_6626,_6628,_6630,_6632,_6634)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@item 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_15536],
+;           [_15542],  _15526, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_8588],
+;           [_8594],  _8578, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_23990,'@item',1,_23996,_23998,_24000,_24002,_returnVal,_24006)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_31786],
+;           [_31792],  _31776, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_14072],
+;           [_14078],  _14062, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_23584,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_32410,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_59446,'@item',1,_59452,_59454,_59456,_59458,_59460,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@item'|_59592],_59596]=missing('[|]'/2)</span>
+(ist &corelib (iz @item MeTTa))
+(ist &corelib (@doc @item (@desc "Used for documentation purposes. Converts atom/function's name to DocItem") (@params ((@param "Atom/Function name to be documented"))) (@return "(@item Atom) entity")))
+(ist &corelib (: @item (-> Atom DocItem)))
+(ist &corelib (iz @item DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_18310],
+;           [_18316],  _18300, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_8552],
+;           [_8558],  _8542, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_38634,'@kind',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@kind atom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store @kind 2 $39714 $39716]]
+<span class="ansi37"
+>transpiler_clause_store('@kind',2,_40650,_40652,_40654,_40656,_40658,_40660,_40662)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@kind 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_48844],
+;           [_8674],  _8658, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_30140],
+;           [_30146],  _30130, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_58072,'@kind',1,_58078,_58080,_58082,_58084,_returnVal,_58088)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_14428],
+;           [_14434],  _14418, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_8632],
+;           [_8638],  _8622, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_8610,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_16274,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43310,'@kind',1,_43316,_43318,_43320,_43322,_43324,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@kind'|_43456],_43460]=missing('[|]'/2)</span>
+(ist &corelib (iz (@kind function) MeTTa))
+(ist &corelib (@doc (@kind function) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind function) in this case")))
+(ist &corelib (: (@kind function) DocKindFunction))
+(ist &corelib (iz (@kind function) DataFunctor))
+(ist &corelib (iz (@kind atom) MeTTa))
+(ist &corelib (@doc (@kind atom) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind atom) in this case")))
+(ist &corelib (: (@kind atom) DocKindAtom))
+(ist &corelib (iz (@kind atom) DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_8608],
+;           [_8614],  _8598, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_46070],
+;           [_46076],  _8592, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_25696,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type SomeType) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $26776 $26778]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_27712,_27714,_27716,_27718,_27720,_27722,_27724)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_36596],
+;           [_36602],  _36586, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_14036],
+;           [_14042],  _14026, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_41968,'@type',1,_41974,_41976,_41978,_41980,_returnVal,_41984)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_8698],
+;           [_8704],  _8688, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_31918],
+;           [_31924],  _31908, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_41834,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_49146,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_21500,'@type',1,_21506,_21508,_21510,_21512,_21514,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_21646],_21650]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_36492],
+;           [_36498],  _36482, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_19804],
+;           [_19810],  _19794, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_54372,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "Test symbol atom having specific type") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $55634 $55636]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_56570,_56572,_56574,_56576,_56578,_56580,_56582)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_13242],
+;           [_13248],  _13232, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_48868],
+;           [_8706],  _8690, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_22036,'@desc',1,_22042,_22044,_22046,_22048,_returnVal,_22052)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_30932],
+;           [_30938],  _30922, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_14462],
+;           [_14468],  _14452, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_24096,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_33578,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_60614,'@desc',1,_60620,_60622,_60624,_60626,_60628,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_60760],_60764]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $6020 $6026)  
+  (function (chain (decons-atom $6026) $6074 (chain (eval (switch-internal $6020 $6074)) $6128 (chain (eval (if-equal $6128 NotReducible Empty $6128)) $6194 (return $6194)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $6020 (($6272 $6278) $6284))  
+  (function (if-unify $6020 $6272 (return $6278) (chain (eval (switch $6020 $6284)) $6392 (return $6392)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_20640],
+;           [_20646],  _20630, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_8660],
+;           [_8666],  _8650, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_40644,'@doc-formal',4,[[->,'DocItem','DocKindAtom','DocType','DocDescription','DocFormal'],[->,'DocItem','DocKindFunction','DocType','DocDescription','DocParameters','DocReturn','DocFormal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")) &top) ==> (-> DocItem DocKindAtom DocType DocDescription DocFormal))
+[unknown [transpiler_predicate_store @doc-formal 5 $45540 $45542]]
+<span class="ansi37"
+>transpiler_clause_store('@doc-formal',5,_46476,_46478,_46480,_46482,_46484,_46486,_46488)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_4__@doc-formal 5 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_8476,_8482,_8488,_8494],
+;           [_8500,_8506,_8512,_8518],  _8466, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_35910,_35916,_35922,_35928],
+;           [_35934,_35940,_35946,_35952],  _35900, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_64322,'@doc-formal',4,_64328,_64330,_64332,_64334,_returnVal,_64338)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_14226,_14232,_14238,_14244],
+;           [_14250,_14256,_14262,_14268],  _14216, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_8398,_8404,_8410,_8416],
+;           [_8422,_8428,_8434,_8440],  _8388, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 4,_9222,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 4,_21334,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_48388,'@doc-formal',4,_48394,_48396,_48398,_48400,_48402,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@doc-formal'|_48534],_48538]=missing('[|]'/2)</span>
+(ist &corelib (iz @doc-formal MeTTa))
+(ist &corelib (@doc @doc-formal (@desc "Used for documentation purposes. get-doc returns documentation starting with @doc-formal symbol. @doc-formal contains 6 or 4 parameters depending on the entity being described (functions being described using 6 parameters, atoms - 4 parameters)") (@params ((@param "Function/Atom name for which documentation is to be displayed. Format (@item name)") (@param "Contains (@kind function) or (@kind atom) depends on entity which documentation is displayed") (@param "Contains type notation of function/atom") (@param "Function/atom description") (@param "(Functions only). Description of function parameters") (@param "(Functions only). Description of function's return value"))) (@return "Expression containing full documentation on function")))
+(ist &corelib (: @doc-formal (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal)))
+(ist &corelib (: @doc-formal (-> DocItem DocKindAtom DocType DocDescription DocFormal)))
+(ist &corelib (iz @doc-formal DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           4,
+;           [_19602,_19608,_19614,_19620],
+;           [_19626,_19632,_19638,_19644],  _19592, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           4,
+;           [_8902,_8908,_8914,_8920],
+;           [_8926,_8932,_8938,_8944],  _8892, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 6.47 seconds.
+
+!(assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (metta-get-doc SomeSymbol)) 
+      ( (@doc-formal 
+          (@item SomeSymbol) 
+          (@kind atom) 
+          (@type SomeType) 
+          (@desc "Test symbol atom having specific type")))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('metta-get-doc','[|]'('SomeSymbol',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('SomeSymbol',[])),'[|]'('[|]'('@kind','[|]'(atom,[])),'[|]'('[|]'('@type','[|]'('SomeType',[])),'[|]'('[|]'('@desc','[|]'("Test symbol atom having specific type",[])),[]))))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((metta-get-doc SomeSymbol))) ('~nExpected: ' ((@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))))
+</span>;;; Grounded atoms are also can be documented using `@doc` expressions. Type of
+;;; the grounded atom is a part of its implementation.
+<span class="ansi38-255165000"
+> (@doc some-gnd-atom (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
+ 
+</span>;;; As some-gnd-function is not imported really in this example type is not
+;;; available and @doc-formal contains %Undefined% instead.
+<span class="ansi38-013099040"
+>!(assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.03</h3>
+<span class="ansi37"
+>predicate_behavior(_13544,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc some-gnd-atom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $14624 $14626]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_15560,_15562,_15564,_15566,_15568,_15570,_15572)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_29082],
+;           [_29088],  _29072, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_18006],
+;           [_18012],  _17996, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_45962,'metta-get-doc',1,_45968,_45970,_45972,_45974,_returnVal,_45978)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_9136],
+;           [_9142],  _9126, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_44552],
+;           [_44558],  _44542, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_9110,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_20528,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_47586,'metta-get-doc',1,_47592,_47594,_47596,_47598,_47600,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_47732],_47736]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_48212,[_48224,_48230|_48232]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_13294],
+;           [_13300],  _13284, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_9126],
+;           [_9132],  _9116, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_41234,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc some-gnd-atom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $42314 $42316]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_43250,_43252,_43254,_43256,_43258,_43260,_43262)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8776],
+;           [_8782],  _8766, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_39600],
+;           [_39606],  _39590, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_9466,'metta-get-doc',1,_9472,_9474,_9476,_9478,_returnVal,_9482)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_22462],
+;           [_22468],  _22452, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8758],
+;           [_8764],  _8748, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_20970,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_33932,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_60990,'metta-get-doc',1,_60996,_60998,_61000,_61002,_61004,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_61136],_61140]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_61616,[_61628,_61634|_61636]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_25866],
+;           [_25872],  _25856, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_19082],
+;           [_19088],  _19072, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_17468,'@item',1,[[->,'Atom','DocItem'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@item some-gnd-atom) &top) ==> (-> Atom DocItem))
+[unknown [transpiler_predicate_store @item 2 $18548 $18550]]
+<span class="ansi37"
+>transpiler_clause_store('@item',2,_19484,_19486,_19488,_19490,_19492,_19494,_19496)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@item 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_30308],
+;           [_30314],  _30298, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_16738],
+;           [_16744],  _16728, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_44670,'@item',1,_44676,_44678,_44680,_44682,_returnVal,_44686)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_9846],
+;           [_9852],  _9836, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_36928],
+;           [_36934],  _36918, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_45746,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_9760,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_31736,'@item',1,_31742,_31744,_31746,_31748,_31750,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@item'|_31882],_31886]=missing('[|]'/2)</span>
+(ist &corelib (iz @item MeTTa))
+(ist &corelib (@doc @item (@desc "Used for documentation purposes. Converts atom/function's name to DocItem") (@params ((@param "Atom/Function name to be documented"))) (@return "(@item Atom) entity")))
+(ist &corelib (: @item (-> Atom DocItem)))
+(ist &corelib (iz @item DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_47580],
+;           [_9820],  _9804, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_36052],
+;           [_36058],  _36042, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_10154,'@kind',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@kind function) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store @kind 2 $11558 $11560]]
+<span class="ansi37"
+>transpiler_clause_store('@kind',2,_12494,_12496,_12498,_12500,_12502,_12504,_12506)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@kind 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_22608],
+;           [_22614],  _22598, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_9848],
+;           [_9854],  _9838, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_32738,'@kind',1,_32744,_32746,_32748,_32750,_returnVal,_32754)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_42210],
+;           [_42216],  _42200, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_23954],
+;           [_23960],  _23944, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_35198,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_43590,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_16218,'@kind',1,_16224,_16226,_16228,_16230,_16232,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@kind'|_16364],_16368]=missing('[|]'/2)</span>
+(ist &corelib (iz (@kind function) MeTTa))
+(ist &corelib (@doc (@kind function) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind function) in this case")))
+(ist &corelib (: (@kind function) DocKindFunction))
+(ist &corelib (iz (@kind function) DataFunctor))
+(ist &corelib (iz (@kind atom) MeTTa))
+(ist &corelib (@doc (@kind atom) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind atom) in this case")))
+(ist &corelib (: (@kind atom) DocKindAtom))
+(ist &corelib (iz (@kind atom) DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_32996],
+;           [_33002],  _32986, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_21410],
+;           [_21416],  _21400, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_56080,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type %Undefined%) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $57532 $57534]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_58468,_58470,_58472,_58474,_58476,_58478,_58480)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_16738],
+;           [_16744],  _16728, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_9866],
+;           [_9872],  _9856, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_27382,'@type',1,_27388,_27390,_27392,_27394,_returnVal,_27398)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_36902],
+;           [_36908],  _36892, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_16414],
+;           [_16420],  _16404, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_27920,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_38202,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_65238,'@type',1,_65244,_65246,_65248,_65250,_65252,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_65384],_65388]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_22860],
+;           [_22866],  _22850, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_11322],
+;           [_11328],  _11312, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_45890,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "Test function") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $47146 $47148]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_48082,_48084,_48086,_48088,_48090,_48092,_48094)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_9888],
+;           [_9894],  _9878, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_41952],
+;           [_41958],  _41942, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_14400,'@desc',1,_14406,_14408,_14410,_14412,_returnVal,_14416)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_24712],
+;           [_24718],  _24702, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_9870],
+;           [_9876],  _9860, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_19286,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_29368,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_56404,'@desc',1,_56410,_56412,_56414,_56416,_56418,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_56550],_56554]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $60354 $60360)  
+  (function (chain (decons-atom $60360) $60408 (chain (eval (switch-internal $8336 $8390)) $8444 (chain (eval (if-equal $8444 NotReducible Empty $8444)) $8510 (return $8510)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $8336 (($8588 $8594) $8600))  
+  (function (if-unify $8336 $8588 (return $8594) (chain (eval (switch $8336 $8600)) $8708 (return $8708)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_24488],
+;           [_24494],  _24478, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_12468],
+;           [_12474],  _12458, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_59512,'@params',1,[[->,'Expression','DocParameters'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) &top) ==> (-> Expression DocParameters))
+[unknown [transpiler_predicate_store @params 2 $14344 $14346]]
+<span class="ansi37"
+>transpiler_clause_store('@params',2,_15280,_15282,_15284,_15286,_15288,_15290,_15292)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@params 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_26848],
+;           [_26854],  _26838, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_10338],
+;           [_10344],  _10328, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_38272,'@params',1,_38278,_38280,_38282,_38284,_returnVal,_38288)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_48724],
+;           [_48730],  _9994, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params',
+;           1,
+;           [_32532],
+;           [_32538],  _32522, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params', 1,_44300,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Params,
+;           '@params', 1,_9922,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_31900,'@params',1,_31906,_31908,_31910,_31912,_31914,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@params'|_32046],_32050]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $35908 $35914)  
+  (function (chain (decons-atom $35914) $35962 (chain (eval (switch-internal $35908 $35962)) $36016 (chain (eval (if-equal $36016 NotReducible Empty $36016)) $36082 (return $36082)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $35908 (($36160 $36166) $36172))  
+  (function (if-unify $35908 $36160 (return $36166) (chain (eval (switch $35908 $36172)) $36280 (return $36280)))))) Comment))
+(ist &corelib (iz @params MeTTa))
+(ist &corelib (@doc @params (@desc "Used for function documentation purposes. Contains several @param entities with description of each @param") (@params ((@param "Several (@param ...) entities"))) (@return "DocParameters containing description of all parameters of function in form of (@params ((@param ...) (@param ...) ...))")))
+(ist &corelib (: @params (-> Expression DocParameters)))
+(ist &corelib (iz @params DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@params',
+;           1,
+;           [_9982],
+;           [_9988],  _9972, Function_declaration_implTopParamsC91_c124_c931, Function_declaration_implTopParamsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@params',
+;           1,
+;           [_42702],
+;           [_42708],  _42692, Function_declaration_implTopParamsC91_c124_c931, Function_declaration_implTopParamsC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_39888,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type %Undefined%) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $41340 $41342]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_42276,_42278,_42280,_42282,_42284,_42286,_42288)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_10574],
+;           [_10580],  _10564, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_37656],
+;           [_37662],  _37646, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_7532,'@type',1,_7538,_7540,_7542,_7544,_returnVal,_7548)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_19382],
+;           [_19388],  _19372, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_10538],
+;           [_10544],  _10528, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_18082,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_28902,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_55938,'@type',1,_55944,_55946,_55948,_55950,_55952,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_56084],_56088]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_22328],
+;           [_22334],  _22318, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_12800],
+;           [_12806],  _12790, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_47368,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "Return value") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $48624 $48626]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_49560,_49562,_49564,_49566,_49568,_49570,_49572)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_10604],
+;           [_10610],  _10594, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_45030],
+;           [_45036],  _45020, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_19912,'@desc',1,_19918,_19920,_19922,_19924,_returnVal,_19928)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_30948],
+;           [_30954],  _30938, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_18056],
+;           [_18062],  _18046, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_30036,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_41148,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_11478,'@desc',1,_11484,_11486,_11488,_11490,_11492,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_11624],_11628]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $15428 $15434)  
+  (function (chain (decons-atom $15434) $15482 (chain (eval (switch-internal $15428 $15482)) $15536 (chain (eval (if-equal $15536 NotReducible Empty $15536)) $15602 (return $15602)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $15428 (($15680 $15686) $15692))  
+  (function (if-unify $15428 $15680 (return $15686) (chain (eval (switch $15428 $15692)) $15800 (return $15800)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_30636],
+;           [_30642],  _30626, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_22336],
+;           [_22342],  _22326, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_55868,'@return',2,[[->,'DocType','DocDescription','DocReturn'],[->,'String','DocReturnInformal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@return (@type %Undefined%) (@desc "Return value")) &top) ==> (-> DocType DocDescription DocReturn))
+[unknown [transpiler_predicate_store @return 3 $60350 $60352]]
+<span class="ansi37"
+>transpiler_clause_store('@return',3,_61286,_61288,_61290,_61292,_61294,_61296,_61298)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__@return 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_36382,_36388],
+;           [_36394,_36400],  _36372, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_36174,_36180],
+;           [_36186,_36192],  _36164, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_64264,'@return',2,_64270,_64272,_64274,_64276,_returnVal,_64280)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_36080,_36086],
+;           [_36092,_36098],  _36070, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return',
+;           2,
+;           [_35818,_35824],
+;           [_35830,_35836],  _35808, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return', 2,_46594,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Return,
+;           '@return', 2,_9968,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_32022,'@return',2,_32028,_32030,_32032,_32034,_32036,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@return'|_32168],_32172]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $36206 $36212)  
+  (function (chain (decons-atom $36212) $36260 (chain (eval (switch-internal $36206 $36260)) $36314 (chain (eval (if-equal $36314 NotReducible Empty $36314)) $36380 (return $36380)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $36206 (($36458 $36464) $36470))  
+  (function (if-unify $36206 $36458 (return $36464) (chain (eval (switch $36206 $36470)) $36578 (return $36578)))))) Comment))
+(ist &corelib (iz @return MeTTa))
+(ist &corelib (@doc @return (@desc "Used for documentation purposes. Description of function return value starts with @return as a part of @doc") (@params ((@param "String containing return value description"))) (@return "Return value description")))
+(ist &corelib (: @return (-> String DocReturnInformal)))
+(ist &corelib (: @return (-> DocType DocDescription DocReturn)))
+(ist &corelib (iz @return DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@return',
+;           2,
+;           [_15870,_15876],
+;           [_15882,_15888],  _15860, Function_declaration_implTopReturnC91_c124_c931, Function_declaration_implTopReturnC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@return',
+;           2,
+;           [_25058,_25064],
+;           [_25070,_25076],  _25048, Function_declaration_implTopReturnC91_c124_c931, Function_declaration_implTopReturnC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_62602,'@doc-formal',6,[[->,'DocItem','DocKindAtom','DocType','DocDescription','DocFormal'],[->,'DocItem','DocKindFunction','DocType','DocDescription','DocParameters','DocReturn','DocFormal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))) &top) ==> (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal))
+[unknown [transpiler_predicate_store @doc-formal 7 $24804 $24806]]
+<span class="ansi37"
+>transpiler_clause_store('@doc-formal',7,_25740,_25742,_25744,_25746,_25748,_25750,_25752)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_6__@doc-formal 7 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _57220, _38368,_38374,_38380,_38386,_38392],
+;           [ _11730, _10054,_10060,_10066,_10072,_10078],  _10002, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _57218, _38366,_38372,_38378,_38384,_38390],
+;           [ _11728, _10052,_10058,_10064,_10070,_10076],  _10000, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_27104,'@doc-formal',6,_27110,_27112,_27114,_27116,_returnVal,_27120)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _58242, _39390,_39396,_39402,_39408,_39414],
+;           [ _11780, _10022,_10028,_10034,_10040,_10046],  _9970, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           6,
+;           [ _57186, _38334,_38340,_38346,_38352,_38358],
+;           [ _11696, _10020,_10026,_10032,_10038,_10044],  _9968, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 6,_13950,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 6,_26194,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_53248,'@doc-formal',6,_53254,_53256,_53258,_53260,_53262,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@doc-formal'|_53394],_53398]=missing('[|]'/2)</span>
+(ist &corelib (iz @doc-formal MeTTa))
+(ist &corelib (@doc @doc-formal (@desc "Used for documentation purposes. get-doc returns documentation starting with @doc-formal symbol. @doc-formal contains 6 or 4 parameters depending on the entity being described (functions being described using 6 parameters, atoms - 4 parameters)") (@params ((@param "Function/Atom name for which documentation is to be displayed. Format (@item name)") (@param "Contains (@kind function) or (@kind atom) depends on entity which documentation is displayed") (@param "Contains type notation of function/atom") (@param "Function/atom description") (@param "(Functions only). Description of function parameters") (@param "(Functions only). Description of function's return value"))) (@return "Expression containing full documentation on function")))
+(ist &corelib (: @doc-formal (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal)))
+(ist &corelib (: @doc-formal (-> DocItem DocKindAtom DocType DocDescription DocFormal)))
+(ist &corelib (iz @doc-formal DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           6,
+;           [ _39716, _18892,_18898,_18904,_18910,_18916],
+;           [ _47290, _18928,_18934,_18940,_18946,_18952],  _18876, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           6,
+;           [ _47622, _26798,_26804,_26810,_26816,_26822],
+;           [ _55196, _26834,_26840,_26846,_26852,_26858],  _26782, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 11.30 seconds.
+
+!(assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (metta-get-doc some-gnd-atom)) 
+      ( (@doc-formal 
+          (@item some-gnd-atom) 
+          (@kind function) 
+          (@type %Undefined%) 
+          (@desc "Test function") 
+          (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) 
+          (@return 
+            (@type %Undefined%) 
+            (@desc "Return value"))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('metta-get-doc','[|]'('some-gnd-atom',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('some-gnd-atom',[])),'[|]'('[|]'('@kind','[|]'(function,[])),'[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Test function",[])),'[|]'('[|]'('@params','[|]'('[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("First argument",[])),[]))),'[|]'('[|]'('@param','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Second argument",[])),[]))),[])),[])),'[|]'('[|]'('@return','[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("Return value",[])),[]))),[]))))))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((metta-get-doc some-gnd-atom))) ('~nExpected: ' ((@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))))
+</span>;;; If atom is not documented then `get-doc` returns "No documentation"
+;;; description.
+<span class="ansi38-013099040"
+>!(assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.04</h3>
+<span class="ansi37"
+>predicate_behavior(_5910,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc NoSuchAtom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $6990 $6992]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_7926,_7928,_7930,_7932,_7934,_7936,_7938)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_20278],
+;           [_20284],  _20268, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8224],
+;           [_8230],  _8214, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_31238,'metta-get-doc',1,_31244,_31246,_31248,_31250,_returnVal,_31254)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_42966],
+;           [_42972],  _42956, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_28098],
+;           [_28104],  _28088, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_41594,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_8150,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_24480,'metta-get-doc',1,_24486,_24488,_24490,_24492,_24494,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_24626],_24630]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_25106,[_25118,_25124|_25126]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_44474],
+;           [_44480],  _44464, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_37208],
+;           [_37214],  _37198, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_10760,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc NoSuchAtom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $11840 $11842]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_12776,_12778,_12780,_12782,_12784,_12786,_12788)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_24904],
+;           [_24910],  _24894, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_7906],
+;           [_7912],  _7896, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_34386,'metta-get-doc',1,_34392,_34394,_34396,_34398,_returnVal,_34402)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_46146],
+;           [_46152],  _46136, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_29970],
+;           [_29976],  _29960, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_43092,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_7812,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_29810,'metta-get-doc',1,_29816,_29818,_29820,_29822,_29824,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_29956],_29960]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_30436,[_30448,_30454|_30456]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_7826],
+;           [_7832],  _7816, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_41408],
+;           [_41414],  _41398, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_25540,'@item',1,[[->,'Atom','DocItem'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@item NoSuchAtom) &top) ==> (-> Atom DocItem))
+[unknown [transpiler_predicate_store @item 2 $26620 $26622]]
+<span class="ansi37"
+>transpiler_clause_store('@item',2,_27556,_27558,_27560,_27562,_27564,_27566,_27568)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@item 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_35908],
+;           [_35914],  _35898, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_14000],
+;           [_14006],  _13990, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_41932,'@item',1,_41938,_41940,_41942,_41944,_returnVal,_41948)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_8660],
+;           [_8666],  _8650, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item',
+;           1,
+;           [_31880],
+;           [_31886],  _31870, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_41796,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Item,
+;           '@item', 1,_49108,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_21462,'@item',1,_21468,_21470,_21472,_21474,_21476,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@item'|_21608],_21612]=missing('[|]'/2)</span>
+(ist &corelib (iz @item MeTTa))
+(ist &corelib (@doc @item (@desc "Used for documentation purposes. Converts atom/function's name to DocItem") (@params ((@param "Atom/Function name to be documented"))) (@return "(@item Atom) entity")))
+(ist &corelib (: @item (-> Atom DocItem)))
+(ist &corelib (iz @item DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_36454],
+;           [_36460],  _36444, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@item',
+;           1,
+;           [_19766],
+;           [_19772],  _19756, Function_declaration_implTopItemC91_c124_c931, Function_declaration_implTopItemC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_53154,'@kind',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@kind atom) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store @kind 2 $54234 $54236]]
+<span class="ansi37"
+>transpiler_clause_store('@kind',2,_55170,_55172,_55174,_55176,_55178,_55180,_55182)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@kind 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_8686],
+;           [_8692],  _8676, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_43110],
+;           [_43116],  _43100, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_16432,'@kind',1,_16438,_16440,_16442,_16444,_returnVal,_16448)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_25190],
+;           [_25196],  _25180, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind',
+;           1,
+;           [_8648],
+;           [_8654],  _8638, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_15988,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Kind,
+;           '@kind', 1,_24748,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_51784,'@kind',1,_51790,_51792,_51794,_51796,_51798,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@kind'|_51930],_51934]=missing('[|]'/2)</span>
+(ist &corelib (iz (@kind function) MeTTa))
+(ist &corelib (@doc (@kind function) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind function) in this case")))
+(ist &corelib (: (@kind function) DocKindFunction))
+(ist &corelib (iz (@kind function) DataFunctor))
+(ist &corelib (iz (@kind atom) MeTTa))
+(ist &corelib (@doc (@kind atom) (@desc "Used for documentation purposes. Shows type of entity to be documented. (@kind atom) in this case")))
+(ist &corelib (: (@kind atom) DocKindAtom))
+(ist &corelib (iz (@kind atom) DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_11248],
+;           [_11254],  _11238, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@kind',
+;           1,
+;           [_8604],
+;           [_8610],  _8594, Function_declaration_implTopKindC91_c124_c931, Function_declaration_implTopKindC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_32262,'@type',1,[[->,'Type','DocType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@type %Undefined%) &top) ==> (-> Type DocType))
+[unknown [transpiler_predicate_store @type 2 $33714 $33716]]
+<span class="ansi37"
+>transpiler_clause_store('@type',2,_34650,_34652,_34654,_34656,_34658,_34660,_34662)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@type 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_43144],
+;           [_43150],  _43134, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_24714],
+;           [_24720],  _24704, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_52646,'@type',1,_52652,_52654,_52656,_52658,_returnVal,_52662)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_8670],
+;           [_8676],  _8660, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type',
+;           1,
+;           [_40938],
+;           [_40944],  _40928, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_49368,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Type,
+;           '@type', 1,_8624,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_32360,'@type',1,_32366,_32368,_32370,_32372,_32374,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@type'|_32506],_32510]=missing('[|]'/2)</span>
+(ist &corelib (iz @type MeTTa))
+(ist &corelib (@doc @type (@desc "Used for documentation purposes. Converts atom/function's type to DocType") (@params ((@param "Atom/Function type to be documented"))) (@return "(@type Type) entity")))
+(ist &corelib (: @type (-> Type DocType)))
+(ist &corelib (iz @type DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_46666],
+;           [_46672],  _8610, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@type',
+;           1,
+;           [_33282],
+;           [_33288],  _33272, Function_declaration_implTopTypeC91_c124_c931, Function_declaration_implTopTypeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_7446,'@desc',1,[[->,'String','DocDescription'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@desc "No documentation") &top) ==> (-> String DocDescription))
+[unknown [transpiler_predicate_store @desc 2 $8704 $8706]]
+<span class="ansi37"
+>transpiler_clause_store('@desc',2,_9640,_9642,_9644,_9646,_9648,_9650,_9652)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__@desc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_19046],
+;           [_19052],  _19036, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_8642],
+;           [_8648],  _8632, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_27458,'@desc',1,_27464,_27466,_27468,_27470,_returnVal,_27474)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_35678],
+;           [_35684],  _35668, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc',
+;           1,
+;           [_14404],
+;           [_14410],  _14394, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_23918,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Desc,
+;           '@desc', 1,_32934,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_59970,'@desc',1,_59976,_59978,_59980,_59982,_59984,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@desc'|_60116],_60120]=missing('[|]'/2)</span>
+(ist &corelib (: ((: switch (-> %Undefined% Expression Atom)) (= (switch $5962 $5968)  
+  (function (chain (decons-atom $5968) $6016 (chain (eval (switch-internal $5962 $6016)) $6070 (chain (eval (if-equal $6070 NotReducible Empty $6070)) $6136 (return $6136)))))) (iz switch-internal HelperMM) (@doc switch-internal (@desc "This function is being called inside switch function to test one of the cases and it calls switch once again if current condition is not met") (@params ((@param "Atom (it will be evaluated)") (@param "Deconsed tuple of pairs mapping condition patterns to results"))) (@return "Result of evaluating of Atom bound to met condition")) (= (switch-internal $5962 (($6214 $6220) $6226))  
+  (function (if-unify $5962 $6214 (return $6220) (chain (eval (switch $5962 $6226)) $6334 (return $6334)))))) Comment))
+(ist &corelib (iz @desc MeTTa))
+(ist &corelib (@doc @desc (@desc "Used for documentation purposes. Description of function starts with @desc as a part of @doc") (@params ((@param "String containing function description"))) (@return "Function description")))
+(ist &corelib (: @desc (-> String DocDescription)))
+(ist &corelib (iz @desc DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_20492],
+;           [_20498],  _20482, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@desc',
+;           1,
+;           [_8604],
+;           [_8610],  _8594, Function_declaration_implTopDescC91_c124_c931, Function_declaration_implTopDescC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_40536,'@doc-formal',4,[[->,'DocItem','DocKindAtom','DocType','DocDescription','DocFormal'],[->,'DocItem','DocKindFunction','DocType','DocDescription','DocParameters','DocReturn','DocFormal'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")) &top) ==> (-> DocItem DocKindAtom DocType DocDescription DocFormal))
+[unknown [transpiler_predicate_store @doc-formal 5 $44628 $44630]]
+<span class="ansi37"
+>transpiler_clause_store('@doc-formal',5,_45564,_45566,_45568,_45570,_45572,_45574,_45576)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_4__@doc-formal 5 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_8474,_8480,_8486,_8492],
+;           [_8498,_8504,_8510,_8516],  _8464, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_35908,_35914,_35920,_35926],
+;           [_35932,_35938,_35944,_35950],  _35898, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_64320,'@doc-formal',4,_64326,_64328,_64330,_64332,_returnVal,_64336)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_14224,_14230,_14236,_14242],
+;           [_14248,_14254,_14260,_14266],  _14214, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal',
+;           4,
+;           [_8396,_8402,_8408,_8414],
+;           [_8420,_8426,_8432,_8438],  _8386, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 4,_9220,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Doc_formal,
+;           '@doc-formal', 4,_21332,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_48386,'@doc-formal',4,_48392,_48394,_48396,_48398,_48400,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['@doc-formal'|_48532],_48536]=missing('[|]'/2)</span>
+(ist &corelib (iz @doc-formal MeTTa))
+(ist &corelib (@doc @doc-formal (@desc "Used for documentation purposes. get-doc returns documentation starting with @doc-formal symbol. @doc-formal contains 6 or 4 parameters depending on the entity being described (functions being described using 6 parameters, atoms - 4 parameters)") (@params ((@param "Function/Atom name for which documentation is to be displayed. Format (@item name)") (@param "Contains (@kind function) or (@kind atom) depends on entity which documentation is displayed") (@param "Contains type notation of function/atom") (@param "Function/atom description") (@param "(Functions only). Description of function parameters") (@param "(Functions only). Description of function's return value"))) (@return "Expression containing full documentation on function")))
+(ist &corelib (: @doc-formal (-> DocItem DocKindFunction DocType DocDescription DocParameters DocReturn DocFormal)))
+(ist &corelib (: @doc-formal (-> DocItem DocKindAtom DocType DocDescription DocFormal)))
+(ist &corelib (iz @doc-formal DataFunctor))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           4,
+;           [_19600,_19606,_19612,_19618],
+;           [_19624,_19630,_19636,_19642],  _19590, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           '@doc-formal',
+;           4,
+;           [_8900,_8906,_8912,_8918],
+;           [_8924,_8930,_8936,_8942],  _8890, Function_declaration_implTopDoc_formalC91_c124_c931, Function_declaration_implTopDoc_formalC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 6.39 seconds.
+
+!(assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (metta-get-doc NoSuchAtom)) 
+      ( (@doc-formal 
+          (@item NoSuchAtom) 
+          (@kind atom) 
+          (@type %Undefined%) 
+          (@desc "No documentation")))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('metta-get-doc','[|]'('NoSuchAtom',[])),[]),'[|]'('[|]'('@doc-formal','[|]'('[|]'('@item','[|]'('NoSuchAtom',[])),'[|]'('[|]'('@kind','[|]'(atom,[])),'[|]'('[|]'('@type','[|]'('%Undefined%',[])),'[|]'('[|]'('@desc','[|]'("No documentation",[])),[]))))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((metta-get-doc NoSuchAtom))) ('~nExpected: ' ((@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))))
+</span>;;; Same result is returned if for instance documentation for the function
+;;; application is queried.
+<span class="ansi38-013099040"
+>!(assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.05</h3>
+<span class="ansi37"
+>predicate_behavior(_9782,'some-func',2,[[->,'Arg1Type','Arg2Type','ReturnType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (some-func arg1 arg2) &top) ==> (-> Arg1Type Arg2Type ReturnType))
+[unknown [transpiler_predicate_store some-func 3 $10916 $10918]]
+<span class="ansi37"
+>transpiler_clause_store('some-func',3,_11852,_11854,_11856,_11858,_11860,_11862,_11864)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__some-func 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_40684,_40690],
+;           [_40696,_40702],  _40674, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_39704,_39710],
+;           [_39716,_39722],  _39694, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_10030,'some-func',2,_10036,_10038,_10040,_10042,_returnVal,_10046)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_39676,_39682],
+;           [_39688,_39694],  _39666, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_38932,_38938],
+;           [_38944,_38950],  _38922, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func', 2,_49154,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func', 2,_9048,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_34628,'some-func',2,_34634,_34636,_34638,_34640,_34642,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['some-func'|_34774],_34778]=missing('[|]'/2)</span>
+(ist &self (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))
+(ist &self (: some-func (-> Arg1Type Arg2Type ReturnType)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'some-func',
+;           2,
+;           [_16096,_16102],
+;           [_16108,_16114],  _16086, Function_declaration_implTopSome_funcC91_c124_c931, Function_declaration_implTopSome_funcC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'some-func',
+;           2,
+;           [_24862,_24868],
+;           [_24874,_24880],  _24852, Function_declaration_implTopSome_funcC91_c124_c931, Function_declaration_implTopSome_funcC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_57136,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc (some-func arg1 arg2)) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $58922 $58924]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_59858,_59860,_59862,_59864,_59866,_59868,_59870)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_17826],
+;           [_17832],  _17816, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8504],
+;           [_8510],  _8494, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_31416,'metta-get-doc',1,_31422,_31424,_31426,_31428,_returnVal,_31432)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_43898],
+;           [_43904],  _43888, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_28378],
+;           [_28384],  _28368, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_42564,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_8430,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_26486,'metta-get-doc',1,_26492,_26494,_26496,_26498,_26500,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_26632],_26636]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_27112,[_27124,_27130|_27132]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_47180],
+;           [_8450],  _8434, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_41026],
+;           [_41032],  _41016, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_23430,'some-func',2,[[->,'Arg1Type','Arg2Type','ReturnType'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (some-func arg1 arg2) &top) ==> (-> Arg1Type Arg2Type ReturnType))
+[unknown [transpiler_predicate_store some-func 3 $24564 $24566]]
+<span class="ansi37"
+>transpiler_clause_store('some-func',3,_25500,_25502,_25504,_25506,_25508,_25510,_25512)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__some-func 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_8690,_8696],
+;           [_8702,_8708],  _8680, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_8686,_8692],
+;           [_8698,_8704],  _8676, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_28654,'some-func',2,_28660,_28662,_28664,_28666,_returnVal,_28670)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_8658,_8664],
+;           [_8670,_8676],  _8648, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func',
+;           2,
+;           [_8672,_8678],
+;           [_8684,_8690],  _8662, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func', 2,_18568,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Some_func,
+;           'some-func', 2,_29596,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_56644,'some-func',2,_56650,_56652,_56654,_56656,_56658,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['some-func'|_56790],_56794]=missing('[|]'/2)</span>
+(ist &self (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value")))
+(ist &self (: some-func (-> Arg1Type Arg2Type ReturnType)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'some-func',
+;           2,
+;           [_40248,_40254],
+;           [_40260,_40266],  _40238, Function_declaration_implTopSome_funcC91_c124_c931, Function_declaration_implTopSome_funcC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'some-func',
+;           2,
+;           [_8628,_8634],
+;           [_8640,_8646],  _8618, Function_declaration_implTopSome_funcC91_c124_c931, Function_declaration_implTopSome_funcC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_25154,'metta-get-doc',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (metta-get-doc (some-func arg1 arg2)) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store metta-get-doc 2 $26940 $26942]]
+<span class="ansi37"
+>transpiler_clause_store('metta-get-doc',2,_27876,_27878,_27880,_27882,_27884,_27886,_27888)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__metta-get-doc 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_39390],
+;           [_39396],  _39380, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_20194],
+;           [_20200],  _20184, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_48150,'metta-get-doc',1,_48156,_48158,_48160,_48162,_returnVal,_48166)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_8128],
+;           [_8134],  _8118, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc',
+;           1,
+;           [_44300],
+;           [_44306],  _44290, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_8066,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Metta_get_doc,
+;           'metta-get-doc', 1,_15968,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43026,'metta-get-doc',1,_43032,_43034,_43036,_43038,_43040,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['metta-get-doc'|_43172],_43176]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_43652,[_43664,_43670|_43672]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'metta-get-doc',
+;           1,
+;           [_8102],
+;           [_8108],  _8092, Function_declaration_implTopMetta_get_docC91_c124_c931, Function_declaration_implTopMetta_get_docC91_c124_c93, Impl)</span>)
+
+P;HTML|
+Script done on 2025-02-24 14:53:34+00:00 [COMMAND_EXIT_CODE="143"]
+
+</pre>
+</body>
+
+</html>
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta" --halt=true\033[0m

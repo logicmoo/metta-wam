@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
@@ -74,7 +75,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:49:00+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:47:33+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b5_types_prelim.metta] ]
 P;HTML|
@@ -165,7 +166,7 @@ Script started on 2025-02-24 14:49:00+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000303 secs. (302.84 microseconds) 
+; took 0.000332 secs. (331.59 microseconds) 
 
 !(assertEqual (Add S Z) S)
 
@@ -196,13 +197,72 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(set-debug! e)
 
-</span>P;HTML|
+</span><span class="ansi37"
+>predicate_behavior(_20812,'set-debug!',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (set-debug! e) &top) ==> (-> Atom Atom))
+[unknown [transpiler_predicate_store set-debug! 2 $21892 $21894]]
+<span class="ansi37"
+>transpiler_clause_store('set-debug!',2,_22828,_22830,_22832,_22834,_22836,_22838,_22840)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__set-debug! 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Set_debug,
+;           'set-debug!',
+;           1,
+;           [_31128],
+;           [_31134],  _31118, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59038,'set-debug!',1,_59044,_59046,_59048,_59050,_returnVal,_59054)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Set_debug,
+;           'set-debug!',
+;           1,
+;           [_12762],
+;           [_12768],  _12752, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Set_debug,
+;           'set-debug!',
+;           1,
+;           [_48948],
+;           [_6634],  _6618, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Set_debug,
+;           'set-debug!', 1,_6606,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Set_debug,
+;           'set-debug!', 1,_14118,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_41166,'set-debug!',1,_41172,_41174,_41176,_41178,_41180,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['set-debug!'|_41312],_41316]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_41792,[_41804,_41810|_41812]]=missing('[|]'/2)</span>
+P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'set-debug!',
 ;           1,
-;           [_36130],
-;           [_36136],  _36120, Function_declaration_implTopSet_debugC91_c124_c931, Function_declaration_implTopSet_debugC91_c124_c93, Impl)</span>)
+;           [_6604],
+;           [_6610],  _6594, Function_declaration_implTopSet_debugC91_c124_c931, Function_declaration_implTopSet_debugC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'set-debug!',
+;           1,
+;           [_44312],
+;           [_44318],  _44302, Function_declaration_implTopSet_debugC91_c124_c931, Function_declaration_implTopSet_debugC91_c124_c93, Impl)</span>)
 
 
 Deterministic: <span class="ansi33"
@@ -216,7 +276,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000234 secs. (234.45 microseconds) 
+; took 0.000231 secs. (230.70 microseconds) 
 
 !(assertEqualToResult (Add S Z) ((Error S BadType)))
 
@@ -236,57 +296,240 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.03"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.03</h3>
+<span class="ansi37"
+>predicate_behavior(_52540,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $53992 $53994]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_54928,_54930,_54932,_54934,_54936,_54938,_54940)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_7848],
+;           [_7854],  _7838, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_38278],
+;           [_38284],  _38268, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_5858,'S',1,_5864,_5866,_5868,_5870,_returnVal,_5874)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12302],
+;           [_12308],  _12292, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_45234],
+;           [_45240],  _45224, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_7754,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_7772,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_33330,'S',1,_33336,_33338,_33340,_33342,_33344,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_33476],_33480]=missing('[|]'/2)</span>
+(ist &self (= (Add $33994 (S $34012))  
+  (Add 
+    (S $33994) $34012)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_47810],
-;           [_7776],  _7760, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_44060],
+;           [_44066],  _44050, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_30438],
-;           [_30444],  _30428, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_27058],
+;           [_27064],  _27048, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_60606,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $62058 $62060]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_62994,_62996,_62998,_63000,_63002,_63004,_63006)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12086],
+;           [_12092],  _12076, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_45626],
+;           [_45632],  _45616, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_17604,'S',1,_17610,_17612,_17614,_17616,_returnVal,_17620)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_24388],
+;           [_24394],  _24378, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_8154],
+;           [_8160],  _8144, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_11818,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_19592,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_46618,'S',1,_46624,_46626,_46628,_46630,_46632,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_46764],_46768]=missing('[|]'/2)</span>
+(ist &self (= (Add $47282 (S $47300))  
+  (Add 
+    (S $47282) $47300)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8130],
+;           [_8136],  _8120, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_15168],
-;           [_15174],  _15158, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_40570],
+;           [_40576],  _40560, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_19796,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $21248 $21250]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_22184,_22186,_22188,_22190,_22192,_22194,_22196)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_28526],
+;           [_28532],  _28516, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_7708],
+;           [_7714],  _7698, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_32946,'S',1,_32952,_32954,_32956,_32958,_returnVal,_32962)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_38870],
+;           [_38876],  _38860, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_11844],
+;           [_11850],  _11834, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_20094,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_26478,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_53504,'S',1,_53510,_53512,_53514,_53516,_53518,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_53650],_53654]=missing('[|]'/2)</span>
+(ist &self (= (Add $54168 (S $54186))  
+  (Add 
+    (S $54168) $54186)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_7654],
+;           [_7660],  _7644, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_8126],
-;           [_8132],  _8116, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_41824],
-;           [_41830],  _41814, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_24822],
-;           [_24828],  _24812, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_44834],
+;           [_44840],  _44824, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.662 secs. (662.34 milliseconds) 
+; took 2.26 seconds.
 
 !(assertEqual (Add (S Z) Z) (S Z))
 
@@ -304,57 +547,240 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.04</h3>
+<span class="ansi37"
+>predicate_behavior(_40812,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $42264 $42266]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_43200,_43202,_43204,_43206,_43208,_43210,_43212)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_49206],
+;           [_7898],  _7882, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_27954],
+;           [_27960],  _27944, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_55876,'S',1,_55882,_55884,_55886,_55888,_returnVal,_55892)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_7876],
+;           [_7882],  _7866, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_38500],
+;           [_38506],  _38490, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_43542,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_7814,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_24022,'S',1,_24028,_24030,_24032,_24034,_24036,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_24168],_24172]=missing('[|]'/2)</span>
+(ist &self (= (Add $24686 (S $24704))  
+  (Add 
+    (S $24686) $24704)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_23180],
-;           [_23186],  _23170, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_34922],
+;           [_34928],  _34912, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_7846],
-;           [_7852],  _7836, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_14500],
+;           [_14506],  _14490, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_48080,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $49532 $49534]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_50468,_50470,_50472,_50474,_50476,_50478,_50480)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_8252],
+;           [_8258],  _8242, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_36892],
+;           [_36898],  _36882, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_64814,'S',1,_64820,_64822,_64824,_64826,_returnVal,_64830)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_11846],
+;           [_11852],  _11836, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_45122],
+;           [_45128],  _45112, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_8152,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_8170,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_33728,'S',1,_33734,_33736,_33738,_33740,_33742,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_33874],_33878]=missing('[|]'/2)</span>
+(ist &self (= (Add $34392 (S $34410))  
+  (Add 
+    (S $34392) $34410)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_44770],
+;           [_44776],  _44760, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_47166],
-;           [_8196],  _8180, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_29216],
+;           [_29222],  _29206, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_64688,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $4756 $4758]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_5692,_5694,_5696,_5698,_5700,_5702,_5704)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12156],
+;           [_12162],  _12146, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_45102],
+;           [_45108],  _45092, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_16988,'S',1,_16994,_16996,_16998,_17000,_returnVal,_17004)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_23344],
+;           [_23350],  _23334, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_7630],
+;           [_7636],  _7620, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_10804,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_18228,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_45254,'S',1,_45260,_45262,_45264,_45266,_45268,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_45400],_45404]=missing('[|]'/2)</span>
+(ist &self (= (Add $45918 (S $45936))  
+  (Add 
+    (S $45918) $45936)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_7610],
+;           [_7616],  _7600, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_30684],
-;           [_30690],  _30674, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_14238],
-;           [_14244],  _14228, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_7564],
-;           [_7570],  _7554, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_37656],
+;           [_37662],  _37646, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.664 secs. (664.29 milliseconds) 
+; took 2.27 seconds.
 
 !(assertEqual (Add Z (S Z)) (S Z))
 
@@ -379,7 +805,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000220 secs. (220.04 microseconds) 
+; took 0.000252 secs. (251.82 microseconds) 
 
 !(assertEqual (Add Something Z) Something)
 
@@ -408,37 +834,95 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.06</h3>
+<span class="ansi37"
+>predicate_behavior(_52534,'Add',2,[[->,'Nat','Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Add Z Ten) &top) ==> (-> Nat Nat Nat))
+[unknown [transpiler_predicate_store Add 3 $54400 $54402]]
+<span class="ansi37"
+>transpiler_clause_store('Add',3,_55336,_55338,_55340,_55342,_55344,_55346,_55348)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Add 3 ]]
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_28924,_28930],Pr),
+;             pr([_25232,_25238],Pr),
 ;             1000002,
 ;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
 
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_49738,_49744],Pr),
+;             pr([_46326,_46332],Pr),
 ;             1000002,
 ;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
 
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_16048,_16054],Pr),
+;             pr([_13614,_13620],Pr),
 ;             2000007,
 ;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
 
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_40650,_40656],Pr),
+;             pr([_41090,_41096],Pr),
+;             2000007,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+<span class="ansi37"
+>function_declaration_scores('&self','Add',2,[_42366,'Z'],['Nat','Nat'],'Nat',_42366,_returnVal,12+14)</span>
+<span class="ansi37"
+>function_declaration_scores('&self','Add',2,[_42642,['S',_42660]],['Nat','Nat'],'Nat',['Add',['S',_42642],_42660],_returnVal,12+22)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_9252,_9258],Pr),
+;             1000002,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_40648,_40654],Pr),
+;             1000002,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+(ist &self (= (Add $42070 Z)  $42070))
+(ist &self (= (Add $42204 (S $42222))  
+  (Add 
+    (S $42204) $42222)))
+(ist &self (: Add (-> Nat Nat Nat)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_9216,_9222],Pr),
+;             1000002,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_40612,_40618],Pr),
+;             1000002,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_9306,_9312],Pr),
+;             2000007,
+;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_40702,_40708],Pr),
 ;             2000007,
 ;             [ 6000014-pr(['Nat','Nat'],'Nat')]))
 
 ; 
 ; EVAL TEST
-; took 0.492 secs. (492.17 milliseconds) 
+; took 1.249 secs. (1249.15 milliseconds) 
 
 !(assertEqualToResult (Add Z Ten) ((Add Z Ten)))
 
@@ -479,57 +963,234 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.07</h3>
+<span class="ansi37"
+>predicate_behavior(_17194,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $18646 $18648]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_19582,_19584,_19586,_19588,_19590,_19592,_19594)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_27330],
+;           [_27336],  _27320, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_8716],
+;           [_8722],  _8706, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_34032,'S',1,_34038,_34040,_34042,_34044,_returnVal,_34048)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_41334],
+;           [_41340],  _41324, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_17610],
+;           [_17616],  _17600, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_26202,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_33936,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_60962,'S',1,_60968,_60970,_60972,_60974,_60976,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_61108],_61112]=missing('[|]'/2)</span>
+(ist &self (= (Add $61626 (S $61644))  
+  (Add 
+    (S $61626) $61644)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_27296],
-;           [_27302],  _27286, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_16032],
+;           [_16038],  _16022, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_14494],
-;           [_14500],  _14484, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_8638],
+;           [_8644],  _8628, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_35774,'Cons',2,[[->,_35796,['List',_35796],['List',_35796]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Cons Z Nil) &top) ==> (-> $37610 (List $37610) (List $37610)))
+[unknown [transpiler_predicate_store Cons 3 $37700 $37702]]
+<span class="ansi37"
+>transpiler_clause_store('Cons',3,_38636,_38638,_38640,_38642,_38644,_38646,_38648)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Cons 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_9036,_9042],
+;           [_9048,_9054],  _9026, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_8678,_8684],
+;           [_8690,_8696],  _8668, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_35286,'Cons',2,_35292,_35294,_35296,_35298,_returnVal,_35302)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_8642,_8648],
+;           [_8654,_8660],  _8632, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_8620,_8626],
+;           [_8632,_8638],  _8610, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_14814,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_23292,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_50326,'Cons',2,_50332,_50334,_50336,_50338,_50340,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Cons'|_50472],_50476]=missing('[|]'/2)</span>
+(ist &self (: Cons (-> $50684 (List $50684) (List $50684))))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_25756,_25762],
+;           [_25768,_25774],  _25746, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_23814,_23820],
-;           [_23826,_23832],  _23804, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_35290,_35296],
+;           [_35302,_35308],  _35280, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_8240,'Cons',2,[[->,_8262,['List',_8262],['List',_8262]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Cons (S Z) (Cons Z Nil)) &top) ==> (-> $13126 (List $13126) (List $13126)))
+[unknown [transpiler_predicate_store Cons 3 $13216 $13218]]
+<span class="ansi37"
+>transpiler_clause_store('Cons',3,_14152,_14154,_14156,_14158,_14160,_14162,_14164)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Cons 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_39986,_39992],
+;           [_39998,_40004],  _39976, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_35590,_35596],
+;           [_35602,_35608],  _35580, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_63668,'Cons',2,_63674,_63676,_63678,_63680,_returnVal,_63684)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_31178,_31184],
+;           [_31190,_31196],  _31168, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_31380,_31386],
+;           [_31392,_31398],  _31370, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_40678,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_47538,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19228,'Cons',2,_19234,_19236,_19238,_19240,_19242,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Cons'|_19374],_19378]=missing('[|]'/2)</span>
+(ist &self (: Cons (-> $19586 (List $19586) (List $19586))))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_8082,_8088],
+;           [_8094,_8100],  _8072, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_27398,_27404],
-;           [_27410,_27416],  _27388, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_35522,_35528],
-;           [_35534,_35540],  _35512, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_35316,_35322],
-;           [_35328,_35334],  _35306, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_8080,_8086],
+;           [_8092,_8098],  _8070, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.892 secs. (891.99 milliseconds) 
+; took 2.99 seconds.
 
 !(assertEqualToResult (Cons (S Z) (Cons Z Nil)) ((Cons (S Z) (Cons Z Nil))))
 
@@ -554,41 +1215,157 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.08"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.08</h3>
+<span class="ansi37"
+>predicate_behavior(_59202,'Cons',2,[[->,_59224,['List',_59224],['List',_59224]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Cons Z Nil) &top) ==> (-> $61038 (List $61038) (List $61038)))
+[unknown [transpiler_predicate_store Cons 3 $61128 $61130]]
+<span class="ansi37"
+>transpiler_clause_store('Cons',3,_62064,_62066,_62068,_62070,_62072,_62074,_62076)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Cons 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_32152,_32158],
+;           [_32164,_32170],  _32142, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_32148,_32154],
+;           [_32160,_32166],  _32138, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60226,'Cons',2,_60232,_60234,_60236,_60238,_returnVal,_60242)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_32118,_32124],
+;           [_32130,_32136],  _32108, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_32116,_32122],
+;           [_32128,_32134],  _32106, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_41968,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_48918,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_21232,'Cons',2,_21238,_21240,_21242,_21244,_21246,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Cons'|_21378],_21382]=missing('[|]'/2)</span>
+(ist &self (: Cons (-> $21590 (List $21590) (List $21590))))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_8486,_8492],
-;           [_8498,_8504],  _8476, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_8464,_8470],
+;           [_8476,_8482],  _8454, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_11062,_11068],
-;           [_11074,_11080],  _11052, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_8462,_8468],
+;           [_8474,_8480],  _8452, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_35646,'Cons',2,[[->,_35668,['List',_35668],['List',_35668]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Cons S (Cons Z Nil)) &top) ==> (-> $39802 (List $39802) (List $39802)))
+[unknown [transpiler_predicate_store Cons 3 $39892 $39894]]
+<span class="ansi37"
+>transpiler_clause_store('Cons',3,_40828,_40830,_40832,_40834,_40836,_40838,_40840)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Cons 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_10126,_10132],
+;           [_10138,_10144],  _10116, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_8032,_8038],
+;           [_8044,_8050],  _8022, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_34640,'Cons',2,_34646,_34648,_34650,_34652,_returnVal,_34656)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_7996,_8002],
+;           [_8008,_8014],  _7986, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons',
+;           2,
+;           [_7974,_7980],
+;           [_7986,_7992],  _7964, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_13062,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Cons,
+;           'Cons', 2,_21680,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_48714,'Cons',2,_48720,_48722,_48724,_48726,_48728,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Cons'|_48860],_48864]=missing('[|]'/2)</span>
+(ist &self (: Cons (-> $49072 (List $49072) (List $49072))))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_23168,_23174],
+;           [_23180,_23186],  _23158, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Cons',
 ;           2,
-;           [_16118,_16124],
-;           [_16130,_16136],  _16108, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Cons',
-;           2,
-;           [_19098,_19104],
-;           [_19110,_19116],  _19088, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+;           [_26202,_26208],
+;           [_26214,_26220],  _26192, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.651 secs. (650.78 milliseconds) 
+; took 2.14 seconds.
 
 !(assertEqualToResult (Cons S (Cons Z Nil)) ((Error (Cons Z Nil) BadType)))
 
@@ -628,9 +1405,20 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.09"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.09</h3>
+<span class="ansi37"
+>predicate_behavior(_31082,eq,2,[[->,_31104,_31104,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (eq Z Z) &top) ==> (-> $32574 $32574 Type))
+[unknown [transpiler_predicate_store eq 3 $32694 $32696]]
+<span class="ansi37"
+>transpiler_clause_store(eq,3,_33630,_33632,_33634,_33636,_33638,_33640,_33642)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__eq 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',eq,2,[_34892,_34892],[_34904,_34904],'Type','T',_returnVal,16+16)</span>
+(ist &self (: eq (-> $35354 $35354 Type)))
+(ist &self (= (eq $35370 $35370)  T))
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.60 milliseconds) 
+; took 0.010 secs. (10.40 milliseconds) 
 
 !(assertEqual (eq (Add Z Z) Z) T)
 
@@ -650,25 +1438,97 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.10"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.10</h3>
+<span class="ansi37"
+>predicate_behavior(_58322,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $59774 $59776]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_60710,_60712,_60714,_60716,_60718,_60720,_60722)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12696],
+;           [_12702],  _12686, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_46918],
+;           [_46924],  _46908, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_19414,'S',1,_19420,_19422,_19424,_19426,_returnVal,_19430)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_26810],
+;           [_26816],  _26800, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_8494],
+;           [_8500],  _8484, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_14732,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_22562,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_49588,'S',1,_49594,_49596,_49598,_49600,_49602,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_49734],_49738]=missing('[|]'/2)</span>
+(ist &self (= (Add $50252 (S $50270))  
+  (Add 
+    (S $50252) $50270)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_8452],
-;           [_8458],  _8442, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_8470],
+;           [_8476],  _8460, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_35242],
-;           [_35248],  _35232, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_44728],
+;           [_44734],  _44718, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
+<span class="ansi37"
+>predicate_behavior(_22800,eq,2,[[->,_22822,_22822,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (eq Z (S Z)) &top) ==> (-> $25058 $25058 Type))
+[unknown [transpiler_predicate_store eq 3 $25178 $25180]]
+<span class="ansi37"
+>transpiler_clause_store(eq,3,_26114,_26116,_26118,_26120,_26122,_26124,_26126)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__eq 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',eq,2,[_27376,_27376],[_27388,_27388],'Type','T',_returnVal,16+16)</span>
+(ist &self (: eq (-> $27838 $27838 Type)))
+(ist &self (= (eq $27854 $27854)  T))
 ; 
 ; EVAL TEST
-; took 0.247 secs. (247.35 milliseconds) 
+; took 0.846 secs. (846.16 milliseconds) 
 
 !(assertEqualToResult (eq Z (S Z)) ((eq Z (S Z))))
 
@@ -689,9 +1549,20 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.11"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.11</h3>
+<span class="ansi37"
+>predicate_behavior(_51576,eq,2,[[->,_51598,_51598,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (eq Z S) &top) ==> (-> $53104 $53104 Type))
+[unknown [transpiler_predicate_store eq 3 $53224 $53226]]
+<span class="ansi37"
+>transpiler_clause_store(eq,3,_54160,_54162,_54164,_54166,_54168,_54170,_54172)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__eq 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',eq,2,[_55422,_55422],[_55434,_55434],'Type','T',_returnVal,16+16)</span>
+(ist &self (: eq (-> $55884 $55884 Type)))
+(ist &self (= (eq $55900 $55900)  T))
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.24 milliseconds) 
+; took 0.010 secs. (9.88 milliseconds) 
 
 !(assertEqualToResult (eq Z S) ((Error S BadType)))
 
@@ -745,7 +1616,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000250 secs. (250.44 microseconds) 
+; took 0.000210 secs. (209.65 microseconds) 
 
 !(assertEqual (of-same-type Color Shape) T)
 
@@ -765,7 +1636,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000242 secs. (242.02 microseconds) 
+; took 0.000221 secs. (221.30 microseconds) 
 
 !(assertEqual (of-same-type Green Red) T)
 
@@ -786,7 +1657,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000232 secs. (232.48 microseconds) 
+; took 0.000226 secs. (225.68 microseconds) 
 
 !(assertEqualToResult (of-same-type Green Color) ((Error Color BadType)))
 
@@ -807,7 +1678,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000233 secs. (232.58 microseconds) 
+; took 0.000213 secs. (212.67 microseconds) 
 
 !(assertEqualToResult (of-same-type Green Circle) ((Error Circle BadType)))
 
@@ -841,16 +1712,16 @@ Deterministic: <span class="ansi33"
 > (= (Green Sam)  T)
  
 </span><span class="ansi38-013099040"
->!(assertEqual (Green $12270) T)
+>!(assertEqual (Green $43900) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.16"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000255 secs. (254.61 microseconds) 
+; took 0.000248 secs. (248.19 microseconds) 
 
-!(assertEqual (Green $19126) T)
+!(assertEqual (Green $50756) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -861,16 +1732,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqual (match &self (Green $29866) $29866) Sam)
+>!(assertEqual (match &self (Green $61496) $61496) Sam)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.17"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000235 secs. (235.45 microseconds) 
+; took 0.000239 secs. (239.15 microseconds) 
 
-!(assertEqual (match &self (Green $38244) $38244) Sam)
+!(assertEqual (match &self (Green $7064) $7064) Sam)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -887,16 +1758,16 @@ Deterministic: <span class="ansi33"
 ;;; returns `(Green Sam)`, which is then evaluated to `T`.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (match &self (Green $48576) (Green $48576)) T)
+>!(assertEqual (match &self (Green $17396) (Green $17396)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.18"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000382 secs. (382.29 microseconds) 
+; took 0.000369 secs. (369.43 microseconds) 
 
-!(assertEqual (match &self (Green $57248) (Green $57248)) T)
+!(assertEqual (match &self (Green $26068) (Green $26068)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -912,48 +1783,170 @@ Deterministic: <span class="ansi33"
 ;;; to `match`, `let` can be used:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let $5858 (Add (S Z) Z) (match &self (= (eq $5858 (S Z))  $5918) $5918)) T)
+>!(assertEqual (let $37330 (Add (S Z) Z) (match &self (= (eq $37330 (S Z))  $37390) $37390)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.19"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.19</h3>
+<span class="ansi37"
+>predicate_behavior(_50004,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $51456 $51458]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_52392,_52394,_52396,_52398,_52400,_52402,_52404)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9352],
+;           [_9358],  _9342, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_40858],
+;           [_40864],  _40848, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_10816,'S',1,_10822,_10824,_10826,_10828,_returnVal,_10832)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_19208],
+;           [_19214],  _19198, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9298],
+;           [_9304],  _9288, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_9278,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_17950,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_44976,'S',1,_44982,_44984,_44986,_44988,_44990,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_45122],_45126]=missing('[|]'/2)</span>
+(ist &self (= (Add $45640 (S $45658))  
+  (Add 
+    (S $45640) $45658)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_28850],
-;           [_28856],  _28840, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_9274],
+;           [_9280],  _9264, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_17440],
-;           [_17446],  _17430, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_43170],
+;           [_43176],  _43160, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_22300,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $23752 $23754]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_24688,_24690,_24692,_24694,_24696,_24698,_24700)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_32232],
+;           [_32238],  _32222, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_14572],
+;           [_14578],  _14562, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_42494,'S',1,_42500,_42502,_42504,_42506,_returnVal,_42510)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9660],
+;           [_9666],  _9650, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_32184],
+;           [_32190],  _32174, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_41352,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_48090,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_21002,'S',1,_21008,_21010,_21012,_21014,_21016,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_21148],_21152]=missing('[|]'/2)</span>
+(ist &self (= (Add $21666 (S $21684))  
+  (Add 
+    (S $21666) $21684)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_33280],
+;           [_33286],  _33270, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_9652],
-;           [_9658],  _9642, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_46650],
-;           [_46656],  _9616, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_18144],
+;           [_18150],  _18134, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.476 secs. (475.75 milliseconds) 
+; took 1.613 secs. (1613.12 milliseconds) 
 
-!(assertEqual (let $26018 (Add (S Z) Z) (match &self (= (eq $26018 (S Z))  $26078) $26078)) T)
+!(assertEqual (let $51976 (Add (S Z) Z) (match &self (= (eq $51976 (S Z))  $52036) $52036)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -965,16 +1958,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; but it will not work inside `match`:
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $36740) $36740) ())
+>!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $1902) $1902) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.20"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000229 secs. (229.37 microseconds) 
+; took 0.000230 secs. (229.86 microseconds) 
 
-!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $44202) $44202) ())
+!(assertEqualToResult (match &self (= (eq (Add (S Z) Z) (S Z))  $10106) $10106) ())
 
 <span class="ansi36"
 >  [loonit_success 
@@ -996,80 +1989,324 @@ Deterministic: <span class="ansi33"
 ;;; the whole pattern (S (S $r)), and extracts the inner variable $r
 ;;; This is cleaner than binding and re-matching.
 <span class="ansi38-013099040"
->!(assertEqual (let (S (S $54238)) (Add (S Z) (S Z)) $54238) Z)
+>!(assertEqual (let (S (S $20142)) (Add (S Z) (S Z)) $20142) Z)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.21"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.21</h3>
+<span class="ansi37"
+>predicate_behavior(_34906,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $36358 $36360]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_37294,_37296,_37298,_37300,_37302,_37304,_37306)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_45200],
+;           [_45206],  _45190, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_27166],
+;           [_27172],  _27156, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_55088,'S',1,_55094,_55096,_55098,_55100,_returnVal,_55104)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9470],
+;           [_9476],  _9460, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_43036],
+;           [_43042],  _43026, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_9408,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_9426,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_35832,'S',1,_35838,_35840,_35842,_35844,_35846,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_35978],_35982]=missing('[|]'/2)</span>
+(ist &self (= (Add $36496 (S $36514))  
+  (Add 
+    (S $36496) $36514)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_19576],
-;           [_19582],  _19566, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_9422],
+;           [_9428],  _9412, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_9264],
-;           [_9270],  _9254, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_33228],
+;           [_33234],  _33218, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_7572,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S (S Z)) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $10532 $10534]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_11468,_11470,_11472,_11474,_11476,_11478,_11480)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_19984],
+;           [_19990],  _19974, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9090],
+;           [_9096],  _9080, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_27896,'S',1,_27902,_27904,_27906,_27908,_returnVal,_27912)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_35450],
+;           [_35456],  _35440, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_13598],
+;           [_13604],  _13588, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_23146,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_31324,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_58350,'S',1,_58356,_58358,_58360,_58362,_58364,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_58496],_58500]=missing('[|]'/2)</span>
+(ist &self (= (Add $59014 (S $59032))  
+  (Add 
+    (S $59014) $59032)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_17204],
+;           [_17210],  _17194, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_8910],
-;           [_8916],  _8900, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_9032],
+;           [_9038],  _9022, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_39070,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $40522 $40524]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_41458,_41460,_41462,_41464,_41466,_41468,_41470)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9972],
+;           [_9978],  _9962, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_31584],
+;           [_31590],  _31574, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59506,'S',1,_59512,_59514,_59516,_59518,_returnVal,_59522)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_15340],
+;           [_15346],  _15330, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9936],
+;           [_9942],  _9926, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_9916,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_17794,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_44820,'S',1,_44826,_44828,_44830,_44832,_44834,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_44966],_44970]=missing('[|]'/2)</span>
+(ist &self (= (Add $45484 (S $45502))  
+  (Add 
+    (S $45484) $45502)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_9912],
+;           [_9918],  _9902, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_32546],
-;           [_32552],  _32536, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_44098],
+;           [_44104],  _44088, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_23116,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S (S Z)) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $26076 $26078]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_27012,_27014,_27016,_27018,_27020,_27022,_27024)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_35256],
+;           [_35262],  _35246, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_14374],
+;           [_14380],  _14364, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_42296,'S',1,_42302,_42304,_42306,_42308,_returnVal,_42312)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_9462],
+;           [_9468],  _9452, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_30844],
+;           [_30850],  _30834, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_40082,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_46430,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19108,'S',1,_19114,_19116,_19118,_19120,_19122,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_19254],_19258]=missing('[|]'/2)</span>
+(ist &self (= (Add $19772 (S $19790))  
+  (Add 
+    (S $19772) $19790)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_31702],
+;           [_31708],  _31692, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_20482],
-;           [_20488],  _20472, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_9686],
-;           [_9692],  _9676, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_9292],
-;           [_9298],  _9282, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_34176],
-;           [_34182],  _34166, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_17602],
+;           [_17608],  _17592, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.966 secs. (965.96 milliseconds) 
+; took 3.35 seconds.
 
-!(assertEqual (let (S (S $8844)) (Add (S Z) (S Z)) $8844) Z)
+!(assertEqual (let (S (S $52176)) (Add (S Z) (S Z)) $52176) Z)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1085,112 +2322,478 @@ Deterministic: <span class="ansi33"
 ;;; substitutions are needed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let* (($21060 (Add Z Z)) ($21072 (Add $21060 (S Z))) ($21102 (Add $21072 (S Z)))) (match &self (= (eq (S (S Z)) $21102)  $21180) $21180)) T)
+>!(assertEqual (let* (($2066 (Add Z Z)) ($2078 (Add $2066 (S Z))) ($2108 (Add $2078 (S Z)))) (match &self (= (eq (S (S Z)) $2108)  $2186) $2186)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.22"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.22</h3>
+<span class="ansi37"
+>predicate_behavior(_20112,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $21564 $21566]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_22500,_22502,_22504,_22506,_22508,_22510,_22512)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_32710],
+;           [_32716],  _32700, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_18520],
+;           [_18526],  _18510, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_46442,'S',1,_46448,_46450,_46452,_46454,_returnVal,_46458)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_11546],
+;           [_11552],  _11536, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_41026],
+;           [_41032],  _41016, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_11504,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_11522,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_37080,'S',1,_37086,_37088,_37090,_37092,_37094,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_37226],_37230]=missing('[|]'/2)</span>
+(ist &self (= (Add $37744 (S $37762))  
+  (Add 
+    (S $37744) $37762)))
+(ist &self (: S (-> Nat Nat)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_11524],
-;           [_11530],  _11514, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_11520],
+;           [_11526],  _11510, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_39728],
-;           [_39734],  _39718, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_41208],
+;           [_41214],  _41198, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_23054,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $24506 $24508]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_25442,_25444,_25446,_25448,_25450,_25452,_25454)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_34914],
+;           [_34920],  _34904, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_19122],
+;           [_19128],  _19112, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_47044,'S',1,_47050,_47052,_47054,_47056,_returnVal,_47060)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_11906],
+;           [_11912],  _11896, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_44570],
+;           [_44576],  _44560, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_58882,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_11862,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_33828,'S',1,_33834,_33836,_33838,_33840,_33842,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_33974],_33978]=missing('[|]'/2)</span>
+(ist &self (= (Add $34492 (S $34510))  
+  (Add 
+    (S $34492) $34510)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_102020],
+;           [_102026],  _102010, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_30824],
-;           [_30830],  _30814, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_76286],
+;           [_76292],  _76276, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_115834,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $117286 $117288]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_118222,_118224,_118226,_118228,_118230,_118232,_118234)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_64366],
+;           [_64372],  _64356, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_37152],
+;           [_37158],  _37142, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_65074,'S',1,_65080,_65082,_65084,_65086,_returnVal,_65090)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_13356],
+;           [_13362],  _13346, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_102778],
+;           [_102784],  _102768, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_48042,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_112500,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_24492,'S',1,_24498,_24500,_24502,_24504,_24506,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_24638],_24642]=missing('[|]'/2)</span>
+(ist &self (= (Add $25156 (S $25174))  
+  (Add 
+    (S $25156) $25174)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_92684],
+;           [_92690],  _92674, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_23180],
-;           [_23186],  _23170, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_75378],
+;           [_75384],  _75368, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_108600,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S (S Z)) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $111560 $111562]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_112496,_112498,_112500,_112502,_112504,_112506,_112508)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_58632],
+;           [_58638],  _58622, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_32470],
+;           [_32476],  _32460, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60392,'S',1,_60398,_60400,_60402,_60404,_returnVal,_60408)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12860],
+;           [_12866],  _12850, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_98714],
+;           [_98720],  _98704, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_44758,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_109216,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19722,'S',1,_19728,_19730,_19732,_19734,_19736,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_19868],_19872]=missing('[|]'/2)</span>
+(ist &self (= (Add $20386 (S $20404))  
+  (Add 
+    (S $20386) $20404)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_87914],
+;           [_87920],  _87904, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_25270],
-;           [_25276],  _25260, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_66206],
+;           [_66212],  _66196, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_102962,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S Z) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $104414 $104416]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_105350,_105352,_105354,_105356,_105358,_105360,_105362)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_51670],
+;           [_51676],  _51660, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_25664],
+;           [_25670],  _25654, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_53586,'S',1,_53592,_53594,_53596,_53598,_returnVal,_53602)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_13214],
+;           [_13220],  _13204, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_91584],
+;           [_91590],  _91574, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_39256,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_103714,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_130740,'S',1,_130746,_130748,_130750,_130752,_130754,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_130886],_130890]=missing('[|]'/2)</span>
+(ist &self (= (Add $10302 (S $10320))  
+  (Add 
+    (S $10302) $10320)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_77974],
+;           [_77980],  _77964, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_69544],
-;           [_69550],  _69534, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_56206],
+;           [_56212],  _56196, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_89428,'S',1,[[->,'Nat','Nat'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (S (S Z)) &top) ==> (-> Nat Nat))
+[unknown [transpiler_predicate_store S 2 $92388 $92390]]
+<span class="ansi37"
+>transpiler_clause_store('S',2,_93324,_93326,_93328,_93330,_93332,_93334,_93336)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__S 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_39174],
+;           [_39180],  _39164, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_12786],
+;           [_12792],  _12776, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_39918,'S',1,_39924,_39926,_39928,_39930,_returnVal,_39934)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_103496],
+;           [_103502],  _103486, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S',
+;           1,
+;           [_73738],
+;           [_73744],  _73728, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_21844,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( S,
+;           'S', 1,_86302,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_113328,'S',1,_113334,_113336,_113338,_113340,_113342,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['S'|_113474],_113478]=missing('[|]'/2)</span>
+(ist &self (= (Add $113992 (S $114010))  
+  (Add 
+    (S $113992) $114010)))
+(ist &self (: S (-> Nat Nat)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_63708],
+;           [_63714],  _63698, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_50042],
-;           [_50048],  _50032, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_29228],
-;           [_29234],  _29218, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_15192],
-;           [_15198],  _15182, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_111294],
-;           [_111300],  _13178, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_94586],
-;           [_94592],  _94576, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'S',
-;           1,
-;           [_76270],
-;           [_76276],  _76260, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_42040],
+;           [_42046],  _42030, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.607 secs. (1606.54 milliseconds) 
+; took 5.44 seconds.
 
-!(assertEqual (let* (($113162 (Add Z Z)) ($113174 (Add $113162 (S Z))) ($113204 (Add $113174 (S Z)))) (match &self (= (eq (S (S Z)) $113204)  $113282) $113282)) T)
+!(assertEqual (let* (($78926 (Add Z Z)) ($78938 (Add $78926 (S Z))) ($78968 (Add $78938 (S Z)))) (match &self (= (eq (S (S Z)) $78968)  $79046) $79046)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1220,7 +2823,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000275 secs. (275.21 microseconds) 
+; took 0.000247 secs. (247.25 microseconds) 
 
 !(assertEqual (eqa (Add Z Z) (Add Z Z)) T)
 
@@ -1241,9 +2844,20 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.24"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.24</h3>
+<span class="ansi37"
+>predicate_behavior(_123652,eqa,2,[[->,'Atom','Atom','Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (eqa Z (Add Z Z)) &top) ==> (-> Atom Atom Type))
+[unknown [transpiler_predicate_store eqa 3 $126652 $126654]]
+<span class="ansi37"
+>transpiler_clause_store(eqa,3,_127588,_127590,_127592,_127594,_127596,_127598,_127600)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__eqa 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',eqa,2,[_128780,_128780],['Atom','Atom'],'Type','T',_returnVal,2+16)</span>
+(ist &self (: eqa (-> Atom Atom Type)))
+(ist &self (= (eqa $129328 $129328)  T))
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.64 milliseconds) 
+; took 0.008 secs. (8.39 milliseconds) 
 
 !(assertEqualToResult (eqa Z (Add Z Z)) ((eqa Z (Add Z Z))))
 
@@ -1265,9 +2879,20 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.25"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.25</h3>
+<span class="ansi37"
+>predicate_behavior(_27874,eq,2,[[->,_27896,_27896,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (eq Z Z) &top) ==> (-> $29366 $29366 Type))
+[unknown [transpiler_predicate_store eq 3 $29486 $29488]]
+<span class="ansi37"
+>transpiler_clause_store(eq,3,_30422,_30424,_30426,_30428,_30430,_30432,_30434)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__eq 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',eq,2,[_31684,_31684],[_31696,_31696],'Type','T',_returnVal,16+16)</span>
+(ist &self (: eq (-> $32146 $32146 Type)))
+(ist &self (= (eq $32162 $32162)  T))
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.20 milliseconds) 
+; took 0.010 secs. (9.84 milliseconds) 
 
 !(assertEqual (eq Z (Add Z Z)) T)
 
@@ -1281,16 +2906,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Or this:
 <span class="ansi38-013099040"
->!(assertEqual (let $57616 (Add Z Z) (eqa Z $57616)) T)
+>!(assertEqual (let $42510 (Add Z Z) (eqa Z $42510)) T)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.26"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.B5-TYPES-PRELIM.26</h3>
 ; 
 ; EVAL TEST
-; took 0.000491 secs. (490.63 microseconds) 
+; took 0.000445 secs. (444.78 microseconds) 
 
-!(assertEqual (let $64828 (Add Z Z) (eqa Z $64828)) T)
+!(assertEqual (let $49722 (Add Z Z) (eqa Z $49722)) T)
 
 <span class="ansi36"
 >  [loonit_success 
@@ -1339,7 +2964,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-24 14:49:07+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:47:57+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

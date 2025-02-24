@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -43,7 +44,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:51:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:51:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] ]
 P;HTML|
@@ -88,7 +89,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.007 secs. (7.05 milliseconds) 
+; took 0.007 secs. (7.25 milliseconds) 
 
 !(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
@@ -109,7 +110,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000476 secs. (475.79 microseconds) 
+; took 0.000456 secs. (456.14 microseconds) 
 
 !(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
@@ -160,7 +161,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000529 secs. (528.90 microseconds) 
+; took 0.000532 secs. (531.50 microseconds) 
 
 !(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
@@ -179,33 +180,150 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04</h3>
+<span class="ansi37"
+>predicate_behavior(_30798,'Human',1,[[->,'Entity','Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Human Socrates) &top) ==> (-> Entity Type))
+[unknown [transpiler_predicate_store Human 2 $33214 $33216]]
+<span class="ansi37"
+>transpiler_clause_store('Human',2,_34150,_34152,_34154,_34156,_34158,_34160,_34162)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__Human 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Human,
+;           'Human',
+;           1,
+;           [_42696],
+;           [_42702],  _42686, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_14266,'Human',1,_14272,_14274,_14276,_14278,_returnVal,_14282)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Human,
+;           'Human',
+;           1,
+;           [_23222],
+;           [_23228],  _23212, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Human,
+;           'Human',
+;           1,
+;           [_8254],
+;           [_8260],  _8244, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Human,
+;           'Human', 1,_14066,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Human,
+;           'Human', 1,_23204,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_50240,'Human',1,_50246,_50248,_50250,_50252,_50254,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Human'|_50386],_50390]=missing('[|]'/2)</span>
+(ist &self (: Human (-> Entity Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Human',
 ;           1,
-;           [_42352],
-;           [_42358],  _42342, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+;           [_8250],
+;           [_8256],  _8240, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Human',
+;           1,
+;           [_8226],
+;           [_8232],  _8216, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_26274,'HumansAreMortal',1,[[->,['Human',_26308],['Mortal',_26308]],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (HumansAreMortal (Human Socrates)) &top) ==> (-> (Human $31780) (Mortal $31780)))
+[unknown [transpiler_predicate_store HumansAreMortal 2 $31864 $31866]]
+<span class="ansi37"
+>transpiler_clause_store('HumansAreMortal',2,_32800,_32802,_32804,_32806,_32808,_32810,_32812)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__HumansAreMortal 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal',
+;           1,
+;           [_45196],
+;           [_45202],  _45186, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal',
+;           1,
+;           [_29672],
+;           [_29678],  _29662, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_57630,'HumansAreMortal',1,_57636,_57638,_57640,_57642,_returnVal,_57646)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal',
+;           1,
+;           [_17680],
+;           [_17686],  _17670, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal',
+;           1,
+;           [_7772],
+;           [_7778],  _7762, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal', 1,_17444,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( HumansAreMortal,
+;           'HumansAreMortal', 1,_30366,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_57434,'HumansAreMortal',1,_57440,_57442,_57444,_57446,_57448,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['HumansAreMortal'|_57580],_57584]=missing('[|]'/2)</span>
+(ist &self (: HumansAreMortal (-> (Human $57904) (Mortal $57904))))
+(ist &self (HumansAreMortal SocratesIsHuman))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'HumansAreMortal',
+;           1,
+;           [_25330],
+;           [_25336],  _25320, Function_declaration_implTopHumansAreMortalC91_c124_c931, Function_declaration_implTopHumansAreMortalC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'HumansAreMortal',
 ;           1,
-;           [_39076],
-;           [_39082],  _39066, Function_declaration_implTopHumansAreMortalC91_c124_c931, Function_declaration_implTopHumansAreMortalC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'HumansAreMortal',
-;           1,
-;           [_30172],
-;           [_30178],  _30162, Function_declaration_implTopHumansAreMortalC91_c124_c931, Function_declaration_implTopHumansAreMortalC91_c124_c93, Impl)</span>)
+;           [_18304],
+;           [_18310],  _18294, Function_declaration_implTopHumansAreMortalC91_c124_c931, Function_declaration_implTopHumansAreMortalC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.345 secs. (345.14 milliseconds) 
+; took 1.471 secs. (1471.37 milliseconds) 
 
 !(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
@@ -231,7 +349,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000591 secs. (591.49 microseconds) 
+; took 0.000551 secs. (551.38 microseconds) 
 
 !(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -266,7 +384,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000206 secs. (206.43 microseconds) 
+; took 0.000200 secs. (199.73 microseconds) 
 
 !(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) ())
 
@@ -283,7 +401,7 @@ Deterministic: <span class="ansi33"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; let binds without type checking, but errors when used
 <span class="ansi38-013099040"
->!(let $51368 (+ 5 "S") $51368)
+>!(let $36706 (+ 5 "S") $36706)
 
 </span>
 N(1): <span class="ansi33"
@@ -297,41 +415,157 @@ N(1): <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07</h3>
+<span class="ansi37"
+>predicate_behavior(_6266,f,1,[[->,_6288,'Number'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (f 88) &top) ==> (-> $8092 Number))
+[unknown [transpiler_predicate_store f 2 $8218 $8220]]
+<span class="ansi37"
+>transpiler_clause_store(f,2,_9154,_9156,_9158,_9160,_9162,_9164,_9166)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__f 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_15592],
+;           [_15598],  _15582, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_48674],
+;           [_48680],  _7674, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_20154,f,1,_20160,_20162,_20164,_20166,_returnVal,_20170)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_26266],
+;           [_26272],  _26256, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_7652],
+;           [_7658],  _7642, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f, 1,_10824,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f, 1,_17786,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_44812,f,1,_44818,_44820,_44822,_44824,_44826,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[f|_44958],_44962]=missing('[|]'/2)</span>
+(ist &self (: f (-> $45044 Number)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           f,
 ;           1,
-;           [_27300],
-;           [_27306],  _27290, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_7628],
+;           [_7634],  _7618, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           f,
 ;           1,
-;           [_12300],
-;           [_12306],  _12290, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_36902],
+;           [_36908],  _36892, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_9690,f,1,[[->,_9712,'Number'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (f 88) &top) ==> (-> $11516 Number))
+[unknown [transpiler_predicate_store f 2 $11642 $11644]]
+<span class="ansi37"
+>transpiler_clause_store(f,2,_12578,_12580,_12582,_12584,_12586,_12588,_12590)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__f 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_18834],
+;           [_18840],  _18824, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
+>( F,
 ;           f,
 ;           1,
 ;           [_7712],
-;           [_7718],  _7702, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_7718],  _7702, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_24976,f,1,_24982,_24984,_24986,_24988,_returnVal,_24992)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_30152],
+;           [_30158],  _30142, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f,
+;           1,
+;           [_9678],
+;           [_9684],  _9668, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f, 1,_17784,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( F,
+;           f, 1,_24004,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_51030,f,1,_51036,_51038,_51040,_51042,_51044,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[f|_51176],_51180]=missing('[|]'/2)</span>
+(ist &self (: f (-> $51262 Number)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           f,
+;           1,
+;           [_7672],
+;           [_7678],  _7662, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           f,
 ;           1,
-;           [_35064],
-;           [_35070],  _35054, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
+;           [_42738],
+;           [_42744],  _42728, Function_declaration_implTopFC91_c124_c931, Function_declaration_implTopFC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.443 secs. (443.28 milliseconds) 
+; took 1.481 secs. (1481.37 milliseconds) 
 
 !(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
@@ -365,7 +599,7 @@ Deterministic: <span class="ansi33"
 [88]
 [(Error ('~nGot: ' ((f 88))) ('~nExpected: ' ((Error "S" BadType))))]
 
-Script done on 2025-02-24 14:51:47+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:51:55+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -34,7 +35,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:51:47+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:51:55+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/e1_kb_write.metta] ]
 P;HTML|
@@ -100,14 +101,38 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.01"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.01</h3>
+<span class="ansi37"
+>predicate_behavior(_31548,croaks,1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (croaks $32692) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store croaks 2 $32672 $32674]]
+<span class="ansi37"
+>transpiler_clause_store(croaks,2,_33608,_33610,_33612,_33614,_33616,_33618,_33620)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__croaks 2 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',croaks,1,['Fritz'],['Any'],'AnyRet','True',_returnVal,3+6)</span>
+<span class="ansi37"
+>function_declaration_scores('&self',croaks,1,['Sam'],['Any'],'AnyRet','True',_returnVal,3+6)</span>
+(ist &self (= (croaks Fritz)  True))
+(ist &self (= (croaks Sam)  True))
+<span class="ansi37"
+>predicate_behavior(_42074,ift,2,[[->,'Bool','Atom','Atom'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (ift True (add-atom &kb (Green Fritz))) &top) ==> (-> Bool Atom Atom))
+[unknown [transpiler_predicate_store ift 3 $44472 $44474]]
+<span class="ansi37"
+>transpiler_clause_store(ift,3,_45408,_45410,_45412,_45414,_45416,_45418,_45420)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__ift 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',ift,2,['True',_46612],['Bool','Atom'],'Atom',_46612,_returnVal,6+14)</span>
+(ist &self (: ift (-> Bool Atom Atom)))
+(ist &self (= (ift True $47166)  $47166))
 <span class="ansi38-255165000"
 > (Green Fritz)
  
 </span>; 
 ; EVAL TEST
-; took 0.006 secs. (5.52 milliseconds) 
+; took 0.020 secs. (19.98 milliseconds) 
 
-!(assertEqualToResult (ift (green $38962) (add-atom &kb (Green $38962))) (() ()))
+!(assertEqualToResult (ift (green $51696) (add-atom &kb (Green $51696))) (() ()))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -119,16 +144,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Retrieve the inferred Green things: Fritz and Sam.
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (Green $48714) $48714) (Fritz Sam))
+>!(assertEqualToResult (match &kb (Green $61448) $61448) (Fritz Sam))
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.02"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E1-KB-WRITE.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000212 secs. (211.77 microseconds) 
+; took 0.000239 secs. (238.52 microseconds) 
 
-!(assertEqualToResult (match &kb (Green $56764) $56764) (Fritz Sam))
+!(assertEqualToResult (match &kb (Green $6988) $6988) (Fritz Sam))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -154,7 +179,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' (Fritz)) ('~nExpected: ' (Fritz Sam)))]
 
-Script done on 2025-02-24 14:51:48+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:51:56+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

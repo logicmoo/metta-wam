@@ -16,6 +16,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -31,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:21:17+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/multifunction.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:26:00+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/multifunction.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/multifunction.metta] ]
 P;HTML|
@@ -83,9 +84,41 @@ Script started on 2025-02-24 15:21:17+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.MULTIFUNCTION.01"
 >;; METTA-MORPH-TESTS.MULTIFUNCTION.01</h3>
+<span class="ansi37"
+>predicate_behavior(_13146,g,2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (g 42 (1 2)) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store g 3 $14932 $14934]]
+<span class="ansi37"
+>transpiler_clause_store(g,3,_15868,_15870,_15872,_15874,_15876,_15878,_15880)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__g 3 ]]
+<span class="ansi37"
+>function_declaration_scores('&self',g,2,[test,[_19690,_19696]],['Any','Any'],'AnyRet',[*,[*,1,_19690],_19696],_returnVal,6+22)</span>
+<span class="ansi37"
+>function_declaration_scores('&self',g,2,[3,[_19842,_19848]],['Any','Any'],'AnyRet',[*,_19842,_19848],_returnVal,6+22)</span>
+<span class="ansi37"
+>function_declaration_scores('&self',g,2,[_20070,[_20082,_20088]],['Any','Any'],'AnyRet',[*,[*,_20070,_20082],42],_returnVal,6+24)</span>
+<span class="ansi37"
+>function_declaration_scores('&self',g,2,[_20246,[_20258,_20264]],['Any','Any'],'AnyRet',[*,[*,42,_20246],_20258],_returnVal,6+24)</span>
+<span class="ansi37"
+>function_declaration_scores('&self',g,2,[a,[_20270,w]],['Any','Any'],'AnyRet',_20270,_returnVal,6+20)</span>
+(ist &self (= (g $23172)  $23172))
+(ist &self (= (g $23218)  
+  (* 2 $23218)))
+(ist &self (= (g test ($23352 $23358))  
+  (* 
+    (* 1 $23352) $23358)))
+(ist &self (= (g 3 ($23362 $23368))  
+  (* $23362 $23368)))
+(ist &self (= (g $23448 ($23460 $23466))  
+  (* 
+    (* $23448 $23460) 42)))
+(ist &self (= (g $23482 ($23494 $23500))  
+  (* 
+    (* 42 $23482) $23494)))
+(ist &self (= (g a ($23364 w))  $23364))
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.42 milliseconds) 
+; took 0.030 secs. (29.87 milliseconds) 
 
 !(assertEqualToResult (g 42 (1 2)) (1764 1764))
 
@@ -110,7 +143,7 @@ Deterministic: <span class="ansi33"
 >Return to summaries</a><br/>
 [()]
 
-Script done on 2025-02-24 15:21:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:26:00+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

@@ -19,6 +19,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi34 { color: #0000aa; }
+.ansi35 { color: #E850A8; }
 .ansi36 { color: #00aaaa; }
 .ansi37 { color: #F5F1DE; }
 .ansi40 { background-color: #000316; }
@@ -50,7 +51,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:08:08+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:12:10+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta] ]
 P;HTML|
@@ -78,7 +79,7 @@ Script started on 2025-02-24 15:08:08+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.025 secs. (24.88 milliseconds) 
+; took 0.025 secs. (24.99 milliseconds) 
 
 !(assertEqual (py-list ()) (py-eval "[]"))
 
@@ -98,7 +99,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.77 milliseconds) 
+; took 0.002 secs. (1.83 milliseconds) 
 
 !(assertEqual (py-tuple ()) (py-eval "()"))
 
@@ -113,7 +114,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000565 secs. (564.53 microseconds) 
+; took 0.000607 secs. (607.32 microseconds) 
 
 !(assertEqual (py-dict ()) (py-eval "{}"))
 
@@ -128,61 +129,301 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-013099040"
 >!(assertEqual (py-tuple (1 (2 (3 "3")) (py-atom list))) , (py-eval "(1,(2,(3, " 3"))
 
-</span>P;HTML|
+</span><span class="ansi37"
+>predicate_behavior(_33230,'py-eval',2,[[->,'String','PyObject'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-eval "(1,(2,(3, " 3") &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store py-eval 3 $34588 $34590]]
+<span class="ansi37"
+>transpiler_clause_store('py-eval',3,_35524,_35526,_35528,_35530,_35532,_35534,_35536)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-eval 3 ]]
+P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_7672,_7678],
+;           [_7684,_7690],  _7662, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_33886,'py-eval',2,_33892,_33894,_33896,_33898,_returnVal,_33902)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_7636,_7642],
+;           [_7648,_7654],  _7626, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
 ;           'py-eval',
 ;           2,
 ;           [_7614,_7620],
-;           [_7626,_7632],  _7604, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
+;           [_7626,_7632],  _7604, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           assertEqual,
-;           3,
-;           [_33448,_33454,_33460],
-;           [_33466,_33472,_33478],  _33438, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
+>( Py_eval,
+;           'py-eval', 2,_13808,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval', 2,_22934,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_49980,'py-eval',2,_49986,_49988,_49990,_49992,_49994,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-eval'|_50126],_50130]=missing('[|]'/2)</span>
+(ist &corelib (iz py-eval MeTTaLog))
+(ist &corelib (@doc py-eval (@desc "Evaluates a Python expression from a string and returns the result as a PyObject.") (@params ((@param (@desc "A string representing a Python expression that will be evaluated")))) (@return (@desc "The result of evaluating the Python expression as a PyObject"))))
+(ist &corelib (: py-eval (-> String PyObject)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           assertEqual,
-;           3,
-;           [_7212,_7218,_7224],
-;           [_7230,_7236,_7242],  _7202, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
+;           'py-eval',
+;           2,
+;           [_26742,_26748],
+;           [_26754,_26760],  _26732, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-eval',
 ;           2,
-;           [_10012,_10018],
-;           [_10024,_10030],  _10002, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
+;           [_37296,_37302],
+;           [_37308,_37314],  _37286, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_11192,assertEqual,3,[[->,'Atom','Atom','Atom'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (assertEqual (1, [2, [3, '3']], ['py-atom', list]) , (py-eval "(1,(2,(3, " 3")) &top) ==> (-> Any Any Any AnyRet))
+[unknown [transpiler_predicate_store assertEqual 4 $12688 $12690]]
+<span class="ansi37"
+>transpiler_clause_store(assertEqual,4,_13624,_13626,_13628,_13630,_13632,_13634,_13636)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_3__assertEqual 4 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_7272,_7278,_7284],
+;           [_7290,_7296,_7302],  _7262, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_18310,_18316,_18322],
+;           [_18328,_18334,_18340],  _18300, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_46564,assertEqual,3,_46570,_46572,_46574,_46576,_returnVal,_46580)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_34944,_34950,_34956],
+;           [_34962,_34968,_34974],  _34934, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_7236,_7242,_7248],
+;           [_7254,_7260,_7266],  _7226, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual, 3,_7090,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual, 3,_16042,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43092,assertEqual,3,_43098,_43100,_43102,_43104,_43106,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[assertEqual|_43238],_43242]=missing('[|]'/2)</span>
+(ist &corelib (iz assertEqual MeTTa))
+(ist &corelib (@doc assertEqual (@desc "Compares (sets of) results of evaluation of two expressions") (@params ((@param "First expression") (@param "Second expression"))) (@return "Unit atom if both expression after evaluation is equal, error - otherwise")))
+(ist &corelib (: assertEqual (-> Atom Atom Atom)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           assertEqual,
+;           3,
+;           [_39858,_39864,_39870],
+;           [_39876,_39882,_39888],  _39848, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           assertEqual,
+;           3,
+;           [_7232,_7238,_7244],
+;           [_7250,_7256,_7262],  _7222, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_42458,'py-eval',2,[[->,'String','PyObject'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-eval "(1,(2,(3, " 3") &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store py-eval 3 $43816 $43818]]
+<span class="ansi37"
+>transpiler_clause_store('py-eval',3,_44752,_44754,_44756,_44758,_44760,_44762,_44764)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-eval 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_15170,_15176],
+;           [_15182,_15188],  _15160, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_12964,_12970],
+;           [_12976,_12982],  _12954, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_41056,'py-eval',2,_41062,_41064,_41066,_41068,_returnVal,_41072)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_11010,_11016],
+;           [_11022,_11028],  _11000, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval',
+;           2,
+;           [_8040,_8046],
+;           [_8052,_8058],  _8030, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval', 2,_19002,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_eval,
+;           'py-eval', 2,_28084,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_55130,'py-eval',2,_55136,_55138,_55140,_55142,_55144,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-eval'|_55276],_55280]=missing('[|]'/2)</span>
+(ist &corelib (iz py-eval MeTTaLog))
+(ist &corelib (@doc py-eval (@desc "Evaluates a Python expression from a string and returns the result as a PyObject.") (@params ((@param (@desc "A string representing a Python expression that will be evaluated")))) (@return (@desc "The result of evaluating the Python expression as a PyObject"))))
+(ist &corelib (: py-eval (-> String PyObject)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'py-eval',
+;           2,
+;           [_37344,_37350],
+;           [_37356,_37362],  _37334, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-eval',
 ;           2,
-;           [_15104,_15110],
-;           [_15116,_15122],  _15094, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
+;           [_39312,_39318],
+;           [_39324,_39330],  _39302, Function_declaration_implTopPy_evalC91_c124_c931, Function_declaration_implTopPy_evalC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_13182,assertEqual,3,[[->,'Atom','Atom','Atom'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (assertEqual (1, [2, [3, '3']], ['py-atom', list]) , (py-eval "(1,(2,(3, " 3")) &top) ==> (-> Any Any Any AnyRet))
+[unknown [transpiler_predicate_store assertEqual 4 $14678 $14680]]
+<span class="ansi37"
+>transpiler_clause_store(assertEqual,4,_15614,_15616,_15618,_15620,_15622,_15624,_15626)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_3__assertEqual 4 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_7290,_7296,_7302],
+;           [_7308,_7314,_7320],  _7280, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_20252,_20258,_20264],
+;           [_20270,_20276,_20282],  _20242, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_48506,assertEqual,3,_48512,_48514,_48516,_48518,_returnVal,_48522)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_36950,_36956,_36962],
+;           [_36968,_36974,_36980],  _36940, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual,
+;           3,
+;           [_49410,_49416,_49422],
+;           [_7048,_7054,_7060],  _7020, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual, 3,_7088,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( AssertEqual,
+;           assertEqual, 3,_15020,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_42070,assertEqual,3,_42076,_42078,_42080,_42082,_42084,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[assertEqual|_42216],_42220]=missing('[|]'/2)</span>
+(ist &corelib (iz assertEqual MeTTa))
+(ist &corelib (@doc assertEqual (@desc "Compares (sets of) results of evaluation of two expressions") (@params ((@param "First expression") (@param "Second expression"))) (@return "Unit atom if both expression after evaluation is equal, error - otherwise")))
+(ist &corelib (: assertEqual (-> Atom Atom Atom)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           assertEqual,
+;           3,
+;           [_39214,_39220,_39226],
+;           [_39232,_39238,_39244],  _39204, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           assertEqual,
 ;           3,
-;           [_43342,_43348,_43354],
-;           [_43360,_43366,_43372],  _43332, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           assertEqual,
-;           3,
-;           [_11154,_11160,_11166],
-;           [_11172,_11178,_11184],  _11144, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
+;           [_7230,_7236,_7242],
+;           [_7248,_7254,_7260],  _7220, Function_declaration_implTopAssertEqualC91_c124_c931, Function_declaration_implTopAssertEqualC91_c124_c93, Impl)</span>)
 
 
 Deterministic: <span class="ansi33"
@@ -201,7 +442,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.11 milliseconds) 
+; took 0.001 secs. (1.25 milliseconds) 
 
 !(assertEqual (py-list (1 2 (4.5 3))) (py-eval "[1,2,[4.5,3]]"))
 
@@ -221,7 +462,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000815 secs. (815.26 microseconds) 
+; took 0.000867 secs. (867.08 microseconds) 
 
 !(assertEqual (py-list (1 2 (py-tuple (3 4)))) (py-eval "[1,2, (3,4)]"))
 
@@ -230,7 +471,7 @@ Deterministic: <span class="ansi33"
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ([1, 2, ['py-tuple', [3, 4]]]) 
       ([1, 2, (3, 4)])]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(<py_list>(0x7f96b594c740),[]),'[|]'(<py_list>(0x7f96b59247c0),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(<py_list>(0x7f7b7994c880),[]),'[|]'(<py_list>(0x7f7b799247c0),[]))
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ([1, 2, ['py-tuple', [3, 4]]])) ('~nExpected: ' ([1, 2, (3, 4)])))
@@ -242,7 +483,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000656 secs. (656.10 microseconds) 
+; took 0.000722 secs. (721.84 microseconds) 
 
 !(assertEqual (py-dict ((a "b") ("b" "c"))) (py-eval '{"a":"b", "b":"c"}'))
 
@@ -262,7 +503,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000654 secs. (654.02 microseconds) 
+; took 0.000714 secs. (713.96 microseconds) 
 
 !(assertNotEqual (py-list (a "b" c)) (py-list (a b c)))
 
@@ -281,73 +522,309 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.08"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.08</h3>
+<span class="ansi37"
+>predicate_behavior(_21258,'py-nth!',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-nth! (py-list (a "b" c)) 1) &top) ==> (-> Atom Atom Atom))
+[unknown [transpiler_predicate_store py-nth! 3 $24366 $24368]]
+<span class="ansi37"
+>transpiler_clause_store('py-nth!',3,_25302,_25304,_25306,_25308,_25310,_25312,_25314)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-nth! 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_8108,_8114],
+;           [_8120,_8126],  _8098, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_8104,_8110],
+;           [_8116,_8122],  _8094, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_25336,'py-nth!',2,_25342,_25344,_25346,_25348,_returnVal,_25352)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_8074,_8080],
+;           [_8086,_8092],  _8064, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_8072,_8078],
+;           [_8084,_8090],  _8062, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_7990,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_16532,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43574,'py-nth!',2,_43580,_43582,_43584,_43586,_43588,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-nth!'|_43720],_43724]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_44200,[_44212,_44218|_44220]]=missing('[|]'/2)</span>
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-nth!',
 ;           2,
-;           [_8050,_8056],
-;           [_8062,_8068],  _8040, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+;           [_20472,_20478],
+;           [_20484,_20490],  _20462, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-nth!',
 ;           2,
-;           [_8046,_8052],
-;           [_8058,_8064],  _8036, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+;           [_25566,_25572],
+;           [_25578,_25584],  _25556, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_63674,'py-nth!',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-nth! (call-fn! py_list (a "b" c)) 1) &top) ==> (-> Atom Atom Atom))
+[unknown [transpiler_predicate_store py-nth! 3 $6390 $6392]]
+<span class="ansi37"
+>transpiler_clause_store('py-nth!',3,_7326,_7328,_7330,_7332,_7334,_7336,_7338)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-nth! 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_36974,_36980],
+;           [_36986,_36992],  _36964, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_35048,_35054],
+;           [_35060,_35066],  _35038, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_63138,'py-nth!',2,_63144,_63146,_63148,_63150,_returnVal,_63154)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_35160,_35166],
+;           [_35172,_35178],  _35150, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_35158,_35164],
+;           [_35170,_35176],  _35148, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_45532,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_9102,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_31080,'py-nth!',2,_31086,_31088,_31090,_31092,_31094,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-nth!'|_31226],_31230]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_31706,[_31718,_31724|_31726]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'py-nth!',
+;           2,
+;           [_9274,_9280],
+;           [_9286,_9292],  _9264, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-nth!',
 ;           2,
-;           [_18818,_18824],
-;           [_18830,_18836],  _18808, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+;           [_17010,_17016],
+;           [_17022,_17028],  _17000, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_57206,'py-nth!',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-nth! (py-list (a 'b' c)) 1) &top) ==> (-> Atom Atom Atom))
+[unknown [transpiler_predicate_store py-nth! 3 $60364 $60366]]
+<span class="ansi37"
+>transpiler_clause_store('py-nth!',3,_61300,_61302,_61304,_61306,_61308,_61310,_61312)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-nth! 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_32652,_32658],
+;           [_32664,_32670],  _32642, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_32650,_32656],
+;           [_32662,_32668],  _32640, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60740,'py-nth!',2,_60746,_60748,_60750,_60752,_returnVal,_60756)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_32620,_32626],
+;           [_32632,_32638],  _32610, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_32618,_32624],
+;           [_32630,_32636],  _32608, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_42350,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_7994,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_22776,'py-nth!',2,_22782,_22784,_22786,_22788,_22790,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-nth!'|_22922],_22926]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_23402,[_23414,_23420|_23422]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'py-nth!',
+;           2,
+;           [_8116,_8122],
+;           [_8128,_8134],  _8106, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-nth!',
 ;           2,
-;           [_26244,_26250],
-;           [_26256,_26262],  _26234, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+;           [_8130,_8136],
+;           [_8142,_8148],  _8120, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_43078,'py-nth!',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (py-nth! (call-fn! py_list (a 'b' c)) 1) &top) ==> (-> Atom Atom Atom))
+[unknown [transpiler_predicate_store py-nth! 3 $45116 $45118]]
+<span class="ansi37"
+>transpiler_clause_store('py-nth!',3,_46052,_46054,_46056,_46058,_46060,_46062,_46064)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__py-nth! 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_19730,_19736],
+;           [_19742,_19748],  _19720, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_19950,_19956],
+;           [_19962,_19968],  _19940, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_48040,'py-nth!',2,_48046,_48048,_48050,_48052,_returnVal,_48056)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_21818,_21824],
+;           [_21830,_21836],  _21808, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!',
+;           2,
+;           [_22880,_22886],
+;           [_22892,_22898],  _22870, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_34990,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Py_nth,
+;           'py-nth!', 2,_44104,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_17032,'py-nth!',2,_17038,_17040,_17042,_17044,_17046,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['py-nth!'|_17178],_17182]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_17658,[_17670,_17676|_17678]]=missing('[|]'/2)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'py-nth!',
+;           2,
+;           [_9354,_9360],
+;           [_9366,_9372],  _9344, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'py-nth!',
 ;           2,
-;           [_38150,_38156],
-;           [_38162,_38168],  _38140, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'py-nth!',
-;           2,
-;           [_40684,_40690],
-;           [_40696,_40702],  _40674, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'py-nth!',
-;           2,
-;           [_9328,_9334],
-;           [_9340,_9346],  _9318, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'py-nth!',
-;           2,
-;           [_9346,_9352],
-;           [_9358,_9364],  _9336, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
+;           [_9368,_9374],
+;           [_9380,_9386],  _9358, Function_declaration_implTopPy_nthC91_c124_c931, Function_declaration_implTopPy_nthC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.230 secs. (1230.30 milliseconds) 
+; took 4.10 seconds.
 
 !(assertNotEqual (py-nth! (py-list (a "b" c)) 1) (py-nth! (py-list (a 'b' c)) 1))
 
@@ -372,7 +849,7 @@ Deterministic: <span class="ansi33"
 ;<h3 id="HYPERON-METTALOG-SANITY.PY-TYPES.09"
 >;; HYPERON-METTALOG-SANITY.PY-TYPES.09</h3>
 P;HTML|
-;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $63672 $63674]]] [ = $63678 True ] ] [ = $63678 False ] ]] [error instantiation_error $63692] ]
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $61702 $61704]]] [ = $61708 True ] ] [ = $61708 False ] ]] [error instantiation_error $61722] ]
 [error [error [existence_error procedure [ / load_hyperon_module 0 ]] [context [ / py_chain 2 ] $2052]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta] (assertEqual (py-chain (1 2 3 4)) (py-eval "7"))]
 <span class="ansi38-013099040"
 >!(assertEqualToResult (py-chain (True False)) (True))
@@ -396,7 +873,7 @@ Deterministic: <span class="ansi33"
 >!(bind! &pow (py-atom math.pow (-> Number Number Number)))
 
 </span> [166] <span class="ansi34"
->call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(...,8000,...,_3510))|_3486],_3474))|_3450],_3438))|_3414],P;HTML|<span class="pl-list"
+>call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(...,8000,...,_3510))|_3486],_3474))|_3450],_3438))|_3414],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -405,21 +882,21 @@ Deterministic: <span class="ansi33"
 ><span class="pl-int"
 >600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:508
  [165] <span class="ansi34"
->call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(...,8000,...,_3660))|_3636],_3624))|_3600],P;HTML|<span class="pl-list"
+>call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(...,8000,...,_3660))|_3636],_3624))|_3600],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x556a93930520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,...,...)|_3750],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x55a62ed2b520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,...,...)|_3750],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x556a93930520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_3800))|_3774],_3702))|_3676],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x55a62ed2b520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[...|...],_3800))|_3774],_3702))|_3676],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -428,21 +905,21 @@ Deterministic: <span class="ansi33"
 ><span class="pl-int"
 >600</span></span>)</span></span>]</span>)</span> at /usr/lib/swi-prolog/boot/init.pl:510
  [164] <span class="ansi34"
->once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_3942],_3930))|_3906],P;HTML|<span class="pl-list"
+>once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(prolog_stack:get_prolog_backtrace_lc,8000,[...|_3942],_3930))|_3906],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x556a93930520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x556a93202b80),8),call(...,8000,...,...)),frame(165,...,...)|_4026],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(165,clause(<clause>(0x55a62ed2b520),10),call(prolog_stack:call,get_prolog_backtrace_lc,8000,[frame(166,clause(<clause>(0x55a62e5fdb80),8),call(...,8000,...,...)),frame(165,...,...)|_4026],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
 ><span class="pl-functor"
 >goal_depth</span>(<span class="pl-args"
 ><span class="pl-int"
->600</span></span>)</span></span>]</span>)),frame(164,clause(<clause>(0x556a92fdfb70),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_4086)))|_4050],P;HTML|<span class="pl-list"
+>600</span></span>)</span></span>]</span>)),frame(164,clause(<clause>(0x55a62e3dab70),3),once(prolog_stack:call(call,get_prolog_backtrace_lc,8000,...,_4086)))|_4050],P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -455,7 +932,7 @@ Deterministic: <span class="ansi33"
  [161] <span class="ansi34"
 >logicmoo_startup:bt</span> at /home/runner/work/metta-wam/metta-wam/libraries/logicmoo_utils/prolog/logicmoo_startup.pl:1038
  [160] <span class="ansi34"
->py_error_fail(error(python_error('NameError',<py_NameError>(0x7f96b5dfaaa0)),context(_4188,python_stack(<py_traceback>(0x7f96b594d9c0)))))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:864
+>py_error_fail(error(python_error('NameError',<py_NameError>(0x7f7b79dfaaa0)),context(_4188,python_stack(<py_traceback>(0x7f7b7994dbc0)))))</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_python.pl:864
  [159] <span class="ansi34"
 >catch('<garbage_collected>','<garbage_collected>','<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:565
  [158] <span class="ansi34"
@@ -467,7 +944,7 @@ Deterministic: <span class="ansi33"
  [152] <span class="ansi34"
 >md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1111
  [148] <span class="ansi34"
->eval_20(=,'AnyRet',498,'&top','<garbage_collected>',_4368)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3599
+>eval_20(=,'AnyRet',498,'&top','<garbage_collected>',_4368)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3600
  [147] <span class="ansi34"
 >eval_10(=,'<garbage_collected>',498,'&top',P;HTML|<span class="pl-functor"
 >[ </span>
@@ -481,7 +958,7 @@ Deterministic: <span class="ansi33"
 ><span class="pl-atom"
 >-&gt;</span>, <span class="pl-atom"
 >'Number'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>],_4402)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3591
+>...</span></span>]</span>],_4402)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3592
  [145] <span class="ansi34"
 >'<meta-call>'('<garbage_collected>')</span> <foreign>
  [144] <span class="ansi34"
@@ -519,7 +996,7 @@ Deterministic: <span class="ansi33"
 ><span class="pl-atom"
 >-&gt;</span>, <span class="pl-atom"
 >'Number'</span>|<span class="pl-ellipsis"
->...</span></span>]</span>],_4868)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3641
+>...</span></span>]</span>],_4868)</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_eval.pl:3642
  [137] <span class="ansi34"
 >bugger:must(user:eval_ne(=,'AnyRet',499,'&top',P;HTML|<span class="pl-functor"
 >[ </span>
@@ -799,7 +1276,7 @@ Deterministic: <span class="ansi33"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,1)),must_det_ll(load_answer_file(P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>)),must_det_ll(set_exec_num(P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,0))),must_det_ll(load_metta_file_stream_fast(1182,read_file_sexpr,P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x556a96b3c080)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
+>'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x55a631f34fa0)))),user:set_option_value(loading_file,P;HTML|<span class="pl-atom"
 >'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>))</span> at /usr/lib/swi-prolog/boot/init.pl:682
   [85] <span class="ansi34"
 >once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
@@ -807,7 +1284,7 @@ Deterministic: <span class="ansi33"
 >md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1111
   [82] <span class="ansi34"
 >setup_call_cleanup(user:open(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,read,<stream>(0x556a96b3c080),P;HTML|<span class="pl-list"
+>'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,read,<stream>(0x55a631f34fa0),P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -815,14 +1292,14 @@ Deterministic: <span class="ansi33"
 >encoding</span>(<span class="pl-args"
 ><span class="pl-atom"
 >utf8</span></span>)</span></span>]</span>),user:must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x556a96b3c080))),user:close(<stream>(0x556a96b3c080)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+>'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x55a631f34fa0))),user:close(<stream>(0x55a631f34fa0)))</span> at /usr/lib/swi-prolog/boot/init.pl:682
   [81] <span class="ansi34"
 >once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
   [80] <span class="ansi34"
 >md(once,'<garbage_collected>')</span> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_utils.pl:1111
   [78] <span class="ansi34"
 >setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity'),user:must_det_ll(setup_call_cleanup(open(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,read,<stream>(0x556a96b3c080),P;HTML|<span class="pl-list"
+>'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,read,<stream>(0x55a631f34fa0),P;HTML|<span class="pl-list"
 ><span class="pl-functor"
 > [ </span><span class="pl-args"
 ><span class="pl-compound"
@@ -830,7 +1307,7 @@ Deterministic: <span class="ansi33"
 >encoding</span>(<span class="pl-args"
 ><span class="pl-atom"
 >utf8</span></span>)</span></span>]</span>),must_det_ll(load_metta_file_stream(P;HTML|<span class="pl-atom"
->'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x556a96b3c080))),close(<stream>(0x556a96b3c080)))),user:working_directory(_7876,'/home/runner/work/metta-wam/metta-wam/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
+>'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'</span>,'&top',<stream>(0x55a631f34fa0))),close(<stream>(0x55a631f34fa0)))),user:working_directory(_7876,'/home/runner/work/metta-wam/metta-wam/'))</span> at /usr/lib/swi-prolog/boot/init.pl:682
   [75] <span class="ansi34"
 >once('<garbage_collected>')</span> at /usr/lib/swi-prolog/boot/init.pl:538
   [74] <span class="ansi34"
@@ -934,827 +1411,827 @@ Deterministic: <span class="ansi33"
 
 Note: some frames are missing due to last-call optimization.
 Re-run your program in debug mode (:- debug.) to get more detail.
-(0)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi33"
-></span><span class="ansi33"
-></span><span class="ansi33"
+(0)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > '$c_call_prolog'. </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(1)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
->[$toplevel]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
+(1)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+>[$toplevel]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
 > '$toplevel'. </span>  %  toplevel.pl:865: 
-(2)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
+(2)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
+></span><span class="ansi1 ansi92"
 >[$toplevel]</span>P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi36"
 ></span><span class="ansi1 ansi36"
 ></span><span class="ansi1 ansi36"
 > '$runtoplevel'. </span>  %  toplevel.pl:877: 
-(4)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(4)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi97"
+></span><span class="ansi1 ansi97 ansi40"
+></span><span class="ansi1 ansi97 ansi40"
 > do_loon. </span>  %  metta_interp.pl:6698: 
 (5)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
-> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML| ignore('<garbage_collected>').   %  init.pl:546: 
 (9)P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[apply]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+>[apply]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
 (13)$P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
-></span><span class="ansi1 ansi92"
->[apply]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi32"
+>[apply]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > apply:maplist_('<garbage_collected>',user:catch_red_ignore). </span>  %  apply.pl:225: 
 (15)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi2"
 ></span><span class="ansi2 ansi96"
 ></span><span class="ansi2 ansi96"
 ></span><span class="ansi2 ansi96"
 > if_or_else('<garbage_collected>',true). </span>  %  metta_interp.pl:5986: 
-(18)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> catch(user:run_cmd_args,_S262,user:(always_rethrow(_S262)->throw(_S262);pp_m_m_red(red,run_cmd_args in _S262))). </span>  %  init.pl:564: 
-(19)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(18)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> catch(user:run_cmd_args,_S884,user:(always_rethrow(_S884)->throw(_S884);pp_m_m_red(red,run_cmd_args in _S884))). </span>  %  init.pl:564: 
+(19)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi94"
 ></span><span class="ansi1 ansi94"
 ></span><span class="ansi1 ansi94"
 > run_cmd_args. </span>  %  metta_interp.pl:2609: 
-(21)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(21)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi94"
-></span><span class="ansi1 ansi94"
-></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > do_cmdline_load_metta(execute,'&self','<garbage_collected>'). </span>  %  metta_interp.pl:2805: 
 (28)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > cmdline_load_metta(execute,'&self',['tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','--halt=true','--stdin=tty','--stdout=tty','--stderr=tty']). </span>  %  metta_interp.pl:2970: 
 (30)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
-> ignore('<garbage_collected>'). </span>  %  init.pl:546: 
-(32)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+> < * > </span>$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML| ignore('<garbage_collected>').   %  init.pl:546: 
+(32)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
+></span><span class="ansi2 ansi96"
 > cmdline_load_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'). </span>  %  metta_interp.pl:3047: 
-(35)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(35)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > catch(user:(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),!,flush_output),'$aborted',user:fbug(aborted(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),(not_compatio((nl,write('; '),write_src(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),nl)),catch_red(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),!,flush_output)))). </span>  %  init.pl:564: 
-(36)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-> no(clause). </span>
-(38)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(39)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> once('<garbage_collected>'). </span>  %  init.pl:537: 
-(42)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S440,user:(always_rethrow(_S440)->throw(_S440);pp_m_m_red(red,user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')in _S440))). </span>  %  init.pl:564: 
-(48)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')]),user:call(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),user:(nb_current('$circular_goals',_S338),select(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S338,_94352),nb_setval('$circular_goals',_94352))). </span>  %  init.pl:680: 
-(49)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi37"
-></span><span class="ansi37 ansi40"
-></span><span class="ansi37 ansi40"
-> call('<garbage_collected>'). </span>  %  init.pl:501: 
-(52)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(53)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> once('<garbage_collected>'). </span>  %  init.pl:537: 
-(54)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi96"
-></span><span class="ansi2 ansi96"
-></span><span class="ansi2 ansi96"
-> track_load_into_file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
-(56)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(57)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> once('<garbage_collected>'). </span>  %  init.pl:537: 
-(58)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi92"
-></span><span class="ansi92"
-></span><span class="ansi92"
-> track_load_into_file0('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
-(60)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(61)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> once('<garbage_collected>'). </span>  %  init.pl:537: 
-(63)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:include_metta('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
-(65)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(66)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> once('<garbage_collected>'). </span>  %  init.pl:537: 
-(70)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),user:(nb_current('$circular_goals',_S360),select(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S360,_4334),nb_setval('$circular_goals',_4334))). </span>  %  init.pl:680: 
-(71)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi37"
-></span><span class="ansi37 ansi40"
-></span><span class="ansi37 ansi40"
-> call('<garbage_collected>'). </span>  %  init.pl:501: 
-(72)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(36)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+> no(clause). </span>
+(38)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(39)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(42)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> catch(user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S248,user:(always_rethrow(_S248)->throw(_S248);pp_m_m_red(red,user:load_metta_file('&self','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')in _S248))). </span>  %  init.pl:564: 
+(48)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')]),user:call(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),user:(nb_current('$circular_goals',_S146),select(load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S146,_94160),nb_setval('$circular_goals',_94160))). </span>  %  init.pl:680: 
+(49)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(52)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(53)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(54)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+></span><span class="ansi1 ansi93"
+> track_load_into_file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2046: 
+(56)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(57)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(58)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> track_load_into_file0('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','<garbage_collected>'). </span>  %  flybase_loader.pl:2071: 
+(60)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(61)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(63)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:include_metta('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:set_option_value(loading_file,[])). </span>  %  init.pl:680: 
+(65)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
+> md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
+(66)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> once('<garbage_collected>'). </span>  %  init.pl:537: 
+(70)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:nb_setval('$circular_goals',[include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),load_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')]),user:call(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')),user:(nb_current('$circular_goals',_S358),select(include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),_S358,_4334),nb_setval('$circular_goals',_4334))). </span>  %  init.pl:680: 
+(71)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> call('<garbage_collected>'). </span>  %  init.pl:501: 
+(72)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi91"
+></span><span class="ansi2 ansi91"
+></span><span class="ansi2 ansi91"
 > include_metta1('&top','tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'). </span>  %  metta_loader.pl:894: 
-(74)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+(74)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(75)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(75)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(78)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity'),user:setup_call_cleanup(open('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',read,<stream>(0x556a96b3c080),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x556a96b3c080)),close(<stream>(0x556a96b3c080))),user:working_directory(_S068,'/home/runner/work/metta-wam/metta-wam/')). </span>  %  init.pl:680: 
-(80)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+(78)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:working_directory('/home/runner/work/metta-wam/metta-wam/','/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity'),user:setup_call_cleanup(open('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',read,<stream>(0x55a631f34fa0),[encoding(utf8)]),load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x55a631f34fa0)),close(<stream>(0x55a631f34fa0))),user:working_directory(_S068,'/home/runner/work/metta-wam/metta-wam/')). </span>  %  init.pl:680: 
+(80)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(81)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(81)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(82)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:open('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',read,<stream>(0x556a96b3c080),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x556a96b3c080)),user:close(<stream>(0x556a96b3c080))). </span>  %  init.pl:680: 
-(84)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+(82)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:open('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',read,<stream>(0x55a631f34fa0),[encoding(utf8)]),user:load_metta_file_stream('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x55a631f34fa0)),user:close(<stream>(0x55a631f34fa0))). </span>  %  init.pl:680: 
+(84)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(85)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(85)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(88)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:((set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',1),load_answer_file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',0)),load_metta_file_stream_fast(1182,read_file_sexpr,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x556a96b3c080))),user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')). </span>  %  init.pl:680: 
-(91)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+(88)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> setup_call_cleanup(user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),user:((set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',1),load_answer_file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),set_exec_num('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta',0)),load_metta_file_stream_fast(1182,read_file_sexpr,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta','&top',<stream>(0x55a631f34fa0))),user:set_option_value(loading_file,'/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')). </span>  %  init.pl:680: 
+(91)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(92)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(92)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
 (95)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
 > < * > </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
->[$apply]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+>[$apply]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > forall('<garbage_collected>',user:(maybe_name_vars([]),(do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),+,'&top',exec(['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]),_S316)->true;trace,pp_m(unknown_do_metta(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),+,'&top',exec(['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]])))))). </span>  %  apply.pl:51: 
 (96)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
 > '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(98)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+(98)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(99)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(99)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
-(103)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(103)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > catch(user:do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_S582),give_up(_4650),user:write_src_uo(dont_give_up(_4650))). </span>  %  init.pl:564: 
-(105)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(105)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > catch(user:(if_t(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta')=file(_S460),output_language(metta,write_exec(['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]))),notrace(into_metta_callable('&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_26548,_26550,_26552,_26554)),!,user:u_do_metta_exec(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_26548,_26550,_26552,_26554,_26550,_26586)),give_up(_26590),user:pp_m(red,gave_up(_26590))). </span>  %  init.pl:564: 
-(108)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+(108)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
 >[system]</span>P;HTML|<span class="ansi31"
 ></span><span class="ansi31 ansi100"
 ></span><span class="ansi1 ansi31 ansi100"
 > catch(user:u_do_metta_exec00(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],eval_H(500,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_S694),_S694,[],[],_S694,_51702),_51674,user:write_src(error(_51674,file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]))). </span><span class="ansi1 ansi31 ansi100"
 ></span>  %  init.pl:564: 
-(110)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(110)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > catch(user:u_do_metta_exec000(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],eval_H(500,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_S322),_S322,[],[],_S322,_73330),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]))). </span>  %  init.pl:564: 
-(112)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(112)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 > catch(user:u_do_metta_exec01(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],eval_H(500,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_S228),_S228,[],[],_S228,_97236),'$aborted',user:fbug(aborted(file('/home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/py_types.metta'),['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]))). </span>  %  init.pl:564: 
 (114)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi96"
-></span><span class="ansi96"
-></span><span class="ansi96"
+> < * > </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
+></span><span class="ansi2 ansi95"
 > u_do_metta_exec02('<garbage_collected>','&top','<garbage_collected>','<garbage_collected>','<garbage_collected>','<garbage_collected>',[],[],'<garbage_collected>',_S994). </span>  %  metta_repl.pl:1059: 
-(115)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
-> forall_interactive('<garbage_collected>','<garbage_collected>',_S872,'<garbage_collected>',(print_result_output(false,_S872,_21890,prev_result('Empty'),[],contrl(10,inf,each),res(_21922),_21900,[],_21904,_21906),(_21890>=inf->!;true),_21956=_21958,_21968=_21970,(_21906==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_22038),old_not_compatio((writeq(key=_22038),nl)),(_22038==b->once(repl),fail;_22038=='B'->once(prolog),fail;_22038==a->notrace(abort),fail;_22038==e->notrace(halt(5)),fail;_22038==m->make,fail;_22038==c->trace,_21968=true;_22038=='C'->once(cls),fail;_22038==' '->trace,_21968=true;_22038==t->nop(set_debug(eval,true)),rtrace,_21968=true;_22038=='T'->set_debug(eval,true),_21968=true;_22038== ? -> print_debug_help,fail;_22038==(*)->print_last_choicepoint_upwards,fail;_22038==(;)->_21968=true;_22038==esc('[A',[27,91,65])->_21956=true,_21968=false;_22038==esc('[B',[27,91,66])->nb_setarg(3,contrl(10,inf,each),leap),_21956=false,_21968=true;_22038=='L'->nb_setarg(2,contrl(10,inf,each),_21890);_22038==l->nb_setarg(3,contrl(10,inf,each),leap),_21968=true;(_22038=='\n';_22038=='\r')->_21956=false,nb_setarg(3,contrl(10,inf,each),leap),_21968=true;_22038==g->write_src(exec(['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]));_22038=='G'->bt,_21968=false;_22038==s->_21956=true,_21968=false;true->write('Unknown Char'),fail),(nonvar(_21968);nonvar(_21956));true),((_S872==true;_21956==true)->!;true),(nonvar(_21968)->_21968==true;true),(flag(result_num,_21890,_21890),_21890>=inf->!,fail;true))). </span>  %  metta_repl.pl:1301: 
-(117)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi36"
-></span><span class="ansi2 ansi36"
-></span><span class="ansi2 ansi36"
-> ctimed_call('<garbage_collected>',_S458). </span>  %  metta_interp.pl:6239: 
-(118)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(115)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
-></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+> forall_interactive('<garbage_collected>','<garbage_collected>',_S868,'<garbage_collected>',(print_result_output(false,_S868,_21886,prev_result('Empty'),[],contrl(10,inf,each),res(_21918),_21896,[],_21900,_21902),(_21886>=inf->!;true),_21952=_21954,_21964=_21966,(_21902==true->repeat,old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(_22034),old_not_compatio((writeq(key=_22034),nl)),(_22034==b->once(repl),fail;_22034=='B'->once(prolog),fail;_22034==a->notrace(abort),fail;_22034==e->notrace(halt(5)),fail;_22034==m->make,fail;_22034==c->trace,_21964=true;_22034=='C'->once(cls),fail;_22034==' '->trace,_21964=true;_22034==t->nop(set_debug(eval,true)),rtrace,_21964=true;_22034=='T'->set_debug(eval,true),_21964=true;_22034== ? -> print_debug_help,fail;_22034==(*)->print_last_choicepoint_upwards,fail;_22034==(;)->_21964=true;_22034==esc('[A',[27,91,65])->_21952=true,_21964=false;_22034==esc('[B',[27,91,66])->nb_setarg(3,contrl(10,inf,each),leap),_21952=false,_21964=true;_22034=='L'->nb_setarg(2,contrl(10,inf,each),_21886);_22034==l->nb_setarg(3,contrl(10,inf,each),leap),_21964=true;(_22034=='\n';_22034=='\r')->_21952=false,nb_setarg(3,contrl(10,inf,each),leap),_21964=true;_22034==g->write_src(exec(['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]]));_22034=='G'->bt,_21964=false;_22034==s->_21952=true,_21964=false;true->write('Unknown Char'),fail),(nonvar(_21964);nonvar(_21952));true),((_S868==true;_21952==true)->!;true),(nonvar(_21964)->_21964==true;true),(flag(result_num,_21886,_21886),_21886>=inf->!,fail;true))). </span>  %  metta_repl.pl:1301: 
+(117)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+> ctimed_call('<garbage_collected>',_S454). </span>  %  metta_interp.pl:6239: 
+(118)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi35"
+></span><span class="ansi35"
+></span><span class="ansi35"
 > rtrace_on_error('<garbage_collected>'). </span>  %  metta_interp.pl:3787: 
-(119)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-> no(clause). </span>
-(122)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> catch(user:eval_args(=,_S036,500,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_11044),metta_return(_11044),user:ignore(retract(thrown_metta_return(_11044)))). </span>  %  init.pl:564: 
-(126)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(119)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+> '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+> no(clause). </span>
+(122)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> catch(user:eval_args(=,_S036,500,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_11044),metta_return(_11044),user:ignore(retract(thrown_metta_return(_11044)))). </span>  %  init.pl:564: 
+(126)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
 > eval_01(=,_S836,500,'&top','<garbage_collected>',_32844). </span>  %  metta_eval.pl:254: 
-(127)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi97"
-></span><span class="ansi97 ansi40"
-></span><span class="ansi97 ansi40"
+(127)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
 > trace_eval('<garbage_collected>',e,499,'&top','<garbage_collected>','<garbage_collected>'). </span>  %  metta_debug.pl:954: 
-(128)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> call_cleanup(user:((call(eval_09(=,_S476),499,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_73470)*->nb_setarg(1,retval(fail),_73470);fail,trace,call(eval_09(=,_S476),499,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_73470)),ignore(notrace((\+_73470\=_73596,nb_setarg(1,retval(fail),_73470))))),user:ignore((_73630==1->ignore(\+ \+ (flag(eval_num,_73656,_73656+1),(retval(fail)\=@=retval(fail),nonvar(_73470)->indentq(0,_73656,<--,[e,_73470]);indentq(0,_73656,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_73656,_73656+1),(retval(fail)\=@=retval(fail),nonvar(_73470)->indentq(0,_73656,<--,[e,_73470]);indentq(0,_73656,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(128)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> call_cleanup(user:((call(eval_09(=,_S510),499,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_73504)*->nb_setarg(1,retval(fail),_73504);fail,trace,call(eval_09(=,_S510),499,'&top',['bind!','&pow',['py-atom','math.pow',[->,'Number','Number','Number']]],_73504)),ignore(notrace((\+_73504\=_73630,nb_setarg(1,retval(fail),_73504))))),user:ignore((_73664==1->ignore(\+ \+ (flag(eval_num,_73690,_73690+1),(retval(fail)\=@=retval(fail),nonvar(_73504)->indentq(0,_73690,<--,[e,_73504]);indentq(0,_73690,<--,[e,retval(fail)]))));notrace(ignore(if_t(0<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_73690,_73690+1),(retval(fail)\=@=retval(fail),nonvar(_73504)->indentq(0,_73690,<--,[e,_73504]);indentq(0,_73690,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
 (129)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
 > '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(132)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(132)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
 > '<garbage_collected>'. </span>  %  metta_compiler.pl:1295: 
 (133)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>#P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
+> < * > </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi97"
+></span><span class="ansi1 ansi97 ansi40"
+></span><span class="ansi1 ansi97 ansi40"
 > into_name('&top','&pow','&pow'),!,eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S080),nb_bind('&pow',_S080),make_nop(_33138,_S080,_33142). </span>  %  metta_compiler.pl:1296: 
-(134)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>#P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> catch(user:(into_name('&top','&pow','&pow'),!,eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S556),nb_bind('&pow',_S556),make_nop(_61614,_S556,_61618)),_61496,user:(wdmsg(_61496),fail)). </span>  %  init.pl:564: 
+(134)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> catch(user:(into_name('&top','&pow','&pow'),!,eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S510),nb_bind('&pow',_S510),make_nop(_61568,_S510,_61572)),_61450,user:(wdmsg(_61450),fail)). </span>  %  init.pl:564: 
 (135)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>P;HTML|<span class="ansi93"
-></span><span class="ansi93"
-></span><span class="ansi93"
->[bugger]</span>#P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-></span><span class="ansi2 ansi95"
-> bugger:user:(into_name('&top','&pow','&pow'),!,eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S124),nb_bind('&pow',_S124),make_nop(_84182,_S124,_84186)). </span>  %  must_sanity.pl:68: 
-(136)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+> < * > </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[bugger]</span>#P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi97"
+></span><span class="ansi1 ansi97 ansi40"
+></span><span class="ansi1 ansi97 ansi40"
+> bugger:user:(into_name('&top','&pow','&pow'),!,eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S078),nb_bind('&pow',_S078),make_nop(_84136,_S078,_84140)). </span>  %  must_sanity.pl:68: 
+(136)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
 > '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
 (137)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>P;HTML|<span class="ansi93"
-></span><span class="ansi93"
-></span><span class="ansi93"
->[bugger]</span>#P;HTML|<span class="ansi93"
-></span><span class="ansi93"
-></span><span class="ansi93"
-> bugger:user:eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S320). </span>  %  must_sanity.pl:68: 
+> < * > </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[bugger]</span>#P;HTML|<span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+></span><span class="ansi2"
+> bugger:user:eval_ne(=,'AnyRet',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S316). </span>  %  must_sanity.pl:68: 
 (138)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-> eval_ne(=,'<garbage_collected>',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S574). </span>  %  metta_eval.pl:3640: 
-(142)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> eval_ne(=,'<garbage_collected>',499,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S570). </span>  %  metta_eval.pl:3641: 
+(142)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-> eval_01(=,'AnyRet',499,'&top','<garbage_collected>',_S272). </span>  %  metta_eval.pl:254: 
-(143)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi97"
-></span><span class="ansi97 ansi40"
-></span><span class="ansi97 ansi40"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+></span><span class="ansi1 ansi35"
+> eval_01(=,'AnyRet',499,'&top','<garbage_collected>',_S268). </span>  %  metta_eval.pl:254: 
+(143)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi36"
+></span><span class="ansi36"
+></span><span class="ansi36"
 > trace_eval('<garbage_collected>',e,498,'&top','<garbage_collected>','<garbage_collected>'). </span>  %  metta_debug.pl:954: 
-(144)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-> call_cleanup(user:((call(eval_09(=,'AnyRet'),498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S006)*->nb_setarg(1,retval(fail),_S006);fail,trace,call(eval_09(=,'AnyRet'),498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S006)),ignore(notrace((\+_S006\=_3894,nb_setarg(1,retval(fail),_S006))))),user:ignore((_3928==1->ignore(\+ \+ (flag(eval_num,_3954,_3954+1),(retval(fail)\=@=retval(fail),nonvar(_S006)->indentq(1,_3954,<--,[e,_S006]);indentq(1,_3954,<--,[e,retval(fail)]))));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_3954,_3954+1),(retval(fail)\=@=retval(fail),nonvar(_S006)->indentq(1,_3954,<--,[e,_S006]);indentq(1,_3954,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
+(144)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+> call_cleanup(user:((call(eval_09(=,'AnyRet'),498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S002)*->nb_setarg(1,retval(fail),_S002);fail,trace,call(eval_09(=,'AnyRet'),498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S002)),ignore(notrace((\+_S002\=_3894,nb_setarg(1,retval(fail),_S002))))),user:ignore((_3928==1->ignore(\+ \+ (flag(eval_num,_3954,_3954+1),(retval(fail)\=@=retval(fail),nonvar(_S002)->indentq(1,_3954,<--,[e,_S002]);indentq(1,_3954,<--,[e,retval(fail)]))));notrace(ignore(if_t(1<30,if_trace((eval;e),ignore(\+ \+ (flag(eval_num,_3954,_3954+1),(retval(fail)\=@=retval(fail),nonvar(_S002)->indentq(1,_3954,<--,[e,_S002]);indentq(1,_3954,<--,[e,retval(fail)]))))))))))). </span>  %  init.pl:684: 
 (145)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+> < * > </span>$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
+></span><span class="ansi1 ansi91"
 > '<meta-call>'('<garbage_collected>'). </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
-></span><span class="ansi1 ansi33"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
+></span><span class="ansi1 ansi95"
 > no(clause). </span>
-(147)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(147)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-> eval_10(=,'<garbage_collected>',498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S416). </span>  %  metta_eval.pl:3589: 
-(148)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> eval_10(=,'<garbage_collected>',498,'&top',['py-atom','math.pow',[->,'Number','Number','Number']],_S408). </span>  %  metta_eval.pl:3590: 
+(148)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-> eval_20(=,'AnyRet',498,'&top','<garbage_collected>',_S022). </span>  %  metta_eval.pl:3594: 
-(152)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
-></span><span class="ansi2 ansi92"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+> eval_20(=,'AnyRet',498,'&top','<garbage_collected>',_S014). </span>  %  metta_eval.pl:3595: 
+(152)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi94"
+></span><span class="ansi94"
+></span><span class="ansi94"
 > md(once,'<garbage_collected>'). </span>  %  metta_utils.pl:1111: 
-(153)P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
->[system]</span>P;HTML|<span class="ansi95"
-></span><span class="ansi95"
-></span><span class="ansi95"
+(153)P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
+>[system]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
+></span><span class="ansi1 ansi96"
 > once('<garbage_collected>'). </span>  %  init.pl:537: 
 (155)P;HTML|<span class="ansi1"
 ></span><span class="ansi1 ansi37"
 ></span><span class="ansi1 ansi5 ansi37"
-> < * > </span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+> < * > </span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
+></span><span class="ansi2 ansi92"
 > py_atomic('math.pow',_S678). </span>  %  metta_python.pl:772: 
-(158)$P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-></span><span class="ansi1 ansi36"
-> py_ocall_direct(metta_python_builtin:eval_string('math.pow'),_S438). </span>  %  metta_python.pl:687: 
-(159)$P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
-></span><span class="ansi2 ansi32"
+(158)$P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+></span><span class="ansi2 ansi94"
+> py_ocall_direct(metta_python_builtin:eval_string('math.pow'),_S480). </span>  %  metta_python.pl:687: 
+(159)$P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi37"
+></span><span class="ansi1 ansi37 ansi40"
+></span><span class="ansi1 ansi37 ansi40"
 >[system]</span>P;HTML|<span class="ansi1"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
-></span><span class="ansi1 ansi32"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
+></span><span class="ansi1 ansi94"
 > catch('<garbage_collected>','<garbage_collected>','<garbage_collected>'). </span>  %  init.pl:564: 
-(160)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
+(160)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
 >[user]</span>P;HTML|<span class="ansi31"
 ></span><span class="ansi31 ansi100"
 ></span><span class="ansi1 ansi31 ansi100"
-> py_error_fail(error(python_error('NameError',<py_NameError>(0x7f96b5dfaaa0)),context(_S296,python_stack(<py_traceback>(0x7f96b594d9c0))))). </span><span class="ansi1 ansi31 ansi100"
+> py_error_fail(error(python_error('NameError',<py_NameError>(0x7f7b79dfaaa0)),context(_S338,python_stack(<py_traceback>(0x7f7b7994dbc0))))). </span><span class="ansi1 ansi31 ansi100"
 ></span>  %  metta_python.pl:864: 
-(164)P;HTML|<span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
-></span><span class="ansi1"
->[user]</span>P;HTML|<span class="ansi2"
-></span><span class="ansi2 ansi91"
-></span><span class="ansi2 ansi91"
-></span><span class="ansi2 ansi91"
+(164)P;HTML|<span class="ansi2"
+></span><span class="ansi2 ansi37"
+></span><span class="ansi2 ansi37 ansi40"
+></span><span class="ansi2 ansi37 ansi40"
+>[user]</span>P;HTML|<span class="ansi1"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
+></span><span class="ansi1 ansi36"
 > bugger:dumpST_now(1796,[max_depth(5000),numbervars(false),show([level,has_alternatives,hidden,context_module,goal,clause])]). </span>  %  dumpst.pl:261: 
 P;HTML|
 ; error<span class="pl-functor"
->( python_error('NameError',<py_NameError>(0x7f96b5dfaaa0)),
-;   context(Python_stack,python_stack(<py_traceback>(0x7f96b594d9c0))))</span>
+>( python_error('NameError',<py_NameError>(0x7f7b79dfaaa0)),
+;   context(Python_stack,python_stack(<py_traceback>(0x7f7b7994dbc0))))</span>
 
 ^  <span class="ansi1 ansi33"
 >Redo: </span>(153) [system] once('<garbage_collected>') ? 
-Script done on 2025-02-24 15:08:48+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-24 15:12:50+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

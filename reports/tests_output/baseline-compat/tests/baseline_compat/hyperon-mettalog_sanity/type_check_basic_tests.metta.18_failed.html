@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -50,7 +51,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:17:56+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:22:23+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta] ]
 P;HTML|
@@ -103,7 +104,7 @@ Script started on 2025-02-24 15:17:56+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.52 milliseconds) 
+; took 0.002 secs. (2.37 milliseconds) 
 
 !(assertEqualToResult (get-type (foo 1)) (Number))
 
@@ -123,7 +124,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000774 secs. (774.46 microseconds) 
+; took 0.000730 secs. (729.82 microseconds) 
 
 !(assertEqualToResult (get-type (foo "1")) ())
 
@@ -142,17 +143,75 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.03</h3>
+<span class="ansi37"
+>predicate_behavior(_31294,foo,1,[[->,'Number','Number'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (foo "1") &top) ==> (-> Number Number))
+[unknown [transpiler_predicate_store foo 2 $32546 $32548]]
+<span class="ansi37"
+>transpiler_clause_store(foo,2,_33482,_33484,_33486,_33488,_33490,_33492,_33494)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__foo 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Foo,
+;           foo,
+;           1,
+;           [_40290],
+;           [_40296],  _40280, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_8620,foo,1,_8626,_8628,_8630,_8632,_returnVal,_8636)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Foo,
+;           foo,
+;           1,
+;           [_15506],
+;           [_15512],  _15496, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Foo,
+;           foo,
+;           1,
+;           [_49176],
+;           [_7616],  _7600, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Foo,
+;           foo, 1,_7570,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Foo,
+;           foo, 1,_10460,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_37488,foo,1,_37494,_37496,_37498,_37500,_37502,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[foo|_37634],_37638]=missing('[|]'/2)</span>
+(ist &self (: foo (-> Number Number)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           foo,
 ;           1,
-;           [_40698],
-;           [_40704],  _40688, Function_declaration_implTopFooC91_c124_c931, Function_declaration_implTopFooC91_c124_c93, Impl)</span>)
+;           [_7586],
+;           [_7592],  _7576, Function_declaration_implTopFooC91_c124_c931, Function_declaration_implTopFooC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           foo,
+;           1,
+;           [_31968],
+;           [_31974],  _31958, Function_declaration_implTopFooC91_c124_c931, Function_declaration_implTopFooC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.112 secs. (112.13 milliseconds) 
+; took 0.632 secs. (631.58 milliseconds) 
 
 !(assertEqualToResult (foo "1") ((Error "1" BadType)))
 
@@ -174,7 +233,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000214 secs. (213.69 microseconds) 
+; took 0.000198 secs. (197.67 microseconds) 
 
 !(assertEqualToResult (match &self (foo "1") Fine) ())
 
@@ -186,18 +245,18 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;;; good function def is atom, bad function def is untyped
 <span class="ansi38-013099040"
->!(assertEqualToResult (get-type (= (foo $40852)  
-  (+ $40852 2))) (Atom))
+>!(assertEqualToResult (get-type (= (foo $29510)  
+  (+ $29510 2))) (Atom))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.22 milliseconds) 
+; took 0.001 secs. (1.24 milliseconds) 
 
-!(assertEqualToResult (get-type (= (foo $53744)  
-  (+ $53744 2))) (Atom))
+!(assertEqualToResult (get-type (= (foo $42402)  
+  (+ $42402 2))) (Atom))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -208,18 +267,18 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (get-type (= (foo $1746)  
-  (+ $1746 "2"))) ())
+>!(assertEqualToResult (get-type (= (foo $52298)  
+  (+ $52298 "2"))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.06"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.10 milliseconds) 
+; took 0.001 secs. (1.12 milliseconds) 
 
-!(assertEqualToResult (get-type (= (foo $15318)  
-  (+ $15318 "2"))) ())
+!(assertEqualToResult (get-type (= (foo $3784)  
+  (+ $3784 "2"))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -234,18 +293,18 @@ Deterministic: <span class="ansi33"
 > (: bar (-> Number Bool))
  
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (get-type (= (bar $27774)  
-  (+ $27774 2))) ())
+>!(assertEqualToResult (get-type (= (bar $16994)  
+  (+ $16994 2))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000993 secs. (992.77 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
-!(assertEqualToResult (get-type (= (bar $40610)  
-  (+ $40610 2))) ())
+!(assertEqualToResult (get-type (= (bar $29816)  
+  (+ $29816 2))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -298,7 +357,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000466 secs. (466.08 microseconds) 
+; took 0.000486 secs. (486.46 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail myWall)) (Object))
 
@@ -318,7 +377,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000791 secs. (790.70 microseconds) 
+; took 0.000872 secs. (871.76 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail "notAnObject")) ())
 
@@ -339,7 +398,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000797 secs. (796.63 microseconds) 
+; took 0.000742 secs. (741.88 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (painted myPaint myWall))) (Object))
 
@@ -359,7 +418,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.37 milliseconds) 
+; took 0.001 secs. (1.45 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (painted "notPaint" myWall))) ())
 
@@ -379,7 +438,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000805 secs. (805.02 microseconds) 
+; took 0.000852 secs. (851.88 microseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (indirection (painted myPaint myWall)))) (Object))
 
@@ -399,7 +458,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.50 milliseconds) 
+; took 0.002 secs. (1.53 milliseconds) 
 
 !(assertEqualToResult (get-type (hammered myHammer myNail (indirection (painted "notPaint" myWall)))) ())
 
@@ -419,19 +478,19 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000873 secs. (873.32 microseconds) 
+; took 0.000911 secs. (910.82 microseconds) 
 
 !(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted myPaint myWall))))) (Object))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($60074 $60080) 
+      ($48616 $48622) 
       (Object)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_58168,'[|]'(_58162,[])),'[|]'('Object',[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_46710,'[|]'(_46704,[])),'[|]'('Object',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($4016 $4022)) ('~nExpected: ' (Object)))
+>(Error ('~nGot: ' ($54368 $54374)) ('~nExpected: ' (Object)))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted "notPaint" myWall))))) ())
 
@@ -440,18 +499,18 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.TYPE-CHECK-BASIC-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.54 milliseconds) 
+; took 0.002 secs. (1.74 milliseconds) 
 
 !(assertEqualToResult (get-type (indirection (hammered myHammer myNail (indirection (painted "notPaint" myWall))))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($25352 $25358) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_23478,'[|]'(_23472,[])),[])
+      ($14384 $14390) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_12510,'[|]'(_12504,[])),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($31070 $31076)) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ($20102 $20108)) ('~nExpected: ' ()))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/type_check_basic_tests.metta 0 ]
 <span class="ansi1"
@@ -476,10 +535,10 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
 [()]
 [(Error ('~nGot: ' (Object Object)) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ($5248 $5254)) ('~nExpected: ' (Object)))]
-[(Error ('~nGot: ' ($32110 $32116)) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ($55408 $55414)) ('~nExpected: ' (Object)))]
+[(Error ('~nGot: ' ($21142 $21148)) ('~nExpected: ' ()))]
 
-Script done on 2025-02-24 15:17:57+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:22:24+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

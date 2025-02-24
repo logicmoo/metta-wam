@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -50,7 +51,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:50:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:49:23+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta] ]
 P;HTML|
@@ -101,7 +102,7 @@ Script started on 2025-02-24 14:50:30+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.01</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.40 milliseconds) 
+; took 0.004 secs. (4.39 milliseconds) 
 
 !(assertEqual (get-type 5) Number)
 
@@ -121,7 +122,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.02</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (3.64 milliseconds) 
+; took 0.004 secs. (3.71 milliseconds) 
 
 !(assertEqual (get-type (+ 5 7)) Number)
 
@@ -142,7 +143,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000277 secs. (277.06 microseconds) 
+; took 0.000292 secs. (291.90 microseconds) 
 
 !(assertEqual (get-type +) (-> Number Number Number))
 
@@ -164,7 +165,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000442 secs. (442.04 microseconds) 
+; took 0.000430 secs. (429.70 microseconds) 
 
 !(assertEqualToResult (get-type (+ 5 "4")) ())
 
@@ -184,7 +185,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000349 secs. (349.45 microseconds) 
+; took 0.000351 secs. (351.19 microseconds) 
 
 !(assertEqualToResult (get-type (+ -)) ())
 
@@ -208,7 +209,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000239 secs. (238.98 microseconds) 
+; took 0.000258 secs. (257.89 microseconds) 
 
 !(assertEqual (get-type Either) Type)
 
@@ -238,7 +239,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000357 secs. (357.42 microseconds) 
+; took 0.000343 secs. (343.07 microseconds) 
 
 !(assertEqual (get-type (Left 5)) Either)
 
@@ -267,7 +268,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000483 secs. (482.90 microseconds) 
+; took 0.000492 secs. (491.65 microseconds) 
 
 !(assertEqual (get-type (isLeft (Right 5))) Bool)
 
@@ -288,7 +289,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000371 secs. (371.20 microseconds) 
+; took 0.000365 secs. (364.80 microseconds) 
 
 !(assertEqualToResult (get-type (isLeft 5)) ())
 
@@ -319,61 +320,235 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.10</h3>
+<span class="ansi37"
+>predicate_behavior(_14462,'EitherP',1,[[->,_14484,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (EitherP $15462) &top) ==> (-> $15486 Type))
+[unknown [transpiler_predicate_store EitherP 2 $15506 $15508]]
+<span class="ansi37"
+>transpiler_clause_store('EitherP',2,_16442,_16444,_16446,_16448,_16450,_16452,_16454)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__EitherP 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_26464],
+;           [_26470],  _26454, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_54366,'EitherP',1,_54372,_54374,_54376,_54378,_returnVal,_54382)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_8106],
+;           [_8112],  _8096, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_43292],
+;           [_43298],  _43282, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_8042,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_13230,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_40276,'EitherP',1,_40282,_40284,_40286,_40288,_40290,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['EitherP'|_40422],_40426]=missing('[|]'/2)</span>
+(ist &self (: EitherP (-> $40508 Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'EitherP',
 ;           1,
-;           [_28328],
-;           [_28334],  _28318, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           [_8058],
+;           [_8064],  _8048, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'EitherP',
 ;           1,
-;           [_20028],
-;           [_20034],  _20018, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           [_43088],
+;           [_43094],  _43078, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_23756,'EitherP',1,[[->,_23778,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (EitherP $24756) &top) ==> (-> $24780 Type))
+[unknown [transpiler_predicate_store EitherP 2 $24800 $24802]]
+<span class="ansi37"
+>transpiler_clause_store('EitherP',2,_25736,_25738,_25740,_25742,_25744,_25746,_25748)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__EitherP 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_35198],
+;           [_35204],  _35188, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_14860],
+;           [_14866],  _14850, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_42796,'EitherP',1,_42802,_42804,_42806,_42808,_returnVal,_42812)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_8110],
+;           [_8116],  _8100, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_31930],
+;           [_31936],  _31920, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_42446,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_8064,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_24382,'EitherP',1,_24388,_24390,_24392,_24394,_24396,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['EitherP'|_24528],_24532]=missing('[|]'/2)</span>
+(ist &self (: EitherP (-> $24614 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_39420],
+;           [_39426],  _39410, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'EitherP',
 ;           1,
-;           [_8100],
-;           [_8106],  _8090, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           [_24482],
+;           [_24488],  _24472, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_60170,'EitherP',1,[[->,_60192,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (EitherP Number) &top) ==> (-> $61340 Type))
+[unknown [transpiler_predicate_store EitherP 2 $61466 $61468]]
+<span class="ansi37"
+>transpiler_clause_store('EitherP',2,_62402,_62404,_62406,_62408,_62410,_62412,_62414)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__EitherP 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_13470],
+;           [_13476],  _13460, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_49640],
+;           [_7680],  _7664, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_21176,'EitherP',1,_21182,_21184,_21186,_21188,_returnVal,_21192)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_30084],
+;           [_30090],  _30074, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_12182],
+;           [_12188],  _12172, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_23024,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_32366,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_59412,'EitherP',1,_59418,_59420,_59422,_59424,_59426,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['EitherP'|_59558],_59562]=missing('[|]'/2)</span>
+(ist &self (: EitherP (-> $59644 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'EitherP',
+;           1,
+;           [_19076],
+;           [_19082],  _19066, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'EitherP',
 ;           1,
-;           [_7616],
-;           [_7622],  _7606, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'EitherP',
-;           1,
-;           [_41510],
-;           [_41516],  _41500, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           [_7634],
+;           [_7640],  _7624, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.553 secs. (552.69 milliseconds) 
+; took 2.14 seconds.
 
 !(assertEqual (get-type (LeftP 5)) (EitherP Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (EitherP $17536) (EitherP $17554)) 
+      ( (EitherP $38124) (EitherP $38142)) 
       ( (EitherP Number))]]
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('EitherP','[|]'(_3280,[])),'[|]'('[|]'('EitherP','[|]'(_3262,[])),[])),'[|]'('[|]'('EitherP','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((EitherP $23460) (EitherP $23478))) ('~nExpected: ' ((EitherP Number))))
+>(Error ('~nGot: ' ((EitherP $44048) (EitherP $44066))) ('~nExpected: ' ((EitherP Number))))
 </span><span class="ansi38-255165000"
 > (: Pair (-> $a $b Type))
  
@@ -386,86 +561,318 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.11</h3>
+<span class="ansi37"
+>predicate_behavior(_8788,'Pair',2,[[->,_8810,_8816,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Pair $9928 $9934) &top) ==> (-> $9958 $9964 Type))
+[unknown [transpiler_predicate_store Pair 3 $9844 $9846]]
+<span class="ansi37"
+>transpiler_clause_store('Pair',3,_10780,_10782,_10784,_10786,_10788,_10790,_10792)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Pair 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_37270,_37276],
+;           [_37282,_37288],  _37260, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31808,_31814],
+;           [_31820,_31826],  _31798, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59886,'Pair',2,_59892,_59894,_59896,_59898,_returnVal,_59902)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31982,_31988],
+;           [_31994,_32000],  _31972, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31980,_31986],
+;           [_31992,_31998],  _31970, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_41332,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_48058,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19584,'Pair',2,_19590,_19592,_19594,_19596,_19598,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Pair'|_19730],_19734]=missing('[|]'/2)</span>
+(ist &self (: Pair (-> $19898 $19904 Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Pair',
 ;           2,
-;           [_23118,_23124],
-;           [_23130,_23136],  _23108, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+;           [_8328,_8334],
+;           [_8340,_8346],  _8318, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Pair',
 ;           2,
-;           [_26904,_26910],
-;           [_26916,_26922],  _26894, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+;           [_8326,_8332],
+;           [_8338,_8344],  _8316, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_37606,'Pair',2,[[->,_37628,_37634,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Pair $38746 $38752) &top) ==> (-> $38776 $38782 Type))
+[unknown [transpiler_predicate_store Pair 3 $38662 $38664]]
+<span class="ansi37"
+>transpiler_clause_store('Pair',3,_39598,_39600,_39602,_39604,_39606,_39608,_39610)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Pair 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_9178,_9184],
+;           [_9190,_9196],  _9168, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_8450,_8456],
+;           [_8462,_8468],  _8440, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_35058,'Pair',2,_35064,_35066,_35068,_35070,_returnVal,_35074)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_8414,_8420],
+;           [_8426,_8432],  _8404, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_8392,_8398],
+;           [_8404,_8410],  _8382, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_14142,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_23064,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_50098,'Pair',2,_50104,_50106,_50108,_50110,_50112,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Pair'|_50244],_50248]=missing('[|]'/2)</span>
+(ist &self (: Pair (-> $50412 $50418 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Pair',
+;           2,
+;           [_25124,_25130],
+;           [_25136,_25142],  _25114, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Pair',
 ;           2,
-;           [_36082,_36088],
-;           [_36094,_36100],  _36072, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+;           [_34396,_34402],
+;           [_34408,_34414],  _34386, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_11640,'EitherP',1,[[->,_11662,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (EitherP Number) &top) ==> (-> $12810 Type))
+[unknown [transpiler_predicate_store EitherP 2 $12936 $12938]]
+<span class="ansi37"
+>transpiler_clause_store('EitherP',2,_13872,_13874,_13876,_13878,_13880,_13882,_13884)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__EitherP 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_23844],
+;           [_23850],  _23834, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_8422],
+;           [_8428],  _8412, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_33058,'EitherP',1,_33064,_33066,_33068,_33070,_returnVal,_33074)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_42662],
+;           [_42668],  _42652, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP',
+;           1,
+;           [_23550],
+;           [_23556],  _23540, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_34624,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( EitherP,
+;           'EitherP', 1,_43152,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_13632,'EitherP',1,_13638,_13640,_13642,_13644,_13646,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['EitherP'|_13778],_13782]=missing('[|]'/2)</span>
+(ist &self (: EitherP (-> $13864 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           'Pair',
-;           2,
-;           [_37324,_37330],
-;           [_37336,_37342],  _37314, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+;           'EitherP',
+;           1,
+;           [_29708],
+;           [_29714],  _29698, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'EitherP',
 ;           1,
-;           [_31348],
-;           [_31354],  _31338, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           [_20290],
+;           [_20296],  _20280, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_53904,'Pair',2,[[->,_53926,_53932,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Pair (EitherP Number) String) &top) ==> (-> $55968 $55974 Type))
+[unknown [transpiler_predicate_store Pair 3 $56030 $56032]]
+<span class="ansi37"
+>transpiler_clause_store('Pair',3,_56966,_56968,_56970,_56972,_56974,_56976,_56978)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Pair 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31274,_31280],
+;           [_31286,_31292],  _31264, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31272,_31278],
+;           [_31284,_31290],  _31262, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_59350,'Pair',2,_59356,_59358,_59360,_59362,_returnVal,_59366)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31242,_31248],
+;           [_31254,_31260],  _31232, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair',
+;           2,
+;           [_31240,_31246],
+;           [_31252,_31258],  _31230, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_40334,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Pair,
+;           'Pair', 2,_47022,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19048,'Pair',2,_19054,_19056,_19058,_19060,_19062,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Pair'|_19194],_19198]=missing('[|]'/2)</span>
+(ist &self (: Pair (-> $19362 $19368 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           'EitherP',
-;           1,
-;           [_20348],
-;           [_20354],  _20338, Function_declaration_implTopEitherPC91_c124_c931, Function_declaration_implTopEitherPC91_c124_c93, Impl)</span>)
+;           'Pair',
+;           2,
+;           [_7878,_7884],
+;           [_7890,_7896],  _7868, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Pair',
 ;           2,
-;           [_26190,_26196],
-;           [_26202,_26208],  _26180, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Pair',
-;           2,
-;           [_35376,_35382],
-;           [_35388,_35394],  _35366, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
+;           [_7876,_7882],
+;           [_7888,_7894],  _7866, Function_declaration_implTopPairC91_c124_c931, Function_declaration_implTopPairC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.163 secs. (1163.44 milliseconds) 
+; took 3.84 seconds.
 
 !(assertEqual (get-type (pair (LeftP 5) "String")) (Pair (EitherP Number) String))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Pair $8422 $8428) (Pair $8446 $8452)) 
+      ( (Pair $32502 $32508) (Pair $32526 $32532)) 
       ( (Pair 
           (EitherP Number) String))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3478,'[|]'(_3484,[]))),'[|]'('[|]'('Pair','[|]'(_3454,'[|]'(_3460,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Pair','[|]'(_3420,'[|]'(_3426,[]))),'[|]'('[|]'('Pair','[|]'(_3396,'[|]'(_3402,[]))),[])),'[|]'('[|]'('Pair','[|]'('[|]'('EitherP','[|]'('Number',[])),'[|]'('String',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((Pair $14516 $14522) (Pair $14540 $14546))) ('~nExpected: ' ((Pair (EitherP Number) String))))
+>(Error ('~nGot: ' ((Pair $38596 $38602) (Pair $38620 $38626))) ('~nExpected: ' ((Pair (EitherP Number) String))))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Recursively parameterized types
@@ -485,178 +892,584 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.12</h3>
+<span class="ansi37"
+>predicate_behavior(_6858,'List',1,['Type',[->,_6886,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $7852) &top) ==> (-> $7876 Type))
+[unknown [transpiler_predicate_store List 2 $7896 $7898]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_8832,_8834,_8836,_8838,_8840,_8842,_8844)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_17288],
+;           [_17294],  _17278, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_8204],
+;           [_8210],  _8194, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_25476,'List',1,_25482,_25484,_25486,_25488,_returnVal,_25492)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_32614],
+;           [_32620],  _32604, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_13054],
+;           [_13060],  _13044, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_22908,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_31410,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_58444,'List',1,_58450,_58452,_58454,_58456,_58458,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_58590],_58594]=missing('[|]'/2)</span>
+(ist &self (: List (-> $58676 Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_8232],
-;           [_8238],  _8222, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_17652],
+;           [_17658],  _17642, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_38484],
-;           [_38490],  _38474, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_8146],
+;           [_8152],  _8136, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_41788,'List',1,['Type',[->,_41816,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $42782) &top) ==> (-> $42806 Type))
+[unknown [transpiler_predicate_store List 2 $42826 $42828]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_43762,_43764,_43766,_43768,_43770,_43772,_43774)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_8282],
+;           [_8288],  _8272, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_30534],
+;           [_30540],  _30524, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_58458,'List',1,_58464,_58466,_58468,_58470,_returnVal,_58474)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_13130],
+;           [_13136],  _13120, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_48314],
+;           [_48320],  _8236, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_8224,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_14056,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_41090,'List',1,_41096,_41098,_41100,_41102,_41104,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_41236],_41240]=missing('[|]'/2)</span>
+(ist &self (: List (-> $41322 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_8222],
+;           [_8228],  _8212, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_30132],
-;           [_30138],  _30122, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_38882],
+;           [_38888],  _38872, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_15628,'List',1,['Type',[->,_15656,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List Number) &top) ==> (-> $16792 Type))
+[unknown [transpiler_predicate_store List 2 $16918 $16920]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_17854,_17856,_17858,_17860,_17862,_17864,_17866)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_26060],
+;           [_26066],  _26050, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_7758],
+;           [_7764],  _7748, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_32380,'List',1,_32386,_32388,_32390,_32392,_returnVal,_32396)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_39732],
+;           [_39738],  _39722, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_15600],
+;           [_15606],  _15590, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_24740,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_32704,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_59738,'List',1,_59744,_59746,_59748,_59750,_59752,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_59884],_59888]=missing('[|]'/2)</span>
+(ist &self (: List (-> $59970 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_17186],
+;           [_17192],  _17176, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_17858],
-;           [_17864],  _17848, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'List',
-;           1,
-;           [_7762],
-;           [_7768],  _7752, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'List',
-;           1,
-;           [_46988],
-;           [_7742],  _7726, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_7680],
+;           [_7686],  _7670, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.663 secs. (663.05 milliseconds) 
+; took 2.24 seconds.
 
 !(assertEqual (get-type (Cons 5 (Cons 6 Nil))) (List Number))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $23104) (List $23122)) 
+      ( (List $33244) (List $33262)) 
       ( (List Number))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_3406,[])),'[|]'('[|]'('List','[|]'(_3388,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_3348,[])),'[|]'('[|]'('List','[|]'(_3330,[])),[])),'[|]'('[|]'('List','[|]'('Number',[])),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $29026) (List $29044))) ('~nExpected: ' ((List Number))))
+>(Error ('~nGot: ' ((List $39166) (List $39184))) ('~nExpected: ' ((List Number))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.13</h3>
+<span class="ansi37"
+>predicate_behavior(_56616,'List',1,['Type',[->,_56644,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $57610) &top) ==> (-> $57634 Type))
+[unknown [transpiler_predicate_store List 2 $57654 $57656]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_58590,_58592,_58594,_58596,_58598,_58600,_58602)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_13106],
+;           [_13112],  _13096, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_48290],
+;           [_48296],  _8212, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_20674,'List',1,_20680,_20682,_20684,_20686,_returnVal,_20690)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_29230],
+;           [_29236],  _29220, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_12086],
+;           [_12092],  _12076, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_21898,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_30466,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_57500,'List',1,_57506,_57508,_57510,_57512,_57514,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_57646],_57650]=missing('[|]'/2)</span>
+(ist &self (: List (-> $57732 Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_8166],
-;           [_8172],  _8156, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_17668],
+;           [_17674],  _17658, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_43198],
-;           [_43204],  _43188, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_8162],
+;           [_8168],  _8152, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_41812,'List',1,['Type',[->,_41840,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $42806) &top) ==> (-> $42830 Type))
+[unknown [transpiler_predicate_store List 2 $42850 $42852]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_43786,_43788,_43790,_43792,_43794,_43796,_43798)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_8274],
+;           [_8280],  _8264, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_30524],
+;           [_30530],  _30514, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_58448,'List',1,_58454,_58456,_58458,_58460,_returnVal,_58464)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_13122],
+;           [_13128],  _13112, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_48306],
+;           [_48312],  _8228, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_8216,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_14048,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_41082,'List',1,_41088,_41090,_41092,_41094,_41096,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_41228],_41232]=missing('[|]'/2)</span>
+(ist &self (: List (-> $41314 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_8214],
+;           [_8220],  _8204, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_37406],
-;           [_37412],  _37396, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'List',
-;           1,
-;           [_20340],
-;           [_20346],  _20330, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_38874],
+;           [_38880],  _38864, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.448 secs. (447.93 milliseconds) 
+; took 1.520 secs. (1520.20 milliseconds) 
 
 !(assertEqualToResult (get-type (Cons 5 (Cons "6" Nil))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (List $53196) (List $53214)) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_51280,[])),'[|]'('[|]'('List','[|]'(_51262,[])),[])),[])
+      ( (List $12728) (List $12746)) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('List','[|]'(_10812,[])),'[|]'('[|]'('List','[|]'(_10794,[])),[])),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((List $59022) (List $59040))) ('~nExpected: ' ()))
+>(Error ('~nGot: ' ((List $18554) (List $18572))) ('~nExpected: ' ()))
 </span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; `let` can be convenient to extract information from `get-type` results
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <span class="ansi38-013099040"
->!(assertEqual (let (List $62480) (get-type (Cons 5 (Cons 6 Nil))) $62480) Number)
+>!(assertEqual (let (List $22012) (get-type (Cons 5 (Cons 6 Nil))) $22012) Number)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D1-GADT.14</h3>
+<span class="ansi37"
+>predicate_behavior(_38186,'List',1,['Type',[->,_38214,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $39180) &top) ==> (-> $39204 Type))
+[unknown [transpiler_predicate_store List 2 $39224 $39226]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_40160,_40162,_40164,_40166,_40168,_40170,_40172)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_48908],
+;           [_9154],  _9138, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_30934],
+;           [_30940],  _30924, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_58858,'List',1,_58864,_58866,_58868,_58870,_returnVal,_58874)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_14908],
+;           [_14914],  _14898, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_9112],
+;           [_9118],  _9102, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_9092,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_17432,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_44466,'List',1,_44472,_44474,_44476,_44478,_44480,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_44612],_44616]=missing('[|]'/2)</span>
+(ist &self (: List (-> $44698 Type)))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_27418],
-;           [_27424],  _27408, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_9088],
+;           [_9094],  _9078, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_17948],
-;           [_17954],  _17938, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_46014],
+;           [_46020],  _9070, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_30602,'List',1,['Type',[->,_30630,'Type'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (List $31596) &top) ==> (-> $31620 Type))
+[unknown [transpiler_predicate_store List 2 $31640 $31642]]
+<span class="ansi37"
+>transpiler_clause_store('List',2,_32576,_32578,_32580,_32582,_32584,_32586,_32588)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__List 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_41238],
+;           [_41244],  _41228, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_20068],
+;           [_20074],  _20058, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_47992,'List',1,_47998,_48000,_48002,_48004,_returnVal,_48008)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_9164],
+;           [_9170],  _9154, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List',
+;           1,
+;           [_40260],
+;           [_40266],  _40250, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_49138,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( List,
+;           'List', 1,_9136,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_32870,'List',1,_32876,_32878,_32880,_32882,_32884,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['List'|_33016],_33020]=missing('[|]'/2)</span>
+(ist &self (: List (-> $33102 Type)))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'List',
+;           1,
+;           [_47202],
+;           [_9138],  _9122, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'List',
 ;           1,
-;           [_13030],
-;           [_13036],  _13020, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'List',
-;           1,
-;           [_9128],
-;           [_9134],  _9118, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
+;           [_34920],
+;           [_34926],  _34910, Function_declaration_implTopListC91_c124_c931, Function_declaration_implTopListC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.461 secs. (461.48 milliseconds) 
+; took 1.577 secs. (1577.32 milliseconds) 
 
-!(assertEqual (let (List $32554) (get-type (Cons 5 (Cons 6 Nil))) $32554) Number)
+!(assertEqual (let (List $6612) (get-type (Cons 5 (Cons 6 Nil))) $6612) Number)
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ($33562 $33568) 
+      ($7620 $7626) 
       (Number)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_31514{vn = ...},'[|]'(_31492{vn = ...},[])),'[|]'('Number',[]))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_5572{vn = ...},'[|]'(_5550{vn = ...},[])),'[|]'('Number',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ($39586 $39592)) ('~nExpected: ' (Number)))
+>(Error ('~nGot: ' ($13644 $13650)) ('~nExpected: ' (Number)))
 </span>P;HTML|
 ;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d1_gadt.metta 0 ]
 <span class="ansi1"
@@ -677,13 +1490,13 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ((EitherP $24492) (EitherP $24510))) ('~nExpected: ' ((EitherP Number))))]
-[(Error ('~nGot: ' ((Pair $15554 $15560) (Pair $15578 $15584))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
-[(Error ('~nGot: ' ((List $30056) (List $30074))) ('~nExpected: ' ((List Number))))]
-[(Error ('~nGot: ' ((List $60048) (List $60066))) ('~nExpected: ' ()))]
-[(Error ('~nGot: ' ($40610 $40616)) ('~nExpected: ' (Number)))]
+[(Error ('~nGot: ' ((EitherP $45080) (EitherP $45098))) ('~nExpected: ' ((EitherP Number))))]
+[(Error ('~nGot: ' ((Pair $39634 $39640) (Pair $39658 $39664))) ('~nExpected: ' ((Pair (EitherP Number) String))))]
+[(Error ('~nGot: ' ((List $40196) (List $40214))) ('~nExpected: ' ((List Number))))]
+[(Error ('~nGot: ' ((List $19580) (List $19598))) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ($14668 $14674)) ('~nExpected: ' (Number)))]
 
-Script done on 2025-02-24 14:50:34+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 14:49:35+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

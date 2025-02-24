@@ -16,6 +16,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -36,7 +37,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:20:19+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/hyperpose.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:24:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/hyperpose.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/hyperpose.metta] ]
 P;HTML|
@@ -92,17 +93,62 @@ Script started on 2025-02-24 15:20:19+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.01"
 >;; METTA-MORPH-TESTS.HYPERPOSE.01</h3>
+<span class="ansi37"
+>predicate_behavior(_51814,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 2)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $53362 $53364]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_54298,_54300,_54302,_54304,_54306,_54308,_54310)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_54944],Pr),
+;             pr([_60446],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_5120],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_5120],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_12350],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_25198],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_30542],_30546]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_36234],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_45092],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.092 secs. (91.94 milliseconds) 
+; took 0.446 secs. (445.82 milliseconds) 
 
 !(assertEqual (hyperpose (1 2)) (superpose (1 2)))
 
@@ -120,10 +166,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.02"
 >;; METTA-MORPH-TESTS.HYPERPOSE.02</h3>
+<span class="ansi37"
+>predicate_behavior(_13590,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 (If (== 1 2) 1))) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $15210 $15212]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_16146,_16148,_16150,_16152,_16154,_16156,_16158)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_29526],Pr),
+;             pr([_22128],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -131,14 +183,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_39446],Pr),
+;             pr([_32454],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_37852],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_37852],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_43340],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_53012],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_58356],_58360]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11748],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_25914],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.180 secs. (179.59 milliseconds) 
+; took 0.536 secs. (535.99 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1))))
 
@@ -156,10 +247,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.03"
 >;; METTA-MORPH-TESTS.HYPERPOSE.03</h3>
+<span class="ansi37"
+>predicate_behavior(_7350,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose ((If (== 1 2) 1) 1)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $11934 $11936]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_12870,_12872,_12874,_12876,_12878,_12880,_12882)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_23768],Pr),
+;             pr([_20252],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -167,14 +264,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_34170],Pr),
+;             pr([_30540],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_35938],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_35938],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_41534],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_50996],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_56340],_56344]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11680],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_25846],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.180 secs. (180.19 milliseconds) 
+; took 0.529 secs. (529.48 milliseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 1)) (superpose ((If (== 1 2) 1) 1)))
 
@@ -192,10 +328,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.04"
 >;; METTA-MORPH-TESTS.HYPERPOSE.04</h3>
+<span class="ansi37"
+>predicate_behavior(_64296,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 2 3)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $4970 $4972]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_5906,_5908,_5910,_5912,_5914,_5916,_5918)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_15114],Pr),
+;             pr([_12838],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -203,14 +345,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_25238],Pr),
+;             pr([_25226],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_30624],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_30624],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_35290],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_44036],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_49380],_49384]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_55250],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11024],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.178 secs. (177.69 milliseconds) 
+; took 0.526 secs. (526.13 milliseconds) 
 
 !(assertEqual (hyperpose (1 2 3)) (superpose (1 2 3)))
 
@@ -228,10 +409,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.05"
 >;; METTA-MORPH-TESTS.HYPERPOSE.05</h3>
+<span class="ansi37"
+>predicate_behavior(_49392,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose ((If (== 1 2) 1) 2 3)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $53988 $53990]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_54924,_54926,_54928,_54930,_54932,_54934,_54936)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_11826],Pr),
+;             pr([_60992],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -239,14 +426,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_25992],Pr),
+;             pr([_12888],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_21014],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_21014],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_27486],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_36766],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_42110],_42114]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_49180],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_60908],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.182 secs. (181.74 milliseconds) 
+; took 0.538 secs. (537.88 milliseconds) 
 
 !(assertEqual (hyperpose ((If (== 1 2) 1) 2 3)) (superpose ((If (== 1 2) 1) 2 3)))
 
@@ -264,10 +490,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.06"
 >;; METTA-MORPH-TESTS.HYPERPOSE.06</h3>
+<span class="ansi37"
+>predicate_behavior(_40838,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 (If (== 1 2) 1) 3)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $42470 $42472]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_43406,_43408,_43410,_43412,_43414,_43416,_43418)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_11394],Pr),
+;             pr([_49230],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -275,14 +507,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_25478],Pr),
+;             pr([_60944],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_6766],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_6766],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_14776],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_25996],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_31340],_31344]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_38882],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48530],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.176 secs. (175.62 milliseconds) 
+; took 0.538 secs. (537.99 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) 3)) (superpose (1 (If (== 1 2) 1) 3)))
 
@@ -300,10 +571,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.07"
 >;; METTA-MORPH-TESTS.HYPERPOSE.07</h3>
+<span class="ansi37"
+>predicate_behavior(_28038,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 2 (If (== 1 2) 1))) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $29670 $29672]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_30606,_30608,_30610,_30612,_30614,_30616,_30618)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_11394],Pr),
+;             pr([_35850],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -311,14 +588,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_25478],Pr),
+;             pr([_45162],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_50560],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_50560],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_55662],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11828],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_20926],_20930]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_28942],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_38876],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.175 secs. (175.09 milliseconds) 
+; took 0.538 secs. (537.85 milliseconds) 
 
 !(assertEqual (hyperpose (1 2 (If (== 1 2) 1))) (superpose (1 2 (If (== 1 2) 1))))
 
@@ -336,10 +652,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.08"
 >;; METTA-MORPH-TESTS.HYPERPOSE.08</h3>
+<span class="ansi37"
+>predicate_behavior(_16716,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 (If (== 1 2) 1) (If (== 1 2) 1))) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $18420 $18422]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_19356,_19358,_19360,_19362,_19364,_19366,_19368)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_12182],Pr),
+;             pr([_26476],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -347,14 +669,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_26198],Pr),
+;             pr([_36264],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_41662],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_41662],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_47680],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_56286],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_61630],_61634]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11904],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_26630],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.177 secs. (176.75 milliseconds) 
+; took 0.547 secs. (546.53 milliseconds) 
 
 !(assertEqual (hyperpose (1 (If (== 1 2) 1) (If (== 1 2) 1))) (superpose (1 (If (== 1 2) 1) (If (== 1 2) 1))))
 
@@ -372,10 +733,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.09"
 >;; METTA-MORPH-TESTS.HYPERPOSE.09</h3>
+<span class="ansi37"
+>predicate_behavior(_9306,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose (1 2 3 4)) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $10878 $10880]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_11814,_11816,_11818,_11820,_11822,_11824,_11826)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_14650],Pr),
+;             pr([_18020],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -383,14 +750,53 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_25292],Pr),
+;             pr([_28558],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_33956],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_33956],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_39122],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48410],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_53754],_53758]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_60504],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_11208],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 ; 
 ; EVAL TEST
-; took 0.175 secs. (175.40 milliseconds) 
+; took 0.525 secs. (525.50 milliseconds) 
 
 !(assertEqual (hyperpose (1 2 3 4)) (superpose (1 2 3 4)))
 
@@ -408,10 +814,16 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="METTA-MORPH-TESTS.HYPERPOSE.10"
 >;; METTA-MORPH-TESTS.HYPERPOSE.10</h3>
+<span class="ansi37"
+>predicate_behavior(_46182,superpose,1,[[->,'Expression','%Undefined%'],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (superpose ((1 2) (3 4))) &top) ==> (-> Expression %Undefined%))
+[unknown [transpiler_predicate_store superpose 2 $47778 $47780]]
+<span class="ansi37"
+>transpiler_clause_store(superpose,2,_48714,_48716,_48718,_48720,_48722,_48724,_48726)=missing(transpiler_clause_store/9)</span>
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_60696],Pr),
+;             pr([_54154],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -419,78 +831,176 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_12636],Pr),
+;             pr([_11644],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>function_declaration_scores('&top',superpose,1,[_20796],['Expression'],'%Undefined%',[let,_returnVal,['call-fn',mc_1__superpose,_20796],_returnVal],_returnVal,5+8)</span>
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_27270],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
 
 P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_35984],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>[=,[superpose|_41328],_41332]=missing('[|]'/2)</span>
+(ist &corelib (iz superpose MeTTa))
+(ist &corelib (@doc superpose (@desc "Turns a tuple (first argument) into a nondeterministic result") (@params ((@param "Tuple to be converted"))) (@return "Argument converted to nondeterministic result")))
+(ist &corelib (: superpose (-> Expression %Undefined%)))
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_48320],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_55856],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+<span class="ansi37"
+>predicate_behavior(_11294,1,2,['Number','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype ((1 2) (3 4)) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store 1 3 $12596 $12598]]
+<span class="ansi37"
+>transpiler_clause_store(1,3,_13532,_13534,_13536,_13538,_13540,_13542,_13544)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__1 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1,
+;           2,
+;           [_45044,_45050],
+;           [_45056,_45062],  _45034, Function_declaration_implC91_c124_c931, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1,
+;           2,
+;           [_47854,_47860],
+;           [_47866,_47872],  _47844, Function_declaration_implC91_c124_c931, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_19368,1,2,_19374,_19376,_19378,_19380,_returnVal,_19384)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1,
+;           2,
+;           [_51206,_51212],
+;           [_9600,_9606],  _9578, Function_declaration_implC91_c124_c931, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1,
+;           2,
+;           [_9586,_9592],
+;           [_9598,_9604],  _9576, Function_declaration_implC91_c124_c931, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1, 2,_13926,Function_declaration_impl3,
+;              Function_declaration_impl2, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Function_declaration_implP9V,
+;           1, 2,_25544,Function_declaration_impl3,
+;              Function_declaration_impl2, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_50488,1,2,_50494,_50496,_50498,_50500,_50502,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,[1|_50634],_50638]=missing('[|]'/2)</span>
+<span class="ansi37"
+>[ist,_51114,[_51126,_51132|_51134]]=missing('[|]'/2)</span>
+P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           1,
-;           [_41112],
-;           [_41118],  _41102, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_9546],
+;           [_9552],  _9536, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           1,
-;           [_22700],
-;           [_22706],  _22690, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_46168],
+;           [_46174],  _46158, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           2,
-;           [_24966,_24972],
-;           [_24978,_24984],  _24956, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_49020,_49026],
+;           [_9588,_9594],  _9566, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           2,
-;           [_27340,_27346],
-;           [_27352,_27358],  _27330, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_9572,_9578],
+;           [_9584,_9590],  _9562, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           1,
-;           [_12010],
-;           [_12016],  _12000, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_38208],
+;           [_38214],  _38198, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           1,
-;           [_9720],
-;           [_9726],  _9710, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [1,2],
-;           1,
-;           [_46046],
-;           [_46052],  _46036, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_18504],
+;           [_18510],  _18494, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           [1,2],
 ;           1,
-;           [_39228],
-;           [_39234],  _39218, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_11086],
+;           [_11092],  _11076, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [1,2],
+;           1,
+;           [_9570],
+;           [_9576],  _9560, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 1.320 secs. (1319.87 milliseconds) 
+; took 2.50 seconds.
 
 !(assertEqual (hyperpose ((1 2) (3 4))) (superpose ((1 2) (3 4))))
 
@@ -524,7 +1034,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-24 15:20:22+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:25:05+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

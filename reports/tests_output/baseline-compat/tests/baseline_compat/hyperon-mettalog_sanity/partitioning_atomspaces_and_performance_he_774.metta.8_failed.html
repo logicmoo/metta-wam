@@ -17,6 +17,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -59,7 +60,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:08:04+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:12:00+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/partitioning_atomspaces_and_performance_he_774.metta] ]
 P;HTML|
@@ -141,7 +142,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000963 secs. (962.79 microseconds) 
+; took 0.001 secs. (1.06 milliseconds) 
 
 !(assertEqualToResult (add-user Alice) (()))
 
@@ -169,7 +170,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.001 secs. (1.05 milliseconds) 
+; took 0.001 secs. (1.13 milliseconds) 
 
 !(assertEqualToResult (add-user Bob) (()))
 
@@ -183,16 +184,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify user knowledge bases exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (User $18194 $18200) $18194) (Alice Bob))
+>!(assertEqualToResult (match &test-space (User $18178 $18184) $18178) (Alice Bob))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000250 secs. (250.16 microseconds) 
+; took 0.000269 secs. (269.40 microseconds) 
 
-!(assertEqualToResult (match &test-space (User $26760 $26766) $26760) (Alice Bob))
+!(assertEqualToResult (match &test-space (User $26744 $26750) $26744) (Alice Bob))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -219,7 +220,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000965 secs. (965.40 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (write-user Alice (Age 20)) (()))
 
@@ -247,7 +248,7 @@ Deterministic: <span class="ansi33"
  
 </span>; 
 ; EVAL TEST
-; took 0.000985 secs. (984.72 microseconds) 
+; took 0.001 secs. (1.04 milliseconds) 
 
 !(assertEqualToResult (write-user Bob (Age 22)) (()))
 
@@ -261,40 +262,158 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data written to Alice's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Alice (Age $22714) (Age Alice $22714)) (Age Alice 20))
+>!(assertEqualToResult (read-user Alice (Age $22674) (Age Alice $22674)) (Age Alice 20))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.06</h3>
+<span class="ansi37"
+>predicate_behavior(_36516,'Age',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Age Alice 20) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Age 3 $37650 $37652]]
+<span class="ansi37"
+>transpiler_clause_store('Age',3,_38586,_38588,_38590,_38592,_38594,_38596,_38598)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Age 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_9410,_9416],
+;           [_9422,_9428],  _9400, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_37446,'Age',2,_37452,_37454,_37456,_37458,_returnVal,_37462)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_9024,_9030],
+;           [_9036,_9042],  _9014, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_9014,_9020],
+;           [_9026,_9032],  _9004, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_16340,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_24736,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_51770,'Age',2,_51776,_51778,_51780,_51782,_51784,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Age'|_51916],_51920]=missing('[|]'/2)</span>
+(ist space_2 (Age 20))
+(ist space_3 (Age 22))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Age',
 ;           2,
-;           [_11666,_11672],
-;           [_11678,_11684],  _11656, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+;           [_27282,_27288],
+;           [_27294,_27300],  _27272, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Age',
 ;           2,
-;           [_19046,_19052],
-;           [_19058,_19064],  _19036, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+;           [_36362,_36368],
+;           [_36374,_36380],  _36352, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_11864,'Age',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Age Alice 20) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Age 3 $12998 $13000]]
+<span class="ansi37"
+>transpiler_clause_store('Age',3,_13934,_13936,_13938,_13940,_13942,_13944,_13946)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Age 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_38900,_38906],
+;           [_38912,_38918],  _38890, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_32438,_32444],
+;           [_32450,_32456],  _32428, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60516,'Age',2,_60522,_60524,_60526,_60528,_returnVal,_60532)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_31484,_31490],
+;           [_31496,_31502],  _31474, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_31482,_31488],
+;           [_31494,_31500],  _31472, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_40452,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_47078,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_19398,'Age',2,_19404,_19406,_19408,_19410,_19412,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Age'|_19544],_19548]=missing('[|]'/2)</span>
+(ist space_2 (Age 20))
+(ist space_3 (Age 22))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_8228,_8234],
+;           [_8240,_8246],  _8218, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Age',
 ;           2,
-;           [_21780,_21786],
-;           [_21792,_21798],  _21770, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+;           [_8226,_8232],
+;           [_8238,_8244],  _8216, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.469 secs. (468.70 milliseconds) 
+; took 1.912 secs. (1911.65 milliseconds) 
 
-!(assertEqualToResult (read-user Alice (Age $54014) (Age Alice $54014)) (Age Alice 20))
+!(assertEqualToResult (read-user Alice (Age $30882) (Age Alice $30882)) (Age Alice 20))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -307,17 +426,76 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Age Alice 20))) ('~nExpected: ' (Age Alice 20)))
 </span>;;; Test: Verify data written to Bob's knowledge base
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-user Bob (Age $63486) (Age Bob $63486)) (Age Bob 22))
+>!(assertEqualToResult (read-user Bob (Age $40354) (Age Bob $40354)) (Age Bob 22))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.07</h3>
+<span class="ansi37"
+>predicate_behavior(_54192,'Age',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Age Bob 22) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Age 3 $55326 $55328]]
+<span class="ansi37"
+>transpiler_clause_store('Age',3,_56262,_56264,_56266,_56268,_56270,_56272,_56274)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Age 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_32904,_32910],
+;           [_32916,_32922],  _32894, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_32902,_32908],
+;           [_32914,_32920],  _32892, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60980,'Age',2,_60986,_60988,_60990,_60992,_returnVal,_60996)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_32518,_32524],
+;           [_32530,_32536],  _32508, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_32516,_32522],
+;           [_32528,_32534],  _32506, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_41496,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_48062,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_20188,'Age',2,_20194,_20196,_20198,_20200,_20202,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Age'|_20334],_20338]=missing('[|]'/2)</span>
+(ist space_2 (Age 20))
+(ist space_3 (Age 22))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Age',
 ;           2,
-;           [_46946,_46952],
+;           [_8972,_8978],
 ;           [_8984,_8990],  _8962, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
 P;HTML|
@@ -328,27 +506,86 @@ Deterministic: <span class="ansi33"
 ;           [_8970,_8976],
 ;           [_8982,_8988],  _8960, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
+<span class="ansi37"
+>predicate_behavior(_37192,'Age',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Age Bob 22) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Age 3 $38326 $38328]]
+<span class="ansi37"
+>transpiler_clause_store('Age',3,_39262,_39264,_39266,_39268,_39270,_39272,_39274)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Age 3 ]]
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
+>( Age,
 ;           'Age',
 ;           2,
-;           [_8248,_8254],
-;           [_8260,_8266],  _8238, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+;           [_8312,_8318],
+;           [_8324,_8330],  _8302, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
+>( Age,
+;           'Age',
+;           2,
+;           [_8302,_8308],
+;           [_8314,_8320],  _8292, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_33072,'Age',2,_33078,_33080,_33082,_33084,_returnVal,_33088)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age',
+;           2,
+;           [_8254,_8260],
+;           [_8266,_8272],  _8244, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
 ;           'Age',
 ;           2,
 ;           [_8250,_8256],
-;           [_8262,_8268],  _8240, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+;           [_8262,_8268],  _8240, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_13140,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Age,
+;           'Age', 2,_21742,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_48776,'Age',2,_48782,_48784,_48786,_48788,_48790,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Age'|_48922],_48926]=missing('[|]'/2)</span>
+(ist space_2 (Age 20))
+(ist space_3 (Age 22))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_23338,_23344],
+;           [_23350,_23356],  _23328, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Age',
+;           2,
+;           [_26276,_26282],
+;           [_26288,_26294],  _26266, Function_declaration_implTopAgeC91_c124_c931, Function_declaration_implTopAgeC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.627 secs. (627.24 milliseconds) 
+; took 2.07 seconds.
 
-!(assertEqualToResult (read-user Bob (Age $39068) (Age Bob $39068)) (Age Bob 22))
+!(assertEqualToResult (read-user Bob (Age $58504) (Age Bob $58504)) (Age Bob 22))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -371,17 +608,17 @@ Deterministic: <span class="ansi33"
  
 </span><span class="ansi38-255165000"
 > (= (write-partition $name $data)  
-  (let $62486 
+  (let $21076 
     (match &test-space 
-      (Partition $name $62528) $62528) 
-    (add-atom $3030 $data)))
+      (Partition $name $21118) $21118) 
+    (add-atom $21076 $data)))
  
 </span><span class="ansi38-255165000"
-> (= (read-partition $name $query $17322)  
-  (let $17340 
+> (= (read-partition $name $query $34494)  
+  (let $34512 
     (match &test-space 
-      (Partition $name $17382) $17382) 
-    (match $17340 $query $17322)))
+      (Partition $name $34554) $34554) 
+    (match $34512 $query $34494)))
  
 </span>;;; Test 3: Add partitioned knowledge bases
 <span class="ansi38-013099040"
@@ -404,16 +641,16 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify partitions exist
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &test-space (Partition $54140 $54146) $54140) (People Games))
+>!(assertEqualToResult (match &test-space (Partition $7370 $7376) $7370) (People Games))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.08</h3>
 ; 
 ; EVAL TEST
-; took 0.000235 secs. (234.96 microseconds) 
+; took 0.000249 secs. (249.14 microseconds) 
 
-!(assertEqualToResult (match &test-space (Partition $62710 $62716) $62710) (People Games))
+!(assertEqualToResult (match &test-space (Partition $15940 $15946) $15940) (People Games))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -444,48 +681,164 @@ Deterministic: <span class="ansi33"
 >()
 </span>;;; Test: Verify data in People partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition People (Friend $49842 $49848) (Friend $49842 $49848)) (Friend Bob Alice))
+>!(assertEqualToResult (read-partition People (Friend $62738 $62744) (Friend $62738 $62744)) (Friend Bob Alice))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.09</h3>
+<span class="ansi37"
+>predicate_behavior(_13568,'Friend',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Friend Bob Alice) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Friend 3 $14702 $14704]]
+<span class="ansi37"
+>transpiler_clause_store('Friend',3,_15638,_15640,_15642,_15644,_15646,_15648,_15650)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Friend 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_43764,_43770],
+;           [_43776,_43782],  _43754, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_44666,_44672],
+;           [_44678,_44684],  _44656, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_18608,'Friend',2,_18614,_18616,_18618,_18620,_returnVal,_18624)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_47046,_47052],
+;           [_47058,_47064],  _47036, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_47458,_47464],
+;           [_47470,_47476],  _47448, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend', 2,_9126,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend', 2,_16622,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_43660,'Friend',2,_43666,_43668,_43670,_43672,_43674,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Friend'|_43806],_43810]=missing('[|]'/2)</span>
+(ist space_4 (Friend Bob Alice))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Friend',
 ;           2,
-;           [_38780,_38786],
-;           [_38792,_38798],  _38770, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+;           [_22556,_22562],
+;           [_22568,_22574],  _22546, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Friend',
 ;           2,
-;           [_41448,_41454],
-;           [_41460,_41466],  _41438, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+;           [_29708,_29714],
+;           [_29720,_29726],  _29698, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_64556,'Friend',2,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (Friend Bob Alice) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store Friend 3 $5456 $5458]]
+<span class="ansi37"
+>transpiler_clause_store('Friend',3,_6392,_6394,_6396,_6398,_6400,_6402,_6404)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_2__Friend 3 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_34366,_34372],
+;           [_34378,_34384],  _34356, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_32890,_32896],
+;           [_32902,_32908],  _32880, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_60978,'Friend',2,_60984,_60986,_60988,_60990,_returnVal,_60994)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_32860,_32866],
+;           [_32872,_32878],  _32850, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend',
+;           2,
+;           [_32858,_32864],
+;           [_32870,_32876],  _32848, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend', 2,_42414,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( Friend,
+;           'Friend', 2,_8234,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_23014,'Friend',2,_23020,_23022,_23024,_23026,_23028,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['Friend'|_23160],_23164]=missing('[|]'/2)</span>
+(ist space_4 (Friend Bob Alice))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Friend',
+;           2,
+;           [_8358,_8364],
+;           [_8370,_8376],  _8348, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Friend',
 ;           2,
-;           [_8272,_8278],
-;           [_8284,_8290],  _8262, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Friend',
-;           2,
-;           [_8270,_8276],
-;           [_8282,_8288],  _8260, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
+;           [_8374,_8380],
+;           [_8386,_8392],  _8364, Function_declaration_implTopFriendC91_c124_c931, Function_declaration_implTopFriendC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.622 secs. (622.06 milliseconds) 
+; took 2.11 seconds.
 
-!(assertEqualToResult (read-partition People (Friend $35568 $35574) (Friend $35568 $35574)) (Friend Bob Alice))
+!(assertEqualToResult (read-partition People (Friend $37664 $37670) (Friend $37664 $37670)) (Friend Bob Alice))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -498,48 +851,164 @@ Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))
 </span>;;; Test: Verify data in Games partition
 <span class="ansi38-013099040"
->!(assertEqualToResult (read-partition Games (GameRole $44908) (GameRole $44908)) (GameRole Predator))
+>!(assertEqualToResult (read-partition Games (GameRole $47004) (GameRole $47004)) (GameRole Predator))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10"
 >;; HYPERON-METTALOG-SANITY.PARTITIONING-ATOMSPACES-AND-PERFORMANCE-HE-774.10</h3>
+<span class="ansi37"
+>predicate_behavior(_60594,'GameRole',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (GameRole Predator) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store GameRole 2 $61674 $61676]]
+<span class="ansi37"
+>transpiler_clause_store('GameRole',2,_62610,_62612,_62614,_62616,_62618,_62620,_62622)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__GameRole 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_16314],
+;           [_16320],  _16304, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_8830],
+;           [_8836],  _8820, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_26862,'GameRole',1,_26868,_26870,_26872,_26874,_returnVal,_26878)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_37472],
+;           [_37478],  _37462, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_16110],
+;           [_16116],  _16100, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole', 1,_27964,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole', 1,_38998,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_6852,'GameRole',1,_6858,_6860,_6862,_6864,_6866,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['GameRole'|_6998],_7002]=missing('[|]'/2)</span>
+(ist space_5 (GameRole Predator))
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'GameRole',
 ;           1,
-;           [_21728],
-;           [_21734],  _21718, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+;           [_24260],
+;           [_24266],  _24250, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'GameRole',
 ;           1,
-;           [_11058],
-;           [_11064],  _11048, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+;           [_13310],
+;           [_13316],  _13300, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>predicate_behavior(_47778,'GameRole',1,['%Undefined%','MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (GameRole Predator) &top) ==> (-> Any AnyRet))
+[unknown [transpiler_predicate_store GameRole 2 $48858 $48860]]
+<span class="ansi37"
+>transpiler_clause_store('GameRole',2,_49794,_49796,_49798,_49800,_49802,_49804,_49806)=missing(transpiler_clause_store/9)</span>
+[unknown [ / mc_1__GameRole 2 ]]
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_8118],
+;           [_8124],  _8108, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_40080],
+;           [_40086],  _40070, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+<span class="ansi37"
+>function_declaration_scores(_9022,'GameRole',1,_9028,_9030,_9032,_9034,_returnVal,_9038)=missing(function_declaration_scores/9)</span>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_18964],
+;           [_18970],  _18954, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole',
+;           1,
+;           [_8084],
+;           [_8090],  _8074, Function_declaration_implC91_c124_c932, Function_declaration_implC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole', 1,_11746,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( GameRole,
+;           'GameRole', 1,_22402,Function_declaration_impl4,
+;              Function_declaration_impl3, Function_declaration_impl, ReturnVal, _returnVal)</span>)
+
+<span class="ansi37"
+>function_declaration_impl(_49450,'GameRole',1,_49456,_49458,_49460,_49462,_49464,_returnVal)=missing(function_declaration_impl/9)</span>
+<span class="ansi37"
+>[=,['GameRole'|_49596],_49600]=missing('[|]'/2)</span>
+(ist space_5 (GameRole Predator))
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'GameRole',
+;           1,
+;           [_8692],
+;           [_8698],  _8682, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'GameRole',
 ;           1,
-;           [_8076],
-;           [_8082],  _8066, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'GameRole',
-;           1,
-;           [_8054],
-;           [_8060],  _8044, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
+;           [_8056],
+;           [_8062],  _8046, Function_declaration_implTopGameRoleC91_c124_c931, Function_declaration_implTopGameRoleC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.454 secs. (453.79 milliseconds) 
+; took 1.571 secs. (1571.47 milliseconds) 
 
-!(assertEqualToResult (read-partition Games (GameRole $25542) (GameRole $25542)) (GameRole Predator))
+!(assertEqualToResult (read-partition Games (GameRole $29056) (GameRole $29056)) (GameRole Predator))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -577,7 +1046,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((Friend Bob Alice))) ('~nExpected: ' (Friend Bob Alice)))]
 [(Error ('~nGot: ' ((GameRole Predator))) ('~nExpected: ' (GameRole Predator)))]
 
-Script done on 2025-02-24 15:08:06+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:12:08+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>

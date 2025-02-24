@@ -16,6 +16,7 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
+.ansi37 { color: #F5F1DE; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
@@ -31,7 +32,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 15:20:26+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1704-92.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 15:25:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1720-841.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta] ]
 P;HTML|
@@ -77,11 +78,41 @@ Script started on 2025-02-24 15:20:26+00:00 [COMMAND="timeout --preserve-status 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.01"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.01</h3>
+<span class="ansi37"
+>predicate_behavior(_10074,if,2,[[->,'Bool','Atom','Atom',_10114],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (if True (42 42)) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store if 3 $11868 $11870]]
+<span class="ansi37"
+>transpiler_clause_store(if,3,_12804,_12806,_12808,_12810,_12812,_12814,_12816)=missing(transpiler_clause_store/9)</span>
+<span class="ansi37"
+>function_declaration_scores('&top',if,2,[_13938,_13944],['Any','Any'],'AnyRet',[let,_returnVal,['call-fn',mc_2__if,_13938,_13944],_returnVal],_returnVal,6+16)</span>
+<span class="ansi37"
+>[=,[if|_15066],_15070]=missing('[|]'/2)</span>
+(ist &corelib (iz if MeTTa))
+(ist &corelib (@doc if (@desc "Replace itself by one of the arguments depending on condition.") (@params ((@param "Boolean condition") (@param "Result when condition is True") (@param "Result when condition is False"))) (@return "Second or third argument")))
+(ist &corelib (: if (-> Bool Atom Atom $16432)))
+(ist &corelib (ALT= (if True $16494 $16500) $16494))
+(ist &corelib (ALT= (if False $16522 $16528) $16528))
+<span class="ansi37"
+>predicate_behavior(_64952,if,2,[[->,'Bool','Atom','Atom',_64992],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (if True (1 1)) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store if 3 $8268 $8270]]
+<span class="ansi37"
+>transpiler_clause_store(if,3,_9204,_9206,_9208,_9210,_9212,_9214,_9216)=missing(transpiler_clause_store/9)</span>
+<span class="ansi37"
+>function_declaration_scores('&top',if,2,[_10338,_10344],['Any','Any'],'AnyRet',[let,_returnVal,['call-fn',mc_2__if,_10338,_10344],_returnVal],_returnVal,6+16)</span>
+<span class="ansi37"
+>[=,[if|_11466],_11470]=missing('[|]'/2)</span>
+(ist &corelib (iz if MeTTa))
+(ist &corelib (@doc if (@desc "Replace itself by one of the arguments depending on condition.") (@params ((@param "Boolean condition") (@param "Result when condition is True") (@param "Result when condition is False"))) (@return "Second or third argument")))
+(ist &corelib (: if (-> Bool Atom Atom $12832)))
+(ist &corelib (ALT= (if True $12894 $12900) $12894))
+(ist &corelib (ALT= (if False $12922 $12928) $12928))
 ; 
 ; EVAL TEST
-; took 0.012 secs. (12.12 milliseconds) 
+; took 0.035 secs. (35.39 milliseconds) 
 
-!(assertEqualToResult (let $13488 (superpose (3 4 5)) (If (> $13488 3) (case (1 $13488) (((1 3) (f 0)) ((1 4) (42 42)) ($13584 (1 1)))))) ((1 1) (42 42)))
+!(assertEqualToResult (let $31344 (superpose (3 4 5)) (If (> $31344 3) (case (1 $31344) (((1 3) (f 0)) ((1 4) (42 42)) ($31440 (1 1)))))) ((1 1) (42 42)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -95,16 +126,46 @@ Script started on 2025-02-24 15:20:26+00:00 [COMMAND="timeout --preserve-status 
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (let $24562 (superpose (3 4 5)) (If (> $24562 3) (case (1 $24562) (((1 3) (f 0)) ((1 4) (42 42)) ($24658 (1 1)))))) ((42 42) (1 1)))
+>!(assertEqualToResult (let $42418 (superpose (3 4 5)) (If (> $42418 3) (case (1 $42418) (((1 3) (f 0)) ((1 4) (42 42)) ($42514 (1 1)))))) ((42 42) (1 1)))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.02"
 >;; METTA-MORPH-TESTS.LET-SUPERPOSE-IF-CASE.02</h3>
+<span class="ansi37"
+>predicate_behavior(_27256,if,2,[[->,'Bool','Atom','Atom',_27296],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (if True (42 42)) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store if 3 $29050 $29052]]
+<span class="ansi37"
+>transpiler_clause_store(if,3,_29986,_29988,_29990,_29992,_29994,_29996,_29998)=missing(transpiler_clause_store/9)</span>
+<span class="ansi37"
+>function_declaration_scores('&top',if,2,[_31120,_31126],['Any','Any'],'AnyRet',[let,_returnVal,['call-fn',mc_2__if,_31120,_31126],_returnVal],_returnVal,6+16)</span>
+<span class="ansi37"
+>[=,[if|_32248],_32252]=missing('[|]'/2)</span>
+(ist &corelib (iz if MeTTa))
+(ist &corelib (@doc if (@desc "Replace itself by one of the arguments depending on condition.") (@params ((@param "Boolean condition") (@param "Result when condition is True") (@param "Result when condition is False"))) (@return "Second or third argument")))
+(ist &corelib (: if (-> Bool Atom Atom $33614)))
+(ist &corelib (ALT= (if True $33676 $33682) $33676))
+(ist &corelib (ALT= (if False $33704 $33710) $33710))
+<span class="ansi37"
+>predicate_behavior(_23272,if,2,[[->,'Bool','Atom','Atom',_23312],'MismatchOriginal','NoMatchOriginal','OrderClause','Nondeterministic','ClauseFailNonDet','FailureOriginal'])</span>
+((get-ftype (if True (1 1)) &top) ==> (-> Any Any AnyRet))
+[unknown [transpiler_predicate_store if 3 $25066 $25068]]
+<span class="ansi37"
+>transpiler_clause_store(if,3,_26002,_26004,_26006,_26008,_26010,_26012,_26014)=missing(transpiler_clause_store/9)</span>
+<span class="ansi37"
+>function_declaration_scores('&top',if,2,[_27136,_27142],['Any','Any'],'AnyRet',[let,_returnVal,['call-fn',mc_2__if,_27136,_27142],_returnVal],_returnVal,6+16)</span>
+<span class="ansi37"
+>[=,[if|_28264],_28268]=missing('[|]'/2)</span>
+(ist &corelib (iz if MeTTa))
+(ist &corelib (@doc if (@desc "Replace itself by one of the arguments depending on condition.") (@params ((@param "Boolean condition") (@param "Result when condition is True") (@param "Result when condition is False"))) (@return "Second or third argument")))
+(ist &corelib (: if (-> Bool Atom Atom $29630)))
+(ist &corelib (ALT= (if True $29692 $29698) $29692))
+(ist &corelib (ALT= (if False $29720 $29726) $29726))
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.93 milliseconds) 
+; took 0.033 secs. (32.62 milliseconds) 
 
-!(assertEqualToResult (let $13210 (superpose (3 4 5)) (If (> $13210 3) (case (1 $13210) (((1 3) (f 0)) ((1 4) (42 42)) ($13306 (1 1)))))) ((42 42) (1 1)))
+!(assertEqualToResult (let $48142 (superpose (3 4 5)) (If (> $48142 3) (case (1 $48142) (((1 3) (f 0)) ((1 4) (42 42)) ($48238 (1 1)))))) ((42 42) (1 1)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -131,7 +192,7 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 
-Script done on 2025-02-24 15:20:26+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-24 15:25:09+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
