@@ -12,42 +12,105 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi31 { color: #aa0000; }
-.ansi34 { color: #0000aa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 02:13:23+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-<span class="ansi1 ansi31"
->ERROR: -g user:loon(goal): Unknown procedure: if_trace/3
-ERROR:   However, there are definitions for:
-ERROR:         traceIf/1
-ERROR:         if_trace/2
-ERROR:         if_trace/2
-ERROR: 
-ERROR: In:
-ERROR:   [10] </span><span class="ansi1 ansi34"
->if_trace(main,not_compatio,fbugio(compiled_loon(goal)))</span><span class="ansi1 ansi31"
->
-ERROR:    [9] </span><span class="ansi1 ansi34"
->loon(goal)</span><span class="ansi1 ansi31"
-> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:6637
-ERROR:    [8] </span><span class="ansi1 ansi34"
->catch(user:loon(goal),_1504,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:565
-ERROR:    [7] </span><span class="ansi1 ansi34"
->catch_with_backtrace(user:loon(goal),_1554,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:645
-</span><span class="ansi1 ansi31"
->ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+Script started on 2025-02-24 14:18:31+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta]
+P;HTML|
+;                       [ = 1 "[(Error (assertEqual (foo) (R $x $y)) " ]
+P;HTML|
+;                       [ = 1 "Expected: [(R $x $y)]" ]
+P;HTML|
+;                       [ = 1 "Got: [(R $x#31 $y#32)]" ]
+P;HTML|
+;                        [ = 2 "Missed results: (R $x $y)" ]
+P;HTML|
+;                        [ = 2 "Excessive results: (R $x#31 $y#32))]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta]
+
+;;; Test File: Alpha Equivalence Assertions in MeTTa
+;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/744
+;;; Example 1: Basic Alpha Equivalence
+;;; ----------------------------------
+;;; Define a simple function
+<span class="ansi38-255165000"
+> (= (foo)  
+  (R $x $y))
+ 
+</span>;;; Test: AssertEqual fails without alpha-equivalence
+<span class="ansi38-013099040"
+>!(assertEqual (foo) (R $30834 $30840))
+
 </span>
-Script done on 2025-02-18 02:13:24+00:00 [COMMAND_EXIT_CODE="2"]
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $35912]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] (assertEqual (foo) (R $35940 $35946))];;; Expected: [(Error (assertEqual (foo) (R $x $y)) 
+;;; Expected: [(R $x $y)]
+;;; Got: [(R $x#31 $y#32)]
+;;; Missed result: (R $x $y))]
+;;; Test: AssertAlphaEqual should pass with alpha-equivalence support
+<span class="ansi38-013099040"
+>!(assertAlphaEqual (foo) (R $37702 $37708))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $42768]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] (assertAlphaEqual (foo) (R $42796 $42802))];;; Example 2: Nested Alpha Equivalence
+;;; -----------------------------------
+;;; Define a function with nested variables
+<span class="ansi38-255165000"
+> (= (bar)  
+  (S $x 
+    (T $y)))
+ 
+</span>;;; Test: AssertAlphaEqual should correctly identify equivalence
+<span class="ansi38-013099040"
+>!(assertAlphaEqual (bar) (S $49526 (T $49544)))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2566]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] (assertAlphaEqual (bar) (S $2594 (T $2612)))];;; Example 3: Complex Structures
+;;; -----------------------------
+;;; Define a complex structure
+<span class="ansi38-255165000"
+> (= (baz)  
+  (U 
+    (R $x $y) 
+    (V $9044)))
+ 
+</span>;;; Test: Alpha equivalence for complex structures
+<span class="ansi38-013099040"
+>!(assertAlphaEqual (baz) (U (R $11732 $11738) (V $11756)))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2784]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] (assertAlphaEqual (baz) (U (R $2824 $2830) (V $2848)))];;; Example 4: Non-equivalent Structures
+;;; ------------------------------------
+;;; Test: Ensure non-equivalent structures are not considered equivalent
+<span class="ansi38-013099040"
+>!(assertNotAlphaEqual (baz) (U (R $4874 $4880) (W $4898)))
+
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10118]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta] (assertNotAlphaEqual (baz) (U (R $10158 $10164) (W $10182)))]P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta 0 ]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[[[
+
+Script done on 2025-02-24 14:18:32+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=2) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/alpha_equivalence_assertions_he_744.metta" --halt=true\033[0m

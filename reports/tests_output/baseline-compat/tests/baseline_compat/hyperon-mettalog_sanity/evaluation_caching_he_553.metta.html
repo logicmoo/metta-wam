@@ -14,40 +14,148 @@
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
 .ansi31 { color: #aa0000; }
-.ansi34 { color: #0000aa; }
+.ansi32 { color: #00aa00; }
+.ansi38-255165009 { color: #FFA509; }
+.ansi38-255238088 { color: #FFEE58; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 02:13:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-<span class="ansi1 ansi31"
->ERROR: -g user:loon(goal): Unknown procedure: if_trace/3
-ERROR:   However, there are definitions for:
-ERROR:         traceIf/1
-ERROR:         if_trace/2
-ERROR:         if_trace/2
-ERROR: 
-ERROR: In:
-ERROR:   [10] </span><span class="ansi1 ansi34"
->if_trace(main,not_compatio,fbugio(compiled_loon(goal)))</span><span class="ansi1 ansi31"
->
-ERROR:    [9] </span><span class="ansi1 ansi34"
->loon(goal)</span><span class="ansi1 ansi31"
-> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:6637
-ERROR:    [8] </span><span class="ansi1 ansi34"
->catch(user:loon(goal),_1504,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:565
-ERROR:    [7] </span><span class="ansi1 ansi34"
->catch_with_backtrace(user:loon(goal),_1554,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:645
-</span><span class="ansi1 ansi31"
->ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+Script started on 2025-02-24 14:19:31+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+P;HTML|
+;                       [ = 1 "[(py-module random_binding \"from hyperon.atoms import OperationAtom\\nfrom hyperon.ext import register_atoms\\nimport random\\n\\n@register_atoms\\ndef my_atoms():\\n    return {\\n        'random': OperationAtom('random', random.random),\\n    }\\n\")]" ]
+P;HTML|
+;                       [ = 2 "[(extend-py! random_binding)]" ]
+P;HTML|
+;                       [ = 3 "[(Error (assertEqualToResult (let $r1 (random) (let $r2 (random) (== $r1 $r2))) (False)) " ]
+P;HTML|
+;                        [ = 3 "Expected: [False]" ]
+P;HTML|
+;                        [ = 3 "Got: [True]" ]
+P;HTML|
+;                         [ = 4 "Missed results: False" ]
+P;HTML|
+;                         [ = 4 "Excessive results: True)]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta]
+
+;;; Test File: Evaluation Caching in MeTTa
+;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/553
+;;; Issue Overview:
+;;; This test explores unexpected behavior caused by caching in MeTTa, where cached results 
+;;; for expressions lead to incorrect evaluation outcomes. The issue specifically arises when 
+;;; evaluating functions that generate non-deterministic results, such as random numbers.
+;;; Define the Python Module
+<span class="ansi38-255165009"
+>;; In file as:  
+</span><span class="ansi1 ansi38-255238088"
+>!(py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n")
+</span>;; To unit test case:
+<span class="ansi38-013099040"
+>!(assertEqualToResult (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n") ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n")))
+
 </span>
-Script done on 2025-02-18 02:13:43+00:00 [COMMAND_EXIT_CODE="2"]
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2208]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random', random.random),\n    }\n") ((py-module random_binding "from hyperon.atoms import OperationAtom\nfrom hyperon.ext import register_atoms\nimport random\n\n@register_atoms\ndef my_atoms():\n    return {\n        'random': OperationAtom('random' , random.random),\n    }\n")))];;; Example 1: Testing Non-Deterministic Functionality
+;;; ---------------------------------------------------
+<span class="ansi38-013099040"
+>!(extend-py! random_binding)
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8316]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (extend-py! random_binding)];;; Test: Evaluating `(random)` directly twice
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $10594 (random) (let $10618 (random) (== $10594 $10618))) (False))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $16020]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (let $16042 (random) (let $16066 (random) (== $16042 $16066))) (False))];;; Explanation:
+;;; The `random` function should produce non-deterministic results, so evaluating it twice 
+;;; directly should not return the same value.
+;;; Test: Binding and evaluating `(random)` twice
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $17490 (random) (let $17514 (random) (== $17490 $17514))) (False))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2600]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (let $2622 (random) (let $2646 (random) (== $2622 $2646))) (False))];;; Explanation:
+;;; Assigning `random` to variables `$a` and `$b` and comparing them should result in `False` 
+;;; since the values are generated independently.
+;;; Example 2: Caching Issue with Function Wrapping
+;;; -----------------------------------------------
+;;; Define a function `aa` that wraps `random`
+<span class="ansi38-255165000"
+> (= (aa)  
+  (random))
+ 
+</span>;;; Test: Evaluating `(aa)` twice directly
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $6934 (aa) (let $6958 (aa) (== $6934 $6958))) (True))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $12356]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (let $12378 (aa) (let $12402 (aa) (== $12378 $12402))) (True))];;; Explanation:
+;;; This behavior is caused by caching. The first evaluation of `(aa)` is cached, so subsequent 
+;;; evaluations return the same cached result, which is incorrect for non-deterministic functions.
+;;; Test: Assigning `(aa)` to variables and comparing
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $13826 (aa) (let $13850 (aa) (== $13826 $13850))) (True))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2608]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (let $2630 (aa) (let $2654 (aa) (== $2630 $2654))) (True))];;; Explanation:
+;;; Again, due to caching, `(aa)` produces the same result when evaluated multiple times, 
+;;; resulting in an incorrect `True` output.
+;;; Example 3: Binding Results to Variables
+;;; ---------------------------------------
+<span class="ansi38-013099040"
+>!(bind! a1 (aa))
+
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8386]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (bind! a1 (aa))]
+<span class="ansi38-013099040"
+>!(bind! a2 (aa))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14558]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (bind! a2 (aa))];;; Test: Comparing bound variables `a1` and `a2`
+<span class="ansi38-013099040"
+>!(assertEqualToResult (== a1 a2) (False))
+
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1932]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta] (assertEqualToResult (== a1 a2) (False))];;; Explanation:
+;;; When the results of `(aa)` are explicitly bound to separate variables `a1` and `a2`, 
+;;; caching does not apply, and the correct `False` result is returned as expected.
+;;; Summary:
+;;; - Non-deterministic functions such as `random` should not be cached.
+;;; - The current behavior incorrectly caches results for expressions like `(aa)`, causing 
+;;;   subsequent evaluations to return identical results.
+P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[[[[[[[
+
+Script done on 2025-02-24 14:19:31+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=2) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/evaluation_caching_he_553.metta" --halt=true\033[0m

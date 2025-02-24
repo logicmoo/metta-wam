@@ -12,42 +12,69 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi1 { font-weight: bold; }
-.ansi31 { color: #aa0000; }
-.ansi34 { color: #0000aa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-18 02:13:55+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog   -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
-<span class="ansi1 ansi31"
->ERROR: -g user:loon(goal): Unknown procedure: if_trace/3
-ERROR:   However, there are definitions for:
-ERROR:         traceIf/1
-ERROR:         if_trace/2
-ERROR:         if_trace/2
-ERROR: 
-ERROR: In:
-ERROR:   [10] </span><span class="ansi1 ansi34"
->if_trace(main,not_compatio,fbugio(compiled_loon(goal)))</span><span class="ansi1 ansi31"
->
-ERROR:    [9] </span><span class="ansi1 ansi34"
->loon(goal)</span><span class="ansi1 ansi31"
-> at /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/metta_interp.pl:6637
-ERROR:    [8] </span><span class="ansi1 ansi34"
->catch(user:loon(goal),_1504,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:565
-ERROR:    [7] </span><span class="ansi1 ansi34"
->catch_with_backtrace(user:loon(goal),_1554,'$toplevel':true)</span><span class="ansi1 ansi31"
-> at /usr/lib/swi-prolog/boot/init.pl:645
-</span><span class="ansi1 ansi31"
->ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
-</span>
-Script done on 2025-02-18 02:13:56+00:00 [COMMAND_EXIT_CODE="2"]
+Script started on 2025-02-24 14:19:45+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[(Error (assertEqual (is-space &corelib) True) " ]
+P;HTML|
+;                       [ = 2 "Expected: [True]" ]
+P;HTML|
+;                        [ = 2 "Got: [False]" ]
+P;HTML|
+;                        [ = 3 "Missed results: True" ]
+P;HTML|
+;                         [ = 3 "Excessive results: False)]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+
+;;; Check whether atom is space comparing its type with type of the &self atom
+<span class="ansi38-255165000"
+> (: is-space (-> Atom Bool))
+ 
+</span><span class="ansi38-255165000"
+> (= (is-space $atom)  
+  (let* 
+    ( ($type (get-type $atom)) ($2798 (get-type &self))) 
+    (== $type $2798)))
+ 
+</span><span class="ansi38-013099040"
+>!(assertEqual (is-space &self) True)
+
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9838]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &self) True)]
+<span class="ansi38-013099040"
+>!(assertEqual (is-space &corelib) True)
+
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15616]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &corelib) True)]
+<span class="ansi38-013099040"
+>!(assertEqual (is-space 666) False)
+
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1896]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space 666) False)]P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta 0 ]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[
+
+Script done on 2025-02-24 14:19:45+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=2) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m

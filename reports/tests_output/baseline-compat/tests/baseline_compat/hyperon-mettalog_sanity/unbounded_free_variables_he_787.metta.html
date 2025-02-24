@@ -12,26 +12,26 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi33 { color: #aa5500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
 .ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-22 20:58:05+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-24 14:21:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] ]
 P;HTML|
@@ -65,40 +65,20 @@ Script started on 2025-02-22 20:58:05+00:00 [COMMAND="timeout --preserve-status 
 <span class="ansi38-013099040"
 >!(add-atom &self (subsumption Dog Corgi))
 
-</span><span class="ansi38-255165000"
-> (subsumption Dog Corgi)
- 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1906]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (add-atom &self (subsumption Dog Corgi))]
+<span class="ansi38-013099040"
 >!(add-atom &self (subsumption Animal Dog))
 
-</span><span class="ansi38-255165000"
-> (subsumption Animal Dog)
- 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $7836]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (add-atom &self (subsumption Animal Dog))]
+<span class="ansi38-013099040"
 >!(add-atom &self (subsumption Being Animal))
 
-</span><span class="ansi38-255165000"
-> (subsumption Being Animal)
- 
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $13766]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (add-atom &self (subsumption Being Animal))]
+<span class="ansi38-013099040"
 >!(add-atom &self (subsumption Mortal Being))
 
-</span><span class="ansi38-255165000"
-> (subsumption Mortal Being)
- 
 </span>
-Deterministic: <span class="ansi33"
->()
-</span>;;; Define functions to query the hierarchy
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1906]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (add-atom &self (subsumption Mortal Being))];;; Define functions to query the hierarchy
 <span class="ansi38-255165000"
 > (= (type-of $x $y)  
   (match &self 
@@ -111,7 +91,7 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x $z)  
   (get-entity-subsumptions $x 
-    (type-of $3000 $z)))
+    (type-of $18346 $z)))
  
 </span><span class="ansi38-255165000"
 > (= (get-entity-subsumptions $x)  
@@ -122,19 +102,41 @@ Deterministic: <span class="ansi33"
 >!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
 
 </span>
-;<h3 id="HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01"
->;; HYPERON-METTALOG-SANITY.UNBOUNDED-FREE-VARIABLES-HE-787.01</h3>
-; 
-; EVAL TEST
-; took 12.47 seconds.
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2006]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))];;; Example 2: Free Variables as Placeholders
+;;; -----------------------------------------
+<span class="ansi38-255165000"
+> (= (bar A)  B)
+ 
+</span>;;; Test: Free variable $a receives value through unification
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $7094 (bar $7112) ($7094 $7112)) ((B A)))
 
-!(assertEqualToResult (get-entity-subsumptions Corgi) (Dog Being Mortal Animal))
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $12518]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (assertEqualToResult (let $12540 (bar $12558) ($12540 $12558)) ((B A)))];;; Example 3: Free Variables and Mismatches
+;;; ----------------------------------------
+<span class="ansi38-255165000"
+> (= (foo $x)  
+  (let $x A B))
+ 
+</span>;;; Test: Free variable $a receives value because it unifies with $x
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $17518 (foo $17536) ($17518 $17536)) ((B A)))
 
+</span>
+[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2530]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (assertEqualToResult (let $2552 (foo $2570) ($2552 $2570)) ((B A)))];;; Test: Function doesn't match when input doesn't unify with $x
+<span class="ansi38-013099040"
+>!(assertEqualToResult (let $3910 (foo C) ($3910 $3934)) ())
 
-Script done on 2025-02-22 20:58:45+00:00 [COMMAND_EXIT_CODE="143"]
+</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9234]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta] (assertEqualToResult (let $9256 (foo C) ($9256 $9280)) ())]P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta 0 ]
+<br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[[[[[[[[
+
+Script done on 2025-02-24 14:21:45+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
 
 </html>
-\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta" --halt=true\033[0m
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/unbounded_free_variables_he_787.metta" --halt=true\033[0m
