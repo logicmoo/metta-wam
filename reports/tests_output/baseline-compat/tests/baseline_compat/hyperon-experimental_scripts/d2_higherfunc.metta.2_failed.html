@@ -43,7 +43,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-25 19:44:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1787-403.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d2_higherfunc.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-25 19:46:48+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1921-368.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d2_higherfunc.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d2_higherfunc.metta] ]
 P;HTML|
@@ -123,7 +123,7 @@ Script started on 2025-02-25 19:44:30+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D2-HIGHERFUNC.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (2.35 milliseconds) 
+; took 0.002 secs. (2.37 milliseconds) 
 
 !(assertEqual (get-type (curry +)) (-> Number (-> Number Number)))
 
@@ -145,7 +145,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D2-HIGHERFUNC.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000544 secs. (544.00 microseconds) 
+; took 0.000594 secs. (593.74 microseconds) 
 
 !(assertEqual (get-type ((curry +) 2)) (-> Number Number))
 
@@ -254,7 +254,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.372 secs. (1371.83 milliseconds) 
+; took 1.333 secs. (1332.53 milliseconds) 
 
 !(assertEqualToResult ((curry +) 2) (((curry +) 2)))
 
@@ -419,7 +419,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 2.38 seconds.
+; took 2.29 seconds.
 
 !(assertEqual (((curry +) 2) 3) 5)
 
@@ -452,7 +452,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D2-HIGHERFUNC.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000911 secs. (910.77 microseconds) 
+; took 0.000918 secs. (918.00 microseconds) 
 
 !(assertEqual (get-type (curry-a + 2)) (-> Number Number))
 
@@ -472,7 +472,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D2-HIGHERFUNC.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000970 secs. (970.48 microseconds) 
+; took 0.000903 secs. (903.05 microseconds) 
 
 !(assertEqual (get-type ((curry-a + 2) 3)) Number)
 
@@ -493,7 +493,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D2-HIGHERFUNC.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000950 secs. (950.30 microseconds) 
+; took 0.000924 secs. (923.56 microseconds) 
 
 !(assertEqualToResult (get-type ((curry-a + 2) "S")) ())
 
@@ -578,7 +578,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.355 secs. (1354.89 milliseconds) 
+; took 1.322 secs. (1322.35 milliseconds) 
 
 !(assertEqual ((curry-a + 2) 3) 5)
 
@@ -653,7 +653,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.625 secs. (624.90 milliseconds) 
+; took 0.605 secs. (605.17 milliseconds) 
 
 !(assertEqualToResult (is-socrates) ((curry-a is Socrates)))
 
@@ -738,7 +738,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.358 secs. (1357.59 milliseconds) 
+; took 1.322 secs. (1321.61 milliseconds) 
 
 !(assertEqual ((curry-a is Socrates) Human) (is Socrates Human))
 
@@ -839,7 +839,7 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 1.696 secs. (1695.92 milliseconds) 
+; took 1.639 secs. (1638.82 milliseconds) 
 
 !(assertEqual ((is-socrates) Human) True)
 
@@ -1560,8 +1560,16 @@ Deterministic: <span class="ansi33"
 ;             [ 619002383-pr(['Number','Number'],'Number'),
 ;               619002383-pr(['Number','Number'],'Number')]))
 
-
-Script done on 2025-02-25 19:45:10+00:00 [COMMAND_EXIT_CODE="143"]
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_172898,_172904],Pr),
+;             -1,
+;             [ 619002383-pr(['Number','Number'],'Number'),
+;               619002383-pr(['Number','Number'],'Number')]))
+
+P;HTML|
+Script done on 2025-02-25 19:47:28+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
