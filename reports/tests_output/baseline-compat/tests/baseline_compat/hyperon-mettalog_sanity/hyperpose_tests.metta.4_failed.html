@@ -27,7 +27,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 20:37:53+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1341-146.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-25 19:57:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1787-403.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/hyperpose_tests.metta] ]
 P;HTML|
@@ -103,7 +103,7 @@ Script started on 2025-02-24 20:37:53+00:00 [COMMAND="timeout --preserve-status 
 
 ; 
 ; EVAL TEST
-; took 0.874 secs. (873.98 milliseconds) 
+; took 0.897 secs. (897.36 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((is-even 1) (is-even 2) (is-even 3)))) time_limit_exceeded time_limit_exceeded) (False True False))
 
@@ -171,19 +171,19 @@ Deterministic: <span class="ansi33"
 
 ; 
 ; EVAL TEST
-; took 0.996 secs. (996.18 milliseconds) 
+; took 1.001 secs. (1000.88 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((> 1 2) (is-even 2) (superpose (3 4))))) time_limit_exceeded time_limit_exceeded) (False True 3 4))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False True 3) 
+      (time_limit_exceeded) 
       (False True 3 4)]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False','[|]'('True','[|]'(3,[]))),'[|]'('False','[|]'('True','[|]'(3,'[|]'(4,[])))))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(time_limit_exceeded,[]),'[|]'('False','[|]'('True','[|]'(3,'[|]'(4,[])))))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (False True 3)) ('~nExpected: ' (False True 3 4)))
+>(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' (False True 3 4)))
 </span>;;;; test recursive hyperpose
 <span class="ansi38-013099040"
 >!(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
@@ -194,7 +194,15 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_48238],Pr),
+;             pr([_95484],Pr),
+;             -1,
+;             [ 569002220-pr(['Expression'],'%Undefined%'),
+;               569002220-pr(['Expression'],'%Undefined%')]))
+
+P;HTML|
+; failing( nearest_src_object<span class="pl-functor"
+>( </span>
+;             pr([_40642],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -210,7 +218,7 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_69890],Pr),
+;             pr([_60276],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -218,7 +226,7 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_18808],Pr),
+;             pr([_19686],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -226,15 +234,7 @@ Deterministic: <span class="ansi33"
 P;HTML|
 ; failing( nearest_src_object<span class="pl-functor"
 >( </span>
-;             pr([_94464],Pr),
-;             -1,
-;             [ 569002220-pr(['Expression'],'%Undefined%'),
-;               569002220-pr(['Expression'],'%Undefined%')]))
-
-P;HTML|
-; failing( nearest_src_object<span class="pl-functor"
->( </span>
-;             pr([_43148],Pr),
+;             pr([_86166],Pr),
 ;             -1,
 ;             [ 569002220-pr(['Expression'],'%Undefined%'),
 ;               569002220-pr(['Expression'],'%Undefined%')]))
@@ -244,20 +244,20 @@ Deterministic: <span class="ansi33"
 >( '&top',
 ;           1,
 ;           1,
-;           [_12052],
-;           [_12058],  _12042, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_46316],
+;           [_46322],  _46306, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           1,
 ;           1,
-;           [_99618],
-;           [_99624],  _99608, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
+;           [_22754],
+;           [_22760],  _22744, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 ; 
 ; EVAL TEST
-; took 0.954 secs. (953.99 milliseconds) 
+; took 0.961 secs. (960.77 milliseconds) 
 
 !(assertEqualToResult (catch (max-time! 1 (hyperpose ((hyperpose (1 2)) (hyperpose (3 4))))) time_limit_exceeded time_limit_exceeded) (1 2 3 4))
 
@@ -282,10 +282,10 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[(Error ('~nGot: ' (False True 3)) ('~nExpected: ' (False True 3 4)))]
+[(Error ('~nGot: ' (time_limit_exceeded)) ('~nExpected: ' (False True 3 4)))]
 [(Error ('~nGot: ' (1 3)) ('~nExpected: ' (1 2 3 4)))]
 
-Script done on 2025-02-24 20:37:56+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-25 19:57:17+00:00 [COMMAND_EXIT_CODE="7"]
 
 </pre>
 </body>
