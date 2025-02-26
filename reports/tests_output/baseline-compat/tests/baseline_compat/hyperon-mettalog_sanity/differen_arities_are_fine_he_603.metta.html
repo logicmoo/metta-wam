@@ -18,21 +18,12 @@
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:19:27+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-26 06:45:18+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] ]
 P;HTML|
@@ -48,9 +39,7 @@ Script started on 2025-02-24 14:19:27+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                        [ = 2 "Got: [((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2), ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2)]" ]
 P;HTML|
-;                        [ = 3 "Missed results: 3" ]
-P;HTML|
-;                         [ = 3 "Excessive results: ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2), ((Error (λ $x $y (+ $x $y)) IncorrectNumberOfArguments) 1 2))]" ]
+;                        [ = 3 "Missed result: 3)]" ]
 P;HTML|
 ;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta]
 
@@ -62,88 +51,41 @@ Script started on 2025-02-24 14:19:27+00:00 [COMMAND="timeout --preserve-status 
 > (: λ (-> Variable Atom Atom))
  
 </span><span class="ansi38-255165000"
-> (= ((λ $x $f) $14322)  
-  (let $x $14322 $f))
+> (= ((λ $x $f) $55182)  
+  (let $x $55182 $f))
  
 </span>;;; Test: Call unary lambda with one argument
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $16404 (+ 1 $16404)) 1) (2))
+>!(assertEqualToResult ((λ $57386 (+ 1 $57386)) 1) (2))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2494]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $2522 (+ 1 $2522)) 1) (2))];;; Test 2: Binary lambda
+;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.01"
+>;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.01</h3>
+P;HTML|
+;                               [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $6146 $6148]]] [ = $6152 True ] ] [ = $6152 False ] ]] [error instantiation_error $6166] ]
+
+[error [error [occurs_check $2860 (+ 1 $2860)] [context [ / metta_atom_asserted 2 ] $2886]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $2914 (+ 1 $2914)) 1) (2))];;; Test 2: Binary lambda
 ;;; ----------------------
 <span class="ansi38-255165000"
 > (: λ (-> Variable Variable Atom Atom Atom))
  
 </span><span class="ansi38-255165000"
-> (= ((λ $x $y $17344) $17350 $17356)  
+> (= ((λ $x $y $17598) $17604 $17610)  
   (let* 
-    ( ($x $17350) ($y $17356)) $17344))
+    ( ($x $17604) ($y $17610)) $17598))
  
 </span>;;; Test: Call binary lambda with two arguments
 <span class="ansi38-013099040"
->!(assertEqualToResult ((λ $19142 $19148 (+ $19142 $19148)) 1 2) (3))
+>!(assertEqualToResult ((λ $19404 $19410 (+ $19404 $19410)) 1 2) (3))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2754]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $2782 $2788 (+ $2782 $2788)) 1 2) (3))];;; Bug Validation: Ensure unary and binary lambda results do not duplicate
-;;; ------------------------------------------------------------
-;;; Expected Results:
-;;; - Unary lambda should return [2]
-;;; - Binary lambda should return [3]
-;;; - Should not return duplicates, e.g., [3, 3]
-<span class="ansi38-013099040"
->!(assertEqualToResult ((λ $4194 $4200 (+ $4194 $4200)) 1 2) (3))
+;<h3 id="HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.02"
+>;; HYPERON-METTALOG-SANITY.DIFFEREN-ARITIES-ARE-FINE-HE-603.02</h3>
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9578]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $9606 $9612 (+ $9606 $9612)) 1 2) (3))];;; Ensures no duplicates
-;;; Test 3: Properly working overloaded functions (control group)
-;;; -------------------------------------------------------------
-;;; Unary foo
-<span class="ansi38-255165000"
-> (: foo (-> Number Number))
- 
-</span><span class="ansi38-255165000"
-> (= (foo $x)  
-  (+ 1 $x))
- 
-</span>;;; Test: Call unary foo
-<span class="ansi38-013099040"
->!(assertEqualToResult (foo 1) (2))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1994]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult (foo 1) (2))];;; Binary foo
-<span class="ansi38-255165000"
-> (: foo (-> Number Number Number))
- 
-</span><span class="ansi38-255165000"
-> (= (foo $x $y)  
-  (+ $x $y))
- 
-</span>;;; Test: Call binary foo
-<span class="ansi38-013099040"
->!(assertEqualToResult (foo 1 2) (3))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14766]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult (foo 1 2) (3))];;; Test 4: Comparison of structured vs non-structured overloads
-;;; -------------------------------------------------------------
-;;; Ensures structured `λ` functions produce correct results without duplication
-<span class="ansi38-013099040"
->!(assertEqualToResult ((λ $16216 (+ 1 $16216)) 1) (2))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2480]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $2508 (+ 1 $2508)) 1) (2))]
-<span class="ansi38-013099040"
->!(assertEqualToResult ((λ $4034 $4040 (+ $4034 $4040)) 1 2) (3))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9418]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta] (assertEqualToResult ((λ $9446 $9452 (+ $9446 $9452)) 1 2) (3))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-[[[[[[[
-
-Script done on 2025-02-24 14:19:27+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-02-26 06:45:58+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/differen_arities_are_fine_he_603.metta" --halt=true\033[0m

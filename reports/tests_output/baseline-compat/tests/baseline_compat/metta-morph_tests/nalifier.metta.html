@@ -67,7 +67,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1921-368.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/nalifier.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-26 07:06:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/nalifier.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/nalifier.metta] ]
 P;HTML|
@@ -98,8 +98,8 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 > (: If (-> Bool Atom Atom Atom))
  
 </span><span class="ansi38-255165000"
-> (= (If $cond $then $26274)  
-  (if $cond $then $26274))
+> (= (If $cond $then $26704)  
+  (if $cond $then $26704))
  
 </span><span class="ansi38-255165000"
 > (: sequential (-> Expression %Undefined%))
@@ -147,31 +147,31 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
     (+ $w 1)))
  
 </span><span class="ansi38-255165000"
-> (= (Truth_Deduction ($f1 $c1) ($17656 $17662))  
+> (= (Truth_Deduction ($f1 $c1) ($21894 $21900))  
     
-  (* $f1 $17656)
+  (* $f1 $21894)
     
   (* 
-    (* $f1 $17656) 
-    (* $c1 $17662)))
+    (* $f1 $21894) 
+    (* $c1 $21900)))
  
 </span><span class="ansi38-255165000"
-> (= (Truth_Abduction ($f1 $c1) ($27890 $27896))  
-  ($27890 (Truth_w2c (* (* $f1 $c1) $27896))))
+> (= (Truth_Abduction ($f1 $c1) ($2920 $2926))  
+  ($2920 (Truth_w2c (* (* $f1 $c1) $2926))))
  
 </span><span class="ansi38-255165000"
 > (= (Truth_Induction $T1 $T2)  
   (Truth_Abduction $T2 $T1))
  
 </span><span class="ansi38-255165000"
-> (= (Truth_Revision ($f1 $c1) ($16862 $16868))  
+> (= (Truth_Revision ($f1 $c1) ($21970 $21976))  
   (let* 
-    ( ($16898 (Truth_c2w $c1)) 
-      ($16910 (Truth_c2w $16868)) 
-      ($16940 (+ $16898 $16910)) 
-      ($16976 (/ (+ (* $16898 $f1) (* $16910 $16862)) $16940)) 
-      ($17060 (Truth_w2c $16940))) 
-    ( (min 1.0 $16976) (min 0.99 (max (max $17060 $c1) $16868)))))
+    ( ($22006 (Truth_c2w $c1)) 
+      ($22018 (Truth_c2w $21976)) 
+      ($22048 (+ $22006 $22018)) 
+      ($22084 (/ (+ (* $22006 $f1) (* $22018 $21970)) $22048)) 
+      ($22168 (Truth_w2c $3854))) 
+    ( (min 1.0 $3890) (min 0.99 (max (max $3974 $c1) $3782)))))
  
 </span><span class="ansi38-255165000"
 > (= (Truth_Expectation ($f $c))  
@@ -182,35 +182,35 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 </span>;;;;NAL-1
 ;;;;!Syllogistic rules for Inheritance:
 <span class="ansi38-255165000"
-> (= (|- ($T $T1) ($T $28670))  
-  ($T (Truth_Revision $T1 $28670)))
+> (= (|- ($T $T1) ($T $17432))  
+  ($T (Truth_Revision $T1 $17432)))
  
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $b) $12454) (($b --> $12484) $12490))  
+> (= (|- (($a --> $b) $3072) (($b --> $3102) $3108))  
     
-  ($a --> $12484)
+  ($a --> $3102)
     
-  (Truth_Deduction $12454 $12490))
+  (Truth_Deduction $3072 $3108))
  
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $b) $25816) (($a --> $25846) $25852))  
+> (= (|- (($a --> $b) $17498) (($a --> $17528) $17534))  
     
-  ($25846 --> $b)
+  ($17528 --> $b)
     
-  (Truth_Induction $25816 $25852))
+  (Truth_Induction $17498 $17534))
  
 </span><span class="ansi38-255165000"
-> (= (|- (($a --> $c) $9478) (($9496 --> $c) $9502))  
+> (= (|- (($a --> $c) $3410) (($3428 --> $c) $3434))  
     
-  ($9496 --> $a)
+  ($3428 --> $a)
     
-  (Truth_Abduction $9478 $9502))
+  (Truth_Abduction $3410 $3434))
  
 </span>;;;Whether evidence was just counted once
 <span class="ansi38-255165000"
 > (= (StampDisjoint $Ev1 $Ev2)  
   (== () 
-    (collapse (let* (($21462 (superpose $Ev1)) ($21474 (superpose $Ev2))) (case (== $21462 $21474) ((True overlap)))))))
+    (collapse (let* (($16520 (superpose $Ev1)) ($16532 (superpose $Ev2))) (case (== $16520 $16532) ((True overlap)))))))
  
 </span>;;;actually that is quite cool and 4x faster in MeTTa than below (yet still 130 times slower than metta-morph with below)
 ;;;but it depends on more advanced pattern matching features which are not yet in metta-morph
@@ -223,52 +223,52 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 > (= (query $Term)  
   (match &self 
     (, 
-      ( ($A $3498) $3504) 
-      ( ($3522 $3528) $3534)) 
+      ( ($A $26108) $26114) 
+      ( ($26132 $26138) $26144)) 
     (let 
-      ($3558 $3564) 
+      ($3692 $3698) 
       (|- 
-        ($A $3498) 
-        ($3522 $3528)) 
+        ($A $3632) 
+        ($3656 $3662)) 
       (If 
         (and 
-          (== $3558 $Term) 
-          (StampDisjoint $3504 $3534)) 
-        ( ($Term $3564) (TupleConcat $3504 $3534))))))
+          (== $3692 $Term) 
+          (StampDisjoint $3638 $3668)) 
+        ( ($Term $3698) (TupleConcat $3638 $3668))))))
  
 </span>;;;choice between two options of different term
 <span class="ansi38-255165000"
-> (= (Choice (($Term1 $T1) $23840) (($23858 $23864) $23870))  
+> (= (Choice (($Term1 $T1) $24120) (($24138 $24144) $24150))  
   (If 
     (> 
       (Truth_Expectation $T1) 
-      (Truth_Expectation $23864)) 
-    ( ($Term1 $T1) $23840) 
-    ( ($23858 $3380) $3386)))
+      (Truth_Expectation $24144)) 
+    ( ($Term1 $T1) $24120) 
+    ( ($3538 $3544) $3550)))
  
 </span>;;;revise if there is no evidential overlap, else use higher-confident candidate
 <span class="ansi38-255165000"
-> (= (RevisionAndChoice (($Term1 ($f1 $17686)) $17692) (($17710 ($17722 $17728)) $17734))  
-  (let $17752 
-    (TupleConcat $17692 $17734) 
+> (= (RevisionAndChoice (($Term1 ($f1 $17888)) $17894) (($17912 ($17924 $17930)) $17936))  
+  (let $17954 
+    (TupleConcat $17894 $17936) 
     (If 
-      (StampDisjoint $17692 $17734) 
-      ( ($17710 (Truth_Revision ($f1 $17686) ($17722 $17728))) $17752) 
+      (StampDisjoint $17894 $17936) 
+      ( ($17912 (Truth_Revision ($f1 $17888) ($17924 $17930))) $17954) 
       (If 
-        (> $17686 $17728) 
-        ( ($Term1 ($f1 $17686)) $17692) 
-        ( ($17710 ($3606 $3612)) $3618)))))
+        (> $17888 $17930) 
+        ( ($Term1 ($f1 $17888)) $17894) 
+        ( ($3758 ($3770 $3776)) $3782)))))
  
 </span>;;;reduce beliefs
 <span class="ansi38-255165000"
-> (= (reduceBeliefs $RevChoiceOrBoth $option $24738)  
+> (= (reduceBeliefs $RevChoiceOrBoth $option $25054)  
   (If 
-    (== $24738 ()) $option 
+    (== $25054 ()) $option 
     (let* 
-      ( ($24804 (car-atom $24738)) 
-        ($24834 (cdr-atom $24738)) 
-        ($24864 ($RevChoiceOrBoth $option $24804))) 
-      (reduceBeliefs $RevChoiceOrBoth $24864 $24834))))
+      ( ($25120 (car-atom $25054)) 
+        ($25150 (cdr-atom $25054)) 
+        ($25180 ($RevChoiceOrBoth $option $25120))) 
+      (reduceBeliefs $RevChoiceOrBoth $3634 $3604))))
  
 </span>;;;an empty event for reduction purposes
 <span class="ansi38-255165000"
@@ -337,10 +337,10 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(let ($23776 $23782) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $23776)
+>!(let ($6730 $6736) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $6730)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (let ($26064 $26070) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $26064) ((((ExtSet sam) --> duck) (1.0 0.6183206106870229))))
+>!(assertEqualToResult (let ($9026 $9032) (choiceQuery (((ExtSet sam) --> duck) ((ExtSet sam) --> swan) ((ExtSet sam) --> dog))) $9026) ((((ExtSet sam) --> duck) (1.0 0.6183206106870229))))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.NALIFIER.01"
@@ -350,40 +350,40 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 >( '&top',
 ;           dog,
 ;           2,
-;           [_103198,_103204],
-;           [_103210,_103216],  _103188, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_60212,_60218],
+;           [_60224,_60230],  _60202, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_18188,_18194,_18200],
-;           [_18206,_18212,_18218],  _18178, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_82156,_82162,_82168],
+;           [_82174,_82180,_82186],  _82146, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_33684,_33690,_33696],
-;           [_33702,_33708,_33714],  _33674, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_103858,_103864,_103870],
+;           [_103876,_103882,_103888],  _103848, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_37994,_38000],
-;           [_38006,_38012],  _37984, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_105626,_105632],
+;           [_105638,_105644],  _105616, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_42226,_42232],
-;           [_42238,_42244],  _42216, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_108628,_108634],
+;           [_108640,_108646],  _108618, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -392,968 +392,8 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 ;             -->,
 ;             ['IntSet',brown]],
 ;           1,
-;           [_43646],
-;           [_43652],  _43636, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_52482],
-;           [_52488],  _52472, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_70998,_71004],
-;           [_71010,_71016],  _70988, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_74110,_74116],
-;           [_74122,_74128],  _74100, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_96396,_96402,_96408],
-;           [_96414,_96420,_96426],  _96386, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_18296,_18302,_18308],
-;           [_18314,_18320,_18326],  _18286, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_18310,_18316],
-;           [_18322,_18328],  _18300, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_18328,_18334],
-;           [_18340,_18346],  _18318, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_18628],
-;           [_18634],  _18618, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_27768],
-;           [_27774],  _27758, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           1.0,
-;           1,
-;           [_107760],
-;           [_107766],  _107750, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           1.0,
-;           1,
-;           [_98566],
-;           [_98572],  _98556, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_18876,_18882],
-;           [_18888,_18894],  _18866, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_18892,_18898],
-;           [_18904,_18910],  _18882, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_40570,_40576,_40582],
-;           [_40588,_40594,_40600],  _40560, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_62976,_62982,_62988],
-;           [_62994,_63000,_63006],  _62966, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_67322,_67328],
-;           [_67334,_67340],  _67312, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_70928,_70934],
-;           [_70940,_70946],  _70918, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_73342],
-;           [_73348],  _73332, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_82540],
-;           [_82546],  _82530, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_101848,_101854],
-;           [_101860,_101866],  _101838, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_102690,_102696],
-;           [_102702,_102708],  _102680, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_18984,_18990,_18996],
-;           [_19002,_19008,_19014],  _18974, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_35574,_35580,_35586],
-;           [_35592,_35598,_35604],  _35564, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_40528,_40534],
-;           [_40540,_40546],  _40518, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_45418,_45424],
-;           [_45430,_45436],  _45408, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_47120],
-;           [_47126],  _47110, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_56492],
-;           [_56498],  _56482, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_34174,_34180],
-;           [_34186,_34192],  _34164, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_44246,_44252],
-;           [_44258,_44264],  _44236, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           3,
-;           [_72892,_72898,_72904],
-;           [_72910,_72916,_72922],  _72882, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           3,
-;           [_100838,_100844,_100850],
-;           [_100856,_100862,_100868],  _100828, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_109154,_109160],
-;           [_109166,_109172],  _109144, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_19020,_19026],
-;           [_19032,_19038],  _19010, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',brown],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_19076],
-;           [_19082],  _19066, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',brown],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_19092],
-;           [_19098],  _19082, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_39922,_39928],
-;           [_39934,_39940],  _39912, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_50502,_50508],
-;           [_50514,_50520],  _50492, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           3,
-;           [_78532,_78538,_78544],
-;           [_78550,_78556,_78562],  _78522, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           3,
-;           [_106338,_106344,_106350],
-;           [_106356,_106362,_106368],  _106328, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_114630,_114636],
-;           [_19120,_19126],  _19098, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',brown],
-;           2,
-;           [_19124,_19130],
-;           [_19136,_19142],  _19114, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',brown],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_19138],
-;           [_19144],  _19128, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',brown],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_22530],
-;           [_22536],  _22520, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_80328,_80334],
-;           [_80340,_80346],  _80318, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_83140,_83146],
-;           [_83152,_83158],  _83130, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_104542,_104548,_104554],
-;           [_104560,_104566,_104572],  _104532, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_17770,_17776,_17782],
-;           [_17788,_17794,_17800],  _17760, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_17802,_17808],
-;           [_17814,_17820],  _17792, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_19410,_19416],
-;           [_19422,_19428],  _19400, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [dog,-->,dog],
-;           1,
-;           [_17722],
-;           [_17728],  _17712, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [dog,-->,dog],
-;           1,
-;           [_17720],
-;           [_17726],  _17710, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_17754,_17760],
-;           [_17766,_17772],  _17744, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_17754,_17760],
-;           [_17766,_17772],  _17744, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_38830,_38836,_38842],
-;           [_38848,_38854,_38860],  _38820, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_60104,_60110,_60116],
-;           [_60122,_60128,_60134],  _60094, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_63482,_63488],
-;           [_63494,_63500],  _63472, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_66016,_66022],
-;           [_66028,_66034],  _66006, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [dog,-->,dog],
-;           1,
-;           [_58612],
-;           [_58618],  _58602, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [dog,-->,dog],
-;           1,
-;           [_49164],
-;           [_49170],  _49154, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_34906,_34912],
-;           [_34918,_34924],  _34896, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_44698,_44704],
-;           [_44710,_44716],  _44688, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           3,
-;           [_72242,_72248,_72254],
-;           [_72260,_72266,_72272],  _72232, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           3,
-;           [_99738,_99744,_99750],
-;           [_99756,_99762,_99768],  _99728, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_108150,_108156],
-;           [_108162,_108168],  _108140, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_18016,_18022],
-;           [_18028,_18034],  _18006, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',small],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_18072],
-;           [_18078],  _18062, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',small],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_18070],
-;           [_18076],  _18060, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_34642,_34648],
-;           [_34654,_34660],  _34632, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_44010,_44016],
-;           [_44022,_44028],  _44000, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           3,
-;           [_71396,_71402,_71408],
-;           [_71414,_71420,_71426],  _71386, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           3,
-;           [_98248,_98254,_98260],
-;           [_98266,_98272,_98278],  _98238, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_107946,_107952],
-;           [_107958,_107964],  _107936, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',small],
-;           2,
-;           [_17812,_17818],
-;           [_17824,_17830],  _17802, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',small],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_17868],
-;           [_17874],  _17858, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',small],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_17866],
-;           [_17872],  _17856, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_78932,_78938],
-;           [_78944,_78950],  _78922, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_87374,_87380],
-;           [_87386,_87392],  _87364, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           3,
-;           [_114846,_114852,_114858],
-;           [_18070,_18076,_18082],  _18042, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           3,
-;           [_30952,_30958,_30964],
-;           [_30970,_30976,_30982],  _30942, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_40878,_40884],
-;           [_40890,_40896],  _40868, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_49904,_49910],
-;           [_49916,_49922],  _49894, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',furry],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_47598],
-;           [_47604],  _47588, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',furry],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_52822],
-;           [_52828],  _52812, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_74686,_74692],
-;           [_74698,_74704],  _74676, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_82912,_82918],
-;           [_82924,_82930],  _82902, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           3,
-;           [_110030,_110036,_110042],
-;           [_110048,_110054,_110060],  _110020, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           3,
-;           [_26684,_26690,_26696],
-;           [_26702,_26708,_26714],  _26674, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_36218,_36224],
-;           [_36230,_36236],  _36208, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',furry],
-;           2,
-;           [_45486,_45492],
-;           [_45498,_45504],  _45476, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',furry],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_42992],
-;           [_42998],  _42982, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',furry],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_47878],
-;           [_47884],  _47868, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_34906,_34912],
-;           [_34918,_34924],  _34896, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_44698,_44704],
-;           [_44710,_44716],  _44688, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           3,
-;           [_72242,_72248,_72254],
-;           [_72260,_72266,_72272],  _72232, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           3,
-;           [_99738,_99744,_99750],
-;           [_99756,_99762,_99768],  _99728, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_108150,_108156],
-;           [_108162,_108168],  _108140, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_18016,_18022],
-;           [_18028,_18034],  _18006, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',barks],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_18072],
-;           [_18078],  _18062, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',barks],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_18070],
-;           [_18076],  _18060, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_34642,_34648],
-;           [_34654,_34660],  _34632, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_44010,_44016],
-;           [_44022,_44028],  _44000, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           3,
-;           [_71396,_71402,_71408],
-;           [_71414,_71420,_71426],  _71386, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           3,
-;           [_98248,_98254,_98260],
-;           [_98266,_98272,_98278],  _98238, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_107946,_107952],
-;           [_107958,_107964],  _107936, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           ['IntSet',barks],
-;           2,
-;           [_17812,_17818],
-;           [_17824,_17830],  _17802, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',barks],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_17868],
-;           [_17874],  _17858, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ ['IntSet',barks],
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_17866],
-;           [_17872],  _17856, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_44738,_44744],
-;           [_44750,_44756],  _44728, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_48186,_48192],
-;           [_48198,_48204],  _48176, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_69820,_69826,_69832],
-;           [_69838,_69844,_69850],  _69810, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           3,
-;           [_91126,_91132,_91138],
-;           [_91144,_91150,_91156],  _91116, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_101302,_101308],
-;           [_101314,_101320],  _101292, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_101440,_101446],
-;           [_101452,_101458],  _101430, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ dog,
-;             -->,
-;             ['IntSet',brown]],
-;           1,
-;           [_99376],
-;           [_99382],  _99366, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_18352],
+;           [_18358],  _18342, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1368,120 +408,50 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           duck,
+;           dog,
 ;           2,
-;           [_20690,_20696],
-;           [_20702,_20708],  _20680, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_25786,_25792],
-;           [_25798,_25804],  _25776, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           3,
-;           [_49124,_49130,_49136],
-;           [_49142,_49148,_49154],  _49114, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           3,
-;           [_71950,_71956,_71962],
-;           [_71968,_71974,_71980],  _71940, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_77024,_77030],
-;           [_77036,_77042],  _77014, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_81510,_81516],
-;           [_81522,_81528],  _81500, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ duck,
-;             -->,
-;             [ 'IntSet',
-;               'yellow']],
-;           1,
-;           [_93402],
-;           [_93408],  _93392, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ duck,
-;             -->,
-;             [ 'IntSet',
-;               'yellow']],
-;           1,
-;           [_18344],
-;           [_18350],  _18334, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_31320,_31326],
+;           [_31332,_31338],  _31310, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_48838,_48844],
-;           [_48850,_48856],  _48828, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           dog,
-;           2,
-;           [_52530,_52536],
-;           [_52542,_52548],  _52520, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_35294,_35300],
+;           [_35306,_35312],  _35284, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_74622,_74628,_74634],
-;           [_74640,_74646,_74652],  _74612, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_57064,_57070,_57076],
+;           [_57082,_57088,_57094],  _57054, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_96460,_96466,_96472],
-;           [_96478,_96484,_96490],  _96450, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_78724,_78730,_78736],
+;           [_78742,_78748,_78754],  _78714, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_101296,_101302],
-;           [_101308,_101314],  _101286, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_82432,_82438],
+;           [_82444,_82450],  _82422, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_101440,_101446],
-;           [_101452,_101458],  _101430, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_85366,_85372],
+;           [_85378,_85384],  _85356, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1490,8 +460,8 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 ;             -->,
 ;             ['IntSet',brown]],
 ;           1,
-;           [_99376],
-;           [_99382],  _99366, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_89232],
+;           [_89238],  _89222, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1500,124 +470,72 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 ;             -->,
 ;             ['IntSet',brown]],
 ;           1,
-;           [_18350],
-;           [_18356],  _18340, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_96586],
+;           [_96592],  _96576, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           duck,
-;           2,
-;           [_20690,_20696],
-;           [_20702,_20708],  _20680, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_25786,_25792],
-;           [_25798,_25804],  _25776, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           3,
-;           [_49124,_49130,_49136],
-;           [_49142,_49148,_49154],  _49114, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           3,
-;           [_71950,_71956,_71962],
-;           [_71968,_71974,_71980],  _71940, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_77024,_77030],
-;           [_77036,_77042],  _77014, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           duck,
-;           2,
-;           [_81510,_81516],
-;           [_81522,_81528],  _81500, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           [ duck,
-;             -->,
-;             ['IntSet',small]],
+;           1.0,
 ;           1,
-;           [_82348],
-;           [_82354],  _82338, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_63464],
+;           [_63470],  _63454, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           [ duck,
-;             -->,
-;             ['IntSet',small]],
+;           1.0,
 ;           1,
-;           [_91042],
-;           [_91048],  _91032, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_55130],
+;           [_55136],  _55120, Function_declaration_implTopC91_c124_c931, Function_declaration_implTopC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_18308,_18314],
-;           [_18320,_18326],  _18298, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_77052,_77058],
+;           [_77064,_77070],  _77042, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_18306,_18312],
-;           [_18318,_18324],  _18296, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_80794,_80800],
+;           [_80806,_80812],  _80784, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_34212,_34218,_34224],
-;           [_34230,_34236,_34242],  _34202, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_103004,_103010,_103016],
+;           [_103022,_103028,_103034],  _102994, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           3,
-;           [_56084,_56090,_56096],
-;           [_56102,_56108,_56114],  _56074, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_18936,_18942,_18948],
+;           [_18954,_18960,_18966],  _18926, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_60324,_60330],
-;           [_60336,_60342],  _60314, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_18970,_18976],
+;           [_18982,_18988],  _18960, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           dog,
 ;           2,
-;           [_63792,_63798],
-;           [_63804,_63810],  _63782, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+;           [_22292,_22298],
+;           [_22304,_22310],  _22282, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1626,8 +544,8 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 ;             -->,
 ;             ['IntSet',brown]],
 ;           1,
-;           [_65118],
-;           [_65124],  _65108, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_25032],
+;           [_25038],  _25022, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
@@ -1636,35 +554,79 @@ Script started on 2025-02-25 20:17:26+00:00 [COMMAND="timeout --preserve-status 
 ;             -->,
 ;             ['IntSet',brown]],
 ;           1,
-;           [_73452],
-;           [_73458],  _73442, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+;           [_35022],
+;           [_35028],  _35012, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           duck,
+;           dog,
 ;           2,
-;           [_92874,_92880],
-;           [_92886,_92892],  _92864, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
+;           [_52018,_52024],
+;           [_52030,_52036],  _52008, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           duck,
+;           dog,
 ;           2,
-;           [_101976,_101982],
-;           [_101988,_101994],  _101966, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
+;           [_55980,_55986],
+;           [_55992,_55998],  _55970, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
-;           duck,
+;           dog,
 ;           3,
-;           [_18374,_18380,_18386],
-;           [_18392,_18398,_18404],  _18364, Function_declaration_implTopDuckC91_c124_c931, Function_declaration_implTopDuckC91_c124_c93, Impl)</span>)
+;           [_78678,_78684,_78690],
+;           [_78696,_78702,_78708],  _78668, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
 
 P;HTML|
-Script done on 2025-02-25 20:18:06+00:00 [COMMAND_EXIT_CODE="143"]
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           dog,
+;           3,
+;           [_100466,_100472,_100478],
+;           [_100484,_100490,_100496],  _100456, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           dog,
+;           2,
+;           [_102000,_102006],
+;           [_102012,_102018],  _101990, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           dog,
+;           2,
+;           [_102628,_102634],
+;           [_102640,_102646],  _102618, Function_declaration_implTopDogC91_c124_c931, Function_declaration_implTopDogC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [ dog,
+;             -->,
+;             ['IntSet',brown]],
+;           1,
+;           [_101544],
+;           [_101550],  _101534, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [ dog,
+;             -->,
+;             ['IntSet',brown]],
+;           1,
+;           [_18998],
+;           [_19004],  _18988, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+
+Script done on 2025-02-26 07:06:54+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>

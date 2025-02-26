@@ -1,0 +1,702 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-26 06:36:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[()]" ]
+P;HTML|
+;                        [ = 5 "[()]" ]
+P;HTML|
+;                         [ = 6 "[()]" ]
+P;HTML|
+;                         [ = 7 "[()]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; A classical example of dependent types
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Simple type definitions:
+;;; Defines the natural numbers `Nat` for counting
+<span class="ansi38-255165000"
+> (: Nat Type)
+ 
+</span><span class="ansi38-255165000"
+> (: Z Nat)
+ 
+</span><span class="ansi38-255165000"
+> (: S (-> Nat Nat))
+ 
+</span>;;; `Vec` takes a `$t` type and a `Nat` length.
+<span class="ansi38-255165000"
+> (: Vec (-> $t Nat Type))
+ 
+</span>;;; `Cons` and `Nil` construct `Vec` values, with `Cons` incrementing the length by 1.
+<span class="ansi38-255165000"
+> (: Cons (-> $t (Vec $t $x) (Vec $t (S $x))))
+ 
+</span><span class="ansi38-255165000"
+> (: Nil (Vec $t Z))
+ 
+</span>;;; We can query the derived type
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.01</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_25074],
+;           [_25080],  _25064, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_16120],
+;           [_16126],  _16110, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_9240],
+;           [_9246],  _9230, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_11014,_11020],
+;           [_11026,_11032],  _11004, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_14912,_14918],
+;           [_14924,_14930],  _14902, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_17124],
+;           [_17130],  _17114, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_9158],
+;           [_9164],  _9148, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_45114],
+;           [_45120],  _45104, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_30146],
+;           [_30152],  _30136, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_35150,_35156],
+;           [_35162,_35168],  _35140, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_35408,_35414],
+;           [_35420,_35426],  _35398, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_31498],
+;           [_31504],  _31488, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_16798],
+;           [_16804],  _16788, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8488],
+;           [_8494],  _8478, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_42674],
+;           [_42680],  _42664, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_8050,_8056],
+;           [_8062,_8068],  _8040, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_8048,_8054],
+;           [_8060,_8066],  _8038, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 2.30 seconds.
+
+!(assertEqual (get-type (Cons 0 (Cons 1 Nil))) (Vec Number (S (S Z))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Vec $33260 
+          (S (S Z))) (Vec $33278 (S (S Z)))) 
+      ( (Vec Number 
+          (S (S Z))))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_3532,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),'[|]'('[|]'('Vec','[|]'(_3484,'[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('[|]'('S','[|]'('[|]'('S','[|]'('Z',[])),[])),[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Vec $39476 (S (S Z))) (Vec $39494 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))
+</span>;;; `drop` removes the head from a `Vec`, returning a `Vec` with length decrease by 1
+<span class="ansi38-255165000"
+> (: drop (-> (Vec $t (S $x)) (Vec $t $x)))
+ 
+</span><span class="ansi38-255165000"
+> (= (drop (Cons $x $xs))  $xs)
+ 
+</span>;;; Query type
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.02</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_35844,_35850],
+;           [_35856,_35862],  _35834, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_35428,_35434],
+;           [_35440,_35446],  _35418, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_42562,_42568],
+;           [_42574,_42580],  _42552, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_46672,_46678],
+;           [_46684,_46690],  _8216, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_7786,_7792],
+;           [_7798,_7804],  _7776, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Vec',
+;           2,
+;           [_7784,_7790],
+;           [_7796,_7802],  _7774, Function_declaration_implTopVecC91_c124_c931, Function_declaration_implTopVecC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 0.900 secs. (900.12 milliseconds) 
+
+!(assertEqual (get-type (drop (Cons 1 Nil))) (Vec Number Z))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Vec $33584 Z) (Vec $33602 Z)) 
+      ( (Vec Number Z))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('Vec','[|]'(_3364,'[|]'('Z',[]))),'[|]'('[|]'('Vec','[|]'(_3340,'[|]'('Z',[]))),[])),'[|]'('[|]'('Vec','[|]'('Number','[|]'('Z',[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((Vec $39428 Z) (Vec $39446 Z))) ('~nExpected: ' ((Vec Number Z))))
+</span>;;; Check length after dropping
+<span class="ansi38-013099040"
+>!(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.03</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_26368,_26374],
+;           [_26380,_26386],  _26358, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_35554,_35560],
+;           [_35566,_35572],  _35544, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_38168,_38174],
+;           [_38180,_38186],  _38158, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_39228,_39234],
+;           [_39240,_39246],  _39218, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_45376,_45382],
+;           [_45388,_45394],  _45366, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Cons',
+;           2,
+;           [_7882,_7888],
+;           [_7894,_7900],  _7872, Function_declaration_implTopConsC91_c124_c931, Function_declaration_implTopConsC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 0.924 secs. (923.75 milliseconds) 
+
+!(assertEqual (drop (Cons 2 (Cons 1 Nil))) (Cons 1 Nil))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Cons 1 Nil)) 
+      ( (Cons 1 Nil))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; Types can protect against misuse, like dropping from empty Vec
+<span class="ansi38-013099040"
+>!(assertEqualToResult (get-type (drop Nil)) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.04</h3>
+; 
+; EVAL TEST
+; took 0.000471 secs. (471.35 microseconds) 
+
+!(assertEqualToResult (get-type (drop Nil)) ())
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (() ()) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'([],'[|]'([],[])),[])
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; The result returned by `get-type` is reduced, thus,
+;;; grounded operations in type declarations work (kind of)
+;;; NOTE: tests below is the current behavior, which may be changed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `VecN` and `ConsN` use grounded `+` to increment the length.
+<span class="ansi38-255165000"
+> (: VecN (-> $t Number Type))
+ 
+</span><span class="ansi38-255165000"
+> (: ConsN (-> $t (VecN $t $x) (VecN $t (+ $x 1))))
+ 
+</span><span class="ansi38-255165000"
+> (: NilN (VecN $t 0))
+ 
+</span>;;; When querying types, grounded ops are reduced
+<span class="ansi38-013099040"
+>!(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.05</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_8798,_8804],
+;           [_8810,_8816],  _8788, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_8814,_8820],
+;           [_8826,_8832],  _8804, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_13630,_13636],
+;           [_13642,_13648],  _13620, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_18692,_18698],
+;           [_18704,_18710],  _18682, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_35970,_35976],
+;           [_35982,_35988],  _35960, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_36622,_36628],
+;           [_36634,_36640],  _36612, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_39370,_39376],
+;           [_39382,_39388],  _39360, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_40342,_40348],
+;           [_40354,_40360],  _40332, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_7880,_7886],
+;           [_7892,_7898],  _7870, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_7878,_7884],
+;           [_7890,_7896],  _7868, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 1.531 secs. (1530.95 milliseconds) 
+
+!(assertEqual (get-type (ConsN "1" (ConsN "2" NilN))) (VecN String 2))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (VecN $28928 2) (VecN $28946 2)) 
+      ( (VecN String 2))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_3458,'[|]'(2,[]))),'[|]'('[|]'('VecN','[|]'(_3434,'[|]'(2,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(2,[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((VecN $34774 2) (VecN $34792 2))) ('~nExpected: ' ((VecN String 2))))
+</span>;;; Similarly, `-` reduces the length in `dropN` type.
+<span class="ansi38-255165000"
+> (: dropN (-> (VecN $t $x) (VecN $t (- $x 1))))
+ 
+</span><span class="ansi38-255165000"
+> (= (dropN (ConsN $x $xs))  $xs)
+ 
+</span><span class="ansi38-013099040"
+>!(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.06"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.06</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_40528,_40534],
+;           [_40540,_40546],  _40518, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_45510,_45516],
+;           [_45522,_45528],  _45500, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_9056,_9062],
+;           [_9068,_9074],  _9046, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_9054,_9060],
+;           [_9066,_9072],  _9044, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_24362,_24368],
+;           [_24374,_24380],  _24352, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_28326,_28332],
+;           [_28338,_28344],  _28316, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_35984,_35990],
+;           [_35996,_36002],  _35974, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_37280,_37286],
+;           [_37292,_37298],  _37270, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_44158,_44164],
+;           [_44170,_44176],  _44148, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'VecN',
+;           2,
+;           [_7790,_7796],
+;           [_7802,_7808],  _7780, Function_declaration_implTopVecNC91_c124_c931, Function_declaration_implTopVecNC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 1.521 secs. (1520.89 milliseconds) 
+
+!(assertEqual (get-type (dropN (ConsN "1" NilN))) (VecN String 0))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (VecN $24584 0) (VecN $24602 0)) 
+      ( (VecN String 0))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('VecN','[|]'(_3370,'[|]'(0,[]))),'[|]'('[|]'('VecN','[|]'(_3346,'[|]'(0,[]))),[])),'[|]'('[|]'('VecN','[|]'('String','[|]'(0,[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ((VecN $30430 0) (VecN $30448 0))) ('~nExpected: ' ((VecN String 0))))
+</span>;;; TODO: doesn't work after type checking fixes
+;;; However, without any validation, invalid lengths like -1 can be derived.
+<span class="ansi38-255165000"
+> (assertEqual ((get-type (dropN (dropN (ConsN "1" NilN))))) (VecN String -1))
+ 
+</span>;;; Applying `dropN` to `NilN` is not badly typed, but it
+;;; doesn't reduce, since there are no definitions for this case.
+<span class="ansi38-013099040"
+>!(assertEqualToResult (dropN NilN) ((dropN NilN)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.07"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.D3-DEPTYPES.07</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.36 milliseconds) 
+
+!(assertEqualToResult (dropN NilN) ((dropN NilN)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ($45314) 
+      ( (dropN NilN))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(_43260,[]),'[|]'('[|]'(dropN,'[|]'('NilN',[])),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' ($50882)) ('~nExpected: ' ((dropN NilN))))
+</span>P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 1
+</span><span class="ansi31"
+>Failures: 6
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[(Error ('~nGot: ' ((Vec $40400 (S (S Z))) (Vec $40418 (S (S Z))))) ('~nExpected: ' ((Vec Number (S (S Z))))))]
+[(Error ('~nGot: ' ((Vec $40346 Z) (Vec $40364 Z))) ('~nExpected: ' ((Vec Number Z))))]
+[()]
+[(Error ('~nGot: ' (() ())) ('~nExpected: ' ()))]
+[(Error ('~nGot: ' ((VecN $35694 2) (VecN $35712 2))) ('~nExpected: ' ((VecN String 2))))]
+[(Error ('~nGot: ' ((VecN $31350 0) (VecN $31368 0))) ('~nExpected: ' ((VecN String 0))))]
+[(Error ('~nGot: ' ($51794)) ('~nExpected: ' ((dropN NilN))))]
+
+Script done on 2025-02-26 06:36:10+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/d3_deptypes.metta" --halt=true\033[0m

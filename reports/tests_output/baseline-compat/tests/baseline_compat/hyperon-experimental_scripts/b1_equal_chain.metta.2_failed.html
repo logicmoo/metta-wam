@@ -1,0 +1,547 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-26 06:32:30+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[()]" ]
+P;HTML|
+;                        [ = 5 "[()]" ]
+P;HTML|
+;                         [ = 6 "[()]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; The equality sign is specially treated by the interpreter.
+;;; The evaluation of any (expr) in MeTTa is done via
+;;; constructing the following equality query:
+;;; (match &self (= (expr) $r) $r)
+;;; The result $r is recursively evaluated in the same way,
+;;; until the match is empty (when the equality match is
+;;; empty, the expression is evaluated to itself).
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (I $x)  $x)
+ 
+</span><span class="ansi38-255165000"
+> (= ((K $x) $y)  $x)
+ 
+</span>;;; Note that `(K $x)` is allowed here
+<span class="ansi38-255165000"
+> (= (K $x $y)  $x)
+ 
+</span><span class="ansi38-255165000"
+> (= (S $x $y $4428)  
+  ($x $4428 
+    ($y $4428)))
+ 
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `assertEqual` compares (sets of) results of evaluation
+;;; of two expressions (both expressions can have empty
+;;; sets of results, so `assertEqualToResult` is safer)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (S K K x) x)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.01</h3>
+; 
+; EVAL TEST
+; took 0.000395 secs. (395.45 microseconds) 
+
+!(assertEqual (S K K x) x)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (x) 
+      (x)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Here, we use `assertEqualToResult` to make sure
+;;; that the expression is evaluated to itself
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqualToResult (expression without known equalities) ((expression without known equalities)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.02</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           expression,
+;           3,
+;           [_27296,_27302,_27308],
+;           [_27314,_27320,_27326],  _27286, Function_declaration_implTopExpressionC91_c124_c931, Function_declaration_implTopExpressionC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 0.199 secs. (199.29 milliseconds) 
+
+!(assertEqualToResult (expression without known equalities) ((expression without known equalities)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (expression without known equalities)) 
+      ( (expression without known equalities))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Another example
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (Add $x Z)  $x)
+ 
+</span><span class="ansi38-255165000"
+> (= (Add $x (S $y))  
+  (Add 
+    (S $x) $y))
+ 
+</span><span class="ansi38-013099040"
+>!(assertEqual (Add (S Z) (S Z)) (S (S Z)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.03</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_35234],
+;           [_35240],  _35224, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15612],
+;           [_15618],  _15602, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_7954],
+;           [_7960],  _7944, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_40394],
+;           [_40400],  _40384, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_29336],
+;           [_29342],  _29326, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15430],
+;           [_15436],  _15420, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_7832],
+;           [_7838],  _7822, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_39672],
+;           [_39678],  _39662, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_30804],
+;           [_30810],  _30794, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15410],
+;           [_15416],  _15400, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_7812],
+;           [_7818],  _7802, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_39612],
+;           [_39618],  _39602, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 1.397 secs. (1396.97 milliseconds) 
+
+!(assertEqual (Add (S Z) (S Z)) (S (S Z)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (S (S Z))) 
+      ( (S (S Z)))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; In the current implementation, child expressions
+;;; are reduced
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-013099040"
+>!(assertEqual (Something? (Add (S Z) (S Z))) (Something? (S (S Z))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.04</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_47626],
+;           [_9126],  _9110, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_32756],
+;           [_32762],  _32746, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15784],
+;           [_15790],  _15774, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8596],
+;           [_8602],  _8586, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_45926],
+;           [_45932],  _8988, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_31670],
+;           [_31676],  _31660, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_15378],
+;           [_15384],  _15368, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8476],
+;           [_8482],  _8466, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_7976],
+;           [_7982],  _7966, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_42950],
+;           [_42956],  _42940, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_36058],
+;           [_36064],  _36048, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_16938],
+;           [_16944],  _16928, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8500],
+;           [_8506],  _8490, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_43040],
+;           [_43046],  _43030, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_40072],
+;           [_40078],  _40062, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_29096],
+;           [_29102],  _29086, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_23816],
+;           [_23822],  _23806, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8972],
+;           [_8978],  _8962, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_8480],
+;           [_8486],  _8470, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'S',
+;           1,
+;           [_32514],
+;           [_32520],  _32504, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_24766],
+;           [_24772],  _24756, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Something?',
+;           1,
+;           [_13978],
+;           [_13984],  _13968, Function_declaration_implTopSomethingC91_c124_c931, Function_declaration_implTopSomethingC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 2.71 seconds.
+
+!(assertEqual (Something? (Add (S Z) (S Z))) (Something? (S (S Z))))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Something? (S (S Z)))) 
+      ( (Something? (S (S Z))))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Note that the same variable can be used multiple times on the left
+;;; side of expressions, and that the "function" doesn't need to
+;;; cover all possible inputs (i.e. it can be "non-total")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+<span class="ansi38-255165000"
+> (= (eq $x $x)  T)
+ 
+</span><span class="ansi38-013099040"
+>!(assertEqual (eq (S K K x) x) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.05</h3>
+; 
+; EVAL TEST
+; took 0.002 secs. (1.88 milliseconds) 
+
+!(assertEqual (eq (S K K x) x) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (eq Green Blue) ((eq Green Blue)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.06"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B1-EQUAL-CHAIN.06</h3>
+; 
+; EVAL TEST
+; took 0.001 secs. (1.16 milliseconds) 
+
+!(assertEqualToResult (eq Green Blue) ((eq Green Blue)))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (T) 
+      ( (eq Green Blue))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('T',[]),'[|]'('[|]'(eq,'[|]'('Green','[|]'('Blue',[]))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (T)) ('~nExpected: ' ((eq Green Blue))))
+</span>P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 5
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[()]
+[(Error ('~nGot: ' (T)) ('~nExpected: ' ((eq Green Blue))))]
+
+Script done on 2025-02-26 06:32:35+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b1_equal_chain.metta" --halt=true\033[0m

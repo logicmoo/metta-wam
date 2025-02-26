@@ -1,0 +1,1613 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+>
+<title></title>
+<style type="text/css"
+>
+.ansi2html-content { display: inline; white-space: pre-wrap; word-wrap: break-word; }
+.body_foreground { color: #AAAAAA; }
+.body_background { background-color: #000000; }
+.inv_foreground { color: #000000; }
+.inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
+.ansi36 { color: #00aaaa; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+</style>
+</head>
+<body class="body_foreground body_background" style="font-size: normal;" >
+<pre class="ansi2html-content"
+>
+Script started on 2025-02-26 06:32:35+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+
+; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta] ]
+P;HTML|
+;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta]
+P;HTML|
+;                       [ = 1 "[()]" ]
+P;HTML|
+;                       [ = 2 "[()]" ]
+P;HTML|
+;                       [ = 3 "[()]" ]
+P;HTML|
+;                        [ = 4 "[()]" ]
+P;HTML|
+;                        [ = 5 "[()]" ]
+P;HTML|
+;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; `match` can be used inside equalities, which is typically
+;;; used for querying and reasoning over declarative knowledge
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Fact
+<span class="ansi38-255165000"
+> (Frog Sam)
+ 
+</span><span class="ansi38-255165000"
+> (= (frog $x)  
+  (match &self 
+    (Frog $x) T))
+ 
+</span>;;; `(Frog Sam)` is not reduced; it is just a declaration
+<span class="ansi38-013099040"
+>!(assertEqualToResult (Frog Sam) ((Frog Sam)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.01</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Frog',
+;           1,
+;           [_16430],
+;           [_16436],  _16420, Function_declaration_implTopFrogC91_c124_c931, Function_declaration_implTopFrogC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 0.115 secs. (115.06 milliseconds) 
+
+!(assertEqualToResult (Frog Sam) ((Frog Sam)))
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( (Frog Sam)) 
+      ( (Frog Sam))]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; `frog` uses this declaration
+<span class="ansi38-013099040"
+>!(assertEqual (frog Sam) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.02</h3>
+; 
+; EVAL TEST
+; took 0.000358 secs. (358.01 microseconds) 
+
+!(assertEqual (frog Sam) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (frog Fritz) ())
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.03</h3>
+; 
+; EVAL TEST
+; took 0.000279 secs. (278.56 microseconds) 
+
+!(assertEqualToResult (frog Fritz) ())
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn () ()]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; The result of matching is also chained
+;;; Example from OpenCog Classic wiki on PLN Backward Chaining
+;;; `And` and `T` are custom symbols (they are used here
+;;; to avoid mixing them up with symbols from common lib)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Some facts in the knowledge base
+<span class="ansi38-255165000"
+> (Evaluation (philosopher Plato))
+ 
+</span><span class="ansi38-255165000"
+> (Evaluation (likes-to-wrestle Plato))
+ 
+</span>;;; An implication rule
+<span class="ansi38-255165000"
+> (Implication (And (Evaluation (philosopher $x)) (Evaluation (likes-to-wrestle $x))) (Evaluation (human $x)))
+ 
+</span>;;; Another implication rule
+<span class="ansi38-255165000"
+> (Implication (Evaluation (human $x)) (Evaluation (mortal $x)))
+ 
+</span>;;; Deduction case when the desired evaluation is present in
+;;; the knowledge base
+<span class="ansi38-255165000"
+> (= (deduce (Evaluation ($P $x)))  
+  (match &self 
+    (Evaluation ($P $x)) T))
+ 
+</span>;;; Deduction case when the desired evaluation is the result
+;;; of an implication, which implies a recursion
+<span class="ansi38-255165000"
+> (= (deduce (Evaluation ($P $x)))  
+  (match &self 
+    (Implication $52980 
+      (Evaluation ($P $x))) 
+    (deduce $52980)))
+ 
+</span>;;; Deduction case for generic "And" expressions;
+;;; also recursive
+<span class="ansi38-255165000"
+> (= (deduce (And $a $b))  
+  (And 
+    (deduce $a) 
+    (deduce $b)))
+ 
+</span>;;; True & True = True
+<span class="ansi38-255165000"
+> (= (And T T)  T)
+ 
+</span>;;; Test deduction that Plato is mortal
+<span class="ansi38-013099040"
+>!(assertEqual (deduce (Evaluation (mortal Plato))) T)
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.04</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_25178],
+;           [_25184],  _25168, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_12556],
+;           [_12562],  _12546, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_8206],
+;           [_8212],  _8196, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_8184],
+;           [_8190],  _8174, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_9596],
+;           [_9602],  _9586, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_42282],
+;           [_42288],  _42272, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_36882],
+;           [_36888],  _36872, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_25108],
+;           [_25114],  _25098, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_32040],
+;           [_32046],  _32030, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_28426],
+;           [_28432],  _28416, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_27202],
+;           [_27208],  _27192, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_25900],
+;           [_25906],  _25890, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_36158],
+;           [_36164],  _36148, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_34066],
+;           [_34072],  _34056, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_27918],
+;           [_27924],  _27908, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_25614],
+;           [_25620],  _25604, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 2.20 seconds.
+
+!(assertEqual (deduce (Evaluation (mortal Plato))) T)
+
+<span class="ansi36"
+>  [loonit_success 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      (T T T) 
+      (T)]]
+</span>
+Deterministic: <span class="ansi33"
+>()
+</span>;;; TODO : Some variables are not substituted
+<span class="ansi38-255165000"
+> (= (ift T $then)  $then)
+ 
+</span><span class="ansi38-255165000"
+> (ift (deduce (Evaluation (mortal $x))) $x)
+ 
+</span>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Another example of backchaining
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Definition of explain when the desired Evaluation is
+;;; in the knowledge base
+<span class="ansi38-255165000"
+> (= (explain (Evaluation ($P $x)))  
+  (match &self 
+    (Evaluation ($P $x)) 
+    ($P $x)))
+ 
+</span>;;; Definition of explain when the desired Evaluation is
+;;; the result of an implication
+<span class="ansi38-255165000"
+> (= (explain (Evaluation ($P $x)))  
+  (match &self 
+    (Implication $3032 
+      (Evaluation ($P $x))) 
+    ( ($P $x) proven by 
+      (explain $3032))))
+ 
+</span>;;; Definition of explain for And
+<span class="ansi38-255165000"
+> (= (explain (And $a $b))  
+  (And 
+    (explain $a) 
+    (explain $b)))
+ 
+</span>;;; Example of explain why Plato is mortal
+<span class="ansi38-013099040"
+>!(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B2-BACKCHAIN.05</h3>
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_37524],
+;           [_37530],  _37514, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_24306],
+;           [_24312],  _24296, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_21852],
+;           [_21858],  _21842, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_12952],
+;           [_12958],  _12942, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_14244],
+;           [_14250],  _14234, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_9750],
+;           [_9756],  _9740, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_10920],
+;           [_10926],  _10910, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_47122],
+;           [_10918],  _10902, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_45442],
+;           [_45448],  _45432, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_40440],
+;           [_40446],  _40430, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_44204],
+;           [_44210],  _44194, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_37492],
+;           [_37498],  _37482, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_43574],
+;           [_43580],  _43564, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_30206],
+;           [_30212],  _30196, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_19032],
+;           [_19038],  _19022, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_13010],
+;           [_13016],  _13000, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_13358],
+;           [_13364],  _13348, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_107234],
+;           [_107240],  _107224, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_108166],
+;           [_108172],  _108156, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_100564],
+;           [_100570],  _100554, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_84774],
+;           [_84780],  _84764, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Evaluation',
+;           1,
+;           [_70654],
+;           [_70660],  _70644, Function_declaration_implTopEvaluationC91_c124_c931, Function_declaration_implTopEvaluationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_71198],
+;           [_71204],  _71188, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_61848],
+;           [_61854],  _61838, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_48352],
+;           [_48358],  _48342, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_28596],
+;           [_28602],  _28586, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_63082,_63088,_63094,_63100],
+;           [_63106,_63112,_63118,_63124],  _63072, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_97836,_97842,_97848,_97854],
+;           [_97860,_97866,_97872,_97878],  _97826, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_77572],
+;           [_77578],  _77562, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_56634],
+;           [_56640],  _56624, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_78682,_78688,_78694],
+;           [_78700,_78706,_78712],  _78672, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_98592,_98598,_98604],
+;           [_98610,_98616,_98622],  _98582, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_77834],
+;           [_77840],  _77824, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_57274],
+;           [_57280],  _57264, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_44170],
+;           [_44176],  _44160, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_24082],
+;           [_24088],  _24072, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_11158],
+;           [_11164],  _11148, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_106760],
+;           [_106766],  _106750, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_24200,_24206,_24212,_24218],
+;           [_24224,_24230,_24236,_24242],  _24190, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_57850,_57856,_57862,_57868],
+;           [_57874,_57880,_57886,_57892],  _57840, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_37582],
+;           [_37588],  _37572, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_17500],
+;           [_17506],  _17490, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_40162,_40168,_40174],
+;           [_40180,_40186,_40192],  _40152, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_60118,_60124,_60130],
+;           [_60136,_60142,_60148],  _60108, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_40042],
+;           [_40048],  _40032, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_20220],
+;           [_20226],  _20210, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_11450],
+;           [_11456],  _11440, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_111094],
+;           [_111100],  _111084, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_24864,_24870,_24876,_24882],
+;           [_24888,_24894,_24900,_24906],  _24854, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_57944,_57950,_57956,_57962],
+;           [_57968,_57974,_57980,_57986],  _57934, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_37776],
+;           [_37782],  _37766, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_16776],
+;           [_16782],  _16766, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_38214,_38220,_38226],
+;           [_38232,_38238,_38244],  _38204, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_56656,_56662,_56668],
+;           [_56674,_56680,_56686],  _56646, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_34944],
+;           [_34950],  _34934, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_14310],
+;           [_14316],  _14300, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_9834],
+;           [_9840],  _9824, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_102902],
+;           [_102908],  _102892, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_84258],
+;           [_84264],  _84248, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_62856],
+;           [_62862],  _62846, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_44918],
+;           [_44924],  _44908, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_23860],
+;           [_23866],  _23850, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_56832,_56838,_56844,_56850],
+;           [_56856,_56862,_56868,_56874],  _56822, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_90372,_90378,_90384,_90390],
+;           [_90396,_90402,_90408,_90414],  _90362, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_69398],
+;           [_69404],  _69388, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_47844],
+;           [_47850],  _47834, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_69472,_69478,_69484],
+;           [_69490,_69496,_69502],  _69462, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_88484,_88490,_88496],
+;           [_88502,_88508,_88514],  _88474, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_67634],
+;           [_67640],  _67624, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_46368],
+;           [_46374],  _46358, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_32354],
+;           [_32360],  _32344, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_11682],
+;           [_11688],  _11672, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_46110,_46116,_46122,_46128],
+;           [_46134,_46140,_46146,_46152],  _46100, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_79758,_79764,_79770,_79776],
+;           [_79782,_79788,_79794,_79800],  _79748, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_59716],
+;           [_59722],  _59706, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_38298],
+;           [_38304],  _38288, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_58792,_58798,_58804],
+;           [_58810,_58816,_58822],  _58782, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_77844,_77850,_77856],
+;           [_77862,_77868,_77874],  _77834, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_57042],
+;           [_57048],  _57032, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_35160],
+;           [_35166],  _35150, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_47922],
+;           [_47928],  _47912, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_31536],
+;           [_31542],  _31526, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_26620],
+;           [_26626],  _26610, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_10242],
+;           [_10248],  _10232, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_8880],
+;           [_8886],  _8870, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_96710],
+;           [_96716],  _96700, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_76534],
+;           [_76540],  _76524, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_54222],
+;           [_54228],  _54212, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_42864],
+;           [_42870],  _42854, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           philosopher,
+;           1,
+;           [_26252],
+;           [_26258],  _26242, Function_declaration_implTopPhilosopherC91_c124_c931, Function_declaration_implTopPhilosopherC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_18384],
+;           [_18390],  _18374, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'likes-to-wrestle',
+;           1,
+;           [_10198],
+;           [_10204],  _10188, Function_declaration_implTopLikes_to_wrestleC91_c124_c931, Function_declaration_implTopLikes_to_wrestleC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_110776],
+;           [_110782],  _110766, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_89154],
+;           [_89160],  _89144, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_9340,_9346,_9352,_9358],
+;           [_9364,_9370,_9376,_9382],  _9330, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_41570,_41576,_41582,_41588],
+;           [_41594,_41600,_41606,_41612],  _41560, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_20948],
+;           [_20954],  _20938, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_9214],
+;           [_9220],  _9204, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_20376,_20382,_20388],
+;           [_20394,_20400,_20406],  _20366, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_39648,_39654,_39660],
+;           [_39666,_39672,_39678],  _39638, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_18318],
+;           [_18324],  _18308, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_9476],
+;           [_9482],  _9466, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_103242],
+;           [_103248],  _103232, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_79272],
+;           [_79278],  _79262, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_59818],
+;           [_59824],  _59808, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_37424],
+;           [_37430],  _37414, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_69944,_69950,_69956,_69962],
+;           [_69968,_69974,_69980,_69986],  _69934, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_102262,_102268,_102274,_102280],
+;           [_102286,_102292,_102298,_102304],  _102252, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_77256],
+;           [_77262],  _77246, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_54326],
+;           [_54332],  _54316, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_74636,_74642,_74648],
+;           [_74654,_74660,_74666],  _74626, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_93062,_93068,_93074],
+;           [_93080,_93086,_93092],  _93052, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_74346],
+;           [_74352],  _74336, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_51912],
+;           [_51918],  _51902, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_37612],
+;           [_37618],  _37602, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_15790],
+;           [_15796],  _15780, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_49210,_49216,_49222,_49228],
+;           [_49234,_49240,_49246,_49252],  _49200, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_82208,_82214,_82220,_82226],
+;           [_82232,_82238,_82244,_82250],  _82198, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_60506],
+;           [_60512],  _60496, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_38424],
+;           [_38430],  _38414, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_58484,_58490,_58496],
+;           [_58502,_58508,_58514],  _58474, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_76098,_76104,_76110],
+;           [_76116,_76122,_76128],  _76088, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_54262],
+;           [_54268],  _54252, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_32370],
+;           [_32376],  _32360, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_20414],
+;           [_20420],  _20404, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_9542],
+;           [_9548],  _9532, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_104864],
+;           [_104870],  _104854, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_81146],
+;           [_81152],  _81136, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_62816],
+;           [_62822],  _62806, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_40380],
+;           [_40386],  _40370, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_73008,_73014,_73020,_73026],
+;           [_73032,_73038,_73044,_73050],  _72998, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           4,
+;           [_105948,_105954,_105960,_105966],
+;           [_105972,_105978,_105984,_105990],  _105938, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_85646],
+;           [_85652],  _85636, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_63844],
+;           [_63850],  _63834, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_85208,_85214,_85220],
+;           [_85226,_85232,_85238],  _85198, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [human,'Plato'],
+;           3,
+;           [_103760,_103766,_103772],
+;           [_103778,_103784,_103790],  _103750, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_79094],
+;           [_79100],  _79084, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           human,
+;           1,
+;           [_57590],
+;           [_57596],  _57580, Function_declaration_implTopHumanC91_c124_c931, Function_declaration_implTopHumanC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_42394],
+;           [_42400],  _42384, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_21232],
+;           [_21238],  _21222, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_54488,_54494,_54500,_54506],
+;           [_54512,_54518,_54524,_54530],  _54478, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           4,
+;           [_87626,_87632,_87638,_87644],
+;           [_87650,_87656,_87662,_87668],  _87616, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_66998],
+;           [_67004],  _66988, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_45390],
+;           [_45396],  _45380, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_66010,_66016,_66022],
+;           [_66028,_66034,_66040],  _66000, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           [mortal,'Plato'],
+;           3,
+;           [_84772,_84778,_84784],
+;           [_84790,_84796,_84802],  _84762, Function_declaration_implTopC91_c124_c93C91_c124_c931, Function_declaration_implTopC91_c124_c93C91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_63838],
+;           [_63844],  _63828, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           mortal,
+;           1,
+;           [_42714],
+;           [_42720],  _42704, Function_declaration_implTopMortalC91_c124_c931, Function_declaration_implTopMortalC91_c124_c93, Impl)</span>)
+
+; 
+; EVAL TEST
+; took 23.98 seconds.
+
+!(assertEqual (explain (Evaluation (mortal Plato))) ((mortal Plato) proven by ((human Plato) proven by (And (philosopher Plato) (likes-to-wrestle Plato)))))
+
+<span class="ansi31"
+>  [loonit_failureR 
+    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
+      ( ( (mortal Plato) proven by 
+          ( (human Plato) proven by T)) T) 
+      ( ( (mortal Plato) proven by 
+          ( (human Plato) proven by T)))]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('[|]'(mortal,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('[|]'(human,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('T',[])))),[])))),'[|]'('T',[])),'[|]'('[|]'('[|]'(mortal,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('[|]'('[|]'(human,'[|]'('Plato',[])),'[|]'(proven,'[|]'(by,'[|]'('T',[])))),[])))),[]))
+
+Deterministic: <span class="ansi33"
+>(Error ('~nGot: ' (((mortal Plato) proven by ((human Plato) proven by T)) T)) ('~nExpected: ' (((mortal Plato) proven by ((human Plato) proven by T)))))
+</span>P;HTML|
+;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 4
+</span><span class="ansi31"
+>Failures: 1
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
+>Return to summaries</a><br/>
+[()]
+[()]
+[()]
+[()]
+[(Error ('~nGot: ' (((mortal Plato) proven by ((human Plato) proven by T)) T)) ('~nExpected: ' (((mortal Plato) proven by ((human Plato) proven by T)))))]
+
+Script done on 2025-02-26 06:33:02+00:00 [COMMAND_EXIT_CODE="7"]
+
+</pre>
+</body>
+
+</html>
+\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b2_backchain.metta" --halt=true\033[0m

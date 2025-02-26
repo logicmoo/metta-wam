@@ -42,7 +42,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-25 20:10:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1921-368.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/synthesize.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-02-26 06:58:53+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1694-59.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/synthesize.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/synth_buffer/synthesize.metta] ]
 P;HTML|
@@ -92,34 +92,34 @@ Script started on 2025-02-25 20:10:44+00:00 [COMMAND="timeout --preserve-status 
 ;;;; TODO: recurse over curried rules instead of duplicating code over
 ;;;; tuples.
 <span class="ansi38-255165000"
-> (: synthesize (-> $a (-> $kt) (-> $70756) Nat $a))
+> (: synthesize (-> $a (-> $kt) (-> $71414) Nat $a))
  
 </span>;;;; Nullary rule (axiom)
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $80162 $80168)  
+> (= (synthesize $query $kb $80934 $80940)  
   (let $query 
     ($kb) $query))
  
 </span>;;;; Unary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $110954 (S $110972))  
+> (= (synthesize $query $kb $111726 (S $111744))  
   (let* 
-    ( ( (: $111014 
-          (-> $111032 $111038)) ($110954)) 
+    ( ( (: $111786 
+          (-> $111804 $111810)) ($111726)) 
       ( (: 
-          ($111014 $111086) $111038) $query) 
-      ( (: $111086 $111032) (synthesize (: $111086 $111032) $kb $110954 $110972))) $query))
+          ($111786 $111858) $111810) $query) 
+      ( (: $111858 $111804) (synthesize (: $111858 $111804) $kb $111726 $111744))) $query))
  
 </span>;;;; Binary rule
 <span class="ansi38-255165000"
-> (= (synthesize $query $kb $157282 (S $157300))  
+> (= (synthesize $query $kb $158054 (S $158072))  
   (let* 
-    ( ( (: $157342 
-          (-> $157360 $157366 $157372)) ($157282)) 
+    ( ( (: $158114 
+          (-> $158132 $158138 $158144)) ($158054)) 
       ( (: 
-          ($157342 $157420 $157426) $157372) $query) 
-      ( (: $157420 $157360) (synthesize (: $157420 $157360) $kb $157282 $157300)) 
-      ( (: $157426 $157366) (synthesize (: $157426 $157366) $kb $157282 $157300))) $query))
+          ($158114 $158192 $158198) $158144) $query) 
+      ( (: $158192 $158132) (synthesize (: $158192 $158132) $kb $158054 $158072)) 
+      ( (: $158198 $158138) (synthesize (: $158198 $158138) $kb $158054 $158072))) $query))
  
 </span><span class="ansi38-255165000"
 > (: kb (-> Atom))
@@ -158,8 +158,8 @@ Script started on 2025-02-25 20:10:44+00:00 [COMMAND="timeout --preserve-status 
   (: Deduction 
     (-> 
       (ImplicationLink $p $q) 
-      (ImplicationLink $q $184772) 
-      (ImplicationLink $p $184772))))
+      (ImplicationLink $q $186000) 
+      (ImplicationLink $p $186000))))
  
 </span><span class="ansi38-255165000"
 > (= (rb)  
@@ -202,10 +202,10 @@ Script started on 2025-02-25 20:10:44+00:00 [COMMAND="timeout --preserve-status 
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(synthesize (: $219630 $219636) kb rb (S Z))
+>!(synthesize (: $220972 $220978) kb rb (S Z))
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (synthesize (: $225050 $225056) kb rb (S Z)) ((: cde (Implication (OrLink C D) E)) (: abc (Implication (AndLink A B) C)) (: a A) (: a B) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B)) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B))))
+>!(assertEqualToResult (synthesize (: $226400 $226406) kb rb (S Z)) ((: cde (Implication (OrLink C D) E)) (: abc (Implication (AndLink A B) C)) (: a A) (: a B) (: (DisjunctionIntroduction cde cde) (OrLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction cde abc) (OrLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) A)) (: (DisjunctionIntroduction cde a) (OrLink (Implication (OrLink C D) E) B)) (: (DisjunctionIntroduction abc cde) (OrLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (DisjunctionIntroduction abc abc) (OrLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) A)) (: (DisjunctionIntroduction abc a) (OrLink (Implication (AndLink A B) C) B)) (: (DisjunctionIntroduction a cde) (OrLink A (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a abc) (OrLink A (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a a) (OrLink A A)) (: (DisjunctionIntroduction a a) (OrLink A B)) (: (DisjunctionIntroduction a cde) (OrLink B (Implication (OrLink C D) E))) (: (DisjunctionIntroduction a abc) (OrLink B (Implication (AndLink A B) C))) (: (DisjunctionIntroduction a a) (OrLink B A)) (: (DisjunctionIntroduction a a) (OrLink B B)) (: (ConjunctionIntroduction cde cde) (AndLink (Implication (OrLink C D) E) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction cde abc) (AndLink (Implication (OrLink C D) E) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) A)) (: (ConjunctionIntroduction cde a) (AndLink (Implication (OrLink C D) E) B)) (: (ConjunctionIntroduction abc cde) (AndLink (Implication (AndLink A B) C) (Implication (OrLink C D) E))) (: (ConjunctionIntroduction abc abc) (AndLink (Implication (AndLink A B) C) (Implication (AndLink A B) C))) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) A)) (: (ConjunctionIntroduction abc a) (AndLink (Implication (AndLink A B) C) B)) (: (ConjunctionIntroduction a cde) (AndLink A (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a abc) (AndLink A (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a a) (AndLink A A)) (: (ConjunctionIntroduction a a) (AndLink A B)) (: (ConjunctionIntroduction a cde) (AndLink B (Implication (OrLink C D) E))) (: (ConjunctionIntroduction a abc) (AndLink B (Implication (AndLink A B) C))) (: (ConjunctionIntroduction a a) (AndLink B A)) (: (ConjunctionIntroduction a a) (AndLink B B))))
 
 </span>
 ;<h3 id="SYNTH-BUFFER.SYNTHESIZE.01"
@@ -215,1179 +215,1171 @@ Script started on 2025-02-25 20:10:44+00:00 [COMMAND="timeout --preserve-status 
 >( '&top',
 ;           :,
 ;           2,
-;           [_339406,_339412],
-;           [_339418,_339424],  _339396, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_340554,_340560],
+;           [_340566,_340572],  _340544, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_440160],
-;           [_440166],  _440150, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_441308],
+;           [_441314],  _441298, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'S',
 ;           1,
-;           [_39004],
-;           [_39010],  _38994, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
+;           [_40036],
+;           [_40042],  _40026, Function_declaration_implTopSC91_c124_c931, Function_declaration_implTopSC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_162828,_162834],
-;           [_162840,_162846],  _162818, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_163960,_163966],
+;           [_163972,_163978],  _163950, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_277874,_277880],
-;           [_277886,_277892],  _277864, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_279006,_279012],
+;           [_279018,_279024],  _278996, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_398228,_398234],
-;           [_398240,_398246],  _398218, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_399360,_399366],
+;           [_399372,_399378],  _399350, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_27380,_27386],
-;           [_27392,_27398],  _27370, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_27390,_27396],
+;           [_27402,_27408],  _27380, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_137462,_137468],
-;           [_137474,_137480],  _137452, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_138308,_138314],
+;           [_138320,_138326],  _138298, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_252508,_252514],
-;           [_252520,_252526],  _252498, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_253354,_253360],
+;           [_253366,_253372],  _253344, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_373768,_373774],
-;           [_373780,_373786],  _373758, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_374668,_374674],
+;           [_374680,_374686],  _374658, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_488816,_488822],
-;           [_488828,_488834],  _488806, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_489716,_489722],
+;           [_489728,_489734],  _489706, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_109710,_109716],
-;           [_109722,_109728],  _109700, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_110156,_110162],
+;           [_110168,_110174],  _110146, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_224756,_224762],
-;           [_224768,_224774],  _224746, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_225202,_225208],
+;           [_225214,_225220],  _225192, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_344128,_344134],
-;           [_344140,_344146],  _344118, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_344574,_344580],
+;           [_344586,_344592],  _344564, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_459176,_459182],
-;           [_459188,_459194],  _459166, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'AndLink',
-;           2,
-;           [_92036,_92042],
-;           [_92048,_92054],  _92026, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_459622,_459628],
+;           [_459634,_459640],  _459612, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_211192,_211198],
-;           [_211204,_211210],  _211182, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_336456,_336462],
-;           [_336468,_336474],  _336446, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_458812,_458818],
-;           [_458824,_458830],  _458802, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_82174,_82180],
-;           [_82186,_82192],  _82164, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_197206,_197212],
-;           [_197218,_197224],  _197196, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_92510,_92516],
+;           [_92522,_92528],  _92500, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_330176,_330182],
-;           [_330188,_330194],  _330166, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_211666,_211672],
+;           [_211678,_211684],  _211656, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_336930,_336936],
+;           [_336942,_336948],  _336920, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_459286,_459292],
+;           [_459298,_459304],  _459276, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_82460,_82466],
+;           [_82472,_82478],  _82450, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_197492,_197498],
+;           [_197504,_197510],  _197482, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_449346,_449352],
-;           [_449358,_449364],  _449336, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_78998,_79004],
-;           [_79010,_79016],  _78988, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_201348,_201354],
-;           [_201360,_201366],  _201338, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_321114,_321120],
-;           [_321126,_321132],  _321104, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_436162,_436168],
-;           [_436174,_436180],  _436152, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_330462,_330468],
+;           [_330474,_330480],  _330452, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_70684,_70690],
-;           [_70696,_70702],  _70674, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_449632,_449638],
+;           [_449644,_449650],  _449622, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_79288,_79294],
+;           [_79300,_79306],  _79278, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_201638,_201644],
+;           [_201650,_201656],  _201628, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_321404,_321410],
+;           [_321416,_321422],  _321394, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_436452,_436458],
+;           [_436464,_436470],  _436442, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_189838,_189844],
-;           [_189850,_189856],  _189828, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_315102,_315108],
-;           [_315114,_315120],  _315092, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_437458,_437464],
-;           [_437470,_437476],  _437448, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_60074,_60080],
-;           [_60086,_60092],  _60064, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_175098,_175104],
-;           [_175110,_175116],  _175088, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_308996,_309002],
-;           [_309008,_309014],  _308986, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_426130,_426136],
-;           [_426142,_426148],  _426120, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_55218,_55224],
-;           [_55230,_55236],  _55208, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_177558,_177564],
-;           [_177570,_177576],  _177548, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_297324,_297330],
-;           [_297336,_297342],  _297314, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_412372,_412378],
-;           [_412384,_412390],  _412362, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_47588,_47594],
-;           [_47600,_47606],  _47578, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_164700,_164706],
-;           [_164712,_164718],  _164690, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_289952,_289958],
-;           [_289964,_289970],  _289942, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_412308,_412314],
-;           [_412320,_412326],  _412298, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_35384,_35390],
-;           [_35396,_35402],  _35374, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_150408,_150414],
-;           [_150420,_150426],  _150398, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_278692,_278698],
-;           [_278704,_278710],  _278682, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_395826,_395832],
-;           [_395838,_395844],  _395816, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_27040,_27046],
-;           [_27052,_27058],  _27030, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_147536,_147542],
-;           [_147548,_147554],  _147526, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_267302,_267308],
-;           [_267314,_267320],  _267292, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_382350,_382356],
-;           [_382362,_382368],  _382340, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_28538,_28544],
-;           [_28550,_28556],  _28528, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_136988,_136994],
-;           [_137000,_137006],  _136978, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_258140,_258146],
-;           [_258152,_258158],  _258130, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_373188,_373194],
-;           [_373200,_373206],  _373178, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_494496,_494502],
-;           [_494508,_494514],  _494486, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_110982,_110988],
-;           [_110994,_111000],  _110972, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_232098,_232104],
-;           [_232110,_232116],  _232088, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_347146,_347152],
-;           [_347158,_347164],  _347136, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_468190,_468196],
-;           [_468202,_468208],  _468180, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_87630,_87636],
-;           [_87642,_87648],  _87620, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_208534,_208540],
-;           [_208546,_208552],  _208524, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_323582,_323588],
-;           [_323594,_323600],  _323572, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_445692,_445698],
-;           [_445704,_445710],  _445682, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_66300,_66306],
-;           [_66312,_66318],  _66290, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_190434,_190440],
-;           [_190446,_190452],  _190424, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_305482,_305488],
-;           [_305494,_305500],  _305472, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_425814,_425820],
-;           [_425826,_425832],  _425804, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_49416,_49422],
-;           [_49428,_49434],  _49406, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_71082,_71088],
+;           [_71094,_71100],  _71072, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_176772,_176778],
-;           [_176784,_176790],  _176762, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_190236,_190242],
+;           [_190248,_190254],  _190226, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_315500,_315506],
+;           [_315512,_315518],  _315490, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_437856,_437862],
+;           [_437868,_437874],  _437846, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_61542,_61548],
+;           [_61554,_61560],  _61532, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_176566,_176572],
+;           [_176578,_176584],  _176556, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_310518,_310524],
+;           [_310530,_310536],  _310508, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_427652,_427658],
+;           [_427664,_427670],  _427642, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_56758,_56764],
+;           [_56770,_56776],  _56748, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_179098,_179104],
+;           [_179110,_179116],  _179088, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_298864,_298870],
+;           [_298876,_298882],  _298854, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_413912,_413918],
+;           [_413924,_413930],  _413902, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_49550,_49556],
+;           [_49562,_49568],  _49540, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_166662,_166668],
+;           [_166674,_166680],  _166652, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_291914,_291920],
+;           [_291926,_291932],  _291904, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_414270,_414276],
+;           [_414282,_414288],  _414260, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_37628,_37634],
+;           [_37640,_37646],  _37618, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_152652,_152658],
+;           [_152664,_152670],  _152642, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_280936,_280942],
+;           [_280948,_280954],  _280926, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_398070,_398076],
+;           [_398082,_398088],  _398060, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_27052,_27058],
+;           [_27064,_27070],  _27042, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_148614,_148620],
+;           [_148626,_148632],  _148604, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_268380,_268386],
+;           [_268392,_268398],  _268370, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_383428,_383434],
+;           [_383440,_383446],  _383418, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_28548,_28554],
+;           [_28560,_28566],  _28538, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_137706,_137712],
+;           [_137718,_137724],  _137696, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_258912,_258918],
+;           [_258924,_258930],  _258902, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_373960,_373966],
+;           [_373972,_373978],  _373950, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_495322,_495328],
+;           [_495334,_495340],  _495312, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_111690,_111696],
+;           [_111702,_111708],  _111680, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_232860,_232866],
+;           [_232872,_232878],  _232850, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_347908,_347914],
+;           [_347920,_347926],  _347898, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_469006,_469012],
+;           [_469018,_469024],  _468996, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_88738,_88744],
+;           [_88750,_88756],  _88728, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_209696,_209702],
+;           [_209708,_209714],  _209686, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_324744,_324750],
+;           [_324756,_324762],  _324734, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_446854,_446860],
+;           [_446866,_446872],  _446844, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_67590,_67596],
+;           [_67602,_67608],  _67580, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_191774,_191780],
+;           [_191786,_191792],  _191764, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_306822,_306828],
+;           [_306834,_306840],  _306812, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_427208,_427214],
+;           [_427220,_427226],  _427198, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_50402,_50408],
+;           [_50414,_50420],  _50392, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_295940,_295946],
-;           [_295952,_295958],  _295930, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_421204,_421210],
-;           [_421216,_421222],  _421194, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_52166,_52172],
-;           [_52178,_52184],  _52156, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_171916,_171922],
-;           [_171928,_171934],  _171906, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_286962,_286968],
-;           [_286974,_286980],  _286952, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_418042,_418048],
-;           [_418054,_418060],  _418032, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_44054,_44060],
-;           [_44066,_44072],  _44044, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_169284,_169290],
-;           [_169296,_169302],  _169274, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_291640,_291646],
-;           [_291652,_291658],  _291630, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_411406,_411412],
-;           [_411418,_411424],  _411396, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_34408,_34414],
-;           [_34420,_34426],  _34398, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_160546,_160552],
-;           [_160558,_160564],  _160536, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_275592,_275598],
-;           [_275604,_275610],  _275582, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_397702,_397708],
-;           [_397714,_397720],  _397692, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_29516,_29522],
-;           [_29528,_29534],  _29506, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_143058,_143064],
-;           [_143070,_143076],  _143048, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_258104,_258110],
-;           [_258116,_258122],  _258094, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_378436,_378442],
-;           [_378448,_378454],  _378426, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_493484,_493490],
-;           [_493496,_493502],  _493474, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_177812,_177818],
+;           [_177824,_177830],  _177802, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_124048,_124054],
-;           [_124060,_124066],  _124038, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_296980,_296986],
+;           [_296992,_296998],  _296970, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_422244,_422250],
+;           [_422256,_422262],  _422234, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_53470,_53476],
+;           [_53482,_53488],  _53460, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_173220,_173226],
+;           [_173232,_173238],  _173210, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_288266,_288272],
+;           [_288278,_288284],  _288256, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_419400,_419406],
+;           [_419412,_419418],  _419390, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_45290,_45296],
+;           [_45302,_45308],  _45280, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_170520,_170526],
+;           [_170532,_170538],  _170510, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_292876,_292882],
+;           [_292888,_292894],  _292866, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_412642,_412648],
+;           [_412654,_412660],  _412632, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_35546,_35552],
+;           [_35558,_35564],  _35536, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_161738,_161744],
+;           [_161750,_161756],  _161728, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_276784,_276790],
+;           [_276796,_276802],  _276774, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_398894,_398900],
+;           [_398906,_398912],  _398884, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_29526,_29532],
+;           [_29538,_29544],  _29516, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_144814,_144820],
+;           [_144826,_144832],  _144804, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_259860,_259866],
+;           [_259872,_259878],  _259850, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_380246,_380252],
+;           [_380258,_380264],  _380236, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_495294,_495300],
+;           [_495306,_495312],  _495284, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_243216,_243222],
-;           [_243228,_243234],  _243206, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_368480,_368486],
-;           [_368492,_368498],  _368470, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_490836,_490842],
-;           [_490848,_490854],  _490826, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_114660,_114666],
-;           [_114672,_114678],  _114650, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_229706,_229712],
-;           [_229718,_229724],  _229696, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_360786,_360792],
-;           [_360798,_360804],  _360776, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_477920,_477926],
-;           [_477932,_477938],  _477910, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_110792,_110798],
-;           [_110804,_110810],  _110782, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_233148,_233154],
-;           [_233160,_233166],  _233138, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_352914,_352920],
-;           [_352926,_352932],  _352904, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_467962,_467968],
-;           [_467974,_467980],  _467952, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_98032,_98038],
-;           [_98044,_98050],  _98022, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_213066,_213072],
-;           [_213078,_213084],  _213056, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_339180,_339186],
-;           [_339192,_339198],  _339170, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_454228,_454234],
-;           [_454240,_454246],  _454218, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_81776,_81782],
-;           [_81788,_81794],  _81766, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_196808,_196814],
-;           [_196820,_196826],  _196798, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_321322,_321328],
-;           [_321334,_321340],  _321312, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_436370,_436376],
-;           [_436382,_436388],  _436360, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_64284,_64290],
-;           [_64296,_64302],  _64274, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_179312,_179318],
-;           [_179324,_179330],  _179302, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_127088,_127094],
+;           [_127100,_127106],  _127078, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_306692,_306698],
-;           [_306704,_306710],  _306682, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_246256,_246262],
+;           [_246268,_246274],  _246246, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_371520,_371526],
+;           [_371532,_371538],  _371510, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_493876,_493882],
+;           [_493888,_493894],  _493866, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_117656,_117662],
+;           [_117668,_117674],  _117646, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_232702,_232708],
+;           [_232714,_232720],  _232692, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_363836,_363842],
+;           [_363848,_363854],  _363826, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_480970,_480976],
+;           [_480982,_480988],  _480960, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_119618,_119624],
+;           [_119630,_119636],  _119608, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_241974,_241980],
+;           [_241986,_241992],  _241964, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_361740,_361746],
+;           [_361752,_361758],  _361730, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_476788,_476794],
+;           [_476800,_476806],  _476778, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_109760,_109766],
+;           [_109772,_109778],  _109750, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_224806,_224812],
+;           [_224818,_224824],  _224796, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_351024,_351030],
+;           [_351036,_351042],  _351014, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_466072,_466078],
+;           [_466084,_466090],  _466062, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_93814,_93820],
+;           [_93826,_93832],  _93804, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_208848,_208854],
+;           [_208860,_208866],  _208838, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_333412,_333418],
+;           [_333424,_333430],  _333402, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_448460,_448466],
+;           [_448472,_448478],  _448450, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_76892,_76898],
+;           [_76904,_76910],  _76882, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_191924,_191930],
+;           [_191936,_191942],  _191914, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_425862,_425868],
-;           [_425874,_425880],  _425852, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_59994,_60000],
-;           [_60006,_60012],  _59984, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_182334,_182340],
-;           [_182346,_182352],  _182324, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_302100,_302106],
-;           [_302112,_302118],  _302090, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_417148,_417154],
-;           [_417160,_417166],  _417138, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_57366,_57372],
-;           [_57378,_57384],  _57356, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'OrLink',
-;           2,
-;           [_174478,_174484],
-;           [_174490,_174496],  _174468, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_299730,_299736],
-;           [_299742,_299748],  _299720, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           'Implication',
-;           2,
-;           [_422086,_422092],
-;           [_422098,_422104],  _422076, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_49650,_49656],
-;           [_49662,_49668],  _49640, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_164674,_164680],
-;           [_164686,_164692],  _164664, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_291070,_291076],
-;           [_291082,_291088],  _291060, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_406118,_406124],
-;           [_406130,_406136],  _406108, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_35710,_35716],
-;           [_35722,_35728],  _35700, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_150734,_150740],
-;           [_150746,_150752],  _150724, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_275426,_275432],
-;           [_275438,_275444],  _275416, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_390474,_390480],
-;           [_390486,_390492],  _390464, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_32156,_32162],
-;           [_32168,_32174],  _32146, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_135178,_135184],
-;           [_135190,_135196],  _135168, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_319358,_319364],
+;           [_319370,_319376],  _319348, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_262558,_262564],
-;           [_262570,_262576],  _262548, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_438528,_438534],
+;           [_438540,_438546],  _438518, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_72114,_72120],
+;           [_72126,_72132],  _72104, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_194464,_194470],
+;           [_194476,_194482],  _194454, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_314230,_314236],
+;           [_314242,_314248],  _314220, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_429278,_429284],
+;           [_429290,_429296],  _429268, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_69264,_69270],
+;           [_69276,_69282],  _69254, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'OrLink',
+;           2,
+;           [_186386,_186392],
+;           [_186398,_186404],  _186376, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_311638,_311644],
+;           [_311650,_311656],  _311628, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'Implication',
+;           2,
+;           [_433994,_434000],
+;           [_434006,_434012],  _433984, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_61492,_61498],
+;           [_61504,_61510],  _61482, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_176516,_176522],
+;           [_176528,_176534],  _176506, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_302966,_302972],
+;           [_302978,_302984],  _302956, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_418014,_418020],
+;           [_418026,_418032],  _418004, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_47550,_47556],
+;           [_47562,_47568],  _47540, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_162574,_162580],
+;           [_162586,_162592],  _162564, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_287316,_287322],
+;           [_287328,_287334],  _287306, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_402364,_402370],
+;           [_402376,_402382],  _402354, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_32186,_32192],
+;           [_32198,_32204],  _32176, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           :,
+;           2,
+;           [_145864,_145870],
+;           [_145876,_145882],  _145854, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'AndLink',
 ;           2,
-;           [_381728,_381734],
-;           [_381740,_381746],  _381718, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+;           [_273298,_273304],
+;           [_273310,_273316],  _273288, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
+
+P;HTML|
+; failed( function_declaration_impl<span class="pl-functor"
+>( '&top',
+;           'AndLink',
+;           2,
+;           [_392468,_392474],
+;           [_392480,_392486],  _392458, Function_declaration_implTopAndLinkC91_c124_c931, Function_declaration_implTopAndLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Implication',
 ;           2,
-;           [_32748,_32754],
-;           [_32760,_32766],  _32738, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+;           [_32758,_32764],
+;           [_32770,_32776],  _32748, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Implication',
 ;           2,
-;           [_139514,_139520],
-;           [_139526,_139532],  _139504, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+;           [_150000,_150006],
+;           [_150012,_150018],  _149990, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_259280,_259286],
-;           [_259292,_259298],  _259270, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_269766,_269772],
+;           [_269778,_269784],  _269756, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_374328,_374334],
-;           [_374340,_374346],  _374318, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_384814,_384820],
+;           [_384826,_384832],  _384804, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'OrLink',
 ;           2,
-;           [_505408,_505414],
-;           [_505420,_505426],  _32634, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+;           [_32654,_32660],
+;           [_32666,_32672],  _32644, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'OrLink',
 ;           2,
-;           [_132316,_132322],
-;           [_132328,_132334],  _132306, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
+;           [_143192,_143198],
+;           [_143204,_143210],  _143182, Function_declaration_implTopLinkC91_c124_c931, Function_declaration_implTopLinkC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Implication',
 ;           2,
-;           [_257568,_257574],
-;           [_257580,_257586],  _257558, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+;           [_268444,_268450],
+;           [_268456,_268462],  _268434, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           'Implication',
 ;           2,
-;           [_379924,_379930],
-;           [_379936,_379942],  _379914, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
+;           [_390800,_390806],
+;           [_390812,_390818],  _390790, Function_declaration_implTopImplicationC91_c124_c931, Function_declaration_implTopImplicationC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_499690,_499696],
-;           [_499702,_499708],  _499680, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_31642,_31648],
+;           [_31654,_31660],  _31632, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_123468,_123474],
-;           [_123480,_123486],  _123458, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_134578,_134584],
+;           [_134590,_134596],  _134568, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_249732,_249738],
-;           [_249744,_249750],  _249722, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_260896,_260902],
+;           [_260908,_260914],  _260886, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_364780,_364786],
-;           [_364792,_364798],  _364770, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_375944,_375950],
+;           [_375956,_375962],  _375934, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
 ; failed( function_declaration_impl<span class="pl-functor"
 >( '&top',
 ;           :,
 ;           2,
-;           [_487520,_487526],
-;           [_487532,_487538],  _487510, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
+;           [_498684,_498690],
+;           [_498696,_498702],  _498674, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
 
 P;HTML|
-; failed( function_declaration_impl<span class="pl-functor"
->( '&top',
-;           :,
-;           2,
-;           [_111828,_111834],
-;           [_111840,_111846],  _111818, Function_declaration_implTopKwC91_c124_c931, Function_declaration_implTopKwC91_c124_c93, Impl)</span>)
-
-P;HTML|
-Script done on 2025-02-25 20:11:24+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-02-26 06:59:34+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
