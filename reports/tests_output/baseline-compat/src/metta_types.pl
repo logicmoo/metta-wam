@@ -631,7 +631,7 @@ have_some_defs(Depth,Self,Val):-
   \+ \+
  ([H|Args] = Val,
   metta_type(Eq,H,[Ar|ArgTypes]),Ar=='->',
-  append(ParamTypes,[RType],ArgTypes),
+  append(ParamTypes,[_RType],ArgTypes),
   length(ParamTypes,Len),
   len_or_unbound(Args,ALen),
   Len = ALen).
@@ -684,7 +684,7 @@ badly_typed_expression(Depth, Self, [Op | Args]) :-
     % Check if the expression is typed and consistent.
     typed_expression(Depth, Self, [Op | Args], ArgTypes, RType),
     % Verify if the return type can be assigned.
-    can_assign(RetType, RType),
+    % can_assign(RetType, RType),
     % Check for argument violations.
     args_violation(Depth, Self, Args, ArgTypes),
     !.
@@ -856,8 +856,8 @@ get_type_cmpd(Depth,Self,[[Op|Args]|Arg],Type,curried(W)):-
  Depth2 is Depth-1,
  get_type_cmpd(Depth2,Self,[Op|Args],Type1,W),
  get_type(Depth2,Self,Arg,ArgType),
- ignore(sub_var(ArgType,Type1)->true;
-   (sub_term(ST,Type1),var(ST),ST=ArgType)),
+ ignore(sub_var_safely(ArgType,Type1)->true;
+   (sub_term_safely(ST,Type1),var(ST),ST=ArgType)),
  last(Type1,Type).
 get_type_cmpd(Depth,Self,[Op|Args],Type,ac(Op,[P|Arams],RetType)):- symbol(Op),
   len_or_unbound(Args,Len),
@@ -1112,7 +1112,9 @@ try_adjust_arg_types(_Eq, RetType, Depth, Self, Params, X, Y) :-
 %   @arg Adjusted  The final adjusted arguments.
 %
 adjust_args_9(Eq, RetType, ResIn, ResOut, Depth, Self, AE, More, Adjusted) :-
-    adjust_args(eval, Eq, RetType, ResIn, ResOut, Depth, Self, AE, More, Adjusted).
+    show_failure_when(argtypes,
+       rtrace_when(argtypes,adjust_args(eval, Eq, RetType, ResIn, ResOut, Depth, Self, AE, More, Adjusted))).
+
 
 %!  adjust_args(+Else, +Eq, +RetType, +Res, -NewRes, +Depth, +Self, +Op, +X, -Y) is det.
 %
@@ -1130,11 +1132,12 @@ adjust_args_9(Eq, RetType, ResIn, ResOut, Depth, Self, AE, More, Adjusted) :-
 %   @arg X        The input arguments.
 %   @arg Y        The final adjusted arguments.
 %
-adjust_args(Else, _Eq, _RetType, Res, Res, _Dpth, Self, F, X, Y) :-
+
+adjust_args(_Else, _Eq, _RetType, Res, Res, _Dpth, Self, F, X, Y) :-
     % If the input is empty, or if it uses a special operator, or if X is not a conz structure.
     (X == [] ; is_special_op(Self, F) ; \+ iz_conz(X)), !,
     Y = X.
-adjust_args(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
+adjust_args( Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
     % Attempt primary adjustment, and fall back if necessary.
     if_or_else(
         adjust_argsA(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y),
@@ -1161,7 +1164,7 @@ adjust_argsA(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y):-
    if_or_else(adjust_argsA1(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y),
               adjust_argsA2(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y)).
 
-adjust_argsA1(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
+adjust_argsA1(_Else,_Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
     len_or_unbound(X, Len),
     get_operator_typedef(Self, Op, Len, ParamTypes, RRetType),
     (nonvar(NewRes) -> CRes = NewRes ; CRes = Res),
@@ -1169,7 +1172,7 @@ adjust_argsA1(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
     args_conform(Depth, Self, [CRes | X], [RRetType | ParamTypes]),
     trace_if_debug(Op,Len),
     into_typed_args(Depth, Self, [RRetType | ParamTypes], [Res | X], [NewRes | Y]).
-adjust_argsA2(Else, Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
+adjust_argsA2(_Else,_Eq, RetType, Res, NewRes, Depth, Self, Op, X, Y) :-
     len_or_unbound(X, Len),
     get_operator_typedef(Self, Op, Len, ParamTypes, RRetType),
     (nonvar(NewRes) -> CRes = NewRes ; CRes = Res),
@@ -1232,6 +1235,7 @@ get_operator_typedef(Self, Op, ParamTypes, RetType) :-
     len_or_unbound(ParamTypes, Len),
     get_operator_typedef(Self, Op, Len, ParamTypes, RetType).
 
+
 %!  reset_cache is det.
 %
 %   Clears the cached operator type definitions by retracting all facts
@@ -1264,16 +1268,18 @@ reset_cache :-
 %
 
 get_operator_typedef(Self, Op, Len, ParamTypes, RetType):-
-    quietly(no_repeats(ParamTypes+RetType,get_operator_typedef_NR(Self, Op, Len, ParamTypes, RetType))).
+    quietly(get_operator_typedef_NR(Self, Op, Len, ParamTypes, RetType)).
 
 get_operator_typedef_NR(Self, Op, Len, ParamTypes, RetType) :-
+    no_repeats_var(NoRepeatType),
     % Ensure the length matches the parameter types or is unbound.
     len_or_unbound(ParamTypes, Len),
     % Try to retrieve the type definition from cache, or fallback to other strategies.
     if_or_else(
         get_operator_typedef0(Self, Op, Len, ParamTypes, RetType),
         get_operator_typedef1(Self, Op, Len, ParamTypes, RetType),
-        get_operator_typedef2(Self, Op, Len, ParamTypes, RetType)).
+        get_operator_typedef2(Self, Op, Len, ParamTypes, RetType)),
+    NoRepeatType = ParamTypes+RetType.
 
 %!  get_operator_typedef_R(+Self, +Op, +Len, -ParamTypes, -RetType) is nondet.
 %
@@ -1483,11 +1489,6 @@ into_typed_args(Depth, Self, [T | TT], [M | MM], [Y | YY]) :-
 :- nodebug(metta(argtypes)).
 :- initialization(nodebug(metta(argtypes))).
 
-show_failure_when(Why, Goal):- debugging(metta(Why)),!,if_or_else(Goal, (notrace,debugm1(Why, show_failed(Why, Goal)),ignore(nortrace),
-   if_t(debugging(metta(failures)),trace),!,fail)).
-show_failure_when(_Why,Goal):- !, (call(Goal)*->true;fail).
-%show_failure_when(_Why,Goal):- call(Goal)*->true;(trace,fail).
-
 %!  into_typed_arg(+Depth, +Self, +Type, +Value, -TypedValue) is det.
 %
 %   Converts a single value into a typed argument based on the given type.
@@ -1500,10 +1501,11 @@ show_failure_when(_Why,Goal):- !, (call(Goal)*->true;fail).
 %
 into_typed_arg(_Dpth, Self, T, M, Y) :-
     % If the value is a variable, assign the type attribute and unify it.
-    var(M),  show_failure_when(argtypes,(Y = M, dont_put_attr(M, cns, Self = [T]))), !.
+    var(M),  !, show_failure_when(argtypes,(Y = M, dont_put_attr(M, cns, Self = [T]))).
 into_typed_arg(Depth, Self, T, M, Y) :-
     % Use into_typed_arg0 for further evaluation or fallback to direct unification.
-    if_or_else(show_failure_when(argtypes,into_typed_arg0(Depth, Self, T, M, Y)), show_failure_when(argtypes,(M = Y))),!.
+    if_or_else(show_failure_when(argtypes,into_typed_arg0(Depth, Self, T, M, Y)),
+               show_failure_when(argtypes,(M = Y))).
 
 %!  into_typed_arg0(+Depth, +Self, +Type, +Value, -TypedValue) is nondet.
 %
@@ -1515,23 +1517,37 @@ into_typed_arg(Depth, Self, T, M, Y) :-
 %   @arg Value       The value to be evaluated.
 %   @arg TypedValue  The resulting typed value.
 %
+
 into_typed_arg0(Depth, Self, T, M, Y) :- T=='Atom',!,M=Y.
-into_typed_arg0(Depth, Self, T, M, Y) :-
-    % If the type is a variable, determine the value type and evaluate if needed.
-    var(T),
-    ((
-        get_type(Depth, Self, M, T),
-        (wants_eval_kind(T) -> eval_args(Depth, Self, M, Y) ; Y = M))).
-into_typed_arg0(Depth, Self, T, M, Y) :-
-    % If the type requires evaluation, evaluate the value.
-    is_pro_eval_kind(T), !, eval_args(Depth, Self, M, Y).
-into_typed_arg0(Depth, Self, T, M, Y) :-
-    % If the value is ground and conforms to the type, use it directly.
-    ground(M), !, \+ arg_violation(Depth, Self, M, T), Y = M.
 into_typed_arg0(_Dpth, _Slf, T, M, Y) :-
     % If the type does not require evaluation, use the value directly.
     nonvar(T), is_non_eval_kind(T), !, M = Y.
-into_typed_arg0(Depth, Self, _, M, Y) :-
+
+
+into_typed_arg0(Depth, Self, T, M, Y):-
+    if_or_else(into_typed_argA(Depth, Self, T, M, Y),
+               into_typed_argB(Depth, Self, T, M, Y)).
+
+
+into_typed_argA(Depth, Self, T, M, Y) :-
+    % If the type is a variable, determine the value type and evaluate if needed.
+    var(T),
+    %no_repeats_var(NoRepeatY),
+        ((  get_type(Depth, Self, M, T),
+            (wants_eval_kind(T) -> eval_args(Depth, Self, M, Y) ; Y = M))).
+    %NoRepeatY = Y.
+
+
+into_typed_argB(Depth, Self, T, M, Y) :- nonvar(T),
+    % If the type requires evaluation, evaluate the value.
+    is_pro_eval_kind(T), !, eval_args(Depth, Self, M, Y),
+    nop(( \+ arg_violation(Depth, Self, Y, T) )).
+
+into_typed_argB(Depth, Self, T, M, Y) :- nonvar(T),
+    % If the value is ground and conforms to the type, use it directly.
+    ground(M), !, \+ arg_violation(Depth, Self, M, T), Y = M.
+
+into_typed_argB(Depth, Self, _, M, Y) :-
     % Default case: evaluate the value.
     eval_args(Depth, Self, M, Y).
 
@@ -1558,9 +1574,9 @@ prevent_type_violations(Self, BecomingValue,RequireType):- non_arg_violation(Sel
 
 % TODO make sure it is inclusive rather than exclusive
 
-cns:attr_unify_hook(Self=TypeList, NewValue):- nb_current(suspend_type_unificaton, true),!.
-cns:attr_unify_hook(Self=TypeList, NewValue) :-
-  show_failure_when(argtypes,maplist(prevent_type_violations(Self,BecomingValue),TypeRequirements)),
+cns:attr_unify_hook(_Slf=_TypeList,_NewValue):- nb_current(suspend_type_unificaton, true),!.
+cns:attr_unify_hook(Self= TypeList, NewValue) :-
+  show_failure_when(argtypes,maplist(prevent_type_violations(Self,NewValue),TypeList)),
   show_failure_when(argtypes,cns_attr_unify_hook(Self,TypeList, NewValue)).
 
 cns_attr_unify_hook(Self,TypeList,NewValue) :-
@@ -1887,7 +1903,7 @@ is_seo_f(N) :-
 %
 is_absorbed_return_type(Params, Var) :-
     % If Var is a variable, succeed if it is not a sub-variable of Params.
-    var(Var), !, \+ sub_var(Var, Params).
+    var(Var), !, \+ sub_var_safely(Var, Params).
 is_absorbed_return_type(_, 'Bool').
 is_absorbed_return_type(_, [Ar]) :-
     % Succeed if the type is a single-element list containing '->'.
@@ -2317,3 +2333,6 @@ is_math_op('zerop', 1, exists).     % Test for Zero
 % :- load_pfc_file('metta_ontology.pl.pfc').
 
 :- ensure_loaded(metta_typed_functions).
+
+:- find_missing_cuts.
+
