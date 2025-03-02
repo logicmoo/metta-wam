@@ -453,7 +453,7 @@ eval_20(Eq,RetType,_Dpth,_Slf,Name,Y):-
        Y = Name)),
       sanity_check_eval(eval_20_atom,Y).
 
-eval_20(_Eq,RetType,Depth,Self,[Sym|Args],Res):- fail,
+eval_20(_Eq,RetType,Depth,Self,[Sym|Args],Res):-
     atomic(Sym), py_is_function(Sym), is_list(Args), !,
     maplist(as_prolog_x(Depth,Self), Args , Adjusted),!,
     py_call_method_and_args(Sym,Adjusted,Ret),
@@ -1793,8 +1793,8 @@ eval_20(_Eq,_RetType,_Depth,_Self,['decons',OneArg],[H,T]):- !, must_unify(OneAr
 eval_20(_Eq,_RetType,_Depth,_Self,['cons'|TwoArgs],[H|T]):-!, must_unify(TwoArgs,[H,T]).
 
 
-eval_20(Eq,RetType,Depth,Self,['get-doc'|Args],Res):- !,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-get-doc'|Args],Res)),!.
-eval_20(Eq,RetType,Depth,Self,['help!'|Args],Res):-!,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-help!'|Args],Res)),!.
+%eval_20(Eq,RetType,Depth,Self,['get-doc'|Args],Res):- !,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-get-doc'|Args],Res)),!.
+%eval_20(Eq,RetType,Depth,Self,['help!'|Args],Res):-!,with_all_spaces(eval_args(Eq,RetType,Depth,Self,['metta-help!'|Args],Res)),!.
 
 with_all_spaces(Goal):-
  locally(nb_setval(with_all_spaces,t),Goal).
@@ -1849,18 +1849,18 @@ eval_10(Eq,RetType,Depth,Self,['if-equal',X,Y,Then,Else],Res):- !,
 eval_args_bool(_Eq,_Depth,_Self,Cond, TF):- var(Cond), !, member(TF,['True','False']),Cond=TF.
 eval_args_bool(Eq,Depth,Self,Cond, TF):- eval_args(Eq,'Bool', Depth,Self,Cond, TF). %, \+ \+ (get_type(TryTF,Type),Type=='Bool'),TryTF=TF.
 
-eval_10(Eq,RetType,Depth,Self,['if',Cond,Then,Else],Res):- var(Cond),  !,
+eval_10(Eq,RetType,Depth,Self,['if',Cond,Then,Else],Res):- !, %var(Cond),  !,
    eval_args_bool(Eq, Depth,Self,Cond, TF),
-   ( is_True(TF) -> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
+    (is_True(TF)  -> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
     (is_False(TF) -> eval_args(Eq,RetType,Depth,Self,Else,Res) ;
      Res = ['if',Cond,Then,Else])).
-
+/*
 eval_10(Eq,RetType,Depth,Self,['if',Cond,Then,Else],Res):- !,
    eval_args_bool(Eq, Depth,Self,Cond, TF),
    ((is_True(TF) *-> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
      (nop(is_False(TF)) -> eval_args(Eq,RetType,Depth,Self,Else,Res))) *-> true ;
        (fail, Res = ['if',Cond,Then,Else])).
-
+*/
 /*
 eval_10(Eq,RetType,Depth,Self,['If',Cond,Then,Else],Res):-  fail, !,
     (eval_args_true(Eq,'Bool',Depth,Self,Cond)
@@ -1872,20 +1872,19 @@ eval_10(Eq,RetType,Depth,Self,['If',Cond,Then],Res):- fail, !,
    (is_True(TF) -> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
       (!, fail,Res = [],!)).
 */
-eval_10(Eq,RetType,Depth,Self,['if',Cond,Then],Res):-
-   eval_args(Eq,'Bool',Depth,Self,Cond,TF),
-   (is_True(TF) -> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
-      (!, fail,Res = [],!)).
+eval_10_later(Eq,RetType,Depth,Self,['if',Cond,Then],Res):- !, %var(Cond),  !,
+   eval_args_bool(Eq, Depth,Self,Cond, TF),
+    (is_True(TF)  -> eval_args(Eq,RetType,Depth,Self,Then,Res) ;
+    (is_False(TF) -> fail ; Res = ['if',Cond,Then])).
 
+%eval_10(Eq,RetType,Depth,Self,['If',Cond,Then|Else],Res):- !,
+%   eval_10(Eq,RetType,Depth,Self,['if',Cond,Then|Else],Res).
 
 eval_20_failed(Eq,RetType,Depth,Self,[X|Args],Res):-
   quietly((findall(metta_defn(Self,[Y|Args],Body),(metta_defn(Self,[Y|Args],Body),X==Y),L))),
   L = [metta_defn(Self,[Y|Args],Body)], X==Y, !,
   eval_10(Eq,RetType,Depth,Self,Body,Res).
 
-
-eval_10(Eq,RetType,Depth,Self,['If',Cond,Then|Else],Res):- !,
-   eval_10(Eq,RetType,Depth,Self,['if',Cond,Then|Else],Res).
 
 eval_20(Eq,RetType,_Dpth,_Slf,[_,Nothing],NothingO):-
    'Nothing'==Nothing,!,do_expander(Eq,RetType,Nothing,NothingO).
@@ -2951,14 +2950,17 @@ eval_40(Eq,RetType,Depth,Self,[F|PredDecl],Res):-
 % =================================================================
 % =================================================================
 eval_40(Eq,RetType,Depth,Self,LESS,Res):-
-   ((((eval_selfless(Eq,RetType,Depth,Self,LESS,Res),fake_notrace(LESS\==Res))))),!.
+   eval_selfless(Eq,RetType,Depth,Self,LESS,Res),fake_notrace(LESS\==Res),!.
 
+/*
 eval_40(Eq,RetType,Depth,Self,['+',N1,N2],N):- number(N1),!,
    skip_eval_args(Eq,RetType,Depth,Self,N2,N2Res), fake_notrace(catch_err(N is N1+N2Res,_E,(set_last_error(['Error',N2Res,'Number']),fail))).
 eval_40(Eq,RetType,Depth,Self,['-',N1,N2],N):- number(N1),!,
    skip_eval_args(Eq,RetType,Depth,Self,N2,N2Res), fake_notrace(catch_err(N is N1-N2Res,_E,(set_last_error(['Error',N2Res,'Number']),fail))).
 eval_40(Eq,RetType,Depth,Self,['*',N1,N2],N):- number(N1),!,
-   skip_eval_args(Eq,RetType,Depth,Self,N2,N2Res), fake_notrace(catch_err(N is N1*N2Res,_E,(set_last_error(['Error',N2Res,'Number']),fail))).
+   skip_eval_args(Eq,RetType,Depth,Self,N2,N2Res),
+   fake_notrace(catch_err(N is N1*N2Res,_E,(set_last_error(['Error',N2Res,'Number']),fail))).
+*/
 
 eval_20(_Eq,_RetType,_Depth,_Self,['rust',Bang,PredDecl],Res):- Bang == '!', !,
     rust_metta_run(exec(PredDecl),Res), nop(write_src(res(Res))).
@@ -2985,7 +2987,7 @@ eval_40(_Eq,_RetType,_Depth,_Self,['py-chain',Arg],Res):- !,
 eval_40(Eq,RetType,Depth, Self,['py-atom'|Args],Res):- !,
     eval_py_atom(Eq,RetType,Depth,Self,['py-atom'|Args],Res).
 
-eval_40(_Eq,_RetType,_Depth,_Self,['py-dot',Arg1,Arg2],Res):- !,
+eval_40(_Eq,_RetType,_Depth,_Self,['py-dot',Arg1,Arg2| _Specialize],Res):- !,
   make_py_dot(Arg1,Arg2,Res).
 eval_40(_Eq,_RetType,_Depth,_Self,['py-type',Arg],Res):- !,
   must_det_ll((py_type(Arg,Res))).

@@ -17,26 +17,18 @@
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
+.ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -46,7 +38,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-28 08:52:44+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1939-638.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-02 05:03:32+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1672-708.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta] ]
 P;HTML|
@@ -64,14 +56,6 @@ Script started on 2025-02-28 08:52:44+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/eval_for_tests_mw.metta]
 
-;;;; define foo returning Number and String
-<span class="ansi38-255165000"
-> (= (foo)  1)
- 
-</span><span class="ansi38-255165000"
-> (= (foo)  "a")
- 
-</span>;;;; eval-for returns of appropriate type
 <span class="ansi38-013099040"
 >!(assertEqualToResult (eval-for Number (foo)) (1))
 
@@ -80,7 +64,7 @@ Script started on 2025-02-28 08:52:44+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000625 secs. (625.33 microseconds) 
+; took 0.000873 secs. (872.59 microseconds) 
 
 !(assertEqualToResult (eval-for Number (foo)) (1))
 
@@ -101,7 +85,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000530 secs. (529.61 microseconds) 
+; took 0.000723 secs. (723.34 microseconds) 
 
 !(assertEqualToResult (eval-for String (foo)) ("a"))
 
@@ -114,18 +98,17 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' (1 "a")) ('~nExpected: ' ("a")))
-</span>;;;; eval-for works with unbound type
-<span class="ansi38-013099040"
->!(assertEqualToResult (eval-for $59198 (foo)) (1 "a"))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for $58794 (foo)) (1 "a"))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000514 secs. (514.10 microseconds) 
+; took 0.000663 secs. (662.83 microseconds) 
 
-!(assertEqualToResult (eval-for $5638 (foo)) (1 "a"))
+!(assertEqualToResult (eval-for $5994 (foo)) (1 "a"))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -136,30 +119,26 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (let $16554 (eval-for $16572 (foo)) ($16554 $16572)) ((1 Number) ("a" String)))
+>!(assertEqualToResult (let $17520 (eval-for $17538 (foo)) ($17520 $17538)) ((1 Number) ("a" String)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000648 secs. (648.50 microseconds) 
+; took 0.000960 secs. (960.16 microseconds) 
 
-!(assertEqualToResult (let $33464 (eval-for $33482 (foo)) ($33464 $33482)) ((1 Number) ("a" String)))
+!(assertEqualToResult (let $34932 (eval-for $34950 (foo)) ($34932 $34950)) ((1 Number) ("a" String)))
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (1 $34442) ("a" $34460)) 
+      ( (1 $35910) ("a" $35928)) 
       ( (1 Number) ("a" String))]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(1,'[|]'(_32136{vn = ...},[])),'[|]'('[|]'("a",'[|]'(_32104{vn = ...},[])),[])),'[|]'('[|]'(1,'[|]'('Number',[])),'[|]'('[|]'("a",'[|]'('String',[])),[])))
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(1,'[|]'(_33604{vn = ...},[])),'[|]'('[|]'("a",'[|]'(_33572{vn = ...},[])),[])),'[|]'('[|]'(1,'[|]'('Number',[])),'[|]'('[|]'("a",'[|]'('String',[])),[])))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((1 $40576) ("a" $40594))) ('~nExpected: ' ((1 Number) ("a" String))))
-</span>;;;; eval-for works when type arg must be evaluated
-<span class="ansi38-255165000"
-> (= (type)  Number)
- 
+>(Error ('~nGot: ' ((1 $42654) ("a" $42672))) ('~nExpected: ' ((1 Number) ("a" String))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eval-for (type) (foo)) (1))
 
@@ -168,7 +147,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000508 secs. (507.67 microseconds) 
+; took 0.000803 secs. (802.54 microseconds) 
 
 !(assertEqualToResult (eval-for (type) (foo)) (1))
 
@@ -181,9 +160,6 @@ Deterministic: <span class="ansi33"
 
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' (1 "a")) ('~nExpected: ' (1)))
-</span><span class="ansi38-255165000"
-> (= (type)  String)
- 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (eval-for (type) (foo)) (1 "a"))
 
@@ -192,7 +168,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000511 secs. (511.35 microseconds) 
+; took 0.000675 secs. (675.03 microseconds) 
 
 !(assertEqualToResult (eval-for (type) (foo)) (1 "a"))
 
@@ -204,25 +180,12 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; set up incrementer and define bar returning Number and String
-<span class="ansi38-013099040"
+</span><span class="ansi38-013099040"
 >!(bind! &var (new-state 0))
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span><span class="ansi38-255165000"
-> (= (increment)  
-  (sequential ((do (change-state! &var (+ 1 (get-state &var)))) (get-state &var))))
- 
-</span><span class="ansi38-255165000"
-> (= (bar)  
-  (sequential ((do (increment)) 1)))
- 
-</span><span class="ansi38-255165000"
-> (= (bar)  
-  (sequential ((do (increment)) "a")))
- 
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (get-state &var) (0))
 
@@ -231,7 +194,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.07</h3>
 ; 
 ; EVAL TEST
-; took 0.000131 secs. (131.47 microseconds) 
+; took 0.000269 secs. (268.57 microseconds) 
 
 !(assertEqualToResult (get-state &var) (0))
 
@@ -243,18 +206,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; eval-for does not re-evaluate paths
-<span class="ansi38-013099040"
->!(assertEqualToResult (eval-for $54618 (bar)) (1 "a"))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (eval-for $57748 (bar)) (1 "a"))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.08</h3>
 ; 
 ; EVAL TEST
-; took 0.005 secs. (4.87 milliseconds) 
+; took 0.006 secs. (6.35 milliseconds) 
 
-!(assertEqualToResult (eval-for $17066 (bar)) (1 "a"))
+!(assertEqualToResult (eval-for $34452 (bar)) (1 "a"))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -272,7 +234,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000107 secs. (107.13 microseconds) 
+; took 0.000262 secs. (261.52 microseconds) 
 
 !(assertEqualToResult (get-state &var) (2))
 
@@ -292,7 +254,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.14 milliseconds) 
+; took 0.005 secs. (4.58 milliseconds) 
 
 !(assertEqualToResult (eval-for (type) (bar)) (1 "a"))
 
@@ -312,7 +274,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.11</h3>
 ; 
 ; EVAL TEST
-; took 0.000116 secs. (115.73 microseconds) 
+; took 0.000261 secs. (260.53 microseconds) 
 
 !(assertEqualToResult (get-state &var) (4))
 
@@ -324,22 +286,17 @@ Deterministic: <span class="ansi33"
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;;; eval-for does one evaluation step
-<span class="ansi38-255165000"
-> (= (chain-to-foo)  
-  (foo))
- 
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $44126 (quote $44126)) ((quote (foo))))
+>!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $13588 (quote $13588)) ((quote (foo))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.12</h3>
 ; 
 ; EVAL TEST
-; took 0.000901 secs. (900.55 microseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
-!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $59790 (quote $59790)) ((quote (foo))))
+!(assertEqualToResult (chain (eval-for Expression (chain-to-foo)) $29740 (quote $29740)) ((quote (foo))))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -351,16 +308,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((quote 1) (quote "a"))) ('~nExpected: ' ((quote (foo)))))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (chain (eval-for $11546 (chain-to-foo)) $11552 (quote $11552)) ((quote (foo))))
+>!(assertEqualToResult (chain (eval-for $40050 (chain-to-foo)) $40056 (quote $40056)) ((quote (foo))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.13"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000898 secs. (897.81 microseconds) 
+; took 0.001 secs. (1.31 milliseconds) 
 
-!(assertEqualToResult (chain (eval-for $27080 (chain-to-foo)) $27086 (quote $27086)) ((quote (foo))))
+!(assertEqualToResult (chain (eval-for $56072 (chain-to-foo)) $56078 (quote $56078)) ((quote (foo))))
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -372,16 +329,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((quote 1) (quote "a"))) ('~nExpected: ' ((quote (foo)))))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $36246 (quote $36246)) ())
+>!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $7282 (quote $7282)) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.14"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000881 secs. (880.77 microseconds) 
+; took 0.001 secs. (1.32 milliseconds) 
 
-!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $49434 (quote $49434)) ())
+!(assertEqualToResult (chain (eval-for Number (chain-to-foo)) $20956 (quote $20956)) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -392,16 +349,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >(Error ('~nGot: ' ((quote 1) (quote "a"))) ('~nExpected: ' ()))
 </span><span class="ansi38-013099040"
->!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $58592 (quote $58592)) ())
+>!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $30724 (quote $30724)) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.15"
 >;; HYPERON-METTALOG-SANITY.EVAL-FOR-TESTS.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000892 secs. (891.96 microseconds) 
+; took 0.001 secs. (1.33 milliseconds) 
 
-!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $7628 (quote $7628)) ())
+!(assertEqualToResult (chain (eval-for String (chain-to-foo)) $44400 (quote $44400)) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -425,7 +382,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' (1 "a")) ('~nExpected: ' (1)))]
 [(Error ('~nGot: ' (1 "a")) ('~nExpected: ' ("a")))]
 [()]
-[(Error ('~nGot: ' ((1 $41390) ("a" $41408))) ('~nExpected: ' ((1 Number) ("a" String))))]
+[(Error ('~nGot: ' ((1 $43468) ("a" $43486))) ('~nExpected: ' ((1 Number) ("a" String))))]
 [(Error ('~nGot: ' (1 "a")) ('~nExpected: ' (1)))]
 [()]
 [()]
@@ -439,7 +396,7 @@ Deterministic: <span class="ansi33"
 [(Error ('~nGot: ' ((quote 1) (quote "a"))) ('~nExpected: ' ()))]
 [(Error ('~nGot: ' ((quote 1) (quote "a"))) ('~nExpected: ' ()))]
 
-Script done on 2025-02-28 08:52:45+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-02 05:03:33+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

@@ -16,13 +16,8 @@
 .ansi33 { color: #aa5500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -30,7 +25,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-28 08:54:22+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1939-638.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-02 05:05:11+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1672-708.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta] ]
 P;HTML|
@@ -56,104 +51,60 @@ Script started on 2025-02-28 08:54:22+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/lambda_abstraction_bc_he_556.metta]
 
-;;; Test File: Backward Chaining on Lambda Abstraction in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/556
-;;; Issue Overview:
-;;; The MeTTa interpreter previously crashed when performing backward chaining on lambda abstraction.
-;;; This test reproduces the original conditions to validate that the issue is resolved.
-;;; Example 1: Knowledge Base Setup
-;;; --------------------------------
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Add successor function
-<span class="ansi38-013099040"
->!(add-atom &kb (: S (-> (: $48812 Nat) Nat)))
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: S (-> (: $51036 Nat) Nat)))
 
-</span><span class="ansi38-255165000"
-> (: S (-> (: $x Nat) Nat))
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Add a generic variable
-<span class="ansi38-013099040"
->!(add-atom &kb (: $10784 Var))
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: $12064 Var))
 
-</span><span class="ansi38-255165000"
-> (: $x Var)
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Add lambda abstraction
-<span class="ansi38-013099040"
->!(add-atom &kb (: λ (-> (: $30732 Var) (-> (: $30762 $30768) (-> (: $30732 $30804) $30768)))))
+</span><span class="ansi38-013099040"
+>!(add-atom &kb (: λ (-> (: $31458 Var) (-> (: $31488 $31494) (-> (: $31458 $31530) $31494)))))
 
-</span><span class="ansi38-255165000"
-> (: λ (-> (: $x Var) (-> (: $y $62762) (-> (: $x $62798) $5572))))
- 
 </span>
 Deterministic: <span class="ansi33"
 >()
-</span>;;; Example 2: Backward Chainer Definitions
-;;; ---------------------------------------
-;;; Base case: Query the knowledge base for a rule or fact
-<span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $18916)  
-  (match &kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
- 
-</span>;;; Recursive step: Recurse on proof abstraction and argument
-<span class="ansi38-255165000"
-> (= (bc (: ($prfabs $prfarg) $53740) (S $53758))  
-  (let* 
-    ( ( (: $prfabs 
-          (-> 
-            (: $prfarg $53836) $53740)) (bc (: $prfabs (-> (: $prfarg $53836) $53740)) $53758)) ((: $prfarg $53836) (bc (: $prfarg $53836) $53758))) 
-    (: 
-      ($prfabs $prfarg) $53740)))
- 
-</span>;;; Example 3: Tests
-;;; ----------------
-;;; Test: Prove unary functions over natural numbers with depth 2
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $42702 (-> (: $42732 Nat) Nat)) (S (S Z))) ())
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $9876 (-> (: $9906 Nat) Nat)) (S (S Z))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.01</h3>
 ; 
 ; EVAL TEST
-; took 0.017 secs. (17.45 milliseconds) 
+; took 0.020 secs. (20.46 milliseconds) 
 
-!(assertEqualToResult (bc (: $62398 (-> (: $62428 Nat) Nat)) (S (S Z))) ())
+!(assertEqualToResult (bc (: $18536 (-> (: $18566 Nat) Nat)) (S (S Z))) ())
 
 <span class="ansi31"
 >  [loonit_failureR 
     [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
       ( (: S 
           (-> 
-            (: $4586 Nat) Nat))) ()]]
-</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_3850{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[]),[])
+            (: $19412 Nat) Nat))) ()]]
+</span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(:,'[|]'('S','[|]'('[|]'(->,'[|]'('[|]'(:,'[|]'(_17276{vn = ...},'[|]'('Nat',[]))),'[|]'('Nat',[]))),[]))),[]),[])
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((: S (-> (: $11430 Nat) Nat)))) ('~nExpected: ' ()))
-</span>;;; Explanation:
-;;; The backward chainer should not crash and return an empty result when the depth is 2.
-;;; Test: Prove unary functions over natural numbers with depth 5
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $14692 (-> (: $14722 Nat) Nat)) (S (S (S (S (S Z)))))) ())
+>(Error ('~nGot: ' ((: S (-> (: $26094 Nat) Nat)))) ('~nExpected: ' ()))
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (bc (: $29356 (-> (: $29386 Nat) Nat)) (S (S (S (S (S Z)))))) ())
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02"
 >;; HYPERON-METTALOG-SANITY.LAMBDA-ABSTRACTION-BC-HE-556.02</h3>
 
-Script done on 2025-02-28 08:55:02+00:00 [COMMAND_EXIT_CODE="143"]
+Script done on 2025-03-02 05:05:51+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
