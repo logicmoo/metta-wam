@@ -127,7 +127,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-02 05:05:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1672-708.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-11 21:22:59+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1701-986.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta] ]
 P;HTML|
@@ -139,13 +139,15 @@ Script started on 2025-03-02 05:05:07+00:00 [COMMAND="timeout --preserve-status 
 P;HTML|
 ;                     [ = 2 "[()]" ]
 P;HTML|
-;                     [ = 3 "[(Error (assertEqualToResult (get-atoms GroundingSpace-0x5596c09fa6f8) ((mod-space! stdlib))) " ]
+;                     [ = 3 "[(Error (assertEqualToResult (get-atoms GroundingSpace-0x55c27695b278) ((mod-space! stdlib))) " ]
 P;HTML|
 ;                      [ = 3 "Expected: [(mod-space! stdlib)]" ]
 P;HTML|
-;                      [ = 3 "Got: [GroundingSpace-top:stdlib]" ]
+;                      [ = 3 "Got: [ModuleSpace(GroundingSpace-top:stdlib)]" ]
 P;HTML|
-;                       [ = 4 "Missed result: (mod-space! stdlib))]" ]
+;                       [ = 4 "Missed results: (mod-space! stdlib)" ]
+P;HTML|
+;                       [ = 4 "Excessive results: ModuleSpace(GroundingSpace-top:stdlib))]" ]
 P;HTML|
 ;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/index_min_functions_extra_3.metta]
 
@@ -169,7 +171,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.01</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.97 milliseconds) 
+; took 0.003 secs. (2.70 milliseconds) 
 
 !(assertEqualToResult (get-atoms &new-space) ((mod-space! stdlib)))
 
@@ -220,7 +222,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000151 secs. (150.66 microseconds) 
+; took 0.000153 secs. (153.14 microseconds) 
 
 !(assertEqualToResult (get-atoms &space) ((a a)))
 
@@ -288,7 +290,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000592 secs. (591.72 microseconds) 
+; took 0.000400 secs. (400.41 microseconds) 
 
 !(assertEqualToResult (get-type (a b) &self) (((A B) (AA B) (A BB) (AA BB) %Undefined%)))
 
@@ -312,7 +314,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.00 milliseconds) 
+; took 0.000943 secs. (943.14 microseconds) 
 
 !(assertEqualToResult (index-atom (5 4 3 2 1) 2) ((3)))
 
@@ -333,7 +335,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000842 secs. (842.03 microseconds) 
+; took 0.000846 secs. (845.87 microseconds) 
 
 !(assertEqualToResult (index-atom (A B C D E) 5) ((Error (index-atom (A B C D E) 5) "Index is out of bounds")))
 
@@ -367,7 +369,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000400 secs. (399.55 microseconds) 
+; took 0.000330 secs. (329.97 microseconds) 
 
 !(assertEqualToResult (remove-atom &space b) ((False)))
 
@@ -412,7 +414,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.07</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.20 milliseconds) 
+; took 0.001 secs. (1.10 milliseconds) 
 
 !(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
@@ -440,7 +442,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.08</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.05 milliseconds) 
+; took 0.004 secs. (3.84 milliseconds) 
 
 !(assertEqualToResult (metta (a (b $45610) $45616 $45622) %Undefined% &self) ((a (c $45610 $45622) $45616 $45622)))
 
@@ -464,7 +466,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.09</h3>
 ; 
 ; EVAL TEST
-; took 0.000398 secs. (398.04 microseconds) 
+; took 0.000309 secs. (309.02 microseconds) 
 
 !(assertEqualToResult (sealed ($30508) (sealed ($30532 $30538) (quote (= ($30532 $30508 $30586)  
   ($30538))))) ((quote (= ($30532 $30508 $30586)  
@@ -488,7 +490,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000418 secs. (417.96 microseconds) 
+; took 0.000332 secs. (331.74 microseconds) 
 
 !(assertEqualToResult (sealed ($5714 $5720) (quote (= ($5720 $5762)))) ((quote (= ($5720 $5762)))))
 
@@ -508,7 +510,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.11</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.32 milliseconds) 
+; took 0.004 secs. (3.93 milliseconds) 
 
 !(assertEqualToResult (let (quote ($10236 $10242)) (sealed ($10266) (quote ($10266 (output $10266)))) (let $10236 (input $10266) $10242)) ((output (input $10266))))
 
@@ -541,7 +543,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.12</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.03 milliseconds) 
+; took 0.000967 secs. (967.39 microseconds) 
 
 !(assertEqualToResult (foo) ((baz)))
 
@@ -568,7 +570,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000837 secs. (836.68 microseconds) 
+; took 0.000808 secs. (807.70 microseconds) 
 
 !(assertEqualToResult (foo) ((foo)))
 
@@ -589,7 +591,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.14</h3>
 ; 
 ; EVAL TEST
-; took 0.000017 secs. (16.95 microseconds) 
+; took 0.000022 secs. (22.27 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -607,7 +609,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.15</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (24.06 microseconds) 
+; took 0.000024 secs. (24.24 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -628,7 +630,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000508 secs. (508.48 microseconds) 
+; took 0.000315 secs. (315.14 microseconds) 
 
 !(assertEqualToResult (get-type Error) (((-> Atom Atom ErrorType))))
 
@@ -649,7 +651,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.17</h3>
 ; 
 ; EVAL TEST
-; took 0.000340 secs. (339.50 microseconds) 
+; took 0.000321 secs. (321.26 microseconds) 
 
 !(assertEqualToResult (get-metatype Error) ((Symbol)))
 
@@ -670,7 +672,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.18</h3>
 ; 
 ; EVAL TEST
-; took 0.000523 secs. (523.08 microseconds) 
+; took 0.000435 secs. (434.64 microseconds) 
 
 !(assertEqualToResult (get-type (Error Foo Boo)) ((ErrorType)))
 
@@ -691,7 +693,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.19</h3>
 ; 
 ; EVAL TEST
-; took 0.000021 secs. (20.60 microseconds) 
+; took 0.000029 secs. (29.36 microseconds) 
 
 !(assertEqualToResult (Error (+ 1 2) (+ 1 +)) ((Error (+ 1 2) (+ 1 +))))
 
@@ -715,7 +717,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.20</h3>
 ; 
 ; EVAL TEST
-; took 0.000697 secs. (697.18 microseconds) 
+; took 0.000668 secs. (667.63 microseconds) 
 
 !(assertEqualToResult (id "test") (("test")))
 
@@ -736,7 +738,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.21</h3>
 ; 
 ; EVAL TEST
-; took 0.000629 secs. (628.84 microseconds) 
+; took 0.000665 secs. (664.77 microseconds) 
 
 !(assertEqualToResult (id "te st") (("te st")))
 
@@ -757,7 +759,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.22</h3>
 ; 
 ; EVAL TEST
-; took 0.000594 secs. (594.28 microseconds) 
+; took 0.000656 secs. (656.20 microseconds) 
 
 !(assertEqualToResult (id "te\"st") (("te\"st")))
 
@@ -778,7 +780,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.23</h3>
 ; 
 ; EVAL TEST
-; took 0.000596 secs. (596.00 microseconds) 
+; took 0.000656 secs. (656.17 microseconds) 
 
 !(assertEqualToResult (id "") (("")))
 
@@ -799,7 +801,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.24</h3>
 ; 
 ; EVAL TEST
-; took 0.000618 secs. (618.07 microseconds) 
+; took 0.000658 secs. (658.00 microseconds) 
 
 !(assertEqualToResult (id "te\nst") (("te\nst")))
 
@@ -820,7 +822,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.25</h3>
 ; 
 ; EVAL TEST
-; took 0.000113 secs. (112.61 microseconds) 
+; took 0.000118 secs. (117.68 microseconds) 
 
 !(assertEqualToResult ("te\nst" test) (("te\nst" test)))
 
@@ -864,7 +866,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.26</h3>
 ; 
 ; EVAL TEST
-; took 0.000304 secs. (304.01 microseconds) 
+; took 0.000287 secs. (287.06 microseconds) 
 
 !(assertEqualToResult (get-type (f_sym (b))) ((D)))
 
@@ -885,7 +887,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.27</h3>
 ; 
 ; EVAL TEST
-; took 0.000264 secs. (264.48 microseconds) 
+; took 0.000285 secs. (284.88 microseconds) 
 
 !(assertEqualToResult (get-type (f_expr (b))) ((D)))
 
@@ -906,7 +908,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.28</h3>
 ; 
 ; EVAL TEST
-; took 0.000373 secs. (372.73 microseconds) 
+; took 0.000452 secs. (452.39 microseconds) 
 
 !(assertEqualToResult (get-type (f_var (b))) ((D)))
 
@@ -946,7 +948,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.29</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.74 milliseconds) 
+; took 0.002 secs. (1.55 milliseconds) 
 
 !(assertEqualToResult (metta (eq (plus Z $38638) $38638) %Undefined% &self) ((True)))
 
@@ -967,7 +969,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.30</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.83 milliseconds) 
+; took 0.006 secs. (5.84 milliseconds) 
 
 !(assertEqualToResult (metta (eq (plus (S Z) $34092) $34092) %Undefined% &self) (()))
 
@@ -1014,7 +1016,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.31</h3>
 ; 
 ; EVAL TEST
-; took 0.010 secs. (9.99 milliseconds) 
+; took 0.010 secs. (9.76 milliseconds) 
 
 !(assertEqualToResult (metta (myif (a $54892) $54892) %Undefined% &self) ((d)))
 
@@ -1028,7 +1030,7 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(myif,'[|]'('[|]'(mynot,'[|]'('[|]'(c,'[|]'(_53712,'[|]'(_53718,[]))),[])),'[|]'('[|]'(_53712,'[|]'(_53718,[])),[]))),'[|]'(d,[])),'[|]'('[|]'(d,[]),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((myif (mynot (c $62442 $62448)) ($3950 $3956)) d)) ('~nExpected: ' ((d))))
+>(Error ('~nGot: ' ((myif (mynot (c $62442 $62448)) ($62442 $3956)) d)) ('~nExpected: ' ((d))))
 </span><span class="ansi38-013099040"
 >!(add-atom &self (= (a ($7518))  True))
 
@@ -1043,7 +1045,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.32</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (6.00 milliseconds) 
+; took 0.006 secs. (5.88 milliseconds) 
 
 !(assertEqualToResult (metta (a $8882) %Undefined% &self) ((True)))
 
@@ -1088,7 +1090,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.33</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (3.20 milliseconds) 
+; took 0.003 secs. (3.01 milliseconds) 
 
 !(assertEqualToResult (metta ((foo) a) %Undefined% &self) ((a)))
 
@@ -1111,7 +1113,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.34</h3>
 ; 
 ; EVAL TEST
-; took 0.000307 secs. (306.71 microseconds) 
+; took 0.000370 secs. (369.82 microseconds) 
 
 !(assertEqualToResult (sealed ($35064) (sealed ($35088 $35094) (quote (= ($35088 $35064 $35142)  
   ($35094))))) ((quote (= ($35088 $35064 $35142)  
@@ -1135,7 +1137,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.35</h3>
 ; 
 ; EVAL TEST
-; took 0.000213 secs. (212.81 microseconds) 
+; took 0.000218 secs. (218.23 microseconds) 
 
 !(assertEqualToResult (sealed ($7462 $7468) (quote (= ($7468 $7510)))) ((quote (= ($7468 $7510)))))
 
@@ -1155,7 +1157,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.36</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.49 milliseconds) 
+; took 0.004 secs. (4.25 milliseconds) 
 
 !(assertEqualToResult (let (quote ($10968 $10974)) (sealed ($10998) (quote ($10998 (output $10998)))) (let $10968 (input $10998) $10974)) ((output (input $10998))))
 
@@ -1188,7 +1190,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.37</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.04 milliseconds) 
+; took 0.001 secs. (1.07 milliseconds) 
 
 !(assertEqualToResult (foo) ((baz)))
 
@@ -1215,7 +1217,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.38</h3>
 ; 
 ; EVAL TEST
-; took 0.000883 secs. (882.87 microseconds) 
+; took 0.000922 secs. (922.12 microseconds) 
 
 !(assertEqualToResult (foo) ((foo)))
 
@@ -1236,7 +1238,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.39</h3>
 ; 
 ; EVAL TEST
-; took 0.000024 secs. (24.19 microseconds) 
+; took 0.000026 secs. (25.52 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -1254,7 +1256,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.40</h3>
 ; 
 ; EVAL TEST
-; took 0.000017 secs. (17.27 microseconds) 
+; took 0.000023 secs. (22.77 microseconds) 
 
 !(assertEqualToResult (eval (foo)) ((baz)))
 
@@ -1275,7 +1277,7 @@ R(2): <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.41</h3>
 ; 
 ; EVAL TEST
-; took 0.000264 secs. (264.48 microseconds) 
+; took 0.000274 secs. (274.31 microseconds) 
 
 !(assertEqualToResult (metta () %Undefined% &self) (()))
 
@@ -1295,7 +1297,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.42</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.001 secs. (1.27 milliseconds) 
 
 !(assertEqualToResult (metta (unknown-func a) %Undefined% &self) ((unknown-func a)))
 
@@ -1322,7 +1324,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.43</h3>
 ; 
 ; EVAL TEST
-; took 0.004 secs. (4.39 milliseconds) 
+; took 0.004 secs. (4.26 milliseconds) 
 
 !(assertEqualToResult (metta (known-func a) %Undefined% &self) ((a a)))
 
@@ -1361,7 +1363,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.44</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.55 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqualToResult (metta (color) %Undefined% &self) ((blue red green)))
 
@@ -1389,7 +1391,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.45</h3>
 ; 
 ; EVAL TEST
-; took 0.006 secs. (5.82 milliseconds) 
+; took 0.006 secs. (5.68 milliseconds) 
 
 !(assertEqualToResult (metta (a (b $36900) $36906 $36912) %Undefined% &self) ((a (c $36900 $36912) $36906 $36912)))
 
@@ -1442,7 +1444,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.46</h3>
 ; 
 ; EVAL TEST
-; took 0.000909 secs. (908.68 microseconds) 
+; took 0.000769 secs. (769.37 microseconds) 
 
 !(assertEqualToResult (metta (foo a b) %Undefined% &self) ((c)))
 
@@ -1463,7 +1465,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.47</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.48 milliseconds) 
+; took 0.001 secs. (1.33 milliseconds) 
 
 !(assertEqualToResult (metta (foo a) %Undefined% &self) ((Error (foo a) "IncorrectNumberOfArguments")))
 
@@ -1491,7 +1493,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.48</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.00 milliseconds) 
+; took 0.001 secs. (1.19 milliseconds) 
 
 !(assertEqualToResult (metta (id_num myAtom) %Undefined% &self) ((myAtom)))
 
@@ -1530,7 +1532,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.INDEX-MIN-FUNCTIONS-EXTRA-3.49</h3>
 ; 
 ; EVAL TEST
-; took 0.000925 secs. (924.79 microseconds) 
+; took 0.000934 secs. (934.41 microseconds) 
 
 !(assertEqualToResult (metta (id_a myAtom) %Undefined% &self) ((Error myAtom "BadType")))
 
@@ -1660,7 +1662,7 @@ Deterministic: <span class="ansi33"
 [()]
 [(Error ('~nGot: ' (myAtom)) ('~nExpected: ' ((Error myAtom "BadType"))))]
 
-Script done on 2025-03-02 05:05:08+00:00 [COMMAND_EXIT_CODE="1"]
+Script done on 2025-03-11 21:23:01+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
