@@ -12,13 +12,10 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -27,93 +24,70 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:17:57+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:10:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[(set-debug! e)]" ]
+;                     [ = 2 "[(set-debug! e)]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[()]" ]
+;                      [ = 4 "[()]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Example from OpenCog Classic wiki on PLN Backward Chaining
-;;; No explicit backward chaining is needed
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; facts
-<span class="ansi38-255165000"
-> (= (croaks Fritz)  T)
- 
-</span><span class="ansi38-255165000"
-> (= (eat_flies Fritz)  T)
- 
-</span>;;; Rules
-<span class="ansi38-255165000"
-> (= (And T T)  T)
- 
-</span><span class="ansi38-255165000"
-> (= (frog $x)  
-  (And 
-    (croaks $x) 
-    (eat_flies $x)))
- 
-</span><span class="ansi38-255165000"
-> (= (green $x)  
-  (frog $x))
- 
-</span>;;; Conclusion from facts and rules
 <span class="ansi38-013099040"
 >!(assertEqual (green Fritz) T)
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $3942]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqual (green Fritz) T)];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; This is not just functional programming,
-;;; because we can do inference
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (= (ift T $then)  $then)
- 
-</span><span class="ansi38-013099040"
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $64480 $64482]]] [ = $4242 True ] ] [ = $4242 False ] ]] [error instantiation_error $4256] ]
+
+<span class="ansi38-013099040"
 >!(set-debug! e)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $13572]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (set-debug! e)];;;!(rtrace! (ift (green $x) $x))
-;;;!(break!)
-;;; !(rtrace! (, (green $x) (println! $x)))
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1986]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqual (green Fritz) T)][error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1894]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (set-debug! e)]
 <span class="ansi38-013099040"
->!(assertEqual (ift (green $15358) $15358) Fritz)
+>!(assertEqual (ift (green $3992) $3992) Fritz)
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2230]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqual (ift (green $2264) $2264) Fritz)];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; We can also use expressions with `=` in `match`
-;;; NOTE: `=` is not an ordinary symbol, and declarative reasoning over expressions
-;;; with it may work differently from that over purely symbolic expressions
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $17034 $17036]]] [ = $17040 True ] ] [ = $17040 False ] ]] [error instantiation_error $17054] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2384]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqual (ift (green $2418) $2418) Fritz)]
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (= ($3898 Fritz)  T) $3898) (croaks eat_flies))
+>!(assertEqualToResult (match &self (= ($4364 Fritz)  T) $4364) (croaks eat_flies))
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9180]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqualToResult (match &self (= ($9226 Fritz)  T) $9226) (croaks eat_flies))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B3-DIRECT.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $21790 $21792]]] [ = $21796 True ] ] [ = $21796 False ] ]] [error instantiation_error $21810] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2570]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta] (assertEqualToResult (match &self (= ($2616 Fritz)  T) $2616) (croaks eat_flies))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 3
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[
-
-Script done on 2025-02-24 14:17:57+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:10:07+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b3_direct.metta" --halt=true\033[0m

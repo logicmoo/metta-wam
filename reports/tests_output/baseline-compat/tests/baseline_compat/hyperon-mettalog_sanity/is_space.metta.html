@@ -12,8 +12,9 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -22,59 +23,68 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:19:45+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:22:28+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[(Error (assertEqual (is-space &corelib) True) " ]
+;                     [ = 2 "[(Error (assertEqual (is-space &corelib) True) " ]
 P;HTML|
-;                       [ = 2 "Expected: [True]" ]
+;                     [ = 2 "Expected: [True]" ]
 P;HTML|
-;                        [ = 2 "Got: [False]" ]
+;                      [ = 2 "Got: [False]" ]
 P;HTML|
-;                        [ = 3 "Missed results: True" ]
+;                      [ = 3 "Missed result: True)]" ]
 P;HTML|
-;                         [ = 3 "Excessive results: False)]" ]
-P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta]
 
-;;; Check whether atom is space comparing its type with type of the &self atom
-<span class="ansi38-255165000"
-> (: is-space (-> Atom Bool))
- 
-</span><span class="ansi38-255165000"
-> (= (is-space $atom)  
-  (let* 
-    ( ($type (get-type $atom)) ($2798 (get-type &self))) 
-    (== $type $2798)))
- 
-</span><span class="ansi38-013099040"
+<span class="ansi38-013099040"
 >!(assertEqual (is-space &self) True)
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9838]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &self) True)]
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.IS-SPACE.01"
+>;; HYPERON-METTALOG-SANITY.IS-SPACE.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $43670 $43672]]] [ = $43676 True ] ] [ = $43676 False ] ]] [error instantiation_error $43690] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $19130]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &self) True)]
 <span class="ansi38-013099040"
 >!(assertEqual (is-space &corelib) True)
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15616]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &corelib) True)]
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.IS-SPACE.02"
+>;; HYPERON-METTALOG-SANITY.IS-SPACE.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $31514 $31516]]] [ = $31520 True ] ] [ = $31520 False ] ]] [error instantiation_error $31534] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1956]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space &corelib) True)]
 <span class="ansi38-013099040"
 >!(assertEqual (is-space 666) False)
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1896]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space 666) False)]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.IS-SPACE.03"
+>;; HYPERON-METTALOG-SANITY.IS-SPACE.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $14336 $14338]]] [ = $14342 True ] ] [ = $14342 False ] ]] [error instantiation_error $14356] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1956]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta] (assertEqual (is-space 666) False)]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 3
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[
-
-Script done on 2025-02-24 14:19:45+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:22:28+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/is_space.metta" --halt=true\033[0m

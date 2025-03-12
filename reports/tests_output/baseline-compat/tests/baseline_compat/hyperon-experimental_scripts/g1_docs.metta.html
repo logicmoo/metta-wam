@@ -12,16 +12,11 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -35,154 +30,110 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:18:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:13:02+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[(Error (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))) " ]
+;                      [ = 4 "[(Error (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))) " ]
 P;HTML|
-;                        [ = 4 "Expected: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
+;                      [ = 4 "Expected: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
 P;HTML|
-;                         [ = 4 "Got: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
+;                       [ = 4 "Got: [(@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))]" ]
 P;HTML|
-;                         [ = 5 "Missed results: (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\"))" ]
+;                       [ = 5 "Missed result: (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\")))]" ]
 P;HTML|
-;                         [ = 5 "Excessive results: (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc \"No documentation\")))]" ]
-P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta]
 
-;;; This script demonstrates how one can document MeTTa code and get
-;;; help using the documenatation.
-;;; Let's document a function which has two arguments and returns value.
-;;; One can use `@doc` expression to do it. First argument of the expression is an
-;;; atom being documented. Other arguments describe the atom, describe function
-;;; parameters and return value.
-<span class="ansi38-255165000"
-> (@doc some-func (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
- 
-</span>;;; Function type is required to document the function
-<span class="ansi38-255165000"
-> (: Arg1Type Type)
- 
-</span><span class="ansi38-255165000"
-> (: Arg2Type Type)
- 
-</span><span class="ansi38-255165000"
-> (: ReturnType Type)
- 
-</span><span class="ansi38-255165000"
-> (: some-func (-> Arg1Type Arg2Type ReturnType))
- 
-</span>;;; `get-doc` function returns a `@doc-formal` expression which contains the full
-;;; documentation of the atom including user defined description and types.
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $11106]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))];;; Same approach can be used to document single atom of any @kind.
-<span class="ansi38-255165000"
-> (@doc SomeSymbol (@desc "Test symbol atom having specific type"))
- 
-</span><span class="ansi38-255165000"
-> (: SomeSymbol SomeType)
- 
-</span><span class="ansi38-013099040"
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $32068 $32070]]] [ = $32074 True ] ] [ = $32074 False ] ]] [error instantiation_error $32088] ]
+
+<span class="ansi38-013099040"
 >!(assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2136]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))];;; Grounded atoms are also can be documented using `@doc` expressions. Type of
-;;; the grounded atom is a part of its implementation.
-<span class="ansi38-255165000"
-> (@doc some-gnd-atom (@desc "Test function") (@params ((@param "First argument") (@param "Second argument"))) (@return "Return value"))
- 
-</span>;;; As some-gnd-function is not imported really in this example type is not
-;;; available and @doc-formal contains %Undefined% instead.
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2776]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-func) (@doc-formal (@item some-func) (@kind function) (@type (-> Arg1Type Arg2Type ReturnType)) (@desc "Test function") (@params ((@param (@type Arg1Type) (@desc "First argument")) (@param (@type Arg2Type) (@desc "Second argument")))) (@return (@type ReturnType) (@desc "Return value"))))]
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $38748 $38750]]] [ = $38754 True ] ] [ = $38754 False ] ]] [error instantiation_error $38768] ]
+
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $12330]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))];;; If atom is not documented then `get-doc` returns "No documentation"
-;;; description.
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $7096]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc SomeSymbol) (@doc-formal (@item SomeSymbol) (@kind atom) (@type SomeType) (@desc "Test symbol atom having specific type")))]
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $9638 $9640]]] [ = $9644 True ] ] [ = $9644 False ] ]] [error instantiation_error $9658] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2704]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc some-gnd-atom) (@doc-formal (@item some-gnd-atom) (@kind function) (@type %Undefined%) (@desc "Test function") (@params ((@param (@type %Undefined%) (@desc "First argument")) (@param (@type %Undefined%) (@desc "Second argument")))) (@return (@type %Undefined%) (@desc "Return value"))))]
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2132]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))];;; Same result is returned if for instance documentation for the function
-;;; application is queried.
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.04</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $24246 $24248]]] [ = $24252 True ] ] [ = $24252 False ] ]] [error instantiation_error $24266] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2200]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc NoSuchAtom) (@doc-formal (@item NoSuchAtom) (@kind atom) (@type %Undefined%) (@desc "No documentation")))]
 <span class="ansi38-013099040"
 >!(assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8590]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))];;; `help!` function gets the documentation and prints it in a human readable
-;;; format.
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.G1-DOCS.05</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $28120 $28122]]] [ = $28126 True ] ] [ = $28126 False ] ]] [error instantiation_error $28140] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2308]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (assertEqual (get-doc (some-func arg1 arg2)) (@doc-formal (@item (some-func arg1 arg2)) (@kind atom) (@type ReturnType) (@desc "No documentation")))]
 <span class="ansi38-013099040"
 >!(help! some-func)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14714]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! some-func)];;; Output:
-;;;
-;;; Function some-func: (-> Arg1Type Arg2Type ReturnType) Test function
-;;; Parameters:
-;;;   Arg1Type First argument
-;;;   Arg2Type Second argument
-;;; Return: (@type ReturnType) Return value
-;;;
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $9974]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! some-func)]
 <span class="ansi38-013099040"
 >!(help! SomeSymbol)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1834]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! SomeSymbol)];;; Output:
-;;;
-;;; Atom SomeSymbol: SomeType Test symbol atom having specific type
-;;;
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1860]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! SomeSymbol)]
 <span class="ansi38-013099040"
 >!(help! some-gnd-atom)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $7960]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! some-gnd-atom)];;; Output:
-;;;
-;;; Function some-gnd-atom: %Undefined% Test function
-;;; Parameters:
-;;;   %Undefined% First argument
-;;;   %Undefined% Second argument
-;;; Return: (@type %Undefined%) Return value
-;;;
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $9528]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! some-gnd-atom)]
 <span class="ansi38-013099040"
 >!(help! NoSuchAtom)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14084]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! NoSuchAtom)];;; Output:
-;;;
-;;; Atom NoSuchAtom: %Undefined% No documentation
-;;;
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $1860]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! NoSuchAtom)]
 <span class="ansi38-013099040"
 >!(help! (some-func arg1 arg2))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1888]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! (some-func arg1 arg2))];;; Output:
-;;;
-;;; Atom (some-func arg1 arg2): ReturnType No documentation
-;;;
-P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $10528]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta] (help! (some-func arg1 arg2))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 5
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[[[[[[[
-
-Script done on 2025-02-24 14:18:14+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:13:02+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/g1_docs.metta" --halt=true\033[0m

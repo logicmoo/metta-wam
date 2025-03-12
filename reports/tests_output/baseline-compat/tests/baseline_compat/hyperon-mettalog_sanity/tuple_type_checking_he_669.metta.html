@@ -12,14 +12,11 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -27,88 +24,77 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:21:40+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:31:43+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
 P;HTML|
-;                       [ = 1 "[(Error (assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType))) " ]
+;                     [ = 1 "[(Error (assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType))) " ]
 P;HTML|
-;                       [ = 1 "Expected: [(Error (wrong type) BadType)]" ]
+;                     [ = 1 "Expected: [(Error (wrong type) BadType)]" ]
 P;HTML|
-;                       [ = 1 "Got: [(wrong type)]" ]
+;                     [ = 1 "Got: [(wrong type)]" ]
 P;HTML|
-;                        [ = 2 "Missed results: (Error (wrong type) BadType)" ]
+;                      [ = 2 "Missed results: (Error (wrong type) BadType)" ]
 P;HTML|
-;                        [ = 2 "Excessive results: (wrong type))]" ]
+;                      [ = 2 "Excessive results: (wrong type))]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta]
 
-<span class="ansi38-255165000"
-> (: foo_fixed (-> Number %Undefined%))
- 
-</span><span class="ansi38-255165000"
-> (= (foo_fixed $x)  $x)
- 
-</span>;;; Test: Passing an incorrectly typed tuple to `foo_fixed`
 <span class="ansi38-013099040"
 >!(assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8526]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))];;; Explanation:
-;;; The tuple `(wrong type)` does not match the expected tuple type `(A B)`, so the type check fails,
-;;; and an error wrapped in a list is returned.
-;;; Test: Checking a tuple with mixed undefined and defined types
-<span class="ansi38-255165000"
-> (: foo_mixed (-> (%Undefined% T) %Undefined%))
- 
-</span><span class="ansi38-255165000"
-> (= (foo_mixed $x)  $x)
- 
-</span><span class="ansi38-013099040"
+;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01"
+>;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $54880 $54882]]] [ = $54886 True ] ] [ = $54886 False ] ]] [error instantiation_error $54900] ]
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2036]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))];;; Explanation:
-;;; The tuple `(partially_defined %Undefined%)` fails to meet the type requirements and returns
-;;; an error in a list.
-;;; Test: Recursive factorial definition with stricter type checking
-<span class="ansi38-255165000"
-> (: fact_strict (-> Number Number))
- 
-</span><span class="ansi38-255165000"
-> (= (fact_strict $n)  
-  (if 
-    (== $n 0) 1 
-    (* 
-      (fact_strict (- $n 1)) $n)))
- 
-</span><span class="ansi38-013099040"
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $29566]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (foo_fixed (wrong type)) ((Error (wrong type) BadType)))]
+;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02"
+>;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $4186 $4188]]] [ = $4192 True ] ] [ = $4192 False ] ]] [error instantiation_error $4206] ]
+
+<span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict 5) ((120)))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14912]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (fact_strict 5) ((120)))];;; Explanation:
-;;; Stricter type checking for the recursive factorial function ensures that input is properly typed.
-;;; Test: Attempting to call `fact_strict` with a tuple
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2124]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (foo_mixed (partially_defined %Undefined%)) ((Error (partially_defined %Undefined%) BadType)))]
+;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03"
+>;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $45096 $45098]]] [ = $45102 True ] ] [ = $45102 False ] ]] [error instantiation_error $45116] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $19918]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (fact_strict 5) ((120)))]
 <span class="ansi38-013099040"
 >!(assertEqualToResult (fact_strict (5 6)) ((Error (5 6) BadType)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2034]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (fact_strict (5 6)) ((Error (5 6) BadType)))];;; Explanation:
-;;; The tuple `(5 6)` is not a valid Number, so the type check fails, and the error is returned in a list.
+;<h3 id="HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04"
+>;; HYPERON-METTALOG-SANITY.TUPLE-TYPE-CHECKING-HE-669.04</h3>
 P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $37340 $37342]]] [ = $37346 True ] ] [ = $37346 False ] ]] [error instantiation_error $37360] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $5846]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta] (assertEqualToResult (fact_strict (5 6)) ((Error (5 6) BadType)))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 4
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[
-
-Script done on 2025-02-24 14:21:41+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:31:43+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/tuple_type_checking_he_669.metta" --halt=true\033[0m

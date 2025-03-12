@@ -12,12 +12,14 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
+.ansi33 { color: #aa5500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -26,94 +28,106 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:18:01+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:10:11+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[()]" ]
+;                      [ = 4 "[()]" ]
 P;HTML|
-;                        [ = 5 "[()]" ]
+;                      [ = 5 "[()]" ]
 P;HTML|
-;                         [ = 6 "[()]" ]
+;                       [ = 6 "[()]" ]
 P;HTML|
-;                         [ = 7 "[()]" ]
+;                       [ = 7 "[()]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Spaces are also represented as grounded symbols in the program.
-;;; Importing another script into a separate space
-;;; TODO: replace symbol by string
 <span class="ansi38-013099040"
 >!(import! &kb c2_spaces_kb)
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1852]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (import! &kb c2_spaces_kb)];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; We can `match` over `&self` or another space
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $27428]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (import! &kb c2_spaces_kb)]
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &kb (, ($4460 is $4472) ($4472 is-a Color) ($4460 is-a Planet)) (Color of Planet $4460 is $4472)) ((Color of Planet Mars is Red)))
+>!(assertEqualToResult (match &kb (, ($30348 is $30360) ($30360 is-a Color) ($30348 is-a Planet)) (Color of Planet $30348 is $30360)) ((Color of Planet Mars is Red)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10370]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &kb (, ($10416 is $10428) ($10428 is-a Color) ($10416 is-a Planet)) (Color of Planet $10416 is $10428)) ((Color of Planet Mars is Red)))];;; The knowledge in `&kb` is not in `&self`
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $62806 $62808]]] [ = $62812 True ] ] [ = $62812 False ] ]] [error instantiation_error $62826] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $3276]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &kb (, ($3322 is $3334) ($3334 is-a Color) ($3322 is-a Planet)) (Color of Planet $3322 is $3334)) ((Color of Planet Mars is Red)))]
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self ($11300 is-a Color) $11300) ())
+>!(assertEqualToResult (match &self ($4202 is-a Color) $4202) ())
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2288]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &self ($2322 is-a Color) $2322) ())];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Checking that grounded symbols from different spaces are compatible
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $18838 $18840]]] [ = $18844 True ] ] [ = $18844 False ] ]] [error instantiation_error $18858] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2454]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &self ($2488 is-a Color) $2488) ())]
 <span class="ansi38-013099040"
->!(assertEqual (match &kb (, (Venus orbit $4430 au) (Mars orbit $4454 au)) (- $4454 $4430)) 0.8)
+>!(assertEqual (match &kb (, (Venus orbit $4908 au) (Mars orbit $4932 au)) (- $4932 $4908)) 0.8)
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10002]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqual (match &kb (, (Venus orbit $10060 au) (Mars orbit $10084 au)) (- $10084 $10060)) 0.8)];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Different spaces can be used
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (Ball is Red)
- 
-</span><span class="ansi38-255165000"
-> (Chair is High)
- 
-</span><span class="ansi38-013099040"
->!(assertEqualToResult (match &kb ($17186 is-a Color) (match &self ($17216 is $17186) $17216)) (Ball))
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $28482 $28484]]] [ = $28488 True ] ] [ = $28488 False ] ]] [error instantiation_error $28502] ]
+
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &kb ($17558 is-a Color) (match &self ($17588 is $17558) $17588)) (Ball))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2628]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &kb ($2662 is-a Color) (match &self ($2692 is $2662) $2692)) (Ball))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; We can import into `&self`
-;;; TODO: replace symbol by string
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2946]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqual (match &kb (, (Venus orbit $3004 au) (Mars orbit $3028 au)) (- $3028 $3004)) 0.8)]
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.04</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $38222 $38224]]] [ = $38228 True ] ] [ = $38228 False ] ]] [error instantiation_error $38242] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $7684]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &kb ($7718 is-a Color) (match &self ($7748 is $7718) $7748)) (Ball))]
 <span class="ansi38-013099040"
 >!(import! &self c2_spaces_kb)
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8446]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (import! &self c2_spaces_kb)]
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (, ($10652 is $10664) ($10664 is-a Color) ($10652 is-a Planet)) (Color of Planet $10652 is $10664)) ((Color of Planet Mars is Red)))
+</span>P;HTML|
+;                                     [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces_kb.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces_kb.metta]
+P;HTML|
+;                                     [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces_kb.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces_kb.metta]
+
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2980]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &self (, ($3026 is $3038) ($3038 is-a Color) ($3026 is-a Planet)) (Color of Planet $3026 is $3038)) ((Color of Planet Mars is Red)))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+Deterministic: <span class="ansi33"
+>()
+</span><span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (, ($33030 is $33042) ($33042 is-a Color) ($33030 is-a Planet)) (Color of Planet $33030 is $33042)) ((Color of Planet Mars is Red)))
+
+</span>
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.C2-SPACES.05</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $5850 $5852]]] [ = $5856 True ] ] [ = $5856 False ] ]] [error instantiation_error $5870] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $3276]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta] (assertEqualToResult (match &self (, ($3322 is $3334) ($3334 is-a Color) ($3322 is-a Planet)) (Color of Planet $3322 is $3334)) ((Color of Planet Mars is Red)))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 5
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
-[[[[[[[
-
-Script done on 2025-02-24 14:18:01+00:00 [COMMAND_EXIT_CODE="7"]
+[[[[[[()]
+[
+Script done on 2025-03-12 05:10:12+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/c2_spaces.metta" --halt=true\033[0m

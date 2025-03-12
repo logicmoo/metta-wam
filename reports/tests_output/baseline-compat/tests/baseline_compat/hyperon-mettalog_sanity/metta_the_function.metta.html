@@ -12,74 +12,48 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
 </head>
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:19:51+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:23:14+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[(Error (assertEqualToResult (metta (match ModuleSpace(GroundingSpace-top) (likes $x $y) ($x $y)) Atom GroundingSpace-0x562a1422d418) ((John Jane))) " ]
+;                     [ = 3 "[(Error (assertEqualToResult (metta (match GroundingSpace-top (likes $x $y) ($x $y)) Atom GroundingSpace-0x556761c61028) ((John Jane))) " ]
 P;HTML|
-;                        [ = 3 "Expected: [(John Jane)]" ]
+;                      [ = 3 "Expected: [(John Jane)]" ]
 P;HTML|
-;                        [ = 3 "Got: []" ]
+;                      [ = 3 "Got: []" ]
 P;HTML|
-;                         [ = 4 "Missed results: (John Jane))]" ]
+;                       [ = 4 "Missed result: (John Jane))]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta]
 
-;;; Create a new space and bind it to &new-space
 <span class="ansi38-013099040"
 >!(bind! &new-space (new-space))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1870]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (bind! &new-space (new-space))];;; Add (likes John Jane) to &new-space
-<span class="ansi38-013099040"
->!(add-atom &new-space (likes John Jane))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8122]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (add-atom &new-space (likes John Jane))];;; Test that matching 'likes' returns (John Jane)
-<span class="ansi38-013099040"
->!(assertEqualToResult (metta (match &self (likes $10454 $10460) ($10454 $10460)) Atom &new-space) ((John Jane)))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2636]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (assertEqualToResult (metta (match &self (likes $2688 $2694) ($2688 $2694)) Atom &new-space) ((John Jane)))];;; Add a definition of foo to &new-space
-<span class="ansi38-013099040"
->!(add-atom &new-space (= (foo $3674)  
-  (+ $3674 1)))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8888]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (add-atom &new-space (= (foo $8928)  
-
-  (+ $8928 1)))];;; Test that (foo 1) evaluates to 2 in &new-space
-<span class="ansi38-013099040"
->!(assertEqualToResult (metta (foo 1) Number &new-space) (2))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14612]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta] (assertEqualToResult (metta (foo 1) Number &new-space) (2))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-[[[[[
-
-Script done on 2025-02-24 14:19:51+00:00 [COMMAND_EXIT_CODE="7"]
+</span>P;HTML|
+; error(existence_error(procedure,call_in_shared_space/2),context(nb_bound/2,Context))
+
+^  <span class="ansi1 ansi32"
+>Call: </span>(126) [user] must((must(into_name('&top', '&new-space', _2632)), !, must(eval_ne(=, _2654, 499, '&top', ['new-space'], _2662)), nb_bind(_2632, _2662), make_nop(_2164, _2662, _2386))) ? 
+Script done on 2025-03-12 05:23:54+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/metta_the_function.metta" --halt=true\033[0m

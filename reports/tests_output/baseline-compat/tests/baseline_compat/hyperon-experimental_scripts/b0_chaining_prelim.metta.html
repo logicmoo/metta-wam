@@ -12,15 +12,12 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -28,91 +25,86 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:17:54+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:10:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[()]" ]
+;                      [ = 4 "[()]" ]
 P;HTML|
-;                        [ = 5 "[()]" ]
+;                      [ = 5 "[()]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta.answers /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; From matching to evaluation of expressions via equality queries chaining
-;;; It's possible to chain together matching queries
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Some knowledge base entries
-;;; `:=` is a custom symbol
-;;; Combinatory logic rules
-<span class="ansi38-255165000"
-> (:= (I $x) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= ((K $x) $y) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (K $x $y) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (S $x $y $10036) ($x $10036 ($y $10036)))
- 
-</span>;;; A single matching step
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $12200) $12200) ((K x (K x))))
+>!(assertEqualToResult (match &self (:= (S K K x) $11802) $11802) ((K x (K x))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $17660]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (S K K x) $17706) $17706) ((K x (K x))))];;; A second matching step; the result of the previous
-;;; step is manually used as input for the next query
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $33786 $33788]]] [ = $33792 True ] ] [ = $33792 False ] ]] [error instantiation_error $33806] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2598]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (S K K x) $2644) $2644) ((K x (K x))))]
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (K x (K x)) $18890) $18890) (x))
+>!(assertEqualToResult (match &self (:= (K x (K x)) $3824) $3824) (x))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2452]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (K x (K x)) $2498) $2498) (x))];;; Combined reduction via matching in two steps
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $23226 $23228]]] [ = $23232 True ] ] [ = $23232 False ] ]] [error instantiation_error $23246] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2494]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (K x (K x)) $2540) $2540) (x))]
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (S K K x) $4150) (match &self (:= $4150 $4192) $4192)) (x))
+>!(assertEqualToResult (match &self (:= (S K K x) $4188) (match &self (:= $4188 $4230) $4230)) (x))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9714]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (S K K x) $9760) (match &self (:= $9760 $9802) $9802)) (x))];;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Another example (Peano summation)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-<span class="ansi38-255165000"
-> (:= (Add $x Z) $x)
- 
-</span><span class="ansi38-255165000"
-> (:= (Add $x (S $y)) (Add (S $x) $y))
- 
-</span>;;; First step
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $28254 $28256]]] [ = $28260 True ] ] [ = $28260 False ] ]] [error instantiation_error $28274] ]
+
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $19300) $19300) ((Add (S (S Z)) Z)))
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $25236) $25236) ((Add (S (S Z)) Z)))
+
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2788]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (S K K x) $2834) (match &self (:= $2834 $2876) $2876)) (x))]
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.04</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $51092 $51094]]] [ = $51098 True ] ] [ = $51098 False ] ]] [error instantiation_error $51112] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $28526]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $28572) $28572) ((Add (S (S Z)) Z)))]
+<span class="ansi38-013099040"
+>!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $30292) (match &self (:= $30292 $30334) $30334)) ((S (S Z))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2662]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $2708) $2708) ((Add (S (S Z)) Z)))];;; Two steps together
-<span class="ansi38-013099040"
->!(assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $4432) (match &self (:= $4432 $4474) $4474)) ((S (S Z))))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10192]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $10238) (match &self (:= $10238 $10280) $10280)) ((S (S Z))))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05"
+>;; HYPERON-EXPERIMENTAL-SCRIPTS.B0-CHAINING-PRELIM.05</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $59346 $59348]]] [ = $59352 True ] ] [ = $59352 False ] ]] [error instantiation_error $59366] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2942]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta] (assertEqualToResult (match &self (:= (Add (S Z) (S Z)) $2988) (match &self (:= $2988 $3030) $3030)) ((S (S Z))))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 5
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[[
-
-Script done on 2025-02-24 14:17:54+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:10:04+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-experimental_scripts/b0_chaining_prelim.metta" --halt=true\033[0m

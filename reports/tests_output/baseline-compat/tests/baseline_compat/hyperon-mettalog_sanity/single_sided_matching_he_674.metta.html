@@ -12,18 +12,13 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -31,136 +26,74 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:20:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:28:09+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" ]
+;                     [ = 2 "[(Error (assertSingleSideEqualToResult ((S K) K) ((S K) K) (grounded-single-side-match I)))]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta]
 
-;;; Test File: Single-Sided Matching in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/674
-;;; Issue Overview:
-;;; MeTTa currently uses double-sided matching as the default, where both sides of a pattern
-;;; can contribute substitutions during unification. Single-sided matching, commonly used
-;;; in functional programming and combinatory logic, only allows one side (the "pattern") to
-;;; generate substitutions. This test demonstrates the current behavior and highlights the
-;;; need for single-sided matching.
-;;; Supporting Functions for Single-Sided Matching
-;;; ----------------------------------------------
-;;; Define a grounded function for single-sided matching
-<span class="ansi38-255165000"
-> (: single-side-match (-> Atom Atom))
- 
-</span><span class="ansi38-255165000"
-> (= (single-side-match $expr)  
-  (grounded-single-side-match $expr))
- 
-</span>;;; Define assertSingleSideEqualToResult for testing single-sided matching
-<span class="ansi38-255165000"
-> (: assertSingleSideEqualToResult (-> Atom Atom Atom))
- 
-</span><span class="ansi38-255165000"
-> (= (assertSingleSideEqualToResult $expr $expected)  
-  (let $3044 
-    (single-side-match $expr) 
-    (if 
-      (== $3044 $expected) 
-      (Success) 
-      (Error (assertSingleSideEqualToResult $expr $expected $3044)))))
- 
-</span>;;; Example 1: Current Double-Sided Matching
-;;; ----------------------------------------
-;;; Define a reduction rule for SKI combinatory logic
-<span class="ansi38-255165000"
-> (= ((S K) K)  I)
- 
-</span>;;; Test: Matching ((S K) $x) with double-sided unification
 <span class="ansi38-013099040"
->!(assertEqualToResult ((S K) $8186) (I))
+>!(assertEqualToResult ((S K) $62150) (I))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $13264]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult ((S K) $13286) (I))];;; Explanation:
-;;; The current implementation substitutes `$x` from the pattern `(S K) K` and reduces to `I`.
-;;; However, this is incorrect for SKI combinatory logic, where single-sided matching is required.
-;;; Example 2: Expected Single-Sided Matching Behavior
-;;; --------------------------------------------------
-;;; Test: Matching ((S K) $x) with single-sided unification (using single-side-match)
-<span class="ansi38-013099040"
->!(assertSingleSideEqualToResult ((S K) $14854) ((S K) $14854))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $20018]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult ((S K) $20040) ((S K) $20040))];;; Explanation:
-;;; Single-sided matching would leave the expression unreduced, as `$x` does not unify with
-;;; any specific term in the pattern `(S K) K`.
-;;; Example 3: Infinite Recursion Prevention
-;;; ----------------------------------------
-;;; Define a reduction rule for a symmetry operator
-<span class="ansi38-255165000"
-> (= (: (Sym (: (Sym (: $x $a)) $29856)) $29862)  
-  (: $x $a))
- 
-</span>;;; Test: Current double-sided behavior leads to infinite recursion
-<span class="ansi38-013099040"
->!(assertEqualToResult (: (Sym (: (Sym (: $32810 $32816)) $32822)) $32828) (InfiniteRecursion))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2928]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult (: (Sym (: (Sym (: $2998 $3004)) $3010)) $3016) (InfiniteRecursion))];;; Explanation:
-;;; Double-sided matching causes the pattern to reapply itself infinitely.
-;;; Test: Single-sided matching avoids infinite recursion (using single-side-match)
-<span class="ansi38-013099040"
->!(assertSingleSideEqualToResult (: (Sym (: (Sym (: $5340 $5346)) $5352)) $5358) (: $5340 $5346))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10814]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult (: (Sym (: (Sym (: $10884 $10890)) $10896)) $10902) (: $10884 $10890))];;; Explanation:
-;;; With single-sided matching, the reduction applies only once, avoiding infinite recursion.
-;;; Example 4: Differentiating Entry Points
-;;; ---------------------------------------
-;;; Define a function with two entry points: one double-sided, one single-sided
-<span class="ansi38-255165000"
-> (= (foo (A $x))  
-  (B $x))
- 
-</span>;;; Double-sided
-<span class="ansi38-255165000"
-> (=^ (foo (C $x)) (D $x))
- 
-</span>;;; Hypothetical single-sided operator
-;;; Test: Double-sided entry point
-<span class="ansi38-013099040"
->!(assertEqualToResult (foo $19140) ((B $19140)))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2272]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult (foo $2294) ((B $2294)))];;; Test: Single-sided entry point triggers only when explicitly matched
-<span class="ansi38-013099040"
->!(assertSingleSideEqualToResult (foo (C $3856)) ((D $3856)))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9004]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult (foo (C $9038)) ((D $9038)))];;; Explanation:
-;;; The single-sided entry point should only trigger when `(C $x)` matches explicitly.
-;;; Summary:
-;;; - Current double-sided matching reduces terms aggressively, even when substitutions are undesired.
-;;; - Single-sided matching, as demonstrated in the hypothetical `assertSingleSideEqualToResult`,
-;;;   would give developers control over when reductions occur.
-;;; - This feature would prevent infinite recursion, align MeTTa with combinatory logic semantics,
-;;;   and allow finer control over pattern matching.
+;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01"
+>;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.01</h3>
 P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $11522 $11524]]] [ = $11528 True ] ] [ = $11528 False ] ]] [error instantiation_error $11542] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2296]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult ((S K) $2318) (I))]
+<span class="ansi38-013099040"
+>!(assertSingleSideEqualToResult ((S K) $4198) ((S K) $4198))
+
+</span>
+<span class="ansi38-013099040"
+>!(assertEqualToResult (: (Sym (: (Sym (: $24568 $24574)) $24580)) $24586) (InfiniteRecursion))
+
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2330]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult ((S K) $2352) ((S K) $2352))]
+;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02"
+>;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $44206 $44208]]] [ = $44212 True ] ] [ = $44212 False ] ]] [error instantiation_error $44226] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $20796]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult (: (Sym (: (Sym (: $20866 $20872)) $20878)) $20884) (InfiniteRecursion))]
+<span class="ansi38-013099040"
+>!(assertSingleSideEqualToResult (: (Sym (: (Sym (: $23520 $23526)) $23532)) $23538) (: $23520 $23526))
+
+</span>
+<span class="ansi38-013099040"
+>!(assertEqualToResult (foo $62492) ((B $62492)))
+
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $40242]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult (: (Sym (: (Sym (: $40312 $40318)) $40324)) $40330) (: $40312 $40318))]
+;<h3 id="HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.03"
+>;; HYPERON-METTALOG-SANITY.SINGLE-SIDED-MATCHING-HE-674.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $10966 $10968]]] [ = $10972 True ] ] [ = $10972 False ] ]] [error instantiation_error $10986] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2296]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertEqualToResult (foo $2318) ((B $2318)))]
+<span class="ansi38-013099040"
+>!(assertSingleSideEqualToResult (foo (C $4192)) ((D $4192)))
+
+</span>[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $14364]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta] (assertSingleSideEqualToResult (foo (C $14398)) ((D $14398)))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 3
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[[[
-
-Script done on 2025-02-24 14:20:08+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:28:09+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/single_sided_matching_he_674.metta" --halt=true\033[0m

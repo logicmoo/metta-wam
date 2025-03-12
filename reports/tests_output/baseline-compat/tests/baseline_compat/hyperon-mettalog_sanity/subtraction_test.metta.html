@@ -12,6 +12,9 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -27,101 +30,137 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:20:16+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:30:18+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[()]" ]
+;                      [ = 4 "[()]" ]
 P;HTML|
-;                        [ = 5 "[(Error (assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d))) " ]
+;                      [ = 5 "[(Error (assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d))) " ]
 P;HTML|
-;                         [ = 5 "Expected: [a, d]" ]
+;                       [ = 5 "Expected: [a, d]" ]
 P;HTML|
-;                         [ = 5 "Got: [d, b, a]" ]
+;                       [ = 5 "Got: [d, b, a]" ]
 P;HTML|
-;                         [ = 6 "Excessive results: b)]" ]
+;                       [ = 6 "Excessive result: b)]" ]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta]
 
-;;;; Test basic subtraction functionality
-;;;; This checks that subtracting (b c) from (a b c d) correctly returns (a d).
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (a d)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2158]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (a d)))];;;; Test subtraction with multiple subsequent lists
-;;;; Here, subtracting (b c) and (d) from (a b c d) should result in (a).
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.01"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $58134 $58136]]] [ = $58140 True ] ] [ = $58140 False ] ]] [error instantiation_error $58154] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $31406]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (a d)))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose (a)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8660]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose (a)))];;;; Test subtraction with nested structures
-;;;; This test ensures that nested elements like (foo (bar baz)) are handled correctly.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.02"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $58344 $58346]]] [ = $58350 True ] ] [ = $58350 False ] ]] [error instantiation_error $58364] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $31658]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (subtraction (superpose (a b c d)) (superpose (b c))) (superpose (d))) (superpose (a)))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((foo bar))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15202]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((foo bar))))];;;; Test subtraction with mixed types
-;;;; This checks that the function handles lists with symbols, numbers, and mixed content.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.03"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $58902 $58904]]] [ = $58908 True ] ] [ = $58908 False ] ]] [error instantiation_error $58922] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $31970]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ((foo bar) (bar baz) qux)) (superpose ((bar baz) qux))) (superpose ((foo bar))))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (1 3 bar)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2194]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (1 3 bar)))];;;; Test subtraction with duplicates
-;;;; This test ensures that duplicates are treated correctly.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.04"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.04</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $56560 $56562]]] [ = $56566 True ] ] [ = $56566 False ] ]] [error instantiation_error $56580] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $30680]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (1 2 3 foo bar)) (superpose (2 foo))) (superpose (1 3 bar)))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8544]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d)))];;;; Test subtraction with `unique` applied outside
-;;;; In this case, `unique` is applied after the subtraction, removing duplicates.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.05"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.05</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $54462 $54464]]] [ = $54468 True ] ] [ = $54468 False ] ]] [error instantiation_error $54482] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $29600]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b b c d)) (superpose (b c))) (superpose (a d)))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (subtraction (superpose (a b b c)) (superpose (b c c d)))) (superpose (a)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15364]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (unique (subtraction (superpose (a b b c)) (superpose (b c c d)))) (superpose (a)))];;;; Test subtraction with `unique` applied inside
-;;;; In this test, `unique` is applied to each input set before performing the subtraction.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.06"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.06</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $56586 $56588]]] [ = $56592 True ] ] [ = $56592 False ] ]] [error instantiation_error $56606] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $30722]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (unique (subtraction (superpose (a b b c)) (superpose (b c c d)))) (superpose (a)))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (unique (superpose (a b b c))) (unique (superpose (b c c d)))) (superpose (a)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2248]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (unique (superpose (a b b c))) (unique (superpose (b c c d)))) (superpose (a)))];;;; Test variable substitution during subtraction
-;;;; This ensures that variables can be used and are properly instantiated during the operation.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.07"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.07</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $58246 $58248]]] [ = $58252 True ] ] [ = $58252 False ] ]] [error instantiation_error $58266] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $31610]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (unique (superpose (a b b c))) (unique (superpose (b c c d)))) (superpose (a)))]
 <span class="ansi38-013099040"
->!(assertEqual (subtraction (superpose ($4130 $4136)) (superpose (b))) (superpose ($4130 $4136)))
+>!(assertEqual (subtraction (superpose ($33488 $33494)) (superpose (b))) (superpose ($33488 $33494)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $9594]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ($9634 $9640)) (superpose (b))) (superpose ($9634 $9640)))];;;; Test subtraction with empty lists
-;;;; Subtracting an empty list should return the original list.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.08"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.08</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $51908 $51910]]] [ = $51914 True ] ] [ = $51914 False ] ]] [error instantiation_error $51928] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $28990]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ($29030 $29036)) (superpose (b))) (superpose ($29030 $29036)))]
 <span class="ansi38-013099040"
 >!(assertEqual (subtraction (superpose (a b c)) (superpose ())) (superpose (a b c)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15456]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b c)) (superpose ())) (superpose (a b c)))];;;; Test subtraction with variables and nested structures
-;;;; This checks how variables interact with nested lists during subtraction.
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.09"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.09</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $49614 $49616]]] [ = $49620 True ] ] [ = $49620 False ] ]] [error instantiation_error $49634] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $22524]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose (a b c)) (superpose ())) (superpose (a b c)))]
 <span class="ansi38-013099040"
->!(assertEqual (subtraction (superpose ((foo $17530) (bar $17548))) (superpose ((bar $17548) (foo qux)))) (superpose ((foo $17530))))
+>!(assertEqual (subtraction (superpose ((foo $24594) (bar $24612))) (superpose ((bar $24612) (foo qux)))) (superpose ((foo $24594))))
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2840]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ((foo $2892) (bar $2910))) (superpose ((bar $2910) (foo qux)))) (superpose ((foo $2892))))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.10"
+>;; HYPERON-METTALOG-SANITY.SUBTRACTION-TEST.10</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $50976 $50978]]] [ = $50982 True ] ] [ = $50982 False ] ]] [error instantiation_error $50996] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $29074]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta] (assertEqual (subtraction (superpose ((foo $29126) (bar $29144))) (superpose ((bar $29144) (foo qux)))) (superpose ((foo $29126))))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 10
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[[[[[[[
-
-Script done on 2025-02-24 14:20:17+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:30:19+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/subtraction_test.metta" --halt=true\033[0m

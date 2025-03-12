@@ -13,6 +13,7 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
@@ -52,7 +53,7 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-12 04:39:54+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1042-900.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:28:10+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] ]
 P;HTML|
@@ -113,7 +114,7 @@ Script started on 2025-03-12 04:39:54+00:00 [COMMAND="timeout --preserve-status 
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.01</h3>
 ; 
 ; EVAL TEST
-; took 0.000128 secs. (127.95 microseconds) 
+; took 0.000116 secs. (116.14 microseconds) 
 
 !(assertEqualToResult ("============ Test insert ============") (("============ Test insert ============")))
 
@@ -131,67 +132,27 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.02"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.02</h3>
-; 
-; EVAL TEST
-; took 0.004 secs. (3.70 milliseconds) 
-
-!(assertEqual (insert 1 Nil) (Cons 1 Nil))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 Nil)) 
-      ( (Cons 1 Nil))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $46608 $46610]]] [ = $46614 True ] ] [ = $46614 False ] ]] [error instantiation_error $46628] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $20722]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert 1 Nil) (Cons 1 Nil))]
+<span class="ansi38-013099040"
 >!(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.03"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.03</h3>
-; 
-; EVAL TEST
-; took 0.009 secs. (8.94 milliseconds) 
-
-!(assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 Nil))) 
-      ( (Cons 1 
-          (Cons 2 Nil)))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $40358 $40360]]] [ = $40364 True ] ] [ = $40364 False ] ]] [error instantiation_error $40378] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $8736]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert 2 (insert 1 Nil)) (Cons 1 (Cons 2 Nil)))]
+<span class="ansi38-013099040"
 >!(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.04"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.04</h3>
-; 
-; EVAL TEST
-; took 0.024 secs. (24.17 milliseconds) 
-
-!(assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil)))) 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil))))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $33508 $33510]]] [ = $33514 True ] ] [ = $33514 False ] ]] [error instantiation_error $33528] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2250]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert 3 (insert 2 (insert 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))]<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!(== (Cons 1 Nil) (Cons 1 Nil))
@@ -202,21 +163,9 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.05"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.05</h3>
-; 
-; EVAL TEST
-; took 0.002 secs. (1.53 milliseconds) 
-
-!(assertEqualToResult (== (Cons 1 Nil) (Cons 1 Nil)) (True))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
-      (True)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $23726 $23728]]] [ = $23732 True ] ] [ = $23732 False ] ]] [error instantiation_error $23746] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2234]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqualToResult (== (Cons 1 Nil) (Cons 1 Nil)) (True))]<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test sort ============")
@@ -229,7 +178,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000103 secs. (102.62 microseconds) 
+; took 0.000126 secs. (125.56 microseconds) 
 
 !(assertEqualToResult ("============ Test sort ============") (("============ Test sort ============")))
 
@@ -247,67 +196,27 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.07"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.07</h3>
-; 
-; EVAL TEST
-; took 0.004 secs. (3.61 milliseconds) 
-
-!(assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 Nil)) 
-      ( (Cons 1 Nil))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $42918 $42920]]] [ = $42924 True ] ] [ = $42924 False ] ]] [error instantiation_error $42938] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $18926]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (sort (Cons 1 Nil)) (Cons 1 Nil))]
+<span class="ansi38-013099040"
 >!(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.08"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.08</h3>
-; 
-; EVAL TEST
-; took 0.012 secs. (12.45 milliseconds) 
-
-!(assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 Nil))) 
-      ( (Cons 1 
-          (Cons 2 Nil)))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $40152 $40154]]] [ = $40158 True ] ] [ = $40158 False ] ]] [error instantiation_error $40172] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $8734]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (sort (Cons 2 (Cons 1 Nil))) (Cons 1 (Cons 2 Nil)))]
+<span class="ansi38-013099040"
 >!(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.09"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.09</h3>
-; 
-; EVAL TEST
-; took 0.030 secs. (29.62 milliseconds) 
-
-!(assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil)))) 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil))))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $35346 $35348]]] [ = $35352 True ] ] [ = $35352 False ] ]] [error instantiation_error $35366] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2286]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (sort (Cons 3 (Cons 1 (Cons 2 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))]<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test elem ============")
@@ -320,7 +229,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.10</h3>
 ; 
 ; EVAL TEST
-; took 0.000118 secs. (117.83 microseconds) 
+; took 0.000096 secs. (95.54 microseconds) 
 
 !(assertEqualToResult ("============ Test elem ============") (("============ Test elem ============")))
 
@@ -338,41 +247,18 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.11"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.11</h3>
-; 
-; EVAL TEST
-; took 0.007 secs. (6.79 milliseconds) 
-
-!(assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (True) 
-      (True)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $47388 $47390]]] [ = $47394 True ] ] [ = $47394 False ] ]] [error instantiation_error $47408] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $21284]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (elem 1 (Cons 3 (Cons 1 (Cons 2 Nil)))) True)]
+<span class="ansi38-013099040"
 >!(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.12"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.12</h3>
-; 
-; EVAL TEST
-; took 0.010 secs. (9.55 milliseconds) 
-
-!(assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      (False) 
-      (False)]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $42298 $42300]]] [ = $42304 True ] ] [ = $42304 False ] ]] [error instantiation_error $42318] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $18734]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (elem 5 (Cons 3 (Cons 1 (Cons 2 Nil)))) False)]<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test uniq ============")
@@ -385,7 +271,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.13</h3>
 ; 
 ; EVAL TEST
-; took 0.000113 secs. (112.51 microseconds) 
+; took 0.000099 secs. (99.45 microseconds) 
 
 !(assertEqualToResult ("============ Test uniq ============") (("============ Test uniq ============")))
 
@@ -403,47 +289,18 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.14"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.14</h3>
-; 
-; EVAL TEST
-; took 0.073 secs. (72.82 milliseconds) 
-
-!(assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 2 
-          (Cons 3 
-            (Cons 1 Nil)))) 
-      ( (Cons 2 
-          (Cons 3 
-            (Cons 1 Nil))))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $9066 $9068]]] [ = $9072 True ] ] [ = $9072 False ] ]] [error instantiation_error $9086] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2334]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (uniq (Cons 2 (Cons 3 (Cons 1 (Cons 2 Nil))))) (Cons 2 (Cons 3 (Cons 1 Nil))))]
+<span class="ansi38-013099040"
 >!(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.15"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.15</h3>
-; 
-; EVAL TEST
-; took 0.044 secs. (44.16 milliseconds) 
-
-!(assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 2 
-          (Cons 3 Nil))) 
-      ( (Cons 2 
-          (Cons 3 Nil)))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-255165009"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $29510 $29512]]] [ = $29516 True ] ] [ = $29516 False ] ]] [error instantiation_error $29530] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2286]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (uniq (Cons 2 (Cons 3 (Cons 3 (Cons 2 Nil))))) (Cons 2 (Cons 3 Nil)))]<span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
 >!("============ Test insert_uniq ============")
@@ -456,7 +313,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.16</h3>
 ; 
 ; EVAL TEST
-; took 0.000108 secs. (108.40 microseconds) 
+; took 0.000096 secs. (96.05 microseconds) 
 
 !(assertEqualToResult ("============ Test insert_uniq ============") (("============ Test insert_uniq ============")))
 
@@ -474,102 +331,44 @@ Deterministic: <span class="ansi33"
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.17"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.17</h3>
-; 
-; EVAL TEST
-; took 0.011 secs. (10.51 milliseconds) 
-
-!(assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 Nil))) 
-      ( (Cons 1 
-          (Cons 2 Nil)))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $46032 $46034]]] [ = $46038 True ] ] [ = $46038 False ] ]] [error instantiation_error $46052] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $20606]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert_uniq 2 (insert_uniq 1 Nil)) (Cons 1 (Cons 2 Nil)))]
+<span class="ansi38-013099040"
 >!(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.18"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.18</h3>
-; 
-; EVAL TEST
-; took 0.029 secs. (29.12 milliseconds) 
-
-!(assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil)))) 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil))))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span><span class="ansi38-013099040"
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $45386 $45388]]] [ = $45392 True ] ] [ = $45392 False ] ]] [error instantiation_error $45406] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $20462]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil))) (Cons 1 (Cons 2 (Cons 3 Nil))))]
+<span class="ansi38-013099040"
 >!(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
 
 </span>
 ;<h3 id="HYPERON-METTALOG-SANITY.SORTING-TESTS.19"
 >;; HYPERON-METTALOG-SANITY.SORTING-TESTS.19</h3>
-; 
-; EVAL TEST
-; took 0.045 secs. (44.59 milliseconds) 
-
-!(assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))
-
-<span class="ansi36"
->  [loonit_success 
-    [equal_enough_for_test_renumbered_l strict_equals_allow_vn 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil)))) 
-      ( (Cons 1 
-          (Cons 2 
-            (Cons 3 Nil))))]]
-</span>
-Deterministic: <span class="ansi33"
->()
-</span>P;HTML|
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $48158 $48160]]] [ = $48164 True ] ] [ = $48164 False ] ]] [error instantiation_error $48178] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $21938]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta] (assertEqual (insert_uniq 2 (insert_uniq 3 (insert_uniq 2 (insert_uniq 1 Nil)))) (Cons 1 (Cons 2 (Cons 3 Nil))))]P;HTML|
 ;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/sorting_tests.metta 0 ]
 <span class="ansi1"
 >LoonIt Report
 </span>------------
 <span class="ansi32"
->Successes: 19
-</span><span class="ansi32"
->Failures: 0
+>Successes: 5
+</span><span class="ansi31"
+>Failures: 14
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-[()]
-
-Script done on 2025-03-12 04:39:55+00:00 [COMMAND_EXIT_CODE="1"]
+[[[[[()]
+[[[[()]
+[[[()]
+[[[()]
+[[[
+Script done on 2025-03-12 05:28:11+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

@@ -12,13 +12,9 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
+.ansi1 { font-weight: bold; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-013099040 { color: #0D6328; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 </style>
@@ -26,111 +22,56 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:19:59+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:26:40+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[(Error (assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2)) " ]
+;                     [ = 2 "[(Error (assertEqualToResult (let (quote $x) (quote (+ 1 1)) $x) (2)) " ]
 P;HTML|
-;                       [ = 2 "Expected: [2]" ]
+;                     [ = 2 "Expected: [2]" ]
 P;HTML|
-;                        [ = 2 "Got: [(+ 1 1)]" ]
+;                      [ = 2 "Got: [(+ 1 1)]" ]
 P;HTML|
-;                        [ = 3 "Missed results: 2" ]
+;                      [ = 3 "Missed result: 2)]" ]
 P;HTML|
-;                         [ = 3 "Excessive results: (+ 1 1))]" ]
-P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta]
 
-;;; Test File: Quoting/Scoping Mechanism in MeTTa
-;;; Bug Report: https://github.com/trueagi-io/hyperon-experimental/issues/579
-;;; Issue Overview:
-;;; This test demonstrates scenarios where unification and substitution of variables in MeTTa
-;;; lead to unexpected results. It highlights the need for a quoting/scoping mechanism to
-;;; prevent unification/substitution in specific contexts.
-;;; Example 1: Basic Quoting Issue
-;;; --------------------------------
 <span class="ansi38-013099040"
->!(assertEqualToResult (let (quote $49708) (quote A) $49708) (A))
+>!(assertEqualToResult (let (quote $60764) (quote A) $60764) (A))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2436]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (let (quote $2470) (quote A) $2470) (A))];;; Explanation:
-;;; Without a scoping mechanism, `quote` does not isolate `$x`, and substitution occurs.
+;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01"
+>;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $12136 $12138]]] [ = $12142 True ] ] [ = $12142 False ] ]] [error instantiation_error $12156] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2504]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (let (quote $2538) (quote A) $2538) (A))]
 <span class="ansi38-013099040"
->!(assertEqualToResult (let (quote $3684) (quote (+ 1 1)) $3684) (2))
+>!(assertEqualToResult (let (quote $3748) (quote (+ 1 1)) $3748) (2))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8956]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (let (quote $8990) (quote (+ 1 1)) $8990) (2))];;; Explanation:
-;;; `quote` fails to preserve the quoted structure, and evaluation proceeds, producing `2`.
-;;; Example 2: Real-World Example with Combinatory Logic
-;;; ---------------------------------------------------
-;;; Knowledge Base Setup
+;<h3 id="HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02"
+>;; HYPERON-METTALOG-SANITY.QUOTING-SCOPING-HE-579.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $22462 $22464]]] [ = $22468 True ] ] [ = $22468 False ] ]] [error instantiation_error $22482] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2598]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (let (quote $2632) (quote (+ 1 1)) $2632) (2))]
 <span class="ansi38-013099040"
 >!(bind! &kb (new-space))
 
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14832]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (bind! &kb (new-space))];;; Add K and S combinators to the knowledge base
-<span class="ansi38-013099040"
->!(add-atom &kb (: AK (-> $17032 (-> $17050 $17032))))
-
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2590]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (add-atom &kb (: AK (-> $2636 (-> $2654 $2636))))]
-<span class="ansi38-013099040"
->!(add-atom &kb (: AS (-> (-> $4576 (-> $4594 $4600)) (-> (-> $4576 $4594) (-> $4576 $4600)))))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $10200]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (add-atom &kb (: AS (-> (-> $10258 (-> $10276 $10282)) (-> (-> $10258 $10276) (-> $10258 $10282)))))];;; Define Backward Chainer
-;;; Base case
-<span class="ansi38-255165000"
-> (= (bc (: $prf $ccln) $15174)  
-  (match &kb 
-    (: $prf $ccln) 
-    (: $prf $ccln)))
- 
-</span>;;; Recursive step
-<span class="ansi38-255165000"
-> (= (bc (: ($prfabs $prfarg) $33508) (S $33526))  
-  (let* 
-    ( ( (: $prfabs 
-          (-> $33586 $33508)) (bc (: $prfabs (-> $33586 $33508)) $33526)) ((: $prfarg $33586) (bc (: $prfarg $33586) $33526))) 
-    (: 
-      ($prfabs $prfarg) $33508)))
- 
-</span>;;; Synthesize function composition (.)
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $36546 (-> (-> $36576 $36582) (-> (-> $36612 $36576) (-> $36612 $36582)))) (S (S (S Z)))) ((AS (AK AS)) AK))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $3684]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (bc (: $3718 (-> (-> $3748 $3754) (-> (-> $3784 $3748) (-> $3784 $3754)))) (S (S (S Z)))) ((AS (AK AS)) AK))];;; Expected solution
-;;; Test with maximum depth 0 to prevent variable generalization
-<span class="ansi38-013099040"
->!(assertEqualToResult (bc (: $5664 (-> (-> $5694 $5700) (-> (-> $5730 $5694) (-> $5730 $5700)))) Z) (AK))
-
-</span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $11360]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta] (assertEqualToResult (bc (: $11394 (-> (-> $11424 $11430) (-> (-> $11460 $11424) (-> $11460 $11430)))) Z) (AK))];;; Demonstrates a specific form due to absence of scoping.
-;;; Example 3: Proposed Solution with Scoped Variables
-;;; --------------------------------------------------
-;;; Ideally, a scoping mechanism would enable queries like:
-;;; !(bc (: $prg (∀ $a (∀ $b (∀ $c (-> (-> $b $c) (-> (-> $a $b) (-> $a $c))))))) Z)
-;;; Such scoping would restrict solutions to fully generic combinatory logic structures.
-;;; Summary:
-;;; - These examples demonstrate the need for a quoting/scoping mechanism in MeTTa.
-;;; - Scoping would allow more precise reasoning about programs and type variables.
-P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
->Return to summaries</a><br/>
-[[[[[[[
-
-Script done on 2025-02-24 14:19:59+00:00 [COMMAND_EXIT_CODE="7"]
+</span>P;HTML|
+; error(existence_error(procedure,call_in_shared_space/2),context(nb_bound/2,Context))
+
+^  <span class="ansi1 ansi32"
+>Call: </span>(126) [user] must((must(into_name('&top', '&kb', _9914)), !, must(eval_ne(=, _9936, 499, '&top', ['new-space'], _9944)), nb_bind(_9914, _9944), make_nop(_9018, _9944, _9384))) ? 
+Script done on 2025-03-12 05:27:20+00:00 [COMMAND_EXIT_CODE="143"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=143) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/quoting_scoping_he_579.metta" --halt=true\033[0m

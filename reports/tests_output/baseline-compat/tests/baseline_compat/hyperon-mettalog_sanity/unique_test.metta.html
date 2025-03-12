@@ -12,8 +12,9 @@
 .body_background { background-color: #000000; }
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
-.ansi38-255165000 { color: #FFA500; }
-.ansi38-255165000 { color: #FFA500; }
+.ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
+.ansi32 { color: #00aa00; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
 .ansi38-013099040 { color: #0D6328; }
@@ -33,140 +34,179 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-02-24 14:21:46+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1705-503.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-12 05:31:50+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1758-29.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
 ; [ : user [load_metta_file &self tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] ]
 P;HTML|
-;               [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
+;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
 P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
+;                    [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
 P;HTML|
-;                       [ = 1 "[()]" ]
+;                     [ = 1 "[()]" ]
 P;HTML|
-;                       [ = 2 "[()]" ]
+;                     [ = 2 "[()]" ]
 P;HTML|
-;                       [ = 3 "[()]" ]
+;                     [ = 3 "[()]" ]
 P;HTML|
-;                        [ = 4 "[()]" ]
+;                      [ = 4 "[()]" ]
 P;HTML|
-;                        [ = 5 "[()]" ]
+;                      [ = 5 "[()]" ]
 P;HTML|
-;                         [ = 6 "[()]" ]
+;                       [ = 6 "[()]" ]
 P;HTML|
-;                         [ = 7 "[()]" ]
+;                       [ = 7 "[()]" ]
 P;HTML|
-;                         [ = 8 "[(Error (assertEqual (list-to-set (a b b c c c d)) (a b c d)) " ]
+;                       [ = 8 "[(Error (assertEqual (list-to-set (a b b c c c d)) (a b c d)) " ]
 P;HTML|
-;                          [ = 8 "Expected: [(a b c d)]" ]
+;                        [ = 8 "Expected: [(a b c d)]" ]
 P;HTML|
-;                          [ = 8 "Got: [(d c b a)]" ]
+;                        [ = 8 "Got: [(d c b a)]" ]
 P;HTML|
-;                           [ = 9 "Missed results: (a b c d)" ]
+;                         [ = 9 "Missed result: (a b c d))]" ]
 P;HTML|
-;                           [ = 9 "Excessive results: (d c b a))]" ]
-P;HTML|
-;                      [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
+;                   [load_answer_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta.test_error /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta]
 
-<span class="ansi38-255165000"
-> (: list-to-set (-> Expression Expression))
- 
-</span><span class="ansi38-255165000"
-> (= (list-to-set $list)  
-  (collapse (unique (superpose $list))))
- 
-</span>;;;; Test unique with simple duplicates
-;;;; This test verifies that `unique` removes all duplicates from (a b b c c c d), resulting in [a, b, c, d].
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose (a b b c c c d))) (superpose (a b c d)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2160]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a b b c c c d))) (superpose (a b c d)))];;;; Test unique with no duplicates
-;;;; This test ensures that `unique` leaves a list unchanged if it already contains only unique elements.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.01"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.01</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $13638 $13640]]] [ = $13644 True ] ] [ = $13644 False ] ]] [error instantiation_error $13658] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2220]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a b b c c c d))) (superpose (a b c d)))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose (a b c d))) (superpose (a b c d)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8430]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a b c d))) (superpose (a b c d)))];;;; Test unique with a single element
-;;;; This checks that `unique` works correctly for a single-element list, leaving it unchanged as [a].
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.02"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.02</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $23224 $23226]]] [ = $23230 True ] ] [ = $23230 False ] ]] [error instantiation_error $23244] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2172]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a b c d))) (superpose (a b c d)))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose (a))) (superpose (a)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14540]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a))) (superpose (a)))];;;; Test unique with an empty list
-;;;; This confirms that `unique` handles an empty list without errors, correctly returning an empty result.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.03"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.03</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $18186 $18188]]] [ = $18192 True ] ] [ = $18192 False ] ]] [error instantiation_error $18206] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2064]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a))) (superpose (a)))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose ())) (superpose ()))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $1960]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ())) (superpose ()))];;;; Test unique with all elements being the same
-;;;; This verifies that when all elements are the same (a a a a), `unique` reduces it to a single element [a].
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.04"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.04</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $16508 $16510]]] [ = $16514 True ] ] [ = $16514 False ] ]] [error instantiation_error $16528] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2028]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ())) (superpose ()))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose (a a a a))) (superpose (a)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8148]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a a a a))) (superpose (a)))];;;; Test unique with nested lists
-;;;; This ensures that unique identifies identical nested lists and reduces them to a single instance.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.05"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.05</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $20616 $20618]]] [ = $20622 True ] ] [ = $20622 False ] ]] [error instantiation_error $20636] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2118]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (a a a a))) (superpose (a)))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose ((1 2) (1 2) (3 4)))) (superpose ((1 2) (3 4))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $14668]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((1 2) (1 2) (3 4)))) (superpose ((1 2) (3 4))))];;;; Test unique with mixed types
-;;;; This test checks that `unique` handles different data types correctly and removes duplicates while preserving the order.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.06"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.06</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $28172 $28174]]] [ = $28178 True ] ] [ = $28178 False ] ]] [error instantiation_error $28192] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2298]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((1 2) (1 2) (3 4)))) (superpose ((1 2) (3 4))))]
 <span class="ansi38-013099040"
 >!(assertEqual (unique (superpose (1 "hello" 1 "world" "hello" 3.14 3.14))) (superpose (1 "hello" "world" 3.14)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2206]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (1 "hello" 1 "world" "hello" 3.14 3.14))) (superpose (1 "hello" "world" 3.14)))];;;; Test list-to-set with simple duplicates
-;;;; This test ensures that list-to-set correctly collapses duplicates into a unique set.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.07"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.07</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $26344 $26346]]] [ = $26350 True ] ] [ = $26350 False ] ]] [error instantiation_error $26364] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2274]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose (1 "hello" 1 "world" "hello" 3.14 3.14))) (superpose (1 "hello" "world" 3.14)))]
 <span class="ansi38-013099040"
 >!(assertEqual (list-to-set (a b b c c c d)) (a b c d))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $8822]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (list-to-set (a b b c c c d)) (a b c d))];;;; Test list-to-set with nested lists
-;;;; This test checks that list-to-set properly collapses duplicates within nested lists.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.08"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.08</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $23646 $23648]]] [ = $23652 True ] ] [ = $23652 False ] ]] [error instantiation_error $23666] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2154]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (list-to-set (a b b c c c d)) (a b c d))]
 <span class="ansi38-013099040"
 >!(assertEqual (list-to-set ((1 2) (1 2) (3 4))) ((1 2) (3 4)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $15204]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (list-to-set ((1 2) (1 2) (3 4))) ((1 2) (3 4)))];;;; Test unique with variables
-;;;; This test checks that unique handles variables correctly, ensuring that each unique instance is preserved.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.09"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.09</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $24566 $24568]]] [ = $24572 True ] ] [ = $24572 False ] ]] [error instantiation_error $24586] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2226]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (list-to-set ((1 2) (1 2) (3 4))) ((1 2) (3 4)))]
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ($17392 $17398 $17392 $17410))) (superpose ($17392 $17398 $17410)))
+>!(assertEqual (unique (superpose ($4410 $4416 $4410 $4428))) (superpose ($4410 $4416 $4428)))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $2702]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ($2742 $2748 $2742 $2760))) (superpose ($2742 $2748 $2760)))];;;; Test unique with variables in nested lists
-;;;; This test checks that unique correctly handles variables within nested lists, preserving each unique nested structure.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.10"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.10</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $22170 $22172]]] [ = $22176 True ] ] [ = $22176 False ] ]] [error instantiation_error $22190] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $2782]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ($2822 $2828 $2822 $2840))) (superpose ($2822 $2828 $2840)))]
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $5444 $5450) (:: $5444 $5474) (:: $5444 $5450) (:: $5516 $5522)))) (superpose ((:: $5444 $5450) (:: $5444 $5474) (:: $5516 $5522))))
+>!(assertEqual (unique (superpose ((:: $5520 $5526) (:: $5520 $5550) (:: $5520 $5526) (:: $5592 $5598)))) (superpose ((:: $5520 $5526) (:: $5520 $5550) (:: $5592 $5598))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $11680]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $11732 $11738) (:: $11732 $11762) (:: $11732 $11738) (:: $11804 $11810)))) (superpose ((:: $11732 $11738) (:: $11732 $11762) (:: $11804 $11810))))];;;; Test unique with repeated variables in nested lists
-;;;; This test ensures that unique treats identical nested lists with variables as duplicates, reducing them to a single instance.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.11"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.11</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $39332 $39334]]] [ = $39338 True ] ] [ = $39338 False ] ]] [error instantiation_error $39352] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $10436]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $10488 $10494) (:: $10488 $10518) (:: $10488 $10494) (:: $10560 $10566)))) (superpose ((:: $10488 $10494) (:: $10488 $10518) (:: $10560 $10566))))]
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $13384 $13390) (:: $13384 $13390) (:: $13384 $13438) (:: $13384 $13390)))) (superpose ((:: $13384 $13390) (:: $13384 $13438))))
+>!(assertEqual (unique (superpose ((:: $12136 $12142) (:: $12136 $12142) (:: $12136 $12190) (:: $12136 $12142)))) (superpose ((:: $12136 $12142) (:: $12136 $12190))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $3152]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $3204 $3210) (:: $3204 $3210) (:: $3204 $3258) (:: $3204 $3210)))) (superpose ((:: $3204 $3210) (:: $3204 $3258))))];;;; Test unique with mixed types and variables in nested lists
-;;;; This test checks that unique handles a mix of nested structures with variables, symbols, and other data types correctly.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.12"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.12</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $43134 $43136]]] [ = $43140 True ] ] [ = $43140 False ] ]] [error instantiation_error $43154] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $20908]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $20960 $20966) (:: $20960 $20966) (:: $20960 $21014) (:: $20960 $20966)))) (superpose ((:: $20960 $20966) (:: $20960 $21014))))]
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: 1 $5276) (:: $5276 "hello") (:: 1 $5276) (:: $5336 $5342) (:: $5276 "hello")))) (superpose ((:: 1 $5276) (:: $5276 "hello") (:: $5336 $5342))))
+>!(assertEqual (unique (superpose ((:: 1 $23028) (:: $23028 "hello") (:: 1 $23028) (:: $23088 $23094) (:: $23028 "hello")))) (superpose ((:: 1 $23028) (:: $23028 "hello") (:: $23088 $23094))))
 
 </span>
-[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $11552]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: 1 $11610) (:: $11610 "hello") (:: 1 $11610) (:: $11670 $11676) (:: $11610 "hello")))) (superpose ((:: 1 $11610) (:: $11610 "hello") (:: $11670 $11676))))];;;; Test unique with complex nested structures including variables
-;;;; This test verifies that unique handles more complex nested structures containing variables, preserving each unique structure.
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.13"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.13</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $61584 $61586]]] [ = $61590 True ] ] [ = $61590 False ] ]] [error instantiation_error $61604] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $3406]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: 1 $3464) (:: $3464 "hello") (:: 1 $3464) (:: $3524 $3530) (:: $3464 "hello")))) (superpose ((:: 1 $3464) (:: $3464 "hello") (:: $3524 $3530))))]
 <span class="ansi38-013099040"
->!(assertEqual (unique (superpose ((:: $13568 (:: a b)) (:: $13568 (:: a b)) (:: (:: 1 $13568) (:: 2 $13646)) (:: (:: 1 $13568) (:: 2 $13646))))) (superpose ((:: $13568 (:: a b)) (:: (:: 1 $13568) (:: 2 $13646)))))
+>!(assertEqual (unique (superpose ((:: $5418 (:: a b)) (:: $5418 (:: a b)) (:: (:: 1 $5418) (:: 2 $5496)) (:: (:: 1 $5418) (:: 2 $5496))))) (superpose ((:: $5418 (:: a b)) (:: (:: 1 $5418) (:: 2 $5496)))))
 
-</span>[error [error [existence_error procedure [ / if_tracing 2 ]] [context [ / eval_09 6 ] $3650]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $3702 (:: a b)) (:: $3702 (:: a b)) (:: (:: 1 $3702) (:: 2 $3780)) (:: (:: 1 $3702) (:: 2 $3780))))) (superpose ((:: $3702 (:: a b)) (:: (:: 1 $3702) (:: 2 $3780)))))]P;HTML|
-;               [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta 0 ]
-<br/> <a href="#" onclick="window.history.back(); return false;"
+</span>
+;<h3 id="HYPERON-METTALOG-SANITY.UNIQUE-TEST.14"
+>;; HYPERON-METTALOG-SANITY.UNIQUE-TEST.14</h3>
+P;HTML|
+;                              [ --> [catch_warn [ ; [ *-> [call [notrace [equal_enough_for_test_renumbered_l strict_equals_allow_vn $62862 $62864]]] [ = $62868 True ] ] [ = $62868 False ] ]] [error instantiation_error $62882] ]
+[error [error [existence_error procedure [ / call_in_shared_space 2 ]] [context [ / nb_bound 2 ] $3686]] [file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta] (assertEqual (unique (superpose ((:: $3738 (:: a b)) (:: $3738 (:: a b)) (:: (:: 1 $3738) (:: 2 $3816)) (:: (:: 1 $3738) (:: 2 $3816))))) (superpose ((:: $3738 (:: a b)) (:: (:: 1 $3738) (:: 2 $3816)))))]P;HTML|
+;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta 0 ]
+<span class="ansi1"
+>LoonIt Report
+</span>------------
+<span class="ansi32"
+>Successes: 0
+</span><span class="ansi31"
+>Failures: 14
+</span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [[[[[[[[[[[[[[
-
-Script done on 2025-02-24 14:21:47+00:00 [COMMAND_EXIT_CODE="7"]
+Script done on 2025-03-12 05:31:50+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
 
 </html>
-\033[0;32mCompleted successfully (EXITCODE=7) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta" --halt=true\033[0m
+\033[1;33mCompleted (EXITCODE=1) Under 40 seconds: /home/runner/work/metta-wam/metta-wam/mettalog '--output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat' --timeout=40 --html --repl=false  --test "tests/baseline_compat/hyperon-mettalog_sanity/unique_test.metta" --halt=true\033[0m
