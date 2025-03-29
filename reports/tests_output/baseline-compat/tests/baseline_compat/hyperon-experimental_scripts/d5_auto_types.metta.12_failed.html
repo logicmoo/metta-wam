@@ -33,9 +33,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-12 04:32:10+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1042-900.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-29 08:28:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1971-525.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
-; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta] ]
+; user:[load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta]
 P;HTML|
 ;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta]
 P;HTML|
@@ -73,7 +73,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.008 secs. (7.71 milliseconds) 
+; took 0.001 secs. (1.44 milliseconds) 
 
 !(assertEqualToResult (+ 5 "S") ((Error "S" BadType)))
 
@@ -85,7 +85,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(88,[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (88)) ('~nExpected: ' ((Error "S" BadType))))
+>(Error (assertEqualToResult (+ 5 "S") ((Error "S" BadType))) ('
+Got: ' (88) '
+Expected: ' ((Error "S" BadType))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
@@ -94,7 +96,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000479 secs. (479.41 microseconds) 
+; took 0.000487 secs. (486.97 microseconds) 
 
 !(assertEqualToResult (== 5 "S") ((Error "S" BadType)))
 
@@ -106,7 +108,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False',[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (False)) ('~nExpected: ' ((Error "S" BadType))))
+>(Error (assertEqualToResult (== 5 "S") ((Error "S" BadType))) ('
+Got: ' (False) '
+Expected: ' ((Error "S" BadType))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
@@ -115,7 +119,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000575 secs. (574.53 microseconds) 
+; took 0.000656 secs. (655.55 microseconds) 
 
 !(assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType)))
 
@@ -127,7 +131,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('False',[]),'[|]'('[|]'('Error','[|]'('SamIsMortal','[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (False)) ('~nExpected: ' ((Error SamIsMortal BadType))))
+>(Error (assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType))) ('
+Got: ' (False) '
+Expected: ' ((Error SamIsMortal BadType))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
@@ -136,7 +142,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.46 milliseconds) 
+; took 0.001 secs. (1.05 milliseconds) 
 
 !(assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType)))
 
@@ -149,7 +155,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'('HumansAreMortal','[|]'('[|]'('Human','[|]'('Socrates',[])),[])),[]),'[|]'('[|]'('Error','[|]'('[|]'('Human','[|]'('Socrates',[])),'[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((HumansAreMortal (Human Socrates)))) ('~nExpected: ' ((Error (Human Socrates) BadType))))
+>(Error (assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType))) ('
+Got: ' ((HumansAreMortal (Human Socrates))) '
+Expected: ' ((Error (Human Socrates) BadType))))
 </span><span class="ansi38-013099040"
 >!(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -158,7 +166,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000526 secs. (525.83 microseconds) 
+; took 0.000699 secs. (698.87 microseconds) 
 
 !(assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType))))
 
@@ -170,7 +178,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(88,[]),[]),'[|]'('[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((88))) ('~nExpected: ' (((Error "S" BadType)))))
+>(Error (assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType)))) ('
+Got: ' ((88)) '
+Expected: ' (((Error "S" BadType)))))
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
@@ -184,7 +194,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.000222 secs. (222.50 microseconds) 
+; took 0.000148 secs. (147.79 microseconds) 
 
 !(assertEqualToResult (match &self (== SocratesIsHuman SamIsMortal) Really?) ())
 
@@ -195,7 +205,7 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(let $44408 (+ 5 "S") $44408)
+>!(let $46368 (+ 5 "S") $46368)
 
 </span>
 N(1): <span class="ansi33"
@@ -208,7 +218,7 @@ N(1): <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.D5-AUTO-TYPES.07</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.58 milliseconds) 
+; took 0.001 secs. (1.26 milliseconds) 
 
 !(assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType)))
 
@@ -220,7 +230,9 @@ N(1): <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'('[|]'(f,'[|]'(88,[])),[]),'[|]'('[|]'('Error','[|]'("S",'[|]'('BadType',[]))),[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ((f 88))) ('~nExpected: ' ((Error "S" BadType))))
+>(Error (assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType))) ('
+Got: ' ((f 88)) '
+Expected: ' ((Error "S" BadType))))
 </span>P;HTML|
 ;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/d5_auto_types.metta 0 ]
 <span class="ansi1"
@@ -233,16 +245,30 @@ Deterministic: <span class="ansi33"
 </span><br/> <a href="#" onclick="window.history.back(); return false;"
 >Return to summaries</a><br/>
 [()]
-[(Error ('~nGot: ' (88)) ('~nExpected: ' ((Error "S" BadType))))]
-[(Error ('~nGot: ' (False)) ('~nExpected: ' ((Error "S" BadType))))]
-[(Error ('~nGot: ' (False)) ('~nExpected: ' ((Error SamIsMortal BadType))))]
-[(Error ('~nGot: ' ((HumansAreMortal (Human Socrates)))) ('~nExpected: ' ((Error (Human Socrates) BadType))))]
-[(Error ('~nGot: ' ((88))) ('~nExpected: ' (((Error "S" BadType)))))]
+[(Error (assertEqualToResult (+ 5 "S") ((Error "S" BadType))) ('
+Got: ' (88) '
+Expected: ' ((Error "S" BadType))))]
+[(Error (assertEqualToResult (== 5 "S") ((Error "S" BadType))) ('
+Got: ' (False) '
+Expected: ' ((Error "S" BadType))))]
+[(Error (assertEqualToResult (== SocratesIsHuman SamIsMortal) ((Error SamIsMortal BadType))) ('
+Got: ' (False) '
+Expected: ' ((Error SamIsMortal BadType))))]
+[(Error (assertEqualToResult (HumansAreMortal (Human Socrates)) ((Error (Human Socrates) BadType))) ('
+Got: ' ((HumansAreMortal (Human Socrates))) '
+Expected: ' ((Error (Human Socrates) BadType))))]
+[(Error (assertEqualToResult (collapse (+ 5 "S")) (((Error "S" BadType)))) ('
+Got: ' ((88)) '
+Expected: ' (((Error "S" BadType)))))]
 [()]
 [88]
-[(Error ('~nGot: ' ((f 88))) ('~nExpected: ' ((Error "S" BadType))))]
-
-Script done on 2025-03-12 04:32:11+00:00 [COMMAND_EXIT_CODE="1"]
+[(Error (assertEqualToResult (f (+ 5 "S")) ((Error "S" BadType))) ('
+Got: ' ((f 88)) '
+Expected: ' ((Error "S" BadType))))]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+</span>
+Script done on 2025-03-29 08:28:04+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

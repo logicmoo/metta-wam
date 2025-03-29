@@ -13,6 +13,7 @@
 .inv_foreground { color: #000000; }
 .inv_background { background-color: #AAAAAA; }
 .ansi1 { font-weight: bold; }
+.ansi31 { color: #aa0000; }
 .ansi32 { color: #00aa00; }
 .ansi33 { color: #aa5500; }
 .ansi36 { color: #00aaaa; }
@@ -36,9 +37,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-12 04:47:23+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1042-900.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-29 08:33:03+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1971-525.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/metta-morph_tests/types2.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
-; [ : user [load_metta_file &self tests/baseline_compat/metta-morph_tests/types2.metta] ]
+; user:[load_metta_file &self tests/baseline_compat/metta-morph_tests/types2.metta]
 P;HTML|
 ;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/metta-morph_tests/types2.metta]
 P;HTML|
@@ -69,7 +70,7 @@ Script started on 2025-03-12 04:47:23+00:00 [COMMAND="timeout --preserve-status 
 >;; METTA-MORPH-TESTS.TYPES2.01</h3>
 ; 
 ; EVAL TEST
-; took 0.002 secs. (1.87 milliseconds) 
+; took 0.000649 secs. (648.81 microseconds) 
 
 !(assertEqualToResult (get-type lion1) (Lion))
 
@@ -94,7 +95,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.02</h3>
 ; 
 ; EVAL TEST
-; took 0.000784 secs. (783.65 microseconds) 
+; took 0.000777 secs. (776.84 microseconds) 
 
 !(assertEqualToResult (reproduce lion1 lion2) (childlion))
 
@@ -119,7 +120,7 @@ Deterministic: <span class="ansi33"
 >;; METTA-MORPH-TESTS.TYPES2.03</h3>
 ; 
 ; EVAL TEST
-; took 0.000211 secs. (211.11 microseconds) 
+; took 0.000233 secs. (233.08 microseconds) 
 
 !(assertEqualToResult (get-type Lion) (Cat))
 
@@ -134,19 +135,19 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(match &self (: Lion $41236) $41236)
+>!(match &self (: Lion $49594) $49594)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (: Lion $43398) $43398) (Cat))
+>!(assertEqualToResult (match &self (: Lion $51784) $51784) (Cat))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.TYPES2.04"
 >;; METTA-MORPH-TESTS.TYPES2.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000245 secs. (245.23 microseconds) 
+; took 0.000464 secs. (464.35 microseconds) 
 
-!(assertEqualToResult (match &self (: Lion $57364) $57364) (Cat))
+!(assertEqualToResult (match &self (: Lion $4826) $4826) (Cat))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -159,19 +160,19 @@ Deterministic: <span class="ansi33"
 </span><span class="ansi38-255165009"
 >;; In file as:  
 </span><span class="ansi1 ansi38-255238088"
->!(match &self (: reproduce $5608) $5608)
+>!(match &self (: reproduce $15668) $15668)
 </span>;; To unit test case:
 <span class="ansi38-013099040"
->!(assertEqualToResult (match &self (: reproduce $7798) $7798) ((-> Lion Lion Lion)))
+>!(assertEqualToResult (match &self (: reproduce $17886) $17886) ((-> Lion Lion Lion)))
 
 </span>
 ;<h3 id="METTA-MORPH-TESTS.TYPES2.05"
 >;; METTA-MORPH-TESTS.TYPES2.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000208 secs. (207.91 microseconds) 
+; took 0.000308 secs. (308.31 microseconds) 
 
-!(assertEqualToResult (match &self (: reproduce $24674) $24674) ((-> Lion Lion Lion)))
+!(assertEqualToResult (match &self (: reproduce $35688) $35688) ((-> Lion Lion Lion)))
 
 <span class="ansi36"
 >  [loonit_success 
@@ -197,8 +198,10 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-
-Script done on 2025-03-12 04:47:23+00:00 [COMMAND_EXIT_CODE="1"]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+</span>
+Script done on 2025-03-29 08:33:04+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>

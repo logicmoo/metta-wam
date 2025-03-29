@@ -35,9 +35,9 @@
 <body class="body_foreground body_background" style="font-size: normal;" >
 <pre class="ansi2html-content"
 >
-Script started on 2025-03-12 04:32:13+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1042-900.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
+Script started on 2025-03-29 08:28:07+00:00 [COMMAND="timeout --preserve-status --foreground 40 swipl -x /home/runner/work/metta-wam/metta-wam/prolog/metta_lang/Sav.fv-az1971-525.MeTTaLog  -- --python=enable -- --timeout=40 --output=/home/runner/work/metta-wam/metta-wam/reports/tests_output/baseline-compat --html --test tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta --halt=true  --stdin=tty --stdout=tty --stderr=tty" TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="-1" LINES="-1"]
 
-; [ : user [load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta] ]
+; user:[load_metta_file &self tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta]
 P;HTML|
 ;            [track_load_into_file /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta]
 P;HTML|
@@ -83,7 +83,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.01</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.42 milliseconds) 
+; took 0.002 secs. (2.22 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) inactive)
 
@@ -108,7 +108,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.02</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.44 milliseconds) 
+; took 0.003 secs. (2.52 milliseconds) 
 
 !(assertEqualToResult (nop (change-state! (status (Goal lunch-order)) active)) (()))
 
@@ -128,7 +128,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.03</h3>
 ; 
 ; EVAL TEST
-; took 0.001 secs. (1.32 milliseconds) 
+; took 0.002 secs. (2.09 milliseconds) 
 
 !(assertEqual (get-state (status (Goal lunch-order))) active)
 
@@ -140,7 +140,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,'[|]'(inactive,[]),'[|]'(active,[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' (inactive)) ('~nExpected: ' (active)))
+>(Error (assertEqual (get-state (status (Goal lunch-order))) active) ('
+Got: ' (inactive) '
+Expected: ' (active)))
 </span><span class="ansi38-013099040"
 >!(bind! &state-active (new-state active))
 
@@ -160,7 +162,7 @@ Deterministic: <span class="ansi33"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.04</h3>
 ; 
 ; EVAL TEST
-; took 0.000354 secs. (353.87 microseconds) 
+; took 0.000521 secs. (521.14 microseconds) 
 
 !(assertEqualToResult (nop (change-state! &state-active inactive)) (()))
 
@@ -173,16 +175,16 @@ Deterministic: <span class="ansi33"
 Deterministic: <span class="ansi33"
 >()
 </span><span class="ansi38-013099040"
->!(assertEqual (match &self (= (status (Goal $4472))  &state-active) $4472) meditation)
+>!(assertEqual (match &self (= (status (Goal $58604))  &state-active) $58604) meditation)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.05"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.05</h3>
 ; 
 ; EVAL TEST
-; took 0.000230 secs. (229.60 microseconds) 
+; took 0.000180 secs. (179.72 microseconds) 
 
-!(assertEqual (match &self (= (status (Goal $19804))  &state-active) $19804) meditation)
+!(assertEqual (match &self (= (status (Goal $10662))  &state-active) $10662) meditation)
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -191,18 +193,20 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'(meditation,[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' (meditation)))
+>(Error (assertEqual (match &self (= (status (Goal $19332))  &state-active) $19332) meditation) ('
+Got: ' () '
+Expected: ' (meditation)))
 </span><span class="ansi38-013099040"
->!(assertEqual (if (== (get-state (status (Goal $30558))) active) $30558 (superpose ())) lunch-order)
+>!(assertEqual (if (== (get-state (status (Goal $22990))) active) $22990 (superpose ())) lunch-order)
 
 </span>
 ;<h3 id="HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.06"
 >;; HYPERON-EXPERIMENTAL-SCRIPTS.E3-MATCH-STATES.06</h3>
 ; 
 ; EVAL TEST
-; took 0.003 secs. (2.64 milliseconds) 
+; took 0.003 secs. (2.70 milliseconds) 
 
-!(assertEqual (if (== (get-state (status (Goal $6336))) active) $6336 (superpose ())) lunch-order)
+!(assertEqual (if (== (get-state (status (Goal $14954))) active) $14954 (superpose ())) lunch-order)
 
 <span class="ansi31"
 >  [loonit_failureR 
@@ -211,7 +215,9 @@ Deterministic: <span class="ansi33"
 </span>equal_enough_for_test_renumbered_l(strict_equals_allow_vn,[],'[|]'('lunch-order',[]))
 
 Deterministic: <span class="ansi33"
->(Error ('~nGot: ' ()) ('~nExpected: ' (lunch-order)))
+>(Error (assertEqual (if (== (get-state (status (Goal $23858))) active) $23858 (superpose ())) lunch-order) ('
+Got: ' () '
+Expected: ' (lunch-order)))
 </span>P;HTML|
 ;            [ = /home/runner/work/metta-wam/metta-wam/tests/baseline_compat/hyperon-experimental_scripts/e3_match_states.metta 0 ]
 <span class="ansi1"
@@ -227,13 +233,21 @@ Deterministic: <span class="ansi33"
 [()]
 [()]
 [()]
-[(Error ('~nGot: ' (inactive)) ('~nExpected: ' (active)))]
+[(Error (assertEqual (get-state (status (Goal lunch-order))) active) ('
+Got: ' (inactive) '
+Expected: ' (active)))]
 [()]
 [()]
-[(Error ('~nGot: ' ()) ('~nExpected: ' (meditation)))]
-[(Error ('~nGot: ' ()) ('~nExpected: ' (lunch-order)))]
-
-Script done on 2025-03-12 04:32:14+00:00 [COMMAND_EXIT_CODE="1"]
+[(Error (assertEqual (match &self (= (status (Goal $20290))  &state-active) $20290) meditation) ('
+Got: ' () '
+Expected: ' (meditation)))]
+[(Error (assertEqual (if (== (get-state (status (Goal $24818))) active) $24818 (superpose ())) lunch-order) ('
+Got: ' () '
+Expected: ' (lunch-order)))]
+<span class="ansi1 ansi31"
+>ERROR: source_sink `'/home/runner/.config/metta/repl_history.txt'' does not exist
+</span>
+Script done on 2025-03-29 08:28:07+00:00 [COMMAND_EXIT_CODE="1"]
 
 </pre>
 </body>
