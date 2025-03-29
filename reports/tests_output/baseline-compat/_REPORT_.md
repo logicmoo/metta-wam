@@ -5,13 +5,13 @@
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-|  11|1   2|  13|   78% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  40|8   2|  42|   80% |  compat anti-regression        | baseline_compat/anti-regression |
+|  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
+|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
 |  88|6   4|  92|   89% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 284|17 34| 318|   84% |  compat                        | baseline_compat |
-| 284|17 34| 318|   84% | tests output -compat           | tests_output/baseline-compat |
-| 284|17 34| 318|   84% | tests                          | tests |
+| 322|17 34| 356|   86% |  compat                        | baseline_compat |
+| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
+| 322|17 34| 356|   86% | tests                          | tests |
 
 
 
@@ -80,9 +80,11 @@
 |       |       |          | Dir: ./baseline_compat/anti-regression/issues                                  |
 |       |       |          | Mod:  compat anti-regression issues                                            |
 |       |       |          |                                                                                |
+|    19 |     0 |    100%  | [and_or_xor_backtracking_254.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/issues/and_or_xor_backtracking_254.metta.html) |
+|    19 |     0 |    100%  | [bug_254_and_or_xor_backtracking_254.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/issues/bug_254_and_or_xor_backtracking_254.metta.html) |
 |     7 |     1 |     87%  | [bug_206_several_unifies.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/issues/bug_206_several_unifies.metta.html) |
 |       |       |          |                                                                                |
-|     7 |     1 |     87%  | Total                                                                          |
+|    45 |     1 |     97%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -186,13 +188,13 @@
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-|  11|1   2|  13|   78% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  40|8   2|  42|   80% |  compat anti-regression        | baseline_compat/anti-regression |
+|  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
+|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
 |  88|6   4|  92|   89% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 284|17 34| 318|   84% |  compat                        | baseline_compat |
-| 284|17 34| 318|   84% | tests output -compat           | tests_output/baseline-compat |
-| 284|17 34| 318|   84% | tests                          | tests |
+| 322|17 34| 356|   86% |  compat                        | baseline_compat |
+| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
+| 322|17 34| 356|   86% | tests                          | tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
@@ -202,9 +204,9 @@
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
-|  11|1   2|  13|   78% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  40|8   2|  42|   80% |  compat anti-regression        | baseline_compat/anti-regression |
-| 284|17 34| 318|   84% |  compat                        | baseline_compat |
-| 284|17 34| 318|   84% | tests                          | tests |
-| 284|17 34| 318|   84% | tests output -compat           | tests_output/baseline-compat |
+|  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
+|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
+| 322|17 34| 356|   86% |  compat                        | baseline_compat |
+| 322|17 34| 356|   86% | tests                          | tests |
+| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
 [?7h
