@@ -465,6 +465,7 @@ once_writeq_nl(P):- once_writeq_nl_now(cyan, P), nb_setval('$once_writeq_ln', P)
 %       does not interfere with the curried chainer logic.
 % pfcAdd_Now(P):- pfcAdd(P),!.
 
+
 pfcAdd_Now(Cl):-
    once( \+ nb_current(allow_dupes,t)
      ; sub_var_safely('&corelib',Cl )),
@@ -4783,7 +4784,7 @@ metta_anew1(unload_all, OBO) :-
     must_det_ll((
         load_hook(unload_all, OBO),  % Execute the unload_all hook.
         subst_vars(OBO, Cl),         % Substitute variables in `OBO`.
-        once_writeq_nl_now(yellow, retractall(Cl)), % Log and retract all matching clauses.
+        if_trace(atomspace,once_writeq_nl_now(yellow, retractall(Cl))), % Log and retract all matching clauses.
         retractall(Cl)      %to_metta(Cl).
     )).
 % Alternative `unload_all` operation with detailed clause handling.

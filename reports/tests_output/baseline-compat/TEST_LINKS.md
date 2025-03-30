@@ -2,15 +2,16 @@
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
+|   1|2   0|   1|   33% |  compat anti-regression ordering | baseline_compat/anti-regression/ordering |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
 |  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
-|  88|6   4|  92|   89% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+|  79|7   2|  81|   89% |  compat anti-regression        | baseline_compat/anti-regression |
+| 116|3   3| 119|   95% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 322|17 34| 356|   86% |  compat                        | baseline_compat |
-| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
-| 322|17 34| 356|   86% | tests                          | tests |
+| 351|13 33| 384|   88% |  compat                        | baseline_compat |
+| 351|13 33| 384|   88% | tests output -compat           | tests_output/baseline-compat |
+| 351|13 33| 384|   88% | tests                          | tests |
 
 
 
@@ -96,7 +97,7 @@
 |     1 |     0 |    100%  | [add_atom_match.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/add_atom_match.metta.html) |
 |     9 |     0 |    100%  | [match_empty_same.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_empty_same.metta.html) |
 |     1 |     0 |    100%  | [types3.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/types3.metta.html) |
-|    -1 |    -1 |      0%  | [boolean_twice.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/boolean_twice.metta.html) |
+|    17 |     0 |    100%  | [boolean_twice.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/boolean_twice.metta.html) |
 |    -1 |    -1 |      0%  | [tests0.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/tests0.metta.html) |
 |     1 |     0 |    100%  | [and_or.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/and_or.metta.html) |
 |     4 |     0 |    100%  | [superpose_nested.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/superpose_nested.metta.html) |
@@ -105,13 +106,13 @@
 |     5 |     0 |    100%  | [types2.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/types2.metta.html) |
 |     2 |     0 |    100%  | [zeroargs.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/zeroargs.metta.html) |
 |    -1 |    -1 |      0%  | [minnars.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/minnars.metta.html) |
-|    -1 |    -1 |      0%  | [factorial.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/factorial.metta.html) |
+|     2 |     0 |    100%  | [factorial.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/factorial.metta.html) |
 |     1 |     0 |    100%  | [if.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/if.metta.html) |
 |     6 |     3 |     66%  | [match_void.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_void.metta.html) |
 |     1 |     0 |    100%  | [collapse.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/collapse.metta.html) |
 |     1 |     0 |    100%  | [types.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/types.metta.html) |
 |     1 |     0 |    100%  | [letlet.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/letlet.metta.html) |
-|     0 |     1 |      0%  | [nalifier.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/nalifier.metta.html) |
+|     1 |     0 |    100%  | [nalifier.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/nalifier.metta.html) |
 |    10 |     0 |    100%  | [hyperpose.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/hyperpose.metta.html) |
 |     1 |     0 |    100%  | [match_feval.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_feval.metta.html) |
 |     2 |     0 |    100%  | [let_superpose_if_case.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/let_superpose_if_case.metta.html) |
@@ -120,13 +121,13 @@
 |     9 |     0 |    100%  | [match_empty_or_var.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_empty_or_var.metta.html) |
 |     1 |     0 |    100%  | [identity.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/identity.metta.html) |
 |     3 |     0 |    100%  | [match_superposed_spaces.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_superposed_spaces.metta.html) |
-|    -1 |    -1 |      0%  | [supercollapse.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/supercollapse.metta.html) |
+|     8 |     0 |    100%  | [supercollapse.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/supercollapse.metta.html) |
 |     1 |     0 |    100%  | [let_superpose_list2.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/let_superpose_list2.metta.html) |
 |    12 |     0 |    100%  | [sequential_nested.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/sequential_nested.metta.html) |
 |    -1 |    -1 |      0%  | [multifunction.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/multifunction.metta.html) |
 |     9 |     0 |    100%  | [match_empty.metta](https://logicmoo.org/public/metta/tests/baseline_compat/metta-morph_tests/match_empty.metta.html) |
 |       |       |          |                                                                                |
-|    88 |    10 |     89%  | Total                                                                          |
+|   116 |     6 |     95%  | Total                                                                          |
 |       |       |          |                                                                                |
 
 
@@ -182,30 +183,46 @@
 |       |       |          |                                                                                |
 
 
+|  Pass |  Fail |  Percent | File/Module/Directory Information                                                                              |
+|-------|-------|----------|----------------------------------------------------------------------------------------------------|
+|       |       |          |                                                                                |
+|       |       |          | Dir: ./baseline_compat/anti-regression/ordering                                |
+|       |       |          | Mod:  compat anti-regression ordering                                          |
+|       |       |          |                                                                                |
+|     1 |     0 |    100%  | [ordering_factorial_if2_if.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/ordering/ordering_factorial_if2_if.metta.html) |
+|    -1 |    -1 |      0%  | [ordering_if2_if_factorial.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/ordering/ordering_if2_if_factorial.metta.html) |
+|    -1 |    -1 |      0%  | [ordering_if_if2_factorial.metta](https://logicmoo.org/public/metta/tests/baseline_compat/anti-regression/ordering/ordering_if_if2_factorial.metta.html) |
+|       |       |          |                                                                                |
+|     1 |     2 |     33%  | Total                                                                          |
+|       |       |          |                                                                                |
+
+
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
+|   1|2   0|   1|   33% |  compat anti-regression ordering | baseline_compat/anti-regression/ordering |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
 |  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
-|  88|6   4|  92|   89% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+|  79|7   2|  81|   89% |  compat anti-regression        | baseline_compat/anti-regression |
+| 116|3   3| 119|   95% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
-| 322|17 34| 356|   86% |  compat                        | baseline_compat |
-| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
-| 322|17 34| 356|   86% | tests                          | tests |
+| 351|13 33| 384|   88% |  compat                        | baseline_compat |
+| 351|13 33| 384|   88% | tests output -compat           | tests_output/baseline-compat |
+| 351|13 33| 384|   88% | tests                          | tests |
 
 
 |Pass|EFail|Totl|Percent| Module | Directory |
 |----|-----|----|-------|--------|-----------|
 |   6|    0|   6|  100% |  compat module-system          | baseline_compat/module-system |
-|  88|6   4|  92|   89% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
+| 116|3   3| 119|   95% |  compat metta-morph tests      | baseline_compat/metta-morph_tests |
 | 150|3  28| 178|   82% |  compat hyperon-experimental   | baseline_compat/hyperon-experimental_scripts |
+|   1|2   0|   1|   33% |  compat anti-regression ordering | baseline_compat/anti-regression/ordering |
 |   1|    0|   1|  100% |  compat anti-regression issues metta-wam-issue-145 | baseline_compat/anti-regression/issues/metta-wam-issue-145 |
 |   3|1   0|   3|   75% |  compat anti-regression issues metta-wam-issue-116 | baseline_compat/anti-regression/issues/metta-wam-issue-116 |
 |  49|1   2|  51|   94% |  compat anti-regression issues | baseline_compat/anti-regression/issues |
-|  78|8   2|  80|   88% |  compat anti-regression        | baseline_compat/anti-regression |
-| 322|17 34| 356|   86% |  compat                        | baseline_compat |
-| 322|17 34| 356|   86% | tests                          | tests |
-| 322|17 34| 356|   86% | tests output -compat           | tests_output/baseline-compat |
+|  79|7   2|  81|   89% |  compat anti-regression        | baseline_compat/anti-regression |
+| 351|13 33| 384|   88% |  compat                        | baseline_compat |
+| 351|13 33| 384|   88% | tests                          | tests |
+| 351|13 33| 384|   88% | tests output -compat           | tests_output/baseline-compat |
 [?7h
