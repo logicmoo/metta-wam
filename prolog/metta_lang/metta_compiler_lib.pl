@@ -421,6 +421,10 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert,
   assign_or_direct_var_only(QuotedCode2,RetResult,QuotedResult2,QuotedCode1a),
   assign_or_direct_var_only(QuotedCode2,RetResultN,QuotedResult2,QuotedCode1N).
 
+%transpiler_predicate_store(builtin, 'chain', [3], '@doc', '@doc', [x(eval,eager,[]), x(noeval,eager,[]), x(eval,lazy,[])], x(noeval,eager,[])).
+
+
+
 %%%%%%%%%%%%%%%%%%%%% random number generation
 
 transpiler_predicate_store(builtin, 'random-int', [3], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, [])).
