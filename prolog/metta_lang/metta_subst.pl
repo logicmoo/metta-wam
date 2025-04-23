@@ -87,6 +87,8 @@ subst_args(Eq,RetType,Depth,Self,X,Y):- atom(Eq),  ( Eq \== ('=')),  ( Eq \== ('
 
 %subst_args(Eq,RetType,_Dpth,_Slf,X,Y):- nonvar(Y),X=Y,!.
 %subst_args(Eq,RetType,Depth,Self,X,Y):- nonvar(Y),!,subst_args(Eq,RetType,Depth,Self,X,XX),substs_to(XX,Y).
+subst_args(Eq,RetType,_Dpth,_Slf,X,Y):- var(X),!,Y=X.
+% subst_args(Eq,RetType,Depth,_Slf,X,Y):- Depth<1,bt,trace,break.
 subst_args(Eq,RetType,_Dpth,_Slf,X,Y):- self_subst(X),!,Y=X.
 subst_args(Eq,RetType,_Dpth,_Slf,[X|T],Y):-
   % !, fail,
@@ -168,7 +170,7 @@ subst_args1(Eq,RetType,Depth,Self,['rtrace',Cond],Res):- !, rtrace(subst_args(Eq
 subst_args1(Eq,RetType,Depth,Self,['time',Cond],Res):- !, time(subst_args(Eq,RetType,Depth,Self,Cond,Res)).
 %subst_args1(Eq,RetType,Depth,Self,['print',Cond],Res):- !, subst_args(Eq,RetType,Depth,Self,Cond,Res),format('~N'),print(Res),format('~N').
 % !(println! $1)
-subst_args1(Eq,RetType,Depth,Self,['println!',Cond],[]):- !, subst_args(Eq,RetType,Depth,Self,Cond,Res),format('~N'),print(Res),format('~N').
+subst_args1(Eq,RetType,Depth,Self,['println!',Cond],[]):- !, subst_args(Eq,RetType,Depth,Self,Cond,Res),format('~N'),write_src(Res),format('~N').
 
 subst_args1(Eq,RetType,_Dpth,_Slf,List,Y):- is_list(List),maplist(self_subst,List),List=[H|_], \+ atom(H), !,Y=List.
 
@@ -269,7 +271,7 @@ is_space_op('remove-atom').
 is_space_op('atom-count').
 is_space_op('atom-replace').
 
-subst_args_as(Depth, Self, [OP|ARGS], Template):- !, eval_20('=',_,Depth, Self, [OP|ARGS], Template).
+subst_args_as(Depth, Self, [OP|ARGS], Template):- !, eval_10('=',_,Depth, Self, [OP|ARGS], Template).
 
 subst_args_as(Depth,Self,['match',Other,Goal,Template],Template):- into_space(Self,Other,Space),!, metta_atom_iter_l1t(Eq,Depth,Space,Goal).
 subst_args_as(Depth,Self,['match',Other,Goal,Template,Else],Template):-
@@ -282,7 +284,7 @@ subst_args_as(_Dpth,Self,['atom-replace',Other,Rem,Add],TF):- !, into_space(Self
   as_tf((metta_atom_iter_l1t_ref(Space,RCopy,Ref), RCopy=@=Rem,erase(Ref), do_metta(Other,load,Add)),TF).
 
 subst_args1(Eq,RetType,Depth,Self,X,Res):-
-   X= [CaseSym|_],CaseSym == 'case',  !, eval_20('=',_,Depth, Self, X,Res).
+   X= [CaseSym|_],CaseSym == 'case',  !, eval_10('=',_,Depth, Self, X,Res).
 
 % Macro: case
 subst_args1_hide(Depth,Self,X,Res):-
@@ -544,7 +546,7 @@ subst_args1(Eq,RetType,Depth,Self,['get-type',Val],Type):- !, get_type_l1t(Depth
 
 % mnotrace(G):- once(G).
 /*
-is_decl_type(ST):- metta_type(_,_,Type),sub_term(T,Type),T=@=ST, \+ nontype(ST).
+is_decl_type(ST):- metta_type(_,_,Type),sub_term_safely(T,Type),T=@=ST, \+ nontype(ST).
 is_type(Type):- nontype(Type),!,fail.
 is_type(Type):- is_decl_type(Type).
 is_type(Type):- atom(Type).
@@ -733,9 +735,9 @@ last_element(T,E):- compound_name_arguments(T,_,List),last_element(List,E),!.
 
 %as_tf(G,TF):- catch_nowarn((call(G)*->TF='True';TF='False')).
 */
-subst_selfless([O|_],_):- var(O),!,fail.
-subst_selfless(['==',X,Y],TF):- as_tf(X=:=Y,TF),!.
-subst_selfless(['==',X,Y],TF):- as_tf(X=Y,TF),!.
+%subst_selfless([O|_],_):- var(O),!,fail.
+%subst_selfless(['==',X,Y],TF):- (number(X);number(Y)), as_tf(X=:=Y,TF),!.
+%subst_selfless(['==',X,Y],TF):- as_tf(X=Y,TF),!.
 subst_selfless(X,Y):- !,eval_selfless(_,_,_,_,X,Y).
 /*subst_selfless(['=',X,Y],TF):-!,as_tf(X=Y,TF).
 subst_selfless(['>',X,Y],TF):-!,as_tf(X>Y,TF).
@@ -797,7 +799,7 @@ is_user_defined_head_f(Eq,Other,H):- is_user_defined_head_f1(Eq,Other,H).
 is_user_defined_head_f(Eq,Other,H):- is_user_defined_head_f1(Eq,Other,[H|_]).
 
 %is_user_defined_head_f1(Eq,Other,H):- metta_type(Other,H,_).
-is_user_defined_head_f1(Eq,Other,H):- get_metta_atom(Eq,Other,[H|_]).
+%is_user_defined_head_f1(Eq,Other,H):- get_metta_atom(Eq,Other,[H|_]).
 is_user_defined_head_f1(Eq,Other,H):- metta_eq_def(Eq,Other,[H|_],_).
 %is_user_defined_head_f(Eq,_,H):- is_metta_builtin(H).
 
@@ -845,7 +847,8 @@ is_metta_builtin('pragma!').
 
 subst_args30(Eq,Depth,Self,H,B):- if_or_else(subst_args34(Depth,Self,H,B),subst_args37(Eq,Depth,Self,H,B)).
 
-subst_args34(_Dpth,Self,H,B):-  if_or_else(metta_eq_def(Eq,Self,H,B),(get_metta_atom(Eq,Self,H),B=H)).
+subst_args34(_Dpth,Self,H,B):-
+  metta_eq_def(Eq,Self,H,B).
 
 % Has argument that is headed by the same function
 subst_args37(Eq,Depth,Self,[H1|Args],Res):-
@@ -878,7 +881,7 @@ subst_args37(Eq,Depth,Self,PredDecl,Res):- fail,
 
 subst_args38(Eq,_Dpth,Self,[H|_],_):- mnotrace( \+ is_user_defined_head_f(Eq,Self,H) ), !,fail.
 subst_args38(Eq,_Dpth,Self,[H|T1],Y):- metta_eq_def(Eq,Self,[H|T1],Y).
-subst_args38(Eq,_Dpth,Self,[H|T1],'True'):- get_metta_atom(Eq,Self,[H|T1]).
+%subst_args38(Eq,_Dpth,Self,[H|T1],'True'):- get_metta_atom(Eq,Self,[H|T1]).
 subst_args38(Eq,_Dpth,Self,CALL,Y):- fail,append(Left,[Y],CALL),metta_eq_def(Eq,Self,Left,Y).
 
 
@@ -886,23 +889,23 @@ subst_args38(Eq,_Dpth,Self,CALL,Y):- fail,append(Left,[Y],CALL),metta_eq_def(Eq,
 %   metta_eq_def(Eq,Self,['ift',R,Then],Become),subst_args(Eq,RetType,Depth,Self,CR,R),subst_args(Eq,RetType,Depth,Self,Then,_True),subst_args(Eq,RetType,Depth,Self,Become,RO).
 
 metta_atom_iter_l1t(Eq,_Dpth,Other,[Equal,H,B]):- Eq == Equal,!,
-  (metta_eq_def(Eq,Other,H,B)*->true;(get_metta_atom(Eq,Other,H),B=H)).
+  metta_eq_def(Eq,Other,H,B).
 
 metta_atom_iter_l1t(Eq,Depth,_,_):- Depth<3,!,fail.
 metta_atom_iter_l1t(Eq,_Dpth,_Slf,[]):-!.
-metta_atom_iter_l1t(Eq,_Dpth,Other,H):- get_metta_atom(Eq,Other,H).
+%metta_atom_iter_l1t(Eq,_Dpth,Other,H):- get_metta_atom(Eq,Other,H).
 metta_atom_iter_l1t(Eq,Depth,Other,H):- D2 is Depth -1, metta_eq_def(Eq,Other,H,B),metta_atom_iter_l1t(Eq,D2,Other,B).
 metta_atom_iter_l1t(Eq,_Dpth,_Slf,[And]):- is_and(And),!.
 metta_atom_iter_l1t(Eq,Depth,Self,[And,X|Y]):- is_and(And),!,D2 is Depth -1, metta_atom_iter_l1t(Eq,D2,Self,X),metta_atom_iter_l1t(Eq,D2,Self,[And|Y]).
 /*
-metta_atom_iter_l1t2(_,Self,[=,X,Y]):- metta_eq_def(Eq,Self,X,Y).
-metta_atom_iter_l1t2(_Dpth,Other,[Equal,H,B]):- '=' == Equal,!, metta_eq_def(Eq,Other,H,B).
-metta_atom_iter_l1t2(_Dpth,Self,X,Y):- metta_eq_def(Eq,Self,X,Y). %, Y\=='True'.
-metta_atom_iter_l1t2(_Dpth,Self,X,Y):- get_metta_atom(Eq,Self,[=,X,Y]). %, Y\=='True'.
+%metta_atom_iter_l1t2(_,Self,[=,X,Y]):- metta_eq_def(Eq,Self,X,Y).
+%metta_atom_iter_l1t2(_Dpth,Other,[Equal,H,B]):- '=' == Equal,!, metta_eq_def(Eq,Other,H,B).
+%metta_atom_iter_l1t2(_Dpth,Self,X,Y):- metta_eq_def(Eq,Self,X,Y). %, Y\=='True'.
+%metta_atom_iter_l1t2(_Dpth,Self,X,Y):- get_metta_atom(Eq,Self,[=,X,Y]). %, Y\=='True'.
 
 */
-metta_atom_iter_l1t_ref(Other,['=',H,B],Ref):-clause(metta_eq_def(Eq,Other,H,B),true,Ref).
-metta_atom_iter_l1t_ref(Other,H,Ref):-clause(get_metta_atom(Eq,Other,H),true,Ref).
+metta_atom_iter_l1t_ref(Other,['=',H,B],Ref):-metta_eq_def(Eq,Other,H,B).
+%metta_atom_iter_l1t_ref(Other,H,Ref):-clause(get_metta_atom(Eq,Other,H),true,Ref).
 
 %not_compound(Term):- \+ is_list(Term),!.
 %subst_args2(Eq,Depth,Self,Term,Res):- maplist(not_compound,Term),!,subst_args345(Depth,Self,Term,Res).
@@ -930,4 +933,4 @@ setof_subst(Depth,Self,X,S):- !,findall(E,subst_args(Eq,RetType,Depth,Self,X,E),
 %setof_subst(Depth,Self,X,S):- setof(E,subst_args(Eq,RetType,Depth,Self,X,E),S)*->true;S=[].
 
 
-
+:- find_missing_cuts.

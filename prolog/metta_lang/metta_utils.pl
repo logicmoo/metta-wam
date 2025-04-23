@@ -841,7 +841,7 @@ remove_must_det(_) :- !,fail.
 %remove_mds(MD,G,GGG):- compound(G), G = must_det_l(GG),!,expand_goal(GG,GGG),!.
 remove_mds(MD, GG, GO) :-
     % Traverse the term `GG` and check for sub-terms that match the pattern `MD(...)`.
-    sub_term(G, GG),
+    sub_term_safely(G, GG),
     % Check if the term is compound and matches the structure `MD(...)`.
     compound(G),
     compound_name_arg(G, MD, GGGG),
@@ -976,6 +976,8 @@ compound_name_arg(G, MD, Goal) :-
 %   % This would log the error using fbug/1 and then fail.
 %
 %user:message_hook(Term, Kind, Lines):- error==Kind, itrace,fbug(user:message_hook(Term, Kind, Lines)),trace,fail.
+
+user:message_hook(debug_no_topic(metta(_)), warning, _):-!.
 user:message_hook(Term, Kind, Lines) :-
     % Always fail initially to ensure no action is taken before processing.
     fail,
@@ -1008,11 +1010,16 @@ user:message_hook(Term, Kind, Lines) :-
 %
 wno_must(G) :-
     % Temporarily set the `no_must_det_ll` flag to true.
-    locally(nb_setval(no_must_det_ll, t),
+    locally(b_setval(no_must_det_ll, t),
         % Temporarily set the `cant_rrtrace` flag to true.
-        locally(nb_setval(cant_rrtrace, t),
+        locally(b_setval(cant_rrtrace, t),
             % Execute the goal G within the modified environment.
             call(G))).
+
+:- thread_initialization(nb_setval(no_must_det_ll,[])).
+:- thread_initialization(nb_setval(cant_rrtrace,[])).
+
+
 
 %!  md_maplist(:MD, :P1, +List) is det.
 %
@@ -1954,10 +1961,10 @@ maybe_expand_md(MD, maplist(P1, GoalL), GoalLO) :- P1 == MD, !, expand_md(MD, Go
 % Handle further maplist expansion with MD.
 maybe_expand_md(MD, maplist(P1, GoalL), GoalLO) :- P1 == MD, !, expand_md(MD, GoalL, GoalLO).
 % Expand a subterm in I where the compound contains MD as the functor and has a conjunction.
-maybe_expand_md(MD, I, O) :- sub_term(C, I), compound(C), compound_name_arg(C, MD, Goal),
+maybe_expand_md(MD, I, O) :- sub_term_safely(C, I), compound(C), compound_name_arg(C, MD, Goal),
    compound(Goal), Goal = (_, _),
    once((expand_md(MD, Goal, GoalO), substM(I, C, GoalO, O))), I \=@= O.
-%maybe_expand_md(MD,I,O):- sub_term(S,I),compound(S),S=must_det_ll(G),
+%maybe_expand_md(MD,I,O):- sub_term_safely(S,I),compound(S),S=must_det_ll(G),
 %  once(expand_md(MD,S,M)),M\=S,
 
 %!  expand_md(+MD, +A, -AA) is det.
@@ -2244,7 +2251,7 @@ goal_expansion_setter(Goal, _) :- \+ compound(Goal), !, fail.
 goal_expansion_setter(I, O) :- md_like(MD), maybe_expand_md(MD, I, O), I \=@= O, !.
 % Remove must_det_ll from the goal and attempt further expansion.
 goal_expansion_setter(G, GO) :- remove_must_det(MD), !, remove_mds(MD, G, GG), goal_expansion_setter(GG, GO).
-%goal_expansion_setter(GG,GO):- remove_must_det(MD), sub_term(G,GG),compound(G),G = must_det_ll(GGGG),subst001(GG,G,GGGG,GGG),!,goal_expansion_setter(GGG,GO).
+%goal_expansion_setter(GG,GO):- remove_must_det(MD), sub_term_safely(G,GG),compound(G),G = must_det_ll(GGGG),subst001(GG,G,GGGG,GGG),!,goal_expansion_setter(GGG,GO).
 %goal_expansion_setter((G1,G2),(O1,O2)):- !, expand_goal(G1,O1), expand_goal(G2,O2),!.
 % Handle `set_omember/4` goals as pass-through.
 goal_expansion_setter(set_omember(A, B, C, D), set_omember(A, B, C, D)) :- !.
@@ -2925,7 +2932,7 @@ show_rules :-
 %   @arg TestID The term to be searched for sub-terms.
 %   @arg A      A sub-term of `TestID` that is either an atom or a string.
 %
-sub_atom_value(TestID, A) :- sub_term(A, TestID),(atom(A) ; string(A)).
+sub_atom_value(TestID, A) :- sub_term_safely(A, TestID),(atom(A) ; string(A)).
 
 %!  my_list_to_set(+List, -Set) is det.
 %
@@ -2987,7 +2994,7 @@ my_list_to_set_cmp([], _, []).
 %   @arg N    The value to match with non-variable sub-terms of `Info`.
 %   @arg Info The term to be searched for matching sub-terms.
 %
-contains_nonvar(N, Info) :- sub_term(E, Info),nonvar_or_ci(E),E = N,!.
+contains_nonvar(N, Info) :- sub_term_safely(E, Info),nonvar_or_ci(E),E = N,!.
 
 %!  max_min(+A, +B, -C, -D) is det.
 %
@@ -3517,7 +3524,7 @@ p1_arg(N, P1, E) :- tc_arg(N, E, Arg), p1_call(P1, Arg).
 %   @arg P1 The predicate to apply to subterms.
 %   @arg E The term containing subterms.
 % Apply P1 to each subterm of E.
-p1_subterm(P1, E) :- sub_term(Arg, E), p1_call(P1, Arg).
+p1_subterm(P1, E) :- sub_term_safely(Arg, E), p1_call(P1, Arg).
 
 :- meta_predicate my_partition(-, ?, ?, ?).
 
@@ -4101,28 +4108,36 @@ fake_impl(F/A) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Higher arity maplists
 
 % maplist/6 applies Pred to the elements of List1, List2, ..., List5 in parallel
-maplist(_, [], [], [], [], []).
-maplist(Pred, [X1|Xs1], [X2|Xs2], [X3|Xs3], [X4|Xs4], [X5|Xs5]) :-
-    call(Pred, X1, X2, X3, X4, X5),
-    maplist(Pred, Xs1, Xs2, Xs3, Xs4, Xs5).
+maplist(Goal, List1, List2, List3, List4, List5) :-
+    maplist_(List1, List2, List3, List4, List5, Goal).
+maplist_([], [], [], [], [], _).
+maplist_([Elem1|Tail1], [Elem2|Tail2], [Elem3|Tail3], [Elem4|Tail4], [Elem5|Tail5], Goal) :-
+    call(Goal, Elem1, Elem2, Elem3, Elem4, Elem5),
+    maplist_(Tail1, Tail2, Tail3, Tail4, Tail5, Goal).
 
 % maplist/7 applies Pred to the elements of List1, List2, ..., List6 in parallel
-maplist(_, [], [], [], [], [], []).
-maplist(Pred, [X1|Xs1], [X2|Xs2], [X3|Xs3], [X4|Xs4], [X5|Xs5], [X6|Xs6]) :-
-    call(Pred, X1, X2, X3, X4, X5, X6),
-    maplist(Pred, Xs1, Xs2, Xs3, Xs4, Xs5, Xs6).
+maplist(Goal, List1, List2, List3, List4, List5, List6) :-
+    maplist_(List1, List2, List3, List4, List5, List6, Goal).
+maplist_([], [], [], [], [], [], _).
+maplist_([Elem1|Tail1], [Elem2|Tail2], [Elem3|Tail3], [Elem4|Tail4], [Elem5|Tail5], [Elem6|Tail6], Goal) :-
+    call(Goal, Elem1, Elem2, Elem3, Elem4, Elem5, Elem6),
+    maplist_(Tail1, Tail2, Tail3, Tail4, Tail5, Tail6, Goal).
 
-% maplist/8 applies Pred to the elements of List1, List2, ..., List7 in parallel
-maplist(_, [], [], [], [], [], [], []).
-maplist(Pred, [X1|Xs1], [X2|Xs2], [X3|Xs3], [X4|Xs4], [X5|Xs5], [X6|Xs6], [X7|Xs7]) :-
-    call(Pred, X1, X2, X3, X4, X5, X6, X7),
-    maplist(Pred, Xs1, Xs2, Xs3, Xs4, Xs5, Xs6, Xs7).
+% maplist/8 applies Pred to the elements of List1, List2, ..., List8 in parallel
+maplist(Goal, List1, List2, List3, List4, List5, List6, List7) :-
+    maplist_(List1, List2, List3, List4, List5, List6, List7, Goal).
+maplist_([], [], [], [], [], [], [], _).
+maplist_([Elem1|Tail1], [Elem2|Tail2], [Elem3|Tail3], [Elem4|Tail4], [Elem5|Tail5], [Elem6|Tail6], [Elem7|Tail7], Goal) :-
+    call(Goal, Elem1, Elem2, Elem3, Elem4, Elem5, Elem6, Elem7),
+    maplist_(Tail1, Tail2, Tail3, Tail4, Tail5, Tail6, Tail7, Goal).
 
 % maplist/9 applies Pred to the elements of List1, List2, ..., List8 in parallel
-maplist(_, [], [], [], [], [], [], [], []).
-maplist(Pred, [X1|Xs1], [X2|Xs2], [X3|Xs3], [X4|Xs4], [X5|Xs5], [X6|Xs6], [X7|Xs7], [X8|Xs8]) :-
-    call(Pred, X1, X2, X3, X4, X5, X6, X7, X8),
-    maplist(Pred, Xs1, Xs2, Xs3, Xs4, Xs5, Xs6, Xs7, Xs8).
+maplist(Goal, List1, List2, List3, List4, List5, List6, List7, List8) :-
+    maplist_(List1, List2, List3, List4, List5, List6, List7, List8, Goal).
+maplist_([], [], [], [], [], [], [], [], _).
+maplist_([Elem1|Tail1], [Elem2|Tail2], [Elem3|Tail3], [Elem4|Tail4], [Elem5|Tail5], [Elem6|Tail6], [Elem7|Tail7], [Elem8|Tail8], Goal) :-
+    call(Goal, Elem1, Elem2, Elem3, Elem4, Elem5, Elem6, Elem7, Elem8),
+    maplist_(Tail1, Tail2, Tail3, Tail4, Tail5, Tail6, Tail7, Tail8, Goal).
 
 map_fold1(_,[],[],A,A).
 map_fold1(Pred,[X|Xt],[Y|Yt],A1,A3) :- call(Pred,X,Y,A1,A2),map_fold1(Pred,Xt,Yt,A2,A3).
@@ -4388,9 +4403,13 @@ arc_portray_pair_optional(Ps,K,Val,TF):-
 arc_portray(G):- \+ compound(G),fail.
 arc_portray(G):- is_vm(G), !, write('..VM..').
 arc_portray(G):- \+ nb_current(arc_portray,t),\+ nb_current(arc_portray,f),is_print_collapsed,!,
-  locally(nb_setval(arc_portray,t),arc_portray1(G)).
-arc_portray(G):- \+ nb_current(arc_portray,f),!, locally(nb_setval(arc_portray,t),arc_portray1(G)).
-arc_portray(G):- locally(nb_setval(arc_portray,f),arc_portray1(G)).
+  locally(b_setval(arc_portray,t),arc_portray1(G)).
+arc_portray(G):- \+ nb_current(arc_portray,f),!, locally(b_setval(arc_portray,t),arc_portray1(G)).
+arc_portray(G):- locally(b_setval(arc_portray,f),arc_portray1(G)).
+
+
+:- thread_initialization(nb_setval(arc_portray,[])).
+
 
 arc_portray1(G):-
  flag(arc_portray_current_depth,X,X), X < 3,
@@ -4712,7 +4731,7 @@ upcase_atom_var_l(IntL,NameL):- upcase_atom_var(IntL,NameL).
 upcase_atom_var_l(IntL,NameL):- is_list(IntL),!,my_maplist(upcase_atom_var_l,IntL,NameL).
 
 pt_guess_pretty_1(P,O):- copy_term(P,O,_),
-  ignore((sub_term(Body,O), compound(Body), Body=was_once(InSet,InVars),upcase_atom_var_l(InSet,InVars))),
+  ignore((sub_term_safely(Body,O), compound(Body), Body=was_once(InSet,InVars),upcase_atom_var_l(InSet,InVars))),
   ignore(pretty1(O)),ignore(pretty_two(O)),ignore(pretty_three(O)),ignore(pretty_final(O)),!,
   ((term_singletons(O,SS),numbervars(SS,999999999999,_,[attvar(skip),singletons(true)]))).
 
@@ -4735,9 +4754,9 @@ pp_parent([]):-!.
 %:- meta_predicate(lock_doing(+,+,0)).
 :- meta_predicate(lock_doing(+,+,:)).
 lock_doing(Lock,G,Goal):-
- (nb_current(Lock,Was);Was=[]), !,
+ (nb_current(Lock,Was);(Was=[],nb_setval(Lock,Was)), !,
   \+ ((member(E,Was),E==G)),
-  locally(nb_setval(Lock,[G|Was]),Goal).
+  locally(b_setval(Lock,[G|Was]),Goal).
 
 never_let_arc_portray_again:- set_prolog_flag(never_pp_hook, true),!.
 arc_can_portray:- \+ current_prolog_flag(never_pp_hook, true), nb_current(arc_can_portray,t).
@@ -4795,7 +4814,7 @@ pp_hook_g1(S):-  term_is_ansi(S), !, write_nbsp, write_keeping_ansi_mb(S).
 pp_hook_g1(rhs(O)):- write_nbsp,nl,bold_print(print(r_h_s(O))),!.
 
 pp_hook_g1(iz(O)):- compound(O), O = info(_),underline_print(print(izz(O))),!.
-pp_hook_g1(O):-  is_grid(O), /* \+ (sub_term(E,O),compound(E),E='$VAR'(_)), */ pretty_grid(O).
+pp_hook_g1(O):-  is_grid(O), /* \+ (sub_term_safely(E,O),compound(E),E='$VAR'(_)), */ pretty_grid(O).
 
 
 pp_hook_g1(O):- is_object(O), into_solid_grid(O,G), wots(SS,pretty_grid(G)),write(og(SS)),!.
@@ -4860,10 +4879,10 @@ maybe_term_goals(Term,TermC,Goals):-
 
 maybe_replace_vars([],SGoals,TermC,SGoals,TermC):-!.
 maybe_replace_vars([V|VarsC],SGoals,TermC,RSGoals,RTermC):-
-   my_partition(sub_var(V),SGoals,Withvar,WithoutVar),
+   my_partition(sub_var_safely(V),SGoals,Withvar,WithoutVar),
    Withvar=[OneGoal],
    freeze(OneGoal,(OneGoal\==null,OneGoal \== @(null))),
-   findall(_,sub_var(V,TermC),LL),LL=[_],!,
+   findall(_,sub_var_safely(V,TermC),LL),LL=[_],!,
    subst([WithoutVar,TermC],V,{OneGoal},[SGoalsM,TermCM]),
    maybe_replace_vars(VarsC,SGoalsM,TermCM,RSGoals,RTermC).
 maybe_replace_vars([_|VarsC],SGoals,TermC,RSGoals,RTermC):-
@@ -5312,7 +5331,7 @@ banner_lines(Color,N):-
   n_times(N,color_print(Color,'=================================================')),nl_now,
   n_times(N,color_print(Color,'-------------------------------------------------')),nl_now)),!.
 
-print_sso(A):- ( \+ compound(A) ; \+ (sub_term(E,A), is_gridoid(E))),!, u_dmsg(print_sso(A)),!.
+print_sso(A):- ( \+ compound(A) ; \+ (sub_term_safely(E,A), is_gridoid(E))),!, u_dmsg(print_sso(A)),!.
 print_sso(A):- grid_footer(A,G,W),writeln(print_sso(W)), print_grid(W,G),!.
 print_sso(A):- must_det_ll(( nl_if_needed, into_ss_string(A,SS),!,
   SS = ss(L,Lst),

@@ -4,7 +4,6 @@
                            ]).
 
 :- use_module(library(debug), [debug/3]).
-:- use_module(lsp_metta_xref).
 :- use_module(lsp_metta_changes, [handle_doc_changes_d4/2]).
 :- use_module(lsp_metta_parser, [annotated_read_sexpr_list/4]).
 :- use_module(lsp_metta_split, [
@@ -13,7 +12,8 @@
 :- use_module(lsp_metta_workspace, [ maybe_doc_path/2,
                                      into_json_range/2,
                                      into_line_char_range/2,
-                                     source_file_text/2
+                                     source_file_text/2,
+                                     xref_source_now/1
                                    ]).
 
 :- include(lsp_metta_include).
@@ -235,7 +235,12 @@ get_code_at_range(text, Uri, Range, Target):- !, get_code_at_range(symbol, Uri, 
 
 get_code_at_range(symbol, Path, Range, Code):-
     into_line_char_range(Range, LspLCRange),  % Convert the LSP range into line_char format.
-    user:metta_file_buffer(_Lvl, _Ord, _Kind, Code, Vs, Path, BRange),  % Get the buffer contents for the file.
+    % Get the buffer contents for the file.
+    ( user:metta_file_buffer(_Lvl, _Ord, _Kind, Code, Vs, Path, BRange)
+    *-> true % soft-cut, because we need to backtrack over user:metta_file_buffer
+    ;  % if the file hasn't already been read in, do so now
+       xref_source_now(Path),
+       user:metta_file_buffer(_Lvl, _Ord, _Kind, Code, Vs, Path, BRange) ),
     %sub_var(Target, Code),  % Check that the symbol (Target) appears within the buffer (Code).
     \+ completely_before_range(BRange, LspLCRange),  % Ensure the buffer range is relevant to the LSP range.
     \+ is_list(Code),!,maybe_name_vars(Vs), !.
@@ -327,10 +332,8 @@ get_code_at_range(exact, Path, Range, Code) :- !,
     source_file_text(Path, FullText),  % Retrieve the full file text.
     split_string(FullText, "\n", "", Lines),  % Split the file into lines.
     _{start: Start, end: End} :< Range,  % Extract start and end positions from the range.
-    _{line: StartLine0, character: StartChar} :< Start,  % Get line and character of the start position.
-    _{line: EndLine0, character: EndChar} :< End,  % Get line and character of the end position.
-    StartLine is StartLine0 + 0,  % Set the start line (Prolog indexing adjustment if needed).
-    EndLine is EndLine0 + 1,  % Set the end line (since Prolog indexes from 1).
+    _{line: StartLine, character: StartChar} :< Start,  % Get line and character of the start position.
+    _{line: EndLine, character: EndChar} :< End,  % Get line and character of the end position.
     extract_code(Lines, StartLine, StartChar, EndLine, EndChar, Code).  % Extract the exact code range.
 
 
@@ -338,22 +341,19 @@ get_code_at_range(exact, Path, Range, Code) :- !,
 extract_code(Lines, StartLine, StartChar, EndLine, EndChar, Code) :-
     findall(LineText, (
         between(StartLine, EndLine, LineNum),  % Iterate over the line numbers in the range.
-        nth1(LineNum, Lines, Line),  % Get the line at the current number.
+        nth0(LineNum, Lines, Line),  % Get the line at the current number.
         (
             (LineNum =:= StartLine, LineNum =:= EndLine) ->  % Case where the start and end are on the same line.
             (EndCharStartChar is EndChar - StartChar,  % Get the substring within this line.
-             sub_atom(Line, StartChar, EndCharStartChar, _, LineText))
+             sub_string(Line, StartChar, EndCharStartChar, _, LineText))
         ;
             LineNum =:= StartLine ->  % Case where the current line is the start line.
-            sub_atom(Line, StartChar, _, 0, LineText)  % Get the substring starting from StartChar.
+            sub_string(Line, StartChar, _, 0, LineText)  % Get the substring starting from StartChar.
         ;
             LineNum =:= EndLine ->  % Case where the current line is the end line.
-            sub_atom(Line, 0, EndChar, _, LineText)  % Get the substring ending at EndChar.
+            sub_string(Line, 0, EndChar, _, LineText)  % Get the substring ending at EndChar.
         ;
             LineText = Line  % In-between lines are added fully.
         )
     ), CodeLines),
-    atomic_list_concat(CodeLines, '\n', Code).  % Combine the extracted lines into a single code string.
-
-
-
+    atomics_to_string(CodeLines, "\n", Code).  % Combine the extracted lines into a single code string.

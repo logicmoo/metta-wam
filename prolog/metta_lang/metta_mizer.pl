@@ -14,7 +14,7 @@ disable_optimizer.
 %  Verifies that certain conditions hold true, taking into account dynamic disabling of the optimizer.
 %  If the optimizer is disabled, or if B2 does not meet specific criteria, the predicate fails.
 %  Otherwise, it verifies the condition based on the structure of B2.
-%  
+%
 %  @param HB Context or helper structure used in the optimization process.
 %  @param B2 The condition to be verified.
 %
@@ -244,7 +244,7 @@ optimize_conj(_Head, B1,B2,eval_true(E)):-
         B1 = eval(E,True_Eval1),
         True_Eval1 == True_Eval,!.
 
-optimize_conj(HB, RR, C=A, RR):- 
+optimize_conj(HB, RR, C=A, RR):-
     % Optimization based on argument structures and variable occurrence counts.
   compound(RR),is_nsVar(C),is_nsVar(A),
   as_functor_args(RR,_,_,Args),is_list(Args), member(CC,Args),var(CC), CC==C,
@@ -254,7 +254,7 @@ optimize_conj(_, u_assign(Term, C), u_assign(True,CC), eval_true(Term)):-
     % Simplify when the assignment matches the expected true condition.
    'True'==True, CC==C.
 optimize_conj(_, u_assign(Term, C), is_True(CC), eval_true(Term)):- CC==C, !.
-optimize_conj(HB, u_assign(Term, C), C=A, u_assign(Term,A)):- 
+optimize_conj(HB, u_assign(Term, C), C=A, u_assign(Term,A)):-
 %Simplify variable assignments.
   is_ftVar(C),is_ftVar(A),count_var(HB,C,N),N=2,!.
 optimize_conj(_, u_assign(Term, C), is_True(CC), eval_true(Term)):- CC==C, !.
@@ -332,7 +332,7 @@ assertable_head(Head,Head).
 label_body_singles(Head,Body):-
    term_singletons(Body+Head,BodyS),
    maplist(label_body_singles_2(Head),BodyS).
-label_body_singles_2(Head,Var):- sub_var(Var,Head),!.
+label_body_singles_2(Head,Var):- sub_var_safely(Var,Head),!.
 label_body_singles_2(_,Var):- ignore(Var='$VAR'('_')).
 
 
@@ -411,7 +411,7 @@ number_wang(A,B,C):-
 
 p2s(P,S):- into_list_args(P,S).
 
-get_decl_type(N,DT):- attvar(N),get_atts(N,AV),sub_term(DT,AV),symbol(DT).
+get_decl_type(N,DT):- attvar(N),get_atts(N,AV),sub_term_safely(DT,AV),symbol(DT).
 
 numeric(N):- number(N),!.
 numeric(N):- get_attr(N,'Number','Number').

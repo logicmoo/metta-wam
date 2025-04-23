@@ -60,54 +60,62 @@
 % IMPORTANT:  DO NOT DELETE COMMENTED-OUT CODE AS IT MAY BE UN-COMMENTED AND USED
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Set the encoding for the Prolog system to UTF-8 to ensure proper handling of characters.
+% The previously commented out line was for iso_latin_1 encoding.
+% UTF-8 is more universal and can handle a wider range of characters.
+:- encoding(utf8).
+
+o_quietly(G):- call(G).
+% o_quietly(G):- quietly(G).
+
+o_woc(G):- call(G).
+% o_woc(G):- woc(G).
+
 :- dynamic('$metta_setup':on_init_metta/1).
 on_metta_setup(Goal):-
    assertz('$metta_setup':on_init_metta(Goal)).
 do_metta_setup:- forall('$metta_setup':on_init_metta(Goal),
                         ignore(catch(Goal, Err, format(user_error, '; Goal: ~q   Caused: ~q', [Goal, Err])))).
 
-% Set the encoding for the Prolog system to UTF-8 to ensure proper handling of characters.
-% The previously commented out line was for iso_latin_1 encoding.
-% UTF-8 is more universal and can handle a wider range of characters.
-:- encoding(utf8).
 
 % Set the 'RUST_BACKTRACE' environment variable to 'full'.
 % This likely enables detailed error backtraces when using Rust-based components.
 % Rust will now output full stack traces when errors occur, which aids in debugging.
-:- setenv('RUST_BACKTRACE', full).
+:- on_metta_setup(setenv('RUST_BACKTRACE', full)).
 
 % Set the Prolog flag for encoding to UTF-8 (overrides other default encodings).
 % This ensures that the Prolog interpreter treats all input/output as UTF-8 encoded.
 :- set_prolog_flag(encoding, utf8).
+:- initialization(set_prolog_flag(encoding, utf8)).
 
 % Set a global non-backtrackable variable 'cmt_override' with a specific string pattern.
 % This could be used for customizing the way comments or other formatting behaviors are handled.
-:- nb_setval(cmt_override, lse('; ', ' !(" ', ' ") ')).
+:- on_metta_setup(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
 
 % Set the flag to make the source search relative to the working directory.
 % This helps locate Prolog files from the current working directory.
-:- set_prolog_flag(source_search_working_directory, true).
+:- initialization(set_prolog_flag(source_search_working_directory, true)).
 
 % Enable backtracing, which allows tracking the sequence of goals that led to an error.
 % This is useful for debugging as it shows the call stack at the time of an error.
-:- set_prolog_flag(backtrace, true).
+:- initialization(set_prolog_flag(backtrace, true)).
 
 % Set the maximum depth for the backtrace to 100, meaning up to 100 frames of the call stack will be shown.
-:- set_prolog_flag(backtrace_depth, 100).
+:- initialization(set_prolog_flag(backtrace_depth, 100)).
 
 % Set the maximum goal depth for backtraces, limiting the display of deeply nested goal calls.
-:- set_prolog_flag(backtrace_goal_dept, 100).
+:- initialization(set_prolog_flag(backtrace_goal_dept, 100)).
 
 % Enable showing line numbers in the backtrace, which can help pinpoint where in the source code an error occurred.
-:- set_prolog_flag(backtrace_show_lines, true).
+:- initialization(set_prolog_flag(backtrace_show_lines, true)).
 
 % Configure the flag to customize how Prolog writes out attributes (such as variables and terms).
 % Using 'portray' ensures that the output is human-readable and properly formatted.
-:- set_prolog_flag(write_attributes, portray).
+:- initialization(set_prolog_flag(write_attributes, portray)).
 
 % Enable debugging on errors.
 % When an error occurs, this setting will automatically start the Prolog debugger, providing detailed information about the error.
-:- set_prolog_flag(debug_on_error, true).
+:- initialization(set_prolog_flag(debug_on_error, true)).
 
 % !(set-prolog-flag debug-on-error True)
 
@@ -122,34 +130,35 @@ do_metta_setup:- forall('$metta_setup':on_init_metta(Goal),
 /*
 % Set the encoding of the `current_input` stream to UTF-8.
 % This ensures that any input read from `current_input` (which is typically `user_input`) is interpreted as UTF-8.
-:- set_stream(current_input, encoding(utf8)).
+:- initialization(set_stream(current_input, encoding(utf8)).
 
 % Set the encoding for the `user_input` stream to UTF-8.
 % This makes sure that all input read from `user_input` is correctly handled as UTF-8 encoded text.
-:- set_stream(user_input, encoding(utf8)).
+:- initialization(set_stream(user_input, encoding(utf8)).
 
 % Treat `user_output` as a terminal (TTY).
 % This ensures that output to the terminal behaves properly, recognizing that it's interacting with a terminal (e.g., for handling special characters).
-:- set_stream(user_output, tty(true)).
+:- initialization(set_stream(user_output, tty(true)).
 
 % Set the encoding for the `user_output` stream to UTF-8.
 % This ensures that all output sent to `user_output` is encoded in UTF-8, allowing the display of Unicode characters.
-:- set_stream(user_output, encoding(utf8)).
+:- initialization(set_stream(user_output, encoding(utf8)).
 
 % Treat `user_error` as a terminal (TTY).
 % This ensures that error messages are handled as terminal output, allowing for proper interaction when the user sees error messages.
-:- set_stream(user_error, tty(true)).
+:- initialization(set_stream(user_error, tty(true)).
 
 % Set the encoding for the `user_error` stream to UTF-8.
 % This ensures that error messages and other output sent to `user_error` are encoded in UTF-8, preventing issues with special characters in error messages.
-:- set_stream(user_error, encoding(utf8)).
+:- initialization(set_stream(user_error, encoding(utf8)).
 
 % Flush any pending output to ensure that anything waiting to be written to output is immediately written.
 % Useful to make sure output is synchronized and nothing is left in the buffer.
 :- flush_output.
 */
-%:- set_prolog_flag(debug_on_interrupt,true).
-%:- set_prolog_flag(compile_meta_arguments,control).
+
+%:- initialization(set_prolog_flag(debug_on_interrupt,true).
+%:- initialization(set_prolog_flag(compile_meta_arguments,control).
 
 %   Load required Prolog packs and set up their paths dynamically.
 %
@@ -158,7 +167,7 @@ do_metta_setup:- forall('$metta_setup':on_init_metta(Goal),
 %   - Facilitates maintainability and portability of the codebase.
 %   - Supports dynamic pack management during runtime without requiring manual adjustments.
 %
-:- (prolog_load_context(directory, Value); Value='.'),
+attach_mettalog_packs:- (prolog_load_context(directory, Value); Value='.'),
    % Resolve the absolute path to the '../../libraries/' directory.
    absolute_file_name('../../libraries/', Dir, [relative_to(Value)]),
    % Build paths for specific libraries/packs.
@@ -169,6 +178,9 @@ do_metta_setup:- forall('$metta_setup':on_init_metta(Goal),
       % Attach the `predicate_streams` and `logicmoo_utils` packs.
    pack_attach(PS, [duplicate(replace), search(first)]),
    pack_attach(LU, [duplicate(replace), search(first)]).
+
+:- attach_mettalog_packs.
+%:- initialization(attach_mettalog_packs).
 
 %   :- attach_packs.
 %:- ensure_loaded(metta_interp).
@@ -234,9 +246,10 @@ lazy_load_python.
 % Ensure the `user:is_metta_src_dir/1` predicate is updated with the current directory.
 % This retrieves the current loading directory, clears any previous assertions,
 % and asserts the new directory dynamically.
-:- prolog_load_context(directory,Dir),
+save_metta_src_dir:- prolog_load_context(directory,Dir),
   retractall(user:is_metta_src_dir(_)),
   asserta(user:is_metta_src_dir(Dir)).
+:- save_metta_src_dir.
 
 %!  metta_root_dir(-Dir) is det.
 %
@@ -255,6 +268,9 @@ lazy_load_python.
 %   @see is_metta_src_dir/1
 %   @see getenv/2
 %   @see absolute_file_name/3
+metta_root_dir(Dir) :-
+    % Use METTALOG_DIR environment variable if set.
+    getenv('METTALOG_DIR', Dir), !.
 metta_root_dir(Dir) :-
     % Attempt to resolve the root directory relative to the source directory.
     is_metta_src_dir(Value),
@@ -353,10 +369,23 @@ user:file_search_path(mettalog,Dir):- metta_dir(Dir).
 %   This reduces console output noise and improves runtime performance in
 %   non-debugging environments.
 %
+:- nodebug(metta(errors)).
 :- nodebug(metta(eval)).
 :- nodebug(metta(exec)).
 :- nodebug(metta(load)).
 :- nodebug(metta(prolog)).
+:- nodebug(metta(argtypes)).
+:- nodebug(metta(main)).
+:- nodebug(metta(todo)).
+
+
+/*
+:- initialization(nodebug(metta(eval))).
+:- initialization(nodebug(metta(exec))).
+:- initialization(nodebug(metta(load))).
+:- initialization(nodebug(metta(prolog))).
+*/
+% Each of these `nodebug/1` directives suppresses debugging output for the corresponding category.
 
 %
 %   This section declares several dynamic and multifile predicates used in the
@@ -435,15 +464,22 @@ once_writeq_nl(P):- once_writeq_nl_now(cyan, P), nb_setval('$once_writeq_ln', P)
 % TODO: Uncomment the following line if the `pfcAdd` predicate is stable and
 %       does not interfere with the curried chainer logic.
 % pfcAdd_Now(P):- pfcAdd(P),!.
+
+
+pfcAdd_Now(Cl):-
+   once( \+ nb_current(allow_dupes,t)
+     ; sub_var_safely('&corelib',Cl )),
+    clause_asserted(Cl),!.
+
 pfcAdd_Now(P) :-
     % If `pfcAdd/1` is defined, print the term using `once_writeq_nl` and call `pfcAdd/1`.
     current_predicate(pfcAdd/1),!,
     once_writeq_nl(pfcAdd(P)),
-    pfcAdd(P).
+    must_det_lls(pfcAdd(P)).
 pfcAdd_Now(P) :-
     % If `pfcAdd/1` is not defined, print the term using `once_writeq_nl` and assert it.
     once_writeq_nl(assssssssssssssert(P)),
-    assert(P).
+    must_det_lls(assert(P)).
 %:- endif.
 
 %!  system:copy_term_g(+I, -O) is det.
@@ -513,6 +549,9 @@ is_fAlSe(TF) :-
 %
 %   @arg What The flag to check.
 %
+
+is_flag(What):- notrace(is_flag0(What)).
+
 is_flag0(What) :-
     % Check if the flag exists as a non-backtrackable global variable and is true.
     nb_current(What, TF),is_tRuE(TF),!.
@@ -524,7 +563,7 @@ is_flag0(What) :-
     current_prolog_flag(What, TF),is_tRuE(TF),!.
 is_flag0(What) :-
     % Check if the flag exists as a Prolog configuration flag and is false.
-    current_prolog_flag(What, TF),is_fAlSe(TF),!.
+    current_prolog_flag(What, TF),is_fAlSe(TF),!,fail.
 is_flag0(What) :-
     % Build flag strings for parsing command-line arguments.
     symbol_concat('--', What, FWhat),
@@ -665,7 +704,7 @@ is_synthing_unit_tests0 :- is_testing.
 %   @example
 %     ?- is_testing.
 %     true.
-is_testing :- is_metta_flag('test').
+is_testing :- o_quietly(is_metta_flag('test')).
 
 %!  is_html is nondet.
 %
@@ -690,33 +729,22 @@ is_html :- is_metta_flag('html').
 
 %!  is_compatio is nondet.
 %
-%   Succeeds if `is_compatio0/0` succeeds, executed without tracing.
-%
-%   This predicate wraps around `is_compatio0/0`, using `notrace/1`
-%   to suppress tracing during its execution.
-%
-%   @example
-%     ?- is_compatio.
-%     true.
-is_compatio :- notrace(is_compatio0).
-
-%!  is_compatio0 is nondet.
-%
 %   Base predicate for determining compatibility conditions.
 %
 %   This predicate evaluates several conditions, each possibly
 %   succeeding or failing based on system flags or runtime conditions.
 %
 %   @example
-%     ?- is_compatio0.
+%     ?- is_compatio.
 %     true.
+is_compatio :- notrace(fis_compatio0).
 
-%is_compatio0 :- is_win64,!,fail.
-is_compatio0 :- is_testing, !, fail.
-is_compatio0 :- is_flag0('compatio').
-is_compatio0 :- is_mettalog, !, fail.
+%fis_compatio0 :- is_win64,!,fail.
+fis_compatio0 :- is_testing, !, fail.
+fis_compatio0 :- is_flag0('compatio'), !.
+fis_compatio0 :- is_mettalog, !, fail.
 %is_compatio0 :- is_html,!,fail.
-is_compatio0 :- !.
+fis_compatio0 :- !.
 
 %!  keep_output is nondet.
 %
@@ -779,7 +807,9 @@ original_user_output(X) :- stream_property(X, file_no(1)).
 original_user_error(X) :- stream_property(X, file_no(2)).
 
 % Ensure that the original output stream is set if not already defined.
-:- original_user_output(_)->true;(current_output(Out),asserta(original_user_output(Out))).
+save_original_user_output:- original_user_output(_)->true;(current_output(Out),asserta(original_user_output(Out))).
+
+:- initialization(save_original_user_output).
 
 %!  unnullify_output is det.
 %
@@ -823,7 +853,7 @@ null_output(MFS) :- use_module(library(memfile)),new_memory_file(MF),open_memory
 :- dynamic(null_user_output/1).
 
 % Initialize `null_user_output/1` with a memory file stream if it is not already defined.
-:- null_user_output(_) -> true ; (null_output(MFS), asserta(null_user_output(MFS))).
+:- initialization(((null_user_output(_) -> true ; (null_output(MFS), asserta(null_user_output(MFS)))))).
 
 %!  nullify_output is det.
 %
@@ -866,7 +896,7 @@ set_output_stream :- dont_change_streams, !.
 set_output_stream :- \+ keep_output -> nullify_output; unnullify_output.
 
 % Initialize the output stream configuration at startup.
-:- set_output_stream.
+:- initialization(set_output_stream).
 % :- nullify_output.
 
 %!  switch_to_mettalog is det.
@@ -928,8 +958,7 @@ show_os_argv :-
 show_os_argv :-
     % Retrieve and print the command-line arguments using the 'os_argv' Prolog flag.
     current_prolog_flag(os_argv, ArgV),
-    write('; libswipl: '),
-    writeln(ArgV).
+    if_verbose(main,(write('; libswipl: '), writeln(ArgV))).
 
 %!  is_pyswip is det.
 %
@@ -1042,7 +1071,7 @@ current_self(Self) :-
 %
 %   The non-backtrackable global variable `repl_mode` is initialized with `'+'`,
 %   indicating a default REPL mode behavior.
-:- nb_setval(repl_mode, '+').
+:- initialization(nb_setval(repl_mode, '+')).
 
 % Define the option and call help documentation
 
@@ -1062,7 +1091,8 @@ current_self(Self) :-
 %     Default = false.
 option_value_def(Name, DefaultValue) :-
     % Fetch the default value for the given option.
-    all_option_value_name_default_type_help(Name, DefaultValue, _, _, _).
+    all_option_value_name_default_type_help(Name, DefaultValueR, _, _, _),
+    DefaultValueR = DefaultValue.
 
 %!  rust_option_value_def(+Name, -DefaultValue) is nondet.
 %
@@ -1129,7 +1159,7 @@ mettalog_option_value_def(Name, MettaLogDV) :-
 %     Topic = 'Compatibility and Modes'.
 all_option_value_name_default_type_help(Name, DefaultValue, Type, Cmt, Topic) :-
     % Delegate to the core predicate for retrieving option details.
-    option_value_name_default_type_help(Name, DefaultValue, Type, Cmt, Topic).
+    option_value_name_default_type_help(Name, DefaultValue, Type, Cmt, Topic), nocut.
 
 % Compatibility and Modes
 
@@ -1167,8 +1197,12 @@ all_option_value_name_default_type_help('prolog', false, [false, true], "Enable 
 option_value_name_default_type_help('devel', false, [false, true], "Developer mode", 'Compatibility and Modes').
 all_option_value_name_default_type_help('exec', noskip, [noskip, skip, interp], "Controls execution during script loading: noskip or skip (don't-skip-include/binds) vs skip-all", 'Execution and Control').
 
+default_depth(DEPTH):- default_max_depth(DEPTH), !.
+%default_depth(DEPTH):- DEPTH = 200,!.
+default_max_depth(DEPTH):- current_prolog_flag(max_tagged_integer,DEPTH).
+
 % Resource Limits
-option_value_name_default_type_help('stack-max', 500, [inf,1000,10_000], "Maximum stack depth allowed during execution", 'Resource Limits').
+option_value_name_default_type_help('stack-max', DEPTH, [MAXDEPTH,1000,500], "Maximum stack depth allowed during execution", 'Resource Limits'):- default_depth(DEPTH),default_max_depth(MAXDEPTH).
 all_option_value_name_default_type_help('limit-result-count', inf, [inf,1,2,3,10], "Set the maximum number of results, infinite by default", 'Miscellaneous').
 option_value_name_default_type_help('initial-result-count', 10, [inf,10,1], "For MeTTaLog log mode: print the first 10 answers without waiting for user", 'Miscellaneous').
 
@@ -1179,6 +1213,7 @@ option_value_name_default_type_help('time', true, [false, true], "Enable or disa
 option_value_name_default_type_help('vn', true, [true, auto, false], "Enable or disable, (auto = enable but not if it breaks stuff) EXPERIMENTAL BUG-FIX where variable names are preserved (see https://github.com/trueagi-io/metta-wam/issues/221)", 'Miscellaneous').
 option_value_name_default_type_help('top-self', true, [true, false, auto], "When set, stop pretending &self==&top", 'Miscellaneous').
 option_value_name_default_type_help('devel', false, [false, true], "Set all developer flags", 'Miscellaneous').
+option_value_name_default_type_help('old-empty', false, [false, true], "Enable Old Empty undoing EXPERIMENTAL BUG-FIX (see https://github.com/trueagi-io/metta-wam/issues/275)", 'Miscellaneous').
 
 % Testing and Validation
 option_value_name_default_type_help('synth-unit-tests', false, [false, true], "Synthesize unit tests", 'Testing and Validation').
@@ -1191,21 +1226,20 @@ option_value_name_default_type_help('tabling', auto, [auto, true, false], "When 
 
 % Output and Logging
 option_value_name_default_type_help('log', unset, [false, unset, true], "Act like MeTTaLog more so than H-E (also does generate more logging)", 'Output and Logging').
-option_value_name_default_type_help('debuglevel', 0, [0, 1, 2], "Select the verbosity of debug messages. Higher means more verbose", 'Output and Logging').
 all_option_value_name_default_type_help('html', false, [false, true], "Generate HTML output", 'Output and Logging').
 all_option_value_name_default_type_help('python', true, [true, false], "Enable Python functions", 'Output and Logging').
 option_value_name_default_type_help('output', './', ['./'], "Set the output directory", 'Output and Logging').
-option_value_name_default_type_help('exeout', './Sav.gitlab.MeTTaLog', [_], "Output executable location", 'Miscellaneous').
+option_value_name_default_type_help('exeout', './Sav.BADNAME.MeTTaLog', [_], "Output executable location", 'Miscellaneous').
 option_value_name_default_type_help('halt', false, [false, true], "Halts execution after the current operation", 'Miscellaneous').
 
 % Debugging and Tracing
 option_value_name_default_type_help('trace-length', 500, [inf], "Length of the trace buffer for debugging", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-overtime', 4.0, [inf], "Trace if execution time exceeds limit", 'Debugging and Tracing').
-option_value_name_default_type_help('trace-on-overflow', 1000, [inf], "Trace on stack overflow", 'Debugging and Tracing').
+option_value_name_default_type_help('trace-on-overflow', 10_000, [inf,10_000_000], "Trace on stack overflow", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-eval', false, [false, true], "Trace during normal evaluation", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-load', silent, [silent, verbose], "Verbosity on file loading", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-exec', false, [silent, verbose], "Trace on execution during loading", 'Debugging and Tracing').
-option_value_name_default_type_help('trace-on-error', 'non-type', [false, 'non-type', true], "Trace on all or none or non-type errors", 'Debugging and Tracing').
+option_value_name_default_type_help('trace-on-errors', 'non-type', [false, 'non-type', true], "Trace on all or none or non-type errors", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-fail', false, [false, true], "Trace on failure", 'Debugging and Tracing').
 option_value_name_default_type_help('trace-on-test', true, [silent, false, verbose], "Trace on success as well", 'Debugging and Tracing').
 option_value_name_default_type_help('repl-on-error', true, [false, true], "Drop to REPL on error", 'Debugging and Tracing').
@@ -1381,7 +1415,7 @@ print_group_options(Group, [[Name, DefaultValue, Type, Help, Group] | Rest], Max
          ->  format("     --~w~*t=<\033[1;37m~w\033[0m|\033[38;5;94m~w\033[0m|~w> \033[~dG ~w\n", [Name, MaxLen, DefaultValue, RustSpecificValue, CleanRest, CommentColumn, Help])
          ;   format("     --~w~*t=<\033[1;37m~w\033[0m|\033[38;5;94m~w\033[0m> \033[~dG ~w\n", [Name, MaxLen, DefaultValue, RustSpecificValue, CommentColumn, Help])
          ))
-    ),
+    ),!,
     print_group_options(Group, Rest, MaxLen).
 % Skip options that don't match the current group and continue processing the rest.
 print_group_options(Group, [_ | Rest], MaxLen) :-
@@ -1483,7 +1517,7 @@ set_option_value_interp(N,V):-
     %(different_from(N,V)->Note=true;Note=false),
     Note = true,
     %fbugio(Note,set_option_value(N,V)), % Uncomment for debugging.
-    set_option_value(N,V), % Set the value for the option.
+    ignore(set_option_value(N,V)), % Set the value for the option.
     ignore(forall(on_set_value(Note,N,V), true)). % Trigger callbacks if any.
 
 %!  on_set_value(+Note, +N, +V) is det.
@@ -1507,23 +1541,25 @@ set_option_value_interp(N,V):-
 %
 
 % Map string logical values ('True', 'False') to their atom equivalents.
-on_set_value(Note,N,'True'):-
+
+on_set_value(Note,N,'True'):- nocut,
     on_set_value(Note,N,true).    % true
-on_set_value(Note,N,'False'):-
+on_set_value(Note,N,'False'):- nocut,
     on_set_value(Note,N,false).   % false
+on_set_value(_Note,abolish_trace,true):- nocut, ignore(abolish_trace),!.
 on_set_value(_Note,log,true):-
     % Switch to mettalog mode if 'log' is set to true.
-    switch_to_mettalog.
+    switch_to_mettalog,!.
 on_set_value(_Note,compatio,true):-
     % Switch to mettarust mode if 'compatio' is set to true.
-    switch_to_mettarust.
+    switch_to_mettarust,!.
 on_set_value(Note,N,V):-
     % Handle trace-specific options by extracting the trace flag from the option name.
     symbol(N),
     % Extract trace-specific flag.
-    symbol_concat('trace-on-',F,N),
+    symbol_concat('trace-on-',F,N),nocut,
      % Debugging output.
-    fbugio(Note,set_debug(F,V)),
+    if_trace(main,not_compatio(fbugio(Note,set_debug(F,V)))),
     % Enable or disable trace based on value.
     set_debug(F,V).
 on_set_value(Note,N,V):-
@@ -1532,7 +1568,7 @@ on_set_value(Note,N,V):-
     % Check if the value is debug-like.
     is_debug_like(V,TF),
     % Debugging output.
-    fbugio(Note,set_debug(N,TF)),
+    if_trace(main,not_compatio(fbugio(Note,set_debug(N,TF)))),
     % Enable or disable debug mode based on value.
     set_debug(N,TF).
 
@@ -1566,6 +1602,10 @@ is_debug_like(debug, true).
 is_debug_like(nodebug, false).
 % 'silent' indicates no debugging output.
 is_debug_like(silent, false).
+is_debug_like(hide, false).
+is_debug_like(quiet, false).
+is_debug_like(verbose, true).
+
 
 %!  'is-symbol'(+X) is nondet.
 %
@@ -1610,7 +1650,7 @@ is_debug_like(silent, false).
 % Disable unit testing and reset runtime options to defaults.
 set_is_unit_test(false):-
     % Reset all options to their default values.
-    forall(option_value_def(A,B), set_option_value_interp(A,B)),
+    reset_default_flags,
     % Explicitly disable trace and test-related settings.
     set_option_value_interp('trace-on-test', false),
     set_option_value_interp('trace-on-fail', false),
@@ -1619,8 +1659,9 @@ set_is_unit_test(false):-
     !.
 % Enable unit testing with specific runtime configurations.
 set_is_unit_test(TF):-
+    maybe_abolish_trace,
     % Reset all options to their default values.
-    forall(option_value_def(A,B), set_option_value_interp(A,B)),
+    reset_default_flags,
     % Disable specific trace settings during unit testing.
     set_option_value_interp('trace-on-test', false),
     set_option_value_interp('trace-on-fail', false),
@@ -1651,9 +1692,9 @@ fake_notrace(G) :-
     !, notrace(G).
 fake_notrace(G) :-
     !, once(G).
-% `quietly/1` allows breaking in and inspection (real `no_trace/1` does not)
+% `o_quietly/1` allows breaking in and inspection (real `no_trace/1` does not)
 fake_notrace(G) :-
-    quietly(G), !.
+    o_quietly(G), !.
 
 :- meta_predicate real_notrace(0).
 
@@ -1664,6 +1705,7 @@ fake_notrace(G) :-
 %
 %   @arg Goal The goal to execute.
 %
+real_notrace(Goal) :- !, notrace(Goal).
 real_notrace(Goal) :-
     % Temporarily disable tracing and execute the goal.
     setup_call_cleanup(
@@ -1675,6 +1717,7 @@ real_notrace(Goal) :-
         '$restore_trace'(Flags, SkipLevel)
     ).
 
+:- volatile(is_answer_output_stream/2).
 :- dynamic(is_answer_output_stream/2).
 
 %!  answer_output(-Stream) is det.
@@ -1772,6 +1815,9 @@ user_io(G) :-
 %   @arg Goal The Prolog goal to execute with appropriate output redirection.
 %
 user_io_0(G) :-
+    nb_current('$dont_redirect_output', true), !,
+    call(G).
+user_io_0(G) :-
     % If in MettaLog runtime mode, output to the error stream.
     current_prolog_flag(mettalog_rt, true), !,
     original_user_error(Out),
@@ -1833,9 +1879,11 @@ not_compatio(G) :-
     if_t(
         once(is_mettalog ; is_testing ; (\+ is_compatio)),
         user_err(
-            locally(nb_setval(in_not_compatio, true), G)
+            locally(b_setval(in_not_compatio, true), G)
         )
     ).
+
+:- thread_initialization(nb_setval(in_not_compatio,[])).
 
 %!  extra_answer_padding(+Arg) is det.
 %
@@ -1954,7 +2002,7 @@ set_output_to_memfile(State,CurrentEncoding):-
 %   This also handles freeing up memory resources and transcodes content if necessary.
 %
 %   @arg State The current state holding the memory file and write stream.
-%   @arg CurrentOut The original output stream to restore after processing.
+%   @arg CurrentOut The original output stream to after_load /**/ after processing.
 %   @arg AnswerOut The stream to write the captured output to.
 %   @arg StdOutStream The standard output stream.
 %   @arg CurrentEncoding The encoding used for reading and writing the output.
@@ -2182,13 +2230,70 @@ show_options_values :-
 %     ?- interpreter_source_file(File).
 %     File = 'your_prolog_file.pl'.
 %
-:- prolog_load_context(source, File), assert(interpreter_source_file(File)).
+:- ignore((prolog_load_context(source, File), assert(interpreter_source_file(File)))).
+
+
+
+
+find_missing_cuts :-
+    once(prolog_load_context(source, File);prolog_load_context(file, File)),!,
+    is_extreme_debug((debug_info(nondet_src,c(find_missing_cuts(File))))).
+
+find_missing_cuts(File) :-
+    findall(Predicate, source_file(Predicate, File), Predicates),
+    sort(Predicates, UniquePredicates),
+    maplist(check_predicate_for_missing_cuts(File), UniquePredicates).
+
+
+
+skip_checking(file_search_path,2).
+skip_checking('$pldoc',4).
+skip_checking('$mode',2).
+skip_checking('reset_cache',0).
+skip_checking(_,0).
+
+check_predicate_for_missing_cuts(_File, P):- functor(P,F,A), skip_checking(F,A),!.
+check_predicate_for_missing_cuts(File, Predicate) :-
+    predicate_property(Predicate, number_of_clauses(TotalClauses)),
+    predicate_property(Predicate, number_of_rules(RuleClauses)), RuleClauses>0,
+    functor(Predicate, Functor, Arity),
+    %format('Checking predicate ~w/~w:\n', [Functor, Arity]),
+    forall(
+        (nth_clause(Predicate, ClauseNumber, Ref),
+         clause(Predicate, Body, Ref),
+         clause_property(Ref, line_count(LineNumber))),
+        check_clause_for_cut(Functor/Arity, Body, File, LineNumber, ClauseNumber, TotalClauses)
+    ),!.
+check_predicate_for_missing_cuts(_File, _Predicate).
+
+% Do not warn about missing cuts on the last clause
+check_clause_for_cut(_, _, _, _, ClauseNumber, TotalClauses) :-
+    ClauseNumber =:= TotalClauses, !.
+
+check_clause_for_cut(PredicateIndicator, Body, File, Line, ClauseNum, TotalClauses) :-
+    ( deterministic_body(Body) ->
+        true
+    ;
+        is_extreme_debug(( atomic_list_concat(L,'/',File),atomic_list_concat(L,'\\',WFile),
+          format(' H:~w(~w): (clause ~w of ~w for ~w)\n',
+               [WFile, Line, ClauseNum, TotalClauses, PredicateIndicator])))
+
+    ).
+
+% Simplistic deterministic check heuristic:
+deterministic_body(Body) :- sub_var(!, Body),!.
+deterministic_body(Body) :- sub_var(nocut, Body),!.
+%deterministic_body(Body) :- sub_var(fail, Body),!.
+deterministic_body(Body) :- Body == fail,!.
+deterministic_body(Body) :- Body == true.
+nocut.
 
 
 % If the file is not already loaded, ensure_loaded is equivalent to consult/1. Otherwise, if the file defines a module,
 % import all public predicates. Finally, if the file is already loaded, is not a module file,
 % and the context module is not the global user module, ensure_loaded/1 will call consult/1.
 :- ensure_loaded(metta_utils).
+:- ensure_loaded(metta_proof).
 %:- ensure_loaded(mettalog('metta_ontology.pfc.pl')).
 :- ensure_loaded(metta_pfc_debug).
 :- ensure_loaded(metta_pfc_base).
@@ -2199,6 +2304,8 @@ show_options_values :-
 :- ensure_loaded(metta_space).
 :- ensure_loaded(metta_eval).
 :- nb_setval(self_space, '&top').
+
+:- initialization(nb_setval(self_space, '&top')).
 
 %!  set_is_unit_test(+Flag) is det.
 %
@@ -2213,7 +2320,7 @@ show_options_values :-
 %     % Disable unit testing mode:
 %     ?- set_is_unit_test(false).
 %
-:- set_is_unit_test(false).
+:- on_metta_setup(set_is_unit_test(false)).
 
 %!  extract_prolog_arity(+TypesList, -PrologArity) is nondet.
 %
@@ -2534,6 +2641,19 @@ read_argv(AArg, Arg) :-
     atom_string(AArg, S),
     read_sexpr(S, Arg), !.
 
+cmdline_flag_option_value(What, Value):-
+  symbolic_list_concat(['--', What,'='],FWhat),
+  metta_cmd_args(Args),!,member(FWhatQValue,Args),
+  symbol_concat(FWhat,QValue,FWhatQValue),
+  unquote_value(QValue,Value),!.
+cmdline_flag_option_value(What, Value):- option_value(What, Value),!.
+
+unquote_value(Atom, New) :- concat_atom_safe(['',New,''], '"', Atom),!.
+unquote_value(Atom, New) :- concat_atom_safe(['',New,''], "'", Atom),!.
+unquote_value(Atom, New) :- Atom=New,!.
+
+
+
 %!  metta_cmd_args(-Args) is det.
 %
 %   Retrieves command-line arguments passed to Metta, prioritizing different sources.
@@ -2581,7 +2701,8 @@ run_cmd_args :-
     % Enable debugging on interrupt signals.
     set_prolog_flag(debug_on_interrupt, true),
     % Execute the remaining command-line processing.
-    do_cmdline_load_metta(execute).
+    do_cmdline_load_metta(execute),
+    maybe_do_repl(run_cmd_args).
 
 %!  metta_make_hook is det.
 %
@@ -2679,14 +2800,16 @@ get_flag_value(_, true).
 
 % Ensure default options are set when not reloading.
 % This block is ignored during reloading to prevent resetting options unnecessarily.
-:- ignore(((
+set_default_flags:- ignore(((
        % Check if the current context is not in reload mode.
        \+ prolog_load_context(reloading, true),
        % Set default option values for all defined options.
-       nop((forall(option_value_def(Opt, Default), set_option_value_interp(Opt, Default))))
+       nop((reset_default_flags))
 ))).
 
-%!  process_option_value_def is nondet.
+:- on_metta_setup(set_default_flags).
+
+%!  process_python_option is nondet.
 %
 %   Processes the value of specific options and ensures the required modules are loaded.
 %   If the `python` option is not set to `false`, it attempts to load the `metta_python` module
@@ -2698,22 +2821,22 @@ get_flag_value(_, true).
 %
 %   @example
 %     % This predicate always fails:
-%     ?- process_option_value_def.
+%     ?- process_python_option.
 %     false.
 %
 %   @note The commented-out version avoids `fail/0` and skips loading `metta_python`.
 %
 
-%process_option_value_def :- \+ option_value('python', false), skip(ensure_loaded(metta_python)).
-process_option_value_def :-
-    % The predicate fails immediately due to this `fail/0`.
-    fail,
+%process_python_option :- option_value('python', false), !, skip(ensure_loaded(metta_python)).
     % If the `python` option is not explicitly set to `false`, load the `metta_python` module.
-    \+ option_value('python', false),
-    ensure_loaded(mettalog(metta_python)),
+process_python_option :- process_python_option_now, !.
+process_python_option_now :- option_value('python', false),!.
+process_python_option_now :-
+    %ensure_loaded(('/home/deb12user/metta-wam/prolog-NOW/metta_lang/metta_python')),
     % Initialize Python integration.
+    setenv('METTALOG_VERBOSE','0'),
     real_notrace((ensure_mettalog_py)).
-process_option_value_def.
+
 
 %!  process_late_opts is det.
 %
@@ -2725,19 +2848,22 @@ process_option_value_def.
 %   3. Additional behaviors, including interaction with the REPL or halting, are present
 %      in commented-out lines.
 %
-%   @see process_option_value_def/0
+%   @see process_python_option/0
 %
-process_late_opts :-
-    % Process all option definitions by calling `process_option_value_def/0`.
-    forall(process_option_value_def, true).
-process_late_opts :-
+
+process_late_opts:- forall(process_each_late_opt, true).
+
+process_each_late_opt :- nocut,
+    % Process all option definitions by calling `process_python_option/0`.
+    forall(process_python_option, true).
+process_each_late_opt :-
     % If the `html` option is set to `true`, enable unit testing mode.
     once(option_value('html', true)),
     set_is_unit_test(true).
 %process_late_opts :- current_prolog_flag(os_argv, [_]), !, ignore(repl).
 %process_late_opts :- halt(7).
 % Ensure the predicate always succeeds, even if no other clause matches.
-process_late_opts.
+%process_late_opts.
 
 %!  do_cmdline_load_metta(+Phase) is det.
 %
@@ -2772,12 +2898,12 @@ do_cmdline_load_metta(Phase) :-
 do_cmdline_load_metta(Phase, Self, Rest) :-
     % Store the remaining arguments in the `late_metta_opts` Prolog flag.
     set_prolog_flag(late_metta_opts, Rest),
-    % Process all defined options using `process_option_value_def/0`.
-    forall(process_option_value_def, true),
+    % Process all defined options using `process_python_option/0`.
+    forall(process_python_option, true), !,
     % Execute the Metta command-line loading logic for the specified Phase and context.
     cmdline_load_metta(Phase, Self, Rest), !,
     % Process any late options, such as enabling specific features.
-    forall(process_late_opts, true).
+    process_late_opts.
 
 :- if( \+ current_predicate(load_metta_file/2)).
 
@@ -2905,63 +3031,96 @@ before_arfer_dash_dash(Rest, Args, NewRest) :-
 %     ?- cmdline_load_metta(execute, '&self', ['--args', '--file=example.metta']).
 %
 
+maybe_do_repl(_Why) :- current_prolog_flag(mettalog_rt, true), !.
+maybe_do_repl(_Why) :- flag(cmdline_load_file, X, X), X==0, once(repl).
+
+
 % Base case: succeed when the argument list is empty.
-cmdline_load_metta(_, _, Nil) :-
-    Nil == [], !.
+cmdline_load_metta(_, _, Nil) :- Nil == [], !.
+
+cmdline_load_metta(Phase, Self, [M | _]) :- fail,
+      debug_info(argv,cmdline_load_metta(Phase, Self, M)), fail.
 % Handle double-dash (`--`) by skipping it and continuing with the rest of the arguments.
-cmdline_load_metta(Phase, Self, ['--' | Rest]) :-
-    !,
+cmdline_load_metta(Phase, Self, ['--' | Rest]) :- !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle `--args` by extracting arguments before `--` and setting them for Metta.
-cmdline_load_metta(Phase, Self, ['--args' | Rest]) :-
-    !,
-    before_arfer_dash_dash(Rest, Before, NewRest),
-    !,
-    set_metta_argv(Before),
+cmdline_load_metta(Phase, Self, ['--args' | Rest]) :- !,
+    before_arfer_dash_dash(Rest, Before, NewRest), !,
+    set_metta_argv(Before), !,
     cmdline_load_metta(Phase, Self, NewRest).
 % Handle `--repl` by entering the REPL during the execution phase.
-cmdline_load_metta(Phase, Self, ['--repl' | Rest]) :-
-    !,
-    if_phase(Phase, execute, repl),
+cmdline_load_metta(Phase, Self, ['--repl' | Rest]) :- !,
+    if_phase(Phase, execute, repl), !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle `--log` by switching to MettaLog mode during the execution phase.
-cmdline_load_metta(Phase, Self, ['--log' | Rest]) :-
-    !,
-    if_phase(Phase, execute, switch_to_mettalog),
-    cmdline_load_metta(Phase, Self, Rest).
-% Handle file loading when the argument does not start with `-`.
-cmdline_load_metta(Phase, Self, [Filemask | Rest]) :-
-    symbol(Filemask),
-    \+ symbol_concat('-', _, Filemask),
-    if_phase(Phase, execute, cmdline_load_file(Self, Filemask)),
+cmdline_load_metta(Phase, Self, ['--log' | Rest]) :- !,
+    if_phase(Phase, execute, switch_to_mettalog), !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle `-g` by executing the given Prolog term.
-cmdline_load_metta(Phase, Self, ['-g', M | Rest]) :-
-    !,
+cmdline_load_metta(Phase, Self, ['-g', M | Rest]) :- !,
     if_phase(Phase, execute, catch_abort(['-g', M], ((
         read_term_from_atom(M, Term, []),
         ignore(call(Term)))
-    ))),
+    ))), !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle `-G` by evaluating a Metta expression within the current context.
-cmdline_load_metta(Phase, Self, ['-G', Str | Rest]) :-
-    !,
+cmdline_load_metta(Phase, Self, ['-G', Str | Rest]) :- !,
     current_self(Self),
-    if_phase(Phase, execute, catch_abort(['-G', Str], ignore(call_sexpr('!', Self, Str, _S, _Out)))),
+    if_phase(Phase, execute, catch_abort(['-G', Str], ignore(call_sexpr('!', Self, Str, _S, _Out)))), !,
+    cmdline_load_metta(Phase, Self, Rest).
+
+% Handle file loading when the argument does not start with `-`.
+cmdline_load_metta(Phase, Self, [Filemask | Rest]) :-
+    symbol(Filemask),
+    \+ symbol_concat('-', _, Filemask), !,
+    if_phase(Phase, execute, cmdline_load_file(Self, Filemask)), !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle command-line options by setting their corresponding values.
+
+cmdline_load_metta(Phase, Self, [Skip, _ | Rest]) :- skip_cmdarg(Skip), !,
+    cmdline_load_metta(Phase, Self, Rest).
+
+cmdline_load_metta(Phase, Self, ['-D', M | Rest]) :- !,
+    process_flag(M), !,
+    cmdline_load_metta(Phase, Self, Rest).
 cmdline_load_metta(Phase, Self, [M | Rest]) :-
-    m_opt(M, Opt),
-    is_cmd_option(Opt, M, TF),
-    set_option_value_interp(Opt, TF),
-    !,
+    process_flag(M), !,
     cmdline_load_metta(Phase, Self, Rest).
 % Handle unrecognized command-line options by logging a warning.
 cmdline_load_metta(Phase, Self, [M | Rest]) :-
     format('~N'),
-    fbug(unused_cmdline_option(Phase, M)),
-    !,
+    fbug(unused_cmdline_option(Phase, M)), !,
     cmdline_load_metta(Phase, Self, Rest).
+
+
+skip_cmdarg('-l').
+skip_cmdarg('-g').
+skip_cmdarg('-x').
+
+:- dynamic(is_reseting_default_flags/0).
+reset_default_flags:- is_reseting_default_flags,!.
+reset_default_flags:-
+    asserta(is_reseting_default_flags),!,
+    forall(option_value_def(A,B), set_option_value_interp(A,B)),
+    metta_cmd_args(Rest),process_metta_cmd_arg_flags(Rest),
+    current_prolog_flag(os_argv,[_|ArgV]),
+    debug_info(os_argv,ArgV),
+    process_metta_cmd_arg_flags(ArgV),
+    retractall(is_reseting_default_flags).
+
+
+process_metta_cmd_arg_flags(Rest):-
+   do_cmdline_load_metta('reset', '&self', Rest).
+
+
+process_flag(M) :- m_opt(M, Opt), is_cmd_option(Opt, M, TF),!,process_nv(Opt,TF).
+process_flag(M) :- atomic_list_concat([N, V], '=', M),!, process_nv(N,V).
+process_flag(M) :- !, process_nv(M,true).
+
+process_nv(Opt,TF):-
+    debug_info(process_nv(Opt,TF)),
+    set_option_value_interp(Opt, TF),!.
+
 
 %!  install_ontology is det.
 %
@@ -3008,8 +3167,9 @@ load_ontology.
 
 %cmdline_load_file(Self, Filemask):- is_converting, !,
 cmdline_load_file(Self, Filemask) :-
+    flag(cmdline_load_file,X,X+1),
     % Construct the source for file loading.
-    Src = (user:load_metta_file(Self, Filemask)),
+    Src = (user:load_metta_file(Self, Filemask)), !,
     % Use `catch_abort/2` to handle exceptions during file loading.
     catch_abort(Src,
         (
@@ -3041,7 +3201,7 @@ cmdline_load_file(Self, Filemask) :-
 %     Executing...
 %
 if_phase(Current, Phase, Goal) :-
-    ignore((sub_var(Current, Phase), !, Goal)).
+    sub_var_safely(Current, Phase) -> call(Goal) ; true.
 
 %!  set_tty_color_term(+TF) is det.
 %
@@ -3114,18 +3274,6 @@ m_opt0(M, Opt) :-
 m_opt0(M, Opt) :-
     symbol_concat('-', Opt, M), !.
 
-%
-%   Ensures that Prolog's `occurs_check` flag is set to `true`, enabling
-%   strict unification checking to prevent infinite terms.
-%
-%   This directive is applied globally during the compilation of the program.
-%
-%   @example
-%     % Verify that `occurs_check` is enabled:
-%     ?- current_prolog_flag(occurs_check, true).
-%     true.
-%
-:- set_prolog_flag(occurs_check, true).
 
 %!  start_html_of(+Filename) is det.
 %
@@ -3352,7 +3500,7 @@ write_f_src(H, B) :-
 %     ?- hb_f(foo(bar, baz), ST).
 %     ST = bar.
 %
-hb_f(HB,ST):- sub_term(ST,HB),(symbol(ST),ST\==(=),ST\==(:)),!.
+hb_f(HB,ST):- sub_term_safely(ST,HB),(symbol(ST),ST\==(=),ST\==(:)),!.
 
 %!  write_f_src(+HB) is det.
 %
@@ -3592,7 +3740,7 @@ is_conz(Self) :-
 %     true.
 %
 
-% dont_x(eval_H(Depth,Self,metta_if(A<B,L1,L2),R)).
+%dont_x(eval_H(Depth,Self,metta_if(A<B,L1,L2),R)).
 dont_x(eval_H(_<_,_)).
 
 %!  into_fp(+D, -CallAB) is det.
@@ -3611,13 +3759,13 @@ into_fp(D, D) :-
     \+ \+ dont_x(D),
     !.
 into_fp(ListX, CallAB) :-
-    sub_term(STerm, ListX),
+    sub_term_safely(STerm, ListX),
     needs_expanded(STerm, Term),
     % copy_term_g(Term, CTerm),  % Original commented-out line
     =(Term, CTerm),
     substM(ListX, CTerm, Var, CallB),
     fn_append1(Term, Var, CallA),
-    into_fp((CallA, CallB), CallAB).
+    into_fp((CallA, CallB), CallAB), !.
 into_fp(A, A).
 
 %!  needs_expand(+Expand) is nondet.
@@ -3647,7 +3795,7 @@ needs_expand(Expand) :-
 %
 needs_expanded(eval_H(Term, _), Expand) :-
     !,
-    sub_term(Expand, Term),
+    sub_term_safely(Expand, Term),
     compound(Expand),
     Expand\=@=Term,
     compound(Expand),
@@ -3655,7 +3803,7 @@ needs_expanded(eval_H(Term, _), Expand) :-
     \+ is_ftVar(Expand),
     needs_expand(Expand).
 needs_expanded([A|B], Expand) :-
-    sub_term(Expand, [A|B]),
+    sub_term_safely(Expand, [A|B]),
     compound(Expand),
     \+ is_conz(Expand),
     \+ is_ftVar(Expand),
@@ -3698,6 +3846,9 @@ assert_preds(Self,Load,List):- is_list(List),!,maplist(assert_preds(Self,Load),L
 %assert_preds(_Self,_Load,Clause):- assertz(Clause),!.
 %assert_preds(_Self,_Load,_Preds):- \+ show_transpiler,!.
 assert_preds(Self,Load,Preds):-
+   forall(assert_preds_now(Self,Load,Preds),true).
+
+assert_preds_now(_Self,_Load,Preds):- fail,
   expand_to_hb(Preds,H,_B),
   functor(H,F,A), %trace,
   if_t((false,show_transpiler),
@@ -3709,12 +3860,23 @@ assert_preds(Self,Load,Preds):-
            not_compatio(format('  :- ~q.~n',[dynamic(F/A)]))),
       if_t(option_value('tabling','True'),
            not_compatio(format('  :- ~q.~n',[table(F/A)]))))),
-      not_compatio(format('~N~n  ~@',[portray_clause(Preds)]))))),
+      not_compatio(format('~N~n  ~@',[portray_clause(Preds)]))))).
 
   %if_t(is_transpiling, if_t( \+ predicate_property(H, static), add_assertion(Self,Preds))),
   % allow errors and warning rather than silently doing nothing as the clause above would have done
-  if_t(is_transpiling, add_assertion(Self,Preds)),
+assert_preds_now(Self,_Load,Preds):-
+  if_t(is_transpiling, add_assertion_now(Self,Preds)).
+
+assert_preds_now(Self,_Load,Preds):-
+  if_t( (\+ is_transpiling), add_assertion_now(Self,Preds)).
+
+assert_preds_now(_Self,Load,Preds):-
   nop(metta_anew1(Load,Preds)).
+
+add_assertion_now(Self,Preds):-
+    nop(debug_info(assert_hooks,add_assertion_now(Self,Preds))),
+    ignore(woc(add_assertion(Self,Preds))),
+    nop(debug_info(assert_hooks,added_assertion_now(Self,Preds))),!.
 
 %!  load_hook(+Load, -Hooked) is det.
 %
@@ -3733,6 +3895,7 @@ assert_preds(Self,Load,Preds):-
 %load_hook(_Load,_Hooked):- !.
 load_hook(Load,Hooked):-
    ignore(( \+ ((forall(load_hook0(Load,Hooked),true))))),!.
+
 
 %!  rtrace_on_error(:Goal) is det.
 %
@@ -3850,6 +4013,10 @@ assertion_hb(metta_atom_asserted(Self, [Eq, H, B]), Self, Eq, H, B) :-
     assertion_neck_cl(Eq),
     !.
 
+assertion_fact(metta_atom_asserted(Self, Fact), Self, Fact).
+assertion_fact(Assertion,Self,[Eq, H, B]):- assertion_hb(Assertion, Self, Eq, H, B),!.
+assertion_fact(Assertion,Self,Assertion):- current_self(Self),!.
+
 %!  assertion_neck_cl(+Eq) is nondet.
 %
 %   Verifies if the provided equality operator (`Eq`) is valid.
@@ -3891,9 +4058,15 @@ assertion_neck_cl(':-').
 %   % load_hook0(_, _) :- \+ show_transpiler, !. % \+ is_transpiling, !.
 load_hook0(Load, Assertion) :-
     % Extract components of the assertion using `assertion_hb/5`.
-    once(assertion_hb(Assertion, Self, Eq, H, B)),
+    once(assertion_hb(Assertion, Self, Eq, H, B)), !,
     % Pass the components to `load_hook1/5` for further processing.
-    load_hook1(Load, Self, Eq, H, B).
+    load_hook1(Load, Self, [Eq, H, B]).
+
+load_hook0(Load, Assertion) :- fail,
+    % Extract components of the assertion using `assertion_hb/5`.
+    once(assertion_fact(Assertion, Self, Fact)), !,
+    % Pass the components to `load_hook1/5` for further processing.
+    load_hook1(Load, Self, Fact).
 
 %!  load_hook1(+Load, +Self, +Eq, +H, +B) is det.
 %
@@ -3912,16 +4085,44 @@ load_hook0(Load, Assertion) :-
 %     ?- load_hook1(my_load, '&corelib', '=', head, body).
 
 % load_hook1(_Load, '&corelib', _Eq, _H, _B) :- !.
-load_hook1(_, _, _, _, _) :-
+load_hook1(Load, Self, Fact) :-
     % Skip processing if the `metta_interp` flag is not set to `ready`.
-    \+ current_prolog_flag(metta_interp, ready), !.
-load_hook1(Load, Self, Eq, H, B) :-
+    \+ is_metta_interp_ready,
+    debug_info(assert_hooks,load_hook_not_ready(Load, Self, Fact)),
+    %fail,
+    !,
+    woc(load_hook_compiler(Load, Self, Fact)).
+
+load_hook1(Load, Self, Fact) :-
     % Ensure the Metta compiler is ready for use.
-    use_metta_compiler,
+    once(use_metta_compiler),!,
+    %debug_info(assert_hooks,use_metta_compiler(Load, Self, Fact)),
+    woc(load_hook_compiler(Load, Self, Fact)).
+load_hook1(Load, Self, Fact):-
+    %debug_info(assert_hooks,not_use_metta_compiler(Load, Self, Fact)),
+    woc(load_hook_compiler(Load, Self, Fact)).
+
+metta_atom_asserted_hook(Self,Assertion):-
+  nop(woc(load_hook(load, metta_atom_asserted(Self,Assertion)))).
+
+is_metta_interp_ready :- current_prolog_flag(metta_interp, ready).
+
+:- dynamic(did_load_hook_compiler/3).
+
+load_hook_compiler(Load, Self, Assertion):- \+ \+ ((did_load_hook_compiler(Load, Self, Assertion1),Assertion1=@=Assertion)),!.
+load_hook_compiler(Load, Self, Assertion):- Assertion = [Eq, _, _],
+    asserta(did_load_hook_compiler(Load, Self, Assertion)),
+    Eq == '=', !,
     % Convert functions to predicates.
-    functs_to_preds([Eq, H, B], Preds),
+    % debug_info(load_hook_compiler,(Load, Self, Assertion)),
+    ignore(catch(load_compiler(Load, Self, Assertion),_,true)),!.
+load_hook_compiler(Load, Self, Assertion):-
+  nop(debug_info(assert_hooks,skip_load_hook_compiler(Load, Self, Assertion))).
+
+load_compiler(Load, Self, Assertion):-
+    woc(functs_to_preds(Assertion, Preds)), !,
     % Assert the converted predicates into the knowledge base.
-    assert_preds(Self, Load, Preds), !.
+    woc(assert_preds(Self, Load, Preds)), !.
 
 % old compiler hook
 /*
@@ -3978,7 +4179,7 @@ use_metta_compiler :-
 % preview_compiler :- use_metta_compiler, !.
 preview_compiler :-
     % Use the compiler or check if the `compile` option is `true`.
-    notrace(use_metta_compiler; option_value('compile', 'true')).
+    notrace(use_metta_compiler; option_value('compile', 'true')),!.
 
 %!  show_transpiler is nondet.
 %
@@ -4015,7 +4216,8 @@ option_switch_pred(F) :-
     interpreter_source_file(File),
     source_file(F, File),
     % Ensure the predicate name matches one of the prefixes.
-    \+ \+ (member(Prefix, [is_, show_, trace_on_]), symbol_concat(Prefix, _, F)),
+    \+ \+ (member(Prefix, ['is_', 'show_', 'trace_on_']), symbol_concat(Prefix, _, F)),
+    \+  symbol_concat(_, '0', F), \+  symbol_concat(_, '_', F),
     % Exclude `show_help_options` from the results.
     F \== show_help_options.
 
@@ -4071,13 +4273,19 @@ do_show_options_values :-
 %     @debug_topic=trace
 %
 display_metta_debug_topics :-
+    writeln(user_error,' Tracing...'),
     % Iterate over all distinct debugging topics.
-    distinct(Sub, debugging(metta(Sub), _)),
+    distinct(Sub=TF, debugging(metta(Sub), TF)),
     % Print each debugging topic to the error stream.
-    format(user_error, '~N@~w=trace~n', [Sub]),
+    once(tf_to_trace(TF,Tracing)),
+    format(user_error, '~N  @~w~n', [Sub=Tracing]),
     fail.
 % Ensure the predicate always succeeds, even if no debugging topics are active.
 display_metta_debug_topics :- !.
+tf_to_trace(true,trace).
+tf_to_trace(false,silent).
+tf_to_trace(X,X).
+
 
 % Dynamic and Multifile Declaration: Ensures that predicates can be modified at runtime and extended across
 % multiple files.
@@ -4151,19 +4359,8 @@ from_top_self(Self, Self).
 %   @arg Atom The atom associated with the knowledge base.
 %
 get_metta_atom_from(KB, Atom) :-
-    metta_atom(KB, Atom).
+  o_quietly(metta_atom0(no_inherit,KB, Atom)).
 
-%!  get_metta_atom(+Eq, +Space, -Atom) is nondet.
-%
-%   Retrieves an atom associated with a space, excluding specific equality atoms (`Eq`).
-%
-%   @arg Eq    The equality to exclude.
-%   @arg Space The context or space.
-%   @arg Atom  The retrieved atom.
-%
-get_metta_atom(Eq, Space, Atom) :-
-    metta_atom(Space, Atom),
-    \+ (Atom = [EQ, _, _], EQ == Eq).
 
 %!  metta_atom(-Atom) is nondet.
 %
@@ -4172,7 +4369,7 @@ get_metta_atom(Eq, Space, Atom) :-
 %   @arg Atom The atom associated with the current knowledge base.
 %
 metta_atom(Atom) :-
-    current_self(KB),
+    notrace(current_self(KB)),
     metta_atom(KB, Atom).
 
 %!  metta_atom_added(+X, -Y) is nondet.
@@ -4183,17 +4380,17 @@ metta_atom(Atom) :-
 %   @arg X The context or space.
 %   @arg Y The atom to check.
 %
-metta_atom_added(X, Y) :-
+metta_atom_added(X, Y) :- nocut,
     % Check if the atom was explicitly asserted.
     metta_atom_asserted(X, Y).
-metta_atom_added(X, Y) :-
+metta_atom_added(X, Y) :- nocut,
     % Check if the atom is associated with a file.
     metta_atom_in_file(X, Y).
-metta_atom_added(X, Y) :-
+metta_atom_added(X, Y) :- nocut,
     % Check if the atom was deduced and not explicitly asserted.
     metta_atom_deduced(X, Y),
     \+ clause(metta_atom_asserted(X, Y), true).
-metta_atom_added(X, Y) :-
+metta_atom_added(X, Y) :- nocut,
     % Check if the atom was recently asserted.
     metta_atom_asserted_last(X, Y).
 
@@ -4207,151 +4404,93 @@ metta_atom_added(X, Y) :-
 %   @arg Atom  The atom associated with the given space.
 %
 
+metta_atom(KB, Atom):-
+  o_quietly(metta_atom0(inherit([KB]),KB, Atom)).
+
+metta_atom_fast(KB, Atom):-
+  o_quietly(metta_atom0(no_inherit,KB, Atom)).
+
+
+/*
+metta_atom0(Inherit,KB, Fact) :-
+   transform_about(Fact, Rule, Cond), Cond=='True',!,
+   fact_store(KB, Rule, Fact, Cond).
+*/
+
 % metta_atom([Superpose,ListOf], Atom) :-   Superpose == 'superpose',    is_list(ListOf), !,      member(KB, ListOf),    get_metta_atom_from(KB, Atom).
-metta_atom(Space, Atom) :- typed_list(Space, _, L), !, member(Atom, L).
-metta_atom(KB, [F, A | List]) :-
-    KB == '&flybase', fb_pred_nr(F, Len), current_predicate(F/Len),
-    length([A | List], Len), apply(F, [A | List]).
+metta_atom0(_Inherit,Space, Atom) :- typed_list(Space, _, L), !, member(Atom, L).
 % metta_atom(KB, Atom) :- KB == '&corelib', !, metta_atom_corelib(Atom).
 % metta_atom(X, Y) :- use_top_self, maybe_resolve_space_dag(X, XX), !, in_dag(XX, XXX), XXX \== X, metta_atom(XXX, Y).
 
-metta_atom(X, Y) :- maybe_into_top_self(X, TopSelf), !, metta_atom(TopSelf, Y).
-% metta_atom(X, Y) :- var(X), use_top_self, current_self(TopSelf),  metta_atom(TopSelf, Y), X = '&self'.
+%metta_atom0(Inherit,X, Y) :- var(X), use_top_self, current_self(TopSelf),  metta_atom0(Inherit,TopSelf, Y), X = '&self'.
+metta_atom0(Inherit,X, Y) :- maybe_into_top_self(X, TopSelf), !, metta_atom0(Inherit,TopSelf, Y).
 
-metta_atom(KB, Atom) :- metta_atom_added(KB, Atom).
+metta_atom0(_Inherit,KB, Atom) :- metta_atom_added(KB, Atom).
+
+
+
+
+metta_atom0(_Inherit,KB, _Atom) :- \+atom(KB), !, fail.
+metta_atom0(_Inherit,KB, [F, A | List]) :-
+    KB == '&flybase', !, fb_pred_nr(F, Len), current_predicate(F/Len),
+    length([A | List], Len), apply(F, [A | List]).
 % metta_atom(KB, Atom) :- KB == '&corelib', !, metta_atom_asserted('&self', Atom).
 % metta_atom(KB, Atom) :- KB \== '&corelib', using_all_spaces, !, metta_atom('&corelib', Atom).
 %metta_atom(KB, Atom) :- KB \== '&corelib', !, metta_atom('&corelib', Atom).
+metta_atom0(_Inherit,KB, Atom) :- clause(metta_atomspace(KB,Atom),Body),!, call(Body).
 
-metta_atom(KB, Atom) :-  KB \== '&corelib', !,  nonvar(KB), \+ nb_current(space_inheritance, false),
-    should_inhert_from(KB, Atom).
+metta_atom0(inherit(Except),KB, Atom) :- inherit_into(KB,KB2), \+ member(KB2,Except), metta_atom0(inherit([KB2|Except]),KB2, Atom).
+
+
+inherit_into(KB,'&corelib') :- KB=='&top', \+ should_not_inherit_from_corelib(KB).
+
+%  should_inhert_from(KB, Atom).
 % metta_atom(KB, Atom) :- metta_atom_asserted_last(KB, Atom).
 
+'same-index'(X,Y):-
+  transform_about(X, t(Inst,Type,Pred, Super), Cond), \+ \+ (nonvar(Pred);nonvar(Super)),
+  transform_about(Y, t(Inst,Type,Pred, Super), Cond), !.
+'same-index'(X,Y):- copy_term(X,Y).
 
-:- dynamic(no_space_inheritance_to/1).
+% Direct type association case
+transform_about([Colon, Pred, Super],             t(inst,type,Pred, Super), 'True') :-  Colon == ':', !.
+% Type association inside an equality assertion
+transform_about([Eq, [Colon, Pred, Super], Cond], t(inst,type,Pred, Super), Cond) :-  Eq == '=', Colon == ':', !.
+% Subtype relationship
+transform_about([Smile, Pred, Super],             t(type,type,Pred, Super), 'True') :-  Smile == ':>', !.
+% Subtype relationship inside an equality assertion
+transform_about([Eq, [Smile, Pred, Super], Cond], t(type,type,Pred, Super), Cond) :-  Eq == '=',  Smile == ':>',!.
 
-%!  wo_inheritance_to(+Where, :Goal) is det.
-%
-%   Temporarily disables space inheritance to a specific location (`Where`) while
-%   executing the provided `Goal`. The original state of inheritance is restored
-%   after the `Goal` completes.
-%
-%   @arg Where The location or space where inheritance is temporarily disabled.
-%   @arg Goal  The Prolog goal to execute while inheritance is disabled.
-%
-%   @example
-%     % Temporarily disable inheritance to a specific space:
-%     ?- wo_inheritance_to('&my_space', writeln('Executing without inheritance.')).
-%
-wo_inheritance_to(_Where, Goal):- !, call(Goal).
-wo_inheritance_to(Where, Goal) :-
-    % Temporarily assert the `no_space_inheritance_to/1` fact.
-    setup_call_cleanup(
-        asserta(no_space_inheritance_to(Where), Clause),
-        Goal,
-        erase(Clause)
-    ).
+% Proven fact with arguments inside an equality assertion
+transform_about([Eq, [Pred | Args], Cond],        t(pred,head,Pred, Args), Cond) :-  Eq == '=', !.
+% General proven fact
+transform_about([Pred | Args],                    t(pred,fact,Pred, Args), true):- !.
+transform_about(PredArgs,                         t(pred,fact,Pred, Args), true):- compound(PredArgs),!, PredArgs=..[Pred | Args],!.
+transform_about(Pred,                             t(pred,fact,Pred,_Args), true).
 
-%!  should_inhert_from(+KB, -Atom) is nondet.
-%
-%   Determines if an atom (`Atom`) should be inherited from the specified knowledge
-%   base (`KB`). Inheritance is temporarily disabled for `KB` while checking for
-%   the atom's inheritance.
-%
-%   @arg KB   The knowledge base to check for inheritance.
-%   @arg Atom The atom to inherit, if applicable.
-%
-%   @example
-%     % Check if an atom should be inherited:
-%     ?- should_inhert_from('&my_space', Atom).
-%
-should_inhert_from(KB, Atom) :-
-    % Fail if inheritance to `KB` is explicitly disabled.
-    \+ no_space_inheritance_to(KB),
-    % Temporarily disable inheritance to `KB` and check inheritance rules.
-    wo_inheritance_to(KB, should_inhert_from_now(KB, Atom)).
+add_indexed_fact(OBO):- arg(1,OBO,KB), arg(2,OBO,Fact), add_fact(KB, Fact),!.
 
-%!  should_inhert_from_now(+KB, -Atom) is nondet.
-%
-%   Directly checks if an atom (`Atom`) can be inherited from the given knowledge
-%   base (`KB`). Handles variable atoms using `freeze/2` and ensures inheritance
-%   exclusions are respected.
-%
-%   @arg KB   The knowledge base to check for inheritance.
-%   @arg Atom The atom to inherit, if applicable.
-%
-%   @example
-%     % Check if an atom can be inherited directly:
-%     ?- should_inhert_from_now('&my_space', Atom).
-%
+add_fact(KB, Fact):-
+   must_det_lls(transform_about(Fact, Rule, Cond)),
+   assertz(fact_store(KB, Rule, Fact, Cond)).
 
-should_inhert_from_now(KB, Atom) :-
-    attvar(Atom), !,
-    % Freeze the sub-knowledge base (`SubKB`) until it is instantiated.
-    freeze(SubKB, symbol(SubKB)), !,
-    % Retrieve a sub-knowledge base associated with `KB`.
-    metta_atom_added(KB, SubKB),
-    SubKB \== KB,
-    % Retrieve atoms from the sub-knowledge base.
-    metta_atom(SubKB, Atom),
-    % Ensure the atom is not excluded from inheritance.
-    \+ should_not_inherit_from(KB, SubKB, Atom).
+query_fact(KB, Fact, Cond) :-
+   transform_about(Fact, Rule, Cond),
+   fact_store(KB, Rule, Fact, Cond).
 
+query_type_of(KB, Pred, Type, Cond) :-
+   fact_store(KB, inst_type(Pred, Type), _, Cond).
+query_super_type(KB, Pred, Type, Cond) :-
+   fact_store(KB, type_type(Pred, Type), _, Cond).
 
-should_inhert_from_now(KB, Atom) :-
-    % Ensure the atom is not an attributed variable.
-    \+ attvar(Atom),
-    % Freeze the sub-knowledge base (`SubKB`) until it is instantiated.
-    freeze(SubKB, symbol(SubKB)), !,
-    % Retrieve a sub-knowledge base associated with `KB`.
-    metta_atom_added(KB, SubKB),
-    SubKB \== KB,
-    % Retrieve atoms from the sub-knowledge base.
-    metta_atom(SubKB, Atom),
-    % Ensure the atom is not excluded from inheritance.
-    \+ should_not_inherit_from(KB, SubKB, Atom).
-
-/*
-   KB \== '&corelib',  % is_code_inheritor(KB),
-   \+ \+ (metta_atom_added(KB,'&corelib'),
-          should_inherit_atom_from_corelib(Atom)), !,
-   metta_atom('&corelib',Atom),
-   \+ should_not_inherit_from_corelib(Atom).
-*/
-
-%!  should_not_inherit_from(+KB, +SubKB, +Atom) is nondet.
-%
-%   Determines whether an atom (`Atom`) should not be inherited from a specific
-%   sub-knowledge base (`SubKB`) within the context of the parent knowledge base (`KB`).
-%   Currently, the rule only excludes symbols (`symbol/1`) from inheritance.
-%
-%   @arg KB    The parent knowledge base.
-%   @arg SubKB The sub-knowledge base being checked.
-%   @arg Atom  The atom to check for inheritance exclusion.
-%
-%   @example
-%     % Exclude symbols from inheritance:
-%     ?- should_not_inherit_from('&my_space', '&sub_space', my_atom).
-%     false.
-%
-%     % Exclude symbols explicitly:
-%     ?- should_not_inherit_from('&my_space', '&sub_space', my_symbol).
-%     true.
-%
-should_not_inherit_from(_, _, S) :-
-    % Exclude symbols from inheritance.
-    symbol(S).
-should_not_inherit_from(KB, Sub, _S) :- should_not_inherit_from_corelib(KB),should_not_inherit_from_corelib(Sub),!.
-
-should_not_inherit_from_corelib('&corelib').
-should_not_inherit_from_corelib('&stdlib').
 /*
 % Commented-out inheritance exclusions for core libraries.
 % Uncomment or modify as needed to apply specific rules for inheritance exclusion.
-
-should_not_inherit_from_corelib('&self').
+%should_not_inherit_from_corelib('&self').
 %should_not_inherit_from_corelib('&top').
 */
+should_not_inherit_from_corelib('&corelib').
+should_not_inherit_from_corelib('&stdlib').
 
 %!  should_inherit_atom_from_corelib(+Atom) is nondet.
 %
@@ -4439,6 +4578,7 @@ should_inherit_op_from_corelib('@doc').
 %     Atom = '&corelib'.
 
 
+metta_atom_asserted_last(_,_) :- !, fail.
 %metta_atom_asserted('&self','&corelib').
 %metta_atom_asserted('&self','&stdlib').
 metta_atom_asserted_last(Top, '&corelib') :-
@@ -4577,19 +4717,10 @@ is_metta_space(Space) :-  nonvar(Space),
 
 % metta_eq_def(Eq,KB,H,B):- ignore(Eq = '='),if_or_else(metta_atom(KB,[Eq,H,B]), metta_atom_corelib(KB,[Eq,H,B])).
 % metta_eq_def(Eq,KB,H,B):-  ignore(Eq = '='),metta_atom(KB,[Eq,H,B]).
-metta_eq_def(Eq, KB, H, B):-
-  %if_t(var(H),trace),
-  no_repeats_var(NR),!,metta_eq_def1(Eq, KB, H, B), NR = hb(H, B).
-
-metta_eq_def1(Eq, KB, H, B) :-
-    % Ensure `Eq` is unified with '='.
-    ignore(Eq = '='),
-    if_or_else(
-        % Check if equality is defined in `KB`.
-        metta_atom(KB, [Eq, H, B]),
-        % If not, ensure it does not belong to `&corelib`.
-        not_metta_atom_corelib(KB, [Eq, H, B])
-    ).
+metta_eq_def(Eq, KB, H, B) :-
+   ignore(Eq = '='),
+  metta_atom0(inherit([KB]),KB,[EQ, H, B]),
+  EQ == Eq.
 
 % Original commented-out code, retained as-is for potential future use:
 % metta_defn(KB,Head,Body):- metta_eq_def(_Eq,KB,Head,Body).
@@ -4677,18 +4808,18 @@ metta_anew1(Load, _OBO) :-
 % Resolve the mode for `Ch` using `metta_interp_mode/2`, then recurse with the resolved mode.
 metta_anew1(Ch, OBO) :-
     metta_interp_mode(Ch, Mode), % Determine the mode for `Ch`.
-    !,
+    Ch\=@=Mode, !,
     metta_anew1(Mode, OBO).      % Recurse with the resolved mode.
 % Attempt to transform `OBO` using `maybe_xform/2`, then recurse with the transformed form.
 metta_anew1(Load, OBO) :-
     maybe_xform(OBO, XForm),     % Transform `OBO` if possible.
-    !,
+    OBO \=@= XForm, !,
     metta_anew1(Load, XForm).    % Recurse with the transformed form.
 % Handle `load` operation for `metta_atom`.
 metta_anew1(load, OBO) :-
     OBO = metta_atom(Space, Atom), % Match the structure of `OBO`.
     !,
-    'add-atom'(Space, Atom).       % Add the atom to the specified space.
+    'add-atom'(Space, Atom), !.       % Add the atom to the specified space.
 % Handle `unload` operation for `metta_atom`.
 metta_anew1(unload, OBO) :-
     OBO = metta_atom(Space, Atom), % Match the structure of `OBO`.
@@ -4697,22 +4828,16 @@ metta_anew1(unload, OBO) :-
 % Handle `unload_all` for all `metta_atom` objects.
 metta_anew1(unload_all, OBO) :-
     OBO = forall(metta_atom(Space, Atom), ignore('remove-atom'(Space, Atom))). % Remove all atoms.
-% Default `load` operation with hooks and PFC integration.
-metta_anew1(load, OBO) :-
-    !,
-    must_det_ll((
+
+% Default `load` operation with hooks and PFC integration and error handling.
+metta_anew1(load, OBO) :-  !,
+    must_det_lls((
         load_hook(load, OBO),         % Execute the load hook.
         subst_vars(OBO, Cl),          % Substitute variables in `OBO`.
-        pfcAdd_Now(Cl)                % Add the clause using PFC.
-    )).
-% Alternative `load` operation with error handling.
-metta_anew1(load, OBO) :-
-    !,
-    must_det_ll((
-        load_hook(load, OBO),         % Execute the load hook.
-        subst_vars(OBO, Cl),          % Substitute variables in `OBO`.
-        show_failure(pfcAdd_Now(Cl))  % Add the clause and show errors if any.
-    )).
+        % display(obo(OBO)), display(cl(Cl)),
+        add_indexed_fact(Cl),
+        pfcAdd_Now(Cl)  % Add the clause and show errors if any.
+    )),!.
 % Handle `unload` by erasing matching clauses.
 metta_anew1(unload, OBO) :-
     subst_vars(OBO, Cl),          % Substitute variables in `OBO`.
@@ -4724,15 +4849,15 @@ metta_anew1(unload, OBO) :-
         clause(Head2, Body2, Ref), % Retrieve the clause again for validation.
         (Head + Body) =@= (Head2 + Body2), % Check if the clauses are equivalent.
         erase(Ref),               % Erase the clause.
-        pp_m(unload(Cl))          % Log the unload operation.
-    )).
+        if_trace(atomspace,pp_m(unload(Cl)))          % Log the unload operation.
+    )), !.
 % Handle `unload_all` by retracting all matching clauses.
 metta_anew1(unload_all, OBO) :-
     !,
     must_det_ll((
         load_hook(unload_all, OBO),  % Execute the unload_all hook.
         subst_vars(OBO, Cl),         % Substitute variables in `OBO`.
-        once_writeq_nl_now(yellow, retractall(Cl)), % Log and retract all matching clauses.
+        if_trace(atomspace,once_writeq_nl_now(yellow, retractall(Cl))), % Log and retract all matching clauses.
         retractall(Cl)      %to_metta(Cl).
     )).
 % Alternative `unload_all` operation with detailed clause handling.
@@ -4795,18 +4920,30 @@ metta_anew(Load, Src, OBO) :-
     not_compat_io((
         % Output information about the source if in Metta language.
         output_language(metta, (
-            if_show(load, color_g_mesg('#ffa500', ((
+            if_trace((atomspace;loading), color_g_mesg('#ffa500', ((
                 format('~N '),  % Newline for separation.
                   % format('~N'),
-                write_src(Src)  % Display source information.
+                nop(copy_term(Src,OSrc,Names)),
+                materialize_vns(Src,SrcVns),
+                write_src(SrcVns),  % Display source information.
+                format('~N '),  % Newline for separation.
+                nop((ignore(Src=OSrc),
+                writeq(Load = Names),  % Display the operation and object.
+                format('~N ')))  % Newline for separation.
             ))))
         )),
         % Output information about the operation and object.
-        output_language(Load, (
-            if_verbose(load, color_g_mesg('#4f4f0f', (((
+        output_language(prolog, (
+            if_trace((atomspace;loading), color_g_mesg('#4f4f0f', (((
                 write('; Action: '),  % Indicate the action being performed.
-                writeq(Load = OBO),  % Display the operation and object.
-                nl  % Newline for clarity.
+                copy_term(OBO,OBOS,VarNames),
+                materialize_vns(OBO,OBOVns),
+                writeq(Load = OBOVns),  % Display the operation and object.
+                %nl  % Newline for clarity.
+                format('~N '),  % Newline for separation.
+                nop((ignore(OBO=OBOS),
+                writeq(cr = VarNames),  % Display the operation and object.
+                format('~N ')))  % Newline for separation.
             )))
         )))),
         true  % Ensure successful execution of all output steps.
@@ -5096,7 +5233,13 @@ toplevel_interp_only_symbol('import!').
 toplevel_interp_only_symbol('extend-py!').
 toplevel_interp_only_symbol('include').
 toplevel_interp_only_symbol('include!').
-%toplevel_interp_only_symbol(H):- symbol_concat('add-atom',_,H),!.
+toplevel_interp_only_symbol('call-string').
+toplevel_interp_only_symbol('compiled-info').
+toplevel_interp_only_symbol('repl!').
+toplevel_interp_only_symbol('eval').
+toplevel_interp_only_symbol('pragma!').
+
+toplevel_interp_only_symbol(H):- symbol_concat('add-atom',_,H),!.
 
 %!  always_exec(+W) is nondet.
 %
@@ -5434,7 +5577,7 @@ do_metta(From, comment(Load), Self, [Expr], Out) :- !,
     do_metta(From, comment(Load), Self, Expr, Out).
 do_metta(From, comment(Load), Self, Cmt, Out) :-
     % Write the comment and handle specific cases of MettaLog comments.
-    write_comment(Cmt), !,
+    if_trace(loading;load,write_comment(Cmt)), !,
     ignore((symbolic(Cmt),
             symbolic_list_concat([_, Src], 'MeTTaLog only: ', Cmt),
             !,
@@ -5521,20 +5664,21 @@ do_metta(From, exec, Self, TermV, Out) :- !,
 %     Out = ResultOfExecution.
 %
 do_metta_exec(From, Self, TermV, FOut) :-
-  Output = X,
+
     % Debugging output for initial state.
     % format("########################X0 ~w ~w ~w\n", [Self, TermV, FOut]),
  (catch(((
         % Show execution trace if the source is a file.
         if_t(From = file(_), output_language(metta, write_exec(TermV))),
+        Output = X,
         % Convert the term into a callable Prolog term.
         notrace(into_metta_callable(Self, TermV, Term, X, NamedVarsList, Was)), !,
         % Debugging output for intermediate state.
         % format("########################X1 ~w ~w ~w ~w\n", [Term, X, NamedVarsList, Output]),
         % Perform the execution using the user-defined handler.
         user:u_do_metta_exec(From, Self, TermV, Term, X, NamedVarsList, Was, Output, FOut))),
+                give_up(Why), pp_m(red, gave_up(Why)))).
         % Catch errors during execution and log them.
-        give_up(Why), pp_m(red, gave_up(Why)))).
     % Debugging output for final state.
     % format("########################X2 ~w ~w ~w\n", [Self, TermV, FOut]).
 
@@ -5577,7 +5721,7 @@ a_e('assertNotEqualToResult').
 o_s([AE | O], S) :-
     % If the first element is a valid assertion and there are other arguments,
     % simplify the remaining list to the last argument.
-    nonvar(AE), a_e(AE), nonvar(O), o_s(O, S).
+    nonvar(AE), a_e(AE), nonvar(O), !, o_s(O, S).
 o_s([O | _], S) :-
     % If the first element is non-variable and not an assertion, simplify directly.
     nonvar(O), !, o_s(O, S).
@@ -5755,8 +5899,17 @@ into_metta_callable(_Self,TermV,Term,X,NamedVarsList,Was):-
   X = RealRes)))),!.
 
 
-into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-!,
- option_else('stack-max',StackMax,100),
+into_metta_callable(Self,TermV, OUT,X,NamedVarsList,Was):-
+  toplevel_interp_only(TermV),
+  into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was),!,
+  OUT=locally(nb_setval('eval_in_only', interp),CALL).
+
+into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-
+  into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was),!.
+
+into_metta_callable_H(Self,TermV,CALL,X,NamedVarsList,Was):-!,
+ default_depth(DEPTH),
+ option_else('stack-max',StackMax,DEPTH),
  CALL = eval_H(StackMax,Self,Term,X),
  notrace(( must_det_ll((
  if_t(show_transpiler,write_compiled_exec(TermV,_Goal)),
@@ -5770,26 +5923,33 @@ into_metta_callable(Self,TermV,CALL,X,NamedVarsList,Was):-!,
   %nop(maplist(verbose_unify,Vars)))))),!.
   )))),!.
 
-%!  eval_S(+Self, +Form) is det.
+
+
+%!  eval_S(+Form) is det.
 %
 %   Evaluates a given form (`Form`) in the context of a specific `Self` if the current
-%   context matches `Self`. This predicate ensures the form is executed in `exec` mode
+%   context matches the form is executed in `exec` mode
 %   using the `do_metta/5` predicate.
 %
 %   @arg Self  The context or "space" in which the evaluation should occur.
 %   @arg Form  The form or term to be evaluated.
 %
-%   @example
-%     % Evaluate a form when the current self matches:
-%     ?- current_self('&self'), eval_S('&self', some_term).
-%
 eval_S(Self, Form) :-
     % Ensure the `Form` is instantiated (not a variable).
     nonvar(Form),
     % Check if the current self matches the provided `Self`.
-    current_self(SelfS), SelfS == Self, !,
+    current_self(Self),
     % Execute the form in `exec` mode.
     do_metta(true, exec, Self, Form, _Out).
+
+
+% Read the form in `+` mode.
+eval_string(String):- user_io((eval_string(String, _Out))).
+eval_string(String, Out):-
+    current_self(Self),
+    read_metta(String, Metta),
+    do_metta(true, +, Self, Metta, Out).
+
 
 %!  eval_H(+Term, -Result) is det.
 %
@@ -5805,7 +5965,7 @@ eval_S(Self, Form) :-
 %
 eval_H(Term, X) :-
     % Wrap the evaluation in `catch_metta_return/2` to handle any errors.
-    catch_metta_return(eval_args(Term, X), X).
+    woc(catch_metta_return(eval_args(Term, X), X)).
 
 %!  eval_H(+StackMax, +Self, +Term, -Result) is det.
 %
@@ -5827,7 +5987,7 @@ eval_H(_StackMax, _Self, Term, Term) :-
     fast_option_value(compile, save), !.
 eval_H(StackMax, Self, Term, X) :-
     % Otherwise, perform evaluation with error handling, passing the stack limit.
-    catch_metta_return(eval_args('=', _, StackMax, Self, Term, X), X).
+    woc(catch_metta_return(eval_args('=', _, StackMax, Self, Term, X), X)).
 /*
 eval_H(StackMax,Self,Term,X).
 
@@ -6206,7 +6366,7 @@ rtrace_this(_Call) :-
 
 %:- nb_setval(cmt_override,lse('; ',' !(" ',' ") ')).
 
-:- abolish(fbug/1).  % Removes any existing definition of `fbug/1` to ensure a clean slate.
+:- ignore(abolish(fbug/1)).  % Removes any existing definition of `fbug/1` to ensure a clean slate.
 
 %!  fbug(+Info) is det.
 %
@@ -6219,9 +6379,8 @@ rtrace_this(_Call) :-
 fbug(_) :-
     % If compatibility mode (`is_compatio`) is active, do nothing.
     is_compatio, !.
-fbug(_) :-
-    % If the 'log' option is not set to 'true', do nothing.
-    \+ option_value('log', 'true'), !.
+fbug(_) :- % If the 'log' option is not set to 'true', do nothing.
+    option_value('log', 'false'), !.
 fbug(Info) :-
     % Otherwise, log the debug information using `write_src/1` with formatting.
     real_notrace(in_cmt(color_g_mesg('#2f2f2f', write_src(Info)))).
@@ -6359,6 +6518,9 @@ catch_red(Term) :-
 pp_m_m_red(_, T) :-
     % Skip logging for specific error terms.
     T =@= in(not_compat_io(maybe_halt(7)), unwind(halt(7))), !.
+pp_m_m_red(_, T) :- compound(T),
+    % Skip logging for specific error terms.
+    T = in(not_compat_io(maybe_halt(Seven)), unwind(halt(Seven))), number(Seven),!.
 pp_m_m_red(C, T) :-
     % Log the term with the given color.
     pp_m(C, T).
@@ -6575,21 +6737,21 @@ catch_red_ignore(G) :-
 loon(Why) :-
     % If in compilation mode, log the event and succeed.
     is_compiling, !,
-    fbug(compiling_loon(Why)), !.
+    if_trace(main,not_compatio(fbug(compiling_loon(Why)))), !.
 % loon( _Y):- current_prolog_flag(os_argv,ArgV),member('-s',ArgV),!.
 % Why\==toplevel,Why\==default, Why\==program,!
 loon(Why) :-
     % If the program is already compiled and not in the `toplevel` phase,
     % log the event and succeed.
     is_compiled, Why \== toplevel, !,
-    fbugio(compiled_loon(Why)), !.
+    if_trace(main,not_compatio(fbugio(compiled_loon(Why)))), !.
 loon(Why) :-
     % If `loon` has already begun for any reason, log the event and skip further processing.
     began_loon(_), !,
-    fbugio(skip_loon(Why)).
+    if_trace(main,not_compatio(fbugio(skip_loon(Why)))).
 loon(Why) :-
     % Otherwise, log the beginning of `loon`, record it, and start `do_loon`.
-    fbugio(began_loon(Why)),
+    if_trace(main,not_compatio(fbugio(began_loon(Why)))),
     assert(began_loon(Why)),
   do_loon.
 
@@ -6601,11 +6763,28 @@ loon(Why) :-
 %   - Running commands and handling results.
 %   - Safely ignoring errors for specific initialization steps.
 %
+
+% Avoid reloading context interference.
+do_loon :- prolog_load_context(reloading, true),!.
+% Execute a sequence of initialization tasks, ignoring errors where needed.
 do_loon :-
+   % install_readline_editline,
+   % nts1,
+   % install_ontology,
+   metta_final, !, % saves statistics for comparison
+   % ensure_corelib_types,
+   % set_output_stream,
+   % test_alarm,!,
+   run_cmd_args,!,
+   write_answer_output,!,
+   not_compat_io(maybe_halt(7)),!.
+
+
+
+do_loon_prev :-
  ignore((
-        % Avoid reloading context interference.
+
         \+ prolog_load_context(reloading, true),
-        % Execute a sequence of initialization tasks, ignoring errors where needed.
         maplist(catch_red_ignore, [
             % Uncomment the following lines if needed during compilation:
             % if_t(is_compiled, ensure_mettalog_py),
@@ -6657,11 +6836,9 @@ need_interaction :-
 %     % Perform pre-halt checks:
 %     ?- pre_halt1.
 %
-pre_halt1 :-
-    % Skip halting if the system is compiling.
+pre_halt1 :- % Skip halting if the system is compiling.
     is_compiling, !, fail.
-pre_halt1 :-
-    % Generate a `loonit_report` and fail.
+pre_halt1 :- % Generate a `loonit_report` and fail.
     loonit_report, fail.
 
 %!  pre_halt2 is nondet.
@@ -6726,7 +6903,7 @@ maybe_halt(_) :-
     once(pre_halt2), fail.
 maybe_halt(Seven) :-
     % Log the halting attempt and fail.
-    fbugio(maybe_halt(Seven)), fail.
+    if_trace(main,not_compatio(fbugio(maybe_halt(Seven)))), fail.
 maybe_halt(_) :-
     % If the Prolog runtime flag `mettalog_rt` is true, prevent halting.
     current_prolog_flag(mettalog_rt, true), !.
@@ -6738,7 +6915,7 @@ maybe_halt(H) :-
 %   Runs initialization steps when the program is loaded. These include setting
 %   the `cmt_override` variable and restoring the system state.
 %
-:- initialization(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") ')), restore).
+:- on_metta_setup(nb_setval(cmt_override, lse('; ', ' !(" ', ' ") '))).
 
 % needs_repl:- \+ is_converting, \+ is_pyswip, \+ is_compiling, \+ has_file_arg.
 
@@ -6747,7 +6924,7 @@ maybe_halt(H) :-
 %
 %   Displays the operating system arguments (`os_argv`) during initialization.
 %
-:- initialization(show_os_argv).
+:- on_metta_setup(show_os_argv).
 
 %!  ensure_mettalog_system_compilable is det.
 %
@@ -6775,6 +6952,7 @@ ensure_mettalog_system_compilable:-
 %     ?- ensure_mettalog_system.
 %
 ensure_mettalog_system:-
+ must_det_lls((
     abolish(began_loon/1),
     dynamic(began_loon/1),
     system:use_module(library(quasi_quotations)),
@@ -6785,6 +6963,7 @@ ensure_mettalog_system:-
     system:use_module(library(rbtrees)),
     system:use_module(library(dicts)),
     system:use_module(library(shell)),
+    use_module(library(date)),
     system:use_module(library(edinburgh)),
   %  system:use_module(library(lists)),
     system:use_module(library(statistics)),
@@ -6798,13 +6977,13 @@ ensure_mettalog_system:-
     %ensure_loaded('./src/main/flybase_main'),
     %ensure_loaded(library(flybase_convert)),
     %ensure_loaded(library(flybase_main)),
-    autoload_all,
-    make,
+    %autoload_all,
+    %make,
     autoload_all,
     %pack_install(predicate_streams, [upgrade(true),global(true)]),
     %pack_install(logicmoo_utils, [upgrade(true),global(true)]),
     %pack_install(dictoo, [upgrade(true),global(true)]),
-    !.
+    true)),!.
 
 %!  file_save_name(+File, -SaveName) is nondet.
 %
@@ -6858,6 +7037,12 @@ save_name(Name) :-
 %
 %   @arg Name The resulting save name.
 %
+next_save_name(SavMeTTaLog) :-
+    % Use the `exeout` option if it is valid and sufficiently long.
+    option_value(exeout, SavMeTTaLog),
+    symbolic(SavMeTTaLog),
+    atom_length(SavMeTTaLog, Len),
+    Len > 1, !.
 next_save_name(Name) :-
     % Derive the name from the current save name and append a unique suffix.
     save_name(E),
@@ -6866,12 +7051,6 @@ next_save_name(Name) :-
     gensym(Stem, Name),
   \+ exists_file(Name),
     Name \== E, !.
-next_save_name(SavMeTTaLog) :-
-    % Use the `exeout` option if it is valid and sufficiently long.
-    option_value(exeout, SavMeTTaLog),
-    symbolic(SavMeTTaLog),
-    atom_length(SavMeTTaLog, Len),
-    Len > 1, !.
 next_save_name('Sav.MeTTaLog').
 
 %!  qcompile_mettalog is det.
@@ -6881,59 +7060,61 @@ next_save_name('Sav.MeTTaLog').
 %   it is caught and displayed.
 %
 qcompile_mettalog :-
+ must_det_lls((
     % Ensure the system is initialized.
     ensure_mettalog_system,
     % Retrieve the target executable name from the `exeout` option.
-    option_value(exeout, Named),
+    cmdline_flag_option_value(exeout, Name),
     % Attempt to save the program as an executable.
-    catch_err(qsave_program(Named, [
-        class(development),
-        autoload(true),
-        goal(loon(goal)),
-        toplevel(loon(toplevel)),
-        stand_alone(true)
-    ]), E, writeln(E)),
+    qsave_program(Name), nonvar(Name),
     % Exit the program with success status.
+    true)),
+    inform_compiler_success,
     halt(0).
+
+inform_compiler_success:- ignore((catch((getenv('METTALOG_COMPILE_SUCCESS',STAMP),tell(STAMP),told),_,true))).
 
 %!  qsave_program is det.
 %
 %   Saves the current Prolog program to a file as a non-standalone executable.
 %   The save name is generated using `next_save_name/1`.
 %
-qsave_program :-
+
+qsave_program:-
+ must_det_lls((
     % Ensure the system is initialized.
     ensure_mettalog_system,
     % Generate the next save name.
-    next_save_name(Name),
+    next_save_name(Name), nonvar(Name),
+    % Attempt to save the program as an executable.
+    qsave_program(Name),
+    % Exit the program with success status.
+    true)),halt(0).
+
+qsave_program(Name) :-
     % Attempt to save the program.
+    if_verbose(main,write_src_nl(start(qsave_program(Name)))),
     catch_err(qsave_program(Name, [
         class(development),
         autoload(true),
         goal(loon(goal)),
         toplevel(loon(toplevel)),
         stand_alone(false)
-    ]), E, writeln(E)), !.
+    ]), E, writeln(E)), !,
+    if_verbose(main,write_src_nl(done(qsave_program(Name)))).
 
 :- ensure_loaded(library(flybase_main)).
 :- ensure_loaded(metta_server).
 
-%
-%   Specifies an initialization goal to be executed when the program is loaded.
-%   This directive performs two actions:
-%   1. `update_changed_files`: Checks and updates any files that have been modified
-%      since the last program run, ensuring the system is synchronized.
-%   2. `restore`: Restores the system to a prepared state, likely reinitializing any
-%      essential components.
-%
-:- initialization(update_changed_files,restore).
+
+:- initialization(update_changed_files).
+
 
 %!  nts is det.
 %
 %   Main entry point for initializing or running `nts1`.
 %
-nts :-
-    nts1.
+% nts :- nts1.
 
 %!  nts1 is det.
 %
@@ -6941,9 +7122,9 @@ nts :-
 %   disables further redefinition by cutting execution early. If redefinition
 %   is allowed, it handles modifications to `system:notrace/1` to customize its behavior.
 %
-nts1 :-
-    % Disable redefinition by cutting execution.
-    !.
+
+nts1 :- !. % Disable redefinition by cutting execution.
+%nts1 :- is_flag(notrace),!.
 nts1 :-
     % Redefine the system predicate `system:notrace/1` to customize its behavior.
     redefine_system_predicate(system:notrace/1),
@@ -6956,16 +7137,13 @@ nts1 :-
   meta_predicate(system:notrace(0)),
     % Define the new behavior for `system:notrace/1`.
     % The redefined version executes the goal (`G`) with `once/1` and succeeds deterministically.
-    asserta((
-        system:notrace(G) :-
-            (!, once(G)
-    ))).
+    asserta(( system:notrace(G) :- (!, once(G) ))).
 nts1 :-
     % Ensure that further redefinitions of `nts1` are not allowed after the first.
     !.
 
-:-nts1.
-
+%:-nts1.
+:- initialization(nts1).
 %!  nts0 is det.
 %
 %   Configures or redefines the `system:notrace/0` predicate.
@@ -7075,7 +7253,7 @@ fix_message_hook :-
     % Erase the identified clause.
     erase(Cl).
 
-:- unnullify_output.
+:- on_metta_setup(unnullify_output).
 
 %:- ensure_loaded(metta_python).
 
@@ -7085,7 +7263,7 @@ fix_message_hook :-
 :- ensure_loaded(metta_corelib).
 %:- ensure_loaded(metta_help).
 
-:- enter_comment.
+%:- initialization( enter_comment).
 
 %!  stack_times_16 is det.
 %
@@ -7105,9 +7283,9 @@ stack_times_16 :-
     % Set the new stack limit.
     set_prolog_flag(stack_limit, X_16).
 
-:- initialization(stack_times_16).
-:- initialization(use_corelib_file).
-:- initialization(use_metta_ontology).
+:- initialization(stack_times_16,after_load /**/).
+:- initialization(use_corelib_file,after_load /**/).
+:- initialization(use_metta_ontology,after_load /**/).
 
 %!  immediate_ignore is det.
 %
@@ -7126,7 +7304,7 @@ immediate_ignore:- ignore(((
    set_is_unit_test(UNIT_TEST),
    %trace,
    \+ prolog_load_context(reloading,true),
-   initialization(loon(restore),restore),
+   initialization(loon(after_load /**/),after_load /**/),
    % should fail (if tested from here https://swi-prolog.discourse.group/t/call-with-time-limit-2-not-enforcing-time-limit-as-expected/7755)
    %test_alarm,
    % nts1,
@@ -7396,10 +7574,11 @@ findall_or_skip(Var, Call, List) :-
     % Execute the query using `findall/3` to collect results into `List`.
     findall(Var, Call, List).
 
-:- set_prolog_flag(metta_interp,ready).
+:- initialization(set_prolog_flag(metta_interp,ready)).
 %:- ensure_loaded(metta_runtime).
-%:- set_prolog_flag(gc,false).
+%:- initialization(set_prolog_flag(gc,false).
 
+%:- initialization(trace, now).
 :- use_module(library(clpr)). % Import the CLP(R) library
 %:- initialization(loon_main, main).
 :- initialization(loon(main), main).
@@ -7428,3 +7607,10 @@ complex_relationship3_ex(Likelihood1, Likelihood2, Likelihood3) :-
 
 % Example query to find the likelihoods that satisfy the constraints
 %?- complex_relationship(L1, L2, L3).
+
+:- find_missing_cuts.
+
+
+:- thread_initialization(do_metta_setup).
+
+

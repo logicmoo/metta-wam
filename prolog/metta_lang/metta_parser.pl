@@ -137,21 +137,27 @@ subst_vars(TermWDV, NewTerm):-
 %   @arg NamedVarsList The list of named variables.
 %
 subst_vars(TermWDV, NewTerm, NamedVarsList) :-
-      subst_vars(TermWDV, NewTerm, [], NamedVarsList),
-   if_t(fast_option_value('vn', 'true'), memorize_varnames(NamedVarsList)).
+   must_det_lls((
+     subst_vars(TermWDV, NewTerm, [], NamedVarsList),
+     if_t(fast_option_value('vn', 'true'), memorize_varnames(NamedVarsList)))).
 
 
 
 subst_varnames(Convert,Converted):-
-  subst_vars(Convert,Converted,[], NVL),
-  memorize_varnames(NVL).
+  must_det_lls((
+   subst_vars(Convert,Converted,[], NVL),
+   memorize_varnames(NVL),
+   maybe_set_var_names(NVL))).
+
 
 memorize_varnames(NamedVarsList):- \+ compound(NamedVarsList),!.
 memorize_varnames([NamedVar|NamedVarsList]):- !,
   memorize_varname(NamedVar),
   memorize_varnames(NamedVarsList).
 memorize_varnames(_).
+
 memorize_varname(NamedVar):-  \+ compound(NamedVar),!.
+%memorize_varname(Name=Var):- var(Var),atomic(Name),Var = '$'(Name), !.
 memorize_varname(Name=Var):- var(Var),atomic(Name),put_attr(Var,vn,Name).
 memorize_varname(_).
 
@@ -166,13 +172,12 @@ memorize_varname(_).
 %   @arg Acc            Accumulator for variable tracking.
 %   @arg NamedVarsList  List of named variables after substitution.
 %
+
+
 subst_vars(Term, Term, NamedVarsList, NamedVarsList) :-
      % Base case: return variable terms directly.
      var(Term), !.
 subst_vars([], [], NamedVarsList, NamedVarsList):- !.
-subst_vars([TermWDV | RestWDV], [Term | Rest], Acc, NamedVarsList) :- !,
-     subst_vars(TermWDV, Term, Acc, IntermediateNamedVarsList),
-     subst_vars(RestWDV, Rest, IntermediateNamedVarsList, NamedVarsList).
 subst_vars('$VAR'('_'), _, NamedVarsList, NamedVarsList) :- !.
 subst_vars('$VAR'(VName), Var, Acc, NamedVarsList) :-
      % Substitute variables with `VName`, applying fixes if necessary.
@@ -182,7 +187,17 @@ subst_vars(Term, Var, Acc, NamedVarsList) :-
      % Substitute variables with names starting with `$`.
      atom(Term), symbol_concat('$', DName, Term), dvar_name(DName, Name), !,
      subst_vars('$VAR'(Name), Var, Acc, NamedVarsList).
-
+subst_vars(TermI, TermO, Acc, NamedVarsListNew) :-
+     % Substitute variables with `VName`, applying fixes if necessary.
+     sub_term_safely(Sub,TermI),compound(Sub), Sub='$'(VName),
+     must_det_lls((nonvar(VName), svar_fixvarname_dont_capitalize(VName, Name),
+     Var = _,
+     (memberchk(Name = Var, Acc) -> NamedVarsList = Acc ; (!, Var = _, NamedVarsList = [Name = Var | Acc])),
+     subst001(TermI,Sub,Var,MidTerm), MidTerm \=@= TermI,
+     subst_vars(MidTerm, TermO, NamedVarsList,NamedVarsListNew))),!.
+subst_vars([TermWDV | RestWDV], [Term | Rest], Acc, NamedVarsList) :- !,
+     subst_vars(TermWDV, Term, Acc, IntermediateNamedVarsList),
+     subst_vars(RestWDV, Rest, IntermediateNamedVarsList, NamedVarsList).
 subst_vars(TermWDV, NewTerm, Acc, NamedVarsList) :-
      % Recursively handle compound terms.
      compound(TermWDV), !,
@@ -190,6 +205,46 @@ subst_vars(TermWDV, NewTerm, Acc, NamedVarsList) :-
      subst_vars(ArgsWDV, Args, Acc, NamedVarsList),
      compound_name_arguments(NewTerm, Functor, Args).
 subst_vars(Term, Term, NamedVarsList, NamedVarsList).
+
+/*
+subst_vars(Term, Term, NamedVarsList, NamedVarsList) :-
+     % Base case: return variable terms directly.
+     var(Term), !.
+subst_vars([], [], NamedVarsList, NamedVarsList):- !.
+subst_vars(TermI, TermO, Acc, NamedVarsList) :-
+    sub_term_safely(Sub,TermI),denotes_var(Sub,DName), % DName \== '_', !,
+    must_det_lls((subst001(TermI,Sub,Var,MidTerm),
+    MidTerm \=@= TermI,
+    subst_vars(MidTerm, TermO, [DName=Var|Acc],NamedVarsList))).
+
+
+subst_vars('$VAR'(Anon), _AnonVar, NamedVarsList, NamedVarsList) :- '__' == Anon, !.
+subst_vars('$'(Anon), _AnonVar, NamedVarsList, NamedVarsList) :- '_' == Anon, !.
+
+subst_vars([TermWDV | RestWDV], [Term | Rest], Acc, NamedVarsList) :- !,
+     subst_vars(TermWDV, Term, Acc, IntermediateNamedVarsList),
+     subst_vars(RestWDV, Rest, IntermediateNamedVarsList, NamedVarsList).
+subst_vars('$VAR'(VName), Var, Acc, NamedVarsList) :-
+     % Substitute variables with `VName`, applying fixes if necessary.
+     nonvar(VName), svar_fixvarname_dont_capitalize(VName, Name), !,
+     (memberchk(Name = Var, Acc) -> NamedVarsList = Acc ; (!, Var = _, NamedVarsList = [Name = Var | Acc])).
+subst_vars(Term, Var, Acc, NamedVarsList) :- atom(Term), symbol_concat('$', DName, Term), dvar_name(DName, Name), !,
+     trace, throw(cant_be_var(Term)),
+     % Substitute variables with names starting with `$`.
+     subst_vars('$VAR'(Name), Var, Acc, NamedVarsList).
+subst_vars(TermWDV, NewTerm, Acc, NamedVarsList) :-
+     % Recursively handle compound terms.
+     compound(TermWDV), !,
+     compound_name_arguments(TermWDV, Functor, ArgsWDV),
+     subst_vars(ArgsWDV, Args, Acc, NamedVarsList),!,
+     compound_name_arguments(NewTerm, Functor, Args).
+subst_vars(Term, Term, NamedVarsList, NamedVarsList).
+*/
+
+denotes_var(Var,_Name):- var(Var),!,fail.
+denotes_var('$VAR'(U),Name):- !, U \== '__', dvar_name(U, Name).
+denotes_var('$'(U), Name):- !, U \== '_', dvar_name(U, Name).
+denotes_var(Term, Name):- atom(Term), symbol_concat('$', DName, Term), dvar_name(DName, Name),!.
 
 
 %!  extract_lvars(?A, ?B, ?After) is det.
@@ -895,14 +950,17 @@ process_expressions(FileName, InStream, OutStream) :-
    call(WriteOutput, :- dynamic(user:metta_file_buffer/7)),
    call(WriteOutput, :- multifile(user:metta_file_buffer/7)),
    call(WriteOutput,  afn_stem_filename(AFNStem, Stem, FileName)),
-    locally(nb_setval('$file_src_name', AFNStem),
-     locally(nb_setval('$file_src_write_readably', WriteOutput),
-     locally(nb_setval('$file_src_depth', 0),
+    locally(b_setval('$file_src_name', AFNStem),
+     locally(b_setval('$file_src_write_readably', WriteOutput),
+      locally(b_setval('$file_src_depth', 0),
        setup_call_cleanup(flag('$file_src_ordinal', Was, 0),
         % Start reading and processing expressions from the input stream.
          process_expressions_now(FileName, InStream),
                           flag('$file_src_ordinal', _, Was))))).
 
+:- thread_initialization(nb_setval('$file_src_name',[])).
+:- thread_initialization(nb_setval('$file_src_write_readably', [])).
+:- thread_initialization(nb_setval('$file_src_depth',0)).
 
 process_expressions_now(FileName, InStream):-
     repeat,
@@ -1141,8 +1199,8 @@ push_item_range(Item, Range):-
      better_typename(TypeName1,TypeName2,TypeName),
      ((nonvar(Outline),Outline\=@=Item) -> TypeNameCompound=indexed(TypeName,Outline); TypeNameCompound=TypeName),
         % Assert the parsed content into the Metta buffer part
-       ignore((nb_current('$file_src_name', Context),\+ Buffer, assert(BufferC))),
-       ignore((nb_current('$file_src_write_readably', P1), callable(P1), call(P1, BufferC))))),
+       ignore((nb_current('$file_src_name', Context), Context \==[], \+ Buffer, assert(BufferC))),
+       ignore((nb_current('$file_src_write_readably', P1), P1 \==[], callable(P1), call(P1, BufferC))))),
        !.
 
 
@@ -1204,12 +1262,12 @@ promiscuous_symbol('->').
 promiscuous_symbol(Atom):- atom_concat(_,'=',Atom),!.
 promiscuous_symbol(Atom):- atom_concat('@',_,Atom),!.
 
-sub_symbol(Symbol,Head):- ground(Symbol),!,sub_var(Symbol,Head),!.
-sub_symbol(Symbol,Head):- \+ var(Symbol), once(sub_term(Symbol,Head)),!.
-sub_symbol(Symbol,Head):- sub_term(Symbol,Head),atom(Symbol),!.
-sub_symbol(Symbol,Head):- sub_term(Symbol,Head),string(Symbol),!.
-sub_symbol(Symbol,Head):- sub_term(Symbol,Head),atomic(Symbol),!.
-sub_symbol(Symbol,Head):- sub_term(Symbol,Head),!.
+sub_symbol(Symbol,Head):- ground(Symbol),!,sub_var_safely(Symbol,Head),!.
+sub_symbol(Symbol,Head):- \+ var(Symbol), once(sub_term_safely(Symbol,Head)),!.
+sub_symbol(Symbol,Head):- sub_term_safely(Symbol,Head),atom(Symbol),!.
+sub_symbol(Symbol,Head):- sub_term_safely(Symbol,Head),string(Symbol),!.
+sub_symbol(Symbol,Head):- sub_term_safely(Symbol,Head),atomic(Symbol),!.
+sub_symbol(Symbol,Head):- sub_term_safely(Symbol,Head),!.
 
 xrefed_outline_type(Val,Val,variable):- is_ftVar(Val),!.
 xrefed_outline_type(Val,Val,number):- number(Val),!.

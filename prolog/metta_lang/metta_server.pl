@@ -186,7 +186,7 @@ run_vspace_service_unsafe(MSpace,Port) :-
     % Open the socket for listening
     tcp_open_socket(Socket, ListenFd),
     % Perform any compatibility checks (not_compatio is assumed to be a custom predicate)
-    not_compatio(fbugio(run_vspace_service(MSpace,Port))),
+    if_trace(main,not_compatio(fbugio(run_vspace_service(MSpace,Port)))),
     % Remove any existing vspace_port facts
     retractall(vspace_port(_)),
     % Assert the current port as the vspace_port
@@ -409,9 +409,11 @@ our_address(Host:Port):-
 %
 %   @arg Addr is the address to check (Host:Port).
 % Check if this service instance exists at a given address
-we_exist(Addr):-
+
+:- dynamic(we_exist/1).
+%we_exist(Addr):-
     % Get the current address and unify it with Addr
-  our_address(Addr).
+ % our_address(Addr).
 
 % Check if another service exists at the specified address
 %!  they_exist(+Addr) is det.
@@ -421,9 +423,9 @@ we_exist(Addr):-
 %   @arg Addr is the address to check (Host:Port).
 they_exist(Addr):-
     % Get the current service address
-   our_address(Ours),
+   % our_address(Ours),
     % Ensure Addr is different from the current service address
-   diff(Addr,Ours),
+   % dif(Addr,Ours),
    execute_goal(we_exist(Addr)), \+ our_address(Addr).
 
 % Inform services that have taken over about our presence.
@@ -1050,7 +1052,7 @@ cleanup_results(Tag) :-
     retractall(result(Tag, _, _, _)).
 
 % Previously included directive to initialize the virtual space service.
-% :- initialization(start_vspace_service).
+:- initialization(start_vspace_service, after_load /**/).
 
 
 
@@ -1076,39 +1078,38 @@ cleanup_results(Tag) :-
 
 % Start the Telnet server in a background thread on the given Port
 start_dbg_telnet(Port) :-
-    (   thread_property(_, alias(telnet_server))
-    ->  debug(metta(telnet_server),'Telnet server is already running.~n')
-    ;   thread_create(dbg_server_thread(Port), _, [alias(telnet_server), detached(true)]),
-        debug(metta(telnet_server),'Attempting to start Telnet server on port ~w.~n', [Port])
-    ).
+    symbolic_list_concat([telnet_server,Port],'_', Alias),
+    start_dbg_telnet(Port, Alias).
 
 % The thread that runs the Telnet server, retries if port is in use
-dbg_server_thread(Port) :-
+start_dbg_telnet(_Port, Alias):- thread_property(_, alias(Alias)), !,
+    debug(metta(telnet_server),'Telnet server is already running: ~w.~n',[Alias]).
+start_dbg_telnet(Port, Alias):-
+    debug(metta(telnet_server),'Attempting to start Telnet server on port ~w.~n', [Port]),
     catch(
         (tcp_socket(Socket),
          tcp_bind(Socket, ip(0,0,0,0):Port),  % Bind to 0.0.0.0 to accept connections on all interfaces
          tcp_listen(Socket, 5),  % Maximum 5 concurrent connections
          debug(metta(telnet_server),'Telnet server started on port ~w, listening on 0.0.0.0.~n', [Port]),
-         accept_dbg_connections(Socket)
+         thread_create(accept_dbg_connections(Alias, Socket), _, [alias(Alias), detached(true)])
         ),
         error(_, _),  % Catch port in use error
         ( NewPort is Port + 10,
           debug(metta(telnet_server),'Port ~w in use, trying port ~w.~n', [Port, NewPort]),
-          dbg_server_thread(NewPort)  % Retry with the new port
+          start_dbg_telnet(NewPort)  % Retry with the new port
         )
     ).
 
 % Accept incoming connections
-accept_dbg_connections(Socket) :-
-    tcp_accept(Socket, ClientSocket, _PeerAddress),
-    thread_create(handle_dbg_client(ClientSocket), _, [detached(true)]),
-    accept_dbg_connections(Socket).
+accept_dbg_connections(Alias, Socket) :-
+    tcp_accept(Socket, ClientSocket, PeerAddress),
+    format(atom(PeerAlias), "~w_~w_~w", [Alias, PeerAddress, ClientSocket]),
+    thread_create(handle_dbg_client(ClientSocket), _, [detached(true),alias(PeerAlias)]),
+    accept_dbg_connections(Alias, Socket).
 
 % Handle an individual client connection
 handle_dbg_client(ClientSocket) :-
     tcp_open_socket(ClientSocket, InStream, OutStream),
-    format(OutStream, 'Welcome to the Prolog Telnet Server!~n', []),
-    flush_output(OutStream),
     handle_dbg_client_commands(InStream, OutStream),
     close(InStream),
     close(OutStream).
@@ -1119,6 +1120,7 @@ handle_dbg_client_commands(InStream, OutStream) :-
         set_prolog_IO(InStream, OutStream, ErrStream),
         set_output(OutStream), set_input(InStream),
         set_stream(InStream, tty(true)),
+        set_stream(OutStream, tty(true)),
         set_prolog_flag(tty_control, false),
         current_prolog_flag(encoding, Enc),
         set_stream(InStream, encoding(Enc)),
@@ -1135,14 +1137,15 @@ handle_dbg_client_commands(InStream, OutStream) :-
     set_stream(user_output, newline(dos)),
     set_stream(user_error, newline(dos)),
 
-        format(ErrStream,
-               'Welcome to the SWI-Prolog server on thread ~w~n~n',
-               [Id]), !,
+        format(ErrStream, 'Welcome to the MeTTaLog Telnet Server: ~w~n', [Id]),
+        flush_output(ErrStream),
         % handle_dbg_client_commands_2(InStream, OutStream),
-        call_cleanup(prolog,
+        call_cleanup(socket_repl,
                      ( close(InStream, [force(true)]),
                        close(OutStream, [force(true)]))).
 
+
+socket_repl:- repl.
 
     % Process commands from the client
     handle_dbg_client_commands_2(InStream, OutStream) :-
@@ -1175,6 +1178,6 @@ start_dbg_telnet :-
     start_dbg_telnet(44440).
 
 % Automatically start the server at initialization, ensuring only one server is started
-:- initialization(start_dbg_telnet).
+:- initialization(start_dbg_telnet, after_load /**/).
 
 

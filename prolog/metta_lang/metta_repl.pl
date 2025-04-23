@@ -152,10 +152,10 @@ check_file_exists_for_append(HistoryFile) :-
 %     ?- save_history.
 %     true.
 %
-:- if(is_win64).
+
 % Dummy to avoid errors on windows.
-save_history.
-:- else.
+save_history:- is_win64, !.
+save_history:- is_docker, !.
 save_history :-
     % Get the current input stream.
     current_input(Input),
@@ -167,7 +167,6 @@ save_history :-
     ;
         % Otherwise, do nothing.
         true).
-:- endif.
 
 %! load_and_trim_history is det.
 %   Loads and trims the REPL history if needed, and installs readline support.
@@ -285,7 +284,7 @@ repl3 :-
         % Set the terminal prompt without tracing.
         notrace(set_metta_prompt),
         % Flush the terminal and call repl4 to handle input.
-        ((ttyflush, repl4, ttyflush)),
+        setup_call_cleanup(ttyflush, repl4, ttyflush),
         % After execution, restore the previous terminal prompt.
         notrace(prompt(_, Was))).
 
@@ -363,28 +362,30 @@ restore_metta_trace:- notrace,ignore((retract(metta_trace_restore(W)),call(W))).
 %     % This switches the system to the mettarust mode.
 %
 check_has_directive(V) :- var(V), !, fail.
-% Directive to switch to mettalog.
-check_has_directive('@log') :- switch_to_mettalog, !, write_src_uo(switch_to_mettalog),notrace(throw(restart_reading)).
-% Directive to switch to mettarust.
-check_has_directive('@rust') :- switch_to_mettarust, !, write_src_uo(switch_to_mettarust), notrace(throw(restart_reading)).
-% Checks if the symbol contains a '.' (common for directives).
-check_has_directive(Atom) :- symbol(Atom), symbol_concat(_, '.', Atom), !.
-% Assign a value to a directive, e.g., call(N=V).
-check_has_directive(call(N=V)) :- nonvar(N), !, set_directive(N, V).
-% Enable rtrace debugging and restart reading.
-check_has_directive(call(Rtrace)) :- rtrace == Rtrace, !, rtrace, notrace(throw(restart_reading)).
-% Handle expressions in the form of N=V.
-check_has_directive(NEV) :- symbol(NEV), symbolic_list_concat([N, V], '=', NEV), set_directive(N, V).
-% Handle directive in the form [@Name, Value].
-check_has_directive([AtEq, Value]) :- symbol(AtEq), symbol_concat('@', Name, AtEq), set_directive(Name, Value).
-% Handle mode changes in the REPL.
-check_has_directive(ModeChar) :- symbol(ModeChar), metta_interp_mode(ModeChar, _Mode), !, set_directive(repl_mode, ModeChar).
-% Displays options when '@' is input and restarts reading.
-check_has_directive('@') :- do_show_options_values, !, notrace(throw(restart_reading)).
-% Process expressions like @NEV=Value.
-check_has_directive(AtEq) :- symbol(AtEq), symbol_concat('@', NEV, AtEq), option_value(NEV, Foo), fbug(NEV = Foo), !, notrace(throw(restart_reading)).
+check_has_directive(V) :- notrace(check_has_directive1(V)),!,notrace(throw(restart_reading)).
 % No directive found.
 check_has_directive(_).
+
+% Directive to switch to mettalog.
+check_has_directive1('@log') :- switch_to_mettalog, !, write_src_uo(switch_to_mettalog).
+% Directive to switch to mettarust.
+check_has_directive1('@rust') :- switch_to_mettarust, !, write_src_uo(switch_to_mettarust).
+% Displays options when '@' is input and restarts reading.
+check_has_directive1('@') :- do_show_options_values, !.
+% Checks if the symbol contains a '.' (common for directives).
+check_has_directive1(Atom) :- symbol(Atom), symbol_concat(_, '.', Atom), !.
+% Assign a value to a directive, e.g., call(N=V).
+check_has_directive1(call(N=V)) :- nonvar(N), !, set_directive(N, V).
+% Handle directive in the form [@Name, Value].
+check_has_directive1([AtEq, Value]) :- symbol(AtEq), symbol_concat('@', Name, AtEq), set_directive(Name, Value).
+% Enable rtrace debugging and restart reading.
+% check_has_directive(call(Rtrace)) :- rtrace == Rtrace, !. % rtrace, notrace(throw(restart_reading)).
+% Handle expressions in the form of N=V.
+check_has_directive1(NEV) :- symbol(NEV), symbolic_list_concat([N, V], '=', NEV), set_directive(N, V).
+% Handle mode changes in the REPL.
+check_has_directive1(ModeChar) :- symbol(ModeChar), metta_interp_mode(ModeChar, _Mode), !, set_directive(repl_mode, ModeChar).
+% Process expressions like @NEV=Value.
+check_has_directive1(AtEq) :- symbol(AtEq), symbol_concat('@', NEV, AtEq), option_value(NEV, Foo), fbug(NEV = Foo), !.
 
 %!  set_directive(+N, +V) is det.
 %
@@ -402,11 +403,11 @@ check_has_directive(_).
 %     % Assign a general option value:
 %     ?- set_directive('timeout', 100).
 %
-set_directive(N, V) :- symbol_concat('@', NN, N), !, set_directive(NN, V).
+set_directive(N, V) :- symbol(N), symbol_concat('@', NN, N), !, set_directive(NN, V).
 % Special case for setting the REPL mode.
 set_directive(N, V) :- N == 'mode', !, set_directive(repl_mode, V).
 % Set a general directive using `set_option_value_interp/2`.
-set_directive(N, V) :- show_call(set_option_value_interp(N, V)), !, notrace(throw(restart_reading)).
+set_directive(N, V) :- nonvar(N), show_call(set_option_value_interp(N, V)), !, notrace(throw(restart_reading)).
 
 %!  read_pending_white_codes(+In) is det.
 %   Reads the pending codes (whitespace characters) from the input stream `In`.
@@ -471,7 +472,7 @@ repl_read(In, Expr) :-
     % Read the next expression from the input stream.
     repl_read_next(In, ExprI),
     % Process it to determine the final expression.
-    next_expr(ExprI, Expr).
+    next_expr(ExprI, Expr),!.
 
 %!  repl_read(-Expr) is det.
 %
@@ -569,7 +570,7 @@ repl_read_next(NewAccumulated, Expr) :-
 
 % Read the next line of input, accumulate it, and continue processing.
 repl_read_next(Accumulated, Expr) :-
-    if_t(flag(need_prompt,1,0),(nl,set_metta_prompt)),
+    if_t(flag(need_prompt,1,0),(format('~N'),set_metta_prompt)),
         % On windows we need to output the prompt again
     (is_win64-> (ttyflush,prompt(P, P),write(P), ttyflush) ; true),
     % Read a line from the current input stream.
@@ -867,8 +868,9 @@ eval(Form, Out) :-
 %     Out = some_output.
 %
 eval(Self, Form, Out) :-
-    % Use eval_H with a timeout of 500 to evaluate the form.
-    eval_H(500, Self, Form, Out).
+    % Use eval_H with a depth of default_depth(DEPTH), to evaluate the form.
+    default_depth(DEPTH),
+    eval_H(DEPTH, Self, Form, Out).
 
 %! eval_I(+Self, +Form, -OOut) is det.
 %   Evaluates a form and transforms the output using xform_out/2.
@@ -882,10 +884,11 @@ eval(Self, Form, Out) :-
 %     OOut = some_output.
 %
 eval_I(Self, Form, OOut) :-
-    % Evaluate the form with a timeout using eval_H.
-    eval_H(500, Self, Form, Out),
+    % Evaluate the form with a depth using eval_H.
+    default_depth(DEPTH),
+    eval_H(DEPTH, Self, Form, Out),
     % Enable trace for debugging purposes.
-    trace,
+    %trace,
     % Transform the output.
     xform_out(Out, OOut).
 
@@ -961,12 +964,12 @@ reset_caches :-
 %       Output = ..., FOut = ...
 u_do_metta_exec(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut) :-
     % Reset internal caches before executing the command.
-    reset_caches,
+    woc(reset_caches),
     % Attempt to execute the command interactively, catching any errors.
-    catch(u_do_metta_exec00(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),
+    (catch(u_do_metta_exec00(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),
           Error,
           % If an error occurs, log it along with the source and the term.
-          write_src(error(Error,From,TermV))).
+          write_src(error(Error,From,TermV)))).
 
 each_pair_list(A-B,A,B).
 
@@ -988,14 +991,14 @@ u_do_metta_exec00(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut):-
    catch(u_do_metta_exec000(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),'$aborted', fbug(aborted(From,TermV))).
 
 u_do_metta_exec000(FromLSP,Self,TermV,Term,X,NamedVarsList,Was,OutputL,FOutL):- ground(FromLSP), FromLSP = file(lsp(From)), nonvar(From), !,
-   findall(Output-FOut,u_do_metta_exec01(repl_true,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),List),!,
-   maplist(each_pair_list,List,OutputL,FOutL).
+   woc(findall(Output-FOut,u_do_metta_exec01(repl_true,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),List)),!,
+   woc(maplist(each_pair_list,List,OutputL,FOutL)).
 
 u_do_metta_exec000(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut) :-
     % Attempt the actual execution and catch any '$aborted' exceptions.
-    catch(u_do_metta_exec01(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),
+    (catch(u_do_metta_exec01(From,Self,TermV,Term,X,NamedVarsList,Was,Output,FOut),
           % Handle the '$aborted' exception by logging it.
-          '$aborted', fbug(aborted(From,TermV))).
+          '$aborted', fbug(aborted(From,TermV)))).
 
 %!  u_do_metta_exec01(+From, +Self, +_TermV, +Term, -X, +NamedVarsList, +Was, -VOutput, +FOut) is det.
 %
@@ -1039,7 +1042,8 @@ skip_do_metta_exec(From,Self,TermV,BaseEval,_Term,X,NamedVarsList,_Was,_VOutput,
     option_value('exec',skip), From = file(_Filename), \+ use_metta_compiler,
     \+ always_exec(BaseEval),  \+ always_exec(TermV),
     color_g_mesg('#da70d6', (write('; SKIPPING: '), write_src_woi(TermV))),
-    prolog_only(if_t((TermV\=@=BaseEval),color_g_mesg('#da70d6', (write('\n% Thus: '), writeq(eval_H(500,Self,BaseEval,X)),writeln('.'))))),
+    default_depth(DEPTH),
+    prolog_only(if_t((TermV\=@=BaseEval),color_g_mesg('#da70d6', (write('\n% Thus: '), writeq(eval_H(DEPTH,Self,BaseEval,X)),writeln('.'))))),
     \+ \+ maybe_add_history(Self, BaseEval, NamedVarsList).
 
 maybe_add_history(Self, BaseEval, NamedVarsList) :-
@@ -1056,8 +1060,7 @@ maybe_add_history(Self, BaseEval, NamedVarsList) :-
    prolog_only((color_g_mesg('#da70d6', (write('% DEBUG:   '), writeq(PL), writeln('.'))))).
 
 
-
-u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOut):-
+u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOut):- !,
     notrace((
      if_t(is_interactive(From), \+ \+ maybe_add_history(Self, BaseEval, NamedVarsList)),
      % Was --exec=skip but this is the type of directive we'd do anyways
@@ -1094,7 +1097,7 @@ u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOu
    (
     forall_interactive(
     From, WasInteractive,Complete, %may_rtrace
-      timed_call(GgGgGgGgGgG,Seconds),
+      timed_call((GgGgGgGgGgG),Seconds),
 
 
          (((
@@ -1108,8 +1111,8 @@ u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOu
 
         Cut = _,
         Next = _,
-        ((Stepping==true) ->
-         (repeat,
+        once((((Stepping==true) ->
+         ( repeat, % Q
           old_not_compatio(format("~npress ';' for more solutions ")),get_single_char_key(C),
           old_not_compatio((writeq(key=C),nl)),
          (C=='b' -> (once(repl),fail) ;
@@ -1123,6 +1126,8 @@ u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOu
          (C=='t' -> (nop(set_debug(eval,true)),rtrace,Next=true) ;
          (C=='T' -> (set_debug(eval,true),Next=true);
          (C=='?' -> (print_debug_help,fail)) ;
+         (C=='*' -> (print_last_choicepoint_upwards,fail)) ;
+
          (C==';' -> Next=true ;
          (C==esc('[A',[27,91,65]) -> (Cut=true,Next=false) ;
          (C==esc('[B',[27,91,66]) -> (nb_setarg(3, Control, leap),Cut=false,Next=true) ;
@@ -1133,7 +1138,7 @@ u_do_metta_exec02(From,Self,TermV,BaseEval,Term,_X,NamedVarsList,Was,VOutput,FOu
          (C=='G' -> (bt, Next=false);
          (C=='s' -> (Cut=true,Next=false);
          (true -> (write('Unknown Char'),fail))))))))))))))))))))), % should consume 'b's paren
-         (nonvar(Next);nonvar(Cut))) ; true),
+         (nonvar(Next);nonvar(Cut))) ; true))),
 
             ((Complete==true;Cut==true) ->! ; true),
             (nonvar(Next)->Next==true; true),
@@ -1554,7 +1559,7 @@ into_named_vars(Vars,L):-
 %
 has_sub_var(AllVars,_=V):-
     % Check if V is a sub-variable of any variable in AllVars.
-    sub_var(V,AllVars).
+    sub_var_safely(V,AllVars).
 
 
 %!  underscore_vars(+Var) is nondet.
@@ -1619,6 +1624,7 @@ maybe_set_var_names(List):-
 maybe_set_var_names(List):-
     % If the list is non-empty, set the list of variable names.
     is_list(List),!,
+    nb_linkval('$variable_names',List),
     nb_linkval(variable_names,List).
 maybe_set_var_names(_).
 
@@ -1928,6 +1934,7 @@ interact(Variables, Goal, Tracing) :-
 :- volatile(is_installed_readline_editline/1).
 
 install_readline_editline :-  is_win64,!.
+install_readline_editline :-  is_docker,!.
 install_readline_editline :-
     % Get the current input stream.
     current_input(Input),
@@ -2013,6 +2020,10 @@ add_metta_commands(Input) :-
 %
 %       ?- install_readline(user_input).
 %
+is_docker :- exists_file('/.dockerenv'),!.
+
+install_readline(_Input):- is_docker,!. % too chancy
+install_readline(_Input):- is_win64,!. % already installed
 install_readline(Input):-
     % Check if readline is already installed for this Input.
     is_installed_readline_editline(Input), !.
@@ -2034,6 +2045,7 @@ install_readline(Input):-
     ignore(el_unwrap(Input)),
     % Wrap the input with the Metta readline handler.
     ignore(el_wrap_metta(Input)),
+    load_metta_history_from_txt_file('~/.config/metta/history.txt'),
     % Load command history from a file, if it exists.
     history_file_location(HistoryFile),
     % Check if the history file exists, ensuring we can append to it.
@@ -2049,6 +2061,29 @@ install_readline(Input):-
 
 % Clause to handle non-tty(true) clients, like SWISH or HTTP server requests.
 install_readline(_NoTTY). % For non-tty(true) clients over SWISH/Http/Rest server
+
+
+load_metta_history_from_txt_file(File):-
+   exists_file(File),!,
+   open(File, read, In, [encoding(utf8)]),
+   repeat,
+   read_line_to_string(In, Line),
+   (Line==end_of_file -> ! ;
+     (add_history_file_string(Line),fail)).
+load_metta_history_from_txt_file(File):-
+   expand_file_name(File,List),maplist(load_metta_history_from_txt_file,List).
+
+skip_over_history_txt(Line):- text_to_string(Line,Str),Str\==Line,!,skip_over_history_txt(Line).
+skip_over_history_txt(Line):- atom_concat('#V',_,Line),!.
+skip_over_history_txt(Line):- atom_concat('_H',_,Line),!.
+add_history_file_string(Line):- text_to_string(Line,Str),Str\==Line,!,add_history_file_string(Str).
+add_history_file_string(Line):- skip_over_history_txt(Line),!.
+add_history_file_string(Line):-
+  string_replace(Line,'\\n','\n',String),
+  string_replace(String,'\\t','\t',Str),
+  add_history_string(Str), !.
+
+
 
 %!  install_readline_editline1 is det.
 %
@@ -2091,135 +2126,6 @@ install_readline_editline1 :-
 %    catch(setup_colors, E4, print_message(warning, E4))), % Setup color scheme, catching any errors.
 %   install_readline(Input). % Main installation of readline for Input stream.
 
-%!  command(+KeyCode, -Command) is det.
-%
-%   Maps key codes to corresponding commands for the debugger and terminal interactions.
-%   This predicate associates specific key codes with debugger commands, providing an easy interface for users.
-%
-%   @arg KeyCode The ASCII code of the key pressed.
-%   @arg Command The debugger command associated with that key press.
-%
-%   @example Example of usage:
-%
-%       ?- command(59, Command).
-%       Command = retry.
-%
-command(59, retry).    % ';' to retry the previous goal
-command(115, skip).    % 's' to skip to the next solution
-command(108, leap).    % 'l' to leap (end the debugging session)
-command(103, goals).   % 'g' to show the current goals
-command(102, fail).    % 'f' to force the current goal to fail
-command(116, trace).   % 't' to toggle tracing on or off
-command(117, up).      % 'u' to continue execution without interruption
-command(101, exit).    % 'e' to exit the debugger
-command(97, abort).    % 'a' to abort execution
-command(98, break).    % 'b' to set a breakpoint
-command(99, creep).    % 'c' to proceed step by step
-command(104, help).    % 'h' for help with debugger commands
-command(65, alternatives).    % 'A' to show alternatives for the current goal
-command(109, make).       % 'm' to recompile and reload code (make/0)
-command(67, compile).     % 'C' to compile new code into an executable
-
-:- style_check(-singleton).
-
-% Command implementations
-
-%!  handle_command(+Command, +Variables, +Goal, +Tracing) is det.
-%
-%   Handles debugger commands such as retry, make, compile, and trace.
-%   Each command has specific behavior related to goal tracing, code compilation, or debugging interaction.
-%
-%   @arg Command is the command to be executed.
-%   @arg Variables are the current variables in scope during debugging.
-%   @arg Goal is the current goal being debugged.
-%   @arg Tracing is the tracing mode (e.g., trace_on, trace_off).
-%
-%   This command dispatcher defines custom behavior for interacting with debugging and recompilation processes.
-%
-%   @example Handling the 'make' command:
-%
-%       ?- handle_command(make, Vars, Goal, Tracing).
-%       Recompiling...
-%       true.
-%
-
-% Handle the 'make' command by recompiling the code.
-handle_command(make, Variables, Goal, Tracing) :-
-    writeln('Recompiling...'),
-    % Recompiles the entire code base. This assumes `make/0` is defined in your Prolog system.
-    make,  % Triggers the recompilation process.
-    fail. % Fails to continue interacting after recompilation.
-% Handle the 'compile' command by compiling a new executable.
-handle_command(compile, Variables, Goal, Tracing) :-
-    writeln('Compiling new executable...'),
-    % Compilation logic should go here. For example, using qsave_program/2 to create an executable.
-    % Pseudocode: compile_executable(ExecutableName)
-    fail. % Fails to continue interacting after compilation.
-% Handle the 'alternatives' command by showing alternative clauses for the current goal.
-handle_command(alternatives, Variables, Goal, Tracing) :-
-    writeln('Showing alternatives...'),
-    writeln('Alternatives for current goal:'),
-    writeln(Goal),
-    % Pseudocode for finding and displaying alternatives: find_alternatives(Goal, Alternatives)
-    % Pseudocode for printing alternatives: print_alternatives(Alternatives)
-    fail. % Fails to continue interacting after showing alternatives.
-% Handle the 'help' command by printing help information.
-handle_command(help, Variables, Goal, Tracing) :-
-    print_help,  % A helper predicate to print command help information.
-    fail. % Fails to continue interacting after showing help.
-% Handle the 'abort' command by aborting the execution.
-handle_command(abort, _, _, _) :-
-    writeln('Aborting...'),
-    abort.
-% Handle the 'break' command by setting a breakpoint.
-handle_command(break, Variables, Goal, Tracing) :-
-    writeln('Breakpoint set.'),
-    fail. % Fails to continue interacting after setting a breakpoint.
-% Handle the 'creep' command by entering step-by-step execution mode.
-handle_command(creep, Variables, Goal, Tracing) :-
-    writeln('Creeping...'),  % Step-by-step execution starts here.
-    trace.  % Enables tracing (creep mode).
-% Handle the 'retry' command by retrying the current goal.
-handle_command(retry, Variables, Goal, Tracing) :-
-    writeln('Continuing...'),!.
-% Handle the 'skip' command by skipping the current goal.
-handle_command(skip, Variables, Goal, Tracing) :-
-    writeln('Skipping...').
-% Handle the 'leap' command by exiting trace mode and continuing execution.
-handle_command(leap, _, _, _) :-
-    writeln('Leaping...'), nontrace.  % Exits trace mode and continues execution.
-% Handle the 'goals' command by showing the current goal and variables.
-handle_command(goals, Variables, Goal, Tracing) :-
-    writeln('Current goal:'),
-    writeln(Goal),
-    writeln('Current variables:'),
-    writeln(Variables),
-    bt, fail.  % Displays the current backtrace and fails to continue interacting.
-% Handle the 'fail' command by forcing the current goal to fail.
-handle_command(fail, _, _, _) :-
-    writeln('Forcing failure...'),
-    fail.
-% Handle the 'trace' command by toggling tracing on and off.
-handle_command(trace, Variables, Goal, Tracing) :-
-    (Tracing == trace_on ->
-        NewTracing = trace_off,
-        writeln('Tracing disabled.')
-    ;   NewTracing = trace_on,
-        writeln('Tracing enabled.')
-    ),
-    interact(Variables, Goal, NewTracing).  % Continue interacting with the updated tracing state.
-% Handle the 'up' command by continuing execution until the next traceable goal.
-handle_command(up, Variables, Goal, Tracing) :-
-    writeln('Continuing up...'),
-    repeat,
-    ( trace_goal(Goal, Tracing) -> true ; !, fail ).
-% Handle the 'exit' command by exiting the debugger.
-handle_command(exit, _, _, _) :-
-    writeln('Exiting debugger...'), !.  % Cuts to ensure we exit the debugger.
-
-% Directive to disable singleton variable warnings, which may occur often in dynamic code.
-:- style_check(+singleton).
-
 
 %!  print_help is det.
 %
@@ -2255,4 +2161,5 @@ print_debug_help :-
     %writeln('(I)  info             - Show information about the current state.'),
     !.
 
+:- find_missing_cuts.
 

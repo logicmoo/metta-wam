@@ -174,11 +174,14 @@ make_test_name(FilePath0, Number, TestName) :-
     string_upper(Base, UpperBase),
     % Replaces underscores with hyphens in the base name.
     string_replace(UpperBase, "_MW", "", NOMW),
-    string_replace(NOMW, "_", "-", NoUnderscore),
+    string_replace(NOMW, "_", "-", NoUnderscore0),
     % Replaces underscores with hyphens in the parent directory name.
-    string_replace(UpperParentDirBase, "_", "-", NoUnderscoreParent),
+    string_replace(UpperParentDirBase, "_", "-", NoUnderscoreParent0),
     % Formats the test number as a zero-padded two-digit string.
     wots(NS, format('~`0t~d~2|', [Number])),
+    compiled_or_interp(CorI),
+    sformat(NoUnderscore,'~w~w',[NoUnderscore0,CorI]),
+    sformat(NoUnderscoreParent,'~w~w',[NoUnderscoreParent0,CorI]),
     % Combines parent directory, file base, and test number to form the test name.
     format(string(TestName), "~w.~w.~w", [NoUnderscoreParent, NoUnderscore, NS]).
 
@@ -406,11 +409,11 @@ give_pass_credit(TestSrc, _Pre, _G) :-
 give_pass_credit(TestSrc, _Pre, G) :-
     % Logs the test as passed with 'PASS' status.
     must_det_lls((
-    ignore(write_pass_fail(TestSrc, 'PASS', G)),
+    if_t(is_testing,ignore(write_pass_fail(TestSrc, 'PASS', G))),
     % Increments the success counter.
     flag(loonit_success, X, X + 1),
     % Displays a success message in cyan color.
-    color_g_mesg(cyan, ignore(write_src_wi(loonit_success(G)))))), !.
+    if_t(is_testing,color_g_mesg(cyan, ignore(write_src_wi(loonit_success(G))))))), !.
 
 %!  write_pass_fail(+TestDetails, +Status, +Goal) is det.
 %
@@ -465,12 +468,14 @@ write_pass_fail(TestName, P, C, PASS_FAIL, G1, G2) :-
         file_name_extension(Base, _, R))),
         % Optional format output for HTML log entry.
         nop(format('<h3 id="~w">;; ~w</h3>', [TestName, TestName])),
+        compiled_or_interp_html(CompOrInterp),
         % Log test details deterministically.
         must_det_ll((
             (tee_file(TEE_FILE) -> true ; 'TEE.ansi' = TEE_FILE),
             ((
                 % Retrieve or create HTML file name.
-                once(getenv('HTML_FILE', HTML_OUT) ; sformat(HTML_OUT, '~w.metta.html', [Base])),
+                once(getenv('HTML_FILE', HTML_OUT0) ; sformat(HTML_OUT0, '~w.metta.html', [Base])),
+                sformat(HTML_OUT,'~w~w',[HTML_OUT0,CompOrInterp]),
                 % Compute and store a per-test HTML output.
                 compute_html_out_per_test(HTML_OUT, TEE_FILE, TestName, HTML_OUT_PerTest),
                 % Measure and format the duration of the last call.
@@ -481,7 +486,7 @@ write_pass_fail(TestName, P, C, PASS_FAIL, G1, G2) :-
              ignore((   shared_units(UNITS),
              catch(setup_call_cleanup(
                 open(UNITS, append, Stream, [encoding(utf8)]),
-                format(Stream,'| ~w | ~w |[~w](https://logicmoo.github.io/metta-wam/~w#~w) | ~@ | ~@ | ~@ | ~w | ~w |~n',
+                format(Stream,'| ~w | ~w |[~w](https://logicmoo.github.io/metta-testsuite/~w#~w) | ~@ | ~@ | ~@ | ~w | ~w |~n',
                     [TestName,PASS_FAIL,TestName,HTML_OUT,TestName,
                     trim_gstring_bar_I(write_src_woi([P,C]),600),
                     trim_gstring_bar_I(write_src_woi(G1),600),
@@ -490,6 +495,12 @@ write_pass_fail(TestName, P, C, PASS_FAIL, G1, G2) :-
                     HTML_OUT_PerTest]),
                 % Close the log stream
                 close(Stream)),_,true))))))).
+
+
+compiled_or_interp('-COMP'):- option_value('compile', 'full'),!.
+compiled_or_interp('').
+compiled_or_interp_html('-COMP.html'):- option_value('compile', 'full'),!.
+compiled_or_interp_html('').
 
 % Needs not to be absolute and not relative to CWD (since tests like all .metta files change their local CWD at least while "loading")
 
@@ -610,7 +621,7 @@ trim_gstring_bar_I(Goal, MaxLen) :-
     atom_length(String, Len),
     (   Len =< MaxLen
     ->  Trimmed = String
-    ;   (sub_string(String, 0, MaxLen, LeftOver, SubStr),
+    ;   (sub_string(String, LeftOver, MaxLen, 0, SubStr),
         format(string(Trimmed), '~w...(~w)', [SubStr, LeftOver]))
     ),
     write(Trimmed).
@@ -864,7 +875,7 @@ loonit_asserts1(TestSrc, Pre, G) :-
     !.
 /*
 loonit_asserts1(TestSrc,Pre,G) :-  fail,
-    sub_var('BadType',TestSrc), \+ check_type,!,
+    sub_var_safely('BadType',TestSrc), \+ check_type,!,
     write('\n!check_type (not considering this a failure)\n'),
     color_g_mesg('#D8BFD8',write_src_wi(loonit_failureR(G))),!,
     ignore(((
@@ -883,8 +894,12 @@ loonit_asserts1(TestSrc, Pre, G) :-
         if_t(option_value('on-fail', 'trace'),
             setup_call_cleanup(debug(metta(eval)), call((Pre, G)), nodebug(metta(eval)))
         )
-    )).
+    )),
+    devel_trace(loonit_failureR,G).
     % (thread_self(main)->trace;sleep(0.3)
+
+devel_trace(_,Why):- ignore(( fail, gethostname(X),X=='HOSTAGE',!,
+  copy_term(Why,Cp,Goals),Cp=Why, trace, Goals=_,Cp=_, call(Why))).
 
 % Generate loonit report with colorized output
 :- dynamic(gave_loonit_report/0).
@@ -1178,16 +1193,26 @@ load_answer_file(Base) :-
 
 
 
-calc_answer_file(RelFile,AnsFile):- \+ atom_concat(_, metta, RelFile),
+calc_answer_file(_Base,AnsFile):- getenv(hyperon_results,AnsFile),exists_file(AnsFile),!.
+calc_answer_file(RelFile,AnsFile):- nonvar(RelFile),
     (   \+ atom(RelFile); \+ is_absolute_file_name(RelFile); \+ exists_file(RelFile)),
     % Resolve to an absolute file path if necessary.
-    absolute_file_name(RelFile, AnsFile), RelFile\=@=AnsFile.
+    absolute_file_name(RelFile, MidFile), RelFile\=@=MidFile,
+    exists_file(MidFile),
+    calc_answer_file(MidFile,AnsFile),!.
 calc_answer_file(AnsFile,AnsFile):- \+ atom_concat(_, metta, AnsFile),!.
-calc_answer_file(_Base,AnsFile):- getenv(hyperon_results,AnsFile),exists_file(AnsFile),!.
 % Finds a file using expand_file_name for wildcard matching.
 calc_answer_file(MeTTaFile,AnsFile):-  atom_concat(MeTTaFile, '.?*', Pattern),
-        expand_file_name(Pattern, Matches), Matches = [AnsFile|_], !. % Select the first match
+        expand_file_name(Pattern, Matches), member(AnsFile,Matches), ok_ansfile_name(AnsFile),  !. % Select the first match
 calc_answer_file(Base,AnsFile):- ensure_extension(Base, answers, AnsFile),!.
+
+ok_ansfile_name(AnsFile):- \+ symbol(AnsFile),!,fail.
+ok_ansfile_name(AnsFile):- skip_ans_ext(Htm),symbol_concat(_,Htm,AnsFile),!,fail.
+ok_ansfile_name(_).
+skip_ans_ext(Htm):- arg(_, v('tmp', 'bak', 'html', '~', 'sav', 'ansi', 'pl', 'metta',
+             'py', 'txt', 'md', 'tee', 'o', 'dll', 'so', 'exe', 'sh', 'text', 'rc',
+            'mettalogrc', 'bat', 'c', 'java', 'datalog', 'in', 'out', 'xml', 'obo'), Htm).
+
 
 %!  load_answer_file_now(+File) is det.
 %
@@ -1302,7 +1327,7 @@ load_answer_stream(Nth, StoredAs, String, Stream) :- % string_concat("[", _, Str
     % Store the parsed answer.
     pfcAdd_Now(file_answers(StoredAs, Nth, Metta)),
     % Skip if the answer contains a comma.
-    skip(must_det_ll(\+ sub_var(',', Metta))),
+    skip(must_det_ll(\+ sub_var_safely(',', Metta))),
     % Increment index and continue processing next line.
     Nth2 is Nth + 1,
     load_answer_stream(Nth2, StoredAs, Stream).
@@ -1373,7 +1398,7 @@ parse_answer_inner(Inner0, Metta) :-
         % Parse modified string Inner into Metta.
         parse_answer_str(Inner, Metta),
         % Skip processing if Metta meets the specified condition.
-        skip((\+ sub_var(',', rc(Metta))))
+        skip((\+ sub_var_safely(',', rc(Metta))))
     )).
 
 %!  parse_answer_str(+Inner0, -Metta) is det.
@@ -1394,16 +1419,16 @@ parse_answer_inner(Inner0, Metta) :-
 parse_answer_str(Inner, [C|Metta]) :-
     atomics_to_string(["(", Inner, ")"], Str),parse_sexpr_metta(Str, CMettaC), CMettaC = [C|MettaC],
     % Remove commas from MettaC to create Metta, if conditions are met.
-    ((remove_m_commas(MettaC, Metta),\+ sub_var(',', rc(Metta)))).
+    ((remove_m_commas(MettaC, Metta),\+ sub_var_safely(',', rc(Metta)))).
 % Handle concatenated symbols in Inner0 by converting them into a list and parsing each element.
 parse_answer_str(Inner0, Metta) :- symbolic_list_concat(InnerL, ' , ', Inner0),
     maplist(atom_string, InnerL, Inner),maplist(parse_sexpr_metta, Inner, Metta),
-    skip((must_det_ll(( \+ sub_var(',', rc2(Metta)))))), !.
+    skip((must_det_ll(( \+ sub_var_safely(',', rc2(Metta)))))), !.
 % Apply replacements in Inner0 and parse as a single expression.
 parse_answer_str(Inner0, Metta) :-
     ((replace_in_string([' , '=' '], Inner0, Inner),atomics_to_string(["(", Inner, ")"], Str), !,
-    parse_sexpr_metta(Str, Metta), !,skip((must_det_ll(\+ sub_var(',', rc3(Metta))))),
-    skip((\+ sub_var(',', rc(Metta)))))).
+    parse_sexpr_metta(Str, Metta), !,skip((must_det_ll(\+ sub_var_safely(',', rc3(Metta))))),
+    skip((\+ sub_var_safely(',', rc(Metta)))))).
 %parse_answer_string(String,Metta):- String=Metta,!,fail.
 
 parse_sexpr_metta(Str,Metta):- notrace(catch(parse_sexpr_untyped(Str,Metta),_,fail)).
@@ -1422,7 +1447,7 @@ parse_sexpr_metta(Str,Metta):- notrace(catch(parse_sexpr_untyped(Str,Metta),_,fa
 %
 
 % Return the list as-is if it contains no commas as variables.
-remove_m_commas(Metta, Metta) :- \+ sub_var(',', Metta), !.
+remove_m_commas(Metta, Metta) :- \+ sub_var_safely(',', Metta), !.
 % Remove 'and' from the beginning of the list and continue processing.
 remove_m_commas([C, H | T], [H | TT]) :- C == 'and', !, remove_m_commas(T, TT).
 % Remove ',' from the beginning of the list and continue processing.
@@ -1539,7 +1564,7 @@ dte :- gset(_X.global) = gval.
 dte :- must_det_ll((set(_X.a) = b)).
 % Use `must_det_ll` to ensure that `nb_setval/2` runs locally and call `dte` recursively
 % with a modified term involving `X.tail`.
-dte :- must_det_ll(locally(nb_setval(e, X.locally), dte([foo | set(X.tail)]))).
+dte :- must_det_ll(locally(b_setval(e, X.locally), dte([foo | set(X.tail)]))).
 % Check if `set(V.element)` is a member of `set(V.list)`.
 dte :- member(set(V.element), set(V.list)).
 % Define a specific expansion for `dte/1` with input `set(E.v)` when `set(E.that)` equals `v`.

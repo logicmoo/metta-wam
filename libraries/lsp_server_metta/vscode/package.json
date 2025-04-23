@@ -5,7 +5,7 @@
   "author": "Roy Ward",
   "license": "LGPL-3.0",
   "publisher": "RoyWard",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "categories": [
     "Other"
   ],
@@ -129,6 +129,18 @@
           "default": true,
           "description": "Enables integration with ChatGPT for enhanced code assistance, leveraging AI to augment coding capabilities."
         },
+        "metta-lsp.xtras.chatgpt.alternateUrl": {
+          "scope": "window",
+          "type": "string",
+          "default": "",
+          "description": "Specifies the URL used for sending requests to a non-OpenAI (presumably local) LLM model."
+        },
+        "metta-lsp.xtras.chatgpt.inlineCompletion": {
+          "scope": "window",
+          "type": "boolean",
+          "default": false,
+          "description": "Enable the configured LLM as a source for completions. Note this may slow down completion options being disabled significantly."
+        },
         "metta-lsp.xtras.chatgpt.apiKey": {
           "scope": "window",
           "type": "string",
@@ -162,7 +174,7 @@
             "stdio",
             "port"
           ],
-          "default": "stdio",
+          "default": "port",
           "description": "Determines how the LSP server is launched: using standard I/O (stdio) or a TCP port."
         },
         "metta-lsp.server.spawnProcess": {
@@ -182,6 +194,24 @@
           "type": "string",
           "default": "127.0.0.1",
           "description": "If using 'port' mode with spawnProcess=false, the hostname or IP address to connect to. Defaults to localhost (127.0.0.1)."
+        },
+        "metta-lsp.server.swiplPath": {
+          "scope": "window",
+          "type": "string",
+          "default": "swipl",
+          "description": "Path to swipl binary to run"
+        },
+        "metta-lsp.server.debugLsp": {
+          "scope": "window",
+          "type": "boolean",
+          "default": false,
+          "description": "When true, load the LSP from `mettalogPath` instead of the installed pack."
+        },
+        "metta-lsp.server.mettalogPath": {
+          "scope": "window",
+          "type": "string",
+          "default": "",
+          "description": "Path to Mettalog installation. Used when 'debugLsp' is true."
         }
       }
     },

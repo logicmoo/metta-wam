@@ -104,7 +104,7 @@ ppc(Msg, Term) :-
 %   This predicate attempts to print Term in a structured format. It calls `ppct/2`
 %   for terms that match specific patterns, or uses a generalized pretty-printing
 %   structure if none of the patterns apply. Additional information such as source
-%   representation (`write_src/1`) and conversion trees (`print_tree/1`) is also
+%   representation (`write_src/1`) and conversion trees (`ppt/1`) is also
 %   displayed to enhance readability.
 %
 %   @arg Msg  A message or label associated with this printout for context.
@@ -116,21 +116,23 @@ ppc(Msg, Term) :-
 %
 ppc1(Msg, Term) :-
     % Attempt to print Term with ppct, handling specific term structures.
-    \+ \+ (ppct(Msg, Term)), !.
+    undo_bindings(ppct(Msg, Term)), !.
 ppc1(Msg, Term) :-
     % Generalized pretty-printing block.
-    \+ \+ (
+    undo_bindings((
         ignore(guess_pretty(Term)),  % Use heuristic to pretty-print if available.
         writeln('---------------------'),
         write(p(Msg)), write(':'), nl,
         portray_clause(Term),  % Print Term in clause form.
         writeln('---------------------'),
         % Display the conversion tree if available.
-        \+ \+ (print_tree(?-show_cvts(Term))), nl,
+        undo_bindings(ppt(?-show_cvts(Term))), nl,
         writeln('---------------------'),
         write(s(Msg)), write(':'), nl,
         write_src(Term), nl  % Display source representation.
-    ).
+    )).
+
+undo_bindings(G):- \+ \+ woc(call(G)).
 
 dont_numbervars(_,_,_,_).
 
@@ -172,7 +174,7 @@ ppct(Msg, Term) :-
     writeln('---------------------'),
     write((Msg)), write(':'), nl,
     dont_numbervars(Term, 222, _, [attvar(skip)]),
-    print_tree(Term), nl.
+    ppt(Term), nl.
 
 %!  pp_metta(+P) is det.
 %
@@ -286,7 +288,7 @@ print_pl_source0(_) :-
 
 print_pl_source0(P) :- fail,!,
     format('~N'),
-    print_tree(P),
+    ppt(P),
     format('~N'), !.
 
 print_pl_source0(P) :-
@@ -299,13 +301,13 @@ print_pl_source0((:- B)) :-
     % For directives (:- B), display using portray_clause.
     !,portray_clause((:- B)).
 print_pl_source0(P) :-
-    % Default printing using `print_tree/1`.
+    % Default printing using `ppt/1`.
     format('~N'),
-    print_tree(P),
+    ppt(P),
     format('~N'), !.
 print_pl_source0(P) :-
     % Try different display actions and choose the output with the least height.
-    Actions = [print_tree, portray_clause, pp_fb1_e],
+    Actions = [ppt, portray_clause, pp_fb1_e],
     % For each action, produce output and measure its height.
     findall(
         H - Pt,
@@ -348,7 +350,7 @@ pp_fb1_a(P) :-
     % Begin with a newline for cleaner output.
     format("~N "),
     % Apply variable numbering to P.
-    \+ \+ (numbervars_w_singles(P),
+    undo_bindings(numbervars_w_singles(P),
     % Pretty-print P using `pp_fb1_e/1`.
     pp_fb1_e(P)),
     % End with a newline and flush output.
@@ -366,8 +368,8 @@ pp_fb1_a(P) :-
 %   @arg P The Prolog term to be printed.
 %
 pp_fb1_e(P) :-
-    % Attempt to print P using `print_tree`.
-    pp_fb2(print_tree, P).
+    % Attempt to print P using `ppt`.
+    pp_fb2(ppt, P).
 pp_fb1_e(P) :-
     % Attempt to print P using `pp_ilp`.
     pp_fb2(pp_ilp, P).
@@ -524,28 +526,41 @@ write_val(V) :-
 %     % Final formatting for a Prolog variable.
 %     ?- is_final_write('$VAR'(example_variable)).
 %
-is_final_write(V) :-
-    % If V is an unbound variable, write it with `write_dvar/1`.
-    var(V), !, write_dvar(V), !.
-is_final_write('$VAR'(S)) :-
-    % For '$VAR' structures, write the variable name S.
-    !,  write_dvar(S), !.
-is_final_write('#\\'(S)) :-
-    % For special character format `#\S`, write S in single quotes.
-    !, format("'~w'", [S]).
-is_final_write(V) :-
-    % If Python mode is enabled and V is a Python object, format with `py_ppp/1`.
-    py_is_enabled, notrace(catch((py_is_py(V), !, py_ppp(V)),_,fail)), !.
-is_final_write([VAR, V | T]) :-
-    % For lists like ['$VAR', Value], write the variable if the tail is empty.
-    '$VAR' == VAR, T == [], !, write_dvar(V).
-is_final_write('[|]') :-
-    % For '[|]' (empty list), represent it as 'Cons'.
-    write('Cons'), !.
-is_final_write([]) :-
-    % For an empty list, write it as '()'.
-    !, write('()').
+
+is_final_write(V) :- current_printer_override(P1), catch(call(P1, V),_,fail),!.
+% If V is an unbound variable, write it with `write_dvar/1`.
+is_final_write(V) :- var(V), !,  write_dvar(V), !.
+% For '$VAR' structures, write the variable name S.
+is_final_write('$VAR'(S)) :- !,  write_dvar(S), !.
+% For special character format `#\S`, write S in single quotes.
+is_final_write('#\\'(S)) :- !, format("'~w'", [S]).
+% For special character format `#\S`, write S in single quotes.
+is_final_write('rng'(Id,_,_)) :- !, format("~w", [Id]).
+is_final_write('rng'(Id,_)) :- !, format("~w", [Id]).
+% Big number use underscores betten them
+is_final_write(V) :- integer(V), V>900_000, catch(format('~I',[V]),_,fail),!.
+% If Python mode is enabled and V is a Python object, format with `py_ppp/1`.
+is_final_write(V) :- py_is_enabled, notrace(catch((py_is_py(V), !, py_ppp(V)),_,fail)), !.
+% For lists like ['$VAR', Value], write the variable if the tail is empty.
+is_final_write([VAR, V | T]) :- '$VAR' == VAR, T == [], !, write_dvar(V).
+% For '[|]' (empty list), represent it as 'Cons'.
+is_final_write('[|]') :- write('Cons'), !.
+% For an empty list, write it as '()'.
+is_final_write([]) :- !, write('()').
+
+is_final_write(A:B) :- write_src(A),write(':'),write_src(B),!.
+
 %is_final_write([]):- write('Nil'),!.
+is_final_write(A) :- fail, \+ is_list(A), compound(A), A \= exec(_),
+  \+ ((sub_term_safely(E,A), is_list(E))),
+  catch(portray_clause(A),_,fail), !.
+
+
+current_printer_override(P1):- nb_current('printer_override', P1),!,P1\==[].
+with_write_override(P1, Goal):-
+  locally(b_setval('printer_override',P1), Goal).
+:- thread_initialization(nb_setval('printer_override',[])).
+
 
 %!  write_dvar(+S) is det.
 %
@@ -564,28 +579,32 @@ is_final_write([]) :-
 %     ?- write_dvar('__').
 %     $
 %
-write_dvar(S) :-
-    % If S is an underscore, output the name directly.
-    S == '_', !, write('$_').
-write_dvar(S) :-
-    % If S is a double underscore, write `$` to represent it.
-    S == '__', !, write('$').
-write_dvar(S) :-
-    % For an unbound variable, get its name and write it.
-    var(S), get_var_name(S, N), write_dvar(N), !.
-write_dvar(S) :-
-    % For an unbound variable without a name, format it as `$<variable>`.
-    var(S), !, format('$~p', [S]).
-write_dvar(S) :-
-    % If S is an atom prefixed with an underscore, write its name.
-    atom(S), symbol_concat('_', N, S), write_dname(N).
-write_dvar(S) :-
-    % If S is a string prefixed with an underscore, write its name.
-    string(S), symbol_concat('_', N, S), write_dname(N).
-%write_dvar(S):- number(S), write_dname(S).
-write_dvar(S) :-
-    % Default case: write the name directly.
-    write_dname(S).
+write_dvar(S):- mvar_str(S,N),write_dname(N) ,!.
+
+mvar_str(S,N) :- % If S is an underscore, output the name directly.
+    S == '_', !, sformat(N,'~w',['_']).
+mvar_str(S,N) :- % If S is a double underscore, write `$` to represent it.
+    S == '__', !, sformat(N,'~w',['']).
+mvar_str(S,N) :- % If S is an atom prefixed with an underscore, write its name.
+    atom(S), symbol_concat('_', NS, S), sformat(N,'~w',[NS]).
+mvar_str(S,N) :- % If S is a string prefixed with an underscore, write its name.
+    string(S), symbol_concat('_', NS, S), sformat(N,'~w',[NS]).
+mvar_str(S,N) :- % For an unbound variable, get its name and write it.
+   var(S), get_snamed(S, Name), nonvar(Name), !, mvar_str(Name,N).
+mvar_str(S,N) :- % For an unbound variable without a name, format it as `$<variable>`.
+   attvar(S), get_attr(S,vn,Name),!, mvar_str(Name,N).
+mvar_str(S,N) :- % For an unbound variable without a name, format it as `$<variable>`.
+   attvar(S), notrace,ignore(nortrace),
+   with_output_to(string(SS),ignore((get_attrs(S,Attrs),display(Attrs)))),
+   trace,
+   sformat(N,'a-~w-~w', [SS,S]). % bou
+mvar_str(S,N) :- % For an unbound variable without a name, format it as `$<variable>`.
+    var(S), !, sformat(N,'~p', [S]).
+mvar_str('$VAR'(S),N) :- number(S), !, sformat(N,'~p', ['$VAR'(S)]).
+mvar_str('$VAR'(S),N) :- !, mvar_str(S,N).
+%mvar_str(S,N):- number(S,N), sformat(N,S,N).
+mvar_str(S,N) :- % Default case: write the name directly.
+    sformat(N,'~w',[S]).
 
 %!  write_dname(+S) is det.
 %
@@ -616,7 +635,7 @@ write_dname(S) :-
 %
 pp_as(V) :-
     % Apply `pp_sex/1` to format and print V, flushing output afterward.
-    \+ \+ pp_sex(V), flush_output.
+    undo_bindings(pp_sex(V), flush_output).
 
 %!  pp_sex_nc(+V) is det.
 %
@@ -679,7 +698,7 @@ into_hyphens(D, U) :-
 unlooped_fbug(W, Mesg) :-
     % Check if W is already set to avoid looping; if so, print Mesg and break.
     nb_current(W, true), !,
-    print(Mesg), nl, bt, break.
+    writeq(Mesg), nl, bt, break.
 unlooped_fbug(W, Mesg) :-
     % Otherwise, safely set W and execute Mesg once, cleaning up afterward.
     setup_call_cleanup(
@@ -715,7 +734,7 @@ py_is_enabled :-
     % If defined, assert `py_is_enabled/0` to cache the enabled state.
     asserta((py_is_enabled :- !)).
 
-%write_src(V):-  !, \+ \+ quietly(pp_sex(V)),!.
+%write_src(V):-  !, undo_bindings(quietly(pp_sex(V))),!.
 
 %!  write_src_wi(+V) is det.
 %
@@ -742,27 +761,49 @@ write_src_wi(V) :-
 %   @arg V The term to be written as source.
 %
 write_src(V) :-
+ % display(v=V),
+ no_type_unification((
     % Guess variables in V and pretty-print using `pp_sex/1`.
-    \+ \+ pnotrace((number_src_vars(V, I, Goals),
-               copy_term_nat(I+Goals,Nat+NatGoals), pp_sex(Nat),
-               maybe_write_goals(NatGoals))), !.
+    undo_bindings(pnotrace((
+               gather_src_and_goal(V,Nat,NatGoals),
+               once((pp_sex(Nat))),
+               maybe_write_goals(NatGoals)))))), !.
+
+bou:attr_portray_hook(Val,_V):- copy_term(Val,_,Info),!,format(' bou ~w ',[Info]),!. %writeq(break_on_unify(V,Val)),write(' ').
+bou:attr_unify_hook(_,_):- bt,!,trace,break.
+bou:attribute_goals(V) --> {get_attr(V,bou,Val)},[break_on_unify(V,Val)].
+
+break_on_unify(_,_):-!. % disables `break_on_unify`
+break_on_unify(GG,G):- var(G),!,put_attr(G,bou, (GG)).
+break_on_unify(GG,G):-
+    term_variables(G,Vs),
+    maplist(break_on_unify(GG),Vs).
 
 print_compounds_special:- true.
-src_vars(V,I):- var(V),!,I=V.
-src_vars(V,I):- %ignore(guess_metta_vars(V)),
-             must_det_lls((
-              pre_guess_varnames(V,II),call(II=V),
-              guess_varnames(II,I),
+src_vars(V,I):- nb_current(suspend_type_unificaton, true),!,V=I.
+%src_vars(V,I):- var(V),!,I=V.
+src_vars(V,O):- %ignore(guess_metta_vars(V)),
+             no_type_unification((((must_det_lls((
+              guess_varnames(V,I),
               nop(ignore(dont_numbervars(I,400,_,[singleton(true),attvar(skip)]))),
-              nop(materialize_vns(I)))).
+              materialize_vns(I,IO),
+             pre_guess_varnames(IO,O),call(IO=O))))))).
 pre_guess_varnames(V,I):- \+ compound(V),!,I=V.
 pre_guess_varnames(V,I):- ground(V),!,I=V.
-pre_guess_varnames(V,I):- copy_term_nat(V,VC),compound_name_arity(V,F,A),compound_name_arity(II,F,A), metta_file_buffer(_, _, _, II, Vs, _,_), Vs\==[], copy_term_nat(II,IIC), VC=@=IIC, II=I,maybe_name_vars(Vs),!.
-pre_guess_varnames(V,I):- is_list(V),!,maplist(pre_guess_varnames,V,I).
-pre_guess_varnames(C,I):- compound_name_arguments(C,F,V),!,maplist(pre_guess_varnames,V,VV),compound_name_arguments(I,F,VV),!.
+%pre_guess_varnames(V,I):- copy_term_nat(V,VC),compound_name_arity(V,F,A),compound_name_arity(II,F,A), metta_file_buffer(_, _, _, II, Vs, _,_), Vs\==[], copy_term_nat(II,IIC), VC=@=IIC, II=I,maybe_name_vars(Vs),!.
+%pre_guess_varnames(V,I):- is_list(V),!,maplist(pre_guess_varnames,V,I).
+%pre_guess_varnames(C,I):- compound_name_arguments(C,F,V),!,maplist(pre_guess_varnames,V,VV),compound_name_arguments(I,F,VV),!.
 pre_guess_varnames(V,V).
 
-write_w_attvars(Term):- \+ \+ write_w_attvars0(Term).
+wsv:- cls, parse_sexpr("!($X)",P),rtrace(write_src(P)).
+
+gather_src_and_goal(V,Nat,NatGoals):- ground(V),!,Nat= V, NatGoals=[].
+gather_src_and_goal(V,Nat,NatGoals):-
+    number_src_vars(V, I, Goals),
+    copy_term_nat(I+Goals,Nat+NatGoals),
+    break_on_unify(V,Nat+NatGoals).
+
+write_w_attvars(Term):- undo_bindings(no_type_unification((write_w_attvars0(Term)))).
 
 write_w_attvars0(Term):-
    number_src_vars(Term,PP,Goals),
@@ -770,35 +811,51 @@ write_w_attvars0(Term):-
    writeq(Nat),
    maybe_write_goals(NatGoals), !.
 
+number_src_vars(V, I, Goals):- ground(V),!, I= V, Goals=[].
 number_src_vars(Term,TermC,Goals):-
+ no_type_unification((
   must_det_lls((
+    term_variables(Term,TermVars),
     src_vars(Term,PP),
-    copy_term(Term,TermC,Goals),
+    copy_term(Term+TermVars,TermC+TermVarsC,Goals),
     % copy_term(Goals,CGoals,GoalsGoals),
     PP = TermC,
     must(PP = Term),
-    materialize_vns(PP),
+    maplist(transfer_varname,TermVars,TermVarsC),
+    %materialize_vns(PP),
+    %materialize_vns(TermVarsC),
     nop(ignore(dont_numbervars(PP,260,_,[singleton(true),attvar(skip)]))),
-    nop(ignore(dont_numbervars(PP,26,_,[singleton(true),attvar(bind)]))))).
 
+    nop(ignore(dont_numbervars(PP,26,_,[singleton(true),attvar(bind)]))))))).
+
+transfer_varname(V,C):- nonvar(V),!,V=C.
+transfer_varname(V,C):- nonvar(C),!,V=C.
+transfer_varname(V,C):- ignore((catch((get_attr(V,vn,Named),put_attr(C,vn,Named)),E,(trace,writeln(E))))).
 
 once_writeq_nl_now(P) :-
-    \+ \+ (pnotrace((
+    undo_bindings(pnotrace((no_type_unification((
              format('~N'),
              write_w_attvars(P),
-             format('~N')))).
+             format('~N')))))).
 
-:- nb_setval('$write_goals',[]).
+:- thread_initialization(nb_setval('suspend_type_unificaton',[])).
+no_type_unification(G):-
+  locally(b_setval(suspend_type_unificaton, true),G).
+
+
+:- thread_initialization(nb_setval('$write_goals',[])).
 
 with_written_goals(Call):-
-   locally(nb_setval('$write_goals',true),Call).
+   locally(b_setval('$write_goals',true),Call).
 
 maybe_write_goals(_Goals):- \+ nb_current('$write_goals',true), !.
 maybe_write_goals(Goals):-
    exclude(is_f_nv,Goals,LGoals),
-   if_t(LGoals\==[],format(' {~q} ', [LGoals])).
+   if_t(LGoals\==[],format(' {<~q>} ', [LGoals])).
    %if_t(LGoals\==[],with_output_to(user_error,ansi_format([fg(yellow)], ' {~q} ', [LGoals]))).
-is_f_nv(F):- compound(F), functor(F,name_variable,2,_).
+is_f_nv(P):- compound(P), functor(P,F,A,_), !, is_f_nv(F,A).
+is_f_nv(break_on_unify,2). is_f_nv(name_variable,2).
+
 
 % Standardize variable names in `P` and print it using `ansi_format`.
 % Use `nb_setval` to store the printed term in `$once_writeq_ln`.
@@ -812,20 +869,32 @@ once_writeq_nl_now(Color,P) :- w_color(Color,once_writeq_nl_now(P)).
 %
 write_src_nl(Src) :-
     % Print a newline, the source line, and another newline.
-    \+ \+ (must_det_ll((
+    undo_bindings(must_det_ll((
                (format('~N'), write_src(Src),
                 format('~N'))))).
 
 
 w_color(Color,Goal):-
-    \+ \+ (must_det_ll((
+    undo_bindings(must_det_ll((
            wots(Text,Goal),
            with_output_to(user_error,ansi_format([fg(Color)], '~w', [Text]))))).
 
-materialize_vns(Term):- term_variables(Term,List), maplist(materialize_vn,List).
-materialize_vn(Var):- \+ attvar(Var),!.
-materialize_vn(Var):- get_attr(Var,vn,NN),ignore((Var = '$VAR'(NN))),!.
-materialize_vn(_).
+materialize_vns(Term,NewTerm):- term_attvars(Term,List), materialize_vnl(List,Term,MidTerm),!,term_variables(MidTerm,MList),materialize_vnl(MList,MidTerm,NewTerm),!.
+materialize_vnl([],IO,IO):-!.
+materialize_vnl([Var|List],Term,NewTerm):- get_vnamed(Var,VNamed), subst001(Term,Var,VNamed,MidTerm),!,materialize_vnl(List,MidTerm,NewTerm).
+materialize_vnl([_|List],Term,NewTerm):- materialize_vnl(List,Term,NewTerm).
+
+get_snamed(Var, SNamed):- attvar(Var), get_attr(Var,vn,NN), atom_string(NN,SNamed),!.
+get_snamed(Var, SNamed):- var(Var), get_var_name(Var, N), atom_string(N,SNamed),!.
+get_snamed(Var, SNamed):- var(Var), variable_name(Var, N), atom_string(N,SNamed),!.
+get_snamed(Var, SNamed):- var(Var), sformat(N,'~q',[Var]), atom_string(N,SNamed),!.
+
+get_vnamed(Var, VNamed):- get_snamed(Var, Name), into_vnamed(Name,VNamed),!.
+get_vnamed(Var, _Named):- \+ compound(Var),!,fail.
+get_vnamed('$VAR'(N), VNamed):- into_vnamed(N,VNamed),!.
+get_vnamed('$'(N), VNamed):- into_vnamed(N,VNamed),!.
+
+into_vnamed(S,'$VAR'(NS)):- mvar_str(S,N),sformat(NS,'_~w',[N]).
 
 %!  write_src_woi(+Term) is det.
 %
@@ -853,9 +922,9 @@ write_src_woi(Term) :-
 %
 write_src_woi_nl(X) :-
     % Guess variables in X, add newlines, and write without indentation.
-    \+ \+ pnotrace((
+    undo_bindings(pnotrace((
         format('~N'), write_src_woi(X), format('~N')
-    )).
+    ))).
 
 %!  pp_sex(+V) is det.
 %
@@ -890,14 +959,14 @@ pp_sexi(V) :-
     is_final_write(V), !.
 pp_sexi(V) :-
     % If `V` is a dictionary, print it directly.
-    is_dict(V), !, print(V).
+    is_dict(V), !, write_term(V,[]).
 pp_sexi((USER:Body)) :- fail,
     % If `V` is in the format `user:Body`, process `Body` directly.
     USER == user, !, pp_sex(Body).
 pp_sexi(V) :-
     % If concepts are allowed, disable concept formatting and print `V`.
     allow_concepts, !, with_concepts('False', pp_sex(V)), flush_output.
-pp_sexi('Empty') :- fail,
+pp_sexi('Empty') :- nb_current(may_skip_printing_empty, true),% fail,
     % If `V` is the atom 'Empty', do not print anything.
     !.
 pp_sexi('') :-
@@ -960,9 +1029,9 @@ pp_sexi(V) :-
 %     % Write an object structure with arguments.
 %     ?- write_mobj('$VAR', [example_var]).
 %
-write_mobj(H, _) :-
-    % If `H` is not a recognized symbol, fail.
+write_mobj(H, _) :- % If `H` is not a recognized symbol, fail.
     \+ symbol(H), !, fail.
+write_mobj(_, T) :- \+ is_list(T),!,fail.
 write_mobj('$VAR', [S]) :-
     % If `H` is `$VAR`, write the variable `S` using `write_dvar/1`.
     write_dvar(S).
@@ -1023,13 +1092,14 @@ pp_sexi_l([F | V]) :-
     % If `F` is a symbol and `V` is a list, format using `write_mobj/2`.
     symbol(F), is_list(V), write_mobj(F, V), !.
 pp_sexi_l([H | T]) :- T == [], !,  % If `T` is an empty list, print `H` in parentheses.
-    compound_type_s_m_e(list,L,_M,R),
-    write(L), pp_sex_nc(H), write(R).
+    write_start(list), pp_sex_nc(H), write_end(list).
 pp_sexi_l([H, H2| T]) :- T ==[], !,
     % If `V` has two elements, print `H` followed by `H2` in S-expression format.
-    compound_type_s_m_e(list,L,M,R),
-    write(L), pp_sex_nc(H), write(' '), with_indents(false, write_args_as_sexpression(M,[H2])),
-    write(R), !.
+    write_start(list), pp_sex_nc(H), write(' '), with_indents(false, write_args_as_sexpression(list,[H2])),
+    write_end(list), !.
+
+pp_sexi_l([H| T]) :- \+ is_list(T),!, pp_sexi_lc([H | T]).
+
 pp_sexi_l([H, S]) :-
     % If `H` is `'[...]'`, print `S` enclosed in square brackets.
     H == '[...]', write('['), write_args_as_sexpression(S), write(' ]').
@@ -1038,7 +1108,7 @@ pp_sexi_l([H, S]) :-
     H == '{...}', write('{'), write_args_as_sexpression(S), write(' }').
 %pp_sex_l(X):- \+ compound(X),!,write_src(X).
 %pp_sex_l('$VAR'(S))):-
-pp_sexi_l([=, H, B]) :-
+pp_sexi_l([Eq, H, B]) :- Eq == '=',
     % For lists in the format `[=, H, B]`, format using `pp_sexi_hb/2`.
     pp_sexi_hb(H, B), !.
 
@@ -1047,12 +1117,12 @@ pp_sexi_l([H | T]):- pp_sexi_lc([H | T]).
 
 pp_sexi_lc([H | T]) :- \+ is_list(T),!,
     %write('#{'), writeq([H|T]), write('}.').
-    print_compound_type(0, cmpd, [H|T]).
+    print_compound_type(0, cmpd, [H|T]),!,
+    assertion(\+ is_list(T)).
 
 pp_sexi_lc([H | T]) :-
     % If `V` has more than two elements, print `H` followed by `T` in S-expression format.
-    compound_type_s_m_e(list,L,M,R),
-    write(L), pp_sex_nc(H), write(' '), write_args_as_sexpression(M, T), write(R), !.
+    write_start(list), pp_sex_nc(H), write(' '), write_args_as_sexpression(list, T), write_end(list), !.
 pp_sexi_lc([H | T]) :-
     % If `H` is a control structure and indents are enabled, apply proper indentation.
     \+ no_src_indents, symbol(H), member(H, ['If', 'cond', 'let', 'let*']), !,
@@ -1061,8 +1131,7 @@ pp_sexi_lc([H | T]) :-
 pp_sexi_lc([H | T]) :-
     % If `T` has 2 or fewer elements, format as S-expression or apply indentation based on length.
     is_list(T), length(T, Args), Args =< 2, fail,
-    compound_type_s_m_e(list,L,M,R),
-    wots(SS, ((with_indents(false, (write(L), pp_sex_nc(H), write(' '), write_args_as_sexpression(M,T), write(R)))))),
+    wots(SS, ((with_indents(false, (write_start(list), pp_sex_nc(H), write(' '), write_args_as_sexpression(list,T), write_end(list)))))),
     ((symbol_length(SS, Len), Len < 20) -> write(SS);
         with_indents(true, w_proper_indent(2, w_in_p(pp_sex_c([H | T]))))), !.
 
@@ -1198,8 +1267,7 @@ pp_sexi_c(V) :- print_compounds_special,
     !, compound_name_arguments(V,Functor,Args),
     always_dash_functor(Functor, DFunctor),
     (symbol_glyph(Functor) -> ExtraSpace = ' ' ; ExtraSpace = ''),
-    compound_type_s_m_e(cmpd,L,M,R),
-    write(L), write(ExtraSpace), write_args_as_sexpression(M, [DFunctor|Args]), write(ExtraSpace), write(R), !.
+    write_start(cmpd), write(ExtraSpace), write_args_as_sexpression(cmpd, [DFunctor|Args]), write(ExtraSpace), write_end(cmpd), !.
     %maybe_indent_in(Lvl),write('{'), write_args_as_sexpression([F|Args]), write('}'),maybe_indent_out(Lvl).
 
 pp_sexi_c(Term) :-
@@ -1436,7 +1504,7 @@ write_args_as_sexpression(Args):- write_args_as_sexpression('|',Args).
 
 write_args_as_sexpression(_,Nil):- Nil == [], !.
 %write_args_as_sexpression(H):- w_proper_indent(pp_sex(H)),!.
-write_args_as_sexpression(M,Var):- \+ compound(Var),!, write(M),write(' '),pp_sex(Var).
+write_args_as_sexpression(M,Var):- \+ compound(Var),!, write_middle(M),write(' '),pp_sex(Var).
 % Print a single-element list directly.
 write_args_as_sexpression(_,[H|T]):- T==[], !, pp_sex(H).
 % For multi-element lists, print each element separated by a space.
@@ -1675,6 +1743,7 @@ should_quote_symbol_chars(Atom, [Digit | _]) :-
 % ensure_loaded is a built-in Prolog directive that loads a source file if it hasn't been loaded already.
 % Its main purpose is to prevent multiple loadings of the same file, which helps avoid duplicate definitions
 % and wasted resources.
+/*
 :- ensure_loaded(metta_interp).
 :- ensure_loaded(metta_compiler).
 :- ensure_loaded(metta_convert).
@@ -1683,8 +1752,8 @@ should_quote_symbol_chars(Atom, [Digit | _]) :-
 :- ensure_loaded(metta_testing).
 :- ensure_loaded(metta_utils).
 :- ensure_loaded(metta_printer).
-:- ensure_loaded(metta_eval).
-
+%:- ensure_loaded(metta_eval).
+*/
 
 
 
@@ -1778,16 +1847,25 @@ last_item(Item,Item):- \+ is_lcons(Item),!.
 last_item([_|T],Last):- T \== [], !, last_item(T,Last).
 last_item([Item],Item).
 
+write_start(Type):- current_printer_override(P1),call(P1,'$write_start'(Type)),!.
+write_start(Char):- atom_length(Char, 1),write(Char),!.
+write_start(Type):- compound_type_s_m_e(Type,L,_,_),write(L),!.
+write_middle(Type):- current_printer_override(P1),call(P1,'$write_middle'(Type)),!.
+write_middle(Char):- atom_length(Char, 1),write(Char),!.
+write_middle(Type):- compound_type_s_m_e(Type,_,M,_),write(M),!.
+write_end(Type):- current_printer_override(P1),call(P1,'$write_end'(Type)),!.
+write_end(Char):- atom_length(Char, 1),write(Char),!.
+write_end(Type):- compound_type_s_m_e(Type,_,_,R),write(R),!.
+
 print_compound_type(Indent, Type, [H|T] ):-
     last_item([H|T],Last),
-    compound_type_s_m_e(Type,L,M,R),
-    write(L),
+    write_start(Type),
     (symbol_glyph(H)->write(" ");true),
     NextIndent is Indent + 1,
     print_sexpr(H, 0),
-    print_rest_elements(M, T, NextIndent),
+    print_rest_elements(Type, T, NextIndent),
     (symbol_glyph(Last)->write(" ");true),
-    write(R),!.
+    write_end(Type),!.
 
 symbol_glyph(A):- atom(A), upcase_atom(A,U),downcase_atom(A,D),!,U==D.
 
@@ -1847,9 +1925,10 @@ print_indent_now(_).
             (Indent == 0 -> nl; true)))).
 %:- halt.
 */
-
+/*
+:- ensure_loaded(library(xlisting)).
 :- abolish(xlisting_console:portray_hbr/3).
-xlisting_console:portray_hbr(H, B, _R):- B==true, !, write_src(H).
-xlisting_console:portray_hbr(H, B, _R):- print_tree(H:-B).
-
-
+xlisting_console:portray_hbr(H, B, _R):- !, writeq(H:-B),!,nl.
+xlisting_console:portray_hbr(H, B, _R):- B==true, !, write_src_nl(H).
+xlisting_console:portray_hbr(H, B, _R):- write_src_nl(H:-B).
+*/

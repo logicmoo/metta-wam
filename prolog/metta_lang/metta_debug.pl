@@ -219,16 +219,16 @@ indentq2(Depth, Term) :-
 indentq2(_Depth, Term) :-
     format('~q', [Term]). % Fallback printing without indentation.
 
-%!  print_padded(+EX, +DR, +AR) is det.
+%!  print_padded(+TraceLen, +DR, +AR) is det.
 %
 %   Print a padded line with extra formatting, if certain conditions are met.
 %
-%   This predicate prints a formatted line based on the values of `EX`, `DR`, and `AR`, with padding and
+%   This predicate prints a formatted line based on the values of `TraceLen`, `DR`, and `AR`, with padding and
 %   additional formatting. If `is_fast_mode/0` is enabled, the printing is skipped. The padding is computed
 %   using modulo operations on the `DR` value, and extra formatting is applied. The `AR` component is printed
 %   after the padding.
 %
-%   @arg EX The first component used for padding, expected to be an integer.
+%   @arg TraceLen The first component used for padding, expected to be an integer.
 %   @arg DR The second component used for padding, expected to be an integer.
 %   @arg AR The component to print after padding.
 %
@@ -239,17 +239,17 @@ indentq2(_Depth, Term) :-
 %
 print_padded(_DR, _EX, _AR) :-
     is_fast_mode, !. % Skip printing in fast mode.
-print_padded(EX, DR, AR) :-
-    integer(EX), integer(DR), EX > 0, DR > 0,
-    nb_current('$print_padded', print_padded(EX, DR, _)), % Check if padding is active.
+print_padded(TraceLen, DR, AR) :-
+    integer(TraceLen), integer(DR), TraceLen > 0, DR > 0,
+    nb_current('$print_padded', print_padded(TraceLen, DR, _)), % Check if padding is active.
     !,
     format("~|          |", []), % Print the initial padding.
     DRA is abs(round(DR) mod 24), % Calculate padding size.
     forall(between(2, DRA, _), write('   |')), % Write additional padding.
     write('    '), write(' '), write(AR). % Write the AR value.
-print_padded(EX, DR, AR) :-
-    format("~|~` t~d~5+:~d~5+|", [EX, DR]), % Print padded EX and DR values.
-    nb_setval('$print_padded', print_padded(EX, DR, AR)), % Set the current padding.
+print_padded(TraceLen, DR, AR) :-
+    format("~|~` t~d~5+:~d~5+|", [TraceLen, DR]), % Print padded TraceLen and DR values.
+    nb_setval('$print_padded', print_padded(TraceLen, DR, AR)), % Set the current padding.
     DRA is abs(round(DR) mod 24), % Calculate padding size.
     forall(between(1, DRA, _), write('   |')), % Write additional padding.
     write('-'), write(AR). % Write the AR value.
@@ -279,21 +279,21 @@ indentq_d(_DR, _EX, _AR) :-
     is_fast_mode, !. % Skip printing in fast mode.
 indentq_d(Depth, Prefix4, Message) :-
     flag(eval_num, EX0, EX0), % Get the current evaluation number.
-    EX is EX0 mod 500, % Compute EX using modulo 500.
+    TraceLen is EX0 mod 500, % Compute TraceLen using modulo 500.
     DR is 99 - (Depth mod 100), % Compute DR using depth and modulo 100.
-    indentq(DR, EX, Prefix4, Message). % Call indentq with the formatted values.
+    indentq(DR, TraceLen, Prefix4, Message). % Call indentq with the formatted values.
 
-%!  indentq(+DR, +EX, +AR, +Term) is det.
+%!  indentq(+DR, +TraceLen, +AR, +Term) is det.
 %
-%   Print a term with depth-based and EX-based indentation.
+%   Print a term with depth-based and TraceLen-based indentation.
 %
 %   This predicate prints a `Term` with indentation based on the values of `DR` (depth)
-%   and `EX` (a component used for formatting). The `AR` component is included in the
+%   and `TraceLen` (a component used for formatting). The `AR` component is included in the
 %   formatting as well. Special cases are handled for return values, list elements, and
 %   structured terms. If `is_fast_mode/0` is enabled, the predicate skips printing.
 %
 %   @arg DR   The depth used to determine the indentation.
-%   @arg EX   The EX component for additional formatting control.
+%   @arg TraceLen   The TraceLen component for additional formatting control.
 %   @arg AR   The AR component for formatting or additional text.
 %   @arg Term The term to print, which could be a return value, a list element, or a structured term.
 %
@@ -308,30 +308,30 @@ indentq_d(Depth, Prefix4, Message) :-
 %
 indentq(_DR, _EX, _AR, _Term) :-
     is_fast_mode, !. % Skip printing in fast mode.
-indentq(DR, EX, AR, retval(Term)) :-
+indentq(DR, TraceLen, AR, retval(Term)) :-
     nonvar(Term), !,
-    indentq(DR, EX, AR, Term). % Handle return values specially.
-indentq(DR, EX, AR, [E, Term]) :-
+    indentq(DR, TraceLen, AR, Term). % Handle return values specially.
+indentq(DR, TraceLen, AR, [E, Term]) :-
     E == e, !,
-    indentq(DR, EX, AR, Term). % Special case for list elements.
+    indentq(DR, TraceLen, AR, Term). % Special case for list elements.
 %indentq(_DR,_EX,_AR,_Term):- flag(trace_output_len,X,X+1), XX is (X mod 1000), XX>100,!.
-indentq(DR, EX, AR, ste(S, Term, E)) :- !,
-    indentq(DR, EX, AR, S, Term, E). % Special case for structured terms.
-indentq(DR, EX, AR, Term) :-
-    indentq(DR, EX, AR, '', Term, ''). % Default case with empty prefix/suffix.
+indentq(DR, TraceLen, AR, ste(S, Term, E)) :- !,
+    indentq(DR, TraceLen, AR, S, Term, E). % Special case for structured terms.
+indentq(DR, TraceLen, AR, Term) :-
+    indentq(DR, TraceLen, AR, '', Term, ''). % Default case with empty prefix/suffix.
 
-%!  indentq(+DR, +EX, +AR, +S, +Term, +E) is det.
+%!  indentq(+DR, +TraceLen, +AR, +S, +Term, +E) is det.
 %
 %   Print a term with depth-based indentation, including start and end strings.
 %
 %   This predicate prints a `Term` with indentation based on the depth `DR` and formatting components
-%   `EX` and `AR`. The `S` argument provides a start string to print before the term, and `E` provides
+%   `TraceLen` and `AR`. The `S` argument provides a start string to print before the term, and `E` provides
 %   an end string to print after the term. The predicate formats the term, converts any newlines to
 %   spaces, and then prints the formatted string. The output is managed within a `setup_call_cleanup/3`
 %   block to ensure clean execution.
 %
 %   @arg DR   The depth used to determine the indentation.
-%   @arg EX   The EX component for additional formatting control.
+%   @arg TraceLen   The TraceLen component for additional formatting control.
 %   @arg AR   The AR component for formatting or additional text.
 %   @arg S    A string to print before the term.
 %   @arg Term The term to print.
@@ -342,11 +342,11 @@ indentq(DR, EX, AR, Term) :-
 %   ?- indentq(10, 5, 'INFO:', 'Start:', 'processing', 'End.').
 %   'INFO: Start: processing End.'  % Printed with depth-based indentation.
 %
-indentq(DR, EX, AR, S, Term, E) :-
+indentq(DR, TraceLen, AR, S, Term, E) :-
     setup_call_cleanup(
         notrace(format('~N;')), % Start with a newline and suppress trace.
         (
-            wots(Str, indentq0(DR, EX, AR, S, Term, E)), % Format the term.
+            wots(Str, indentq0(DR, TraceLen, AR, S, Term, E)), % Format the term.
             newlines_to_spaces(Str, SStr), % Convert newlines to spaces.
             write(SStr) % Write the formatted string.
         ),
@@ -373,18 +373,18 @@ newlines_to_spaces(Str, SStr) :-
     atomics_to_string(L, '\n', Str), % Split the string by newlines.
     atomics_to_string(L, ' ', SStr). % Join the parts with spaces.
 
-%!  indentq0(+DR, +EX, +AR, +S, +Term, +E) is det.
+%!  indentq0(+DR, +TraceLen, +AR, +S, +Term, +E) is det.
 %
 %   Print a term with padding and depth-based indentation.
 %
 %   This predicate prints a `Term` with depth-based indentation determined by `DR` and
-%   includes padding and formatting based on `EX` and `AR`. The `S` argument specifies
+%   includes padding and formatting based on `TraceLen` and `AR`. The `S` argument specifies
 %   a start string to print before the term, and `E` specifies an end string to print
 %   after the term. The term is printed using `write_src/1`, and the indentation is
 %   controlled by `with_indents/2`.
 %
 %   @arg DR   The depth used to determine the indentation.
-%   @arg EX   The EX component for formatting and padding control.
+%   @arg TraceLen   The TraceLen component for formatting and padding control.
 %   @arg AR   The AR component for additional formatting or padding.
 %   @arg S    A string to print before the term.
 %   @arg Term The term to print with padding and indentation.
@@ -395,9 +395,9 @@ newlines_to_spaces(Str, SStr) :-
 %   ?- indentq0(5, 10, 'INFO:', 'Start:', some_term(foo, bar), 'End.').
 %   'INFO: Start: some_term(foo, bar) End.'  % Printed with depth-based indentation.
 %
-indentq0(DR, EX, AR, S, Term, E) :-
+indentq0(DR, TraceLen, AR, S, Term, E) :-
     as_trace((
-        print_padded(EX, DR, AR), % Print the padded line.
+        print_padded(TraceLen, DR, AR), % Print the padded line.
         format(S, []), % Print the start string.
         with_indents(false, write_src(Term)), % Print the term.
         format(E, []) % Print the end string.
@@ -445,7 +445,9 @@ reset_only_eval_num :-
 %   ?- is_fast_mode.
 %   false.
 %
+is_fast_mode :- is_nodebug,!.
 is_fast_mode :- fail, \+ is_debugging(eval), !.
+
 
 %!  ignore_trace_once(:Goal) is nondet.
 %
@@ -638,6 +640,11 @@ with_debug(Flag, Goal) :-
 %     ?- is_nodebug.
 %     true.
 %
+
+% Check if the option 'nodebug' is explicitly set to false.  (ideally very rare - code has to relaly know about this)
+is_nodebug :- option_value(nodebug, false), !, fail.
+% By default spawned threads would need nodebug=false
+is_nodebug :- thread_self(Self), Self \== main, Self \== 0.
 is_nodebug :-
     % Check if the option 'nodebug' is set to true.
     option_value(nodebug, true).
@@ -672,7 +679,7 @@ with_no_debug(Goal) :-
     % Otherwise, call the goal while modifying several debugging and execution options.
     with_option(nodebug, true,
         with_option(time, false,
-            with_option(debug, silent,
+            with_option(debug, false,
                 with_option(e, silent,
                     with_option(eval, true,
                         with_option(exec, noskip, call(Goal))))))).
@@ -720,10 +727,16 @@ flag_to_var(Flag,Var):-Flag=Var.
 %
 set_debug(metta(Flag), TF) :- nonvar(Flag), !, set_debug(Flag, TF).
 %set_debug(Flag,Val):- \+ atom(Flag), flag_to_var(Flag,Var), atom(Var),!,set_debug(Var,Val).
-set_debug(Flag, TF) :- TF == 'True', !, set_debug(Flag, true).
+set_debug(Flag, Val) :- atom(Flag), atom_concat('trace-on-', Var, Flag),!,set_debug(Var,Val).
+set_debug(Flag, Var) :- debugging(metta(Flag), Var),!.
 set_debug(Flag, TF) :- TF == 'False', !, set_debug(Flag, false).
-set_debug(Flag, true) :- !, debug(metta(Flag)). %, flag_to_var(Flag, Var), set_fast_option_value(Var, true).
-set_debug(Flag, false) :- nodebug(metta(Flag)). %, flag_to_var(Flag, Var), set_fast_option_value(Var, false).
+set_debug(Flag, TF) :- TF == 'silent', !, set_debug(Flag, false).
+set_debug(Flag, TF) :- atomic(TF), symbol_concat('h',_,TF),!, set_debug(Flag, false). % hide, hid, hidden, ..
+set_debug(Flag, TF) :- atomic(TF), symbol_concat('n',_,TF),!, set_debug(Flag, false). % notrace, no, ..
+set_debug(Flag, TF) :- atomic(TF), symbol_concat(_,'f',TF),!, set_debug(Flag, false). % traceoff, off, ..
+set_debug(Flag, false) :- !, nodebug(metta(Flag)),!. %, flag_to_var(Flag, Var), set_fast_option_value(Var, false).
+set_debug(Flag, _) :- !, debug(metta(Flag)),!. %, flag_to_var(Flag, Var), set_fast_option_value(Var, true).
+
 
 %!  if_trace(+Flag, :Goal) is nondet.
 %
@@ -741,6 +754,144 @@ set_debug(Flag, false) :- nodebug(metta(Flag)). %, flag_to_var(Flag, Var), set_f
 %   ?- if_trace(eval, writeln('Tracing is enabled')).
 %
 if_trace(Flag, Goal) :- notrace(real_notrace((catch_err(ignore((is_debugging(Flag), Goal)),E,fbug(E --> if_trace(Flag, Goal)))))).
+
+if_tracemsg(Flag, Message):- if_trace(Flag, wdmsg(Message)).
+
+rtrace_when(Why,Goal):- is_debugging(Why)->rtrace(Goal);call(Goal).
+show_failure_when(Why,Goal):- \+ is_debugging(Why), !, call(Goal).
+show_failure_when(Why, Goal):- if_or_else(Goal, (once(show_failing(Why,Goal)),fail)).
+show_failing(Why,Goal):- notrace, ignore(nortrace),
+                      debugm1(Why, show_failed(Why, Goal)),
+                      nop(if_t(is_debugging(failures),trace)),!,fail.
+
+%show_failure_when(_Why,Goal):- call(Goal)*->true;(trace,fail).
+check_trace(Topic):- (is_debugging(Topic)-> (notrace,ignore(nortrace),writeln(user_error,check_trace(Topic)),maybe_trace) ; true).
+
+trace_if_debug(AE,_LenX):- if_t(is_debugging(AE),maybe_trace),!.
+maybe_trace(Why):- if_t(is_debugging(Why),maybe_trace),!.
+maybe_trace:- is_extreme_debug(trace).
+
+is_extreme_debug:- is_douglas.
+is_douglas:- current_prolog_flag(os_argv,OSArgV), \+ \+ member('--douglas',OSArgV),!.
+bis_douglas:- gethostname(X),(X=='HOSTAGE.';X=='HOSTAGE'),!.
+is_extreme_debug(G):- is_douglas, !, call(G).
+is_extreme_debug(_).
+
+sub_var_safely(Var,Source):-
+  woc(sub_var(Var,Source)).
+
+sub_term_safely(Sub,Source):- acyclic_term(Source),!,sub_term(Sub,Source).
+
+
+maybe_abolish_trace:- \+ is_flag(abolish_trace), !.
+maybe_abolish_trace:- abolish_trace.
+abolish_trace:-
+  redefine_system_predicate(system:trace/0),
+  abolish(system:trace/0),
+  assert(( (system:trace) :- system:trace_called)),
+  redefine_system_predicate(system:break/0),
+  abolish(system:break/0),
+  assert(( (system:break) :- system:break_called)).
+
+system:trace_called:- format(user_error,'~nTRACE_CALLED~n',[]), fail.
+system:trace_called:- once(bt), fail.
+%system:trace_called:- break.
+
+system:break_called:- format(user_error,'~nBREAK_CALLED~n',[]), fail.
+system:break_called:- once(bt), fail.
+%system:break_called:- break.
+
+
+woc(Goal):- woc(error,Goal).
+woc(TFE,Goal):- current_prolog_flag(occurs_check,TFE),!,call(Goal).
+woc(TFE,Goal):- current_prolog_flag(occurs_check,Was),redo_call_cleanup(set_prolog_flag(occurs_check,TFE),Goal,set_prolog_flag(occurs_check,Was)).
+% woc(Goal):- locally(set_prolog_flag(occurs_check,true),Goal).
+woct(Goal):-woc(error,Goal).
+woce(Goal):-woc(error,Goal).
+wocf(Goal):-woc(false,Goal).
+
+print_locally_tested_flag:- current_prolog_flag(locally_tested_flag,X),writeln(locally_tested_flag=X).
+test_locally_setting_flags:-
+  forall((locally(set_prolog_flag(locally_tested_flag,1),
+     ((member(X,[1,2,3]),print_locally_tested_flag))),
+        writeln(X),print_locally_tested_flag),nl).
+:- thread_initialization(set_prolog_flag(locally_tested_flag,0)).
+
+%:- initialization(set_prolog_flag(occurs_check,error)).
+%:- initialization(set_prolog_flag(occurs_check,true)).
+set_occurs_check_default:- thread_self(Self),set_occurs_check_default(Self),!.
+
+set_occurs_check_default(NonMain):- NonMain\==main,set_prolog_flag(occurs_check,false).
+set_occurs_check_default(main):- \+ is_douglas,set_prolog_flag(occurs_check,false).
+set_occurs_check_default(_):- set_prolog_flag(occurs_check,error),set_more_douglas.
+
+set_more_douglas:- set_prolog_flag(gc,false).
+
+
+:- initialization(set_occurs_check_default).
+:- thread_initialization(set_occurs_check_default).
+
+debug_info_goal(_Topic,_Info):- \+ is_douglas,!.
+debug_info_goal(Topic,Info):- original_user_error(X),
+  mesg_color(Topic, TopicColor),
+  mesg_color(Info,  InfoColor),
+  \+ \+ (( % numbervars(Info,4123,_,[attvar(bind)]),
+  format(X,'~N ~@: ~@ ~n~n',[ansicall(TopicColor,write(Topic)),ansicall(InfoColor,Info)]))).
+
+debug_info(_Topic,_Info):- \+ is_douglas,!.
+debug_info(Topic,Info):- original_user_error(X),
+  mesg_color(Topic, TopicColor),
+  mesg_color(Info,  InfoColor),
+  \+ \+ ((
+  maybe_nv(Info),
+  %number_vars_wo_conficts1(Info,RNVInfo),
+  if_t(var(RNVInfo),Info=RNVInfo),
+  format(X,'~N ~@: ~@ ~n~n',[ansicall(TopicColor,write(Topic)),ansicall(InfoColor,debug_pp_info(RNVInfo))]))).
+
+maybe_nv(Info):- ground(Info),!.
+%maybe_nv(Info):- term_attvars(Info,AVs), AVs\==[],!, maplist(maybe_nv_each,AVs).
+%maybe_nv(Info):- sub_term_safe(DVar,Info),compound(DVar),compound_name_arity(Info,'$VAR',_),!.
+maybe_nv(Info):- numbervars(Info,15,CountUP,[attvar(skip),singleton(true)]),!,
+   term_attvars(Info,AVs), maplist(maybe_nv_each,AVs),numbervars(Info,CountUP,_,[attvar(bind),singleton(false)]).
+maybe_nv_each(V):- notrace(ignore(catch((attvar(V),get_attr(V,vn,Named),!,V='$VAR'(Named)),_,true))),!.
+
+debug_pp_info(Info):- compound(Info), compound_name_arguments(Info,F,Args),!,debug_pp_cmpd(Info,F,Args).
+debug_pp_info(Info):-  write_src(Info).
+debug_pp_cmpd(_Info,'c',[Call]):- !, nl, write('  '), ignore(catch(notrace( call(Call)),E,ansicall(red,(nl,writeln(err(E,Call),nl))))),!.
+debug_pp_cmpd(_Info,'t',[Call]):- !, write('  '), debug_pp_tree(Call).
+debug_pp_cmpd(_Info,'s',[Call]):- !, nl, write('  '), debug_pp_src(Call).
+debug_pp_cmpd(_Info,'wi',[Call]):- !, nl, write('  '), debug_pp_w(write_src_wi,Call).
+debug_pp_cmpd(_Info,'q',[Call]):- !, nl, write('  '), debug_pp_term(Call).
+debug_pp_cmpd(Info,':-',_):- !, nl, write('  '), debug_pp_tree(Info).
+debug_pp_cmpd(Info,'[|]',_):- !, write_src(Info),!.
+debug_pp_cmpd(Info,_,_Args):- debug_pp_tree(Info),!.
+debug_pp_now(Info):- pp_as_src(Info),!,debug_pp_src(Info),!.
+debug_pp_now(Info):- debug_pp_src(Info),!.
+debug_pp_now(Info):- debug_pp_tree(Info),!.
+
+print_tree_safe1(PTS):- catch(wots(S,print_tree(PTS)),_,fail),writeln(S),!.
+print_tree_safe1(PTS):- catch(wots(S,print_term(PTS,[])),_,fail),writeln(S),!.
+%pptsafe1(PTS):- catch(wots(S,print(PTS)),_,fail),writeln(S),!.
+%ppt0(PTS):- print_tree_safe1(PTS),!.
+ppt0(PTS):- asserta((user:portray(_) :- !, fail),Ref), call_cleanup(print_tree_safe1(PTS), erase(Ref)),!.
+ppt0(PTS):- catch(((print_term(PTS,[]))),E,(nl,nl,writeq(PTS),nl,nl,wdmsg(E),fail)),!,throw(E).
+%pptsafe(PTS):- break,catch((rtrace(print_term(PTS,[]))),E,wdmsg(E)),break.
+%pptsafe(PTS):- asserta((user:portray(_) :- !, fail),Ref), call_cleanup(pptsafe1(PTS), erase(Ref)),!.
+ppt0(PTS):- writeln(PTS),!.
+
+ppt(O):- format('~N'),ppt0(O),format('~N').
+%pp(O):- print(O).
+
+%debug_pp_tree(Info):- ignore(catch(notrace(write_src_wi(Info)),E,((writeq(Info),nl,nop(((display(E=Info),bt))))))),!.
+ debug_pp_w(P1,Info):- ignore(catch(notrace( call(P1,Info)),_,ansicall(red,(nl,writeln(err(P1)),nl,debug_pp_tree(Info))))),!.
+ debug_pp_src(Info):- ignore(catch(notrace( write_src(Info)),_,ansicall(red,(nl,writeln(err(src)),nl,debug_pp_tree(Info))))),!.
+debug_pp_tree(Info):- ignore(catch(notrace(ppt(Info)),E,ansicall(red,(nl,writeln(err(tree(E))),nl,debug_pp_term(Info))))),!.
+debug_pp_term(Info):- ignore(catch(notrace(print(Info)),E,ansicall(red,(writeq(Info),nl,writeln(err(print)),nl,nop(((display(E=Info),bt))))))),!.
+
+pp_as_src(Info):- compound(Info), arg(_,Info,E),is_list(E),E=[H|_],is_list(H),!.
+
+debug_info(Info):- compound(Info),compound_name_arguments(Info,Topic,Args),!,debug_info(Topic,Args).
+debug_info(Info):- debug_info(debug_info,Info).
 
 %!  is_showing(+Flag) is nondet.
 %
@@ -885,6 +1036,7 @@ efbug(_, G) :- call(G).
 is_debugging_always(_) :- is_nodebug, !, fail.
 is_debugging_always(_Flag) :- !.
 
+
 %!  is_debugging(+Flag) is nondet.
 %
 %   Check if debugging is enabled for a flag.
@@ -915,6 +1067,7 @@ is_debugging(Flag) :- Flag == true, !.
 is_debugging(Flag) :- fast_option_value(Flag, 'debug'), !.
 is_debugging(Flag) :- fast_option_value(Flag, 'trace'), !.
 is_debugging(Flag) :- debugging(metta(Flag), TF), !, TF == true.
+is_debugging(Flag) :- debugging(Flag, TF), !, TF == true.
 %is_debugging(Flag):- debugging(Flag,TF),!,TF==true.
 %is_debugging(Flag):- once(flag_to_var(Flag,Var)),
 %  (fast_option_value(Var,true)->true;(Flag\==Var -> is_debugging(Var))).
@@ -924,7 +1077,7 @@ is_debugging(Flag) :- debugging(metta(Flag), TF), !, TF == true.
 % overflow = continue
 % overflow = debug
 
-%!  trace_eval(:P4, +TNT, +D1, +Self, +X, +Y) is det.
+%!  trace_eval(:P4, +ReasonsToTrace, +D1, +Self, +X, +Y) is det.
 %
 %   Perform trace evaluation of a goal, managing trace output and depth.
 %
@@ -934,7 +1087,7 @@ is_debugging(Flag) :- debugging(metta(Flag), TF), !, TF == true.
 %   for both entering and exiting the goal, while managing repeated evaluations and specific trace conditions.
 %
 %   @arg P4   The goal or predicate to evaluate.
-%   @arg TNT  The trace name/type, used for managing trace output and ensuring proper subterm handling.
+%   @arg ReasonsToTrace  The trace name/type, used for managing trace output and ensuring proper subterm handling.
 %   @arg D1   The current depth of the evaluation.
 %   @arg Self A self-referential term passed during evaluation.
 %   @arg X    The input term for the evaluation.
@@ -944,46 +1097,114 @@ is_debugging(Flag) :- debugging(metta(Flag), TF), !, TF == true.
 %   % Perform a trace evaluation on a goal:
 %   ?- trace_eval(my_predicate, trace_type, 1, self, input, output).
 %
-trace_eval(P4, TNT, D1, Self, X, Y) :-
+
+trace_eval(P4, _, D1, Self, X, Y) :- is_nodebug, !, call(P4, D1, Self, X, Y).
+
+
+trace_eval(P4, ReasonsToTrace, D1, Self, X, Y) :- !,
+
+
+    must_det_ll((
+        notrace((
+            flag(eval_num, EX0, EX0 + 1),     % Increment eval_num flag.
+            TraceLen is EX0 mod 500,               % Calculate TraceLen modulo 500.
+            DR is 99 - (D1 mod 100),         % Calculate DR based on depth.
+            PrintRet = _,                    % Initialize PrintRet.
+            option_else('trace-length', MaxTraceLen, 500), % Get trace-length option.
+            %option_else('trace-depth', MaxTraceDepth, 30),   % Get trace-depth option.
+            !
+        )),
+
+        TraceTooLong = _,
+
+        quietly((
+            if_t((nop(stop_rtrace), TraceLen > MaxTraceLen), (
+                set_debug(eval, false),
+                MaxP1 is MaxTraceLen + 1,
+                nop(format('; Switched off tracing. For a longer trace: !(pragma! trace-length ~w)', [MaxP1])),
+                TraceTooLong = 1,
+                nop((start_rtrace, rtrace))
+            ))
+        ))
+
+    )),
+
+    ((sub_term_safely(Why, ReasonsToTrace), ReasonsToTrace \= Why) -> true ; ReasonsToTrace = Why), % Ensure proper Why handling.
+
+    if_t(D1<0, (set_debug(deval,true))),
+
+    (\+ \+ if_trace((eval; ReasonsToTrace), (
+        PrintRet = 1,
+        if_t( TraceTooLong \== 1, indentq(DR, TraceLen, '-->', [Why, X]))
+    ))),
+
+    Ret = retval(fail),
+    !,
+
+    Display = ignore((
+        \+ \+ (
+           flag(eval_num, EX1, EX1 + 1),
+           PrintRet == 1,
+           TraceTooLong \== 1,
+           ((Ret \=@= retval(fail), nonvar(Y))
+                -> indentq(DR, EX1, '<--', [Why, Y])
+                ; indentq(DR, EX1, '<--', [Why, Ret])
+            )
+        )
+    )),
+
+    call_cleanup(
+        (call(P4, D1, Self, X, Y)
+            *-> (setarg(1, Ret, Y), one_shot(Display))
+            ;  (fail, trace, call(P4, D1, Self, X, Y))
+        ),
+        one_shot(Display)),
+
+    Ret \=@= retval(fail).
+
+
+trace_eval(P4, ReasonsToTrace, D1, Self, X, Y) :-
     must_det_ll((
         notrace((
             flag(eval_num, EX0, EX0 + 1), % Increment eval_num flag.
-            EX is EX0 mod 500, % Calculate EX modulo 500.
+            TraceLen is EX0 mod 500, % Calculate TraceLen modulo 500.
             DR is 99 - (D1 mod 100), % Calculate DR based on depth.
             PrintRet = _, % Initialize PrintRet.
-            option_else('trace-length', Max, 500), % Get trace-length option.
-            option_else('trace-depth', DMax, 30) % Get trace-depth option.
+            option_else('trace-length', MaxTraceLen, 500), % Get trace-length option.
+            option_else('trace-depth', MaxTraceDepth, 30) % Get trace-depth option.
         )),
-        quietly((if_t((nop(stop_rtrace), EX > Max), (set_debug(eval, false), MaxP1 is Max + 1,
+        quietly((if_t((nop(stop_rtrace), TraceLen > MaxTraceLen), (set_debug(eval, false), MaxP1 is MaxTraceLen + 1,
          %set_debug(overflow,false),
             nop(format('; Switched off tracing. For a longer trace: !(pragma! trace-length ~w)', [MaxP1])),
             nop((start_rtrace, rtrace)))))),
         nop(notrace(no_repeats_var(NoRepeats))))),
 
-        ((sub_term(TN, TNT), TNT \= TN) -> true ; TNT = TN), % Ensure proper subterm handling.
-   %if_t(DR<DMax, )
-        ( \+ \+ if_trace((eval; TNT), (PrintRet = 1,
-            indentq(DR, EX, '-->', [TN, X]))) ),
+        ((sub_term_safely(Why, ReasonsToTrace), ReasonsToTrace \= Why) -> true ; ReasonsToTrace = Why), % Ensure proper subterm handling.
+   %if_t(DR<MaxTraceDepth, )
+        ( \+ \+ if_trace((eval; ReasonsToTrace), (PrintRet = 1,
+            indentq(DR, TraceLen, '-->', [Why, X]))) ),
 
         Ret = retval(fail), !,
 
-        (Display = ( \+ \+ (flag(eval_num, EX1, EX1 + 1),
+        (Display = call(((( \+ \+ (flag(eval_num, EX1, EX1 + 1),
                 ((Ret \=@= retval(fail), nonvar(Y))
-                -> indentq(DR, EX1, '<--', [TN, Y])
-                ; indentq(DR, EX1, '<--', [TN, Ret]))))),
+                -> indentq(DR, EX1, '<--', [Why, Y])
+                ; indentq(DR, EX1, '<--', [Why, Ret])))))))),
 
         call_cleanup((
-            (call(P4, D1, Self, X, Y) *-> nb_setarg(1, Ret, Y);
-            (fail, trace, (call(P4, D1, Self, X, Y)))),
-            ignore((notrace(( \+ (Y \= NoRepeats), nb_setarg(1, Ret, Y)))))),
+            (call(P4, D1, Self, X, Y)
+                 *-> (setarg(1, Ret, Y),one_shot(Display))
+                 ; (fail, trace, (call(P4, D1, Self, X, Y)))),
+
+     ignore((notrace(( \+ (Y \= NoRepeats), setarg(1, Ret, Y)))))),
     % cleanup
-        ignore((PrintRet == 1 -> ignore(Display) ;
+        ignore((PrintRet == 1 -> (one_shot(Display)) ;
        (notrace(ignore((( % Y\=@=X,
-         if_t(DR<DMax,if_trace((eval;TN),ignore(Display))))))))))),
+         if_t(DR<MaxTraceDepth,if_trace((eval;Why),one_shot(Display))))))))))),
         Ret \=@= retval(fail).
 
 %  (Ret\=@=retval(fail)->true;(fail,trace,(call(P4,D1,Self,X,Y)),fail)).
-
+one_shot(Display):- ignore(once(Display)),setarg(1,Display,true).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1073,9 +1294,11 @@ into_blocktype(InfoType, Goal) :- enter_markdown(InfoType), !, call(Goal).
 %output_language( comment, Goal ) :- log_file_type(prolog), !, format('~N:- q.~n', [output_language( comment, Goal)]).
 %output_language( comment, Goal ) :- log_file_type(metta), !, in_cmt(Goal).
 output_language( InfoType, Goal ) :- notrace((output_language_impl( InfoType, Goal ))).
+
+output_language_impl( InfoType,_Goal ) :- atom(InfoType), flag(InfoType,X,X+1), X>1000,!. % on ly priont out the first 1000
 output_language_impl( InfoType, Goal ) :- log_file_type(Lang), !, % (Lang==prolog; Lang==metta),!,
   in_file_output(((InfoType == Lang -> (must_det_ll((enter_markdown(Lang),leave_comment)),call(Goal)) ; (must_det_ll(enter_comment),into_blocktype(InfoType,Goal))))).
-
+output_language_impl(_InfoType,_Goal ) :-!.
 %! log_file_type(-Type) is det.
 %  Determines the current log file type or language based on options.
 %
@@ -1146,5 +1369,70 @@ pick_quote(String, '`') :- \+ string_contains(String, '`'), !.              % Us
 :- at_halt(in_file_output(leave_markdown(_))).  % Ensure markdown mode is exited at halt
 :- at_halt(in_file_output(leave_comment)).      % Ensure comment mode is exited at halt
 
+pcp:- print_last_choicepoint_upwards.
+print_last_choicepoint_upwards :-
+    prolog_current_choice(ChI0),         % Choice in print_last_choicepoint_info/0
+    prolog_choice_attribute(ChI0, parent, ChI1), !,
+    print_last_choicepoint_upwards(ChI1).
+print_last_choicepoint_upwards.
+
+print_last_choicepoint_upwards(ChI0):-
+  once(print_last_choicepoint_info(ChI0, [])),
+  prolog_choice_attribute(ChI0, parent, ChI1), !,
+  print_last_choicepoint_upwards(ChI1).
+print_last_choicepoint_upwards(_).
+
+print_last_choicepoint_info(ChI1, Options) :-
+    real_choice_info(ChI1, ChI),
+    prolog_choice_attribute(ChI, frame, F),
+    prolog_frame_attribute(F, goal, Goal),
+    %Goal \= '$execute_goal2'(_,_,_),     % Toplevel REPL choicepoint
+    %!,
+    Goal \='$c_call_prolog',!,
+    % Goal \='$runtoplevel', !,
+    option(message_level(Level), Options, warning),
+    get_prolog_backtrace(2, [_|Stack], [frame(F)]),
+    (   predicate_property(Goal, foreign)
+    ->  print_message(Level, choicepoint(foreign(Goal), Stack))
+    ;   prolog_frame_attribute(F, clause, Clause),
+        (   prolog_choice_attribute(ChI, pc, PC)
+        ->  Ctx = jump(PC)
+        ;   prolog_choice_attribute(ChI, clause, Next)
+        ->  Ctx = clause(Next)
+        ),
+        print_message(Level, choicepoint(clause(Goal, Clause, Ctx), Stack))
+    ).
+print_last_choicepoint_info(_, _).
+
+real_choice_info(Ch0, Ch) :-
+    prolog_choice_attribute(Ch0, type, Type),
+    nop(((dummy_type_info(Type), !))),
+    prolog_choice_attribute(Ch0, parent, Ch1),
+    real_choice_info(Ch1, Ch).
+real_choice_info(Ch, Ch).
+
+dummy_type_info(debug).
+dummy_type_info(none).
+
+:- multifile(prolog:message//1).
+prolog:message(choicepoint_info(Choice, Stack)) -->
+    user:choice_info(Choice),
+    [ nl, 'Called from', nl ],
+    prolog:message(Stack).
+
+user:choice_info(foreign(Goal)) -->
+    prolog_stack:success_goal(Goal, 'a foreign choice_info point').
+user:choice_info(clause(Goal, ClauseRef, clause(Next))) -->
+    prolog_stack:success_goal(Goal, 'a choice_info point in alternate clause'),
+    [ nl ],
+    [ '  ' ], prolog_stack:clause_descr(ClauseRef), [': clause succeeded', nl],
+    [ '  ' ], prolog_stack:clause_descr(Next),      [': next candidate clause' ].
+user:choice_info(clause(Goal, ClauseRef, jump(PC))) -->
+    { prolog_stack:clause_where(false, ClauseRef, PC, Where,
+                   [subgoal_positions(true)])
+    },
+    prolog_stack:success_goal(Goal, 'an in-clause choice_info point'),
+    [ nl, '  ' ],
+    prolog_stack:where_no_goal(Where).
 
 
