@@ -2299,6 +2299,7 @@ nocut.
 :- ensure_loaded(metta_pfc_base).
 :- ensure_loaded(metta_pfc_support).
 :- ensure_loaded(metta_compiler).
+:- ensure_loaded(metta_compiler_lib).
 :- ensure_loaded(metta_convert).
 :- ensure_loaded(metta_types).
 :- ensure_loaded(metta_space).

@@ -1746,6 +1746,7 @@ should_quote_symbol_chars(Atom, [Digit | _]) :-
 /*
 :- ensure_loaded(metta_interp).
 :- ensure_loaded(metta_compiler).
+:- ensure_loaded(metta_compiler_lib).
 :- ensure_loaded(metta_convert).
 :- ensure_loaded(metta_types).
 :- ensure_loaded(metta_space).

@@ -74,10 +74,11 @@
 :- ensure_loaded(metta_space).
 :- ensure_loaded(metta_compiler_print).
 :- dynamic(transpiler_clause_store/9).
+:- multifile(transpiler_predicate_store/7).
 :- dynamic(transpiler_predicate_store/7).
-:- discontiguous(compile_flow_control/8).
-:- ensure_loaded(metta_compiler_lib).
-:- ensure_loaded(metta_compiler_lib_stdlib).
+:- dynamic(transpiler_predicate_nary_store/9).
+:- discontiguous transpiler_predicate_nary_store/9.
+:- multifile(compile_flow_control/8).
 
 non_arg_violation(_,_,_).
 
@@ -237,6 +238,14 @@ create_p1(ERet,ECode,NRet,NCode,R) :- % try and combine code to prevent combinat
 partial_combine_lists([H1|L1],[H2|L2],[H1|Lcomb],L1a,L2a) :- H1==H2,!,
    partial_combine_lists(L1,L2,Lcomb,L1a,L2a).
 partial_combine_lists(L1,L2,[],L1,L2).
+
+ci(_,_,_,G):-call(G).
+
+create_prefixed_name(Prefix,LenArgs,FnName,String) :-
+   %(sub_string(FnName, 0, _, _, "f") -> break ; true),
+   length(LenArgs,L),
+   append([Prefix,L|LenArgs],[FnName],Parts),
+   atomic_list_concat(Parts,'_',String).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%% Evaluation (!)

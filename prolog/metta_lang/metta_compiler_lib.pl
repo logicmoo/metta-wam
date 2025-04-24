@@ -1,37 +1,36 @@
+:- ensure_loaded(metta_compiler).
 :- dynamic(transpiler_predicate_store/7).
-:- discontiguous transpiler_predicate_store/7.
-:- discontiguous transpiler_predicate_nary_store/9.
-:- discontiguous compile_flow_control/8.
-
-ci(_,_,_,G):-call(G).
-
-create_prefixed_name(Prefix,LenArgs,FnName,String) :-
-   length(LenArgs,L),
-   append([Prefix,L|LenArgs],[FnName],Parts),
-   atomic_list_concat(Parts,'_',String).
-
-setup_library_call(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult) :-
-    assertz(transpiler_predicate_store(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult)),
-    sum_list(LenArgs,LenArgsTotal),
-    LenArgsTotalPlus1 is LenArgsTotal+1,
-    findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
-    create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
-    Hc =.. [FnNameWPrefix|AtomList0],
-    create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
-    Hi =.. [FnNameWMiPrefix|AtomList0],
-    create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
-    He =.. [FnNameWMePrefix|AtomList0],
-    Bi =.. [ci,true,[],true,Goal],
-    assertz(Hi:-((Goal=Hc),Bi)),
-    assertz(He:-Hc).
+:- discontiguous(transpiler_predicate_store/7).
+:- dynamic(transpiler_predicate_nary_store/9).
+:- discontiguous(transpiler_predicate_nary_store/9).
+:- multifile(compile_flow_control/8).
 
 from_prolog_args(_,X,X).
 :-dynamic(pred_uses_fallback/2).
 :-dynamic(pred_uses_impl/2).
 
+setup_library_call(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult) :-
+    (transpiler_predicate_store(_,FnName,LenArgs,_,_,_,_) -> true ;
+      compiler_assertz(transpiler_predicate_store(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult)),
+      sum_list(LenArgs,LenArgsTotal),
+      LenArgsTotalPlus1 is LenArgsTotal+1,
+      findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
+      create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
+      Hc =.. [FnNameWPrefix|AtomList0],
+      create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
+      Hi =.. [FnNameWMiPrefix|AtomList0],
+      create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
+      He =.. [FnNameWMePrefix|AtomList0],
+      Bi =.. [ci,true,[],true,Goal],
+      compiler_assertz(Hi:-((Goal=Hc),Bi)),
+      compiler_assertz(He:-Hc)
+    )
+    .
+
 pred_uses_impl(F,A):- transpile_impl_prefix(F,A,Fn),current_predicate(Fn/A).
 
 use_interpreter:- fail.
+
 mc__1_fallback_unimpl(Fn,Arity,Args,Res):- \+ use_interpreter, !,
   (pred_uses_fallback(Fn,Arity); (length(Args,Len), \+ pred_uses_impl(Fn,Len))),!,
     get_operator_typedef_props(_,Fn,Arity,Types,_RetType0),
@@ -53,15 +52,15 @@ maybe_eval(Self,[T|Types],[A|Args],[N|NewArgs]):-
 %sync_type(D, Self, Obj, Type):- nonvar(Type), var(Obj), !, set_type(D, Self, Obj, Type). %, freeze(Obj, arg_conform(D, Self, Obj, Type)).
 %sync_type(D, Self, Obj, Type):- freeze(Type,sync_type(D, Self, Obj, Type)), freeze(Obj, sync_type(D, Self, Obj, Type)),!.
 
-:- initialization(setup_library_call(builtin, 'get-type', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'get-type', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[])), program).
 %'mc__1_1_get-type'(Obj,Type) :-  attvar(Obj),current_self(Self),!,trace,get_attrs(Obj,Atts),get_type(10, Self, Obj,Type).
 'mc__1_1_get-type'(Obj,Type) :- current_self(Self), !, get_type(10, Self, Obj,Type).
 
 %%%%%%%%%%%%%%%%%%%%% if
 
-:- initialization(setup_library_call(builtin, 'if', [3], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,lazy,[]))).
+:- initialization(setup_library_call(builtin, 'if', [3], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,lazy,[])), program).
 'mc__1_3_if'(If,Then,Else,Result) :- (If*->Result=Then;Result=Else).
-:- initialization(setup_library_call(builtin, 'if', [2], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,lazy,[])], x(doeval,lazy,[]))).
+:- initialization(setup_library_call(builtin, 'if', [2], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,lazy,[])], x(doeval,lazy,[])), program).
 'mc__1_2_if'(If,Then,Result) :- (If*->Result=Then;fail).
 
 compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Converted, ConvertedN) :-
@@ -94,7 +93,7 @@ compile_test_then_else(HeadIs,RetResult,RetResultN,LazyVars,LazyEval,If,Then,Els
   ConvertedN=[[prolog_if,If,TN,EN]].
 
 /*
-:- initialization(setup_library_call(builtin, 'if-decons-expr', [5], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,eager,[]),x(doeval,eager,[]),x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,lazy,[]))).
+:- initialization(setup_library_call(builtin, 'if-decons-expr', [5], '@doc', '@doc', [x(doeval,eager,[]),x(doeval,eager,[]),x(doeval,eager,[]),x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,lazy,[])), program).
 'mc__1_5_if-decons-expr'(If,H,T,Then,Else,Result) :- (If=[H|T]*->Result=Then;Result=Else).
 compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Converted, ConvertedN) :-
   Convert = ['if-decons-expr',Cond,Head,Tail,Then,Else],!,
@@ -154,39 +153,39 @@ case_list_to_if_list(Var, [[Pattern, Result] | Tail], Out, IfEvalFailed, EvalFai
 
 %%%%%%%%%%%%%%%%%%%%% arithmetic
 
-:- initialization(setup_library_call(builtin, '+', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, '+', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number])), program).
 'mc__1_2_+'(A,B,R) :- integer(A),integer(B),!,plus(A,B,R).
 'mc__1_2_+'(A,B,R) :- number(A),number(B),!,R is A+B.
 'mc__1_2_+'(A,B,['+',A,B]).
 
-:- initialization(setup_library_call(builtin, '-', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, '-', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number])), program).
 'mc__1_2_-'(A,B,R) :- integer(A),integer(B),!,plus(B,R,A).
 'mc__1_2_-'(A,B,R) :- number(A),number(B),!,R is A-B.
 'mc__1_2_-'(A,B,['-',A,B]).
 
-:- initialization(setup_library_call(builtin, '*', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, '*', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number])), program).
 'mc__1_2_*'(A,B,R) :- number(A),number(B),!,R is A*B.
 'mc__1_2_*'(A,B,['*',A,B]).
 
-:- initialization(setup_library_call(builtin, '/', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, '/', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number])), program).
 'mc__1_2_/'(A,B,R) :- number(A),number(B),!,R is A/B.
 'mc__1_2_/'(A,B,['/',A,B]).
 
-:- initialization(setup_library_call(builtin, '%', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, '%', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[number])), program).
 'mc__1_2_%'(A,B,R) :- number(A),number(B),!,R is A mod B.
 'mc__1_2_%'(A,B,['%',A,B]).
 
 %%%%%%%%%%%%%%%%%%%%% logic
 
-%:- initialization(setup_library_call(builtin, 'and', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,eager,[boolean])], x(doeval,eager,[boolean]))).
+%:- initialization(setup_library_call(builtin, 'and', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,eager,[boolean])], x(doeval,eager,[boolean])), program).
 %mc__1_2_and(A,B,B) :- atomic(A), A\=='False', A\==0, !.
 %mc__1_2_and(_,_,'False').
 
-%:- initialization(setup_library_call(builtin, 'or', [2], '@doc', '@doc', [x(doeval,eager), x(doeval,eager,[boolean])], x(doeval,eager,[boolean]))).
+%:- initialization(setup_library_call(builtin, 'or', [2], '@doc', '@doc', [x(doeval,eager), x(doeval,eager,[boolean])], x(doeval,eager,[boolean])), program).
 %mc__1_2_or(A,B,B):- (\+ atomic(A); A='False'; A=0), !.
 %mc__1_2_or(_,_,'True').
 
-:- initialization(setup_library_call(builtin, 'and', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,lazy,[boolean])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'and', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,lazy,[boolean])], x(doeval,eager,[boolean])), program).
 mc__1_2_and(A,B,C) :- atomic(A), A\=='False', A\==0, !, as_p1_exec(B,C).
 mc__1_2_and(_,_,'False').
 compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Converted, ConvertedN) :-
@@ -206,7 +205,7 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Conv
   f2p_do_group(x(noeval,eager,[]),LazyResultParts,RetResultsPartsN,NoEvalRetResults,ConvertedNParts,NoEvalCodeCollected),
   assign_or_direct_var_only(NoEvalCodeCollected,RetResultN,list(NoEvalRetResults),ConvertedN).
 
-:- initialization(setup_library_call(builtin, 'or', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,lazy,[boolean])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'or', [2], '@doc', '@doc', [x(doeval,eager,[boolean]), x(doeval,lazy,[boolean])], x(doeval,eager,[boolean])), program).
 mc__1_2_or(A,B,C):- (\+ atomic(A); A='False'; A=0), !, as_p1_exec(B,C).
 mc__1_2_or(_,_,'True').
 compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Converted, ConvertedN) :-
@@ -226,89 +225,89 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert, Conv
   f2p_do_group(x(noeval,eager,[]),LazyResultParts,RetResultsPartsN,NoEvalRetResults,ConvertedNParts,NoEvalCodeCollected),
   assign_or_direct_var_only(NoEvalCodeCollected,RetResultN,list(NoEvalRetResults),ConvertedN).
 
-:- initialization(setup_library_call(builtin, 'not', [1], '@doc', '@doc', [x(doeval,eager,[boolean])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'not', [1], '@doc', '@doc', [x(doeval,eager,[boolean])], x(doeval,eager,[boolean])), program).
 mc__1_1_not(A,'False') :- atomic(A), A\=='False', A\==0, !.
 mc__1_1_not(_,'True').
 
 %%%%%%%%%%%%%%%%%%%%% comparison
 
 % not sure about the signature for this one
-:- initialization(setup_library_call(builtin, '==', [2], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, '==', [2], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[])], x(doeval,eager,[boolean])), program).
 %'mc__1_2_=='(A,B,TF):- eval_40(['==',A,B],TF).
 'mc__1_2_=='(A,B,TF) :- var(A),!,as_tf(A==B,TF).
 'mc__1_2_=='(A,B,TF) :- as_tf(A=@=B,TF).
 
-:- initialization(setup_library_call(builtin, '<', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, '<', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean])), program).
 'mc__1_2_<'(A,B,R) :- number(A),number(B),!,(A<B -> R='True' ; R='False').
 'mc__1_2_<'(A,B,['<',A,B]).
 
-:- initialization(setup_library_call(builtin, '>', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, '>', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean])), program).
 'mc__1_2_>'(A,B,R) :- number(A),number(B),!,(A>B -> R='True' ; R='False').
 'mc__1_2_>'(A,B,['>',A,B]).
 
-:- initialization(setup_library_call(builtin, '>=', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, '>=', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean])), program).
 'mc__1_2_>='(A,B,R) :- number(A),number(B),!,(A>=B -> R='True' ; R='False').
 'mc__1_2_>='(A,B,['>=',A,B]).
 
-:- initialization(setup_library_call(builtin, '<=', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, '<=', [2], '@doc', '@doc', [x(doeval,eager,[number]), x(doeval,eager,[number])], x(doeval,eager,[boolean])), program).
 'mc__1_2_<='(A,B,R) :- number(A),number(B),!,(A=<B -> R='True' ; R='False'). % note that Prolog has a different syntax '=<'
 'mc__1_2_<='(A,B,['<=',A,B]).
 
 %%%%%%%%%%%%%%%%%%%%% lists
 
-:- initialization(setup_library_call(builtin, 'car-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'car-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[])), program).
 'mc__1_1_car-atom'([H|_],H).
 
-:- initialization(setup_library_call(builtin, 'cdr-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[list]))).
+:- initialization(setup_library_call(builtin, 'cdr-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[list])), program).
 'mc__1_1_cdr-atom'([_|T],T).
 
-:- initialization(setup_library_call(builtin, 'cons-atom', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[list])], x(noeval,eager,[list]))).
+:- initialization(setup_library_call(builtin, 'cons-atom', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[list])], x(noeval,eager,[list])), program).
 'mc__1_2_cons-atom'(A,B,[A|B]).
 
-:- initialization(setup_library_call(builtin, 'decons-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[list]))).
+:- initialization(setup_library_call(builtin, 'decons-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[list])), program).
 'mc__1_1_decons-atom'([A|B],[A,B]).
 
-%:- initialization(setup_library_call(builtin, 'length', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[number]))).
+%:- initialization(setup_library_call(builtin, 'length', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[number])), program).
 %'mc__1_1_length'(L,S) :- length(L,S).
 
-:- initialization(setup_library_call(builtin, 'size-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[number]))).
+:- initialization(setup_library_call(builtin, 'size-atom', [1], '@doc', '@doc', [x(noeval,eager,[list])], x(noeval,eager,[number])), program).
 'mc__1_1_size-atom'(L,S) :- length(L,S).
 
 %%%%%%%%%%%%%%%%%%%%% set
 
 lazy_member(P,R2) :- as_p1_exec(R2,P).
 
-:- initialization(setup_library_call(builtin, subtraction, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, subtraction, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[])), program).
 % QUESTION: which one of these to use?
 % * The first is more time efficient (calculates the set for S2 and stores in Avoid)
 %'mc__1_2_subtraction'(S1,S2,R) :- 'mc__1_1_collapse'(S2,Avoid),as_p1_exec(S1,R), \+ member(R,Avoid).
 % the second is more memory efficient (steps through S2 every time, but does not need to store anything)
 'mc__1_2_subtraction'(S1,S2,R) :- as_p1_exec(S1,R), \+ lazy_member(R,S2).
 
-:- initialization(setup_library_call(builtin, union, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, union, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_2_union'(S1,S2,R) :- as_p1_exec(S1,R) ; 'mc__1_2_subtraction'(S2,S1,R).
 
-%:- initialization(setup_library_call(builtin, intersection, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[]))).
+%:- initialization(setup_library_call(builtin, intersection, [2], '@doc', '@doc', [x(doeval,lazy,[]),x(doeval,lazy,[])], x(doeval,eager,[])), program).
 %'mc__1_2_intersection'(S1,S2,R)
 
-:- initialization(setup_library_call(builtin, unique, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, unique, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_1_unique'(S,R) :- 'mc__1_1_collapse'(S,S0),list_to_set(S0,R).
 
-:- initialization(setup_library_call(builtin, 'unique-atom', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'unique-atom', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_unique-atom'(S,R) :- list_to_set(S,R).
 
-:- initialization(setup_library_call(builtin, limit, [2], '@doc', '@doc', [x(doeval,eager,[number]),x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, limit, [2], '@doc', '@doc', [x(doeval,eager,[number]),x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_2_limit'(N,S,R) :- integer(N),N>=0,limit(N,as_p1_exec(S,R)).
 
-:- initialization(setup_library_call(builtin, 'limit!', [2], '@doc', '@doc', [x(doeval,eager,[number]),x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'limit!', [2], '@doc', '@doc', [x(doeval,eager,[number]),x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_2_limit!'(N,S,R) :- integer(N),N>=0,limit(N,as_p1_exec(S,R)).
 
 %%%%%%%%%%%%%%%%%%%%% superpose, collapse
 
-:- initialization(setup_library_call(builtin, superpose, [1], '@doc', '@doc', [x(doeval,eager,[])], x(noeval,eager,[]))).
+:- initialization(setup_library_call(builtin, superpose, [1], '@doc', '@doc', [x(doeval,eager,[])], x(noeval,eager,[])), program).
 'mc__1_1_superpose'(S,R) :- member(R,S).
 
-:- initialization(setup_library_call(builtin, collapse, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, collapse, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_1_collapse'(ispu(X),[X]) :- !.
 'mc__1_1_collapse'(ispuU(Ret,Code),R) :- fullvar(Ret),!,findall(Ret,Code,R).
 'mc__1_1_collapse'(ispuU(X,true),[X]) :- !.
@@ -325,22 +324,22 @@ lazy_member(P,R2) :- as_p1_exec(R2,P).
 
 %%%%%%%%%%%%%%%%%%%%% spaces
 
-:- initialization(setup_library_call(builtin, 'bind!', [2], '@doc', '@doc', [x(noeval,eager,[]), x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'bind!', [2], '@doc', '@doc', [x(noeval,eager,[]), x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_2_bind!'(Name,Expression,[]) :- nb_bind(Name,Expression).
 
-:- initialization(setup_library_call(builtin, 'new-space', [0], '@doc', '@doc', [], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'new-space', [0], '@doc', '@doc', [], x(doeval,eager,[])), program).
 'mc__1_0_new-space'(Space) :- is_make_new_kb(['new-space'],Space,[]).
 
 convert_space('&self','&top') :- !.
 convert_space(S,S).
 
-:- initialization(setup_library_call(builtin, 'add-atom', [2], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'add-atom', [2], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_2_add-atom'(Space,PredDecl,[]) :- convert_space(Space,Space1),A=metta_atom_asserted(Space1,PredDecl),(call(A) -> true ; assertz(A)).
 
-:- initialization(setup_library_call(builtin, 'remove-atom', [2], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'remove-atom', [2], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_2_remove-atom'(Space,PredDecl,[]) :- convert_space(Space,Space1),retractall(metta_atom_asserted(Space1,PredDecl)).
 
-:- initialization(setup_library_call(builtin, 'get-atoms', [1], '@doc', '@doc', [x(noeval,eager,[])], x(noeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'get-atoms', [1], '@doc', '@doc', [x(noeval,eager,[])], x(noeval,eager,[])), program).
 'mc__1_1_get-atoms'(Space,Atoms) :- metta_atom(Space, Atoms).
 
 % This allows match to supply hits to the correct metta_atom/2 (Rather than sending a variable
@@ -353,11 +352,11 @@ match_pattern(Space, Pattern):-
     %wocf(Atom=Pattern).
     %woc(Atom=Pattern). %  2.09 seconds.
 
-:- initialization(setup_library_call(builtin, match, [3], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[]), x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, match, [3], '@doc', '@doc', [x(doeval,eager,[]), x(noeval,eager,[]), x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_3_match'(Space,P,P1,Ret) :- is_list(P),P=[Comma|Patterns],Comma==',',!,(maplist(match_aux(Space),Patterns) -> as_p1_exec(P1,Ret) ; fail).
 'mc__1_3_match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),unify_with_occurs_check(Atom,Pattern),as_p1_exec(P1,Ret).
 %'mc__1_3_match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),format("match1 ~w: ~w:\n",[Pattern,Atom]),Atom=Pattern,as_p1_exec(P1,Ret),format("match2 ~w:\n",[Ret]),trace.
-%:- initialization(setup_library_call(builtin, match, [3], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,lazy,[]), x(doeval,lazy,[])], x(doeval,eager,[]))).
+%:- initialization(setup_library_call(builtin, match, [3], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,lazy,[]), x(doeval,lazy,[])], x(doeval,eager,[])), program).
 %'mc__1_3_match'(Space,Pattern,P1,Ret) :- match_pattern(Space, Atom),as_p1_exec(Pattern,Atom),as_p1_exec(P1,Ret).
 
 match_aux(Space,Pattern) :- 'mc__1_3_match'(Space,Pattern,ispu(true),true).
@@ -370,10 +369,10 @@ unify_pattern(Atom, Pattern):- metta_unify(Atom, Pattern).
 metta_unify(Atom, Pattern):- Atom=Pattern.
 
 % TODO FIXME: sort out the difference between unify and match
-:- initialization(setup_library_call(builtin, unify, [3], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[]), x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, unify, [3], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[]), x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_3_unify'(Space,Pattern,P1,Ret) :- unify_pattern(Space, Atom),Atom=Pattern,as_p1_exec(P1,Ret).
 
-:- initialization(setup_library_call(builtin, unify, [4], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[]), x(doeval,lazy,[]), x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, unify, [4], '@doc', '@doc', [x(doeval,eager,[]), x(doeval,eager,[]), x(doeval,lazy,[]), x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_4_unify'(Space,Pattern,Psuccess,PFailure,RetVal) :-
     (unify_pattern(Space,Pattern) -> as_p1_exec(Psuccess,RetVal) ; as_p1_exec(PFailure,RetVal)).
 
@@ -396,37 +395,37 @@ transpiler_predicate_nary_store(builtin, 'call-p', 1, ['Atom'], 'Atom', 'Atom', 
 
 %%%%%%%%%%%%%%%%%%%%% misc
 
-:- initialization(setup_library_call(builtin, time, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, time, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_1_time'(P,Ret) :- wtime_eval(as_p1_exec(P,Ret)).
 
-:- initialization(setup_library_call(builtin, empty, [0], '@doc', '@doc', [], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, empty, [0], '@doc', '@doc', [], x(doeval,eager,[])), program).
 'mc__1_0_empty'(_) :- fail.
 
-:- initialization(setup_library_call(builtin, 'eval', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'eval', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_eval'(X,R) :- transpile_eval(X,R).
 
-:- initialization(setup_library_call(builtin, 'get-metatype', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'get-metatype', [1], '@doc', '@doc', [x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_get-metatype'(X,Y) :- 'get-metatype'(X,Y). % use the code in the interpreter for now
 
-:- initialization(setup_library_call(builtin, 'println!', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'println!', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_println!'(X,[]) :- println_impl(X).
 
-:- initialization(setup_library_call(builtin, 'format-args', [2], '@doc', '@doc', [x(doeval,eager,[]),x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'format-args', [2], '@doc', '@doc', [x(doeval,eager,[]),x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_2_format-args'(EFormat,EArgs,Str) :-
     string_chars(EFormat, FormatChars), !,
     user_io(with_output_to_str( Str, format_nth_args(FormatChars, 0, EArgs))).
 
-:- initialization(setup_library_call(builtin, 'stringToChars', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'stringToChars', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_stringToChars'(S,C) :- string_chars(S,C).
 
-:- initialization(setup_library_call(builtin, 'repr', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'repr', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_repr'(A,S) :- with_output_to_str(S, write_src_woi(A)).
 
-:- initialization(setup_library_call(builtin, 'charsToString', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'charsToString', [1], '@doc', '@doc', [x(doeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_1_charsToString'(C,S) :- string_chars(S,C).
 
 
-:- initialization(setup_library_call(builtin, 'assertEqual', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'assertEqual', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_2_assertEqual'(A,B,C) :-
    loonit_assert_source_tf_empty(
         ['assertEqual',A,B],AA,BB,
@@ -434,7 +433,7 @@ transpiler_predicate_nary_store(builtin, 'call-p', 1, ['Atom'], 'Atom', 'Atom', 
          'mc__1_1_collapse'(B,BB)),
          equal_enough_for_test_renumbered_l(strict_equals_allow_vn,AA,BB), C).
 
-:- initialization(setup_library_call(builtin, 'assertEqualToResult', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,eager,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'assertEqualToResult', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,eager,[])], x(doeval,eager,[])), program).
 'mc__1_2_assertEqualToResult'(A,B,C) :-
    loonit_assert_source_tf_empty(
         ['assertEqualToResult',A,B],AA,B,
@@ -442,7 +441,7 @@ transpiler_predicate_nary_store(builtin, 'call-p', 1, ['Atom'], 'Atom', 'Atom', 
          equal_enough_for_test_renumbered_l(strict_equals_allow_vn,AA,B), C).
 
 
-:- initialization(setup_library_call(builtin, 'assertAlphaEqual', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,lazy,[])], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'assertAlphaEqual', [2], '@doc', '@doc', [x(doeval,lazy,[]),x(noeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_2_assertAlphaEqual'(A,B,C) :-
    loonit_assert_source_tf_empty(
         ['assertAlphaEqual',A,B],AA,BB,
@@ -450,7 +449,7 @@ transpiler_predicate_nary_store(builtin, 'call-p', 1, ['Atom'], 'Atom', 'Atom', 
          'mc__1_1_collapse'(B,BB)),
          equal_enough_for_test_renumbered_l(alpha_equ,AA,BB), C).
 
-:- initialization(setup_library_call(builtin, 'quote', [1], '@doc', '@doc', [x(noeval,eager,[])], x(noeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'quote', [1], '@doc', '@doc', [x(noeval,eager,[])], x(noeval,eager,[])), program).
 'mc__1_1_quote'(A,['quote',A]).
 compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert, QuotedCode1a, QuotedCode1N) :-
   Convert = ['quote',Quoted],!,
@@ -461,13 +460,13 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert,
   assign_or_direct_var_only(QuotedCode2,RetResult,QuotedResult2,QuotedCode1a),
   assign_or_direct_var_only(QuotedCode2,RetResultN,QuotedResult2,QuotedCode1N).
 
-%:- initialization(setup_library_call(builtin, 'chain', [3], '@doc', '@doc', [x(eval,eager,[]), x(noeval,eager,[]), x(eval,lazy,[])], x(noeval,eager,[]))).
+%:- initialization(setup_library_call(builtin, 'chain', [3], '@doc', '@doc', [x(eval,eager,[]), x(noeval,eager,[]), x(eval,lazy,[])], x(noeval,eager,[])), program).
 
 
 
 %%%%%%%%%%%%%%%%%%%%% random number generation
 
-:- initialization(setup_library_call(builtin, 'random-int', [3], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, []))).
+:- initialization(setup_library_call(builtin, 'random-int', [3], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, [])), program).
 
 'mc__1_3_random-int'(RNGId, Min, Max, N):-
     maplist(must_be(integer), [Min, Max]),
@@ -475,13 +474,13 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert,
     with_random_generator(RNGId, random_between(Min, MaxM1, N) ).
 
 
-:- initialization(setup_library_call(builtin, 'random-float', [3], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, []))).
+:- initialization(setup_library_call(builtin, 'random-float', [3], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, []), x(doeval, eager, [])], x(doeval, eager, [])), program).
 % !(let $rg (new-random-generator 1) ((random-float $rg 1 7) (random-float $rg 1 7)))
 'mc__1_3_random-float'(RNGId, Min, Max, N):-
     with_random_generator(RNGId, random_float_between(Min, Max, N)).
 
 
-:- initialization(setup_library_call(builtin, 'set-random-seed', [2], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, [])], x(noeval, eager, []))).
+:- initialization(setup_library_call(builtin, 'set-random-seed', [2], '@doc', '@doc', [x(doeval, eager, []), x(doeval, eager, [])], x(noeval, eager, [])), program).
 /*
     !(let $rg (new-random-generator 3) (((random-int $rg 3 7)(random-int $rg 3 7)(random-int $rg 3 7))
       (let $_ (set-random-seed $rg 3) ((random-int $rg 3 7)(random-int $rg 3 7)(random-int $rg 3 7)))))
@@ -494,7 +493,7 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert,
      RetVal = [].
 
 
-:- initialization(setup_library_call(builtin, 'new-random-generator', [1], '@doc', '@doc', [x(doeval, eager, [])], x(doeval, eager, []))).
+:- initialization(setup_library_call(builtin, 'new-random-generator', [1], '@doc', '@doc', [x(doeval, eager, [])], x(doeval, eager, [])), program).
 
 % !(new-random-generator 66)
 'mc__1_1_new-random-generator'(Seed, RNG) :-
@@ -512,7 +511,7 @@ compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyRetQuoted,Convert,
 
 
 
-:- initialization(setup_library_call(builtin, 'reset-random-generator', [1], '@doc', '@doc', [x(doeval, eager, [])], x(doeval, eager, []))).
+:- initialization(setup_library_call(builtin, 'reset-random-generator', [1], '@doc', '@doc', [x(doeval, eager, [])], x(doeval, eager, [])), program).
 % !(reset-random-generator &rng_1) -> &rng_1
 % Not tested.
 'mc__1_1_reset-random-generator'(RNGId, RNGId ):-
@@ -569,7 +568,7 @@ update_rng(RNGId, Current):- nb_setval(RNGId, rng(RNGId, Current)).
 
 %%%%%%%%%%%%%%%%%%%%% transpiler specific (non standard MeTTa)
 
-:- initialization(setup_library_call(builtin, 'prolog-trace', [0], [], '', [], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'prolog-trace', [0], [], '', [], x(doeval,eager,[])), program).
 'mc__1_0_prolog-trace'([]) :- trace.
 
 listing_order(Order, [Origin1, Fn1, Arity1, _], [Origin2, Fn2, Arity2, _]) :-
@@ -578,7 +577,7 @@ listing_order(Order, [Origin1, Fn1, Arity1, _], [Origin2, Fn2, Arity2, _]) :-
     ; compare(Order, Arity1, Arity2)                           % Compare third if first two are equal
     ).
 
-:- initialization(setup_library_call(builtin, 'transpiler-listing', [0], [], '', [], x(doeval,eager,[]))).
+:- initialization(setup_library_call(builtin, 'transpiler-listing', [0], [], '', [], x(doeval,eager,[])), program).
 'mc__1_0_transpiler-listing'(Sorted) :-
   findall([Origin,Fn,Arity,[]],:- transpiler_predicate_store(Origin,Fn,Arity,_,_,_,_),Unsorted1),
   findall([Origin,Fn,Arity,['variable arity']],transpiler_predicate_nary_store(Origin,Fn,Arity,_,_,_,_,_,_),Unsorted2),
@@ -589,13 +588,13 @@ listing_order(Order, [Origin1, Fn1, Arity1, _], [Origin2, Fn2, Arity2, _]) :-
 
 
 
-:- initialization(setup_library_call(builtin, 'metta-equals', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'metta-equals', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[boolean])), program).
 'mc__1_2_metta-equals'(A,B,TF):- as_tf(A=@=B,TF).
 
-:- initialization(setup_library_call(builtin, 'metta-unify', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'metta-unify', [2], '@doc', '@doc', [x(noeval,eager,[]), x(noeval,eager,[])], x(doeval,eager,[boolean])), program).
 'mc__1_2_metta-unify'(A,B,TF):- as_tf(unify_with_occurs_check(A,B),TF).
 
-:- initialization(setup_library_call(builtin, 'decons-ht', [3], '@doc', '@doc', [x(noeval,eager,[]),x(noeval,eager,[]),x(noeval,eager,[])],x(doeval,eager,[boolean]))).
+:- initialization(setup_library_call(builtin, 'decons-ht', [3], '@doc', '@doc', [x(noeval,eager,[]),x(noeval,eager,[]),x(noeval,eager,[])],x(doeval,eager,[boolean])), program).
 'mc__1_3_decons-ht'(E,H,T,TF):- as_tf(E=[H|T],TF).
 
 transpiler_predicate_nary_store(builtin, 'py-atom-call', 1, ['Atom'], 'Atom', 'Atom', [x(doeval,eager,[])], x(doeval,eager,[]), x(doeval,eager,[])).

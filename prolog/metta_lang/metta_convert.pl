@@ -1719,6 +1719,7 @@ write_pl_metta_0(STerm):-
 
 % Ensure that the MeTTa compiler module is loaded.
 :- ensure_loaded(metta_compiler).
+:- ensure_loaded(metta_compiler_lib).
 
 % Ensure that the MeTTa conversion utilities are loaded.
 :- ensure_loaded(metta_convert).
