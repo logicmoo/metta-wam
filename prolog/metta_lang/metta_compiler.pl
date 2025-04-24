@@ -171,8 +171,6 @@ a_f_args(_A,_B):- bt,!,ds,break,trace.
 
 A @.. B:- a_f_args(A,B), A=..B.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% Put any type definitions here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -318,13 +316,20 @@ combine_transpiler_clause_store_and_maybe_recompile(FnName,LenArgs,FinalLazyArgs
    ;
       % new, insert clause
       compiler_assertz(transpiler_predicate_store(user,FnName,LenArgs,todo,todo,FinalLazyArgsAdj,FinalLazyRetAdj)),
+      sum_list(LenArgs,LenArgsTotal),
+      LenArgsTotalPlus1 is LenArgsTotal+1,
+      findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
+      create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
+      Hc =.. [FnNameWPrefix|AtomList0],
+      create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
+      Hi =.. [FnNameWMiPrefix|AtomList0],
+      create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
+      He =.. [FnNameWMePrefix|AtomList0],
+      Bi =.. [ci,true,[],true,Goal],
+      assertz(Hi:-((Goal=Hc),Bi)),
+      compiler_assertz(He:-Hc),
       recompile_from_depends(FnName,LenArgs)
    ).
-
-create_prefixed_name(Prefix,LenArgs,FnName,String) :-
-   length(LenArgs,L),
-   append([Prefix,L|LenArgs],[FnName],Parts),
-   atomic_list_concat(Parts,'_',String).
 
 get_curried_name_structure(null,'',[],[]) :- !. % special null case
 get_curried_name_structure([],[],[],[]) :- !.
@@ -508,14 +513,13 @@ compile_for_assert_3(HeadIsIn, AsBodyFnIn, Converted) :-
       %(var(HResult) -> (Result = HResult, HHead = Head) ;
       %   funct_with_result_is_nth_of_pred(HeadIs,AsFunction, Result, _Nth, Head)),
 
-      HeadAST=[assign,HResult,[fcall(FnName,LenArgs),Args2]],
+      HeadAST=[assign,HResult,[hcall(FnName,LenArgs),Args2]],
       (transpiler_trace(FnName) -> Prefix=[[native(trace)]] ; Prefix=[]),
       append([Prefix|Code],CodeAppend),
       append(CodeAppend,FullCode,FullCode2),
       %ast_to_prolog(no_caller,HeadAST,HeadC),
       %append(Args,[HResult],HArgs),
       %HeadC @.. [FnNameWPrefix|HArgs],
-
 
       ast_to_prolog_aux(no_caller,[FnName/LenArgsPlus1],HeadAST,HeadC),
       %print_ast( yellow, [=,HeadAST,FullCode2]),
@@ -1073,6 +1077,7 @@ f2p(HeadIs, LazyVars, RetResult, RetResultN, ResultLazy, Convert, Converted, Con
    maplist(lazy_impedance_match, LazyResultParts, EvalArgs, RetResultsParts, ConvertedParts, RetResultsPartsN, ConvertedNParts, RetResults, Converteds),
    append(Converteds,Converteds2),
    %append(RetResults,[RetResult],RetResults2),
+   % BEER this is where to change the call to another function
    create_prefixed_name('mc_',LenArgs,'',Prefix),
    invert_curried_structure(Fn,LenArgs,RetResults,RecurriedList),
    append(Converteds2,[[transpiler_apply,Prefix,Fn,RecurriedList,RetResult,RetResultsParts, RetResultsPartsN, LazyResultParts,ConvertedParts, ConvertedNParts]],Converted),
@@ -1256,6 +1261,29 @@ ast_to_prolog_aux(Caller,DontStub,[ispeEnNC,R,Code0,Expr,CodeN0,CodeC0],ispeEnNC
    ast_to_prolog(Caller,DontStub,CodeN0,CodeN1),
    ast_to_prolog(Caller,DontStub,CodeC0,CodeC1).
 ast_to_prolog_aux(Caller,DontStub,[assign,A,[fcall(FIn,LenArgs),ArgsIn]],R) :- (fullvar(A); \+ compound(A)),callable(FIn),!,
+ must_det_lls((
+   FIn @.. [F|Pre], % allow compound natives
+   append(Pre,ArgsIn,Args00),
+   maybe_lazy_list(Caller,F,1,Args00,Args0),
+   %label_arg_types(F,1,Args0),
+   maplist(ast_to_prolog_aux(Caller,DontStub),Args0,Args1),
+   create_prefixed_name('mi_',LenArgs,F,Fp),
+   %label_arg_types(F,0,[A|Args1]),
+   %LenArgs1 is LenArgs+1,
+   append(Args1,[A],Args2),
+   R ~.. [f(FIn),Fp|Args2],
+   (Caller=caller(CallerInt,CallerSz),(CallerInt-CallerSz)\=(F-LenArgs),\+ transpiler_depends_on(CallerInt,CallerSz,F,LenArgs) ->
+      compiler_assertz(transpiler_depends_on(CallerInt,CallerSz,F,LenArgs)),
+      transpiler_debug(2,format_e("Asserting: transpiler_depends_on(~q,~q,~q,~q)\n",[CallerInt,CallerSz,F,LenArgs]))
+   ; true)
+   %sum_list(LenArgs,LenArgsTotal),
+   %LenArgsTotalPlus1 is LenArgsTotal+1,
+   %((current_predicate(Fp/LenArgsTotalPlus1);member(F/LenArgs,DontStub)) ->
+   %   true
+   %; check_supporting_predicates('&self',F/LenArgs))
+   %notice_callee(Caller,F/LenArgs)
+   )).
+ast_to_prolog_aux(Caller,DontStub,[assign,A,[hcall(FIn,LenArgs),ArgsIn]],R) :- (fullvar(A); \+ compound(A)),callable(FIn),!,
  must_det_lls((
    FIn @.. [F|Pre], % allow compound natives
    append(Pre,ArgsIn,Args00),
