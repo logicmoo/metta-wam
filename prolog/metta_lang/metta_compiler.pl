@@ -92,6 +92,26 @@ non_arg_violation(_,_,_).
 :- dynamic(metta_compiled_predicate/3).
 :- multifile(metta_compiled_predicate/3).
 
+setup_mi_me(FnName,LenArgs,_InternalTypeArgs,_InternalTypeResult) :-
+    sum_list(LenArgs,LenArgsTotal),
+    LenArgsTotalPlus1 is LenArgsTotal+1,
+    findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
+    create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
+    Hc =.. [FnNameWPrefix|AtomList0],
+    create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
+    Hi =.. [FnNameWMiPrefix|AtomList0],
+    create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
+    He =.. [FnNameWMePrefix|AtomList0],
+    Bi =.. [ci,true,[],true,Goal],
+    compiler_assertz(Hi:-((Goal=Hc),Bi)),
+    compiler_assertz(He:-Hc).
+
+setup_library_call(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult) :-
+    (transpiler_predicate_store(_,FnName,LenArgs,_,_,_,_) -> true ;
+      compiler_assertz(transpiler_predicate_store(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult)),
+      setup_mi_me(FnName,LenArgs,InternalTypeArgs,InternalTypeResult)
+    ).
+
 
 % =======================================
 % TODO move non flybase specific code between here and the compiler
@@ -325,19 +345,7 @@ combine_transpiler_clause_store_and_maybe_recompile(FnName,LenArgs,FinalLazyArgs
    ;
       % new, insert clause
       compiler_assertz(transpiler_predicate_store(user,FnName,LenArgs,todo,todo,FinalLazyArgsAdj,FinalLazyRetAdj)),
-      sum_list(LenArgs,LenArgsTotal),
-      LenArgsTotalPlus1 is LenArgsTotal+1,
-      findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
-      create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
-      Hc =.. [FnNameWPrefix|AtomList0],
-      create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
-      Hi =.. [FnNameWMiPrefix|AtomList0],
-      create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
-      He =.. [FnNameWMePrefix|AtomList0],
-      Bi =.. [ci,true,[],true,Goal],
-      assertz(Hi:-((Goal=Hc),Bi)),
-      compiler_assertz(He:-Hc),
-      recompile_from_depends(FnName,LenArgs)
+      setup_mi_me(FnName,LenArgs,FinalLazyArgsAdj,FinalLazyRetAdj)
    ).
 
 get_curried_name_structure(null,'',[],[]) :- !. % special null case

@@ -1,9 +1,20 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Debugging
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; leave the first line uncommented out to supress debug spam, second line uncommented out for testing
 (= (assertEqualOpt $a $b) ())
+;(= (assertEqualOpt $a $b) (assertEqual $a $b))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General Utilities
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; These are generic functions that should (or possibly do) in Metta that could have applicability elsewhere
 
+;; Append two lists to create a resulting list
+;; append (list $a) (list $a) -> (list $a)
+
+(: append (-> Expression Expression Expression))
 (= (append $a $b)
     (if-decons-expr $a $h $t
         (let $tail (append $t $b) (cons-atom $h $tail))
@@ -14,6 +25,10 @@
 !(assertEqualOpt (append (1 2) (3 4)) (1 2 3 4))
 !(assertEqualOpt (append (1 2 3 4) ()) (1 2 3 4))
 
+;; Append each item in a list of lists to create a resulting list
+;; append-all (list $a) (list $a) -> (list $a)
+
+(: append-all (-> Expression Expression))
 (= (append-all $l)
     (if-decons-expr $l $h $t
         (let $tail (append-all $t)
@@ -24,12 +39,20 @@
 
 !(assertEqualOpt (append-all (() ((1 2 1) (1 3 2)) ((2 0 2) (2 1 4)) ())) ((1 2 1) (1 3 2) (2 0 2) (2 1 4)))
 
+;; Create a list containing $n instances of some value
+;; dup-list Number $a -> (list $a)
+
+(: dup-list (-> Number $a Expression))
 (= (dup-list $n $v)
     (if (== $n 0) () (let $t (dup-list (- $n 1) $v) (cons-atom $v $t)))
 )
 
 !(assertEqualOpt (dup-list 5 a) (a a a a a))
 
+;; divmod takes two integers and returns a tuple of the quotient and the remainder
+;; divmod Integer Integer -> (Integer Integer)
+
+(: divmod (-> Number Number Expression))
 (= (divmod $x $y) (let $m (% $x $y) ((/ (- $x $m) $y) $m)))
 
 (= (select $x) (if (== $x ()) (empty) (car-atom $x)))
@@ -38,6 +61,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Cell internals
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; A Cell is the term for a box in the Sudoku that should contain a single number.
+;; It is stored as the list of the possible remaining values. If there is only one possible value
+;; (the number is known), we call that a singleton.
+;; Most of the code dealing with cell internals is kept together in this section, so if there was ever
+;; a more efficient implementation (say an array of booleans, or an integer to treat as a bit mask),
+;; the modifications could be kept in one place.
 
 (= (default-empty-cell) x)
 
@@ -228,7 +257,7 @@
                     (empty)
                 ))
             )
-            (if (and $changed2 (== (size-atom $cell) 1))
+            (if (and $changed2 (== (cell-length $cell) 1))
                 (let* (
                     (($f) $cell)
                     ($newsing (cons-atom ($n $f) $newsing1)))
@@ -510,7 +539,7 @@
             ; find the smallest ambiguous cell
             (let* (
                 (($r $c $values) (smallest-multicell $bnext 0 $_smallest))
-                ($v (select $values))
+                ($v (superpose $values))
                 (() (println! "backtracking"))
                 ($bupdate (update-board $bnext $r $c ($v)))
                 ($bfinal (process-board-backtrack 0 $leftout $bupdate $N (($r $c $v))))

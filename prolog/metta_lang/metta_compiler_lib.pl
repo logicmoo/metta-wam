@@ -9,24 +9,6 @@ from_prolog_args(_,X,X).
 :-dynamic(pred_uses_fallback/2).
 :-dynamic(pred_uses_impl/2).
 
-setup_library_call(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult) :-
-    (transpiler_predicate_store(_,FnName,LenArgs,_,_,_,_) -> true ;
-      compiler_assertz(transpiler_predicate_store(Source,FnName,LenArgs,MettaTypeArgs,MettaTypeResult,InternalTypeArgs,InternalTypeResult)),
-      sum_list(LenArgs,LenArgsTotal),
-      LenArgsTotalPlus1 is LenArgsTotal+1,
-      findall(Atom0, (between(1, LenArgsTotalPlus1, I0) ,Atom0='$VAR'(I0)), AtomList0),
-      create_prefixed_name('mc_',LenArgs,FnName,FnNameWPrefix),
-      Hc =.. [FnNameWPrefix|AtomList0],
-      create_prefixed_name('mi_',LenArgs,FnName,FnNameWMiPrefix),
-      Hi =.. [FnNameWMiPrefix|AtomList0],
-      create_prefixed_name('me_',LenArgs,FnName,FnNameWMePrefix),
-      He =.. [FnNameWMePrefix|AtomList0],
-      Bi =.. [ci,true,[],true,Goal],
-      compiler_assertz(Hi:-((Goal=Hc),Bi)),
-      compiler_assertz(He:-Hc)
-    )
-    .
-
 pred_uses_impl(F,A):- transpile_impl_prefix(F,A,Fn),current_predicate(Fn/A).
 
 use_interpreter:- fail.
