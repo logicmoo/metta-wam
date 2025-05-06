@@ -372,6 +372,7 @@ invert_curried_structure(F,[L|LenArgs],Args,[Result|ArgsLast]) :-
 
 recompile_from_depends(FnName,LenArgs) :- skip_redef_fa(FnName,LenArgs),!,debug_info(recompile_from_depends,skip_redef_fa(FnName,LenArgs)),!.
 recompile_from_depends(FnName,LenArgs) :-
+trace,
    transpiler_debug(2,(format_e("recompile_from_depends ~w/~w\n",[FnName,LenArgs]))),
    %LenArgs is LenArgsPlus1-1,
    %create_prefixed_name('mc_',LenArgs,,FnName,FnNameWPrefix),
