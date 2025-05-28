@@ -345,7 +345,8 @@ combine_transpiler_clause_store_and_maybe_recompile(FnName,LenArgs,FinalLazyArgs
    ;
       % new, insert clause
       compiler_assertz(transpiler_predicate_store(user,FnName,LenArgs,todo,todo,FinalLazyArgsAdj,FinalLazyRetAdj)),
-      setup_mi_me(FnName,LenArgs,FinalLazyArgsAdj,FinalLazyRetAdj)
+      setup_mi_me(FnName,LenArgs,FinalLazyArgsAdj,FinalLazyRetAdj),
+      recompile_from_depends(FnName,LenArgs)
    ).
 
 get_curried_name_structure(null,'',[],[]) :- !. % special null case
