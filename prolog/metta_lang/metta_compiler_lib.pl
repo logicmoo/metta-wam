@@ -288,6 +288,11 @@ lazy_member(P,R2) :- as_p1_exec(R2,P).
 
 :- initialization(setup_library_call(builtin, superpose, [1], '@doc', '@doc', [x(doeval,eager,[])], x(noeval,eager,[])), program).
 'mc__1_1_superpose'(S,R) :- member(R,S).
+%compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert,Converted,ConvertedN) :-
+%  Convert = ['superpose',A],!,
+%  trace,
+%  write
+%  LazyEval=x(doeval,eager,[boolean]),
 
 :- initialization(setup_library_call(builtin, collapse, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_1_collapse'(ispu(X),[X]) :- !.
