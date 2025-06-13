@@ -1398,6 +1398,7 @@ ast_to_prolog_aux(Caller,DontStub,[assign,A,[call_var(FIn,FixedArity)|ArgsIn]],R
 %   R ~.. [xxx(1),Fp|Args2].
 ast_to_prolog_aux(Caller,DontStub,[assign,A,X0],(A=X1)) :- ast_to_prolog_aux(Caller,DontStub,X0,X1),!.
 ast_to_prolog_aux(Caller,DontStub,[assign,A,X0],(A=X1)) :-   must_det_lls(label_type_assignment(A,X0)), ast_to_prolog_aux(Caller,DontStub,X0,X1),label_type_assignment(A,X1),!.
+ast_to_prolog_aux(Caller,DontStub,[native_disjunct,Disjuncts],NewFArgs) :- combine_code_list_disjunct(Caller,DontStub,Disjuncts,NewFArgs).
 ast_to_prolog_aux(Caller,DontStub,[prolog_match,A,X0],(A=X1)) :- ast_to_prolog_aux(Caller,DontStub,X0,X1),!.
 
 ast_to_prolog_aux(Caller,DontStub,[prolog_catch,Catch,Ex,Catcher],R) :-  ast_to_prolog(Caller,DontStub,Catch,Catch2), R=  catch(Catch2,Ex,Catcher).
@@ -1432,8 +1433,6 @@ ast_to_prolog_aux(Caller,DontStub,FArgs,NewFArgs):-
    compound_name_arguments(FArgs, Name, Args),
    maplist(ast_to_prolog_aux(Caller,DontStub),Args,NewArgs),
    compound_name_arguments(NewCompound, Name, NewArgs),NewFArgs=NewCompound.
-
-
 %ast_to_prolog_aux(Caller,DontStub,[H],HH) :- ast_to_prolog_aux(Caller,DontStub,H,HH).
 %ast_to_prolog_aux(Caller,DontStub,[H|T],(HH,TT)) :- ast_to_prolog_aux(Caller,DontStub,H,HH),ast_to_prolog_aux(Caller,DontStub,T,TT).
 
@@ -1451,6 +1450,17 @@ combine_code_list_aux([],[]).
 combine_code_list_aux([true|T],R) :- !,combine_code_list_aux(T,R).
 combine_code_list_aux([H|T],R) :- H=..[','|H0],!,append(H0,T,T0),combine_code_list_aux(T0,R).
 combine_code_list_aux([H|T],[H|R]) :- combine_code_list_aux(T,R).
+
+combine_code_list_disjunct(_Caller,_DontStub,[],false).
+combine_code_list_disjunct(Caller,DontStub,[H],H0) :- !,ast_to_prolog(Caller,DontStub,H,H0).
+combine_code_list_disjunct(Caller,DontStub,[H|T],R) :-
+   ast_to_prolog(Caller,DontStub,H,H0),
+   combine_code_list_disjunct(Caller,DontStub,T,T0),
+   (H0=false->
+      R=T0
+   ;
+      R=..[';',H0,T0]
+   ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% writing out the result

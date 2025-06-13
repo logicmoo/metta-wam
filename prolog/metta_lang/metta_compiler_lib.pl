@@ -286,13 +286,28 @@ lazy_member(P,R2) :- as_p1_exec(R2,P).
 
 %%%%%%%%%%%%%%%%%%%%% superpose, collapse
 
+assign_only_ret_first(Ret,CodeIn,Value,CodeOut) :- append(CodeIn,[[assign,Ret,Value]],CodeOut).
+
 :- initialization(setup_library_call(builtin, superpose, [1], '@doc', '@doc', [x(doeval,eager,[])], x(noeval,eager,[])), program).
 'mc__1_1_superpose'(S,R) :- member(R,S).
-%compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert,Converted,ConvertedN) :-
-%  Convert = ['superpose',A],!,
-%  trace,
-%  write
-%  LazyEval=x(doeval,eager,[boolean]),
+compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert,Converted,ConvertedN) :-
+  Convert = ['superpose',A],!,
+  (is_list(A) ->
+    maplist(f2p(HeadIs,LazyVars),RetResultL,RetResultNL,LazyEvalL,A,ConvertedL,ConvertedNL),
+    length(A,N),
+    length(Eager,N),
+    maplist(=(x(doeval,eager,[])),Eager),
+    maplist(lazy_impedance_match,LazyEvalL,Eager,RetResultL,ConvertedL,RetResultNL,ConvertedNL,RetResult1L,Converted1L),
+    maplist(assign_only_ret_first(RetResult),Converted1L,RetResult1L,Disjuncts),
+    Converted=[[native_disjunct,Disjuncts]],
+    maplist(assign_only_ret_first(RetResultN),Converted1L,RetResult1L,DisjunctsN),
+    ConvertedN=[[native_disjunct,DisjunctsN]]
+  ;
+    f2p(HeadIs,LazyVars,RetResultF,RetResultNF,LazyEvalF,A,ConvertedF,ConvertedNF),
+    lazy_impedance_match(LazyEvalF,x(doeval,eager,[]),RetResultF,ConvertedF,RetResultNF,ConvertedNF,RetResult1F,Converted1F),
+    append(Converted1F,[[native(member),RetResult,RetResult1F]],Converted),
+    append(Converted1F,[[native(member),RetResultN,RetResult1F]],ConvertedN)
+  ).
 
 :- initialization(setup_library_call(builtin, collapse, [1], '@doc', '@doc', [x(doeval,lazy,[])], x(doeval,eager,[])), program).
 'mc__1_1_collapse'(ispu(X),[X]) :- !.
@@ -308,6 +323,10 @@ lazy_member(P,R2) :- as_p1_exec(R2,P).
 'mc__1_1_collapse'(ispeEnNC(Ret,Code,_,_,Common),R) :- fullvar(Ret),!,findall(Ret,(Common,Code),R).
 'mc__1_1_collapse'(ispeEnNC(A,Code,_,_,Common),X) :- atom(A),!,findall(_,(Common,Code),X),maplist(=(A),X).
 'mc__1_1_collapse'(X,_) :- format("Error in library collapse: ~w",[X]),throw(0).
+compile_flow_control(HeadIs,LazyVars,RetResult,RetResultN,LazyEval,Convert,Converted,ConvertedN) :-
+  Convert = ['collapse',A],!,
+  f2p(HeadIs,LazyVars,RetResultF,RetResultNF,LazyEvalF,A,ConvertedF,ConvertedNF),
+  lazy_impedance_match(LazyEvalF,x(doeval,eager,[]),RetResultF,ConvertedF,RetResultNF,ConvertedNF,RetResult1F,Converted1F).
 
 %%%%%%%%%%%%%%%%%%%%% spaces
 
